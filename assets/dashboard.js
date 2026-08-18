@@ -139,6 +139,13 @@
           '<p class="mt-3 text-[0.8125rem] leading-relaxed text-ink-mid">Your build is staged at <span class="font-semibold text-ink">' + esc(p.previewUrl) + '</span>.</p>' +
           '<button class="btn btn-ghost mt-4" data-act="preview">Open preview</button>' +
           '<p id="preview-note" class="mt-3 hidden text-[0.8125rem] leading-relaxed text-ink-soft">The staging site is simulated in this demo — there is no live preview to open yet.</p>' +
+          '<p class="mono-label mt-6 text-ink-soft">Domain &amp; hosting</p>' +
+          '<table class="tbl mt-3"><tbody>' +
+            '<tr><td class="name">Domain</td><td>' + esc(s.customer.websiteUrl) + '</td></tr>' +
+            '<tr><td class="name">Managed by</td><td>Onsite</td></tr>' +
+            '<tr><td class="name">Hosting</td><td>' + (p.stage === 'live' ? 'Live — served by Onsite' : 'Staged, not yet published') + '</td></tr>' +
+            '<tr><td class="name">SSL / HTTPS</td><td>' + (p.stage === 'live' ? 'Active' : 'Issued at launch') + '</td></tr>' +
+          '</tbody></table>' +
           '<p class="mono-label mt-6 text-ink-soft">Selected features</p>' +
           '<ul class="mt-3 space-y-1.5 text-[0.8125rem] text-ink-mid">' +
             p.features.map(function (f) { return '<li><span class="arrow">&rarr;</span> ' + esc(f) + '</li>'; }).join('') +
@@ -420,6 +427,48 @@
       '<p class="mt-4 text-[0.8125rem] text-ink-soft">Coming-soon services cannot be ordered yet. We will tell you when they open.</p>';
   };
 
+  routes['/subscriptions'] = function () {
+    var s = O.load(), o = s.order;
+    var live = s.project.stage === 'live';
+    var nextBilling = live ? O.date('2026-09-18') : 'When your website goes live';
+
+    var rows = o.monthlyItems.map(function (m) {
+      return '<tr><td class="name">' + esc(m.name) + '</td>' +
+        '<td class="font-mono">' + money(m.cents) + ' / month</td>' +
+        '<td>Monthly</td>' +
+        '<td>' + esc(nextBilling) + '</td>' +
+        '<td>' + statusTag(live ? 'active' : 'pending') + '</td>' +
+        '<td><button class="btn btn-ghost px-3 py-1 text-[0.75rem]" data-act="cancel-service" data-name="' + esc(m.name) + '">Cancel</button></td></tr>';
+    }).join('');
+
+    return head('Subscriptions', 'What recurs, and when.',
+      'Monthly services are separate from your one-time website cost. They start at launch and can be stopped at any time.') +
+
+      '<div class="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-3">' +
+        '<div class="card p-5"><p class="mono-label text-ink-soft">Monthly total</p><p class="h-section mt-2 text-xl">' + money(o.monthlyCents) + '</p></div>' +
+        '<div class="card p-5"><p class="mono-label text-ink-soft">Billing frequency</p><p class="h-section mt-2 text-xl">Monthly</p><p class="mt-1 text-[0.8125rem] text-ink-soft">No minimum term</p></div>' +
+        '<div class="card p-5"><p class="mono-label text-ink-soft">Next billing date</p><p class="h-section mt-2 text-base">' + esc(nextBilling) + '</p></div>' +
+      '</div>' +
+
+      '<div class="card mt-6 p-6"><p class="mono-label text-ink-soft">Active subscriptions</p>' +
+        '<div class="mt-4 overflow-x-auto"><table class="tbl">' +
+          '<thead><tr><th>Service</th><th>Price</th><th>Billing</th><th>Next payment</th><th>Status</th><th></th></tr></thead>' +
+          '<tbody>' + (rows || '<tr><td colspan="6" class="text-ink-soft">No monthly services selected.</td></tr>') + '</tbody>' +
+        '</table></div>' +
+        '<p id="sub-note" class="mt-4 hidden text-[0.8125rem] font-semibold text-accent"></p>' +
+      '</div>' +
+
+      '<div class="card mt-6 p-6"><p class="mono-label text-ink-soft">Cancelling</p>' +
+        '<ul class="mt-3 space-y-2 text-[0.8125rem] leading-relaxed text-ink-mid">' +
+          '<li><span class="arrow">&rarr;</span> Cancel here or by email — no minimum term, no reason required.</li>' +
+          '<li><span class="arrow">&rarr;</span> Cancellation takes effect at the end of the period you have already paid for.</li>' +
+          '<li><span class="arrow">&rarr;</span> Cancelling a service does not take your website offline.</li>' +
+          '<li><span class="arrow">&rarr;</span> Full detail in the <a href="refunds.html" class="font-semibold text-accent underline underline-offset-2">Cancellation &amp; Refund Policy</a>.</li>' +
+        '</ul>' +
+        '<a href="#/services" class="btn btn-ghost mt-5">Add a service</a>' +
+      '</div>';
+  };
+
   routes['/account'] = function () {
     var s = O.load(), c = s.customer;
     function f(id, label, val, type) {
@@ -605,6 +654,21 @@
       O.save();
       O.notify('Website Maintenance cancelled. It stays available until the end of the paid month.');
       render();
+    },
+    'cancel-service': function (el) {
+      var name = el.getAttribute('data-name');
+      var s = O.load();
+      s.services.forEach(function (x) { if (x.name === name) x.state = 'available'; });
+      s.order.monthlyItems = s.order.monthlyItems.filter(function (m) { return m.name !== name; });
+      s.order.monthlyCents = s.order.monthlyItems.reduce(function (t, m) { return t + m.cents; }, 0);
+      O.save();
+      O.notify(name + ' cancelled. It stays available until the end of the period you have paid for.');
+      render();
+      var n = document.getElementById('sub-note');
+      if (n) {
+        n.textContent = name + ' cancelled. It runs until the end of the paid period, then stops.';
+        n.classList.remove('hidden');
+      }
     },
     'activate-service': function (el) {
       var name = el.getAttribute('data-name');

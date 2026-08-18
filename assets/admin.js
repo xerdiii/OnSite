@@ -272,6 +272,64 @@
       '<div class="card mt-8 p-6">' + table(['Ref', 'Business', 'Subject', 'Opened', 'Status', 'Messages'], rows) + '</div>';
   };
 
+  // Transactional email the application is designed to send. Nothing is
+  // wired to a provider yet — this is the specification, and the preview
+  // page renders each template in full.
+  var EMAILS = [
+    { key: 'deposit-received', name: 'Deposit received', trigger: '25% deposit succeeds', status: 'Specified' },
+    { key: 'content-required', name: 'Content required', trigger: 'Deposit paid, content outstanding', status: 'Specified' },
+    { key: 'website-ready',    name: 'Website ready for review', trigger: 'Build complete', status: 'Specified' },
+    { key: 'final-due',        name: 'Final payment due', trigger: 'Customer approves the website', status: 'Specified' },
+    { key: 'website-live',     name: 'Website live', trigger: 'Final 75% received', status: 'Specified' },
+    { key: 'subscription-started', name: 'Monthly service started', trigger: 'Website goes live', status: 'Specified' },
+    { key: 'payment-failed',   name: 'Payment failed', trigger: 'Monthly charge declines', status: 'Specified' },
+    { key: 'verify-email',     name: 'Email verification code', trigger: 'Sign-up or sign-in', status: 'Simulated in demo' },
+    { key: 'password-reset',   name: 'Password reset', trigger: 'Reset requested', status: 'Simulated in demo' }
+  ];
+
+  routes['/emails'] = function () {
+    var rows = EMAILS.map(function (e) {
+      return '<tr><td class="name">' + esc(e.name) + '</td><td>' + esc(e.trigger) + '</td>' +
+        '<td>' + tag(e.status === 'Specified' ? 'pending' : 'pending') + ' <span class="text-[0.8125rem]">' + esc(e.status) + '</span></td>' +
+        '<td><a class="btn btn-ghost px-3 py-1 text-[0.75rem]" href="emails.html#' + esc(e.key) + '">Preview</a></td></tr>';
+    }).join('');
+
+    return head('Email status', 'Transactional email the system sends.',
+      'Templates are written and previewable. None are connected to a sending provider yet — that is the next integration.') +
+      '<div class="card mt-8 p-6">' + table(['Email', 'Sent when', 'Status', ''], rows) + '</div>' +
+      '<div class="card mt-6 p-6"><p class="mono-label text-ink-soft">Rules</p>' +
+        '<ul class="mt-3 space-y-2 text-[0.8125rem] leading-relaxed text-ink-mid">' +
+          '<li><span class="arrow">&rarr;</span> Never put passwords, full card details or verification codes in a URL.</li>' +
+          '<li><span class="arrow">&rarr;</span> Verification codes expire; reset links are single-use and time-limited.</li>' +
+          '<li><span class="arrow">&rarr;</span> Service email (build, payment, failure) is separate from marketing, which needs its own opt-in and an unsubscribe link.</li>' +
+        '</ul></div>';
+  };
+
+  routes['/refunds'] = function () {
+    var u = O.load().users;
+    var cancelled = u.filter(function (x) { return x.monthly === 'cancelled' || x.final === 'cancelled'; });
+    var rows = cancelled.length ? cancelled.map(function (x) {
+      return '<tr class="clickable" data-act="open-user" data-i="' + u.indexOf(x) + '">' +
+        '<td class="name">' + esc(x.business) + '</td><td>' + esc(x.name) + '</td>' +
+        '<td>' + tag(x.website) + '</td>' +
+        '<td class="font-mono">' + money(O.deposit(x.oneTimeCents)) + '</td>' +
+        '<td>Deposit retained — build had started</td></tr>';
+    }).join('') : '<tr><td colspan="5" class="text-ink-soft">No cancellations.</td></tr>';
+
+    return head('Refunds &amp; cancellations', 'What stopped, and what was returned.',
+      'Deposits cover work already done; balances are never charged on unapproved projects. Statutory rights override this table.') +
+      '<div class="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-3">' +
+        stat('Cancellations', String(cancelled.length)) +
+        stat('Refunds issued', money(0), 'none to date') +
+        stat('Balances never charged', money(cancelled.reduce(function (t, x) { return t + O.balance(x.oneTimeCents); }, 0)), 'unapproved projects') +
+      '</div>' +
+      '<div class="card mt-6 p-6">' + table(['Business', 'Contact', 'Website', 'Deposit', 'Outcome'], rows) + '</div>' +
+      '<div class="card mt-6 p-6"><p class="mono-label text-ink-soft">Policy reminder</p>' +
+        '<p class="mt-3 max-w-prose text-[0.8125rem] leading-relaxed text-ink-mid">Before refusing a refund, check the ' +
+          '<a href="refunds.html" class="font-semibold text-accent underline underline-offset-2">Cancellation &amp; Refund Policy</a> ' +
+          'and the customer\'s statutory position. Mandatory consumer rights cannot be excluded by the policy.</p></div>';
+  };
+
   routes['/settings'] = function () {
     return head('Settings', 'Internal configuration.', 'Demo only — nothing here is persisted to a server.') +
       '<div class="mt-8 grid grid-cols-1 gap-6 lg:grid-cols-2">' +
@@ -287,6 +345,23 @@
           '<button class="btn btn-ghost mt-4" data-act="reset-demo">Reset demo data</button>' +
           '<p id="reset-note" class="mt-3 hidden text-[0.8125rem] font-semibold text-accent">Demo data reset.</p>' +
         '</div>' +
+      '</div>' +
+
+      '<div class="card mt-6 border-dashed p-6">' +
+        '<p class="mono-label text-ink-soft">Internal note — not shown to customers</p>' +
+        '<p class="mt-3 max-w-prose text-[0.8125rem] leading-relaxed text-ink-mid">' +
+          'These pages are a product/UX implementation and are not a substitute for legal advice. ' +
+          'Before accepting real customers, review the Terms of Service, Privacy Policy, Cookie Policy, ' +
+          'cancellation/refund terms, withdrawal/consumer-rights wording, tax information, and ' +
+          'data-processing arrangements for the jurisdictions in which Onsite operates.' +
+        '</p>' +
+        '<p class="mt-3 max-w-prose text-[0.8125rem] leading-relaxed text-ink-mid">' +
+          'Still to connect before launch: a real payment provider, real authentication with hashed ' +
+          'passwords, the transactional email templates in ' +
+          '<a href="emails.html" class="font-semibold text-accent underline underline-offset-2">emails.html</a>, ' +
+          'and the contact and content forms. Every [PLACEHOLDER] in the policy pages and footer needs ' +
+          'the real registered details.' +
+        '</p>' +
       '</div>';
   };
 

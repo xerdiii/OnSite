@@ -65,6 +65,9 @@
   .clause li + li { margin-top:0.35rem; }
   .clause li::before { content:"→"; position:absolute; left:0; color:#1C2B3A; font-weight:600; }
   .clause strong { color:#14161A; font-weight:600; }
+  .ph { font-family:'IBM Plex Mono',ui-monospace,monospace; font-size:0.8125rem; letter-spacing:0.03em;
+        color:#43484F; border:1px dashed #CFCCC5; border-radius:0.25rem; padding:0.2rem 0.45rem;
+        display:inline-block; background:#FFFFFF; }
 
   a, button { transition: background-color 180ms ease, color 180ms ease, border-color 180ms ease; }
   a:focus-visible { outline:2px solid #1C2B3A; outline-offset:3px; border-radius:2px; }
@@ -147,6 +150,7 @@
         <li><a href="#s13" class="text-sm text-ink-mid hover:text-ink">13 — Hosting &amp; uptime</a></li>
         <li><a href="#s14" class="text-sm text-ink-mid hover:text-ink">14 — Liability</a></li>
         <li><a href="#s15" class="text-sm text-ink-mid hover:text-ink">15 — Changes to these terms</a></li>
+        <li><a href="#s16" class="text-sm text-ink-mid hover:text-ink">16 — Governing law</a></li>
       </ol>
     </div>
   </section>
@@ -190,9 +194,17 @@
             <li>Any other feature or service is included <strong>only</strong> if it was specifically selected and paid for in your order.</li>
           </ul>
           <p>
+            <strong>Revisions.</strong> Getting the website to match what you selected and the content
+            you supplied is part of the build, not an extra. During your review we correct anything that
+            is wrong, missing or misread. What is not included at that stage is changing your mind about
+            the direction — a different layout, a different structure or features you did not order.
+            Those are quoted separately, and we tell you the price before doing anything.
+          </p>
+          <p>
             Work outside your selected package is not included. Large redesigns, custom software,
-            advanced functionality, e-commerce systems and similar work require a separate quote and a
-            separate agreement before we start. We do not offer unlimited custom work at these prices.
+            advanced functionality, e-commerce systems, additional pages beyond the agreed scope and
+            similar work require a separate quote and a separate agreement before we start. We do not
+            offer unlimited custom work at these prices.
           </p>
         </div>
       </article>
@@ -332,6 +344,23 @@
             The one-time deposit pays for starting your project. Once work has begun it is generally
             not refundable, subject to your rights under applicable consumer law. Nothing here removes
             a right you have that cannot legally be excluded.
+          </p>
+          <p>
+            <strong>How to cancel.</strong> Monthly services: turn them off under <strong>My Services</strong>
+            in your dashboard, or email us — both work, and neither requires a reason. A project: email us
+            and say you want to stop. Cancellation of a monthly service takes effect at the end of the
+            period you have already paid for.
+          </p>
+          <p>
+            <strong>Statutory withdrawal rights.</strong> Where consumer or distance-selling rules give
+            you a right to withdraw, that right applies regardless of what this agreement says.
+            <span class="ph">[LEGAL REVIEW REQUIRED: early commencement / withdrawal wording — whether a
+            withdrawal right applies to this service, its length, the effect of asking us to begin the
+            build during that period, and the consent mechanism required at checkout]</span>
+          </p>
+          <p>
+            The full detail is in the
+            <a href="refunds.html" class="font-semibold text-ink underline underline-offset-2">Cancellation &amp; Refund Policy</a>.
           </p>
         </div>
       </article>
@@ -486,6 +515,28 @@
         </div>
       </article>
 
+      <article id="s16" class="clause mt-12 scroll-mt-24 border-t-2 border-accent pt-6">
+        <div class="flex items-baseline gap-4">
+          <span class="font-mono text-xs font-semibold tracking-widest text-ink-soft">16</span>
+          <h2 class="h-section text-xl">Governing law</h2>
+        </div>
+        <div class="mt-5">
+          <p>
+            <span class="ph">[GOVERNING LAW — LEGAL REVIEW]</span>
+            <span class="ph">[JURISDICTION FOR DISPUTES — LEGAL REVIEW]</span>
+          </p>
+          <p>
+            These have deliberately been left blank rather than guessed at. Where you buy as a consumer,
+            mandatory protections in your own country of residence may apply regardless of what is
+            eventually written here.
+          </p>
+          <p>
+            Contact details for the provider are on the
+            <a href="contact.html" class="font-semibold text-ink underline underline-offset-2">contact page</a>.
+          </p>
+        </div>
+      </article>
+
     </div>
   </section>
 
@@ -505,22 +556,9 @@
 
 </main>
 
-<footer class="bg-accent">
-  <div class="mx-auto max-w-shell border-t border-white/20 px-6 py-8 md:px-10">
-    <div class="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-      <a href="index.html" class="flex items-center gap-2.5">
-        <span class="block h-3 w-3 rounded-sm bg-white" aria-hidden="true"></span>
-        <span class="h-section text-base text-white">Onsite</span>
-      </a>
-      <p class="font-mono text-xs uppercase tracking-widest text-white/60">
-        Terms of Service · Last updated 18 August 2026
-      </p>
-      <div class="flex flex-wrap gap-6"><a href="cookies.html" class="font-mono text-xs uppercase tracking-widest text-white/60 hover:text-white">Cookies</a>
-      <a href="#" data-cookie-settings class="font-mono text-xs uppercase tracking-widest text-white/60 hover:text-white">Cookie settings</a></div>
-    </div>
-  </div>
-</footer>
+<div data-site-footer></div>
 
+<script src="assets/footer.js"></script>
 <script src="assets/cookies.js"></script>
 </body>
 </html>

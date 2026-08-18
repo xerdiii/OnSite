@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Email templates — Onsite (internal)</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;700&family=Inter:wght@400;600&family=IBM+Plex+Mono:wght@400;600&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="assets/tw.js"></script>
+<link rel="stylesheet" href="assets/onsite.css">
+<style>
+  .mail { background:#FFFFFF; border:1px solid #E3E1DC; border-radius:0.5rem; overflow:hidden; }
+  .mail-head { border-bottom:1px solid #E3E1DC; padding:0.9rem 1.25rem; background:#F7F6F3; }
+  .mail-body { padding:1.5rem 1.25rem; font-size:0.9375rem; line-height:1.7; color:#43484F; }
+  .mail-body p + p { margin-top:0.9rem; }
+  .mail-body strong { color:#14161A; font-weight:600; }
+  .mail-body .rows { margin-top:1rem; border-top:1px solid #E3E1DC; }
+  .mail-body .rows div { display:flex; justify-content:space-between; gap:1rem; padding:0.55rem 0;
+                         border-bottom:1px solid #E3E1DC; font-size:0.875rem; }
+  .mail-body .rows span:first-child { color:#6E747C; }
+  .mail-body .rows span:last-child { color:#14161A; font-weight:600; font-family:'IBM Plex Mono',monospace; }
+  .mail-cta { display:inline-block; margin-top:1.25rem; background:#1C2B3A; color:#FFFFFF;
+              border-radius:0.375rem; padding:0.7rem 1.25rem; font-size:0.875rem; font-weight:600; }
+  .ph { font-family:'IBM Plex Mono',ui-monospace,monospace; font-size:0.8125rem; color:#43484F;
+        border:1px dashed #CFCCC5; border-radius:0.25rem; padding:0.15rem 0.4rem; display:inline-block;
+        background:#FFFFFF; }
+</style>
+</head>
+
+<!--
+  INTERNAL — email template specification.
+  These are the transactional emails the application is designed to send. They
+  are not connected to a sending provider. When wiring them up: never include a
+  password, a full card number or a verification code in a URL; expire codes and
+  reset links; keep service email separate from marketing, which needs its own
+  opt-in and an unsubscribe link in every message.
+-->
+
+<body class="bg-paper font-sans text-ink antialiased">
+
+<header class="sticky top-0 z-10 border-b border-line bg-paper">
+  <div class="mx-auto flex max-w-shell items-center justify-between px-6 py-3.5 md:px-10">
+    <div class="flex items-center gap-3">
+      <a href="index.html" class="flex items-center gap-2.5">
+        <span class="block h-3.5 w-3.5 rounded-sm bg-accent" aria-hidden="true"></span>
+        <span class="h-section text-lg tracking-tight">Onsite</span>
+      </a>
+      <span class="tag tag-once">Internal</span>
+    </div>
+    <a href="admin.html#/emails" class="text-sm font-semibold text-ink-mid hover:text-ink">← Admin</a>
+  </div>
+</header>
+
+<main class="mx-auto max-w-shell px-6 py-12 md:px-10 md:py-16">
+
+  <p class="eyebrow text-ink-soft">Email templates</p>
+  <h1 class="h-display doc-title mt-4 max-w-3xl">What the system sends, and when.</h1>
+  <p class="mt-5 max-w-prose text-[0.9375rem] leading-relaxed text-ink-mid">
+    Nine transactional emails covering the whole lifecycle. Values in
+    <span class="ph">[brackets]</span> are merge fields; the figures shown are the example customer's.
+    None of these are connected to a sending provider yet.
+  </p>
+
+  <div class="mt-10 grid grid-cols-1 gap-6 lg:grid-cols-2">
+
+    <!-- 1 -->
+    <div id="deposit-received" class="mail scroll-mt-24">
+      <div class="mail-head">
+        <p class="mono-label text-ink-soft">Sent when the 25% deposit succeeds</p>
+        <p class="mt-1.5 text-sm font-semibold">Subject: Your Onsite project has started</p>
+      </div>
+      <div class="mail-body">
+        <p>Hi <span class="ph">[FIRST NAME]</span>,</p>
+        <p>Thanks — your deposit has been received and your project is booked in. Here is your order:</p>
+        <div class="rows">
+          <div><span>Order number</span><span>ORD-1042</span></div>
+          <div><span>Website</span><span>Custom Website + Local SEO</span></div>
+          <div><span>One-time total</span><span>€279.98</span></div>
+          <div><span>Paid today (25%)</span><span>€69.99</span></div>
+          <div><span>Remaining (75%)</span><span>€209.99</span></div>
+          <div><span>Monthly services</span><span>€49.98 / month</span></div>
+        </div>
+        <p><strong>What happens next:</strong> send us your content. We deliver your finished website
+          approximately 7 days after we have everything. The remaining 75% is due only once you have
+          reviewed and approved it, and your monthly services start when the site goes live.</p>
+        <a class="mail-cta" href="#">Send your content</a>
+      </div>
+    </div>
+
+    <!-- 2 -->
+    <div id="content-required" class="mail scroll-mt-24">
+      <div class="mail-head">
+        <p class="mono-label text-ink-soft">Sent when content is still outstanding</p>
+        <p class="mt-1.5 text-sm font-semibold">Subject: We need your content to start building</p>
+      </div>
+      <div class="mail-body">
+        <p>Hi <span class="ph">[FIRST NAME]</span>,</p>
+        <p>Your project is ready to go — we are just waiting on a few things from you:</p>
+        <div class="rows">
+          <div><span>Still needed</span><span>Logo, photos</span></div>
+          <div><span>Received</span><span>Business details, hours</span></div>
+        </div>
+        <p>The 7-day delivery window starts once the last piece arrives, so the sooner we have these,
+          the sooner you are live. Nothing else is charged in the meantime.</p>
+        <a class="mail-cta" href="#">Open your content form</a>
+      </div>
+    </div>
+
+    <!-- 3 -->
+    <div id="website-ready" class="mail scroll-mt-24">
+      <div class="mail-head">
+        <p class="mono-label text-ink-soft">Sent when the build is complete</p>
+        <p class="mt-1.5 text-sm font-semibold">Subject: Your website is ready for review</p>
+      </div>
+      <div class="mail-body">
+        <p>Hi <span class="ph">[FIRST NAME]</span>,</p>
+        <p>Your website is built and waiting for you at <span class="ph">[PREVIEW URL]</span>.</p>
+        <p><strong>How to review it:</strong> open it on your phone and on a computer, check your
+          services, prices, hours and contact details, and tell us anything that is wrong. Corrections
+          are part of the build — you are not charged for them.</p>
+        <div class="rows">
+          <div><span>Remaining balance (75%)</span><span>€209.99</span></div>
+          <div><span>Due</span><span>Only after you approve</span></div>
+        </div>
+        <p>Nothing is taken automatically. Approving in your dashboard is what makes the balance due.</p>
+        <a class="mail-cta" href="#">Review your website</a>
+      </div>
+    </div>
+
+    <!-- 4 -->
+    <div id="final-due" class="mail scroll-mt-24">
+      <div class="mail-head">
+        <p class="mono-label text-ink-soft">Sent when the customer approves</p>
+        <p class="mt-1.5 text-sm font-semibold">Subject: Your final website payment is due</p>
+      </div>
+      <div class="mail-body">
+        <p>Hi <span class="ph">[FIRST NAME]</span>,</p>
+        <p>Thanks for approving your website. The remaining balance is now due:</p>
+        <div class="rows">
+          <div><span>Remaining (75%)</span><span>€209.99</span></div>
+          <div><span>Already paid (25%)</span><span>€69.99</span></div>
+          <div><span>One-time total</span><span>€279.98</span></div>
+        </div>
+        <p>Once it clears, your website goes live and your selected monthly services begin at
+          €49.98 / month.</p>
+        <a class="mail-cta" href="#">Pay the balance</a>
+      </div>
+    </div>
+
+    <!-- 5 -->
+    <div id="website-live" class="mail scroll-mt-24">
+      <div class="mail-head">
+        <p class="mono-label text-ink-soft">Sent when the final payment clears</p>
+        <p class="mt-1.5 text-sm font-semibold">Subject: Your website is now live</p>
+      </div>
+      <div class="mail-body">
+        <p>Hi <span class="ph">[FIRST NAME]</span>,</p>
+        <p>Your website is live at <span class="ph">[WEBSITE URL]</span>. It is paid in full — there is
+          nothing further to pay on the build.</p>
+        <div class="rows">
+          <div><span>Paid in full</span><span>€279.98</span></div>
+          <div><span>Monthly services</span><span>€49.98 / month</span></div>
+          <div><span>First monthly payment</span><span><span class="ph">[DATE]</span></span></div>
+        </div>
+        <p>Your receipt is in your dashboard. If anything needs changing, send it as a change request.</p>
+        <a class="mail-cta" href="#">Open your dashboard</a>
+      </div>
+    </div>
+
+    <!-- 6 -->
+    <div id="subscription-started" class="mail scroll-mt-24">
+      <div class="mail-head">
+        <p class="mono-label text-ink-soft">Sent when a monthly service begins</p>
+        <p class="mt-1.5 text-sm font-semibold">Subject: Your monthly services have started</p>
+      </div>
+      <div class="mail-body">
+        <p>Hi <span class="ph">[FIRST NAME]</span>,</p>
+        <p>Now that your website is live, the services you chose are running:</p>
+        <div class="rows">
+          <div><span>Online Booking System</span><span>€29.99 / month</span></div>
+          <div><span>Website Maintenance</span><span>€19.99 / month</span></div>
+          <div><span>Billing frequency</span><span>Monthly</span></div>
+          <div><span>Next billing date</span><span><span class="ph">[DATE]</span></span></div>
+        </div>
+        <p><strong>Cancelling:</strong> turn any service off under My Services in your dashboard, or
+          reply to this email. No minimum term, and cancelling does not take your website offline.</p>
+        <a class="mail-cta" href="#">Manage subscriptions</a>
+      </div>
+    </div>
+
+    <!-- 7 -->
+    <div id="payment-failed" class="mail scroll-mt-24">
+      <div class="mail-head">
+        <p class="mono-label text-ink-soft">Sent when a monthly charge declines</p>
+        <p class="mt-1.5 text-sm font-semibold">Subject: We could not take this month's payment</p>
+      </div>
+      <div class="mail-body">
+        <p>Hi <span class="ph">[FIRST NAME]</span>,</p>
+        <p>This month's payment of <span class="ph">[AMOUNT]</span> did not go through. This usually
+          means an expired card rather than anything serious.</p>
+        <div class="rows">
+          <div><span>Amount outstanding</span><span><span class="ph">[AMOUNT]</span></span></div>
+          <div><span>Grace period ends</span><span><span class="ph">[DATE]</span></span></div>
+        </div>
+        <p>Your website stays online. If it is still unpaid after the grace period we pause the affected
+          monthly service until it is settled — we do not delete anything.</p>
+        <p>Update your payment details by signing in to your dashboard. We will never ask for card
+          details by email or over the phone.</p>
+        <a class="mail-cta" href="#">Sign in to update payment</a>
+      </div>
+    </div>
+
+    <!-- 8 -->
+    <div id="verify-email" class="mail scroll-mt-24">
+      <div class="mail-head">
+        <p class="mono-label text-ink-soft">Sent at sign-up and sign-in</p>
+        <p class="mt-1.5 text-sm font-semibold">Subject: Your Onsite verification code</p>
+      </div>
+      <div class="mail-body">
+        <p>Your verification code is <strong>123456</strong>.</p>
+        <p>It expires in 10 minutes and can only be used once. If you did not request it, ignore this
+          email — nobody can access your account with the code alone.</p>
+        <p class="text-[0.8125rem] text-ink-soft"><strong>Implementation note:</strong> the code goes in
+          the body only, never in a link or URL. Codes expire and are single-use.</p>
+      </div>
+    </div>
+
+    <!-- 9 -->
+    <div id="password-reset" class="mail scroll-mt-24">
+      <div class="mail-head">
+        <p class="mono-label text-ink-soft">Sent when a reset is requested</p>
+        <p class="mt-1.5 text-sm font-semibold">Subject: Reset your Onsite password</p>
+      </div>
+      <div class="mail-body">
+        <p>Hi <span class="ph">[FIRST NAME]</span>,</p>
+        <p>Use the button below to set a new password. The link expires in 30 minutes and works once.</p>
+        <a class="mail-cta" href="#">Set a new password</a>
+        <p class="mt-4">If you did not ask for this, nothing has changed and you can ignore it.</p>
+        <p class="text-[0.8125rem] text-ink-soft"><strong>Implementation note:</strong> never send the
+          old or new password in email, store only hashed passwords, and confirm the change with a
+          separate notification once it succeeds.</p>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="card-ink mt-10 p-6">
+    <p class="mono-label text-white/70">Not yet connected</p>
+    <p class="mt-2 max-w-prose text-[0.8125rem] leading-relaxed text-white/80">
+      These templates describe intended behaviour. Wiring them to a sending provider, together with
+      real payment and authentication, is the next integration step.
+    </p>
+  </div>
+
+</main>
+
+<script src="assets/cookies.js"></script>
+</body>
+</html>
