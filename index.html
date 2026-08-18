@@ -83,6 +83,23 @@
 
   fieldset:disabled .pick { cursor:not-allowed; opacity:0.45; }
 
+  /* Business Extras — the card's own add/added control */
+  .mono-label {
+    font-family:'IBM Plex Mono',ui-monospace,monospace;
+    font-size:0.6875rem; letter-spacing:0.14em; text-transform:uppercase;
+  }
+  .x-cta {
+    margin-top:auto; display:inline-flex; align-items:center; justify-content:center;
+    border-radius:0.375rem; border:1px solid #CFCCC5; background:#FFFFFF;
+    padding:0.5rem 0.9rem; font-size:0.8125rem; font-weight:600; color:#1C2B3A;
+    transition: background-color 180ms ease, border-color 180ms ease, color 180ms ease;
+  }
+  .pick:hover .x-cta { border-color:#1C2B3A; }
+  .x-added { display:none; }
+  .pick input:checked + .box .x-cta { background:#1C2B3A; border-color:#1C2B3A; color:#FFFFFF; }
+  .pick input:checked + .box .x-add { display:none; }
+  .pick input:checked + .box .x-added { display:inline; }
+
   a, button { transition: background-color 180ms ease, color 180ms ease, border-color 180ms ease, opacity 180ms ease; }
   a:focus-visible, button:focus-visible { outline:2px solid #1C2B3A; outline-offset:3px; border-radius:2px; }
   button:disabled { opacity:0.4; cursor:not-allowed; }
@@ -104,6 +121,7 @@
     </a>
     <div class="flex items-center gap-5 md:gap-8">
       <a href="#pricing" class="text-sm font-semibold text-ink-mid hover:text-ink">Pricing</a>
+      <a href="#extras" class="hidden text-sm font-semibold text-ink-mid hover:text-ink lg:inline">Extras</a>
       <a href="faq.html" class="hidden text-sm font-semibold text-ink-mid hover:text-ink sm:inline">FAQ</a>
       <a href="contact.html" class="hidden text-sm font-semibold text-ink-mid hover:text-ink sm:inline">Contact</a>
       <a href="login.html" class="text-sm font-semibold text-ink-mid hover:text-ink">Log in</a>
@@ -583,8 +601,13 @@
               </div>
 
               <div class="px-5 py-4">
-                <p class="eyebrow text-ink-soft">One-time</p>
+                <p class="eyebrow text-ink-soft">Website &amp; one-time services</p>
                 <ul id="sum-once" class="mt-2 font-mono text-[0.8125rem] text-ink-mid"></ul>
+
+                <div id="extras-group" class="mt-4 hidden">
+                  <p class="eyebrow text-ink-soft">Business Extras</p>
+                  <ul id="sum-extras" class="mt-2 font-mono text-[0.8125rem] text-ink-mid"></ul>
+                </div>
                 <div class="mt-2 flex items-baseline justify-between gap-4 border-t border-line-firm pt-2.5">
                   <span class="font-mono text-xs uppercase tracking-widest text-ink">One-time total</span>
                   <span class="h-section text-lg text-ink" id="total-once">€0.00</span>
@@ -752,7 +775,281 @@
     </div>
   </section>
 
-  <!-- 6 — FAQ -->
+  <!-- 6 — BUSINESS EXTRAS -->
+  <section id="extras" class="border-b border-line">
+    <div class="mx-auto max-w-shell px-6 py-16 md:px-10 md:py-24">
+
+      <p class="eyebrow text-ink-soft">Business Extras</p>
+      <h2 class="h-section sec-title mt-5 max-w-2xl">Need more than a website?</h2>
+      <p class="mt-5 max-w-prose text-[0.9375rem] leading-relaxed text-ink-mid">
+        Add the professional materials your business needs. Choose only what you need — these are
+        optional one-time services that help you look more professional, promote your business, and
+        make it easier for customers to contact you.
+      </p>
+
+      <!-- One-time vs monthly, stated once and plainly -->
+      <div class="mt-8 grid grid-cols-1 gap-px overflow-hidden rounded-lg border border-line bg-line sm:grid-cols-2">
+        <div class="bg-paper px-5 py-4">
+          <span class="tag tag-once">One-time</span>
+          <p class="mt-2.5 text-[0.8125rem] leading-snug text-ink-mid">
+            Pay once for a specific design, setup or business asset. Everything in this section is one-time.
+          </p>
+        </div>
+        <div class="bg-paper px-5 py-4">
+          <span class="tag tag-month">Per month</span>
+          <p class="mt-2.5 text-[0.8125rem] leading-snug text-ink-mid">
+            Recurring services that continue while your subscription is active. Nothing here is monthly.
+          </p>
+        </div>
+      </div>
+
+      <fieldset id="step-extras" disabled class="mt-10 border-t-2 border-accent pt-5">
+        <div class="flex flex-wrap items-baseline gap-x-4 gap-y-1">
+          <span class="font-mono text-xs font-semibold tracking-widest text-ink-soft">OPTIONAL</span>
+          <legend class="h-section text-xl">Only pay for what you need</legend>
+          <span id="extras-count" class="ml-auto font-mono text-xs uppercase tracking-widest text-ink-soft">None added</span>
+        </div>
+        <p class="mt-4 max-w-prose text-[0.8125rem] leading-relaxed text-ink-mid">
+          Add a website to your order first — extras are currently sold alongside a website build, not on
+          their own.
+        </p>
+
+        <!-- BRAND & DESIGN -->
+        <p class="mono-label mt-8 text-ink-soft">Brand &amp; design</p>
+        <div class="mt-3 grid grid-cols-1 gap-2.5 sm:grid-cols-2 xl:grid-cols-3">
+
+          <label class="pick">
+            <input type="checkbox" data-extra="Logo Design" data-once="49.99">
+            <span class="box flex h-full flex-col p-4">
+              <span class="flex items-baseline justify-between gap-3">
+                <span class="h-section text-base">Logo Design</span>
+                <span class="h-section whitespace-nowrap text-lg text-ink">€49.99</span>
+              </span>
+              <span class="mt-2 block"><span class="tag tag-once">One-time</span></span>
+              <span class="mt-2.5 block text-[0.8125rem] leading-snug text-ink-mid">A custom professional logo designed specifically for your business.</span>
+              <span class="x-cta mt-4"><span class="x-add">Add to order</span><span class="x-added">✓ Added to your order</span></span>
+            </span>
+          </label>
+
+          <label class="pick">
+            <input type="checkbox" data-extra="Brand Kit" data-once="79.99">
+            <span class="box flex h-full flex-col p-4">
+              <span class="flex items-baseline justify-between gap-3">
+                <span class="h-section text-base">Brand Kit</span>
+                <span class="h-section whitespace-nowrap text-lg text-ink">€79.99</span>
+              </span>
+              <span class="mt-2 block"><span class="tag tag-once">One-time</span></span>
+              <span class="mt-2.5 block text-[0.8125rem] leading-snug text-ink-mid">Create a consistent brand with your logo, colours, fonts and simple brand guidelines.</span>
+              <span class="mt-2 block text-[0.8125rem] leading-snug text-ink-soft">
+                <span class="arrow">&rarr;</span> Logo · Brand colours · Fonts · Basic brand guidelines
+              </span>
+              <span class="x-cta mt-4"><span class="x-add">Add to order</span><span class="x-added">✓ Added to your order</span></span>
+            </span>
+          </label>
+
+          <label class="pick">
+            <input type="checkbox" data-extra="Business Card Design" data-once="29.99">
+            <span class="box flex h-full flex-col p-4">
+              <span class="flex items-baseline justify-between gap-3">
+                <span class="h-section text-base">Business Card Design</span>
+                <span class="h-section whitespace-nowrap text-lg text-ink">€29.99</span>
+              </span>
+              <span class="mt-2 block"><span class="tag tag-once">One-time</span></span>
+              <span class="mt-2.5 block text-[0.8125rem] leading-snug text-ink-mid">A professional business card design, ready for printing or sharing digitally.</span>
+              <span class="x-cta mt-4"><span class="x-add">Add to order</span><span class="x-added">✓ Added to your order</span></span>
+            </span>
+          </label>
+
+          <label class="pick">
+            <input type="checkbox" data-extra="Flyer / Poster Design" data-once="39.99">
+            <span class="box flex h-full flex-col p-4">
+              <span class="flex items-baseline justify-between gap-3">
+                <span class="h-section text-base">Flyer / Poster Design</span>
+                <span class="h-section whitespace-nowrap text-lg text-ink">€39.99</span>
+              </span>
+              <span class="mt-2 block"><span class="tag tag-once">One-time</span></span>
+              <span class="mt-2.5 block text-[0.8125rem] leading-snug text-ink-mid">A professional promotional design for offers, events, services or announcements.</span>
+              <span class="x-cta mt-4"><span class="x-add">Add to order</span><span class="x-added">✓ Added to your order</span></span>
+            </span>
+          </label>
+
+          <label class="pick">
+            <input type="checkbox" data-extra="Menu Design" data-once="39.99">
+            <span class="box flex h-full flex-col p-4">
+              <span class="flex items-baseline justify-between gap-3">
+                <span class="h-section text-base">Menu Design</span>
+                <span class="h-section whitespace-nowrap text-lg text-ink">€39.99</span>
+              </span>
+              <span class="mt-2 block"><span class="tag tag-once">One-time</span></span>
+              <span class="mt-2.5 block text-[0.8125rem] leading-snug text-ink-mid">A clean, professional menu designed for restaurants, cafés, salons or other businesses.</span>
+              <span class="x-cta mt-4"><span class="x-add">Add to order</span><span class="x-added">✓ Added to your order</span></span>
+            </span>
+          </label>
+
+        </div>
+
+        <!-- SOCIAL & MARKETING -->
+        <p class="mono-label mt-9 text-ink-soft">Social &amp; marketing</p>
+        <div class="mt-3 grid grid-cols-1 gap-2.5 sm:grid-cols-2 xl:grid-cols-3">
+
+          <label class="pick">
+            <input type="checkbox" data-extra="Social Media Starter Pack" data-once="59.99">
+            <span class="box flex h-full flex-col p-4">
+              <span class="flex items-baseline justify-between gap-3">
+                <span class="h-section text-base">Social Media Starter Pack</span>
+                <span class="h-section whitespace-nowrap text-lg text-ink">€59.99</span>
+              </span>
+              <span class="mt-2 block"><span class="tag tag-once">One-time</span></span>
+              <span class="mt-2.5 block text-[0.8125rem] leading-snug text-ink-mid">Give your social profiles a professional and consistent look.</span>
+              <span class="mt-2 block text-[0.8125rem] leading-snug text-ink-soft">
+                <span class="arrow">&rarr;</span> Profile picture · Social banner · 5 branded posts
+              </span>
+              <span class="x-cta mt-4"><span class="x-add">Add to order</span><span class="x-added">✓ Added to your order</span></span>
+            </span>
+          </label>
+
+          <label class="pick">
+            <input type="checkbox" data-extra="Promo Video / Short Ad" data-once="49.99" data-from="1">
+            <span class="box flex h-full flex-col p-4">
+              <span class="flex items-baseline justify-between gap-3">
+                <span class="h-section text-base">Promo Video / Short Ad</span>
+                <span class="h-section whitespace-nowrap text-lg text-ink">From €49.99</span>
+              </span>
+              <span class="mt-2 block"><span class="tag tag-once">One-time</span></span>
+              <span class="mt-2.5 block text-[0.8125rem] leading-snug text-ink-mid">A short promotional video showcasing your business, service, product or special offer.</span>
+              <span class="mt-2 block text-[0.8125rem] leading-snug text-ink-soft">
+                <span class="arrow">&rarr;</span> Final price depends on the video length and complexity. We confirm it with you before anything is charged.
+              </span>
+              <span class="x-cta mt-4"><span class="x-add">Add to order</span><span class="x-added">✓ Added to your order</span></span>
+            </span>
+          </label>
+
+          <label class="pick">
+            <input type="checkbox" data-extra="AI Business Photos" data-once="30.00" data-from="1">
+            <span class="box flex h-full flex-col p-4">
+              <span class="flex items-baseline justify-between gap-3">
+                <span class="h-section text-base">AI Business Photos</span>
+                <span class="h-section whitespace-nowrap text-lg text-ink">From €30.00</span>
+              </span>
+              <span class="mt-2 block"><span class="tag tag-once">One-time</span></span>
+              <span class="mt-2.5 block text-[0.8125rem] leading-snug text-ink-mid">Professional AI-assisted images for your products, services or marketing.</span>
+              <span class="mt-2 block text-[0.8125rem] leading-snug text-ink-soft">
+                <span class="arrow">&rarr;</span> Final price depends on the number and complexity of images. AI-assisted images are not photographs of your actual products unless you supply the source material.
+              </span>
+              <span class="x-cta mt-4"><span class="x-add">Add to order</span><span class="x-added">✓ Added to your order</span></span>
+            </span>
+          </label>
+
+          <label class="pick">
+            <input type="checkbox" data-extra="Google Review QR Card" data-once="19.99">
+            <span class="box flex h-full flex-col p-4">
+              <span class="flex items-baseline justify-between gap-3">
+                <span class="h-section text-base">Google Review QR Card</span>
+                <span class="h-section whitespace-nowrap text-lg text-ink">€19.99</span>
+              </span>
+              <span class="mt-2 block"><span class="tag tag-once">One-time</span></span>
+              <span class="mt-2.5 block text-[0.8125rem] leading-snug text-ink-mid">A custom QR code card so customers can scan and leave a Google review.</span>
+              <span class="mt-2 block text-[0.8125rem] leading-snug text-ink-soft">
+                <span class="arrow">&rarr;</span> It makes leaving a review easier. What customers write is up to them.
+              </span>
+              <span class="x-cta mt-4"><span class="x-add">Add to order</span><span class="x-added">✓ Added to your order</span></span>
+            </span>
+          </label>
+
+        </div>
+
+        <!-- BUSINESS SETUP -->
+        <p class="mono-label mt-9 text-ink-soft">Business setup</p>
+        <div class="mt-3 grid grid-cols-1 gap-2.5 sm:grid-cols-2 xl:grid-cols-3">
+
+          <label class="pick">
+            <input type="checkbox" data-extra="Professional Business Email Setup" data-once="29.99">
+            <span class="box flex h-full flex-col p-4">
+              <span class="flex items-baseline justify-between gap-3">
+                <span class="h-section text-base">Business Email Setup</span>
+                <span class="h-section whitespace-nowrap text-lg text-ink">€29.99</span>
+              </span>
+              <span class="mt-2 block"><span class="tag tag-once">One-time</span></span>
+              <span class="mt-2.5 block text-[0.8125rem] leading-snug text-ink-mid">A professional email address on your own domain, such as hello@yourbusiness.com.</span>
+              <span class="mt-2 block text-[0.8125rem] leading-snug text-ink-soft">
+                <span class="arrow">&rarr;</span> The €29.99 covers the setup: the domain records, the mailbox configuration and getting it working on your phone and computer. If your email provider charges a monthly fee for the mailbox itself, that is paid to them and is not included here.
+              </span>
+              <span class="x-cta mt-4"><span class="x-add">Add to order</span><span class="x-added">✓ Added to your order</span></span>
+            </span>
+          </label>
+
+          <label class="pick">
+            <input type="checkbox" data-extra="WhatsApp Business Setup" data-once="39.99">
+            <span class="box flex h-full flex-col p-4">
+              <span class="flex items-baseline justify-between gap-3">
+                <span class="h-section text-base">WhatsApp Business Setup</span>
+                <span class="h-section whitespace-nowrap text-lg text-ink">€39.99</span>
+              </span>
+              <span class="mt-2 block"><span class="tag tag-once">One-time</span></span>
+              <span class="mt-2.5 block text-[0.8125rem] leading-snug text-ink-mid">Set up your WhatsApp Business profile so customers can contact you easily.</span>
+              <span class="mt-2 block text-[0.8125rem] leading-snug text-ink-soft">
+                <span class="arrow">&rarr;</span> Business profile · Business information · Contact details · Connected to your website
+              </span>
+              <span class="x-cta mt-4"><span class="x-add">Add to order</span><span class="x-added">✓ Added to your order</span></span>
+            </span>
+          </label>
+
+        </div>
+
+        <!-- BUSINESS DOCUMENTS -->
+        <p class="mono-label mt-9 text-ink-soft">Business documents</p>
+        <div class="mt-3 grid grid-cols-1 gap-2.5 sm:grid-cols-2 xl:grid-cols-3">
+
+          <label class="pick">
+            <input type="checkbox" data-extra="Business Document Templates" data-once="29.99">
+            <span class="box flex h-full flex-col p-4">
+              <span class="flex items-baseline justify-between gap-3">
+                <span class="h-section text-base">Business Document Templates</span>
+                <span class="h-section whitespace-nowrap text-lg text-ink">€29.99</span>
+              </span>
+              <span class="mt-2 block"><span class="tag tag-once">One-time</span></span>
+              <span class="mt-2.5 block text-[0.8125rem] leading-snug text-ink-mid">A professional set of branded documents for everyday business use.</span>
+              <span class="mt-2 block text-[0.8125rem] leading-snug text-ink-soft">
+                <span class="arrow">&rarr;</span> Invoice template · Quotation template · Receipt template
+              </span>
+              <span class="x-cta mt-4"><span class="x-add">Add to order</span><span class="x-added">✓ Added to your order</span></span>
+            </span>
+          </label>
+
+        </div>
+
+        <!-- How extras are paid for -->
+        <div class="mt-9 border-t border-line pt-6">
+          <div class="flex flex-wrap items-start justify-between gap-6">
+            <div class="max-w-prose">
+              <p class="mono-label text-ink-soft">How extras are paid for</p>
+              <p class="mt-3 text-[0.8125rem] leading-relaxed text-ink-mid">
+                Extras join your one-time total and follow the same schedule as the website: 25% today,
+                the remaining 75% once the work is finished and you have approved it. Nothing here ever
+                becomes a monthly charge.
+              </p>
+              <p class="mt-2 text-[0.8125rem] leading-relaxed text-ink-soft">
+                <span class="arrow">&rarr;</span> Extras that do not depend on your website build — the QR
+                card, email and WhatsApp setup, document templates — are delivered on their own timeline
+                rather than waiting for the 7-day build, and their balance falls due when that piece is
+                approved.
+              </p>
+              <p class="mt-2 text-[0.8125rem] leading-relaxed text-ink-soft">
+                <span class="arrow">&rarr;</span> Where a price starts "from", we confirm the final figure
+                with you in writing before anything is charged.
+              </p>
+            </div>
+            <a href="#pricing" class="inline-flex items-center justify-center rounded-md bg-accent px-6 py-3.5 text-sm font-semibold text-white hover:bg-accent-hi">
+              Review your order
+            </a>
+          </div>
+        </div>
+
+      </fieldset>
+    </div>
+  </section>
+
+  <!-- 7 — FAQ -->
   <section class="border-b border-line">
     <div class="mx-auto max-w-shell px-6 py-16 md:px-10 md:py-24">
       <p class="eyebrow text-ink-soft">Straight answers</p>
@@ -792,6 +1089,14 @@
           <dd class="mt-3 max-w-prose text-[0.9375rem] leading-relaxed text-ink-mid">€49.99 is a one-time setup fee for building the menu. €19.99 / month keeps it running and lets it be updated. Both are shown separately in your order so they are never confused.</dd>
         </div>
         <div class="border-b border-line py-8">
+          <dt class="h-section text-base">Are Business Extras required?</dt>
+          <dd class="mt-3 max-w-prose text-[0.9375rem] leading-relaxed text-ink-mid">No. They are completely optional. You can buy only the website, or add whichever extras your business actually needs. Nothing in that section is required to get a website.</dd>
+        </div>
+        <div class="border-b border-line py-8">
+          <dt class="h-section text-base">Are Business Extras monthly payments?</dt>
+          <dd class="mt-3 max-w-prose text-[0.9375rem] leading-relaxed text-ink-mid">No. Every Business Extra is a one-time charge and none of them turn into a subscription. They join your one-time total and follow the same 25% now / 75% on approval schedule as the website.</dd>
+        </div>
+        <div class="border-b border-line py-8">
           <dt class="h-section text-base">How much do I actually pay today?</dt>
           <dd class="mt-3 max-w-prose text-[0.9375rem] leading-relaxed text-ink-mid">A quarter of your one-time total, as a deposit to start the project. The remaining 75% is due only once the website is finished and you have approved it. Monthly services are not billed at all until your site is live — the order summary shows every number before you pay.</dd>
         </div>
@@ -807,7 +1112,7 @@
     </div>
   </section>
 
-  <!-- 7 — FINAL CTA -->
+  <!-- 8 — FINAL CTA -->
   <section class="bg-accent">
     <div class="mx-auto max-w-shell px-6 py-16 md:px-10 md:py-24">
       <h2 class="h-section max-w-2xl text-3xl text-white md:text-[2.5rem]">Ready when you are.</h2>
@@ -839,6 +1144,11 @@
   var baseInputs    = Array.prototype.slice.call(document.querySelectorAll('[data-base]'));
   var featureInputs = Array.prototype.slice.call(document.querySelectorAll('[data-feature]'));
   var addonInputs   = Array.prototype.slice.call(document.querySelectorAll('[data-addon]'));
+  var extraInputs   = Array.prototype.slice.call(document.querySelectorAll('[data-extra]'));
+  var stepExtras    = document.getElementById('step-extras');
+  var extrasCount   = document.getElementById('extras-count');
+  var sumExtras     = document.getElementById('sum-extras');
+  var extrasGroup   = document.getElementById('extras-group');
 
   var addBtn        = document.getElementById('add-website');
   var featureStatus = document.getElementById('feature-status');
@@ -893,6 +1203,7 @@
   function resetOrder() {
     websiteAdded = false;
     addonInputs.forEach(function (a) { a.checked = false; });
+    extraInputs.forEach(function (e) { e.checked = false; });
   }
 
   function line(label, value, muted) {
@@ -971,6 +1282,26 @@
       if (m) { month += m; monthLines.push(line(name, euro(m) + ' / mo')); }
     });
 
+    // Business Extras — one-time only, and only once a website is in the order.
+    var extraLines = [];
+    extraInputs.forEach(function (input) {
+      if (!input.checked || !websiteAdded) return;
+      var name = input.getAttribute('data-extra');
+      var o = toCents(input.getAttribute('data-once'));
+      var from = input.getAttribute('data-from') === '1';
+      once += o;
+      extraLines.push(line(name + (from ? ' — from' : ''), euro(o)));
+    });
+
+    sumExtras.innerHTML = '';
+    extraLines.forEach(function (l) { sumExtras.appendChild(l); });
+    extrasGroup.classList.toggle('hidden', extraLines.length === 0);
+
+    var extrasSelected = extraInputs.filter(function (i) { return i.checked; }).length;
+    extrasCount.textContent = extrasSelected === 0
+      ? 'None added'
+      : extrasSelected + (extrasSelected === 1 ? ' extra added' : ' extras added');
+
     sumOnce.innerHTML = '';
     sumMonth.innerHTML = '';
     if (onceLines.length) { onceLines.forEach(function (l) { sumOnce.appendChild(l); }); }
@@ -996,7 +1327,8 @@
       : 'Nothing repeats monthly with this selection.';
 
     var count = (websiteAdded ? 1 : 0) +
-      addonInputs.filter(function (i) { return i.checked && websiteAdded; }).length;
+      addonInputs.filter(function (i) { return i.checked && websiteAdded; }).length +
+      extraInputs.filter(function (i) { return i.checked && websiteAdded; }).length;
     itemCount.textContent = count === 0 ? 'Empty' : count + (count === 1 ? ' item' : ' items');
 
     checkoutBtn.textContent = deposit > 0
@@ -1048,6 +1380,15 @@
       li.textContent = '→ ' + input.getAttribute('data-addon') + tail;
       sumIncl.appendChild(li);
     });
+
+    extraInputs.forEach(function (input) {
+      if (!input.checked || !websiteAdded) return;
+      var li = document.createElement('li');
+      li.className = 'pl-4 text-ink-mid';
+      li.textContent = '→ ' + input.getAttribute('data-extra') +
+        (input.getAttribute('data-from') === '1' ? ' (one-time, from)' : ' (one-time)');
+      sumIncl.appendChild(li);
+    });
   }
 
   function render() {
@@ -1056,6 +1397,7 @@
 
     step3.disabled = !websiteAdded;
     step4.disabled = !websiteAdded;
+    stepExtras.disabled = !websiteAdded;
 
     renderSummary();
     renderIncluded();
@@ -1086,6 +1428,7 @@
   });
 
   addonInputs.forEach(function (i) { i.addEventListener('change', render); });
+  extraInputs.forEach(function (i) { i.addEventListener('change', render); });
 
   agreeTerms.addEventListener('change', render);
 
