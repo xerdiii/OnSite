@@ -1,0 +1,122 @@
+/* ───────────────────────────────────────────────────────────────
+   Onsite — ambient background
+   A slow abstract ribbon behind the auth cards. Opt in per page with
+   <body data-aurora>. Everything is transform/opacity only, the blur
+   is applied once to a static parent, and the whole layer is inert
+   to pointers so it can never interfere with the form.
+   ─────────────────────────────────────────────────────────────── */
+
+.aurora {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+  contain: strict;               /* keeps paint work off the rest of the page */
+}
+
+/* Oversized so the shapes can drift without ever showing an edge */
+.aurora-stage {
+  position: absolute;
+  top: -25%; left: -25%;
+  width: 150%; height: 150%;
+  filter: blur(64px);
+  opacity: 0.62;
+}
+
+.aurora-band { will-change: transform; transform-origin: 50% 50%; }
+
+.aurora-band--a { animation: aurora-a 54s ease-in-out infinite alternate; }
+.aurora-band--b { animation: aurora-b 68s ease-in-out infinite alternate; }
+.aurora-band--c { animation: aurora-c 46s ease-in-out infinite alternate; }
+
+/* Slow, wide arcs — no rapid movement, no flashing. The alternate
+   direction means the loop meets itself exactly. */
+@keyframes aurora-a {
+  from { transform: translate3d(-3%, 1%, 0) rotate(-4deg) scale(1.02); }
+  to   { transform: translate3d(6%, -4%, 0) rotate(5deg) scale(1.12); }
+}
+@keyframes aurora-b {
+  from { transform: translate3d(4%, -2%, 0) rotate(3deg) scale(1.08); }
+  to   { transform: translate3d(-5%, 5%, 0) rotate(-6deg) scale(1); }
+}
+@keyframes aurora-c {
+  from { transform: translate3d(0, 3%, 0) scale(1); opacity: 0.75; }
+  to   { transform: translate3d(3%, -3%, 0) scale(1.14); opacity: 1; }
+}
+
+/* A paper-toned wash at the edges keeps the type field calm and stops
+   the shapes fighting the header and footer. */
+.aurora::after {
+  content: "";
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(120% 70% at 50% 42%, rgba(247,246,243,0) 38%, rgba(247,246,243,0.72) 78%, rgba(247,246,243,0.94) 100%);
+}
+
+/* Ambient glow behind the card itself */
+[data-aurora] main > div { position: relative; }
+[data-aurora] main > div::before {
+  content: "";
+  position: absolute;
+  left: 50%; top: 42%;
+  width: 150%; aspect-ratio: 1 / 1;
+  transform: translate(-50%, -50%);
+  background: radial-gradient(circle, rgba(28,43,58,0.10) 0%, rgba(28,43,58,0.05) 38%, rgba(28,43,58,0) 68%);
+  z-index: -1;
+  pointer-events: none;
+}
+
+/* Cards lift slightly off the moving field so text never sits on a gradient */
+[data-aurora] .card {
+  background: rgba(255,255,255,0.94);
+  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px);
+  box-shadow: 0 1px 2px rgba(20,22,26,0.03), 0 12px 32px -18px rgba(20,22,26,0.18);
+}
+
+/* Content sits above the layer */
+[data-aurora] > header,
+[data-aurora] > main,
+[data-aurora] > footer,
+[data-aurora] > .ft { position: relative; z-index: 1; }
+
+/* The header keeps its own ground so nav text stays crisp */
+[data-aurora] > header {
+  background: color-mix(in srgb, #F7F6F3 88%, transparent);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+}
+
+/* ── Mobile: smaller, higher, quieter ──────────────────────── */
+@media (max-width: 767px) {
+  .aurora-stage {
+    top: -34%; left: -40%;
+    width: 180%; height: 118%;
+    filter: blur(52px);
+    opacity: 0.6;
+  }
+  .aurora::after {
+    background:
+      radial-gradient(130% 60% at 50% 26%, rgba(247,246,243,0) 30%, rgba(247,246,243,0.78) 72%, rgba(247,246,243,0.96) 100%);
+  }
+  [data-aurora] main > div::before { width: 190%; top: 30%; }
+}
+
+/* Very small screens: keep it as a hint at the top only */
+@media (max-width: 380px) {
+  .aurora-stage { opacity: 0.48; height: 92%; }
+}
+
+/* ── Motion preferences ────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  .aurora-band--a, .aurora-band--b, .aurora-band--c { animation: none; }
+  .aurora-stage { opacity: 0.7; }
+  [data-aurora] .card { backdrop-filter: none; -webkit-backdrop-filter: none; }
+}
+
+/* The muted grey is the one tone that struggles over a tinted field.
+   On these pages only, step it up to the body colour so every line of
+   text clears WCAG AA against the darkest point of the animation. */
+[data-aurora] main .text-ink-soft,
+[data-aurora] main .eyebrow { color: #43484F; }
