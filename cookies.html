@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cookie Policy — Onsite</title>
+<meta name="description" content="What cookies Onsite sets, why, how long they last, and how to change your choice at any time.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;700&family=Inter:wght@400;600&family=IBM+Plex+Mono:wght@400;600&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="assets/tw.js"></script>
+<link rel="stylesheet" href="assets/onsite.css">
+<style>
+  .clause p { font-size:0.9375rem; line-height:1.7; color:#43484F; max-width:38rem; }
+  .clause p + p { margin-top:0.9rem; }
+  .clause ul { margin-top:0.9rem; max-width:38rem; }
+  .clause li { font-size:0.9375rem; line-height:1.7; color:#43484F; padding-left:1.1rem; position:relative; }
+  .clause li + li { margin-top:0.35rem; }
+  .clause li::before { content:"→"; position:absolute; left:0; color:#1C2B3A; font-weight:600; }
+  .clause strong { color:#14161A; font-weight:600; }
+</style>
+</head>
+
+<!--
+  DEVELOPMENT NOTE — NOT LEGAL ADVICE
+  This policy describes what the site actually sets today: one consent
+  cookie, plus browser storage used to keep the demo session. If analytics,
+  advertising, embedded maps/video or any third-party script are added
+  later, this table and assets/cookies.js must both be updated, and the
+  consent gate must genuinely control loading. Have a qualified lawyer
+  review this alongside the Terms — cookie and e-privacy rules vary by
+  country and are enforced separately from GDPR.
+-->
+
+<body class="bg-paper font-sans text-ink antialiased">
+<a href="#main" class="skip absolute left-4 top-4 z-20 bg-ink px-4 py-2 text-sm text-white">Skip to content</a>
+
+<header class="sticky top-0 z-10 border-b border-line bg-paper">
+  <nav class="mx-auto flex max-w-shell items-center justify-between px-6 py-4 md:px-10">
+    <a href="index.html" class="flex items-center gap-2.5">
+      <span class="block h-3.5 w-3.5 rounded-sm bg-accent" aria-hidden="true"></span>
+      <span class="h-section text-lg tracking-tight">Onsite</span>
+    </a>
+    <div class="flex items-center gap-5 md:gap-8">
+      <a href="index.html#pricing" class="text-sm font-semibold text-ink-mid hover:text-ink">Pricing</a>
+      <a href="terms.html" class="text-sm font-semibold text-ink-mid hover:text-ink">Terms</a>
+      <a href="login.html" class="text-sm font-semibold text-ink-mid hover:text-ink">Log in</a>
+    </div>
+  </nav>
+</header>
+
+<main id="main">
+
+  <section class="border-b border-line">
+    <div class="mx-auto max-w-shell px-6 pb-12 pt-14 md:px-10 md:pb-16 md:pt-20">
+      <p class="eyebrow text-ink-soft">Cookie Policy</p>
+      <h1 class="h-display doc-title mt-5 max-w-3xl">A short list, honestly described.</h1>
+      <p class="mt-6 max-w-prose text-[0.9375rem] leading-relaxed text-ink-mid">
+        Most cookie notices are longer than the list of cookies they describe. Ours is not.
+        Nothing optional is set unless you accept it, and you can change your mind at any time.
+      </p>
+      <div class="mt-7 flex flex-wrap gap-3">
+        <button class="btn btn-primary" data-cookie-settings type="button">Change my cookie choice</button>
+        <a href="terms.html" class="btn btn-ghost">Terms of Service</a>
+      </div>
+      <p class="mt-6 mono-label text-ink-soft">Last updated 18 August 2026</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="mx-auto max-w-shell px-6 py-14 md:px-10 md:py-20">
+
+      <article class="clause border-t-2 border-accent pt-6">
+        <div class="flex items-baseline gap-4">
+          <span class="font-mono text-xs font-semibold tracking-widest text-ink-soft">01</span>
+          <h2 class="h-section text-xl">What a cookie is here</h2>
+        </div>
+        <div class="mt-5">
+          <p>
+            A cookie is a small piece of text your browser stores for a site. We also use
+            <strong>local storage</strong>, which works the same way from your point of view: data kept
+            in your browser, on your device, that we can read when you come back.
+          </p>
+          <p>
+            We treat both the same way in this policy, because the distinction matters to engineers
+            and not to you.
+          </p>
+        </div>
+      </article>
+
+      <article class="clause mt-12 border-t-2 border-accent pt-6">
+        <div class="flex items-baseline gap-4">
+          <span class="font-mono text-xs font-semibold tracking-widest text-ink-soft">02</span>
+          <h2 class="h-section text-xl">What we actually set</h2>
+        </div>
+        <div class="mt-5">
+          <p>Everything this site stores today, in full:</p>
+        </div>
+
+        <div class="mt-5 overflow-x-auto">
+          <table class="tbl">
+            <thead>
+              <tr><th>Name</th><th>Type</th><th>Purpose</th><th>Lasts</th><th>Needs consent</th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="name">onsite_consent</td>
+                <td>Cookie</td>
+                <td>Remembers the choice you made in the cookie banner, so we stop asking.</td>
+                <td>180 days</td>
+                <td><span class="tag tag-wait">Strictly necessary</span></td>
+              </tr>
+              <tr>
+                <td class="name">onsite.demo.v1</td>
+                <td>Local storage</td>
+                <td>Keeps you signed in to the demo dashboard and holds the example customer data shown there.</td>
+                <td>Until you log out or clear your browser</td>
+                <td><span class="tag tag-wait">Strictly necessary</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="mt-5">
+          <p>
+            That is the whole list. There is no analytics, no advertising, no tracking pixel, no
+            social embed and no third-party script collecting anything about you on this site.
+          </p>
+        </div>
+      </article>
+
+      <article class="clause mt-12 border-t-2 border-accent pt-6">
+        <div class="flex items-baseline gap-4">
+          <span class="font-mono text-xs font-semibold tracking-widest text-ink-soft">03</span>
+          <h2 class="h-section text-xl">The categories, and what we would use them for</h2>
+        </div>
+        <div class="mt-5">
+          <ul>
+            <li><strong>Strictly necessary</strong> — keeping you logged in, remembering your cookie choice. These cannot be switched off, because the site cannot work without them. They are the only ones in use today.</li>
+            <li><strong>Preferences</strong> — remembering settings you choose. Not in use.</li>
+            <li><strong>Analytics</strong> — understanding which pages people read, so we can improve them. Not in use. If we add it, it will load only after you accept.</li>
+            <li><strong>Marketing</strong> — advertising and cross-site tracking. Not in use, and not something we intend to add.</li>
+          </ul>
+          <p>
+            If any of that changes, this page changes with it and the banner will ask again.
+          </p>
+        </div>
+      </article>
+
+      <article class="clause mt-12 border-t-2 border-accent pt-6">
+        <div class="flex items-baseline gap-4">
+          <span class="font-mono text-xs font-semibold tracking-widest text-ink-soft">04</span>
+          <h2 class="h-section text-xl">Your choice, and changing it</h2>
+        </div>
+        <div class="mt-5">
+          <p>
+            The banner gives you two options of equal weight: <strong>Essential only</strong> and
+            <strong>Accept all cookies</strong>. Nothing is pre-selected, refusing takes exactly one
+            click, and refusing does not limit anything on this site.
+          </p>
+          <p>
+            To change your mind, use the button at the top of this page or the
+            <strong>Cookie settings</strong> link in the footer of any page. You can also clear
+            cookies and site data in your browser settings, which resets everything including your
+            demo dashboard session.
+          </p>
+          <div class="mt-6 flex flex-wrap gap-3">
+            <button class="btn btn-primary" data-cookie-settings type="button">Change my cookie choice</button>
+          </div>
+        </div>
+      </article>
+
+      <article class="clause mt-12 border-t-2 border-accent pt-6">
+        <div class="flex items-baseline gap-4">
+          <span class="font-mono text-xs font-semibold tracking-widest text-ink-soft">05</span>
+          <h2 class="h-section text-xl">Your website, not just ours</h2>
+        </div>
+        <div class="mt-5">
+          <p>
+            This policy covers the Onsite site you are reading. The website we build for your
+            business is separate: if it uses a booking system, an embedded map or anything else that
+            sets cookies, it needs its own notice, and we will set one up as part of the build.
+          </p>
+          <p>
+            Questions about any of this go through
+            <a href="dashboard.html#/support" class="font-semibold text-ink underline underline-offset-2">support</a>,
+            and the wider agreement is in the
+            <a href="terms.html" class="font-semibold text-ink underline underline-offset-2">Terms of Service</a>.
+          </p>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+</main>
+
+<footer class="bg-accent">
+  <div class="mx-auto max-w-shell border-t border-white/20 px-6 py-8 md:px-10">
+    <div class="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+      <a href="index.html" class="flex items-center gap-2.5">
+        <span class="block h-3 w-3 rounded-sm bg-white" aria-hidden="true"></span>
+        <span class="h-section text-base text-white">Onsite</span>
+      </a>
+      <div class="flex flex-wrap gap-6">
+        <a href="terms.html" class="mono-label text-white/60 hover:text-white">Terms</a>
+        <a href="#" data-cookie-settings class="mono-label text-white/60 hover:text-white">Cookie settings</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/cookies.js"></script>
+</body>
+</html>
