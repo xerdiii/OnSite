@@ -48,7 +48,7 @@
   }
 
   function table(headers, rows) {
-    return '<div class="overflow-x-auto"><table class="tbl"><thead><tr>' +
+    return '<div class="overflow-x-auto"><table class="tbl m-cards"><thead><tr>' +
       headers.map(function (h) { return '<th>' + esc(h) + '</th>'; }).join('') +
       '</tr></thead><tbody>' + rows + '</tbody></table></div>';
   }
@@ -394,6 +394,7 @@
     [].forEach.call(document.querySelectorAll('.app-nav a'), function (a) {
       a.classList.toggle('is-active', a.getAttribute('href') === '#' + route);
     });
+    if (window.OnsiteMobile) { window.OnsiteMobile.labelTables(view); }
     window.scrollTo(0, 0);
   }
 

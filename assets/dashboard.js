@@ -204,7 +204,7 @@
           '</p>' +
         '</div>' +
         '<div class="card p-6"><p class="mono-label text-ink-soft">Invoices &amp; receipts</p>' +
-          '<div class="mt-4 overflow-x-auto"><table class="tbl">' +
+          '<div class="mt-4 overflow-x-auto"><table class="tbl m-cards">' +
             '<thead><tr><th>Ref</th><th>Description</th><th>Date</th><th>Amount</th><th>Status</th><th></th></tr></thead>' +
             '<tbody>' + rows + '</tbody></table></div>' +
           '<p id="invoice-note" class="mt-3 hidden text-[0.8125rem] text-ink-soft"></p>' +
@@ -245,7 +245,7 @@
       '</div>' +
 
       '<div class="card mt-6 p-6"><p class="mono-label text-ink-soft">Opening hours</p>' +
-        '<div class="mt-4 overflow-x-auto"><table class="tbl"><tbody>' +
+        '<div class="mt-4 overflow-x-auto"><table class="tbl m-cards"><tbody>' +
           c.hours.map(function (h) {
             return '<tr><td class="name">' + esc(h.day) + '</td><td>' + esc(h.open) + '</td></tr>';
           }).join('') +
@@ -335,7 +335,7 @@
       '</div>' +
 
       '<div class="card mt-6 p-6"><p class="mono-label text-ink-soft">Your requests</p>' +
-        '<div class="mt-4 overflow-x-auto"><table class="tbl">' +
+        '<div class="mt-4 overflow-x-auto"><table class="tbl m-cards">' +
           '<thead><tr><th>Ref</th><th>Type</th><th>Description</th><th>Sent</th><th>Status</th></tr></thead>' +
           '<tbody>' + rows + '</tbody></table></div>' +
       '</div>';
@@ -384,7 +384,7 @@
       '</div>' +
 
       '<div class="card mt-6 p-6"><p class="mono-label text-ink-soft">Recent requests</p>' +
-        '<div class="mt-4 overflow-x-auto"><table class="tbl">' +
+        '<div class="mt-4 overflow-x-auto"><table class="tbl m-cards">' +
           '<thead><tr><th>Ref</th><th>Type</th><th>Sent</th><th>Status</th></tr></thead>' +
           '<tbody>' + history + '</tbody></table></div>' +
       '</div>';
@@ -672,7 +672,7 @@
       '</div>' +
 
       '<div class="card mt-6 p-6"><p class="mono-label text-ink-soft">Active subscriptions</p>' +
-        '<div class="mt-4 overflow-x-auto"><table class="tbl">' +
+        '<div class="mt-4 overflow-x-auto"><table class="tbl m-cards">' +
           '<thead><tr><th>Service</th><th>Price</th><th>Billing</th><th>Next payment</th><th>Status</th><th></th></tr></thead>' +
           '<tbody>' + (rows || '<tr><td colspan="6" class="text-ink-soft">No monthly services selected.</td></tr>') + '</tbody>' +
         '</table></div>' +
@@ -1042,13 +1042,43 @@
     });
   }
 
+  // Bottom tabs mirror the sidebar on phones; Requests maps to the
+  // change-request route, which is where people actually go.
+  function paintTabs(route) {
+    [].forEach.call(document.querySelectorAll('.m-tab'), function (t) {
+      t.classList.toggle('is-on', t.getAttribute('data-tab') === route);
+    });
+  }
+
+  // A compact always-visible total while building a package on a phone.
+  function paintStickyBar(route) {
+    var bar = document.getElementById('m-build-bar');
+    if (!bar) return;
+    var on = route === '/build';
+    document.body.classList.toggle('has-sticky-bar', on);
+    if (!on) { bar.classList.remove('is-up'); return; }
+
+    var t = draftTotals();
+    bar.querySelector('[data-bar-figure]').textContent =
+      money(t.once) + ' one-time' + (t.month ? ' + ' + money(t.month) + '/mo' : '');
+    bar.querySelector('[data-bar-sub]').textContent =
+      t.once ? 'Pay today ' + money(t.deposit) + ' — 25% deposit' : 'Choose a website to begin';
+    var btn = bar.querySelector('[data-bar-cta]');
+    btn.disabled = !draftReady();
+    btn.textContent = draftReady() ? 'Pay ' + money(t.deposit) + ' & start' : 'Continue';
+    bar.classList.add('is-up');
+  }
+
   function render() {
     var route = (location.hash || '#/overview').replace('#', '');
     if (!routes[route]) route = '/overview';
     view.innerHTML = routes[route]();
     paintNav(route);
+    paintTabs(route);
     paintBell();
     paintWho();
+    paintStickyBar(route);
+    if (window.OnsiteMobile) { window.OnsiteMobile.labelTables(view); }
     window.scrollTo(0, 0);
   }
 

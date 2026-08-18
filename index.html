@@ -107,6 +107,7 @@
   .skip:not(:focus){ position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap; }
   @media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto;} a,button,.pick .box{transition:none;} }
 </style>
+<link rel="stylesheet" href="assets/mobile.css">
 </head>
 
 <body class="bg-paper font-sans text-ink antialiased">
@@ -139,30 +140,37 @@
       <h1 class="h-display hero-title mt-6 max-w-4xl text-ink">
         You run the business.<br>We build the website.
       </h1>
-      <p class="lede mt-7 max-w-prose text-ink-mid">
-        A custom website for <strong class="font-semibold text-ink">€79.99, paid once</strong> — you pick the
-        features your customers actually need. Or take the complete professional build for
-        <strong class="font-semibold text-ink">€249.99, paid once</strong>, with all ten website features built in. Monthly services stay separate either way.
-      </p>
-      <p class="mt-5 max-w-prose text-[0.9375rem] leading-relaxed text-ink-mid">
-        Every price on this page is labelled either <span class="tag tag-once">One-time</span> or
-        <span class="tag tag-month">Per month</span>. Nothing is hidden, and nothing turns into a subscription
-        without you choosing it.
+      <p class="lede mt-5 max-w-prose text-ink-mid md:mt-7">
+        Professional websites for small businesses. Choose the features you need, and pay only
+        <strong class="font-semibold text-ink">25% to start</strong>.
       </p>
 
-      <div class="mt-10 flex flex-col items-start gap-4">
-        <a href="#pricing" class="inline-flex items-center justify-center rounded-md bg-accent px-7 py-4 text-base font-semibold text-white hover:bg-accent-hi">
-          Build my website — from €79.99
-        </a>
-        <p class="max-w-prose text-sm leading-relaxed text-ink-soft">
-          Choose your features, see your total, and know exactly what you pay today and what you pay monthly.
+      <!-- Price and payment, above the fold on a phone -->
+      <div class="mt-7 flex flex-wrap items-center gap-x-5 gap-y-3 border-y border-line py-5">
+        <div>
+          <p class="mono-label text-ink-soft">Starting from</p>
+          <p class="h-section mt-1 text-3xl text-ink">€79.99</p>
+        </div>
+        <span class="tag tag-once">One-time</span>
+        <p class="w-full text-[0.8125rem] leading-relaxed text-ink-mid sm:w-auto sm:flex-1">
+          <span class="arrow">&rarr;</span> Pay 25% today. You review the finished website before the
+          remaining 75% is due, and monthly services only start once you are live.
         </p>
       </div>
 
-      <ul class="mt-14 grid grid-cols-1 gap-px border-t border-line pt-6 sm:grid-cols-3">
+      <div class="mt-7 flex flex-col gap-3 sm:flex-row sm:items-center">
+        <a href="signup.html" class="inline-flex min-h-[52px] items-center justify-center rounded-md bg-accent px-7 py-4 text-base font-semibold text-white hover:bg-accent-hi">
+          Build My Website
+        </a>
+        <a href="#how" class="inline-flex min-h-[52px] items-center justify-center rounded-md border border-line bg-surface px-7 py-4 text-base font-semibold text-accent hover:border-line-firm">
+          See How It Works
+        </a>
+      </div>
+
+      <ul class="mt-10 grid grid-cols-1 gap-2 border-t border-line pt-6 sm:grid-cols-3 sm:gap-px">
         <li class="font-mono text-xs uppercase tracking-widest text-ink-mid">€79.99 or €249.99 — both one-time</li>
-        <li class="mt-3 font-mono text-xs uppercase tracking-widest text-ink-mid sm:mt-0">Add-ons are optional</li>
-        <li class="mt-3 font-mono text-xs uppercase tracking-widest text-ink-mid sm:mt-0">Cancel monthly services any time</li>
+        <li class="font-mono text-xs uppercase tracking-widest text-ink-mid">Add-ons are optional</li>
+        <li class="font-mono text-xs uppercase tracking-widest text-ink-mid">Cancel monthly services any time</li>
       </ul>
     </div>
   </section>
@@ -257,7 +265,7 @@
   </section>
 
   <!-- 4 — HOW IT WORKS -->
-  <section class="border-b border-line">
+  <section id="how" class="scroll-mt-20 border-b border-line">
     <div class="mx-auto max-w-shell px-6 py-16 md:px-10 md:py-24">
       <p class="eyebrow text-ink-soft">How it works</p>
       <h2 class="h-section sec-title mt-5 max-w-2xl">You pay 25% to start. The rest when you approve it.</h2>
@@ -493,7 +501,17 @@
         </p>
 
         <!-- BRAND & DESIGN -->
-        <p class="mono-label mt-8 text-ink-soft">Brand &amp; design</p>
+        <div class="mt-6">
+          <p class="mono-label text-ink-soft">Filter</p>
+          <div class="m-chips mt-3" role="tablist" aria-label="Extras categories">
+            <button type="button" class="m-chip is-on" data-ex-filter="all">All</button>
+            <button type="button" class="m-chip" data-ex-filter="brand">Branding</button>
+            <button type="button" class="m-chip" data-ex-filter="marketing">Marketing</button>
+            <button type="button" class="m-chip" data-ex-filter="business">Business</button>
+            <button type="button" class="m-chip" data-ex-filter="documents">Documents</button>
+          </div>
+        </div>
+        <div data-ex-group="brand"><p class="mono-label mt-8 text-ink-soft">Brand &amp; design</p>
         <div class="mt-3 grid grid-cols-1 gap-2.5 sm:grid-cols-2 xl:grid-cols-3">
 
           <div class="rounded-lg border border-line bg-surface  p-4 flex h-full flex-col">
@@ -544,10 +562,10 @@
               <span class="mt-2.5 block text-[0.8125rem] leading-snug text-ink-mid">A clean, professional menu designed for restaurants, cafés, salons or other businesses.</span>
               </div>
 
-        </div>
+        </div></div>
 
         <!-- SOCIAL & MARKETING -->
-        <p class="mono-label mt-9 text-ink-soft">Social &amp; marketing</p>
+        <div data-ex-group="marketing"><p class="mono-label mt-9 text-ink-soft">Social &amp; marketing</p>
         <div class="mt-3 grid grid-cols-1 gap-2.5 sm:grid-cols-2 xl:grid-cols-3">
 
           <div class="rounded-lg border border-line bg-surface  p-4 flex h-full flex-col">
@@ -598,10 +616,10 @@
               </span>
               </div>
 
-        </div>
+        </div></div>
 
         <!-- BUSINESS SETUP -->
-        <p class="mono-label mt-9 text-ink-soft">Business setup</p>
+        <div data-ex-group="business"><p class="mono-label mt-9 text-ink-soft">Business setup</p>
         <div class="mt-3 grid grid-cols-1 gap-2.5 sm:grid-cols-2 xl:grid-cols-3">
 
           <div class="rounded-lg border border-line bg-surface  p-4 flex h-full flex-col">
@@ -628,10 +646,10 @@
               </span>
               </div>
 
-        </div>
+        </div></div>
 
         <!-- BUSINESS DOCUMENTS -->
-        <p class="mono-label mt-9 text-ink-soft">Business documents</p>
+        <div data-ex-group="documents"><p class="mono-label mt-9 text-ink-soft">Business documents</p>
         <div class="mt-3 grid grid-cols-1 gap-2.5 sm:grid-cols-2 xl:grid-cols-3">
 
           <div class="rounded-lg border border-line bg-surface  p-4 flex h-full flex-col">
@@ -646,7 +664,7 @@
               </span>
               </div>
 
-        </div>
+        </div></div>
 
         <!-- How extras are paid for -->
         <div class="mt-9 border-t border-line pt-6">
@@ -687,43 +705,43 @@
         <a href="faq.html" class="font-semibold text-accent underline underline-offset-2 hover:text-accent-hi">full FAQ</a>.
       </p>
 
-      <dl class="mt-12 grid grid-cols-1 gap-x-16 border-t border-line lg:grid-cols-2">
-        <div class="border-b border-line py-8">
-          <dt class="h-section text-base">What does the €79.99 cover?</dt>
-          <dd class="mt-3 max-w-prose text-[0.9375rem] leading-relaxed text-ink-mid">The custom website itself, built with the features you select — that is the base website price, paid one time. Choosing more than three features does not increase it.</dd>
+      <dl data-accordion class="mt-12 grid grid-cols-1 gap-x-16 border-t border-line lg:grid-cols-2">
+        <div data-acc-item class="border-b border-line">
+          <dt data-acc-head class="h-section text-base">What does the €79.99 cover?</dt>
+          <dd data-acc-body class="max-w-prose pb-6 text-[0.9375rem] leading-relaxed text-ink-mid">The custom website itself, built with the features you select — that is the base website price, paid one time. Choosing more than three features does not increase it.</dd>
         </div>
-        <div class="border-b border-line py-8">
-          <dt class="h-section text-base">What is the difference between €79.99 and €249.99?</dt>
-          <dd class="mt-3 max-w-prose text-[0.9375rem] leading-relaxed text-ink-mid">The €79.99 Custom Website is built around the features you choose, with three as the minimum. The €249.99 Professional Website is the complete build: every feature on this page is included as standard, so there is nothing to select. Both are paid one time, and both take the same optional add-ons.</dd>
-        </div>
-        
-        
-        <div class="border-b border-line py-8">
-          <dt class="h-section text-base">Which services repeat every month?</dt>
-          <dd class="mt-3 max-w-prose text-[0.9375rem] leading-relaxed text-ink-mid">Online Booking System (€29.99 / month), Website Maintenance (€19.99 / month), Review Management (€29.99 / month), and the Digital Menu monthly fee (€19.99 / month). Everything else on this page is paid once.</dd>
+        <div data-acc-item class="border-b border-line">
+          <dt data-acc-head class="h-section text-base">What is the difference between €79.99 and €249.99?</dt>
+          <dd data-acc-body class="max-w-prose pb-6 text-[0.9375rem] leading-relaxed text-ink-mid">The €79.99 Custom Website is built around the features you choose, with three as the minimum. The €249.99 Professional Website is the complete build: every feature on this page is included as standard, so there is nothing to select. Both are paid one time, and both take the same optional add-ons.</dd>
         </div>
         
         
+        <div data-acc-item class="border-b border-line">
+          <dt data-acc-head class="h-section text-base">Which services repeat every month?</dt>
+          <dd data-acc-body class="max-w-prose pb-6 text-[0.9375rem] leading-relaxed text-ink-mid">Online Booking System (€29.99 / month), Website Maintenance (€19.99 / month), Review Management (€29.99 / month), and the Digital Menu monthly fee (€19.99 / month). Everything else on this page is paid once.</dd>
+        </div>
         
-        <div class="border-b border-line py-8">
-          <dt class="h-section text-base">Are Business Extras required?</dt>
-          <dd class="mt-3 max-w-prose text-[0.9375rem] leading-relaxed text-ink-mid">No. They are completely optional. You can buy only the website, or add whichever extras your business actually needs. Nothing in that section is required to get a website.</dd>
+        
+        
+        <div data-acc-item class="border-b border-line">
+          <dt data-acc-head class="h-section text-base">Are Business Extras required?</dt>
+          <dd data-acc-body class="max-w-prose pb-6 text-[0.9375rem] leading-relaxed text-ink-mid">No. They are completely optional. You can buy only the website, or add whichever extras your business actually needs. Nothing in that section is required to get a website.</dd>
         </div>
-        <div class="border-b border-line py-8">
-          <dt class="h-section text-base">Are Business Extras monthly payments?</dt>
-          <dd class="mt-3 max-w-prose text-[0.9375rem] leading-relaxed text-ink-mid">No. Every Business Extra is a one-time charge and none of them turn into a subscription. They join your one-time total and follow the same 25% now / 75% on approval schedule as the website.</dd>
+        <div data-acc-item class="border-b border-line">
+          <dt data-acc-head class="h-section text-base">Are Business Extras monthly payments?</dt>
+          <dd data-acc-body class="max-w-prose pb-6 text-[0.9375rem] leading-relaxed text-ink-mid">No. Every Business Extra is a one-time charge and none of them turn into a subscription. They join your one-time total and follow the same 25% now / 75% on approval schedule as the website.</dd>
         </div>
-        <div class="border-b border-line py-8">
-          <dt class="h-section text-base">How much do I actually pay today?</dt>
-          <dd class="mt-3 max-w-prose text-[0.9375rem] leading-relaxed text-ink-mid">A quarter of your one-time total, as a deposit to start the project. The remaining 75% is due only once the website is finished and you have approved it. Monthly services are not billed at all until your site is live — the order summary shows every number before you pay.</dd>
+        <div data-acc-item class="border-b border-line">
+          <dt data-acc-head class="h-section text-base">How much do I actually pay today?</dt>
+          <dd data-acc-body class="max-w-prose pb-6 text-[0.9375rem] leading-relaxed text-ink-mid">A quarter of your one-time total, as a deposit to start the project. The remaining 75% is due only once the website is finished and you have approved it. Monthly services are not billed at all until your site is live — the order summary shows every number before you pay.</dd>
         </div>
-        <div class="border-b border-line py-8">
-          <dt class="h-section text-base">How long does it take?</dt>
-          <dd class="mt-3 max-w-prose text-[0.9375rem] leading-relaxed text-ink-mid">Within 7 days of receiving everything we need from you — logo, photos, business information, services and prices, opening hours, contact details, social links and any text you want used. That is a target we work to, not an unconditional guarantee: if content arrives late, the delivery date moves with it.</dd>
+        <div data-acc-item class="border-b border-line">
+          <dt data-acc-head class="h-section text-base">How long does it take?</dt>
+          <dd data-acc-body class="max-w-prose pb-6 text-[0.9375rem] leading-relaxed text-ink-mid">Within 7 days of receiving everything we need from you — logo, photos, business information, services and prices, opening hours, contact details, social links and any text you want used. That is a target we work to, not an unconditional guarantee: if content arrives late, the delivery date moves with it.</dd>
         </div>
-        <div class="border-b border-line py-8">
-          <dt class="h-section text-base">Can I add or stop a monthly service later?</dt>
-          <dd class="mt-3 max-w-prose text-[0.9375rem] leading-relaxed text-ink-mid">Yes. Monthly services are separate from the website. You can start with none of them, add one when you need it, and stop it without affecting the website you already paid for.</dd>
+        <div data-acc-item class="border-b border-line">
+          <dt data-acc-head class="h-section text-base">Can I add or stop a monthly service later?</dt>
+          <dd data-acc-body class="max-w-prose pb-6 text-[0.9375rem] leading-relaxed text-ink-mid">Yes. Monthly services are separate from the website. You can start with none of them, add one when you need it, and stop it without affecting the website you already paid for.</dd>
         </div>
       </dl>
     </div>
@@ -747,5 +765,6 @@
 <div data-site-footer></div>
 
 
+<script src="assets/mobile.js"></script>
 </body>
 </html>
