@@ -300,495 +300,157 @@
     </div>
   </section>
 
-  <!-- 5 — PRODUCTS / PRICING + BUILDER -->
+  <!-- 5 — WEBSITES -->
   <section id="pricing" class="border-b border-line bg-surface">
     <div class="mx-auto max-w-shell px-6 py-16 md:px-10 md:py-24">
-      <p class="eyebrow text-ink-soft">Products &amp; pricing</p>
-      <h2 class="h-section sec-title mt-5 max-w-2xl">Build your package.</h2>
+      <p class="eyebrow text-ink-soft">Websites</p>
+      <h2 class="h-section sec-title mt-5 max-w-2xl">Two ways to get one.</h2>
       <p class="mt-5 max-w-prose text-[0.9375rem] leading-relaxed text-ink-mid">
-        Choose a website, add only the services you want, and watch the total split itself into
-        what you pay once and what you pay every month.
+        Both are paid once. Hosting, SSL and domain management are part of the build, and neither one
+        includes a monthly service — those are chosen separately.
       </p>
 
-      <div class="mt-12 grid grid-cols-1 gap-10 lg:grid-cols-12 lg:gap-12">
+      <div class="mt-12 grid grid-cols-1 gap-6 lg:grid-cols-2">
 
-        <!-- LEFT: selection flow -->
-        <div class="lg:col-span-7 xl:col-span-8">
-
-          <!-- STEP 1 — choose a website -->
-          <div class="border-t-2 border-accent pt-5">
-            <div class="flex flex-wrap items-baseline gap-x-4 gap-y-1">
-              <span class="font-mono text-xs font-semibold tracking-widest text-ink-soft">STEP 01</span>
-              <h3 class="h-section text-xl">Choose your website</h3>
-              <span class="ml-auto font-mono text-xs uppercase tracking-widest text-ink-soft">Both paid once</span>
+        <div class="flex flex-col rounded-lg border border-line bg-paper p-7 md:p-8">
+          <div class="flex items-start justify-between gap-4">
+            <div>
+              <h3 class="h-section text-xl">Custom Website</h3>
+              <p class="mt-2 text-[0.8125rem] leading-relaxed text-ink-mid">
+                A professional custom landing-page website, built around the features you choose.
+              </p>
             </div>
-
-            <div class="mt-5 grid grid-cols-1 gap-3 sm:grid-cols-2">
-
-              <label class="pick">
-                <input type="radio" name="base" data-base="custom" data-once="79.99">
-                <span class="box flex h-full items-start gap-3 p-4 md:p-5">
-                  <span class="mark mt-1"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.8l4.6 4.6L20 6"/></svg></span>
-                  <span class="w-full">
-                    <span class="flex items-baseline justify-between gap-3">
-                      <span class="h-section text-base">Custom Website</span>
-                      <span class="h-section whitespace-nowrap text-xl text-ink">€79.99</span>
-                    </span>
-                    <span class="mt-2 block"><span class="tag tag-once">One-time</span></span>
-                    <span class="mt-3 block text-[0.8125rem] leading-snug text-ink-mid"><span class="arrow">&rarr;</span> A professional custom landing-page website, built for your business.</span>
-                    <span class="mt-1.5 block text-[0.8125rem] leading-snug text-ink-soft"><span class="arrow">&rarr;</span> You pick the website features below — at least three. Picking more never costs extra.</span>
-                  </span>
-                </span>
-              </label>
-
-              <label class="pick">
-                <input type="radio" name="base" data-base="pro" data-once="249.99">
-                <span class="box flex h-full items-start gap-3 p-4 md:p-5">
-                  <span class="mark mt-1"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.8l4.6 4.6L20 6"/></svg></span>
-                  <span class="w-full">
-                    <span class="flex items-baseline justify-between gap-3">
-                      <span class="h-section text-base">Professional Website</span>
-                      <span class="h-section whitespace-nowrap text-xl text-ink">€249.99</span>
-                    </span>
-                    <span class="mt-2 block"><span class="tag tag-once">One-time</span></span>
-                    <span class="mt-3 block text-[0.8125rem] leading-snug text-ink-mid"><span class="arrow">&rarr;</span> Every website feature built in, ready to go.</span>
-                    <span class="mt-1.5 block text-[0.8125rem] leading-snug text-ink-soft"><span class="arrow">&rarr;</span> All ten <strong class="font-semibold text-ink">website features</strong> included — nothing to choose. Monthly services are still separate and optional.</span>
-                  </span>
-                </span>
-              </label>
-
+            <div class="shrink-0 text-right">
+              <p class="h-section text-3xl text-ink">€79.99</p>
+              <span class="tag tag-once mt-2 inline-block">One-time</span>
             </div>
           </div>
-
-          <!-- STEP 2 — features -->
-          <fieldset id="step2" disabled class="mt-10 border-t-2 border-accent pt-5">
-            <div class="flex flex-wrap items-baseline gap-x-4 gap-y-1">
-              <span class="font-mono text-xs font-semibold tracking-widest text-ink-soft">STEP 02</span>
-              <legend class="h-section text-xl">Your website features</legend>
-              <span id="feature-status" class="ml-auto font-mono text-xs uppercase tracking-widest text-ink-soft">No website chosen yet</span>
-            </div>
-
-            <p id="feature-intro" class="mt-4 max-w-prose text-[0.8125rem] leading-relaxed text-ink-mid">
-              Choose a website in Step 01 first.
-            </p>
-            <p id="pro-note" class="mt-4 hidden max-w-prose rounded-md border border-line-firm bg-accent-tint px-4 py-2.5 text-[0.8125rem] leading-relaxed text-ink">
-              <span class="arrow">&rarr;</span> All ten website features below are included. Monthly services are chosen separately in Step 04.
-            </p>
-
-            <div class="mt-5 grid grid-cols-1 gap-2.5 sm:grid-cols-2 xl:grid-cols-3">
-
-              <label class="pick">
-                <input type="checkbox" data-feature="Contact form">
-                <span class="box flex h-full items-start gap-2.5 p-3.5">
-                  <span class="mark mt-0.5"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.8l4.6 4.6L20 6"/></svg></span>
-                  <span>
-                    <span class="h-section block text-sm">Contact form</span>
-                    <span class="mt-1 block text-[0.8125rem] leading-snug text-ink-mid"><span class="arrow">&rarr;</span> Messages land in your inbox.</span>
-                  </span>
-                </span>
-              </label>
-
-              <label class="pick">
-                <input type="checkbox" data-feature="Google Maps">
-                <span class="box flex h-full items-start gap-2.5 p-3.5">
-                  <span class="mark mt-0.5"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.8l4.6 4.6L20 6"/></svg></span>
-                  <span>
-                    <span class="h-section block text-sm">Google Maps</span>
-                    <span class="mt-1 block text-[0.8125rem] leading-snug text-ink-mid"><span class="arrow">&rarr;</span> Your location, with one-tap directions.</span>
-                  </span>
-                </span>
-              </label>
-
-              <label class="pick">
-                <input type="checkbox" data-feature="WhatsApp button">
-                <span class="box flex h-full items-start gap-2.5 p-3.5">
-                  <span class="mark mt-0.5"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.8l4.6 4.6L20 6"/></svg></span>
-                  <span>
-                    <span class="h-section block text-sm">WhatsApp button</span>
-                    <span class="mt-1 block text-[0.8125rem] leading-snug text-ink-mid"><span class="arrow">&rarr;</span> Opens a chat with you in one tap.</span>
-                  </span>
-                </span>
-              </label>
-
-              <label class="pick">
-                <input type="checkbox" data-feature="Photo / gallery section">
-                <span class="box flex h-full items-start gap-2.5 p-3.5">
-                  <span class="mark mt-0.5"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.8l4.6 4.6L20 6"/></svg></span>
-                  <span>
-                    <span class="h-section block text-sm">Photo / gallery section</span>
-                    <span class="mt-1 block text-[0.8125rem] leading-snug text-ink-mid"><span class="arrow">&rarr;</span> Shows your work, space or products.</span>
-                  </span>
-                </span>
-              </label>
-
-              <label class="pick">
-                <input type="checkbox" data-feature="Business information">
-                <span class="box flex h-full items-start gap-2.5 p-3.5">
-                  <span class="mark mt-0.5"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.8l4.6 4.6L20 6"/></svg></span>
-                  <span>
-                    <span class="h-section block text-sm">Business information</span>
-                    <span class="mt-1 block text-[0.8125rem] leading-snug text-ink-mid"><span class="arrow">&rarr;</span> Name, address, phone and email in one block.</span>
-                  </span>
-                </span>
-              </label>
-
-              <label class="pick">
-                <input type="checkbox" data-feature="Services section">
-                <span class="box flex h-full items-start gap-2.5 p-3.5">
-                  <span class="mark mt-0.5"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.8l4.6 4.6L20 6"/></svg></span>
-                  <span>
-                    <span class="h-section block text-sm">Services section</span>
-                    <span class="mt-1 block text-[0.8125rem] leading-snug text-ink-mid"><span class="arrow">&rarr;</span> What you do, in your customers' words.</span>
-                  </span>
-                </span>
-              </label>
-
-              <label class="pick">
-                <input type="checkbox" data-feature="Testimonials">
-                <span class="box flex h-full items-start gap-2.5 p-3.5">
-                  <span class="mark mt-0.5"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.8l4.6 4.6L20 6"/></svg></span>
-                  <span>
-                    <span class="h-section block text-sm">Testimonials</span>
-                    <span class="mt-1 block text-[0.8125rem] leading-snug text-ink-mid"><span class="arrow">&rarr;</span> Feedback from your customers, on the page.</span>
-                  </span>
-                </span>
-              </label>
-
-              <label class="pick">
-                <input type="checkbox" data-feature="Opening hours">
-                <span class="box flex h-full items-start gap-2.5 p-3.5">
-                  <span class="mark mt-0.5"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.8l4.6 4.6L20 6"/></svg></span>
-                  <span>
-                    <span class="h-section block text-sm">Opening hours</span>
-                    <span class="mt-1 block text-[0.8125rem] leading-snug text-ink-mid"><span class="arrow">&rarr;</span> When you are open, before they turn up.</span>
-                  </span>
-                </span>
-              </label>
-
-              <label class="pick">
-                <input type="checkbox" data-feature="Social links">
-                <span class="box flex h-full items-start gap-2.5 p-3.5">
-                  <span class="mark mt-0.5"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.8l4.6 4.6L20 6"/></svg></span>
-                  <span>
-                    <span class="h-section block text-sm">Social links</span>
-                    <span class="mt-1 block text-[0.8125rem] leading-snug text-ink-mid"><span class="arrow">&rarr;</span> Sends visitors to your social profiles.</span>
-                  </span>
-                </span>
-              </label>
-
-              <label class="pick">
-                <input type="checkbox" data-feature="Call button">
-                <span class="box flex h-full items-start gap-2.5 p-3.5">
-                  <span class="mark mt-0.5"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.8l4.6 4.6L20 6"/></svg></span>
-                  <span>
-                    <span class="h-section block text-sm">Call button</span>
-                    <span class="mt-1 block text-[0.8125rem] leading-snug text-ink-mid"><span class="arrow">&rarr;</span> One tap dials your number.</span>
-                  </span>
-                </span>
-              </label>
-
-            </div>
-
-            <div class="mt-5 border-t border-line pt-5">
-              <button id="add-website" type="button" disabled
-                class="inline-flex items-center justify-center rounded-md bg-accent px-6 py-3.5 text-sm font-semibold text-white hover:bg-accent-hi">
-                Add website to my order
-              </button>
-            </div>
-          </fieldset>
-
-          <!-- STEP 3 — one-time add-ons -->
-          <fieldset id="step3" disabled class="mt-10 border-t-2 border-accent pt-5">
-            <div class="flex flex-wrap items-baseline gap-x-4 gap-y-1">
-              <span class="font-mono text-xs font-semibold tracking-widest text-ink-soft">STEP 03</span>
-              <legend class="h-section text-xl">Optional one-time add-ons</legend>
-              <span class="ml-auto font-mono text-xs uppercase tracking-widest text-ink-soft">Nothing repeats</span>
-            </div>
-
-            <div class="mt-5">
-              <label class="pick">
-                <input type="checkbox" data-addon="Local SEO" data-once="199.99">
-                <span class="box flex items-start gap-3 p-4 md:p-5">
-                  <span class="mark mt-1"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.8l4.6 4.6L20 6"/></svg></span>
-                  <span class="flex w-full items-start justify-between gap-4">
-                    <span class="max-w-prose">
-                      <span class="h-section block text-base">Local SEO</span>
-                      <span class="mt-1.5 block text-[0.8125rem] leading-snug text-ink-mid"><span class="arrow">&rarr;</span> Groundwork so people searching for your trade in your area can find you: page titles and descriptions, consistent business details, and a structure search engines can read.</span>
-                      <span class="mt-1.5 block text-[0.8125rem] leading-snug text-ink-soft"><span class="arrow">&rarr;</span> An upgrade to your website, paid one time. <strong class="font-semibold text-ink">Not</strong> a monthly subscription.</span>
-                    </span>
-                    <span class="shrink-0 text-right">
-                      <span class="h-section block text-xl text-ink">€199.99</span>
-                      <span class="tag tag-once mt-1.5 inline-block">One-time</span>
-                    </span>
-                  </span>
-                </span>
-              </label>
-            </div>
-          </fieldset>
-
-          <!-- STEP 4 — monthly services -->
-          <fieldset id="step4" disabled class="mt-10 border-t-2 border-accent pt-5">
-            <div class="flex flex-wrap items-baseline gap-x-4 gap-y-1">
-              <span class="font-mono text-xs font-semibold tracking-widest text-ink-soft">STEP 04</span>
-              <legend class="h-section text-xl">Optional monthly services</legend>
-              <span class="ml-auto font-mono text-xs uppercase tracking-widest text-ink-soft">Stop any time</span>
-            </div>
-
-            <div class="mt-5 grid grid-cols-1 gap-2.5 md:grid-cols-2">
-
-              <label class="pick">
-                <input type="checkbox" data-addon="Online Booking System" data-month="29.99">
-                <span class="box flex h-full items-start gap-3 p-4">
-                  <span class="mark mt-1"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.8l4.6 4.6L20 6"/></svg></span>
-                  <span class="w-full">
-                    <span class="flex items-baseline justify-between gap-3">
-                      <span class="h-section text-base">Online Booking System</span>
-                      <span class="h-section whitespace-nowrap text-lg text-ink">€29.99</span>
-                    </span>
-                    <span class="mt-2 block"><span class="tag tag-month">Per month</span></span>
-                    <span class="mt-2.5 block text-[0.8125rem] leading-snug text-ink-mid"><span class="arrow">&rarr;</span> Customers book appointments themselves, at the times you allow, instead of ringing while your hands are full.</span>
-                  </span>
-                </span>
-              </label>
-
-              <label class="pick">
-                <input type="checkbox" data-addon="Website Maintenance" data-month="19.99">
-                <span class="box flex h-full items-start gap-3 p-4">
-                  <span class="mark mt-1"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.8l4.6 4.6L20 6"/></svg></span>
-                  <span class="w-full">
-                    <span class="flex items-baseline justify-between gap-3">
-                      <span class="h-section text-base">Website Maintenance</span>
-                      <span class="h-section whitespace-nowrap text-lg text-ink">€19.99</span>
-                    </span>
-                    <span class="mt-2 block"><span class="tag tag-month">Per month</span></span>
-                    <span class="mt-2.5 block text-[0.8125rem] leading-snug text-ink-mid"><span class="arrow">&rarr;</span> Ongoing updates to your site — new prices, services, photos, hours. You send the change, we make it.</span>
-                    <span class="mt-1.5 block text-[0.8125rem] leading-snug text-ink-soft"><span class="arrow">&rarr;</span> Includes up to 15 website changes per month.</span>
-                  </span>
-                </span>
-              </label>
-
-              <label class="pick">
-                <input type="checkbox" data-addon="Review Management" data-month="29.99">
-                <span class="box flex h-full items-start gap-3 p-4">
-                  <span class="mark mt-1"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.8l4.6 4.6L20 6"/></svg></span>
-                  <span class="w-full">
-                    <span class="flex items-baseline justify-between gap-3">
-                      <span class="h-section text-base">Review Management</span>
-                      <span class="h-section whitespace-nowrap text-lg text-ink">€29.99</span>
-                    </span>
-                    <span class="mt-2 block"><span class="tag tag-month">Per month</span></span>
-                    <span class="mt-2.5 block text-[0.8125rem] leading-snug text-ink-mid"><span class="arrow">&rarr;</span> We help you manage the reviews on your Google Business profile and Google Maps — watching for new ones and helping you reply.</span>
-                    <span class="mt-1.5 block text-[0.8125rem] leading-snug text-ink-soft"><span class="arrow">&rarr;</span> Review notifications are sent to your email where that is technically possible.</span>
-                  </span>
-                </span>
-              </label>
-
-              <label class="pick">
-                <input type="checkbox" data-addon="Digital Menu" data-once="49.99" data-month="19.99">
-                <span class="box flex h-full items-start gap-3 p-4">
-                  <span class="mark mt-1"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.8l4.6 4.6L20 6"/></svg></span>
-                  <span class="w-full">
-                    <span class="flex items-baseline justify-between gap-3">
-                      <span class="h-section text-base">Digital Menu</span>
-                      <span class="text-right">
-                        <span class="h-section block whitespace-nowrap text-lg text-ink">€49.99</span>
-                        <span class="h-section block whitespace-nowrap text-lg text-ink">€19.99</span>
-                      </span>
-                    </span>
-                    <span class="mt-2 flex flex-wrap justify-end gap-1.5">
-                      <span class="tag tag-once">One-time setup</span>
-                      <span class="tag tag-month">Per month</span>
-                    </span>
-                    <span class="mt-2.5 block text-[0.8125rem] leading-snug text-ink-mid"><span class="arrow">&rarr;</span> For restaurants, cafés and bars: your menu on the web, readable on a phone, changed when your kitchen changes.</span>
-                    <span class="mt-1.5 block text-[0.8125rem] leading-snug text-ink-soft"><span class="arrow">&rarr;</span> Two separate charges — a one-time setup fee, then a monthly fee.</span>
-                  </span>
-                </span>
-              </label>
-
-            </div>
-          </fieldset>
-
-          <!-- COMING SOON -->
-          <div class="mt-10 border-t border-line pt-5">
-            <div class="flex flex-wrap items-baseline gap-x-4 gap-y-1">
-              <p class="eyebrow text-ink-soft">Coming soon</p>
-              <span class="ml-auto font-mono text-xs uppercase tracking-widest text-ink-soft">Not orderable yet</span>
-            </div>
-            <div class="mt-4 grid grid-cols-1 gap-2.5 md:grid-cols-2">
-              <div class="rounded-lg border border-dashed border-line-firm bg-paper p-4">
-                <div class="flex items-baseline justify-between gap-3">
-                  <h4 class="h-section text-sm text-ink-mid">Social Media Content</h4>
-                  <span class="tag tag-soon">Coming soon</span>
-                </div>
-                <p class="mt-1.5 text-[0.8125rem] leading-snug text-ink-soft"><span class="arrow">&rarr;</span> Regular posts for your business profiles.</p>
-              </div>
-              <div class="rounded-lg border border-dashed border-line-firm bg-paper p-4">
-                <div class="flex items-baseline justify-between gap-3">
-                  <h4 class="h-section text-sm text-ink-mid">AI Receptionist</h4>
-                  <span class="tag tag-soon">Coming soon</span>
-                </div>
-                <p class="mt-1.5 text-[0.8125rem] leading-snug text-ink-soft"><span class="arrow">&rarr;</span> Answers routine questions when you cannot.</p>
-              </div>
-            </div>
-          </div>
-
+          <p class="mt-5 border-t border-line pt-5 text-[0.8125rem] leading-relaxed text-ink-mid">
+            <span class="arrow">&rarr;</span> You pick at least three website features from the list below.
+            Picking more never changes the price.
+          </p>
         </div>
 
-        <!-- RIGHT: order summary -->
-        <div class="lg:col-span-5 xl:col-span-4">
-          <div class="lg:sticky lg:top-24">
-            <div class="overflow-hidden rounded-lg border border-line bg-paper">
-
-              <div class="flex items-baseline justify-between gap-4 border-b border-line px-5 py-4">
-                <p class="eyebrow text-ink-soft">Step 05 — Your order</p>
-                <span class="font-mono text-xs text-ink-soft" id="item-count">Empty</span>
-              </div>
-
-              <div class="border-b border-line bg-accent-tint px-5 py-4">
-                <p class="text-[0.8125rem] leading-relaxed text-ink">
-                  Pay 25% today to start your project. Review your completed website after
-                  approximately 7 days. Once you approve it, pay the remaining 75%. Your selected
-                  monthly services begin when your website goes live.
-                </p>
-              </div>
-
-              <div class="px-5 py-4">
-                <p class="eyebrow text-ink-soft">Website &amp; one-time services</p>
-                <ul id="sum-once" class="mt-2 font-mono text-[0.8125rem] text-ink-mid"></ul>
-
-                <div id="extras-group" class="mt-4 hidden">
-                  <p class="eyebrow text-ink-soft">Business Extras</p>
-                  <ul id="sum-extras" class="mt-2 font-mono text-[0.8125rem] text-ink-mid"></ul>
-                </div>
-                <div class="mt-2 flex items-baseline justify-between gap-4 border-t border-line-firm pt-2.5">
-                  <span class="font-mono text-xs uppercase tracking-widest text-ink">One-time total</span>
-                  <span class="h-section text-lg text-ink" id="total-once">€0.00</span>
-                </div>
-              </div>
-
-              <div class="border-t border-line px-5 py-4">
-                <p class="eyebrow text-ink-soft">Monthly</p>
-                <ul id="sum-month" class="mt-2 font-mono text-[0.8125rem] text-ink-mid"></ul>
-                <div class="mt-2 flex items-baseline justify-between gap-4 border-t border-line-firm pt-2.5">
-                  <span class="font-mono text-xs uppercase tracking-widest text-ink">Monthly total</span>
-                  <span class="h-section text-lg text-ink" id="total-month">€0.00 / month</span>
-                </div>
-              </div>
-
-              <!-- Payment schedule: deposit today, balance on approval, monthly after launch -->
-              <div class="bg-accent px-5 py-5 text-white">
-
-                <div class="flex items-baseline justify-between gap-4 border-b border-white/20 pb-4">
-                  <span class="font-mono text-xs uppercase tracking-widest text-white/70">One-time website total</span>
-                  <span class="h-section text-lg" id="total-once-mirror">€0.00</span>
-                </div>
-
-                <div class="mt-4 flex items-baseline justify-between gap-4">
-                  <span class="font-mono text-xs uppercase tracking-widest text-white">Pay today</span>
-                  <span class="h-section text-2xl" id="total-today">€0.00</span>
-                </div>
-                <p class="mt-1.5 text-xs leading-relaxed text-white/70">
-                  25% deposit to start your website.
-                </p>
-
-                <div class="mt-4 flex items-baseline justify-between gap-4 border-t border-white/20 pt-4">
-                  <span class="font-mono text-xs uppercase tracking-widest text-white/70">Remaining after approval</span>
-                  <span class="h-section text-lg" id="total-remaining">€0.00</span>
-                </div>
-                <p class="mt-1.5 text-xs leading-relaxed text-white/70">
-                  75%, due only once you have reviewed and approved the finished website.
-                </p>
-
-                <div class="mt-4 flex items-baseline justify-between gap-4 border-t border-white/20 pt-4">
-                  <span class="font-mono text-xs uppercase tracking-widest text-white/70">Monthly services</span>
-                  <span class="h-section text-lg" id="total-month-later">€0.00 / month</span>
-                </div>
-                <p class="mt-1.5 text-xs leading-relaxed text-white/70" id="recurring-note">
-                  Nothing repeats monthly with this selection.
-                </p>
-
-                <label class="mt-5 flex cursor-pointer items-start gap-2.5 border-t border-white/20 pt-4">
-                  <input id="agree-terms" type="checkbox" class="mt-0.5 h-4 w-4 flex-none accent-white">
-                  <span class="text-xs leading-relaxed text-white/80">
-                    I have read and agree to the
-                    <a href="terms.html" class="font-semibold text-white underline underline-offset-2 hover:text-accent-tint">Terms of Service</a>
-                    and acknowledge the payment schedule shown above.
-                  </span>
-                </label>
-
-                <label class="mt-3 flex cursor-pointer items-start gap-2.5">
-                  <input id="agree-marketing" type="checkbox" class="mt-0.5 h-4 w-4 flex-none accent-white">
-                  <span class="text-xs leading-relaxed text-white/70">
-                    I'd like to receive occasional news, offers and updates from Onsite. Optional —
-                    see the
-                    <a href="privacy.html" class="font-semibold text-white underline underline-offset-2 hover:text-accent-tint">Privacy Policy</a>.
-                  </span>
-                </label>
-
-                <!-- [LEGAL REVIEW REQUIRED: early commencement / withdrawal wording]
-                     If the applicable consumer rules give a right of withdrawal for this service,
-                     the acknowledgement that the build starts inside that period belongs here, as a
-                     separate unticked checkbox, with the exact wording confirmed by a lawyer. -->
-                <p class="mt-3 text-[0.6875rem] leading-relaxed text-white/50">
-                  Your statutory rights are unaffected — see the
-                  <a href="refunds.html" class="font-semibold text-white/80 underline underline-offset-2 hover:text-white">Cancellation &amp; Refund Policy</a>.
-                </p>
-
-                <button id="checkout" type="button" disabled
-                  class="mt-4 inline-flex w-full items-center justify-center rounded-md bg-white px-6 py-3.5 text-sm font-semibold text-accent hover:bg-accent-tint">
-                  Pay deposit &amp; start project
-                </button>
-                <p id="checkout-hint" class="mt-2.5 text-center text-xs text-white/60">Add a website to your order first.</p>
-
-                <p class="mt-3 text-center text-[0.6875rem] leading-relaxed text-white/50">
-                  Payments are processed through our payment provider. Onsite does not store your full
-                  card details.
-                  <span class="mt-1 block">Demo build — no card is taken and no money moves.</span>
-                </p>
-              </div>
-
-              <!-- Cancellation + policy links, before payment rather than after -->
-              <div class="border-t border-line px-5 py-4">
-                <p class="mono-label text-ink-soft">Before you pay</p>
-                <ul class="mt-3 space-y-1.5 text-[0.8125rem] leading-snug text-ink-mid">
-                  <li><span class="arrow">&rarr;</span> Monthly services are billed monthly, start at launch, and can be cancelled any time with no minimum term.</li>
-                  <li><span class="arrow">&rarr;</span> The 75% balance is never taken automatically — approving your finished website is what makes it due.</li>
-                </ul>
-                <div class="mt-3 flex flex-wrap gap-x-5 gap-y-1.5">
-                  <a href="terms.html" class="text-[0.8125rem] font-semibold text-ink-mid underline underline-offset-2 hover:text-ink">Terms of Service</a>
-                  <a href="privacy.html" class="text-[0.8125rem] font-semibold text-ink-mid underline underline-offset-2 hover:text-ink">Privacy Policy</a>
-                  <a href="refunds.html" class="text-[0.8125rem] font-semibold text-ink-mid underline underline-offset-2 hover:text-ink">Cancellation &amp; Refund</a>
-                </div>
-              </div>
-
-              <div class="border-t border-line px-5 py-4">
-                <p class="eyebrow text-ink-soft">What is included</p>
-                <ul id="sum-included" class="mt-2 space-y-1.5 text-[0.8125rem] leading-snug text-ink-mid">
-                  <li class="text-ink-soft">Choose a website to see what is included.</li>
-                </ul>
-              </div>
-
+        <div class="flex flex-col rounded-lg border border-line-firm bg-paper p-7 md:p-8">
+          <div class="flex items-start justify-between gap-4">
+            <div>
+              <h3 class="h-section text-xl">Professional Website</h3>
+              <p class="mt-2 text-[0.8125rem] leading-relaxed text-ink-mid">
+                The complete build, ready to go, with every website feature already in it.
+              </p>
+            </div>
+            <div class="shrink-0 text-right">
+              <p class="h-section text-3xl text-ink">€249.99</p>
+              <span class="tag tag-once mt-2 inline-block">One-time</span>
             </div>
           </div>
+          <p class="mt-5 border-t border-line pt-5 text-[0.8125rem] leading-relaxed text-ink-mid">
+            <span class="arrow">&rarr;</span> All ten website features included, nothing to choose.
+            Monthly services are still separate and optional.
+          </p>
         </div>
 
       </div>
 
-      <!-- What the 7-day clock depends on -->
-      <div class="mt-14 border-t border-line pt-8">
+      <!-- The ten website features -->
+      <div class="mt-10 border-t border-line pt-8">
         <div class="flex flex-wrap items-baseline gap-x-4 gap-y-1">
-          <p class="eyebrow text-ink-soft">Delivery</p>
-          <span class="ml-auto font-mono text-xs uppercase tracking-widest text-ink-soft">Roughly 7 days</span>
+          <p class="mono-label text-ink-soft">The ten website features</p>
+          <span class="ml-auto font-mono text-xs uppercase tracking-widest text-ink-soft">Part of the build — never monthly</span>
         </div>
+        <div class="mt-5 grid grid-cols-1 gap-x-10 gap-y-3 sm:grid-cols-2 xl:grid-cols-3">
+          <p class="text-[0.8125rem] leading-snug text-ink-mid"><span class="arrow">&rarr;</span> <strong class="font-semibold text-ink">Contact form</strong> — messages land in your inbox.</p>
+          <p class="text-[0.8125rem] leading-snug text-ink-mid"><span class="arrow">&rarr;</span> <strong class="font-semibold text-ink">Google Maps</strong> — your location, one-tap directions.</p>
+          <p class="text-[0.8125rem] leading-snug text-ink-mid"><span class="arrow">&rarr;</span> <strong class="font-semibold text-ink">WhatsApp button</strong> — opens a chat in one tap.</p>
+          <p class="text-[0.8125rem] leading-snug text-ink-mid"><span class="arrow">&rarr;</span> <strong class="font-semibold text-ink">Photo gallery</strong> — your work, space or products.</p>
+          <p class="text-[0.8125rem] leading-snug text-ink-mid"><span class="arrow">&rarr;</span> <strong class="font-semibold text-ink">Business information</strong> — name, address, phone, email.</p>
+          <p class="text-[0.8125rem] leading-snug text-ink-mid"><span class="arrow">&rarr;</span> <strong class="font-semibold text-ink">Services section</strong> — what you do, in your customers' words.</p>
+          <p class="text-[0.8125rem] leading-snug text-ink-mid"><span class="arrow">&rarr;</span> <strong class="font-semibold text-ink">Testimonials</strong> — feedback from your customers.</p>
+          <p class="text-[0.8125rem] leading-snug text-ink-mid"><span class="arrow">&rarr;</span> <strong class="font-semibold text-ink">Opening hours</strong> — before they turn up.</p>
+          <p class="text-[0.8125rem] leading-snug text-ink-mid"><span class="arrow">&rarr;</span> <strong class="font-semibold text-ink">Social links</strong> — straight to your profiles.</p>
+          <p class="text-[0.8125rem] leading-snug text-ink-mid"><span class="arrow">&rarr;</span> <strong class="font-semibold text-ink">Call button</strong> — one tap dials your number.</p>
+        </div>
+      </div>
 
-        <p class="mt-4 max-w-prose text-[0.8125rem] leading-relaxed text-ink-soft">
-          <span class="arrow">&rarr;</span> The 7 days start when we have <strong class="font-semibold text-ink">all</strong> the
-          content and information we asked for. If something is still missing, the delivery date moves out by
-          however long it takes to reach us. Full detail is in the
-          <a href="terms.html" class="font-semibold text-ink underline underline-offset-2 hover:text-accent">Terms of Service</a>.
+      <div class="mt-10 flex flex-wrap items-center gap-4 border-t border-line pt-8">
+        <a href="signup.html" class="inline-flex items-center justify-center rounded-md bg-accent px-7 py-4 text-base font-semibold text-white hover:bg-accent-hi">
+          Create an account to build your package
+        </a>
+        <p class="max-w-prose text-[0.8125rem] leading-relaxed text-ink-soft">
+          You choose your website, features and services inside your dashboard, see the full total, and
+          pay 25% to start. Nothing is charged before you get there.
         </p>
       </div>
+    </div>
+  </section>
 
+  <!-- 6 — MONTHLY SERVICES -->
+  <section id="services" class="border-b border-line">
+    <div class="mx-auto max-w-shell px-6 py-16 md:px-10 md:py-24">
+      <p class="eyebrow text-ink-soft">Monthly services</p>
+      <h2 class="h-section sec-title mt-5 max-w-2xl">Optional, and they start when you go live.</h2>
+      <p class="mt-5 max-w-prose text-[0.9375rem] leading-relaxed text-ink-mid">
+        Never bundled into the website price, never charged during the build, and cancellable any time
+        with no minimum term.
+      </p>
+
+      <div class="mt-12 grid grid-cols-1 gap-2.5 sm:grid-cols-2 xl:grid-cols-4">
+
+        <div class="rounded-lg border border-line bg-surface p-5">
+          <div class="flex items-baseline justify-between gap-3">
+            <h3 class="h-section text-base">Online Booking</h3>
+            <span class="h-section whitespace-nowrap text-lg text-ink">€29.99</span>
+          </div>
+          <span class="tag tag-month mt-2 inline-block">Per month</span>
+          <p class="mt-2.5 text-[0.8125rem] leading-snug text-ink-mid">Customers book appointments themselves, at the times you allow.</p>
+        </div>
+
+        <div class="rounded-lg border border-line bg-surface p-5">
+          <div class="flex items-baseline justify-between gap-3">
+            <h3 class="h-section text-base">Website Maintenance</h3>
+            <span class="h-section whitespace-nowrap text-lg text-ink">€19.99</span>
+          </div>
+          <span class="tag tag-month mt-2 inline-block">Per month</span>
+          <p class="mt-2.5 text-[0.8125rem] leading-snug text-ink-mid">Up to 15 changes a month — text, photos, prices, hours. You send it, we do it.</p>
+        </div>
+
+        <div class="rounded-lg border border-line bg-surface p-5">
+          <div class="flex items-baseline justify-between gap-3">
+            <h3 class="h-section text-base">Review Management</h3>
+            <span class="h-section whitespace-nowrap text-lg text-ink">€29.99</span>
+          </div>
+          <span class="tag tag-month mt-2 inline-block">Per month</span>
+          <p class="mt-2.5 text-[0.8125rem] leading-snug text-ink-mid">We help manage your Google Business and Maps reviews, and help you reply.</p>
+        </div>
+
+        <div class="rounded-lg border border-line bg-surface p-5">
+          <div class="flex items-baseline justify-between gap-3">
+            <h3 class="h-section text-base">Digital Menu</h3>
+            <span class="h-section whitespace-nowrap text-lg text-ink">€19.99</span>
+          </div>
+          <div class="mt-2 flex flex-wrap gap-1.5">
+            <span class="tag tag-month">Per month</span>
+            <span class="tag tag-once">+ €49.99 setup</span>
+          </div>
+          <p class="mt-2.5 text-[0.8125rem] leading-snug text-ink-mid">For restaurants, cafés and bars — your menu on the web, changed when the kitchen changes.</p>
+        </div>
+
+      </div>
+
+      <div class="mt-8 rounded-lg border border-line bg-paper px-6 py-5">
+        <p class="mono-label text-ink-soft">One-time upgrade</p>
+        <div class="mt-3 flex flex-wrap items-baseline justify-between gap-4">
+          <div class="max-w-prose">
+            <h3 class="h-section text-base">Local SEO — €199.99</h3>
+            <p class="mt-1.5 text-[0.8125rem] leading-relaxed text-ink-mid">
+              Groundwork so people searching for your trade in your area can find you: page titles and
+              descriptions, consistent business details, and a structure search engines can read.
+              <strong class="font-semibold text-ink">Not</strong> a subscription.
+            </p>
+          </div>
+          <span class="tag tag-once">One-time</span>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -820,37 +482,30 @@
         </div>
       </div>
 
-      <fieldset id="step-extras" disabled class="mt-10 border-t-2 border-accent pt-5">
+      <div class="mt-10 border-t-2 border-accent pt-5">
         <div class="flex flex-wrap items-baseline gap-x-4 gap-y-1">
           <span class="font-mono text-xs font-semibold tracking-widest text-ink-soft">OPTIONAL</span>
-          <legend class="h-section text-xl">Only pay for what you need</legend>
-          <span id="extras-count" class="ml-auto font-mono text-xs uppercase tracking-widest text-ink-soft">None added</span>
+          <h3 class="h-section text-xl">Only pay for what you need</h3>
+          <span class="ml-auto font-mono text-xs uppercase tracking-widest text-ink-soft">Twelve services</span>
         </div>
         <p class="mt-4 max-w-prose text-[0.8125rem] leading-relaxed text-ink-mid">
-          Add a website to your order first — extras are currently sold alongside a website build, not on
-          their own.
+          Extras are added inside your dashboard alongside a website build, not sold on their own.
         </p>
 
         <!-- BRAND & DESIGN -->
         <p class="mono-label mt-8 text-ink-soft">Brand &amp; design</p>
         <div class="mt-3 grid grid-cols-1 gap-2.5 sm:grid-cols-2 xl:grid-cols-3">
 
-          <label class="pick">
-            <input type="checkbox" data-extra="Logo Design" data-once="49.99">
-            <span class="box flex h-full flex-col p-4">
+          <div class="rounded-lg border border-line bg-surface  p-4 flex h-full flex-col">
               <span class="flex items-baseline justify-between gap-3">
                 <span class="h-section text-base">Logo Design</span>
                 <span class="h-section whitespace-nowrap text-lg text-ink">€49.99</span>
               </span>
               <span class="mt-2 block"><span class="tag tag-once">One-time</span></span>
               <span class="mt-2.5 block text-[0.8125rem] leading-snug text-ink-mid">A custom professional logo designed specifically for your business.</span>
-              <span class="x-cta mt-4"><span class="x-add">Add to order</span><span class="x-added">✓ Added to your order</span></span>
-            </span>
-          </label>
+              </div>
 
-          <label class="pick">
-            <input type="checkbox" data-extra="Brand Kit" data-once="79.99">
-            <span class="box flex h-full flex-col p-4">
+          <div class="rounded-lg border border-line bg-surface  p-4 flex h-full flex-col">
               <span class="flex items-baseline justify-between gap-3">
                 <span class="h-section text-base">Brand Kit</span>
                 <span class="h-section whitespace-nowrap text-lg text-ink">€79.99</span>
@@ -860,48 +515,34 @@
               <span class="mt-2 block text-[0.8125rem] leading-snug text-ink-soft">
                 <span class="arrow">&rarr;</span> Logo · Brand colours · Fonts · Basic brand guidelines
               </span>
-              <span class="x-cta mt-4"><span class="x-add">Add to order</span><span class="x-added">✓ Added to your order</span></span>
-            </span>
-          </label>
+              </div>
 
-          <label class="pick">
-            <input type="checkbox" data-extra="Business Card Design" data-once="29.99">
-            <span class="box flex h-full flex-col p-4">
+          <div class="rounded-lg border border-line bg-surface  p-4 flex h-full flex-col">
               <span class="flex items-baseline justify-between gap-3">
                 <span class="h-section text-base">Business Card Design</span>
                 <span class="h-section whitespace-nowrap text-lg text-ink">€29.99</span>
               </span>
               <span class="mt-2 block"><span class="tag tag-once">One-time</span></span>
               <span class="mt-2.5 block text-[0.8125rem] leading-snug text-ink-mid">A professional business card design, ready for printing or sharing digitally.</span>
-              <span class="x-cta mt-4"><span class="x-add">Add to order</span><span class="x-added">✓ Added to your order</span></span>
-            </span>
-          </label>
+              </div>
 
-          <label class="pick">
-            <input type="checkbox" data-extra="Flyer / Poster Design" data-once="39.99">
-            <span class="box flex h-full flex-col p-4">
+          <div class="rounded-lg border border-line bg-surface  p-4 flex h-full flex-col">
               <span class="flex items-baseline justify-between gap-3">
                 <span class="h-section text-base">Flyer / Poster Design</span>
                 <span class="h-section whitespace-nowrap text-lg text-ink">€39.99</span>
               </span>
               <span class="mt-2 block"><span class="tag tag-once">One-time</span></span>
               <span class="mt-2.5 block text-[0.8125rem] leading-snug text-ink-mid">A professional promotional design for offers, events, services or announcements.</span>
-              <span class="x-cta mt-4"><span class="x-add">Add to order</span><span class="x-added">✓ Added to your order</span></span>
-            </span>
-          </label>
+              </div>
 
-          <label class="pick">
-            <input type="checkbox" data-extra="Menu Design" data-once="39.99">
-            <span class="box flex h-full flex-col p-4">
+          <div class="rounded-lg border border-line bg-surface  p-4 flex h-full flex-col">
               <span class="flex items-baseline justify-between gap-3">
                 <span class="h-section text-base">Menu Design</span>
                 <span class="h-section whitespace-nowrap text-lg text-ink">€39.99</span>
               </span>
               <span class="mt-2 block"><span class="tag tag-once">One-time</span></span>
               <span class="mt-2.5 block text-[0.8125rem] leading-snug text-ink-mid">A clean, professional menu designed for restaurants, cafés, salons or other businesses.</span>
-              <span class="x-cta mt-4"><span class="x-add">Add to order</span><span class="x-added">✓ Added to your order</span></span>
-            </span>
-          </label>
+              </div>
 
         </div>
 
@@ -909,9 +550,7 @@
         <p class="mono-label mt-9 text-ink-soft">Social &amp; marketing</p>
         <div class="mt-3 grid grid-cols-1 gap-2.5 sm:grid-cols-2 xl:grid-cols-3">
 
-          <label class="pick">
-            <input type="checkbox" data-extra="Social Media Starter Pack" data-once="59.99">
-            <span class="box flex h-full flex-col p-4">
+          <div class="rounded-lg border border-line bg-surface  p-4 flex h-full flex-col">
               <span class="flex items-baseline justify-between gap-3">
                 <span class="h-section text-base">Social Media Starter Pack</span>
                 <span class="h-section whitespace-nowrap text-lg text-ink">€59.99</span>
@@ -921,13 +560,9 @@
               <span class="mt-2 block text-[0.8125rem] leading-snug text-ink-soft">
                 <span class="arrow">&rarr;</span> Profile picture · Social banner · 5 branded posts
               </span>
-              <span class="x-cta mt-4"><span class="x-add">Add to order</span><span class="x-added">✓ Added to your order</span></span>
-            </span>
-          </label>
+              </div>
 
-          <label class="pick">
-            <input type="checkbox" data-extra="Promo Video / Short Ad" data-once="49.99" data-from="1">
-            <span class="box flex h-full flex-col p-4">
+          <div class="rounded-lg border border-line bg-surface  p-4 flex h-full flex-col">
               <span class="flex items-baseline justify-between gap-3">
                 <span class="h-section text-base">Promo Video / Short Ad</span>
                 <span class="h-section whitespace-nowrap text-lg text-ink">From €49.99</span>
@@ -937,13 +572,9 @@
               <span class="mt-2 block text-[0.8125rem] leading-snug text-ink-soft">
                 <span class="arrow">&rarr;</span> Final price depends on the video length and complexity. We confirm it with you before anything is charged.
               </span>
-              <span class="x-cta mt-4"><span class="x-add">Add to order</span><span class="x-added">✓ Added to your order</span></span>
-            </span>
-          </label>
+              </div>
 
-          <label class="pick">
-            <input type="checkbox" data-extra="AI Business Photos" data-once="30.00" data-from="1">
-            <span class="box flex h-full flex-col p-4">
+          <div class="rounded-lg border border-line bg-surface  p-4 flex h-full flex-col">
               <span class="flex items-baseline justify-between gap-3">
                 <span class="h-section text-base">AI Business Photos</span>
                 <span class="h-section whitespace-nowrap text-lg text-ink">From €30.00</span>
@@ -953,13 +584,9 @@
               <span class="mt-2 block text-[0.8125rem] leading-snug text-ink-soft">
                 <span class="arrow">&rarr;</span> Final price depends on the number and complexity of images. AI-assisted images are not photographs of your actual products unless you supply the source material.
               </span>
-              <span class="x-cta mt-4"><span class="x-add">Add to order</span><span class="x-added">✓ Added to your order</span></span>
-            </span>
-          </label>
+              </div>
 
-          <label class="pick">
-            <input type="checkbox" data-extra="Google Review QR Card" data-once="19.99">
-            <span class="box flex h-full flex-col p-4">
+          <div class="rounded-lg border border-line bg-surface  p-4 flex h-full flex-col">
               <span class="flex items-baseline justify-between gap-3">
                 <span class="h-section text-base">Google Review QR Card</span>
                 <span class="h-section whitespace-nowrap text-lg text-ink">€19.99</span>
@@ -969,9 +596,7 @@
               <span class="mt-2 block text-[0.8125rem] leading-snug text-ink-soft">
                 <span class="arrow">&rarr;</span> It makes leaving a review easier. What customers write is up to them.
               </span>
-              <span class="x-cta mt-4"><span class="x-add">Add to order</span><span class="x-added">✓ Added to your order</span></span>
-            </span>
-          </label>
+              </div>
 
         </div>
 
@@ -979,9 +604,7 @@
         <p class="mono-label mt-9 text-ink-soft">Business setup</p>
         <div class="mt-3 grid grid-cols-1 gap-2.5 sm:grid-cols-2 xl:grid-cols-3">
 
-          <label class="pick">
-            <input type="checkbox" data-extra="Professional Business Email Setup" data-once="29.99">
-            <span class="box flex h-full flex-col p-4">
+          <div class="rounded-lg border border-line bg-surface  p-4 flex h-full flex-col">
               <span class="flex items-baseline justify-between gap-3">
                 <span class="h-section text-base">Business Email Setup</span>
                 <span class="h-section whitespace-nowrap text-lg text-ink">€29.99</span>
@@ -991,13 +614,9 @@
               <span class="mt-2 block text-[0.8125rem] leading-snug text-ink-soft">
                 <span class="arrow">&rarr;</span> The €29.99 covers the setup: the domain records, the mailbox configuration and getting it working on your phone and computer. If your email provider charges a monthly fee for the mailbox itself, that is paid to them and is not included here.
               </span>
-              <span class="x-cta mt-4"><span class="x-add">Add to order</span><span class="x-added">✓ Added to your order</span></span>
-            </span>
-          </label>
+              </div>
 
-          <label class="pick">
-            <input type="checkbox" data-extra="WhatsApp Business Setup" data-once="39.99">
-            <span class="box flex h-full flex-col p-4">
+          <div class="rounded-lg border border-line bg-surface  p-4 flex h-full flex-col">
               <span class="flex items-baseline justify-between gap-3">
                 <span class="h-section text-base">WhatsApp Business Setup</span>
                 <span class="h-section whitespace-nowrap text-lg text-ink">€39.99</span>
@@ -1007,9 +626,7 @@
               <span class="mt-2 block text-[0.8125rem] leading-snug text-ink-soft">
                 <span class="arrow">&rarr;</span> Business profile · Business information · Contact details · Connected to your website
               </span>
-              <span class="x-cta mt-4"><span class="x-add">Add to order</span><span class="x-added">✓ Added to your order</span></span>
-            </span>
-          </label>
+              </div>
 
         </div>
 
@@ -1017,9 +634,7 @@
         <p class="mono-label mt-9 text-ink-soft">Business documents</p>
         <div class="mt-3 grid grid-cols-1 gap-2.5 sm:grid-cols-2 xl:grid-cols-3">
 
-          <label class="pick">
-            <input type="checkbox" data-extra="Business Document Templates" data-once="29.99">
-            <span class="box flex h-full flex-col p-4">
+          <div class="rounded-lg border border-line bg-surface  p-4 flex h-full flex-col">
               <span class="flex items-baseline justify-between gap-3">
                 <span class="h-section text-base">Business Document Templates</span>
                 <span class="h-section whitespace-nowrap text-lg text-ink">€29.99</span>
@@ -1029,9 +644,7 @@
               <span class="mt-2 block text-[0.8125rem] leading-snug text-ink-soft">
                 <span class="arrow">&rarr;</span> Invoice template · Quotation template · Receipt template
               </span>
-              <span class="x-cta mt-4"><span class="x-add">Add to order</span><span class="x-added">✓ Added to your order</span></span>
-            </span>
-          </label>
+              </div>
 
         </div>
 
@@ -1056,13 +669,11 @@
                 with you in writing before anything is charged.
               </p>
             </div>
-            <a href="#pricing" class="inline-flex items-center justify-center rounded-md bg-accent px-6 py-3.5 text-sm font-semibold text-white hover:bg-accent-hi">
-              Review your order
-            </a>
+            <a href="signup.html" class="inline-flex items-center justify-center rounded-md bg-accent px-6 py-3.5 text-sm font-semibold text-white hover:bg-accent-hi">Create an account</a>
           </div>
         </div>
 
-      </fieldset>
+      </div>
     </div>
   </section>
 
@@ -1135,327 +746,6 @@
 
 <div data-site-footer></div>
 
-<script>
-(function () {
-  var MIN_FEATURES = 3;
-  var base = null;          // null | 'custom' | 'pro'
-  var websiteAdded = false;
 
-  // Money is held in whole cents so totals never drift on decimal addition.
-  var BASES = {
-    custom: { name: 'Custom Website',       price: 7999  },
-    pro:    { name: 'Professional Website', price: 24999 }
-  };
-
-  var baseInputs    = Array.prototype.slice.call(document.querySelectorAll('[data-base]'));
-  var featureInputs = Array.prototype.slice.call(document.querySelectorAll('[data-feature]'));
-  var addonInputs   = Array.prototype.slice.call(document.querySelectorAll('[data-addon]'));
-  var extraInputs   = Array.prototype.slice.call(document.querySelectorAll('[data-extra]'));
-  var stepExtras    = document.getElementById('step-extras');
-  var extrasCount   = document.getElementById('extras-count');
-  var sumExtras     = document.getElementById('sum-extras');
-  var extrasGroup   = document.getElementById('extras-group');
-
-  var addBtn        = document.getElementById('add-website');
-  var featureStatus = document.getElementById('feature-status');
-  var featureIntro  = document.getElementById('feature-intro');
-  var proNote       = document.getElementById('pro-note');
-  var step2         = document.getElementById('step2');
-  var step3         = document.getElementById('step3');
-  var step4         = document.getElementById('step4');
-  var checkoutBtn   = document.getElementById('checkout');
-
-  var sumOnce   = document.getElementById('sum-once');
-  var sumMonth  = document.getElementById('sum-month');
-  var sumIncl   = document.getElementById('sum-included');
-  var totalOnce = document.getElementById('total-once');
-  var totalMonth= document.getElementById('total-month');
-  var totalToday= document.getElementById('total-today');
-  var totalOnceMirror = document.getElementById('total-once-mirror');
-  var totalRemain = document.getElementById('total-remaining');
-  var totalMonthLater = document.getElementById('total-month-later');
-  var itemCount = document.getElementById('item-count');
-  var recurNote = document.getElementById('recurring-note');
-  var checkoutHint = document.getElementById('checkout-hint');
-  var agreeTerms = document.getElementById('agree-terms');
-
-  function euro(cents) { return '€' + (cents / 100).toFixed(2); }
-
-  function toCents(value) { return Math.round(parseFloat(value || '0') * 100); }
-
-  function allFeatureNames() {
-    return featureInputs.map(function (i) { return i.getAttribute('data-feature'); });
-  }
-
-  function checkedFeatures() {
-    return featureInputs.filter(function (i) { return i.checked; })
-                        .map(function (i) { return i.getAttribute('data-feature'); });
-  }
-
-  // Features that end up on the order: everything for the professional build,
-  // only what was ticked for the custom one.
-  function includedFeatures() {
-    if (base === 'pro') return allFeatureNames();
-    if (base === 'custom') return checkedFeatures();
-    return [];
-  }
-
-  function baseReady() {
-    if (base === 'pro') return true;
-    if (base === 'custom') return checkedFeatures().length >= MIN_FEATURES;
-    return false;
-  }
-
-  function resetOrder() {
-    websiteAdded = false;
-    addonInputs.forEach(function (a) { a.checked = false; });
-    extraInputs.forEach(function (e) { e.checked = false; });
-  }
-
-  function line(label, value, muted) {
-    var li = document.createElement('li');
-    li.className = 'flex items-baseline justify-between gap-4 border-b border-line-firm py-2.5';
-    var a = document.createElement('span');
-    a.textContent = label;
-    var b = document.createElement('span');
-    b.className = muted ? 'text-ink-soft' : 'text-ink';
-    b.textContent = value;
-    li.appendChild(a); li.appendChild(b);
-    return li;
-  }
-
-  function emptyLine(text) {
-    var li = document.createElement('li');
-    li.className = 'py-2.5 text-ink-soft';
-    li.textContent = text;
-    return li;
-  }
-
-  function renderStep2() {
-    step2.disabled = !base;
-
-    if (base === 'pro') {
-      // Everything is included: show the features ticked, but not editable.
-      featureInputs.forEach(function (i) { i.checked = true; i.disabled = true; });
-      proNote.classList.remove('hidden');
-      featureIntro.textContent = 'All ten website features are part of the Professional Website. Monthly services are still chosen separately.';
-      featureStatus.textContent = 'All 10 features included';
-    } else if (base === 'custom') {
-      featureInputs.forEach(function (i) { i.disabled = false; });
-      proNote.classList.add('hidden');
-      featureIntro.textContent =
-        'Pick at least three website features. They are part of the €79.99 — picking more does not change the price. Monthly services are chosen separately in Step 04.';
-      var n = checkedFeatures().length;
-      featureStatus.textContent = n >= MIN_FEATURES
-        ? n + ' features selected'
-        : n + ' of ' + MIN_FEATURES + ' features selected';
-    } else {
-      featureInputs.forEach(function (i) { i.checked = false; i.disabled = false; });
-      proNote.classList.add('hidden');
-      featureIntro.textContent = 'Choose a website in Step 01 first.';
-      featureStatus.textContent = 'No website chosen yet';
-    }
-  }
-
-  function renderAddButton() {
-    var label = base ? BASES[base].name : 'website';
-    addBtn.disabled = !baseReady() && !websiteAdded;
-    addBtn.textContent = websiteAdded
-      ? 'Remove ' + label + ' from my order'
-      : (base
-          ? 'Add ' + label + ' to my order — ' + euro(BASES[base].price)
-          : 'Add website to my order');
-    addBtn.className = websiteAdded
-      ? 'inline-flex items-center justify-center rounded-md border border-accent px-6 py-3.5 text-sm font-semibold text-accent hover:bg-accent-tint'
-      : 'inline-flex items-center justify-center rounded-md bg-accent px-6 py-3.5 text-sm font-semibold text-white hover:bg-accent-hi';
-  }
-
-  function renderSummary() {
-    var once = 0, month = 0;
-    var onceLines = [], monthLines = [];
-
-    if (websiteAdded && base) {
-      once += BASES[base].price;
-      onceLines.push(line(BASES[base].name, euro(BASES[base].price)));
-    }
-
-    addonInputs.forEach(function (input) {
-      if (!input.checked || !websiteAdded) return;
-      var name = input.getAttribute('data-addon');
-      var o = toCents(input.getAttribute('data-once'));
-      var m = toCents(input.getAttribute('data-month'));
-      if (o) { once += o; onceLines.push(line(name + (m ? ' — setup' : ''), euro(o))); }
-      if (m) { month += m; monthLines.push(line(name, euro(m) + ' / mo')); }
-    });
-
-    // Business Extras — one-time only, and only once a website is in the order.
-    var extraLines = [];
-    extraInputs.forEach(function (input) {
-      if (!input.checked || !websiteAdded) return;
-      var name = input.getAttribute('data-extra');
-      var o = toCents(input.getAttribute('data-once'));
-      var from = input.getAttribute('data-from') === '1';
-      once += o;
-      extraLines.push(line(name + (from ? ' — from' : ''), euro(o)));
-    });
-
-    sumExtras.innerHTML = '';
-    extraLines.forEach(function (l) { sumExtras.appendChild(l); });
-    extrasGroup.classList.toggle('hidden', extraLines.length === 0);
-
-    var extrasSelected = extraInputs.filter(function (i) { return i.checked; }).length;
-    extrasCount.textContent = extrasSelected === 0
-      ? 'None added'
-      : extrasSelected + (extrasSelected === 1 ? ' extra added' : ' extras added');
-
-    sumOnce.innerHTML = '';
-    sumMonth.innerHTML = '';
-    if (onceLines.length) { onceLines.forEach(function (l) { sumOnce.appendChild(l); }); }
-    else { sumOnce.appendChild(emptyLine('Nothing added yet')); }
-    if (monthLines.length) { monthLines.forEach(function (l) { sumMonth.appendChild(l); }); }
-    else { sumMonth.appendChild(emptyLine('No monthly services selected')); }
-
-    // One-time work is split 25/75: deposit now, balance once the customer
-    // has reviewed and approved the finished site. The deposit is rounded down
-    // and the balance takes the remainder, so the two always add back up.
-    var deposit   = once > 0 ? Math.floor(once * 0.25) : 0;
-    var remaining = once - deposit;
-
-    totalOnce.textContent = euro(once);
-    totalOnceMirror.textContent = euro(once);
-    totalMonth.textContent = euro(month) + ' / month';
-    totalToday.textContent = euro(deposit);
-    totalRemain.textContent = euro(remaining);
-    totalMonthLater.textContent = euro(month) + ' / month';
-
-    recurNote.textContent = month > 0
-      ? 'Starts when your website goes live, then ' + euro(month) + ' every month until you stop those services.'
-      : 'Nothing repeats monthly with this selection.';
-
-    var count = (websiteAdded ? 1 : 0) +
-      addonInputs.filter(function (i) { return i.checked && websiteAdded; }).length +
-      extraInputs.filter(function (i) { return i.checked && websiteAdded; }).length;
-    itemCount.textContent = count === 0 ? 'Empty' : count + (count === 1 ? ' item' : ' items');
-
-    checkoutBtn.textContent = deposit > 0
-      ? 'Pay ' + euro(deposit) + ' deposit & start project'
-      : 'Pay deposit & start project';
-
-    var agreed = agreeTerms.checked;
-    checkoutBtn.disabled = !websiteAdded || !agreed;
-    checkoutHint.textContent = !websiteAdded
-      ? 'Add a website to your order first.'
-      : (!agreed
-          ? 'Please agree to the Terms of Service to continue.'
-          : 'Only the deposit is charged today. Nothing monthly starts until you are live.');
-  }
-
-  function renderIncluded() {
-    var features = includedFeatures();
-    sumIncl.innerHTML = '';
-
-    if (!base || !features.length) {
-      var li0 = document.createElement('li');
-      li0.className = 'text-ink-soft';
-      li0.textContent = base === 'custom'
-        ? 'Choose your website features to see them listed here.'
-        : 'Choose a website to see what is included.';
-      sumIncl.appendChild(li0);
-      return;
-    }
-
-    var head = document.createElement('li');
-    head.className = 'font-semibold text-ink';
-    head.textContent = BASES[base].name + ' with:';
-    sumIncl.appendChild(head);
-
-    features.forEach(function (f) {
-      var li = document.createElement('li');
-      li.className = 'pl-4 text-ink-mid';
-      li.textContent = '→ ' + f;
-      sumIncl.appendChild(li);
-    });
-
-    addonInputs.forEach(function (input) {
-      if (!input.checked || !websiteAdded) return;
-      var li = document.createElement('li');
-      li.className = 'pl-4 text-ink-mid';
-      var m = input.getAttribute('data-month');
-      var o = input.getAttribute('data-once');
-      var tail = m && o ? ' (one-time setup + monthly)' : (m ? ' (monthly)' : ' (one-time)');
-      li.textContent = '→ ' + input.getAttribute('data-addon') + tail;
-      sumIncl.appendChild(li);
-    });
-
-    extraInputs.forEach(function (input) {
-      if (!input.checked || !websiteAdded) return;
-      var li = document.createElement('li');
-      li.className = 'pl-4 text-ink-mid';
-      li.textContent = '→ ' + input.getAttribute('data-extra') +
-        (input.getAttribute('data-from') === '1' ? ' (one-time, from)' : ' (one-time)');
-      sumIncl.appendChild(li);
-    });
-  }
-
-  function render() {
-    renderStep2();
-    renderAddButton();
-
-    step3.disabled = !websiteAdded;
-    step4.disabled = !websiteAdded;
-    stepExtras.disabled = !websiteAdded;
-
-    renderSummary();
-    renderIncluded();
-  }
-
-  baseInputs.forEach(function (i) {
-    i.addEventListener('change', function () {
-      var previous = base;
-      base = i.getAttribute('data-base');
-      // Coming back from the professional build, clear the features it ticked
-      // automatically so the custom choice is made deliberately.
-      if (previous === 'pro' && base === 'custom') {
-        featureInputs.forEach(function (f) { f.checked = false; });
-      }
-      resetOrder();          // switching the website starts the order again
-      render();
-    });
-  });
-
-  featureInputs.forEach(function (i) {
-    i.addEventListener('change', function () {
-      // Dropping below the minimum takes the custom website back out of the order.
-      if (websiteAdded && base === 'custom' && checkedFeatures().length < MIN_FEATURES) {
-        resetOrder();
-      }
-      render();
-    });
-  });
-
-  addonInputs.forEach(function (i) { i.addEventListener('change', render); });
-  extraInputs.forEach(function (i) { i.addEventListener('change', render); });
-
-  agreeTerms.addEventListener('change', render);
-
-  // Demo checkout: no payment is taken. The deposit hands over to account
-  // creation, which is where the dashboard flow begins.
-  checkoutBtn.addEventListener('click', function () {
-    if (checkoutBtn.disabled) return;
-    window.location.href = 'signup.html';
-  });
-
-  addBtn.addEventListener('click', function () {
-    if (websiteAdded) { resetOrder(); }
-    else if (baseReady()) { websiteAdded = true; }
-    render();
-  });
-
-  render();
-})();
-</script>
-
-<script src="assets/footer.js"></script>
-<script src="assets/cookies.js"></script>
 </body>
 </html>

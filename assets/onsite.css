@@ -137,3 +137,19 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 a, button { transition: background-color 180ms ease, color 180ms ease, border-color 180ms ease; }
 .skip:not(:focus){ position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap; }
 @media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto;} a,button{transition:none;} }
+
+/* Package builder — selectable product tiles */
+.build-card {
+  display:flex; flex-direction:column; width:100%; text-align:left; font-family:inherit;
+  background:#FFFFFF; border:1px solid #E3E1DC; border-radius:0.5rem; padding:0.9rem 1rem;
+  cursor:pointer; transition: border-color 180ms ease, box-shadow 180ms ease;
+}
+.build-card:hover:not(:disabled) { border-color:#CFCCC5; }
+.build-card.is-on { border-color:#1C2B3A; box-shadow: inset 0 0 0 1px #1C2B3A; }
+.build-card:disabled { opacity:0.45; cursor:not-allowed; }
+.build-card .build-state {
+  margin-top:0.75rem; align-self:flex-start; font-family:'IBM Plex Mono',ui-monospace,monospace;
+  font-size:0.625rem; letter-spacing:0.14em; text-transform:uppercase;
+  color:#6E747C; border:1px solid #E3E1DC; border-radius:0.25rem; padding:0.2rem 0.45rem;
+}
+.build-card.is-on .build-state { background:#1C2B3A; border-color:#1C2B3A; color:#FFFFFF; }

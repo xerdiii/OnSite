@@ -427,6 +427,227 @@
       '<p class="mt-4 text-[0.8125rem] text-ink-soft">Coming-soon services cannot be ordered yet. We will tell you when they open.</p>';
   };
 
+  // ── Build your package ───────────────────────────────────
+  function draft() {
+    var s = O.load();
+    if (!s.draft) { s.draft = O.emptyDraft(); O.save(); }
+    return s.draft;
+  }
+
+  // One-time and monthly totals for whatever is currently selected.
+  function draftTotals() {
+    var d = draft(), C = O.CATALOG;
+    var once = 0, month = 0;
+
+    var base = C.websites.filter(function (w) { return w.key === d.base; })[0];
+    if (base) once += base.cents;
+
+    C.oneTime.forEach(function (i) { if (d.oneTime.indexOf(i.name) > -1) once += i.cents; });
+    C.monthly.forEach(function (m) {
+      if (d.monthly.indexOf(m.name) < 0) return;
+      month += m.cents;
+      if (m.setupCents) once += m.setupCents;   // Digital Menu setup is one-time
+    });
+    C.extras.forEach(function (x) { if (d.extras.indexOf(x.name) > -1) once += x.cents; });
+
+    return { once: once, month: month, deposit: O.deposit(once), balance: O.balance(once), base: base };
+  }
+
+  function draftReady() {
+    var d = draft(), t = draftTotals();
+    if (!t.base) return false;
+    if (t.base.minFeatures && d.features.length < t.base.minFeatures) return false;
+    return d.agreed;
+  }
+
+  routes['/build'] = function () {
+    var C = O.CATALOG, d = draft(), t = draftTotals(), s = O.load();
+    var isCustom = d.base === 'custom';
+    var isPro = d.base === 'pro';
+    var featuresOn = isPro ? C.features.slice() : d.features;
+
+    function tile(on, name, priceHtml, tagHtml, blurb, act, key, off) {
+      return '<button type="button" class="build-card' + (on ? ' is-on' : '') + '"' +
+        (off ? ' disabled' : '') + ' data-act="' + act + '" data-key="' + esc(key) + '">' +
+        '<span class="flex items-baseline justify-between gap-3">' +
+          '<span class="h-section text-base">' + esc(name) + '</span>' +
+          (priceHtml ? '<span class="h-section whitespace-nowrap text-base text-ink">' + priceHtml + '</span>' : '') +
+        '</span>' +
+        (tagHtml ? '<span class="mt-2 block">' + tagHtml + '</span>' : '') +
+        (blurb ? '<span class="mt-2 block text-[0.8125rem] leading-snug text-ink-mid">' + esc(blurb) + '</span>' : '') +
+        '<span class="build-state">' + (on ? '✓ Added' : 'Add') + '</span>' +
+      '</button>';
+    }
+
+    // Step 1 — website
+    var websites = C.websites.map(function (w) {
+      return tile(d.base === w.key, w.name, money(w.cents), '<span class="tag tag-once">One-time</span>',
+        w.blurb + ' ' + w.note, 'pick-base', w.key);
+    }).join('');
+
+    // Step 2 — features
+    var featureNote = !d.base
+      ? 'Choose a website first.'
+      : (isPro
+          ? 'All ten website features are included in the Professional Website. Nothing to choose.'
+          : 'Pick at least three. ' + d.features.length + ' of ' + 3 + ' selected — picking more never changes the price.');
+
+    var features = C.features.map(function (f) {
+      return tile(featuresOn.indexOf(f) > -1, f, '', '', '', 'toggle-feature', f, !isCustom);
+    }).join('');
+
+    // Step 3 — services
+    var oneTimeAddons = C.oneTime.map(function (i) {
+      return tile(d.oneTime.indexOf(i.name) > -1, i.name, money(i.cents),
+        '<span class="tag tag-once">One-time</span>', i.blurb, 'toggle-onetime', i.name, !d.base);
+    }).join('');
+
+    var monthly = C.monthly.map(function (m) {
+      var price = money(m.cents);
+      var tags = '<span class="tag tag-month">Per month</span>' +
+        (m.setupCents ? ' <span class="tag tag-once">+ ' + money(m.setupCents) + ' setup</span>' : '');
+      return tile(d.monthly.indexOf(m.name) > -1, m.name, price, tags, m.blurb, 'toggle-monthly', m.name, !d.base);
+    }).join('');
+
+    // Step 4 — extras, grouped
+    var groups = {};
+    C.extras.forEach(function (x) { (groups[x.group] = groups[x.group] || []).push(x); });
+    var extras = Object.keys(groups).map(function (g) {
+      return '<p class="mono-label mt-6 text-ink-soft">' + esc(g) + '</p>' +
+        '<div class="mt-3 grid grid-cols-1 gap-2.5 sm:grid-cols-2 xl:grid-cols-3">' +
+        groups[g].map(function (x) {
+          return tile(d.extras.indexOf(x.name) > -1, x.name,
+            (x.from ? 'From ' : '') + money(x.cents),
+            '<span class="tag tag-once">One-time</span>', x.blurb, 'toggle-extra', x.name, !d.base);
+        }).join('') + '</div>';
+    }).join('');
+
+    // Summary lines
+    var onceLines = [];
+    if (t.base) onceLines.push([t.base.name, money(t.base.cents)]);
+    C.oneTime.forEach(function (i) { if (d.oneTime.indexOf(i.name) > -1) onceLines.push([i.name, money(i.cents)]); });
+    C.monthly.forEach(function (m) {
+      if (d.monthly.indexOf(m.name) > -1 && m.setupCents) onceLines.push([m.name + ' — setup', money(m.setupCents)]);
+    });
+    C.extras.forEach(function (x) { if (d.extras.indexOf(x.name) > -1) onceLines.push([x.name + (x.from ? ' — from' : ''), money(x.cents)]); });
+
+    var monthLines = C.monthly.filter(function (m) { return d.monthly.indexOf(m.name) > -1; })
+      .map(function (m) { return [m.name, money(m.cents) + ' / mo']; });
+
+    function rows(list, empty) {
+      if (!list.length) return '<li class="py-2.5 text-ink-soft">' + empty + '</li>';
+      return list.map(function (l) {
+        return '<li class="flex items-baseline justify-between gap-4 border-b border-line-firm py-2.5">' +
+          '<span>' + esc(l[0]) + '</span><span class="text-ink">' + l[1] + '</span></li>';
+      }).join('');
+    }
+
+    var blocked = !t.base ? 'Choose a website to continue.'
+      : (isCustom && d.features.length < 3) ? 'Pick at least three website features.'
+      : (!d.agreed ? 'Agree to the Terms of Service to continue.'
+      : 'Only the 25% deposit is charged today.');
+
+    var warn = (s.project && s.project.stage && s.project.stage !== 'live')
+      ? '<div class="demo-note mt-4">You already have a project in progress. Submitting this package replaces it in the demo.</div>'
+      : '';
+
+    return head('Build your package', 'Choose what you need.',
+      'Pick your website, the features it should have, any services, and any extras. You pay 25% today and the remaining 75% once you have reviewed and approved the finished site.') +
+
+      '<div class="mt-8 grid grid-cols-1 gap-8 lg:grid-cols-12 lg:gap-10">' +
+
+        '<div class="lg:col-span-7 xl:col-span-8">' +
+
+          '<div class="border-t-2 border-accent pt-5">' +
+            '<div class="flex flex-wrap items-baseline gap-x-4"><span class="mono-label text-ink-soft">Step 01</span>' +
+            '<h2 class="h-section text-xl">Your website</h2>' +
+            '<span class="ml-auto mono-label text-ink-soft">Both paid once</span></div>' +
+            '<div class="mt-4 grid grid-cols-1 gap-2.5 sm:grid-cols-2">' + websites + '</div>' +
+          '</div>' +
+
+          '<div class="mt-10 border-t-2 border-accent pt-5">' +
+            '<div class="flex flex-wrap items-baseline gap-x-4"><span class="mono-label text-ink-soft">Step 02</span>' +
+            '<h2 class="h-section text-xl">Website features</h2>' +
+            '<span class="ml-auto mono-label text-ink-soft">' + (isPro ? 'All included' : d.features.length + ' selected') + '</span></div>' +
+            '<p class="mt-3 max-w-prose text-[0.8125rem] leading-relaxed text-ink-mid">' + esc(featureNote) + '</p>' +
+            '<div class="mt-4 grid grid-cols-1 gap-2.5 sm:grid-cols-2 xl:grid-cols-3">' + features + '</div>' +
+          '</div>' +
+
+          '<div class="mt-10 border-t-2 border-accent pt-5">' +
+            '<div class="flex flex-wrap items-baseline gap-x-4"><span class="mono-label text-ink-soft">Step 03</span>' +
+            '<h2 class="h-section text-xl">Services</h2></div>' +
+            '<p class="mono-label mt-5 text-ink-soft">One-time</p>' +
+            '<div class="mt-3 grid grid-cols-1 gap-2.5">' + oneTimeAddons + '</div>' +
+            '<p class="mono-label mt-6 text-ink-soft">Monthly — starts when your website goes live</p>' +
+            '<div class="mt-3 grid grid-cols-1 gap-2.5 sm:grid-cols-2">' + monthly + '</div>' +
+          '</div>' +
+
+          '<div class="mt-10 border-t-2 border-accent pt-5">' +
+            '<div class="flex flex-wrap items-baseline gap-x-4"><span class="mono-label text-ink-soft">Step 04</span>' +
+            '<h2 class="h-section text-xl">Business extras</h2>' +
+            '<span class="ml-auto mono-label text-ink-soft">Optional · one-time</span></div>' +
+            extras +
+          '</div>' +
+
+        '</div>' +
+
+        '<div class="lg:col-span-5 xl:col-span-4">' +
+          '<div class="lg:sticky lg:top-24">' +
+            '<div class="overflow-hidden rounded-lg border border-line bg-paper">' +
+              '<div class="border-b border-line px-5 py-4"><p class="eyebrow text-ink-soft">Your order</p></div>' +
+
+              '<div class="px-5 py-4">' +
+                '<p class="eyebrow text-ink-soft">One-time</p>' +
+                '<ul class="mt-2 font-mono text-[0.8125rem] text-ink-mid">' + rows(onceLines, 'Nothing selected yet') + '</ul>' +
+                '<div class="mt-2 flex items-baseline justify-between gap-4 border-t border-line-firm pt-2.5">' +
+                  '<span class="mono-label text-ink">One-time total</span>' +
+                  '<span class="h-section text-lg text-ink">' + money(t.once) + '</span></div>' +
+              '</div>' +
+
+              '<div class="border-t border-line px-5 py-4">' +
+                '<p class="eyebrow text-ink-soft">Monthly</p>' +
+                '<ul class="mt-2 font-mono text-[0.8125rem] text-ink-mid">' + rows(monthLines, 'No monthly services selected') + '</ul>' +
+                '<div class="mt-2 flex items-baseline justify-between gap-4 border-t border-line-firm pt-2.5">' +
+                  '<span class="mono-label text-ink">Monthly total</span>' +
+                  '<span class="h-section text-lg text-ink">' + money(t.month) + ' / month</span></div>' +
+              '</div>' +
+
+              '<div class="bg-accent px-5 py-5 text-white">' +
+                '<div class="flex items-baseline justify-between gap-4">' +
+                  '<span class="mono-label text-white">Pay today</span>' +
+                  '<span class="h-section text-2xl">' + money(t.deposit) + '</span></div>' +
+                '<p class="mt-1.5 text-xs leading-relaxed text-white/70">25% deposit to start your website.</p>' +
+                '<div class="mt-4 flex items-baseline justify-between gap-4 border-t border-white/20 pt-4">' +
+                  '<span class="mono-label text-white/70">After approval</span>' +
+                  '<span class="h-section text-lg">' + money(t.balance) + '</span></div>' +
+                '<p class="mt-1.5 text-xs leading-relaxed text-white/70">The remaining 75%, due only once you approve the finished site.</p>' +
+                '<div class="mt-4 flex items-baseline justify-between gap-4 border-t border-white/20 pt-4">' +
+                  '<span class="mono-label text-white/70">Monthly after launch</span>' +
+                  '<span class="h-section text-lg">' + money(t.month) + '</span></div>' +
+
+                '<label class="mt-5 flex cursor-pointer items-start gap-2.5 border-t border-white/20 pt-4">' +
+                  '<input type="checkbox" data-act="toggle-agree" class="mt-0.5 h-4 w-4 flex-none accent-white"' + (d.agreed ? ' checked' : '') + '>' +
+                  '<span class="text-xs leading-relaxed text-white/80">I have read and agree to the ' +
+                    '<a href="terms.html" class="font-semibold text-white underline underline-offset-2">Terms of Service</a> ' +
+                    'and acknowledge the payment schedule shown above.</span></label>' +
+
+                '<button class="btn btn-light btn-block mt-4" data-act="pay-deposit"' + (draftReady() ? '' : ' disabled') + '>' +
+                  (t.deposit > 0 ? 'Pay ' + money(t.deposit) + ' deposit &amp; start' : 'Pay deposit &amp; start') + '</button>' +
+                '<p class="mt-2.5 text-center text-xs text-white/60">' + esc(blocked) + '</p>' +
+                '<p class="mt-2 text-center text-[0.6875rem] leading-relaxed text-white/50">Demo build — no card is taken and no money moves.</p>' +
+              '</div>' +
+
+              '<div class="border-t border-line px-5 py-4">' +
+                '<button class="text-[0.8125rem] font-semibold text-ink-mid hover:text-ink" data-act="clear-draft">Clear this package</button>' +
+              '</div>' +
+            '</div>' +
+            warn +
+          '</div>' +
+        '</div>' +
+
+      '</div>';
+  };
+
   routes['/subscriptions'] = function () {
     var s = O.load(), o = s.order;
     var live = s.project.stage === 'live';
@@ -576,7 +797,74 @@
   };
 
   // ── Actions ──────────────────────────────────────────────────
+  function toggleIn(list, value) {
+    var i = list.indexOf(value);
+    if (i > -1) { list.splice(i, 1); } else { list.push(value); }
+  }
+
   var actions = {
+    'pick-base': function (el) {
+      var d = draft();
+      var key = el.getAttribute('data-key');
+      // Switching website starts the feature choice again — the professional
+      // build ticks everything, so its picks must not carry into a custom one.
+      if (d.base !== key) { d.features = []; }
+      d.base = key;
+      O.save();
+      render();
+    },
+    'toggle-feature': function (el) { toggleIn(draft().features, el.getAttribute('data-key')); O.save(); render(); },
+    'toggle-onetime': function (el) { toggleIn(draft().oneTime, el.getAttribute('data-key')); O.save(); render(); },
+    'toggle-monthly': function (el) { toggleIn(draft().monthly, el.getAttribute('data-key')); O.save(); render(); },
+    'toggle-extra':   function (el) { toggleIn(draft().extras,  el.getAttribute('data-key')); O.save(); render(); },
+    'toggle-agree':   function () { var d = draft(); d.agreed = !d.agreed; O.save(); render(); },
+    'clear-draft':    function () { var s = O.load(); s.draft = O.emptyDraft(); O.save(); render(); },
+
+    'pay-deposit': function () {
+      if (!draftReady()) return;
+      var s = O.load(), d = draft(), t = draftTotals(), C = O.CATALOG;
+
+      var onceItems = [{ name: t.base.name, cents: t.base.cents }];
+      C.oneTime.forEach(function (i) { if (d.oneTime.indexOf(i.name) > -1) onceItems.push({ name: i.name, cents: i.cents }); });
+      C.monthly.forEach(function (m) {
+        if (d.monthly.indexOf(m.name) > -1 && m.setupCents) onceItems.push({ name: m.name + ' — setup', cents: m.setupCents });
+      });
+      C.extras.forEach(function (x) { if (d.extras.indexOf(x.name) > -1) onceItems.push({ name: x.name, cents: x.cents }); });
+
+      s.order = {
+        oneTimeCents: t.once,
+        monthlyCents: t.month,
+        oneTimeItems: onceItems,
+        monthlyItems: C.monthly.filter(function (m) { return d.monthly.indexOf(m.name) > -1; })
+                               .map(function (m) { return { name: m.name, cents: m.cents }; })
+      };
+
+      s.project.features = d.base === 'pro' ? C.features.slice() : d.features.slice();
+      s.project.stage = 'content';
+
+      var today = new Date().toISOString().slice(0, 10);
+      s.payments = [
+        { id: 'INV-' + (1050 + Math.floor(Math.random() * 40)), date: today,
+          description: '25% deposit — ' + t.base.name, cents: t.deposit, kind: 'one-time', status: 'paid' },
+        { id: 'INV-' + (1090 + Math.floor(Math.random() * 40)), date: null,
+          description: 'Remaining 75% — due after you approve the website', cents: t.balance, kind: 'one-time', status: 'due-after-approval' }
+      ];
+
+      // Services follow what was actually bought
+      s.services.forEach(function (sv) {
+        if (sv.cadence === 'month') { sv.state = d.monthly.indexOf(sv.name) > -1 ? 'active' : 'available'; }
+        else if (sv.cadence === 'once' && sv.state !== 'soon') {
+          sv.state = (sv.name === t.base.name || d.oneTime.indexOf(sv.name) > -1) ? 'active' : 'available';
+        }
+      });
+
+      s.draft = O.emptyDraft();
+      O.save();
+      O.notify('Deposit of ' + money(t.deposit) + ' received — your project has started. Send us your content next.');
+      location.hash = '#/overview';
+      render();
+    },
+
     approve: function () {
       O.advance('final');
       O.notify('Website approved — your remaining 75% payment is now due.');

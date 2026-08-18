@@ -151,6 +151,53 @@
     };
   }
 
+  // ── Catalogue ────────────────────────────────────────────
+  // Single source of truth for the package builder in the dashboard.
+  // Prices in cents; `from` marks a starting price we confirm before charging.
+  var CATALOG = {
+    websites: [
+      { key: 'custom', name: 'Custom Website', cents: 7999, minFeatures: 3,
+        blurb: 'A professional custom landing-page website, built around the features you choose.',
+        note: 'Pick at least three website features. Picking more never changes the price.' },
+      { key: 'pro', name: 'Professional Website', cents: 24999, minFeatures: 0,
+        blurb: 'The complete build, ready to go, with every website feature already in it.',
+        note: 'All ten website features included. Monthly services are still separate.' }
+    ],
+    features: [
+      'Contact form', 'Google Maps', 'WhatsApp button', 'Photo / gallery section',
+      'Business information', 'Services section', 'Testimonials', 'Opening hours',
+      'Social links', 'Call button'
+    ],
+    oneTime: [
+      { name: 'Local SEO', cents: 19999,
+        blurb: 'Page titles and descriptions, consistent business details, and a structure search engines can read. Not a subscription.' }
+    ],
+    monthly: [
+      { name: 'Online Booking System', cents: 2999, blurb: 'Customers book appointments themselves, at the times you allow.' },
+      { name: 'Website Maintenance',   cents: 1999, blurb: 'Up to 15 changes a month — text, photos, prices, hours.' },
+      { name: 'Review Management',     cents: 2999, blurb: 'We help manage your Google Business and Maps reviews.' },
+      { name: 'Digital Menu',          cents: 1999, setupCents: 4999, blurb: 'Your menu on the web, changed when the kitchen changes.' }
+    ],
+    extras: [
+      { group: 'Brand & design', name: 'Logo Design', cents: 4999, blurb: 'A custom professional logo for your business.' },
+      { group: 'Brand & design', name: 'Brand Kit', cents: 7999, blurb: 'Logo, brand colours, fonts and basic brand guidelines.' },
+      { group: 'Brand & design', name: 'Business Card Design', cents: 2999, blurb: 'Ready for printing or sharing digitally.' },
+      { group: 'Brand & design', name: 'Flyer / Poster Design', cents: 3999, blurb: 'For offers, events, services or announcements.' },
+      { group: 'Brand & design', name: 'Menu Design', cents: 3999, blurb: 'For restaurants, cafés, salons and similar.' },
+      { group: 'Social & marketing', name: 'Social Media Starter Pack', cents: 5999, blurb: 'Profile picture, banner and 5 branded posts.' },
+      { group: 'Social & marketing', name: 'Promo Video / Short Ad', cents: 4999, from: true, blurb: 'Final price depends on length and complexity.' },
+      { group: 'Social & marketing', name: 'AI Business Photos', cents: 3000, from: true, blurb: 'Final price depends on the number and complexity of images.' },
+      { group: 'Social & marketing', name: 'Google Review QR Card', cents: 1999, blurb: 'Makes leaving a review easier. What they write is up to them.' },
+      { group: 'Business setup', name: 'Professional Business Email Setup', cents: 2999, blurb: 'Setup only — a provider mailbox subscription is not included.' },
+      { group: 'Business setup', name: 'WhatsApp Business Setup', cents: 3999, blurb: 'Profile, business information and contact details.' },
+      { group: 'Business documents', name: 'Business Document Templates', cents: 2999, blurb: 'Invoice, quotation and receipt templates.' }
+    ]
+  };
+
+  function emptyDraft() {
+    return { base: null, features: [], oneTime: [], monthly: [], extras: [], agreed: false };
+  }
+
   // ── Store ────────────────────────────────────────────────────
   var state = null;
 
@@ -289,6 +336,7 @@
   }
 
   global.Onsite = {
+    CATALOG: CATALOG, emptyDraft: emptyDraft,
     euro: euro, euroMonth: euroMonth, deposit: deposit, balance: balance, date: date,
     load: load, save: save, reset: reset,
     newCode: newCode, signIn: signIn, signOut: signOut, session: session, requireSession: requireSession,
