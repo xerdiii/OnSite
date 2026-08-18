@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Onsite — Your business website, built, hosted and managed for €35 / month</title>
+<meta name="description" content="A professional custom website for your business. Hosting, domain, security and maintenance all handled for €35 / month. No technical setup.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;700&family=Inter:wght@400;600&family=IBM+Plex+Mono:wght@400;600&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          paper:        '#F7F6F3',
+          surface:      '#FFFFFF',
+          ink:          '#14161A',
+          'ink-mid':    '#43484F',
+          'ink-soft':   '#6E747C',
+          line:         '#E3E1DC',
+          'line-firm':  '#CFCCC5',
+          accent:       '#1C2B3A',
+          'accent-hi':  '#27394B',
+          'accent-tint':'#EEF0F2'
+        },
+        fontFamily: {
+          display: ['Archivo', 'Helvetica Neue', 'Arial', 'sans-serif'],
+          sans:    ['Inter', 'Helvetica Neue', 'Arial', 'sans-serif'],
+          mono:    ['IBM Plex Mono', 'ui-monospace', 'SFMono-Regular', 'monospace']
+        },
+        maxWidth: { shell: '76rem', prose: '38rem' }
+      }
+    }
+  }
+</script>
+<style>
+  html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+  body { font-feature-settings: "kern" 1, "liga" 1; }
+
+  .h-display { font-family:'Archivo','Helvetica Neue',Arial,sans-serif; font-weight:600; letter-spacing:-0.028em; line-height:1.04; }
+  .h-section { font-family:'Archivo','Helvetica Neue',Arial,sans-serif; font-weight:600; letter-spacing:-0.022em; line-height:1.12; }
+
+  .eyebrow {
+    font-family:'IBM Plex Mono',ui-monospace,monospace;
+    font-size:0.6875rem; font-weight:400; letter-spacing:0.16em; text-transform:uppercase;
+  }
+
+  .lede { font-size:1.0625rem; line-height:1.65; }
+  @media (min-width:768px){ .lede { font-size:1.1875rem; } }
+
+  .hero-title { font-size: clamp(2.4rem, 6.2vw, 4.4rem); }
+  .sec-title  { font-size: clamp(1.75rem, 3.4vw, 2.6rem); }
+  .price      { font-size: clamp(2.6rem, 5.6vw, 3.6rem); }
+
+  .num {
+    font-family:'IBM Plex Mono',ui-monospace,monospace;
+    font-size:0.6875rem; letter-spacing:0.14em;
+  }
+
+  a, button { transition: background-color 180ms ease, color 180ms ease, border-color 180ms ease; }
+  a:focus-visible, button:focus-visible { outline:2px solid #1C2B3A; outline-offset:3px; border-radius:2px; }
+
+  .skip:not(:focus){ position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap; }
+  @media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto;} a,button{transition:none;} }
+</style>
+</head>
+
+<body class="bg-paper font-sans text-ink antialiased">
+<a href="#main" class="skip absolute left-4 top-4 z-20 bg-ink px-4 py-2 text-sm text-white">Skip to content</a>
+
+<!-- 1 — NAVIGATION -->
+<header class="sticky top-0 z-10 border-b border-line bg-paper">
+  <nav class="mx-auto flex max-w-shell items-center justify-between px-6 py-4 md:px-10">
+    <a href="#main" class="flex items-center gap-2.5">
+      <span class="block h-3.5 w-3.5 rounded-sm bg-accent" aria-hidden="true"></span>
+      <span class="h-section text-lg tracking-tight">Onsite</span>
+    </a>
+    <div class="flex items-center gap-6 md:gap-8">
+      <a href="#pricing" class="text-sm font-semibold text-ink-mid hover:text-ink">Pricing</a>
+      <a href="#pricing" class="rounded-md bg-accent px-4 py-2.5 text-sm font-semibold text-white hover:bg-accent-hi">Get Started</a>
+    </div>
+  </nav>
+</header>
+
+<main id="main">
+
+  <!-- 2 — HERO -->
+  <section class="border-b border-line">
+    <div class="mx-auto max-w-shell px-6 pb-16 pt-16 md:px-10 md:pb-24 md:pt-28">
+      <p class="eyebrow text-ink-soft">Websites for local business</p>
+
+      <h1 class="h-display hero-title mt-6 max-w-4xl text-ink">
+        Your business deserves a website.<br class="hidden md:block">
+        Not a second job.
+      </h1>
+
+      <p class="lede mt-7 max-w-prose text-ink-mid">
+        We build your website, put it online, manage the domain and keep the whole thing
+        running. You tell us about your business once. We handle it from there, every month.
+      </p>
+
+      <div class="mt-10 flex flex-col items-start gap-4 sm:flex-row sm:items-center">
+        <a href="#pricing" class="rounded-md bg-accent px-6 py-3.5 text-base font-semibold text-white hover:bg-accent-hi">
+          Get My Website — €35/month
+        </a>
+        <p class="text-sm text-ink-soft sm:max-w-xs">
+          Professional website. Hosting. Domain. Everything managed for you.
+        </p>
+      </div>
+
+      <!-- Trust anchor -->
+      <dl class="mt-14 grid grid-cols-1 gap-px overflow-hidden rounded-lg border border-line bg-line sm:grid-cols-3">
+        <div class="bg-surface px-6 py-6">
+          <dt class="h-section text-base text-ink">Custom-built, not a template</dt>
+          <dd class="mt-2 text-sm leading-relaxed text-ink-mid">Designed around what your business actually does.</dd>
+        </div>
+        <div class="bg-surface px-6 py-6">
+          <dt class="h-section text-base text-ink">You never touch hosting</dt>
+          <dd class="mt-2 text-sm leading-relaxed text-ink-mid">No servers, no renewals, no control panels, no bills from anyone else.</dd>
+        </div>
+        <div class="bg-surface px-6 py-6">
+          <dt class="h-section text-base text-ink">One monthly price</dt>
+          <dd class="mt-2 text-sm leading-relaxed text-ink-mid">€35 / month covers the site and everything that keeps it online.</dd>
+        </div>
+      </dl>
+    </div>
+  </section>
+
+  <!-- 3 — PROBLEM / SOLUTION -->
+  <section class="border-b border-line">
+    <div class="mx-auto max-w-shell px-6 py-16 md:px-10 md:py-24">
+      <p class="eyebrow text-ink-soft">The two usual options</p>
+      <h2 class="h-section sec-title mt-5 max-w-3xl text-ink">
+        Both of them cost you the thing you have least of: time.
+      </h2>
+
+      <div class="mt-12 grid grid-cols-1 gap-px overflow-hidden rounded-lg border border-line bg-line md:grid-cols-3">
+
+        <div class="bg-surface px-7 py-8">
+          <p class="num text-ink-soft">DIY BUILDERS</p>
+          <h3 class="h-section mt-4 text-xl text-ink">You become the web person</h3>
+          <ul class="mt-5 space-y-3 text-sm leading-relaxed text-ink-mid">
+            <li>Evenings lost to drag-and-drop editors.</li>
+            <li>Hosting, domain and SSL billed separately, renewed separately, forgotten separately.</li>
+            <li>It looks like everyone else's, because it is everyone else's template.</li>
+            <li>When something breaks, you are the support team.</li>
+          </ul>
+        </div>
+
+        <div class="bg-surface px-7 py-8">
+          <p class="num text-ink-soft">TRADITIONAL AGENCIES</p>
+          <h3 class="h-section mt-4 text-xl text-ink">A large bill, then silence</h3>
+          <ul class="mt-5 space-y-3 text-sm leading-relaxed text-ink-mid">
+            <li>A heavy upfront project fee before anything exists.</li>
+            <li>Hosting and domain pushed back onto you at handover.</li>
+            <li>Small changes turn into quoted work.</li>
+            <li>A year later the site is stale and nobody owns it.</li>
+          </ul>
+        </div>
+
+        <div class="bg-accent px-7 py-8 text-white">
+          <p class="num text-white/70">ONSITE</p>
+          <h3 class="h-section mt-4 text-xl">Zero-touch, fully managed</h3>
+          <ul class="mt-5 space-y-3 text-sm leading-relaxed text-white/85">
+            <li>We design and build the site for your business.</li>
+            <li>Hosting, domain, SSL and maintenance sit with us, not with you.</li>
+            <li>Need something changed? Tell us. It gets done.</li>
+            <li>One line on your bank statement: €35 / month.</li>
+          </ul>
+        </div>
+
+      </div>
+
+      <p class="mt-10 max-w-prose text-base leading-relaxed text-ink-mid">
+        You are good at your trade. Nothing about having a website should require you to
+        become good at ours.
+      </p>
+    </div>
+  </section>
+
+  <!-- 4 — WHAT'S INCLUDED -->
+  <section class="border-b border-line bg-surface">
+    <div class="mx-auto max-w-shell px-6 py-16 md:px-10 md:py-24">
+      <p class="eyebrow text-ink-soft">What's included</p>
+      <h2 class="h-section sec-title mt-5 max-w-3xl text-ink">
+        Everything below is part of the €35 / month.
+      </h2>
+      <p class="lede mt-6 max-w-prose text-ink-mid">
+        Not an upsell list. Not a starting point. This is what your subscription covers.
+      </p>
+
+      <div class="mt-12 grid grid-cols-1 gap-x-12 border-t border-line md:grid-cols-2">
+
+        <div class="border-b border-line py-7">
+          <h3 class="h-section text-lg text-ink">Professional custom website</h3>
+          <p class="mt-2 max-w-md text-sm leading-relaxed text-ink-mid">Designed and written around your business, your services and your area.</p>
+        </div>
+
+        <div class="border-b border-line py-7">
+          <h3 class="h-section text-lg text-ink">Hosting &amp; domain management</h3>
+          <p class="mt-2 max-w-md text-sm leading-relaxed text-ink-mid">We host the site and manage the web address. You never buy or renew either one.</p>
+        </div>
+
+        <div class="border-b border-line py-7">
+          <h3 class="h-section text-lg text-ink">SSL / HTTPS security</h3>
+          <p class="mt-2 max-w-md text-sm leading-relaxed text-ink-mid">An encrypted connection and the padlock customers look for before they get in touch.</p>
+        </div>
+
+        <div class="border-b border-line py-7">
+          <h3 class="h-section text-lg text-ink">Mobile-responsive design</h3>
+          <p class="mt-2 max-w-md text-sm leading-relaxed text-ink-mid">Built to read properly on a phone, where most people will find you.</p>
+        </div>
+
+        <div class="border-b border-line py-7">
+          <h3 class="h-section text-lg text-ink">Contact form &amp; business information</h3>
+          <p class="mt-2 max-w-md text-sm leading-relaxed text-ink-mid">Enquiries land in your inbox. Phone, email and address stay in plain sight.</p>
+        </div>
+
+        <div class="border-b border-line py-7">
+          <h3 class="h-section text-lg text-ink">Google Maps &amp; business location</h3>
+          <p class="mt-2 max-w-md text-sm leading-relaxed text-ink-mid">Customers see exactly where you are and get directions in one tap.</p>
+        </div>
+
+        <div class="border-b border-line py-7">
+          <h3 class="h-section text-lg text-ink">Appointment &amp; booking functionality</h3>
+          <p class="mt-2 max-w-md text-sm leading-relaxed text-ink-mid">Let people book you without an exchange of missed calls.</p>
+        </div>
+
+        <div class="border-b border-line py-7">
+          <h3 class="h-section text-lg text-ink">Opening hours &amp; services section</h3>
+          <p class="mt-2 max-w-md text-sm leading-relaxed text-ink-mid">Your hours, and the services or products you offer, laid out clearly.</p>
+        </div>
+
+        <div class="border-b border-line py-7">
+          <h3 class="h-section text-lg text-ink">Social media links &amp; basic SEO</h3>
+          <p class="mt-2 max-w-md text-sm leading-relaxed text-ink-mid">Connected to your profiles and structured so search engines can read it.</p>
+        </div>
+
+        <div class="border-b border-line py-7">
+          <h3 class="h-section text-lg text-ink">Technical maintenance &amp; updates</h3>
+          <p class="mt-2 max-w-md text-sm leading-relaxed text-ink-mid">Upkeep, fixes and changes handled by us whenever they are needed.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- 5 — HOW IT WORKS -->
+  <section class="border-b border-line">
+    <div class="mx-auto max-w-shell px-6 py-16 md:px-10 md:py-24">
+      <p class="eyebrow text-ink-soft">How it works</p>
+      <h2 class="h-section sec-title mt-5 max-w-3xl text-ink">
+        Three steps. Only the first one involves you.
+      </h2>
+
+      <ol class="mt-12 grid grid-cols-1 gap-px overflow-hidden rounded-lg border border-line bg-line md:grid-cols-3">
+
+        <li class="bg-surface px-7 py-8">
+          <p class="num text-ink-soft">STEP 01</p>
+          <h3 class="h-section mt-4 text-xl text-ink">Tell us about your business</h3>
+          <p class="mt-3 text-sm leading-relaxed text-ink-mid">
+            What you do, where you are, your hours, your services and how customers should
+            reach you. One conversation is enough.
+          </p>
+        </li>
+
+        <li class="bg-surface px-7 py-8">
+          <p class="num text-ink-soft">STEP 02</p>
+          <h3 class="h-section mt-4 text-xl text-ink">We build it</h3>
+          <p class="mt-3 text-sm leading-relaxed text-ink-mid">
+            Design, copy, booking, maps, contact form, security, hosting and the domain.
+            You review it and tell us what to adjust.
+          </p>
+        </li>
+
+        <li class="bg-surface px-7 py-8">
+          <p class="num text-ink-soft">STEP 03</p>
+          <h3 class="h-section mt-4 text-xl text-ink">You're live</h3>
+          <p class="mt-3 text-sm leading-relaxed text-ink-mid">
+            Your website goes online and stays online. We keep it maintained and updated
+            while your subscription is active.
+          </p>
+        </li>
+
+      </ol>
+    </div>
+  </section>
+
+  <!-- 6 — PRICING -->
+  <section id="pricing" class="scroll-mt-20 border-b border-line bg-surface">
+    <div class="mx-auto max-w-shell px-6 py-16 md:px-10 md:py-24">
+      <p class="eyebrow text-ink-soft">Pricing</p>
+      <h2 class="h-section sec-title mt-5 max-w-3xl text-ink">
+        One price. Everything in it.
+      </h2>
+
+      <div class="mt-12 overflow-hidden rounded-lg border border-line-firm">
+        <div class="grid grid-cols-1 md:grid-cols-5">
+
+          <!-- Price -->
+          <div class="border-b border-line-firm bg-paper px-7 py-10 md:col-span-2 md:border-b-0 md:border-r md:px-10 md:py-12">
+            <p class="h-display price text-ink">€35 / month</p>
+            <p class="mt-5 max-w-xs text-base leading-relaxed text-ink-mid">
+              Professional website. Hosting. Domain. Everything managed for you.
+            </p>
+
+            <!-- TODO: point this href at your signup / checkout URL -->
+            <a href="#" class="mt-9 block rounded-md bg-accent px-6 py-4 text-center text-base font-semibold text-white hover:bg-accent-hi">
+              Get My Website — €35/month
+            </a>
+
+            <p class="mt-4 max-w-xs text-sm leading-relaxed text-ink-soft">
+              “No technical setup. We handle your website, hosting and domain while your
+              subscription is active.”
+            </p>
+          </div>
+
+          <!-- Contents -->
+          <div class="px-7 py-10 md:col-span-3 md:px-10 md:py-12">
+            <p class="num text-ink-soft">EVERY MONTH, INCLUDED</p>
+            <ul class="mt-6 grid grid-cols-1 gap-x-10 gap-y-3 sm:grid-cols-2">
+              <li class="flex gap-3 text-sm text-ink-mid"><span class="text-accent" aria-hidden="true">→</span>Professional custom website</li>
+              <li class="flex gap-3 text-sm text-ink-mid"><span class="text-accent" aria-hidden="true">→</span>Website hosting</li>
+              <li class="flex gap-3 text-sm text-ink-mid"><span class="text-accent" aria-hidden="true">→</span>Domain management</li>
+              <li class="flex gap-3 text-sm text-ink-mid"><span class="text-accent" aria-hidden="true">→</span>SSL / HTTPS</li>
+              <li class="flex gap-3 text-sm text-ink-mid"><span class="text-accent" aria-hidden="true">→</span>Mobile-responsive design</li>
+              <li class="flex gap-3 text-sm text-ink-mid"><span class="text-accent" aria-hidden="true">→</span>Contact form &amp; business information</li>
+              <li class="flex gap-3 text-sm text-ink-mid"><span class="text-accent" aria-hidden="true">→</span>Google Maps &amp; business location</li>
+              <li class="flex gap-3 text-sm text-ink-mid"><span class="text-accent" aria-hidden="true">→</span>Appointment &amp; booking</li>
+              <li class="flex gap-3 text-sm text-ink-mid"><span class="text-accent" aria-hidden="true">→</span>Opening hours &amp; services</li>
+              <li class="flex gap-3 text-sm text-ink-mid"><span class="text-accent" aria-hidden="true">→</span>Social media links</li>
+              <li class="flex gap-3 text-sm text-ink-mid"><span class="text-accent" aria-hidden="true">→</span>Basic SEO</li>
+              <li class="flex gap-3 text-sm text-ink-mid"><span class="text-accent" aria-hidden="true">→</span>Technical maintenance &amp; updates</li>
+            </ul>
+
+            <p class="mt-8 border-t border-line pt-6 text-sm leading-relaxed text-ink-mid">
+              There is nothing to add on and nothing to buy elsewhere. While your
+              subscription is active, your site stays online, hosted and managed by us.
+            </p>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7 — TRANSPARENT POLICY / FAQ -->
+  <section class="border-b border-line">
+    <div class="mx-auto max-w-shell px-6 py-16 md:px-10 md:py-24">
+      <p class="eyebrow text-ink-soft">Straight answers</p>
+      <h2 class="h-section sec-title mt-5 max-w-3xl text-ink">
+        Hosting, domains and cancelling — in plain language.
+      </h2>
+
+      <div class="mt-12 grid grid-cols-1 gap-x-14 border-t border-line md:grid-cols-2">
+
+        <div class="border-b border-line py-8">
+          <h3 class="h-section text-lg text-ink">What exactly do I pay?</h3>
+          <p class="mt-3 max-w-md text-sm leading-relaxed text-ink-mid">
+            €35 / month, for as long as you want the website. That is the whole price —
+            nothing before it and nothing beside it.
+          </p>
+        </div>
+
+        <div class="border-b border-line py-8">
+          <h3 class="h-section text-lg text-ink">Do I have to buy hosting or a domain?</h3>
+          <p class="mt-3 max-w-md text-sm leading-relaxed text-ink-mid">
+            No. Both are included and managed by us. You never open a hosting account, you
+            never log into a domain panel, and you never get a separate bill for either.
+          </p>
+        </div>
+
+        <div class="border-b border-line py-8">
+          <h3 class="h-section text-lg text-ink">What happens if I cancel?</h3>
+          <p class="mt-3 max-w-md text-sm leading-relaxed text-ink-mid">
+            The honest answer: hosting and domain management stop, and your website may be
+            taken offline. The subscription is what keeps it running.
+          </p>
+        </div>
+
+        <div class="border-b border-line py-8">
+          <h3 class="h-section text-lg text-ink">Is there a contract or a minimum term?</h3>
+          <p class="mt-3 max-w-md text-sm leading-relaxed text-ink-mid">
+            No minimum term. It is a monthly subscription: it continues while you pay for
+            it, and it ends when you stop.
+          </p>
+        </div>
+
+        <div class="border-b border-line py-8">
+          <h3 class="h-section text-lg text-ink">Can I get changes made later?</h3>
+          <p class="mt-3 max-w-md text-sm leading-relaxed text-ink-mid">
+            Yes. Technical maintenance and updates are part of the subscription. New hours,
+            a new service, a new photo — send it over and we handle it.
+          </p>
+        </div>
+
+        <div class="border-b border-line py-8">
+          <h3 class="h-section text-lg text-ink">How technical do I need to be?</h3>
+          <p class="mt-3 max-w-md text-sm leading-relaxed text-ink-mid">
+            Not at all. No technical setup. We handle your website, hosting and domain
+            while your subscription is active.
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- 8 — FINAL CTA -->
+  <section class="bg-accent text-white">
+    <div class="mx-auto max-w-shell px-6 py-16 md:px-10 md:py-24">
+      <h2 class="h-display sec-title max-w-3xl">
+        Let's get your business online.
+      </h2>
+      <p class="lede mt-6 max-w-prose text-white/80">
+        Tell us what you do. We build the website, host it, manage the domain and keep it
+        running — for €35 / month.
+      </p>
+
+      <div class="mt-10 flex flex-col items-start gap-4 sm:flex-row sm:items-center">
+        <!-- TODO: point this href at your signup / checkout URL -->
+        <a href="#" class="rounded-md bg-white px-6 py-3.5 text-base font-semibold text-accent hover:bg-accent-tint">
+          Get My Website — €35/month
+        </a>
+        <p class="text-sm text-white/70 sm:max-w-sm">
+          Professional website. Hosting. Domain. Everything managed for you.
+        </p>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="border-t border-line bg-paper">
+  <div class="mx-auto flex max-w-shell flex-col gap-4 px-6 py-10 md:flex-row md:items-center md:justify-between md:px-10">
+    <div class="flex items-center gap-2.5">
+      <span class="block h-3 w-3 rounded-sm bg-accent" aria-hidden="true"></span>
+      <span class="h-section text-base text-ink">Onsite</span>
+    </div>
+    <p class="text-sm text-ink-soft">
+      Websites built, hosted and managed for local business.
+    </p>
+    <a href="#pricing" class="text-sm font-semibold text-ink-mid hover:text-ink">Pricing</a>
+  </div>
+</footer>
+
+</body>
+</html>
