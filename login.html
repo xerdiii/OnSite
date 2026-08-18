@@ -104,7 +104,15 @@
 <script>
 (function () {
   var params = new URLSearchParams(location.search);
-  var next = params.get('next') || 'dashboard.html';
+
+  // Only ever redirect to a local page. Without this, ?next=https://example.com
+  // would turn the login into an open redirect — a classic phishing lever.
+  function safeNext(value) {
+    if (!value) return 'dashboard.html';
+    return /^[A-Za-z0-9_-]+\.html(#[A-Za-z0-9/_-]*)?$/.test(value) ? value : 'dashboard.html';
+  }
+
+  var next = safeNext(params.get('next'));
   var role = 'customer';
   var code = null;
 
