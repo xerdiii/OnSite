@@ -1,0 +1,172 @@
+/* ───────────────────────────────────────────────────────────────
+   Onsite — landing page artwork
+   Ribbon structures behind the hero and the closing CTA, plus the
+   small floating product cards. Transform/opacity only; the layers
+   are absolute inside their own section so nothing else is touched.
+   ─────────────────────────────────────────────────────────────── */
+
+[data-bg] { position: relative; isolation: isolate; }
+
+.lb {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
+}
+[data-bg] > div:not(.lb):not(.lb-cards) { position: relative; z-index: 2; }
+
+.lb-stage {
+  position: absolute;
+  top: -18%; left: -14%;
+  width: 128%; height: 136%;
+  filter: blur(1.2px);
+}
+
+.lb-spin, .lb-glow, .lb-cluster {
+  transform-box: fill-box;
+  transform-origin: center;
+  will-change: transform;
+}
+.lb-glow { filter: blur(52px); }
+
+/* Left turns clockwise, right turns against it */
+.lb-cluster--l { animation: lb-drift-l 76s ease-in-out infinite alternate; }
+.lb-cluster--r { animation: lb-drift-r 92s ease-in-out infinite alternate; }
+.lb-glow--l    { animation: lb-breathe 58s ease-in-out infinite alternate; }
+.lb-glow--r    { animation: lb-breathe 67s ease-in-out infinite alternate reverse; }
+
+.lb-spin--l1 { animation: lb-cw  104s linear infinite; }
+.lb-spin--l2 { animation: lb-ccw 138s linear infinite; }
+.lb-spin--l3 { animation: lb-cw  172s linear infinite; }
+.lb-spin--l4 { animation: lb-ccw 216s linear infinite; }
+.lb-spin--l5 { animation: lb-cw  268s linear infinite; }
+.lb-spin--l6 { animation: lb-ccw 122s linear infinite; }
+.lb-spin--l7 { animation: lb-cw  158s linear infinite; }
+
+.lb-spin--r1 { animation: lb-ccw 112s linear infinite; }
+.lb-spin--r2 { animation: lb-cw  146s linear infinite; }
+.lb-spin--r3 { animation: lb-ccw 184s linear infinite; }
+.lb-spin--r4 { animation: lb-cw  232s linear infinite; }
+.lb-spin--r5 { animation: lb-ccw 292s linear infinite; }
+.lb-spin--r6 { animation: lb-cw  130s linear infinite; }
+.lb-spin--r7 { animation: lb-ccw 166s linear infinite; }
+
+@keyframes lb-cw  { from { transform: rotate(0deg); }   to { transform: rotate(360deg); } }
+@keyframes lb-ccw { from { transform: rotate(360deg); } to { transform: rotate(0deg); } }
+@keyframes lb-drift-l {
+  from { transform: translate3d(-2%, 1%, 0) scale(1); }
+  to   { transform: translate3d(3%, -2%, 0) scale(1.08); }
+}
+@keyframes lb-drift-r {
+  from { transform: translate3d(2%, -1%, 0) scale(1.06); }
+  to   { transform: translate3d(-3%, 2%, 0) scale(0.98); }
+}
+@keyframes lb-breathe {
+  from { transform: scale(0.94); opacity: 0.86; }
+  to   { transform: scale(1.12); opacity: 1; }
+}
+
+/* Calm middle so the headline and CTA stay the focus */
+.lb--hero::after {
+  content: "";
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(44% 66% at 50% 46%, rgba(247,246,243,0.94) 0%, rgba(247,246,243,0.80) 40%, rgba(247,246,243,0.24) 72%, rgba(247,246,243,0) 100%),
+    linear-gradient(180deg, rgba(247,246,243,0.62) 0%, rgba(247,246,243,0) 24%, rgba(247,246,243,0.10) 76%, rgba(247,246,243,0.86) 100%);
+}
+
+/* Closing CTA sits on the deep accent, so the ribbons read as light */
+.lb--cta { opacity: 0.85; }
+.lb--cta::after {
+  content: "";
+  position: absolute; inset: 0;
+  background: radial-gradient(52% 70% at 50% 50%, rgba(28,43,58,0.62) 0%, rgba(28,43,58,0.30) 46%, rgba(28,43,58,0) 100%);
+}
+
+/* ── Floating product cards ────────────────────────────────── */
+.lb-cards { position: absolute; inset: 0; pointer-events: none; z-index: 1; }
+.lb-card {
+  position: absolute;
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  padding: 0.55rem 0.8rem;
+  border-radius: 0.625rem;
+  border: 1px solid rgba(227,225,220,0.9);
+  background: rgba(255,255,255,0.82);
+  -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px);
+  box-shadow: 0 1px 2px rgba(20,22,26,0.04), 0 14px 30px -20px rgba(11,46,32,0.35);
+  font-size: 0.75rem; font-weight: 600; color: #14161A; white-space: nowrap;
+  will-change: transform;
+}
+.lb-card i {
+  width: 7px; height: 7px; border-radius: 999px; flex: none;
+  background: #1B7A54; box-shadow: 0 0 0 3px rgba(27,122,84,0.14);
+}
+.lb-card i.brown { background: #94743E; box-shadow: 0 0 0 3px rgba(148,116,62,0.14); }
+.lb-card span.mono {
+  font-family: 'IBM Plex Mono', ui-monospace, monospace;
+  font-size: 0.6875rem; letter-spacing: 0.06em; color: #43484F; font-weight: 400;
+}
+
+.lb-card--1 { top: 12%;  left: 3%;   animation: lb-float-a 17s ease-in-out infinite alternate; }
+.lb-card--2 { top: 30%;  right: 4%;  animation: lb-float-b 21s ease-in-out infinite alternate; }
+.lb-card--3 { bottom: 22%; left: 6%; animation: lb-float-b 19s ease-in-out infinite alternate reverse; }
+.lb-card--4 { bottom: 14%; right: 7%; animation: lb-float-a 23s ease-in-out infinite alternate reverse; }
+.lb-card--5 { top: 58%; right: 14%;  animation: lb-float-a 25s ease-in-out infinite alternate; }
+
+@keyframes lb-float-a {
+  from { transform: translate3d(0, 0, 0); }
+  to   { transform: translate3d(6px, -14px, 0); }
+}
+@keyframes lb-float-b {
+  from { transform: translate3d(0, 4px, 0); }
+  to   { transform: translate3d(-8px, -10px, 0); }
+}
+
+/* Hide the cards wherever they would sit near the text column */
+@media (max-width: 1279px) { .lb-card--5 { display: none; } }
+@media (max-width: 1023px) { .lb-card--1, .lb-card--3 { display: none; } }
+@media (max-width: 767px) {
+  .lb-card { font-size: 0.6875rem; padding: 0.45rem 0.65rem; }
+  .lb-card--2 { top: auto; bottom: 6%; right: 3%; }
+  .lb-card--4 { display: none; }
+}
+
+/* ── Section accents ───────────────────────────────────────── */
+.lb-accent {
+  position: absolute; inset: 0; pointer-events: none; z-index: 0; overflow: hidden;
+}
+.lb-accent::before {
+  content: "";
+  position: absolute; right: -12%; top: -40%;
+  width: 60%; aspect-ratio: 1/1;
+  background: radial-gradient(circle, rgba(27,122,84,0.10) 0%, rgba(148,116,62,0.06) 45%, rgba(27,122,84,0) 70%);
+  animation: lb-breathe 74s ease-in-out infinite alternate;
+}
+
+/* ── Mobile: smaller, pushed to the edges ──────────────────── */
+@media (max-width: 767px) {
+  .lb-stage { top: -22%; left: -30%; width: 160%; height: 128%; }
+  .lb-glow { filter: blur(36px); }
+  .lb-cluster--l { animation-name: lb-drift-l-m; }
+  .lb-cluster--r { animation-name: lb-drift-r-m; }
+  .lb--hero::after {
+    background:
+      radial-gradient(66% 46% at 50% 48%, rgba(247,246,243,0.95) 0%, rgba(247,246,243,0.86) 44%, rgba(247,246,243,0.28) 76%, rgba(247,246,243,0) 100%),
+      linear-gradient(180deg, rgba(247,246,243,0.50) 0%, rgba(247,246,243,0) 28%, rgba(247,246,243,0.12) 72%, rgba(247,246,243,0.88) 100%);
+  }
+}
+@keyframes lb-drift-l-m {
+  from { transform: translate3d(-6%, -14%, 0) scale(0.66); }
+  to   { transform: translate3d(-2%, -9%, 0) scale(0.74); }
+}
+@keyframes lb-drift-r-m {
+  from { transform: translate3d(6%, 15%, 0) scale(0.70); }
+  to   { transform: translate3d(2%, 20%, 0) scale(0.62); }
+}
+
+/* ── Motion preferences ────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  .lb-spin, .lb-glow, .lb-cluster, .lb-card, .lb-accent::before { animation: none !important; }
+  .lb-card { backdrop-filter: none; -webkit-backdrop-filter: none; }
+}

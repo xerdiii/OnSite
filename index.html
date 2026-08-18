@@ -108,6 +108,7 @@
   @media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto;} a,button,.pick .box{transition:none;} }
 </style>
 <link rel="stylesheet" href="assets/mobile.css">
+<link rel="stylesheet" href="assets/landing-bg.css">
 </head>
 
 <body class="bg-paper font-sans text-ink antialiased">
@@ -134,7 +135,7 @@
 <main id="main">
 
   <!-- 2 — HERO -->
-  <section class="border-b border-line">
+  <section data-bg="hero" class="border-b border-line">
     <div class="mx-auto max-w-shell px-6 pb-16 pt-16 md:px-10 md:pb-24 md:pt-28">
       <p class="eyebrow text-ink-soft">Websites for local business</p>
       <h1 class="h-display hero-title mt-6 max-w-4xl text-ink">
@@ -463,7 +464,7 @@
   </section>
 
   <!-- 6 — BUSINESS EXTRAS -->
-  <section id="extras" class="border-b border-line">
+  <section id="extras" class="relative border-b border-line"><span class="lb-accent" aria-hidden="true"></span>
     <div class="mx-auto max-w-shell px-6 py-16 md:px-10 md:py-24">
 
       <p class="eyebrow text-ink-soft">Business Extras</p>
@@ -748,7 +749,7 @@
   </section>
 
   <!-- 8 — FINAL CTA -->
-  <section class="bg-accent">
+  <section data-bg="cta" class="bg-accent">
     <div class="mx-auto max-w-shell px-6 py-16 md:px-10 md:py-24">
       <h2 class="h-section max-w-2xl text-3xl text-white md:text-[2.5rem]">Ready when you are.</h2>
       <p class="mt-5 max-w-prose text-base leading-relaxed text-white/80">
@@ -765,6 +766,7 @@
 <div data-site-footer></div>
 
 
+<script src="assets/landing-bg.js"></script>
 <script src="assets/mobile.js"></script>
 </body>
 </html>
