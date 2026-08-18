@@ -102,8 +102,9 @@
       <span class="block h-3.5 w-3.5 rounded-sm bg-accent" aria-hidden="true"></span>
       <span class="h-section text-lg tracking-tight">Onsite</span>
     </a>
-    <div class="flex items-center gap-6 md:gap-8">
+    <div class="flex items-center gap-5 md:gap-8">
       <a href="#pricing" class="text-sm font-semibold text-ink-mid hover:text-ink">Pricing</a>
+      <a href="terms.html" class="hidden text-sm font-semibold text-ink-mid hover:text-ink sm:inline">Terms</a>
       <a href="#pricing" class="rounded-md bg-accent px-4 py-2.5 text-sm font-semibold text-white hover:bg-accent-hi">Get Started</a>
     </div>
   </nav>
@@ -589,21 +590,44 @@
                 </div>
               </div>
 
+              <!-- Payment schedule: deposit today, balance on approval, monthly after launch -->
               <div class="bg-accent px-5 py-5 text-white">
+
                 <div class="flex items-baseline justify-between gap-4">
-                  <span class="font-mono text-xs uppercase tracking-widest text-white/70">First payment</span>
-                  <span class="h-section text-2xl" id="total-first">€0.00</span>
+                  <span class="font-mono text-xs uppercase tracking-widest text-white">Today's payment</span>
+                  <span class="h-section text-2xl" id="total-today">€0.00</span>
                 </div>
-                <p class="mt-2 text-xs leading-relaxed text-white/70" id="first-note">
-                  One-time charges plus your first month of any monthly service.
+                <p class="mt-1.5 text-xs leading-relaxed text-white/70">
+                  50% deposit to start your website.
                 </p>
-                <p class="mt-3 border-t border-white/20 pt-3 text-xs leading-relaxed text-white/70" id="recurring-note">
+
+                <div class="mt-4 flex items-baseline justify-between gap-4 border-t border-white/20 pt-4">
+                  <span class="font-mono text-xs uppercase tracking-widest text-white/70">Remaining</span>
+                  <span class="h-section text-lg" id="total-remaining">€0.00</span>
+                </div>
+                <p class="mt-1.5 text-xs leading-relaxed text-white/70">
+                  Due when your website is completed and approved by you.
+                </p>
+
+                <div class="mt-4 flex items-baseline justify-between gap-4 border-t border-white/20 pt-4">
+                  <span class="font-mono text-xs uppercase tracking-widest text-white/70">Monthly services</span>
+                  <span class="h-section text-lg" id="total-month-later">€0.00 / month</span>
+                </div>
+                <p class="mt-1.5 text-xs leading-relaxed text-white/70" id="recurring-note">
                   Nothing repeats monthly with this selection.
                 </p>
 
+                <label class="mt-5 flex cursor-pointer items-start gap-2.5 border-t border-white/20 pt-4">
+                  <input id="agree-terms" type="checkbox" class="mt-0.5 h-4 w-4 flex-none accent-white">
+                  <span class="text-xs leading-relaxed text-white/80">
+                    I have read and agree to the
+                    <a href="terms.html" class="font-semibold text-white underline underline-offset-2 hover:text-accent-tint">Terms of Service</a>.
+                  </span>
+                </label>
+
                 <button id="checkout" type="button" disabled
-                  class="mt-5 inline-flex w-full items-center justify-center rounded-md bg-white px-6 py-3.5 text-sm font-semibold text-accent hover:bg-accent-tint">
-                  Continue to checkout
+                  class="mt-4 inline-flex w-full items-center justify-center rounded-md bg-white px-6 py-3.5 text-sm font-semibold text-accent hover:bg-accent-tint">
+                  Pay deposit &amp; start project
                 </button>
                 <p id="checkout-hint" class="mt-2.5 text-center text-xs text-white/60">Add a website to your order first.</p>
               </div>
@@ -620,6 +644,49 @@
         </div>
 
       </div>
+
+      <!-- What the deposit starts, and what the 7-day clock depends on -->
+      <div class="mt-14 border-t border-line pt-8">
+        <div class="flex flex-wrap items-baseline gap-x-4 gap-y-1">
+          <p class="eyebrow text-ink-soft">After you pay the deposit</p>
+          <span class="ml-auto font-mono text-xs uppercase tracking-widest text-ink-soft">Delivery in 7 days</span>
+        </div>
+
+        <ol class="mt-6 grid grid-cols-1 gap-px overflow-hidden rounded-lg border border-line bg-line md:grid-cols-3">
+          <li class="bg-paper px-5 py-5">
+            <span class="font-mono text-xs font-semibold tracking-widest text-ink-soft">01</span>
+            <h3 class="h-section mt-3 text-base">You pay the 50% deposit</h3>
+            <p class="mt-2 text-[0.8125rem] leading-snug text-ink-mid">
+              Half of your one-time total, and nothing else. Monthly services are not charged yet.
+            </p>
+          </li>
+          <li class="bg-paper px-5 py-5">
+            <span class="font-mono text-xs font-semibold tracking-widest text-ink-soft">02</span>
+            <h3 class="h-section mt-3 text-base">You send us your content</h3>
+            <p class="mt-2 text-[0.8125rem] leading-snug text-ink-mid">
+              We send you a short form for your logo, photos, business details, services and prices,
+              opening hours, contact details, social links and any text you want on the page.
+            </p>
+            <a href="start.html" class="mt-2.5 inline-block text-[0.8125rem] font-semibold text-accent underline underline-offset-2 hover:text-accent-hi">See what we need &rarr;</a>
+          </li>
+          <li class="bg-paper px-5 py-5">
+            <span class="font-mono text-xs font-semibold tracking-widest text-ink-soft">03</span>
+            <h3 class="h-section mt-3 text-base">We deliver, you approve</h3>
+            <p class="mt-2 text-[0.8125rem] leading-snug text-ink-mid">
+              Your website is delivered within 7 days. The remaining 50% is due once you approve it,
+              and any monthly services start when the site goes live.
+            </p>
+          </li>
+        </ol>
+
+        <p class="mt-5 max-w-prose text-[0.8125rem] leading-relaxed text-ink-soft">
+          <span class="arrow">&rarr;</span> The 7 days start when we have <strong class="font-semibold text-ink">all</strong> the
+          content and information we asked for. If something is still missing, the delivery date moves out by
+          however long it takes to reach us. Full detail is in the
+          <a href="terms.html" class="font-semibold text-ink underline underline-offset-2 hover:text-accent">Terms of Service</a>.
+        </p>
+      </div>
+
     </div>
   </section>
 
@@ -663,6 +730,14 @@
           <dd class="mt-3 max-w-prose text-[0.9375rem] leading-relaxed text-ink-mid">€49.99 is a one-time setup fee for building the menu. €19.99 / month keeps it running and lets it be updated. Both are shown separately in your order so they are never confused.</dd>
         </div>
         <div class="border-b border-line py-8">
+          <dt class="h-section text-base">How much do I actually pay today?</dt>
+          <dd class="mt-3 max-w-prose text-[0.9375rem] leading-relaxed text-ink-mid">Half of your one-time total, as a deposit to start the project. The other half is due once the website is finished and you have approved it. Monthly services are not billed at all until your site is live — the order summary shows all three numbers before you pay.</dd>
+        </div>
+        <div class="border-b border-line py-8">
+          <dt class="h-section text-base">How long does it take?</dt>
+          <dd class="mt-3 max-w-prose text-[0.9375rem] leading-relaxed text-ink-mid">Within 7 days of receiving everything we need from you — logo, photos, business information, services and prices, opening hours, contact details, social links and any text you want used. That is a target we work to, not an unconditional guarantee: if content arrives late, the delivery date moves with it.</dd>
+        </div>
+        <div class="border-b border-line py-8">
           <dt class="h-section text-base">Can I add or stop a monthly service later?</dt>
           <dd class="mt-3 max-w-prose text-[0.9375rem] leading-relaxed text-ink-mid">Yes. Monthly services are separate from the website. You can start with none of them, add one when you need it, and stop it without affecting the website you already paid for.</dd>
         </div>
@@ -692,9 +767,12 @@
         <span class="block h-3 w-3 rounded-sm bg-white" aria-hidden="true"></span>
         <span class="h-section text-base text-white">Onsite</span>
       </a>
-      <p class="font-mono text-xs uppercase tracking-widest text-white/60">
-        Custom €79.99 · Professional €249.99 · Both one-time · Add-ons optional
-      </p>
+      <div class="flex flex-wrap items-center gap-x-6 gap-y-2">
+        <p class="font-mono text-xs uppercase tracking-widest text-white/60">
+          Custom €79.99 · Professional €249.99 · Both one-time
+        </p>
+        <a href="terms.html" class="font-mono text-xs uppercase tracking-widest text-white/60 hover:text-white">Terms of Service</a>
+      </div>
     </div>
   </div>
 </footer>
@@ -729,10 +807,13 @@
   var sumIncl   = document.getElementById('sum-included');
   var totalOnce = document.getElementById('total-once');
   var totalMonth= document.getElementById('total-month');
-  var totalFirst= document.getElementById('total-first');
+  var totalToday= document.getElementById('total-today');
+  var totalRemain = document.getElementById('total-remaining');
+  var totalMonthLater = document.getElementById('total-month-later');
   var itemCount = document.getElementById('item-count');
   var recurNote = document.getElementById('recurring-note');
   var checkoutHint = document.getElementById('checkout-hint');
+  var agreeTerms = document.getElementById('agree-terms');
 
   function euro(cents) { return '€' + (cents / 100).toFixed(2); }
 
@@ -849,22 +930,36 @@
     if (monthLines.length) { monthLines.forEach(function (l) { sumMonth.appendChild(l); }); }
     else { sumMonth.appendChild(emptyLine('No monthly services selected')); }
 
+    // One-time work is split in half: deposit now, balance on approval.
+    // The odd cent goes into the deposit so the two halves always add back up.
+    var deposit   = once > 0 ? Math.ceil(once / 2) : 0;
+    var remaining = once - deposit;
+
     totalOnce.textContent = euro(once);
     totalMonth.textContent = euro(month) + ' / month';
-    totalFirst.textContent = euro(once + month);
+    totalToday.textContent = euro(deposit);
+    totalRemain.textContent = euro(remaining);
+    totalMonthLater.textContent = euro(month) + ' / month';
 
     recurNote.textContent = month > 0
-      ? 'Then ' + euro(month) + ' every month, until you stop those services.'
+      ? 'Starts when your website goes live, then ' + euro(month) + ' every month until you stop those services.'
       : 'Nothing repeats monthly with this selection.';
 
     var count = (websiteAdded ? 1 : 0) +
       addonInputs.filter(function (i) { return i.checked && websiteAdded; }).length;
     itemCount.textContent = count === 0 ? 'Empty' : count + (count === 1 ? ' item' : ' items');
 
-    checkoutBtn.disabled = !websiteAdded;
-    checkoutHint.textContent = websiteAdded
-      ? 'One-time charges are billed today.'
-      : 'Add a website to your order first.';
+    checkoutBtn.textContent = deposit > 0
+      ? 'Pay ' + euro(deposit) + ' deposit & start project'
+      : 'Pay deposit & start project';
+
+    var agreed = agreeTerms.checked;
+    checkoutBtn.disabled = !websiteAdded || !agreed;
+    checkoutHint.textContent = !websiteAdded
+      ? 'Add a website to your order first.'
+      : (!agreed
+          ? 'Please agree to the Terms of Service to continue.'
+          : 'Only the deposit is charged today. Nothing monthly starts until you are live.');
   }
 
   function renderIncluded() {
@@ -941,6 +1036,8 @@
   });
 
   addonInputs.forEach(function (i) { i.addEventListener('change', render); });
+
+  agreeTerms.addEventListener('change', render);
 
   addBtn.addEventListener('click', function () {
     if (websiteAdded) { resetOrder(); }

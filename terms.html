@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Terms of Service — Onsite</title>
+<meta name="description" content="The terms that apply to Onsite websites, add-ons and monthly services: scope, payment, delivery, billing, cancellation, domains, ownership and liability.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;700&family=Inter:wght@400;600&family=IBM+Plex+Mono:wght@400;600&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          paper:      '#F7F6F3',
+          surface:    '#FFFFFF',
+          ink:        '#14161A',
+          'ink-mid':  '#43484F',
+          'ink-soft': '#6E747C',
+          line:       '#E3E1DC',
+          'line-firm':'#CFCCC5',
+          accent:     '#1C2B3A',
+          'accent-hi':'#27394B',
+          'accent-tint': '#EEF0F2'
+        },
+        fontFamily: {
+          display: ['Archivo', 'Helvetica Neue', 'Arial', 'sans-serif'],
+          sans:    ['Inter', 'Helvetica Neue', 'Arial', 'sans-serif'],
+          mono:    ['IBM Plex Mono', 'ui-monospace', 'SFMono-Regular', 'monospace']
+        },
+        maxWidth: { shell: '76rem', prose: '38rem' }
+      }
+    }
+  }
+</script>
+<style>
+  html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+  body { font-feature-settings: "kern" 1, "liga" 1; }
+
+  .h-display { font-family:'Archivo','Helvetica Neue',Arial,sans-serif; font-weight:600; letter-spacing:-0.028em; line-height:1.04; }
+  .h-section { font-family:'Archivo','Helvetica Neue',Arial,sans-serif; font-weight:600; letter-spacing:-0.022em; line-height:1.12; }
+  .eyebrow {
+    font-family:'IBM Plex Mono',ui-monospace,monospace;
+    font-size:0.6875rem; font-weight:400; letter-spacing:0.16em; text-transform:uppercase;
+  }
+  .doc-title { font-size: clamp(2rem, 4.6vw, 3.1rem); }
+
+  .tag {
+    font-family:'IBM Plex Mono',ui-monospace,monospace;
+    font-size:0.625rem; letter-spacing:0.14em; text-transform:uppercase;
+    padding:0.25rem 0.5rem; border-radius:0.25rem; white-space:nowrap;
+  }
+  .tag-once  { background:#EEF0F2; color:#1C2B3A; border:1px solid #CFCCC5; }
+  .tag-month { background:#1C2B3A; color:#FFFFFF; }
+
+  .arrow { color:#1C2B3A; font-weight:600; }
+
+  /* Clause body copy — one measure, one rhythm, all the way down */
+  .clause p { font-size:0.9375rem; line-height:1.7; color:#43484F; max-width:38rem; }
+  .clause p + p { margin-top:0.9rem; }
+  .clause ul { margin-top:0.9rem; max-width:38rem; }
+  .clause li { font-size:0.9375rem; line-height:1.7; color:#43484F; padding-left:1.1rem; position:relative; }
+  .clause li + li { margin-top:0.35rem; }
+  .clause li::before { content:"→"; position:absolute; left:0; color:#1C2B3A; font-weight:600; }
+  .clause strong { color:#14161A; font-weight:600; }
+
+  a, button { transition: background-color 180ms ease, color 180ms ease, border-color 180ms ease; }
+  a:focus-visible { outline:2px solid #1C2B3A; outline-offset:3px; border-radius:2px; }
+  .skip:not(:focus){ position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap; }
+  @media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto;} a{transition:none;} }
+</style>
+</head>
+
+<!--
+  ────────────────────────────────────────────────────────────────────────────
+  DEVELOPMENT NOTE — NOT LEGAL ADVICE
+  These Terms are written to be clear and commercially sensible, but they have
+  not been reviewed by a lawyer. Have a qualified lawyer in the operating
+  jurisdiction review them before relying on them as the binding agreement.
+  Consumer protection, distance-selling and withdrawal rights, subscription and
+  auto-renewal rules, cancellation and refund obligations, domain registration
+  and transfer rules, privacy/GDPR duties, and digital-service regulations all
+  vary by country and can override what is written here.
+  Items that most need review: clause 4 (deposit), clause 8 (refunds and the
+  non-refundable deposit), clause 10 (ownership and offboarding), clause 13
+  (uptime target) and clause 14 (limitation of liability).
+  ────────────────────────────────────────────────────────────────────────────
+-->
+
+<body class="bg-paper font-sans text-ink antialiased">
+<a href="#main" class="skip absolute left-4 top-4 z-20 bg-ink px-4 py-2 text-sm text-white">Skip to content</a>
+
+<!-- NAVIGATION -->
+<header class="sticky top-0 z-10 border-b border-line bg-paper">
+  <nav class="mx-auto flex max-w-shell items-center justify-between px-6 py-4 md:px-10">
+    <a href="index.html" class="flex items-center gap-2.5">
+      <span class="block h-3.5 w-3.5 rounded-sm bg-accent" aria-hidden="true"></span>
+      <span class="h-section text-lg tracking-tight">Onsite</span>
+    </a>
+    <div class="flex items-center gap-5 md:gap-8">
+      <a href="index.html#pricing" class="text-sm font-semibold text-ink-mid hover:text-ink">Pricing</a>
+      <a href="index.html#pricing" class="rounded-md bg-accent px-4 py-2.5 text-sm font-semibold text-white hover:bg-accent-hi">Get Started</a>
+    </div>
+  </nav>
+</header>
+
+<main id="main">
+
+  <!-- HEADER -->
+  <section class="border-b border-line">
+    <div class="mx-auto max-w-shell px-6 pb-12 pt-14 md:px-10 md:pb-16 md:pt-20">
+      <p class="eyebrow text-ink-soft">Terms of Service</p>
+      <h1 class="h-display doc-title mt-5 max-w-3xl text-ink">
+        What we agree to, in plain language.
+      </h1>
+      <p class="mt-6 max-w-prose text-[0.9375rem] leading-relaxed text-ink-mid">
+        These terms apply to every website, add-on and monthly service ordered from Onsite.
+        They set out what we build, what you pay and when, how long delivery takes, and what
+        happens if either of us wants to stop.
+      </p>
+      <p class="mt-6 font-mono text-xs uppercase tracking-widest text-ink-soft">
+        Last updated 18 August 2026
+      </p>
+    </div>
+  </section>
+
+  <!-- CONTENTS -->
+  <section class="border-b border-line bg-surface">
+    <div class="mx-auto max-w-shell px-6 py-10 md:px-10">
+      <p class="eyebrow text-ink-soft">Contents</p>
+      <ol class="mt-5 grid grid-cols-1 gap-x-12 gap-y-2 sm:grid-cols-2 lg:grid-cols-3">
+        <li><a href="#s1"  class="text-sm text-ink-mid hover:text-ink">01 — Overview &amp; service scope</a></li>
+        <li><a href="#s2"  class="text-sm text-ink-mid hover:text-ink">02 — Website features &amp; scope</a></li>
+        <li><a href="#s3"  class="text-sm text-ink-mid hover:text-ink">03 — Website maintenance</a></li>
+        <li><a href="#s4"  class="text-sm text-ink-mid hover:text-ink">04 — Payment</a></li>
+        <li><a href="#s5"  class="text-sm text-ink-mid hover:text-ink">05 — Delivery</a></li>
+        <li><a href="#s6"  class="text-sm text-ink-mid hover:text-ink">06 — Monthly billing</a></li>
+        <li><a href="#s7"  class="text-sm text-ink-mid hover:text-ink">07 — Failed payments</a></li>
+        <li><a href="#s8"  class="text-sm text-ink-mid hover:text-ink">08 — Cancellation &amp; refunds</a></li>
+        <li><a href="#s9"  class="text-sm text-ink-mid hover:text-ink">09 — Domain ownership</a></li>
+        <li><a href="#s10" class="text-sm text-ink-mid hover:text-ink">10 — Website code &amp; offboarding</a></li>
+        <li><a href="#s11" class="text-sm text-ink-mid hover:text-ink">11 — Customer responsibilities</a></li>
+        <li><a href="#s12" class="text-sm text-ink-mid hover:text-ink">12 — Intellectual property</a></li>
+        <li><a href="#s13" class="text-sm text-ink-mid hover:text-ink">13 — Hosting &amp; uptime</a></li>
+        <li><a href="#s14" class="text-sm text-ink-mid hover:text-ink">14 — Liability</a></li>
+        <li><a href="#s15" class="text-sm text-ink-mid hover:text-ink">15 — Changes to these terms</a></li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- CLAUSES -->
+  <section>
+    <div class="mx-auto max-w-shell px-6 py-14 md:px-10 md:py-20">
+
+      <article id="s1" class="clause scroll-mt-24 border-t-2 border-accent pt-6">
+        <div class="flex items-baseline gap-4">
+          <span class="font-mono text-xs font-semibold tracking-widest text-ink-soft">01</span>
+          <h2 class="h-section text-xl">Overview &amp; service scope</h2>
+        </div>
+        <div class="mt-5">
+          <p>
+            Onsite (“we”, “the Provider”) agrees to design, host and maintain your business website
+            according to the products and services you select at checkout. You (“you”, “the customer”)
+            agree to the terms below when you place that order.
+          </p>
+          <p>
+            Depending on what you select, your website may be a standard landing page or a custom
+            multi-section business website. Hosting, SSL/HTTPS and the technical maintenance included
+            in your selection are provided for as long as the relevant part of your order is active
+            and paid for.
+          </p>
+        </div>
+      </article>
+
+      <article id="s2" class="clause mt-12 scroll-mt-24 border-t-2 border-accent pt-6">
+        <div class="flex items-baseline gap-4">
+          <span class="font-mono text-xs font-semibold tracking-widest text-ink-soft">02</span>
+          <h2 class="h-section text-xl">Website features &amp; scope</h2>
+        </div>
+        <div class="mt-5">
+          <p>
+            You choose your website features at checkout, and what you choose there is what we build.
+          </p>
+          <ul>
+            <li>The <strong>Custom Website (€79.99, one-time)</strong> requires a minimum of three selected features. Selecting more than three does not change the price.</li>
+            <li>The <strong>Professional Website (€249.99, one-time)</strong> includes all ten website features as standard, with nothing to select.</li>
+            <li>Any other feature or service is included <strong>only</strong> if it was specifically selected and paid for in your order.</li>
+          </ul>
+          <p>
+            Work outside your selected package is not included. Large redesigns, custom software,
+            advanced functionality, e-commerce systems and similar work require a separate quote and a
+            separate agreement before we start. We do not offer unlimited custom work at these prices.
+          </p>
+        </div>
+      </article>
+
+      <article id="s3" class="clause mt-12 scroll-mt-24 border-t-2 border-accent pt-6">
+        <div class="flex items-baseline gap-4">
+          <span class="font-mono text-xs font-semibold tracking-widest text-ink-soft">03</span>
+          <h2 class="h-section text-xl">Website maintenance</h2>
+        </div>
+        <div class="mt-5">
+          <p>
+            If you subscribe to <strong>Website Maintenance (€19.99 / month)</strong>, it covers up to
+            <strong>15 reasonable website changes per month</strong>. A reasonable change is a small
+            content update, for example:
+          </p>
+          <ul>
+            <li>Changing text on the page</li>
+            <li>Replacing photos</li>
+            <li>Updating opening hours</li>
+            <li>Updating prices</li>
+            <li>Updating business information</li>
+            <li>Other small content changes of a similar size</li>
+          </ul>
+          <p>
+            Unused changes do not roll over into the next month. Major redesigns, new functionality,
+            new pages beyond the agreed scope, custom development and large structural changes are not
+            included and may require an additional quote.
+          </p>
+        </div>
+      </article>
+
+      <article id="s4" class="clause mt-12 scroll-mt-24 border-t-2 border-accent pt-6">
+        <div class="flex items-baseline gap-4">
+          <span class="font-mono text-xs font-semibold tracking-widest text-ink-soft">04</span>
+          <h2 class="h-section text-xl">Payment</h2>
+        </div>
+        <div class="mt-5">
+          <p>
+            One-time project charges are split in half.
+          </p>
+          <ul>
+            <li><strong>50% deposit</strong> — paid before development begins. This is what starts the project.</li>
+            <li><strong>Remaining 50%</strong> — becomes due once the website is completed and presented to you for approval.</li>
+          </ul>
+          <p>
+            Monthly subscriptions are separate from that. They begin when your website goes live —
+            you are not charged for a monthly service while the site is still being built.
+          </p>
+          <p>
+            Every one-time and recurring charge is shown in the order summary before you pay, split
+            into what is due today, what is due on approval, and what recurs monthly after launch.
+          </p>
+        </div>
+      </article>
+
+      <article id="s5" class="clause mt-12 scroll-mt-24 border-t-2 border-accent pt-6">
+        <div class="flex items-baseline gap-4">
+          <span class="font-mono text-xs font-semibold tracking-widest text-ink-soft">05</span>
+          <h2 class="h-section text-xl">Delivery</h2>
+        </div>
+        <div class="mt-5">
+          <p>
+            Our standard target is to deliver your website <strong>within 7 days</strong> of receiving
+            all the content and information we need from you. This is a target we work to, not an
+            unconditional guarantee.
+          </p>
+          <p>
+            The 7 days start only once everything has reached us. If content, approvals, feedback,
+            login details, images or business information arrive late or incomplete, the delivery date
+            moves out accordingly. We will tell you what is still outstanding.
+          </p>
+        </div>
+      </article>
+
+      <article id="s6" class="clause mt-12 scroll-mt-24 border-t-2 border-accent pt-6">
+        <div class="flex items-baseline gap-4">
+          <span class="font-mono text-xs font-semibold tracking-widest text-ink-soft">06</span>
+          <h2 class="h-section text-xl">Monthly billing</h2>
+        </div>
+        <div class="mt-5">
+          <p>
+            Monthly services are billed automatically each month according to what you selected. Your
+            monthly amount depends entirely on which services are active:
+          </p>
+          <ul>
+            <li>Online Booking System — €29.99 / month</li>
+            <li>Website Maintenance — €19.99 / month</li>
+            <li>Review Management — €29.99 / month</li>
+            <li>Digital Menu — €19.99 / month, after the one-time €49.99 setup fee</li>
+          </ul>
+          <p>
+            Billing starts when your website goes live and continues each month until you cancel,
+            under the cancellation terms below.
+          </p>
+        </div>
+      </article>
+
+      <article id="s7" class="clause mt-12 scroll-mt-24 border-t-2 border-accent pt-6">
+        <div class="flex items-baseline gap-4">
+          <span class="font-mono text-xs font-semibold tracking-widest text-ink-soft">07</span>
+          <h2 class="h-section text-xl">Failed payments</h2>
+        </div>
+        <div class="mt-5">
+          <p>If a monthly payment fails, we will:</p>
+          <ul>
+            <li>Notify you that the payment did not go through</li>
+            <li>Give you a reasonable grace period to resolve it</li>
+            <li>Suspend the affected monthly services if it stays unpaid after that period</li>
+            <li>Where the agreement permits, temporarily suspend the website or related services</li>
+            <li>Require any outstanding balance to be settled before reactivation</li>
+          </ul>
+          <p>
+            We do not delete your data because a payment failed. Suspension is a pause, not a deletion.
+          </p>
+        </div>
+      </article>
+
+      <article id="s8" class="clause mt-12 scroll-mt-24 border-t-2 border-accent pt-6">
+        <div class="flex items-baseline gap-4">
+          <span class="font-mono text-xs font-semibold tracking-widest text-ink-soft">08</span>
+          <h2 class="h-section text-xl">Cancellation &amp; refunds</h2>
+        </div>
+        <div class="mt-5">
+          <p>
+            Monthly services run month to month unless agreed otherwise, and you can cancel them. Once
+            cancelled, the service stops at the end of the period you have already paid for.
+          </p>
+          <p>
+            Payments already processed for the current billing period are generally non-refundable,
+            unless applicable law requires otherwise or we have specifically agreed otherwise in writing.
+          </p>
+          <p>
+            The one-time deposit pays for starting your project. Once work has begun it is generally
+            not refundable, subject to your rights under applicable consumer law. Nothing here removes
+            a right you have that cannot legally be excluded.
+          </p>
+        </div>
+      </article>
+
+      <article id="s9" class="clause mt-12 scroll-mt-24 border-t-2 border-accent pt-6">
+        <div class="flex items-baseline gap-4">
+          <span class="font-mono text-xs font-semibold tracking-widest text-ink-soft">09</span>
+          <h2 class="h-section text-xl">Domain ownership</h2>
+        </div>
+        <div class="mt-5">
+          <p>
+            <strong>If you bring your own domain</strong>, it stays yours. You remain the registrant and
+            the owner, we simply point it at your website, and nothing about that changes if you leave.
+          </p>
+          <p>
+            <strong>If we register a domain for you</strong>, we will tell you before registration whose
+            name it is registered in. Where it is registered in your name, you own it and can take it
+            with you. Where it is registered in ours as part of a managed service, it stays with us
+            when the service ends — and in that case you can ask us to transfer it to you, subject to
+            registrar transfer rules, any applicable transfer or renewal costs, and your account being
+            settled.
+          </p>
+        </div>
+      </article>
+
+      <article id="s10" class="clause mt-12 scroll-mt-24 border-t-2 border-accent pt-6">
+        <div class="flex items-baseline gap-4">
+          <span class="font-mono text-xs font-semibold tracking-widest text-ink-soft">10</span>
+          <h2 class="h-section text-xl">Website code &amp; offboarding</h2>
+        </div>
+        <div class="mt-5">
+          <p>
+            This is a managed website service. While you are using it, we own and operate the project
+            itself — the hosting, the deployment pipeline, any backend, and the managed infrastructure
+            around your site — unless a separate written ownership agreement says otherwise.
+          </p>
+          <p>
+            We will not pretend otherwise about what is public: anything served to a browser, including
+            the frontend markup, styles and scripts of your live site, can be viewed and copied by
+            anyone who visits it. That is how the web works. What we control is the official project
+            and the infrastructure that runs it, not the visibility of published pages.
+          </p>
+          <p>
+            If you want to leave and take an export or the source files with you, ask us. Where you have
+            purchased an explicit source-code transfer or ownership option, we will hand over the agreed
+            files once the applicable payment and requirements are complete. Where you have not, we can
+            quote for an offboarding export.
+          </p>
+        </div>
+      </article>
+
+      <article id="s11" class="clause mt-12 scroll-mt-24 border-t-2 border-accent pt-6">
+        <div class="flex items-baseline gap-4">
+          <span class="font-mono text-xs font-semibold tracking-widest text-ink-soft">11</span>
+          <h2 class="h-section text-xl">Customer responsibilities</h2>
+        </div>
+        <div class="mt-5">
+          <p>
+            You provide the content we need to build the website. By sending it to us, you confirm that
+            you have the right to use and publish it — including logos, photos, videos, text, business
+            information and any other material you supply.
+          </p>
+          <p>
+            You are responsible for the accuracy and legality of the business information and content
+            you give us. We publish what you provide; we do not verify it.
+          </p>
+        </div>
+      </article>
+
+      <article id="s12" class="clause mt-12 scroll-mt-24 border-t-2 border-accent pt-6">
+        <div class="flex items-baseline gap-4">
+          <span class="font-mono text-xs font-semibold tracking-widest text-ink-soft">12</span>
+          <h2 class="h-section text-xl">Intellectual property</h2>
+        </div>
+        <div class="mt-5">
+          <p>Ownership depends on what the material is:</p>
+          <ul>
+            <li><strong>Content you provide</strong> — stays yours. We use it only to build and run your website.</li>
+            <li><strong>Third-party assets</strong> such as stock photography, fonts and plugins — remain with their owners and stay subject to their own licences.</li>
+            <li><strong>Your website's specific content and design</strong> — the pages, copy and layout produced for your business, which you may take with you under a transfer or offboarding agreement.</li>
+            <li><strong>Our reusable systems</strong> — the components, templates, frameworks, internal tooling and processes we reuse across customers. These stay ours.</li>
+            <li><strong>Source code and infrastructure</strong> — as set out in clause 10.</li>
+          </ul>
+          <p>
+            Nothing in these terms transfers ownership of our reusable tools, frameworks, internal
+            systems or infrastructure unless we have specifically agreed to that in writing.
+          </p>
+        </div>
+      </article>
+
+      <article id="s13" class="clause mt-12 scroll-mt-24 border-t-2 border-accent pt-6">
+        <div class="flex items-baseline gap-4">
+          <span class="font-mono text-xs font-semibold tracking-widest text-ink-soft">13</span>
+          <h2 class="h-section text-xl">Hosting &amp; uptime</h2>
+        </div>
+        <div class="mt-5">
+          <p>
+            We provide reliable hosting with SSL/HTTPS for your website, and we aim for a
+            <strong>99.9% monthly uptime target</strong>.
+          </p>
+          <p>That target is an aim rather than a warranty, and it excludes:</p>
+          <ul>
+            <li>Scheduled or emergency maintenance</li>
+            <li>Outages at third-party providers, including hosting, DNS and registrars</li>
+            <li>Internet, network or connectivity failures outside our infrastructure</li>
+            <li>Force majeure events and anything else outside our reasonable control</li>
+            <li>Problems caused by content, code or configuration you supplied or requested</li>
+          </ul>
+        </div>
+      </article>
+
+      <article id="s14" class="clause mt-12 scroll-mt-24 border-t-2 border-accent pt-6">
+        <div class="flex items-baseline gap-4">
+          <span class="font-mono text-xs font-semibold tracking-widest text-ink-soft">14</span>
+          <h2 class="h-section text-xl">Liability</h2>
+        </div>
+        <div class="mt-5">
+          <p>
+            To the extent permitted by law, we are not liable for losses arising from things outside
+            our reasonable control, including:
+          </p>
+          <ul>
+            <li>Third-party hosting outages</li>
+            <li>Domain registrar problems</li>
+            <li>Payment provider outages</li>
+            <li>Changes made by Google, Meta or other third-party platforms</li>
+            <li>Content you provided</li>
+            <li>Lost business, lost profits or other indirect or consequential damages</li>
+          </ul>
+          <p>
+            Nothing in these terms limits or excludes liability that cannot legally be limited or
+            excluded — including liability for death or personal injury caused by negligence, for fraud,
+            and any rights you have as a consumer that cannot be waived.
+          </p>
+        </div>
+      </article>
+
+      <article id="s15" class="clause mt-12 scroll-mt-24 border-t-2 border-accent pt-6">
+        <div class="flex items-baseline gap-4">
+          <span class="font-mono text-xs font-semibold tracking-widest text-ink-soft">15</span>
+          <h2 class="h-section text-xl">Changes to these terms</h2>
+        </div>
+        <div class="mt-5">
+          <p>
+            We may update these terms as the service changes. If a change materially affects what you
+            pay or what you receive, we will tell you before it applies to your account, and the version
+            in force when you ordered continues to govern work already under way.
+          </p>
+          <p>
+            The date at the top of this page shows when it was last updated.
+          </p>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- BACK TO CHECKOUT -->
+  <section class="bg-accent">
+    <div class="mx-auto max-w-shell px-6 py-14 md:px-10 md:py-16">
+      <h2 class="h-section max-w-2xl text-2xl text-white md:text-3xl">Ready to build your package?</h2>
+      <p class="mt-4 max-w-prose text-[0.9375rem] leading-relaxed text-white/80">
+        Pick your website and services, and the order summary will show exactly what you pay today,
+        what is due on approval, and what starts monthly once you are live.
+      </p>
+      <a href="index.html#pricing" class="mt-8 inline-flex items-center justify-center rounded-md bg-white px-7 py-4 text-base font-semibold text-accent hover:bg-accent-tint">
+        Back to pricing
+      </a>
+    </div>
+  </section>
+
+</main>
+
+<footer class="bg-accent">
+  <div class="mx-auto max-w-shell border-t border-white/20 px-6 py-8 md:px-10">
+    <div class="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+      <a href="index.html" class="flex items-center gap-2.5">
+        <span class="block h-3 w-3 rounded-sm bg-white" aria-hidden="true"></span>
+        <span class="h-section text-base text-white">Onsite</span>
+      </a>
+      <p class="font-mono text-xs uppercase tracking-widest text-white/60">
+        Terms of Service · Last updated 18 August 2026
+      </p>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
