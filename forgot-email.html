@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Recover your email — Onsite</title>
+<meta name="description" content="Find which email address your Onsite account uses.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;700&family=Inter:wght@400;600&family=IBM+Plex+Mono:wght@400;600&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="assets/tw.js"></script>
+<link rel="stylesheet" href="assets/onsite.css">
+</head>
+
+<body class="bg-paper font-sans text-ink antialiased">
+
+<header class="border-b border-line bg-paper">
+  <nav class="mx-auto flex max-w-shell items-center justify-between px-6 py-4 md:px-10">
+    <a href="index.html" class="flex items-center gap-2.5">
+      <span class="block h-3.5 w-3.5 rounded-sm bg-accent" aria-hidden="true"></span>
+      <span class="h-section text-lg tracking-tight">Onsite</span>
+    </a>
+    <a href="login.html" class="text-sm font-semibold text-ink-mid hover:text-ink">Back to log in</a>
+  </nav>
+</header>
+
+<main class="mx-auto flex max-w-shell justify-center px-6 py-14 md:px-10 md:py-20">
+  <div class="w-full max-w-md">
+
+    <p class="eyebrow text-ink-soft">Account recovery</p>
+    <h1 class="h-display doc-title mt-4">Which email did you use?</h1>
+    <p class="mt-4 text-[0.9375rem] leading-relaxed text-ink-mid">
+      Tell us the business name and phone number on the account and we will show you a hint for the
+      address it uses.
+    </p>
+
+    <!-- STEP 1 — identify -->
+    <section id="step-find" class="card mt-8 p-6">
+      <div class="field">
+        <label for="business">Business name</label>
+        <input id="business" type="text" autocomplete="organization" placeholder="Janey's Hair Studio">
+      </div>
+      <div class="field mt-5">
+        <label for="phone">Phone number on the account</label>
+        <input id="phone" type="tel" autocomplete="tel" placeholder="+44 7700 900412">
+      </div>
+      <p id="find-error" class="mt-3 hidden text-[0.8125rem] font-semibold text-accent"></p>
+      <button id="btn-find" type="button" class="btn btn-primary btn-block mt-6">Continue</button>
+      <p class="mt-4 text-[0.8125rem] text-ink-soft">
+        Know your email but not the password?
+        <a href="forgot-password.html" class="font-semibold text-accent underline underline-offset-2 hover:text-accent-hi">Reset your password</a>.
+      </p>
+    </section>
+
+    <!-- STEP 2 — result -->
+    <section id="step-result" class="card mt-8 hidden p-6">
+      <p class="mono-label text-ink-soft">Result</p>
+      <h2 id="result-title" class="h-section mt-3 text-xl">We found one account</h2>
+      <p id="result-body" class="mt-2 text-[0.9375rem] leading-relaxed text-ink-mid"></p>
+
+      <div id="result-hint" class="card-quiet mt-5 p-4">
+        <p class="mono-label text-ink-soft">Email on the account</p>
+        <p id="masked-email" class="h-section mt-2 text-lg"></p>
+        <p class="mt-2 text-[0.8125rem] leading-relaxed text-ink-soft">
+          Part of the address is hidden on purpose. If this looks right, log in with the full address.
+        </p>
+      </div>
+
+      <a href="login.html" class="btn btn-primary btn-block mt-6">Continue to log in</a>
+      <button id="btn-again" type="button" class="mt-4 w-full text-[0.8125rem] font-semibold text-ink-mid hover:text-ink">Try different details</button>
+    </section>
+
+    <div class="demo-note mt-6">
+      <strong>This is a demo.</strong> The lookup is simulated against a single example account and
+      never reveals another customer's details. In production this would be rate-limited and would
+      send the result to the address on file rather than showing it on screen.
+    </div>
+
+  </div>
+</main>
+
+<footer class="border-t border-line bg-paper">
+  <div class="mx-auto flex max-w-shell flex-col gap-3 px-6 py-8 sm:flex-row sm:items-center sm:justify-between md:px-10">
+    <a href="index.html" class="flex items-center gap-2.5">
+      <span class="block h-3 w-3 rounded-sm bg-accent" aria-hidden="true"></span>
+      <span class="h-section text-base">Onsite</span>
+    </a>
+    <a href="terms.html" class="mono-label text-ink-soft hover:text-ink">Terms of Service</a>
+  </div>
+</footer>
+
+<script src="assets/demo.js"></script>
+<script>
+(function () {
+  var stepFind = document.getElementById('step-find');
+  var stepResult = document.getElementById('step-result');
+
+  // Shows the first character and the domain only.
+  function mask(email) {
+    var at = email.indexOf('@');
+    if (at < 1) return '•••';
+    return email[0] + '•'.repeat(Math.max(3, at - 1)) + email.slice(at);
+  }
+
+  document.getElementById('btn-find').addEventListener('click', function () {
+    var biz = document.getElementById('business').value.trim();
+    var phone = document.getElementById('phone').value.trim();
+    var err = document.getElementById('find-error');
+
+    if (!biz && !phone) {
+      err.textContent = 'Enter your business name or the phone number on the account.';
+      err.classList.remove('hidden');
+      return;
+    }
+    err.classList.add('hidden');
+
+    var c = Onsite.load().customer;
+    // Demo lookup: matches the one example account, loosely.
+    var hit = (biz && c.business.toLowerCase().indexOf(biz.toLowerCase()) > -1) ||
+              (phone && c.phone.replace(/\D/g, '').slice(-6) === phone.replace(/\D/g, '').slice(-6)) ||
+              (!biz && !phone);
+
+    if (hit) {
+      document.getElementById('result-title').textContent = 'We found one account';
+      document.getElementById('result-body').textContent =
+        'One account matches those details: ' + c.business + '.';
+      document.getElementById('masked-email').textContent = mask(c.email);
+      document.getElementById('result-hint').classList.remove('hidden');
+    } else {
+      document.getElementById('result-title').textContent = 'No account matched';
+      document.getElementById('result-body').textContent =
+        'Nothing matched those details. Check the spelling of the business name, or try the phone number you gave us when you ordered.';
+      document.getElementById('result-hint').classList.add('hidden');
+    }
+
+    stepFind.classList.add('hidden');
+    stepResult.classList.remove('hidden');
+  });
+
+  document.getElementById('btn-again').addEventListener('click', function () {
+    stepResult.classList.add('hidden');
+    stepFind.classList.remove('hidden');
+  });
+})();
+</script>
+
+</body>
+</html>

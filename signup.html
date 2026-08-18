@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Create account — Onsite</title>
+<meta name="description" content="Create your Onsite account to follow your website build, payments and change requests.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;700&family=Inter:wght@400;600&family=IBM+Plex+Mono:wght@400;600&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="assets/tw.js"></script>
+<link rel="stylesheet" href="assets/onsite.css">
+</head>
+
+<body class="bg-paper font-sans text-ink antialiased">
+
+<header class="border-b border-line bg-paper">
+  <nav class="mx-auto flex max-w-shell items-center justify-between px-6 py-4 md:px-10">
+    <a href="index.html" class="flex items-center gap-2.5">
+      <span class="block h-3.5 w-3.5 rounded-sm bg-accent" aria-hidden="true"></span>
+      <span class="h-section text-lg tracking-tight">Onsite</span>
+    </a>
+    <a href="login.html" class="text-sm font-semibold text-ink-mid hover:text-ink">Log in</a>
+  </nav>
+</header>
+
+<main class="mx-auto flex max-w-shell justify-center px-6 py-14 md:px-10 md:py-20">
+  <div class="w-full max-w-xl">
+
+    <p class="eyebrow text-ink-soft">Create account</p>
+    <h1 class="h-display doc-title mt-4">Set up your Onsite account.</h1>
+    <p class="mt-4 text-[0.9375rem] leading-relaxed text-ink-mid">
+      Your account is where you send content, watch the build, approve the finished website and
+      settle the remaining 75%.
+    </p>
+
+    <!-- STEP 1 — details -->
+    <section id="step-details" class="card mt-8 p-6">
+      <div class="grid grid-cols-1 gap-5 sm:grid-cols-2">
+        <div class="field">
+          <label for="first">First name</label>
+          <input id="first" type="text" autocomplete="given-name">
+        </div>
+        <div class="field">
+          <label for="last">Last name</label>
+          <input id="last" type="text" autocomplete="family-name">
+        </div>
+        <div class="field sm:col-span-2">
+          <label for="business">Business name</label>
+          <input id="business" type="text" autocomplete="organization">
+        </div>
+        <div class="field">
+          <label for="email">Email</label>
+          <input id="email" type="email" autocomplete="email">
+        </div>
+        <div class="field">
+          <label for="phone">Phone number</label>
+          <input id="phone" type="tel" autocomplete="tel">
+        </div>
+        <div class="field">
+          <label for="password">Password</label>
+          <input id="password" type="password" autocomplete="new-password">
+        </div>
+        <div class="field">
+          <label for="confirm">Confirm password</label>
+          <input id="confirm" type="password" autocomplete="new-password">
+        </div>
+      </div>
+
+      <label class="mt-6 flex cursor-pointer items-start gap-2.5 border-t border-line pt-5">
+        <input id="agree" type="checkbox" class="mt-0.5 h-4 w-4 flex-none accent-[#1C2B3A]">
+        <span class="text-[0.8125rem] leading-relaxed text-ink-mid">
+          I have read and agree to the
+          <a href="terms.html" class="font-semibold text-accent underline underline-offset-2 hover:text-accent-hi">Terms of Service</a>.
+        </span>
+      </label>
+
+      <p id="details-error" class="mt-3 hidden text-[0.8125rem] font-semibold text-accent"></p>
+
+      <button id="btn-create" type="button" class="btn btn-primary btn-block mt-5">Create account</button>
+      <p class="mt-4 text-[0.8125rem] text-ink-soft">
+        Already have an account?
+        <a href="login.html" class="font-semibold text-accent underline underline-offset-2 hover:text-accent-hi">Log in</a>.
+      </p>
+    </section>
+
+    <!-- STEP 2 — verification -->
+    <section id="step-code" class="card mt-8 hidden p-6">
+      <p class="mono-label text-ink-soft">Step 02 — verification</p>
+      <h2 class="h-section mt-3 text-xl">Enter your 6-digit code</h2>
+      <p class="mt-2 text-[0.8125rem] leading-relaxed text-ink-mid">
+        We sent a code to <span id="code-target" class="font-semibold text-ink"></span>.
+      </p>
+
+      <div class="demo-note mt-4">
+        <strong>Demo mode.</strong> No email or SMS is sent. Your generated code is
+        <span id="code-value" class="font-mono font-semibold text-ink"></span>.
+      </div>
+
+      <div class="field mt-5">
+        <label for="code" class="sr-only">6-digit code</label>
+        <input id="code" class="code-input" type="text" inputmode="numeric" maxlength="6" placeholder="000000">
+      </div>
+
+      <p id="code-error" class="mt-3 hidden text-[0.8125rem] font-semibold text-accent"></p>
+
+      <button id="btn-verify" type="button" class="btn btn-primary btn-block mt-5">Verify &amp; open my dashboard</button>
+      <div class="mt-4 flex items-center justify-between gap-4">
+        <button id="btn-resend" type="button" class="text-[0.8125rem] font-semibold text-ink-mid hover:text-ink">Send a new code</button>
+        <button id="btn-back" type="button" class="text-[0.8125rem] font-semibold text-ink-mid hover:text-ink">Back</button>
+      </div>
+    </section>
+
+    <div class="demo-note mt-6">
+      <strong>This is a demo.</strong> No account is created and nothing is stored on a server —
+      the details you type stay in this browser and the dashboard always shows the same example customer.
+    </div>
+
+  </div>
+</main>
+
+<footer class="border-t border-line bg-paper">
+  <div class="mx-auto flex max-w-shell flex-col gap-3 px-6 py-8 sm:flex-row sm:items-center sm:justify-between md:px-10">
+    <a href="index.html" class="flex items-center gap-2.5">
+      <span class="block h-3 w-3 rounded-sm bg-accent" aria-hidden="true"></span>
+      <span class="h-section text-base">Onsite</span>
+    </a>
+    <a href="terms.html" class="mono-label text-ink-soft hover:text-ink">Terms of Service</a>
+  </div>
+</footer>
+
+<script src="assets/demo.js"></script>
+<script>
+(function () {
+  var code = null;
+  var stepDetails = document.getElementById('step-details');
+  var stepCode = document.getElementById('step-code');
+  var emailEl = document.getElementById('email');
+  var codeEl = document.getElementById('code');
+  var detErr = document.getElementById('details-error');
+  var codeErr = document.getElementById('code-error');
+
+  function issueCode() {
+    code = Onsite.newCode();
+    document.getElementById('code-value').textContent = code;
+    document.getElementById('code-target').textContent = emailEl.value || 'your email';
+  }
+
+  document.getElementById('btn-create').addEventListener('click', function () {
+    var pw = document.getElementById('password').value;
+    var cf = document.getElementById('confirm').value;
+
+    if (pw && cf && pw !== cf) {
+      detErr.textContent = 'Those passwords do not match.';
+      detErr.classList.remove('hidden');
+      return;
+    }
+    if (!document.getElementById('agree').checked) {
+      detErr.textContent = 'Please agree to the Terms of Service to continue.';
+      detErr.classList.remove('hidden');
+      return;
+    }
+    detErr.classList.add('hidden');
+    if (!emailEl.value.trim()) { emailEl.value = Onsite.load().customer.email; }
+
+    issueCode();
+    stepDetails.classList.add('hidden');
+    stepCode.classList.remove('hidden');
+    codeEl.focus();
+  });
+
+  document.getElementById('btn-verify').addEventListener('click', function () {
+    if (codeEl.value.trim() !== code) {
+      codeErr.textContent = 'That code does not match. In demo mode the code is shown above.';
+      codeErr.classList.remove('hidden');
+      return;
+    }
+    Onsite.signIn(emailEl.value.trim(), 'customer');
+    location.href = 'dashboard.html';
+  });
+
+  codeEl.addEventListener('input', function () { codeErr.classList.add('hidden'); });
+  document.getElementById('btn-resend').addEventListener('click', function () {
+    issueCode(); codeErr.classList.add('hidden'); codeEl.value = ''; codeEl.focus();
+  });
+  document.getElementById('btn-back').addEventListener('click', function () {
+    stepCode.classList.add('hidden'); stepDetails.classList.remove('hidden');
+  });
+})();
+</script>
+
+</body>
+</html>

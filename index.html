@@ -105,6 +105,7 @@
     <div class="flex items-center gap-5 md:gap-8">
       <a href="#pricing" class="text-sm font-semibold text-ink-mid hover:text-ink">Pricing</a>
       <a href="terms.html" class="hidden text-sm font-semibold text-ink-mid hover:text-ink sm:inline">Terms</a>
+      <a href="login.html" class="text-sm font-semibold text-ink-mid hover:text-ink">Log in</a>
       <a href="#pricing" class="rounded-md bg-accent px-4 py-2.5 text-sm font-semibold text-white hover:bg-accent-hi">Get Started</a>
     </div>
   </nav>
@@ -593,20 +594,25 @@
               <!-- Payment schedule: deposit today, balance on approval, monthly after launch -->
               <div class="bg-accent px-5 py-5 text-white">
 
-                <div class="flex items-baseline justify-between gap-4">
-                  <span class="font-mono text-xs uppercase tracking-widest text-white">Today's payment</span>
+                <div class="flex items-baseline justify-between gap-4 border-b border-white/20 pb-4">
+                  <span class="font-mono text-xs uppercase tracking-widest text-white/70">One-time website total</span>
+                  <span class="h-section text-lg" id="total-once-mirror">€0.00</span>
+                </div>
+
+                <div class="mt-4 flex items-baseline justify-between gap-4">
+                  <span class="font-mono text-xs uppercase tracking-widest text-white">Pay today</span>
                   <span class="h-section text-2xl" id="total-today">€0.00</span>
                 </div>
                 <p class="mt-1.5 text-xs leading-relaxed text-white/70">
-                  50% deposit to start your website.
+                  25% deposit to start your website.
                 </p>
 
                 <div class="mt-4 flex items-baseline justify-between gap-4 border-t border-white/20 pt-4">
-                  <span class="font-mono text-xs uppercase tracking-widest text-white/70">Remaining</span>
+                  <span class="font-mono text-xs uppercase tracking-widest text-white/70">Remaining after approval</span>
                   <span class="h-section text-lg" id="total-remaining">€0.00</span>
                 </div>
                 <p class="mt-1.5 text-xs leading-relaxed text-white/70">
-                  Due when your website is completed and approved by you.
+                  75%, due only once you have reviewed and approved the finished website.
                 </p>
 
                 <div class="mt-4 flex items-baseline justify-between gap-4 border-t border-white/20 pt-4">
@@ -652,29 +658,37 @@
           <span class="ml-auto font-mono text-xs uppercase tracking-widest text-ink-soft">Delivery in 7 days</span>
         </div>
 
-        <ol class="mt-6 grid grid-cols-1 gap-px overflow-hidden rounded-lg border border-line bg-line md:grid-cols-3">
+        <ol class="mt-6 grid grid-cols-1 gap-px overflow-hidden rounded-lg border border-line bg-line sm:grid-cols-2 xl:grid-cols-4">
           <li class="bg-paper px-5 py-5">
             <span class="font-mono text-xs font-semibold tracking-widest text-ink-soft">01</span>
-            <h3 class="h-section mt-3 text-base">You pay the 50% deposit</h3>
+            <h3 class="h-section mt-3 text-base">Pay 25%</h3>
             <p class="mt-2 text-[0.8125rem] leading-snug text-ink-mid">
-              Half of your one-time total, and nothing else. Monthly services are not charged yet.
+              A quarter of your one-time total, and nothing else. Monthly services are not charged yet.
             </p>
           </li>
           <li class="bg-paper px-5 py-5">
             <span class="font-mono text-xs font-semibold tracking-widest text-ink-soft">02</span>
-            <h3 class="h-section mt-3 text-base">You send us your content</h3>
+            <h3 class="h-section mt-3 text-base">Send your content</h3>
             <p class="mt-2 text-[0.8125rem] leading-snug text-ink-mid">
-              We send you a short form for your logo, photos, business details, services and prices,
-              opening hours, contact details, social links and any text you want on the page.
+              Logo, photos, business details, services, prices, opening hours, contact details and
+              anything else the page needs.
             </p>
             <a href="start.html" class="mt-2.5 inline-block text-[0.8125rem] font-semibold text-accent underline underline-offset-2 hover:text-accent-hi">See what we need &rarr;</a>
           </li>
           <li class="bg-paper px-5 py-5">
             <span class="font-mono text-xs font-semibold tracking-widest text-ink-soft">03</span>
-            <h3 class="h-section mt-3 text-base">We deliver, you approve</h3>
+            <h3 class="h-section mt-3 text-base">We build it</h3>
             <p class="mt-2 text-[0.8125rem] leading-snug text-ink-mid">
-              Your website is delivered within 7 days. The remaining 50% is due once you approve it,
-              and any monthly services start when the site goes live.
+              Your finished website is delivered in roughly 7 days from the moment we have everything
+              we asked for.
+            </p>
+          </li>
+          <li class="bg-paper px-5 py-5">
+            <span class="font-mono text-xs font-semibold tracking-widest text-ink-soft">04</span>
+            <h3 class="h-section mt-3 text-base">Review &amp; pay the remaining 75%</h3>
+            <p class="mt-2 text-[0.8125rem] leading-snug text-ink-mid">
+              You review it. Once you approve, you pay the remaining 75% — then the site goes live,
+              your monthly services begin and your dashboard opens.
             </p>
           </li>
         </ol>
@@ -731,7 +745,7 @@
         </div>
         <div class="border-b border-line py-8">
           <dt class="h-section text-base">How much do I actually pay today?</dt>
-          <dd class="mt-3 max-w-prose text-[0.9375rem] leading-relaxed text-ink-mid">Half of your one-time total, as a deposit to start the project. The other half is due once the website is finished and you have approved it. Monthly services are not billed at all until your site is live — the order summary shows all three numbers before you pay.</dd>
+          <dd class="mt-3 max-w-prose text-[0.9375rem] leading-relaxed text-ink-mid">A quarter of your one-time total, as a deposit to start the project. The remaining 75% is due only once the website is finished and you have approved it. Monthly services are not billed at all until your site is live — the order summary shows every number before you pay.</dd>
         </div>
         <div class="border-b border-line py-8">
           <dt class="h-section text-base">How long does it take?</dt>
@@ -808,6 +822,7 @@
   var totalOnce = document.getElementById('total-once');
   var totalMonth= document.getElementById('total-month');
   var totalToday= document.getElementById('total-today');
+  var totalOnceMirror = document.getElementById('total-once-mirror');
   var totalRemain = document.getElementById('total-remaining');
   var totalMonthLater = document.getElementById('total-month-later');
   var itemCount = document.getElementById('item-count');
@@ -930,12 +945,14 @@
     if (monthLines.length) { monthLines.forEach(function (l) { sumMonth.appendChild(l); }); }
     else { sumMonth.appendChild(emptyLine('No monthly services selected')); }
 
-    // One-time work is split in half: deposit now, balance on approval.
-    // The odd cent goes into the deposit so the two halves always add back up.
-    var deposit   = once > 0 ? Math.ceil(once / 2) : 0;
+    // One-time work is split 25/75: deposit now, balance once the customer
+    // has reviewed and approved the finished site. The deposit is rounded down
+    // and the balance takes the remainder, so the two always add back up.
+    var deposit   = once > 0 ? Math.floor(once * 0.25) : 0;
     var remaining = once - deposit;
 
     totalOnce.textContent = euro(once);
+    totalOnceMirror.textContent = euro(once);
     totalMonth.textContent = euro(month) + ' / month';
     totalToday.textContent = euro(deposit);
     totalRemain.textContent = euro(remaining);
@@ -1038,6 +1055,13 @@
   addonInputs.forEach(function (i) { i.addEventListener('change', render); });
 
   agreeTerms.addEventListener('change', render);
+
+  // Demo checkout: no payment is taken. The deposit hands over to account
+  // creation, which is where the dashboard flow begins.
+  checkoutBtn.addEventListener('click', function () {
+    if (checkoutBtn.disabled) return;
+    window.location.href = 'signup.html';
+  });
 
   addBtn.addEventListener('click', function () {
     if (websiteAdded) { resetOrder(); }

@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Log in — Onsite</title>
+<meta name="description" content="Log in to your Onsite dashboard to follow your website build, payments and change requests.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;700&family=Inter:wght@400;600&family=IBM+Plex+Mono:wght@400;600&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="assets/tw.js"></script>
+<link rel="stylesheet" href="assets/onsite.css">
+</head>
+
+<body class="bg-paper font-sans text-ink antialiased">
+
+<header class="border-b border-line bg-paper">
+  <nav class="mx-auto flex max-w-shell items-center justify-between px-6 py-4 md:px-10">
+    <a href="index.html" class="flex items-center gap-2.5">
+      <span class="block h-3.5 w-3.5 rounded-sm bg-accent" aria-hidden="true"></span>
+      <span class="h-section text-lg tracking-tight">Onsite</span>
+    </a>
+    <a href="signup.html" class="text-sm font-semibold text-ink-mid hover:text-ink">Create account</a>
+  </nav>
+</header>
+
+<main class="mx-auto flex max-w-shell justify-center px-6 py-14 md:px-10 md:py-20">
+  <div class="w-full max-w-md">
+
+    <p class="eyebrow text-ink-soft">Client access</p>
+    <h1 class="h-display doc-title mt-4">Log in to your dashboard.</h1>
+    <p class="mt-4 text-[0.9375rem] leading-relaxed text-ink-mid">
+      Follow your build, approve your website, and see exactly what has been paid and what is due.
+    </p>
+
+    <!-- STEP 1 — credentials -->
+    <section id="step-credentials" class="card mt-8 p-6">
+      <div class="field">
+        <label for="email">Email</label>
+        <input id="email" type="email" autocomplete="email" placeholder="jane@janeys-hair.co.uk">
+      </div>
+      <div class="field mt-5">
+        <label for="password">Password</label>
+        <input id="password" type="password" autocomplete="current-password" placeholder="••••••••">
+      </div>
+
+      <p id="cred-error" class="mt-3 hidden text-[0.8125rem] font-semibold text-accent"></p>
+
+      <button id="btn-login" type="button" class="btn btn-primary btn-block mt-6">Log in</button>
+
+      <div class="mt-5 flex flex-wrap items-center justify-between gap-x-6 gap-y-2 border-t border-line pt-5">
+        <a href="forgot-password.html" class="text-[0.8125rem] font-semibold text-ink-mid hover:text-ink">Forgot password?</a>
+        <a href="forgot-email.html" class="text-[0.8125rem] font-semibold text-ink-mid hover:text-ink">Forgot email?</a>
+      </div>
+      <p class="mt-4 text-[0.8125rem] text-ink-soft">
+        No account yet?
+        <a href="signup.html" class="font-semibold text-accent underline underline-offset-2 hover:text-accent-hi">Create one</a>.
+      </p>
+    </section>
+
+    <!-- STEP 2 — verification code -->
+    <section id="step-code" class="card mt-8 hidden p-6">
+      <p class="mono-label text-ink-soft">Step 02 — verification</p>
+      <h2 class="h-section mt-3 text-xl">Enter your 6-digit code</h2>
+      <p class="mt-2 text-[0.8125rem] leading-relaxed text-ink-mid">
+        We sent a code to <span id="code-target" class="font-semibold text-ink"></span>.
+      </p>
+
+      <div class="demo-note mt-4">
+        <strong>Demo mode.</strong> No email or SMS is sent. Your generated code is
+        <span id="code-value" class="font-mono font-semibold text-ink"></span> — type it below.
+      </div>
+
+      <div class="field mt-5">
+        <label for="code" class="sr-only">6-digit code</label>
+        <input id="code" class="code-input" type="text" inputmode="numeric" maxlength="6" placeholder="000000">
+      </div>
+
+      <p id="code-error" class="mt-3 hidden text-[0.8125rem] font-semibold text-accent"></p>
+
+      <button id="btn-verify" type="button" class="btn btn-primary btn-block mt-5">Verify &amp; continue</button>
+      <div class="mt-4 flex items-center justify-between gap-4">
+        <button id="btn-resend" type="button" class="text-[0.8125rem] font-semibold text-ink-mid hover:text-ink">Send a new code</button>
+        <button id="btn-back" type="button" class="text-[0.8125rem] font-semibold text-ink-mid hover:text-ink">Back</button>
+      </div>
+    </section>
+
+    <div class="demo-note mt-6">
+      <strong>This is a demo.</strong> Authentication is simulated in your browser — any email and
+      password are accepted, nothing is sent anywhere, and no real account is created.
+      <span class="mt-2 block">
+        Customer demo: leave the fields as they are and log in.
+        <a href="#" id="staff-link" class="font-semibold text-ink underline underline-offset-2">Staff sign-in &rarr;</a>
+      </span>
+    </div>
+
+  </div>
+</main>
+
+<footer class="border-t border-line bg-paper">
+  <div class="mx-auto flex max-w-shell flex-col gap-3 px-6 py-8 sm:flex-row sm:items-center sm:justify-between md:px-10">
+    <a href="index.html" class="flex items-center gap-2.5">
+      <span class="block h-3 w-3 rounded-sm bg-accent" aria-hidden="true"></span>
+      <span class="h-section text-base">Onsite</span>
+    </a>
+    <a href="terms.html" class="mono-label text-ink-soft hover:text-ink">Terms of Service</a>
+  </div>
+</footer>
+
+<script src="assets/demo.js"></script>
+<script>
+(function () {
+  var params = new URLSearchParams(location.search);
+  var next = params.get('next') || 'dashboard.html';
+  var role = 'customer';
+  var code = null;
+
+  var stepCred = document.getElementById('step-credentials');
+  var stepCode = document.getElementById('step-code');
+  var emailEl  = document.getElementById('email');
+  var codeEl   = document.getElementById('code');
+  var credErr  = document.getElementById('cred-error');
+  var codeErr  = document.getElementById('code-error');
+
+  function issueCode() {
+    code = Onsite.newCode();
+    document.getElementById('code-value').textContent = code;
+    document.getElementById('code-target').textContent = emailEl.value || Onsite.load().customer.email;
+  }
+
+  function toCodeStep() {
+    credErr.classList.add('hidden');
+    issueCode();
+    stepCred.classList.add('hidden');
+    stepCode.classList.remove('hidden');
+    codeEl.value = '';
+    codeEl.focus();
+  }
+
+  document.getElementById('btn-login').addEventListener('click', function () {
+    if (!emailEl.value.trim()) { emailEl.value = Onsite.load().customer.email; }
+    role = 'customer';
+    toCodeStep();
+  });
+
+  document.getElementById('staff-link').addEventListener('click', function (e) {
+    e.preventDefault();
+    emailEl.value = 'team@onsite.demo';
+    role = 'admin';
+    next = 'admin.html';
+    toCodeStep();
+  });
+
+  document.getElementById('btn-verify').addEventListener('click', function () {
+    if (codeEl.value.trim() !== code) {
+      codeErr.textContent = 'That code does not match. In demo mode the code is shown above.';
+      codeErr.classList.remove('hidden');
+      return;
+    }
+    Onsite.signIn(emailEl.value.trim(), role);
+    location.href = next;
+  });
+
+  codeEl.addEventListener('input', function () { codeErr.classList.add('hidden'); });
+
+  document.getElementById('btn-resend').addEventListener('click', function () {
+    issueCode();
+    codeErr.classList.add('hidden');
+    codeEl.value = '';
+    codeEl.focus();
+  });
+
+  document.getElementById('btn-back').addEventListener('click', function () {
+    stepCode.classList.add('hidden');
+    stepCred.classList.remove('hidden');
+  });
+})();
+</script>
+
+</body>
+</html>

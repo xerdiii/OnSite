@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Admin — Onsite</title>
+<meta name="description" content="Internal Onsite admin demo: customers, orders, payments, websites, change requests and support.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;700&family=Inter:wght@400;600&family=IBM+Plex+Mono:wght@400;600&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="assets/tw.js"></script>
+<link rel="stylesheet" href="assets/onsite.css">
+</head>
+
+<body class="bg-paper font-sans text-ink antialiased">
+<a href="#view" class="skip absolute left-4 top-4 z-30 bg-ink px-4 py-2 text-sm text-white">Skip to content</a>
+
+<header class="sticky top-0 z-20 border-b border-line bg-paper">
+  <div class="mx-auto flex max-w-shell items-center justify-between gap-4 px-6 py-3.5 md:px-10">
+    <div class="flex items-center gap-3">
+      <button id="nav-toggle" type="button" class="btn btn-ghost px-2.5 py-1.5 lg:hidden" aria-label="Menu">☰</button>
+      <a href="index.html" class="flex items-center gap-2.5">
+        <span class="block h-3.5 w-3.5 rounded-sm bg-accent" aria-hidden="true"></span>
+        <span class="h-section text-lg tracking-tight">Onsite</span>
+      </a>
+      <span class="tag tag-once">Internal</span>
+    </div>
+    <div class="flex items-center gap-4">
+      <span class="hidden text-[0.8125rem] text-ink-mid sm:inline">Staff demo</span>
+      <button id="logout" type="button" class="btn btn-ghost px-3 py-1.5 text-[0.8125rem]">Log out</button>
+    </div>
+  </div>
+</header>
+
+<div class="mx-auto flex max-w-shell gap-8 px-6 py-8 md:px-10 md:py-10">
+
+  <aside id="sidebar" class="hidden w-56 flex-none lg:block">
+    <nav class="app-nav sticky top-24">
+      <a href="#/overview">Overview</a>
+      <a href="#/users">Users</a>
+      <a href="#/orders">Orders</a>
+      <a href="#/payments">Payments</a>
+      <a href="#/websites">Websites</a>
+      <a href="#/requests">Change Requests</a>
+      <a href="#/maintenance">Maintenance</a>
+      <a href="#/subscriptions">Subscriptions</a>
+      <a href="#/support">Support</a>
+      <a href="#/settings">Settings</a>
+      <div class="mt-6 border-t border-line pt-4">
+        <a href="dashboard.html" class="text-[0.8125rem] font-semibold text-ink-mid hover:text-ink">← Client dashboard</a>
+      </div>
+    </nav>
+  </aside>
+
+  <main id="view" class="min-w-0 flex-1"></main>
+</div>
+
+<footer class="border-t border-line bg-paper">
+  <div class="mx-auto flex max-w-shell flex-col gap-3 px-6 py-8 sm:flex-row sm:items-center sm:justify-between md:px-10">
+    <p class="text-[0.8125rem] text-ink-soft">Onsite — internal admin (demo data)</p>
+    <a href="index.html" class="mono-label text-ink-soft hover:text-ink">Website</a>
+  </div>
+</footer>
+
+<script src="assets/demo.js"></script>
+<script src="assets/admin.js"></script>
+</body>
+</html>
