@@ -233,9 +233,8 @@
       <p class="eyebrow text-ink-soft">Products &amp; pricing</p>
       <h2 class="h-section sec-title mt-5 max-w-2xl">Build your package.</h2>
       <p class="mt-5 max-w-prose text-[0.9375rem] leading-relaxed text-ink-mid">
-        Start by choosing your website — custom at €79.99, or the complete professional build at €249.99 —
-        then add only the services you want. Your total updates as you go, split into what you pay
-        once and what you pay every month.
+        Choose a website, add only the services you want, and watch the total split itself into
+        what you pay once and what you pay every month.
       </p>
 
       <div class="mt-12 grid grid-cols-1 gap-10 lg:grid-cols-12 lg:gap-12">
@@ -243,223 +242,210 @@
         <!-- LEFT: selection flow -->
         <div class="lg:col-span-7 xl:col-span-8">
 
-          <!-- STEP 1 -->
-          <div class="border-t-2 border-accent pt-6">
-            <div class="flex items-baseline gap-4">
+          <!-- STEP 1 — choose a website -->
+          <div class="border-t-2 border-accent pt-5">
+            <div class="flex flex-wrap items-baseline gap-x-4 gap-y-1">
               <span class="font-mono text-xs font-semibold tracking-widest text-ink-soft">STEP 01</span>
               <h3 class="h-section text-xl">Choose your website</h3>
+              <span class="ml-auto font-mono text-xs uppercase tracking-widest text-ink-soft">Both paid once</span>
             </div>
-            <p class="mt-4 max-w-prose text-sm leading-relaxed text-ink-mid">
-              Two ways to get one. Both are paid one time — neither is a subscription.
-            </p>
 
-            <div class="mt-6 grid grid-cols-1 gap-3">
+            <div class="mt-5 grid grid-cols-1 gap-3 sm:grid-cols-2">
 
               <label class="pick">
                 <input type="radio" name="base" data-base="custom" data-once="79.99">
-                <span class="box flex items-start gap-4 p-5 md:p-6">
+                <span class="box flex h-full items-start gap-3 p-4 md:p-5">
                   <span class="mark mt-1"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.8l4.6 4.6L20 6"/></svg></span>
-                  <span class="flex w-full flex-wrap items-start justify-between gap-4">
-                    <span class="max-w-prose">
-                      <span class="h-section block text-lg">Custom Website</span>
-                      <span class="mt-2 block text-sm leading-relaxed text-ink-mid"><span class="arrow">&rarr;</span> A professional custom landing-page website for your business — designed for you, written in plain language, and built to work on a phone.</span>
-                      <span class="mt-2 block text-sm leading-relaxed text-ink-soft"><span class="arrow">&rarr;</span> You choose the features in Step 02. At least three, and picking more does not change the price. This is the base website price.</span>
+                  <span class="w-full">
+                    <span class="flex items-baseline justify-between gap-3">
+                      <span class="h-section text-base">Custom Website</span>
+                      <span class="h-section whitespace-nowrap text-xl text-ink">€79.99</span>
                     </span>
-                    <span class="text-right">
-                      <span class="h-section block text-3xl text-ink">€79.99</span>
-                      <span class="tag tag-once mt-2 inline-block">One-time</span>
-                    </span>
+                    <span class="mt-2 block"><span class="tag tag-once">One-time</span></span>
+                    <span class="mt-3 block text-[0.8125rem] leading-snug text-ink-mid"><span class="arrow">&rarr;</span> A professional custom landing-page website, built for your business.</span>
+                    <span class="mt-1.5 block text-[0.8125rem] leading-snug text-ink-soft"><span class="arrow">&rarr;</span> You pick the features below. Three minimum, and more never costs extra.</span>
                   </span>
                 </span>
               </label>
 
               <label class="pick">
                 <input type="radio" name="base" data-base="pro" data-once="249.99">
-                <span class="box flex items-start gap-4 p-5 md:p-6">
+                <span class="box flex h-full items-start gap-3 p-4 md:p-5">
                   <span class="mark mt-1"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.8l4.6 4.6L20 6"/></svg></span>
-                  <span class="flex w-full flex-wrap items-start justify-between gap-4">
-                    <span class="max-w-prose">
-                      <span class="h-section block text-lg">Professional Website</span>
-                      <span class="mt-2 block text-sm leading-relaxed text-ink-mid"><span class="arrow">&rarr;</span> The complete professional build, ready to go. Nothing to choose and nothing left out.</span>
-                      <span class="mt-2 block text-sm leading-relaxed text-ink-soft"><span class="arrow">&rarr;</span> Every feature in Step 02 is included as standard, so you skip the picking entirely.</span>
+                  <span class="w-full">
+                    <span class="flex items-baseline justify-between gap-3">
+                      <span class="h-section text-base">Professional Website</span>
+                      <span class="h-section whitespace-nowrap text-xl text-ink">€249.99</span>
                     </span>
-                    <span class="text-right">
-                      <span class="h-section block text-3xl text-ink">€249.99</span>
-                      <span class="tag tag-once mt-2 inline-block">One-time</span>
-                    </span>
+                    <span class="mt-2 block"><span class="tag tag-once">One-time</span></span>
+                    <span class="mt-3 block text-[0.8125rem] leading-snug text-ink-mid"><span class="arrow">&rarr;</span> The complete professional build, ready to go.</span>
+                    <span class="mt-1.5 block text-[0.8125rem] leading-snug text-ink-soft"><span class="arrow">&rarr;</span> All ten features included as standard. Nothing to choose.</span>
                   </span>
                 </span>
               </label>
 
             </div>
-
-            <p class="mt-5 text-sm leading-relaxed text-ink-mid">
-              <span class="arrow">&rarr;</span> Either way, paid once. Not a subscription, not a setup fee for something else.
-            </p>
           </div>
 
-          <!-- STEP 2 -->
-          <fieldset id="step2" disabled class="mt-12 border-t-2 border-accent pt-6">
-            <div class="flex items-baseline gap-4">
+          <!-- STEP 2 — features -->
+          <fieldset id="step2" disabled class="mt-10 border-t-2 border-accent pt-5">
+            <div class="flex flex-wrap items-baseline gap-x-4 gap-y-1">
               <span class="font-mono text-xs font-semibold tracking-widest text-ink-soft">STEP 02</span>
               <legend class="h-section text-xl">Your website features</legend>
+              <span id="feature-status" class="ml-auto font-mono text-xs uppercase tracking-widest text-ink-soft">No website chosen yet</span>
             </div>
-            <p id="feature-intro" class="mt-4 max-w-prose text-sm leading-relaxed text-ink-mid">
+
+            <p id="feature-intro" class="mt-4 max-w-prose text-[0.8125rem] leading-relaxed text-ink-mid">
               Choose a website in Step 01 first.
             </p>
-            <p id="pro-note" class="mt-4 hidden max-w-prose rounded-md border border-line-firm bg-accent-tint px-4 py-3 text-sm leading-relaxed text-ink">
+            <p id="pro-note" class="mt-4 hidden max-w-prose rounded-md border border-line-firm bg-accent-tint px-4 py-2.5 text-[0.8125rem] leading-relaxed text-ink">
               <span class="arrow">&rarr;</span> All ten features below are included in the Professional Website. There is nothing to select.
             </p>
 
-            <div class="mt-6 grid grid-cols-1 gap-3 md:grid-cols-2">
+            <div class="mt-5 grid grid-cols-1 gap-2.5 sm:grid-cols-2 xl:grid-cols-3">
 
               <label class="pick">
                 <input type="checkbox" data-feature="Contact form">
-                <span class="box flex h-full items-start gap-3 p-4">
+                <span class="box flex h-full items-start gap-2.5 p-3.5">
                   <span class="mark mt-0.5"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.8l4.6 4.6L20 6"/></svg></span>
                   <span>
-                    <span class="h-section block text-[0.9375rem]">Contact form</span>
-                    <span class="mt-1 block text-sm leading-relaxed text-ink-mid"><span class="arrow">&rarr;</span> Customers write to you from the page and the message lands in your email, so enquiries stop getting lost.</span>
+                    <span class="h-section block text-sm">Contact form</span>
+                    <span class="mt-1 block text-[0.8125rem] leading-snug text-ink-mid"><span class="arrow">&rarr;</span> Messages land in your inbox.</span>
                   </span>
                 </span>
               </label>
 
               <label class="pick">
                 <input type="checkbox" data-feature="Google Maps">
-                <span class="box flex h-full items-start gap-3 p-4">
+                <span class="box flex h-full items-start gap-2.5 p-3.5">
                   <span class="mark mt-0.5"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.8l4.6 4.6L20 6"/></svg></span>
                   <span>
-                    <span class="h-section block text-[0.9375rem]">Google Maps</span>
-                    <span class="mt-1 block text-sm leading-relaxed text-ink-mid"><span class="arrow">&rarr;</span> Shows exactly where you are with one-tap directions, so people can see you are close enough to visit.</span>
+                    <span class="h-section block text-sm">Google Maps</span>
+                    <span class="mt-1 block text-[0.8125rem] leading-snug text-ink-mid"><span class="arrow">&rarr;</span> Your location, with one-tap directions.</span>
                   </span>
                 </span>
               </label>
 
               <label class="pick">
                 <input type="checkbox" data-feature="WhatsApp button">
-                <span class="box flex h-full items-start gap-3 p-4">
+                <span class="box flex h-full items-start gap-2.5 p-3.5">
                   <span class="mark mt-0.5"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.8l4.6 4.6L20 6"/></svg></span>
                   <span>
-                    <span class="h-section block text-[0.9375rem]">WhatsApp button</span>
-                    <span class="mt-1 block text-sm leading-relaxed text-ink-mid"><span class="arrow">&rarr;</span> Opens a WhatsApp chat with your business in one tap — the way most customers already prefer to write.</span>
+                    <span class="h-section block text-sm">WhatsApp button</span>
+                    <span class="mt-1 block text-[0.8125rem] leading-snug text-ink-mid"><span class="arrow">&rarr;</span> Opens a chat with you in one tap.</span>
                   </span>
                 </span>
               </label>
 
               <label class="pick">
                 <input type="checkbox" data-feature="Photo / gallery section">
-                <span class="box flex h-full items-start gap-3 p-4">
+                <span class="box flex h-full items-start gap-2.5 p-3.5">
                   <span class="mark mt-0.5"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.8l4.6 4.6L20 6"/></svg></span>
                   <span>
-                    <span class="h-section block text-[0.9375rem]">Photo / gallery section</span>
-                    <span class="mt-1 block text-sm leading-relaxed text-ink-mid"><span class="arrow">&rarr;</span> Shows your finished work, your space or your products, so people can judge the quality before they call.</span>
+                    <span class="h-section block text-sm">Photo / gallery section</span>
+                    <span class="mt-1 block text-[0.8125rem] leading-snug text-ink-mid"><span class="arrow">&rarr;</span> Shows your work, space or products.</span>
                   </span>
                 </span>
               </label>
 
               <label class="pick">
                 <input type="checkbox" data-feature="Business information">
-                <span class="box flex h-full items-start gap-3 p-4">
+                <span class="box flex h-full items-start gap-2.5 p-3.5">
                   <span class="mark mt-0.5"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.8l4.6 4.6L20 6"/></svg></span>
                   <span>
-                    <span class="h-section block text-[0.9375rem]">Business information</span>
-                    <span class="mt-1 block text-sm leading-relaxed text-ink-mid"><span class="arrow">&rarr;</span> Your name, address, phone and email in one clear block, so nobody has to hunt for how to reach you.</span>
+                    <span class="h-section block text-sm">Business information</span>
+                    <span class="mt-1 block text-[0.8125rem] leading-snug text-ink-mid"><span class="arrow">&rarr;</span> Name, address, phone and email in one block.</span>
                   </span>
                 </span>
               </label>
 
               <label class="pick">
                 <input type="checkbox" data-feature="Services section">
-                <span class="box flex h-full items-start gap-3 p-4">
+                <span class="box flex h-full items-start gap-2.5 p-3.5">
                   <span class="mark mt-0.5"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.8l4.6 4.6L20 6"/></svg></span>
                   <span>
-                    <span class="h-section block text-[0.9375rem]">Services section</span>
-                    <span class="mt-1 block text-sm leading-relaxed text-ink-mid"><span class="arrow">&rarr;</span> Lists what you do in the words your customers use, so the wrong jobs stop reaching your phone.</span>
+                    <span class="h-section block text-sm">Services section</span>
+                    <span class="mt-1 block text-[0.8125rem] leading-snug text-ink-mid"><span class="arrow">&rarr;</span> What you do, in your customers' words.</span>
                   </span>
                 </span>
               </label>
 
               <label class="pick">
                 <input type="checkbox" data-feature="Testimonials">
-                <span class="box flex h-full items-start gap-3 p-4">
+                <span class="box flex h-full items-start gap-2.5 p-3.5">
                   <span class="mark mt-0.5"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.8l4.6 4.6L20 6"/></svg></span>
                   <span>
-                    <span class="h-section block text-[0.9375rem]">Testimonials</span>
-                    <span class="mt-1 block text-sm leading-relaxed text-ink-mid"><span class="arrow">&rarr;</span> Puts feedback from your own customers — the words you supply — on the page, where new customers weigh it up.</span>
+                    <span class="h-section block text-sm">Testimonials</span>
+                    <span class="mt-1 block text-[0.8125rem] leading-snug text-ink-mid"><span class="arrow">&rarr;</span> Feedback from your customers, on the page.</span>
                   </span>
                 </span>
               </label>
 
               <label class="pick">
                 <input type="checkbox" data-feature="Opening hours">
-                <span class="box flex h-full items-start gap-3 p-4">
+                <span class="box flex h-full items-start gap-2.5 p-3.5">
                   <span class="mark mt-0.5"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.8l4.6 4.6L20 6"/></svg></span>
                   <span>
-                    <span class="h-section block text-[0.9375rem]">Opening hours</span>
-                    <span class="mt-1 block text-sm leading-relaxed text-ink-mid"><span class="arrow">&rarr;</span> Tells people when you are open before they turn up or ring, which cuts down the calls you cannot take.</span>
+                    <span class="h-section block text-sm">Opening hours</span>
+                    <span class="mt-1 block text-[0.8125rem] leading-snug text-ink-mid"><span class="arrow">&rarr;</span> When you are open, before they turn up.</span>
                   </span>
                 </span>
               </label>
 
               <label class="pick">
                 <input type="checkbox" data-feature="Social links">
-                <span class="box flex h-full items-start gap-3 p-4">
+                <span class="box flex h-full items-start gap-2.5 p-3.5">
                   <span class="mark mt-0.5"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.8l4.6 4.6L20 6"/></svg></span>
                   <span>
-                    <span class="h-section block text-[0.9375rem]">Social links</span>
-                    <span class="mt-1 block text-sm leading-relaxed text-ink-mid"><span class="arrow">&rarr;</span> Sends visitors straight to your Facebook, Instagram or TikTok, so the work you already post keeps earning.</span>
+                    <span class="h-section block text-sm">Social links</span>
+                    <span class="mt-1 block text-[0.8125rem] leading-snug text-ink-mid"><span class="arrow">&rarr;</span> Sends visitors to your social profiles.</span>
                   </span>
                 </span>
               </label>
 
               <label class="pick">
                 <input type="checkbox" data-feature="Call button">
-                <span class="box flex h-full items-start gap-3 p-4">
+                <span class="box flex h-full items-start gap-2.5 p-3.5">
                   <span class="mark mt-0.5"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.8l4.6 4.6L20 6"/></svg></span>
                   <span>
-                    <span class="h-section block text-[0.9375rem]">Call button</span>
-                    <span class="mt-1 block text-sm leading-relaxed text-ink-mid"><span class="arrow">&rarr;</span> One tap dials your number from a phone — no typing, no copying, no lost customer.</span>
+                    <span class="h-section block text-sm">Call button</span>
+                    <span class="mt-1 block text-[0.8125rem] leading-snug text-ink-mid"><span class="arrow">&rarr;</span> One tap dials your number.</span>
                   </span>
                 </span>
               </label>
 
             </div>
 
-            <div class="mt-6 flex flex-wrap items-center gap-4 border-t border-line pt-6">
+            <div class="mt-5 border-t border-line pt-5">
               <button id="add-website" type="button" disabled
                 class="inline-flex items-center justify-center rounded-md bg-accent px-6 py-3.5 text-sm font-semibold text-white hover:bg-accent-hi">
                 Add website to my order
               </button>
-              <p id="feature-status" class="font-mono text-xs uppercase tracking-widest text-ink-soft">
-                No website chosen yet
-              </p>
             </div>
           </fieldset>
 
-          <!-- STEP 3 -->
-          <fieldset id="step3" disabled class="mt-12 border-t-2 border-accent pt-6">
-            <div class="flex items-baseline gap-4">
+          <!-- STEP 3 — one-time add-ons -->
+          <fieldset id="step3" disabled class="mt-10 border-t-2 border-accent pt-5">
+            <div class="flex flex-wrap items-baseline gap-x-4 gap-y-1">
               <span class="font-mono text-xs font-semibold tracking-widest text-ink-soft">STEP 03</span>
               <legend class="h-section text-xl">Optional one-time add-ons</legend>
+              <span class="ml-auto font-mono text-xs uppercase tracking-widest text-ink-soft">Nothing repeats</span>
             </div>
-            <p class="mt-4 max-w-prose text-sm leading-relaxed text-ink-mid">
-              Paid once, alongside the website. Nothing here repeats monthly.
-            </p>
 
-            <div class="mt-6 grid grid-cols-1 gap-3">
+            <div class="mt-5">
               <label class="pick">
                 <input type="checkbox" data-addon="Local SEO" data-once="199.99">
-                <span class="box flex items-start gap-4 p-5 md:p-6">
+                <span class="box flex items-start gap-3 p-4 md:p-5">
                   <span class="mark mt-1"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.8l4.6 4.6L20 6"/></svg></span>
-                  <span class="flex w-full flex-wrap items-start justify-between gap-4">
+                  <span class="flex w-full items-start justify-between gap-4">
                     <span class="max-w-prose">
-                      <span class="h-section block text-lg">Local SEO</span>
-                      <span class="mt-2 block text-sm leading-relaxed text-ink-mid"><span class="arrow">&rarr;</span> Groundwork so people searching for your trade in your area can find you: page titles and descriptions, your business details set out consistently, and your site structured the way search engines read it.</span>
-                      <span class="mt-2 block text-sm leading-relaxed text-ink-soft"><span class="arrow">&rarr;</span> An upgrade to your website, paid one time. This is <strong class="font-semibold text-ink">not</strong> a monthly subscription.</span>
+                      <span class="h-section block text-base">Local SEO</span>
+                      <span class="mt-1.5 block text-[0.8125rem] leading-snug text-ink-mid"><span class="arrow">&rarr;</span> Groundwork so people searching for your trade in your area can find you: page titles and descriptions, consistent business details, and a structure search engines can read.</span>
+                      <span class="mt-1.5 block text-[0.8125rem] leading-snug text-ink-soft"><span class="arrow">&rarr;</span> An upgrade to your website, paid one time. <strong class="font-semibold text-ink">Not</strong> a monthly subscription.</span>
                     </span>
-                    <span class="text-right">
-                      <span class="h-section block text-2xl text-ink">€199.99</span>
-                      <span class="tag tag-once mt-2 inline-block">One-time</span>
+                    <span class="shrink-0 text-right">
+                      <span class="h-section block text-xl text-ink">€199.99</span>
+                      <span class="tag tag-once mt-1.5 inline-block">One-time</span>
                     </span>
                   </span>
                 </span>
@@ -467,91 +453,81 @@
             </div>
           </fieldset>
 
-          <!-- STEP 4 -->
-          <fieldset id="step4" disabled class="mt-12 border-t-2 border-accent pt-6">
-            <div class="flex items-baseline gap-4">
+          <!-- STEP 4 — monthly services -->
+          <fieldset id="step4" disabled class="mt-10 border-t-2 border-accent pt-5">
+            <div class="flex flex-wrap items-baseline gap-x-4 gap-y-1">
               <span class="font-mono text-xs font-semibold tracking-widest text-ink-soft">STEP 04</span>
               <legend class="h-section text-xl">Optional monthly services</legend>
+              <span class="ml-auto font-mono text-xs uppercase tracking-widest text-ink-soft">Stop any time</span>
             </div>
-            <p class="mt-4 max-w-prose text-sm leading-relaxed text-ink-mid">
-              These repeat every month until you stop them. You can start without any of them and add one later.
-            </p>
 
-            <div class="mt-6 grid grid-cols-1 gap-3">
+            <div class="mt-5 grid grid-cols-1 gap-2.5 md:grid-cols-2">
 
               <label class="pick">
                 <input type="checkbox" data-addon="Online Booking System" data-month="29.99">
-                <span class="box flex items-start gap-4 p-5 md:p-6">
+                <span class="box flex h-full items-start gap-3 p-4">
                   <span class="mark mt-1"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.8l4.6 4.6L20 6"/></svg></span>
-                  <span class="flex w-full flex-wrap items-start justify-between gap-4">
-                    <span class="max-w-prose">
-                      <span class="h-section block text-lg">Online Booking System</span>
-                      <span class="mt-2 block text-sm leading-relaxed text-ink-mid"><span class="arrow">&rarr;</span> Customers book an appointment on your website themselves, at the times you allow, instead of ringing while your hands are full.</span>
+                  <span class="w-full">
+                    <span class="flex items-baseline justify-between gap-3">
+                      <span class="h-section text-base">Online Booking System</span>
+                      <span class="h-section whitespace-nowrap text-lg text-ink">€29.99</span>
                     </span>
-                    <span class="text-right">
-                      <span class="h-section block text-2xl text-ink">€29.99</span>
-                      <span class="tag tag-month mt-2 inline-block">Per month</span>
-                    </span>
+                    <span class="mt-2 block"><span class="tag tag-month">Per month</span></span>
+                    <span class="mt-2.5 block text-[0.8125rem] leading-snug text-ink-mid"><span class="arrow">&rarr;</span> Customers book appointments themselves, at the times you allow, instead of ringing while your hands are full.</span>
                   </span>
                 </span>
               </label>
 
               <label class="pick">
                 <input type="checkbox" data-addon="Website Maintenance" data-month="19.99">
-                <span class="box flex items-start gap-4 p-5 md:p-6">
+                <span class="box flex h-full items-start gap-3 p-4">
                   <span class="mark mt-1"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.8l4.6 4.6L20 6"/></svg></span>
-                  <span class="flex w-full flex-wrap items-start justify-between gap-4">
-                    <span class="max-w-prose">
-                      <span class="h-section block text-lg">Website Maintenance</span>
-                      <span class="mt-2 block text-sm leading-relaxed text-ink-mid"><span class="arrow">&rarr;</span> Ongoing updates and changes to your website — new prices, new services, new photos, changed hours. You send the change, we make it.</span>
-                      <span class="mt-2 block text-sm leading-relaxed text-ink-soft"><span class="arrow">&rarr;</span> Includes up to 15 website changes per month.</span>
+                  <span class="w-full">
+                    <span class="flex items-baseline justify-between gap-3">
+                      <span class="h-section text-base">Website Maintenance</span>
+                      <span class="h-section whitespace-nowrap text-lg text-ink">€19.99</span>
                     </span>
-                    <span class="text-right">
-                      <span class="h-section block text-2xl text-ink">€19.99</span>
-                      <span class="tag tag-month mt-2 inline-block">Per month</span>
-                    </span>
+                    <span class="mt-2 block"><span class="tag tag-month">Per month</span></span>
+                    <span class="mt-2.5 block text-[0.8125rem] leading-snug text-ink-mid"><span class="arrow">&rarr;</span> Ongoing updates to your site — new prices, services, photos, hours. You send the change, we make it.</span>
+                    <span class="mt-1.5 block text-[0.8125rem] leading-snug text-ink-soft"><span class="arrow">&rarr;</span> Includes up to 15 website changes per month.</span>
                   </span>
                 </span>
               </label>
 
               <label class="pick">
                 <input type="checkbox" data-addon="Review Management" data-month="29.99">
-                <span class="box flex items-start gap-4 p-5 md:p-6">
+                <span class="box flex h-full items-start gap-3 p-4">
                   <span class="mark mt-1"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.8l4.6 4.6L20 6"/></svg></span>
-                  <span class="flex w-full flex-wrap items-start justify-between gap-4">
-                    <span class="max-w-prose">
-                      <span class="h-section block text-lg">Review Management</span>
-                      <span class="mt-2 block text-sm leading-relaxed text-ink-mid"><span class="arrow">&rarr;</span> We help you manage the customer reviews on your Google Business profile and Google Maps — keeping an eye on new ones and helping you reply.</span>
-                      <span class="mt-2 block text-sm leading-relaxed text-ink-soft"><span class="arrow">&rarr;</span> Review notifications are sent to your email where that is technically possible.</span>
+                  <span class="w-full">
+                    <span class="flex items-baseline justify-between gap-3">
+                      <span class="h-section text-base">Review Management</span>
+                      <span class="h-section whitespace-nowrap text-lg text-ink">€29.99</span>
                     </span>
-                    <span class="text-right">
-                      <span class="h-section block text-2xl text-ink">€29.99</span>
-                      <span class="tag tag-month mt-2 inline-block">Per month</span>
-                    </span>
+                    <span class="mt-2 block"><span class="tag tag-month">Per month</span></span>
+                    <span class="mt-2.5 block text-[0.8125rem] leading-snug text-ink-mid"><span class="arrow">&rarr;</span> We help you manage the reviews on your Google Business profile and Google Maps — watching for new ones and helping you reply.</span>
+                    <span class="mt-1.5 block text-[0.8125rem] leading-snug text-ink-soft"><span class="arrow">&rarr;</span> Review notifications are sent to your email where that is technically possible.</span>
                   </span>
                 </span>
               </label>
 
               <label class="pick">
                 <input type="checkbox" data-addon="Digital Menu" data-once="49.99" data-month="19.99">
-                <span class="box flex items-start gap-4 p-5 md:p-6">
+                <span class="box flex h-full items-start gap-3 p-4">
                   <span class="mark mt-1"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.8l4.6 4.6L20 6"/></svg></span>
-                  <span class="flex w-full flex-wrap items-start justify-between gap-4">
-                    <span class="max-w-prose">
-                      <span class="h-section block text-lg">Digital Menu</span>
-                      <span class="mt-2 block text-sm leading-relaxed text-ink-mid"><span class="arrow">&rarr;</span> For restaurants, cafés, bars and similar businesses: your menu on the web, readable on a phone, changed when your kitchen changes.</span>
-                      <span class="mt-2 block text-sm leading-relaxed text-ink-soft"><span class="arrow">&rarr;</span> Two separate charges — a one-time setup fee, then a monthly fee.</span>
-                    </span>
-                    <span class="text-right">
-                      <span class="block">
-                        <span class="h-section block text-2xl text-ink">€49.99</span>
-                        <span class="tag tag-once mt-2 inline-block">One-time setup</span>
-                      </span>
-                      <span class="mt-4 block border-t border-line pt-3">
-                        <span class="h-section block text-2xl text-ink">€19.99</span>
-                        <span class="tag tag-month mt-2 inline-block">Per month</span>
+                  <span class="w-full">
+                    <span class="flex items-baseline justify-between gap-3">
+                      <span class="h-section text-base">Digital Menu</span>
+                      <span class="text-right">
+                        <span class="h-section block whitespace-nowrap text-lg text-ink">€49.99</span>
+                        <span class="h-section block whitespace-nowrap text-lg text-ink">€19.99</span>
                       </span>
                     </span>
+                    <span class="mt-2 flex flex-wrap justify-end gap-1.5">
+                      <span class="tag tag-once">One-time setup</span>
+                      <span class="tag tag-month">Per month</span>
+                    </span>
+                    <span class="mt-2.5 block text-[0.8125rem] leading-snug text-ink-mid"><span class="arrow">&rarr;</span> For restaurants, cafés and bars: your menu on the web, readable on a phone, changed when your kitchen changes.</span>
+                    <span class="mt-1.5 block text-[0.8125rem] leading-snug text-ink-soft"><span class="arrow">&rarr;</span> Two separate charges — a one-time setup fee, then a monthly fee.</span>
                   </span>
                 </span>
               </label>
@@ -560,25 +536,25 @@
           </fieldset>
 
           <!-- COMING SOON -->
-          <div class="mt-12 border-t border-line pt-6">
-            <p class="eyebrow text-ink-soft">Coming soon</p>
-            <p class="mt-4 max-w-prose text-sm leading-relaxed text-ink-mid">
-              In development, and not available to order yet.
-            </p>
-            <div class="mt-6 grid grid-cols-1 gap-3 md:grid-cols-2">
-              <div class="rounded-lg border border-dashed border-line-firm bg-paper p-5">
-                <div class="flex items-start justify-between gap-4">
-                  <h4 class="h-section text-base text-ink-mid">Social Media Content</h4>
+          <div class="mt-10 border-t border-line pt-5">
+            <div class="flex flex-wrap items-baseline gap-x-4 gap-y-1">
+              <p class="eyebrow text-ink-soft">Coming soon</p>
+              <span class="ml-auto font-mono text-xs uppercase tracking-widest text-ink-soft">Not orderable yet</span>
+            </div>
+            <div class="mt-4 grid grid-cols-1 gap-2.5 md:grid-cols-2">
+              <div class="rounded-lg border border-dashed border-line-firm bg-paper p-4">
+                <div class="flex items-baseline justify-between gap-3">
+                  <h4 class="h-section text-sm text-ink-mid">Social Media Content</h4>
                   <span class="tag tag-soon">Coming soon</span>
                 </div>
-                <p class="mt-2 text-sm leading-relaxed text-ink-soft"><span class="arrow">&rarr;</span> Regular posts for your business profiles, so your page does not sit untouched for months.</p>
+                <p class="mt-1.5 text-[0.8125rem] leading-snug text-ink-soft"><span class="arrow">&rarr;</span> Regular posts for your business profiles.</p>
               </div>
-              <div class="rounded-lg border border-dashed border-line-firm bg-paper p-5">
-                <div class="flex items-start justify-between gap-4">
-                  <h4 class="h-section text-base text-ink-mid">AI Receptionist</h4>
+              <div class="rounded-lg border border-dashed border-line-firm bg-paper p-4">
+                <div class="flex items-baseline justify-between gap-3">
+                  <h4 class="h-section text-sm text-ink-mid">AI Receptionist</h4>
                   <span class="tag tag-soon">Coming soon</span>
                 </div>
-                <p class="mt-2 text-sm leading-relaxed text-ink-soft"><span class="arrow">&rarr;</span> Answers routine customer questions for you when you cannot get to the phone.</p>
+                <p class="mt-1.5 text-[0.8125rem] leading-snug text-ink-soft"><span class="arrow">&rarr;</span> Answers routine questions when you cannot.</p>
               </div>
             </div>
           </div>
@@ -589,32 +565,31 @@
         <div class="lg:col-span-5 xl:col-span-4">
           <div class="lg:sticky lg:top-24">
             <div class="overflow-hidden rounded-lg border border-line bg-paper">
-              <div class="border-b border-line px-6 py-5">
-                <div class="flex items-baseline justify-between gap-4">
-                  <p class="eyebrow text-ink-soft">Step 05 — Your order</p>
-                  <span class="font-mono text-xs text-ink-soft" id="item-count">Empty</span>
-                </div>
+
+              <div class="flex items-baseline justify-between gap-4 border-b border-line px-5 py-4">
+                <p class="eyebrow text-ink-soft">Step 05 — Your order</p>
+                <span class="font-mono text-xs text-ink-soft" id="item-count">Empty</span>
               </div>
 
-              <div class="px-6 py-5">
+              <div class="px-5 py-4">
                 <p class="eyebrow text-ink-soft">One-time</p>
-                <ul id="sum-once" class="mt-3 font-mono text-[0.8125rem] text-ink-mid"></ul>
-                <div class="mt-3 flex items-baseline justify-between gap-4 border-t border-line-firm pt-3">
+                <ul id="sum-once" class="mt-2 font-mono text-[0.8125rem] text-ink-mid"></ul>
+                <div class="mt-2 flex items-baseline justify-between gap-4 border-t border-line-firm pt-2.5">
                   <span class="font-mono text-xs uppercase tracking-widest text-ink">One-time total</span>
                   <span class="h-section text-lg text-ink" id="total-once">€0.00</span>
                 </div>
               </div>
 
-              <div class="border-t border-line px-6 py-5">
+              <div class="border-t border-line px-5 py-4">
                 <p class="eyebrow text-ink-soft">Monthly</p>
-                <ul id="sum-month" class="mt-3 font-mono text-[0.8125rem] text-ink-mid"></ul>
-                <div class="mt-3 flex items-baseline justify-between gap-4 border-t border-line-firm pt-3">
+                <ul id="sum-month" class="mt-2 font-mono text-[0.8125rem] text-ink-mid"></ul>
+                <div class="mt-2 flex items-baseline justify-between gap-4 border-t border-line-firm pt-2.5">
                   <span class="font-mono text-xs uppercase tracking-widest text-ink">Monthly total</span>
                   <span class="h-section text-lg text-ink" id="total-month">€0.00 / month</span>
                 </div>
               </div>
 
-              <div class="bg-accent px-6 py-6 text-white">
+              <div class="bg-accent px-5 py-5 text-white">
                 <div class="flex items-baseline justify-between gap-4">
                   <span class="font-mono text-xs uppercase tracking-widest text-white/70">First payment</span>
                   <span class="h-section text-2xl" id="total-first">€0.00</span>
@@ -622,23 +597,24 @@
                 <p class="mt-2 text-xs leading-relaxed text-white/70" id="first-note">
                   One-time charges plus your first month of any monthly service.
                 </p>
-                <p class="mt-4 border-t border-white/20 pt-4 text-xs leading-relaxed text-white/70" id="recurring-note">
+                <p class="mt-3 border-t border-white/20 pt-3 text-xs leading-relaxed text-white/70" id="recurring-note">
                   Nothing repeats monthly with this selection.
                 </p>
 
                 <button id="checkout" type="button" disabled
-                  class="mt-6 inline-flex w-full items-center justify-center rounded-md bg-white px-6 py-3.5 text-sm font-semibold text-accent hover:bg-accent-tint">
+                  class="mt-5 inline-flex w-full items-center justify-center rounded-md bg-white px-6 py-3.5 text-sm font-semibold text-accent hover:bg-accent-tint">
                   Continue to checkout
                 </button>
-                <p id="checkout-hint" class="mt-3 text-center text-xs text-white/60">Add a website to your order first.</p>
+                <p id="checkout-hint" class="mt-2.5 text-center text-xs text-white/60">Add a website to your order first.</p>
               </div>
 
-              <div class="border-t border-line px-6 py-5">
+              <div class="border-t border-line px-5 py-4">
                 <p class="eyebrow text-ink-soft">What is included</p>
-                <ul id="sum-included" class="mt-3 space-y-2 text-sm leading-relaxed text-ink-mid">
-                  <li class="text-ink-soft">Choose your website features to see them listed here.</li>
+                <ul id="sum-included" class="mt-2 space-y-1.5 text-[0.8125rem] leading-snug text-ink-mid">
+                  <li class="text-ink-soft">Choose a website to see what is included.</li>
                 </ul>
               </div>
+
             </div>
           </div>
         </div>
