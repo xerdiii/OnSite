@@ -9,34 +9,6 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;700&family=Instrument+Serif:ital@0;1&family=Inter:wght@400;600&family=IBM+Plex+Mono:wght@400;600&display=swap" rel="stylesheet">
 <script>/* theme before paint, no flash */(function(){try{var t=localStorage.getItem('onsite.theme');if(t)document.documentElement.setAttribute('data-theme',t);}catch(e){}})();</script>
-<link rel="stylesheet" href="assets/theme.css">
-<script src="https://cdn.tailwindcss.com"></script>
-<script>
-  tailwind.config = {
-    theme: {
-      extend: {
-        colors: {
-          paper:        'rgb(var(--c-paper) / <alpha-value>)',
-          surface:      'rgb(var(--c-surface) / <alpha-value>)',
-          ink:          'rgb(var(--c-ink) / <alpha-value>)',
-          'ink-mid':    'rgb(var(--c-ink-mid) / <alpha-value>)',
-          'ink-soft':   'rgb(var(--c-ink-soft) / <alpha-value>)',
-          line:         'rgb(var(--c-line) / <alpha-value>)',
-          'line-firm':  'rgb(var(--c-line-firm) / <alpha-value>)',
-          accent:       'rgb(var(--c-accent) / <alpha-value>)',
-          'accent-hi':  'rgb(var(--c-accent-hi) / <alpha-value>)',
-          'accent-tint':'rgb(var(--c-accent-tint) / <alpha-value>)'
-        },
-        fontFamily: {
-          display: ['Archivo', 'Helvetica Neue', 'Arial', 'sans-serif'],
-          sans:    ['Inter', 'Helvetica Neue', 'Arial', 'sans-serif'],
-          mono:    ['IBM Plex Mono', 'ui-monospace', 'SFMono-Regular', 'monospace']
-        },
-        maxWidth: { shell: '76rem', prose: '38rem' }
-      }
-    }
-  }
-</script>
 <style>
   html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
   body { font-feature-settings: "kern" 1, "liga" 1; }
@@ -111,6 +83,9 @@
 </style>
 <link rel="stylesheet" href="assets/mobile.css">
 <link rel="stylesheet" href="assets/landing-bg.css">
+<link rel="stylesheet" href="assets/tailwind.css">
+<link rel="stylesheet" href="assets/theme.css">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
 </head>
 
 <body class="bg-paper font-sans text-ink antialiased">
@@ -143,8 +118,8 @@
         You run the business.<br>We build the website.
       </h1>
       <p class="lede mt-5 max-w-prose text-ink-mid md:mt-7">
-        Professional websites for small businesses. Choose the features you need, and pay only
-        <strong class="font-semibold text-ink">25% to start</strong>.
+        You're not going to learn a website builder at eleven at night. Tell us what you do,
+        we'll build the site, and you pay a quarter of it to get us started.
       </p>
 
       <!-- Price and payment, above the fold on a phone -->
@@ -155,8 +130,8 @@
         </div>
         <span class="tag tag-once">One-time</span>
         <p class="w-full text-[0.8125rem] leading-relaxed text-ink-mid sm:w-auto sm:flex-1">
-          <span class="arrow">&rarr;</span> Pay 25% today. You review the finished website before the
-          remaining 75% is due, and monthly services only start once you are live.
+          A quarter today. You see the finished thing before the rest is due — and nothing monthly
+          starts until the site is actually up.
         </p>
       </div>
 
@@ -164,16 +139,15 @@
         <a href="signup.html" class="inline-flex min-h-[52px] items-center justify-center rounded-md bg-accent px-7 py-4 text-base font-semibold text-white hover:bg-accent-hi">
           Build My Website
         </a>
-        <a href="#how" class="inline-flex min-h-[52px] items-center justify-center rounded-md border border-line bg-surface px-7 py-4 text-base font-semibold text-accent hover:border-line-firm">
-          See How It Works
+        <a href="#how" class="inline-flex min-h-[52px] items-center px-1 text-base font-semibold text-ink-mid underline decoration-line-firm decoration-2 underline-offset-[6px] hover:text-ink hover:decoration-accent">
+          Or read how it works first
         </a>
       </div>
 
-      <ul class="mt-10 grid grid-cols-1 gap-2 border-t border-line pt-6 sm:grid-cols-3 sm:gap-px">
-        <li class="font-mono text-xs uppercase tracking-widest text-ink-mid">€79.99 or €249.99 — both one-time</li>
-        <li class="font-mono text-xs uppercase tracking-widest text-ink-mid">Add-ons are optional</li>
-        <li class="font-mono text-xs uppercase tracking-widest text-ink-mid">Cancel monthly services any time</li>
-      </ul>
+      <p class="mt-10 max-w-prose border-t border-line pt-6 text-[0.9375rem] leading-relaxed text-ink-mid">
+        Two prices, €79.99 or €249.99, both paid once. Everything else is optional, and any monthly
+        service can be stopped whenever you like.
+      </p>
     </div>
   </section>
 
@@ -307,6 +281,32 @@
           </p>
         </li>
       </ol>
+    </div>
+  </section>
+
+
+  <!-- 4b — ASIDE -->
+  <section class="border-b border-line">
+    <div class="mx-auto max-w-shell px-6 py-14 md:px-10 md:py-20">
+      <div class="grid grid-cols-1 gap-8 lg:grid-cols-12 lg:gap-16">
+        <div class="lg:col-span-7 lg:col-start-2">
+          <h2 class="h-section sec-title max-w-xl">Why a quarter, and not the whole thing?</h2>
+          <p class="mt-6 max-w-prose text-[1.0625rem] leading-relaxed text-ink-mid">
+            Because you have never met us. Handing a stranger four hundred euro for a website that
+            doesn't exist yet is a bad deal, and we'd rather not ask for it.
+          </p>
+          <p class="mt-4 max-w-prose text-[1.0625rem] leading-relaxed text-ink-mid">
+            So you pay a quarter, we build the thing, and you look at it on your own phone before the
+            rest is due. If it's wrong, we fix it. If you walk away, you've spent a quarter, not the lot.
+          </p>
+        </div>
+        <aside class="lg:col-span-3 lg:pt-14">
+          <p class="border-l-2 border-accent pl-5 text-[0.9375rem] leading-relaxed text-ink-soft">
+            The other half of it: we get paid for finishing, not for starting. That tends to focus
+            the mind.
+          </p>
+        </aside>
+      </div>
     </div>
   </section>
 
@@ -504,7 +504,6 @@
 
         <!-- BRAND & DESIGN -->
         <div class="mt-6">
-          <p class="mono-label text-ink-soft">Filter</p>
           <div class="m-chips mt-3" role="tablist" aria-label="Extras categories">
             <button type="button" class="m-chip is-on" data-ex-filter="all">All</button>
             <button type="button" class="m-chip" data-ex-filter="brand">Branding</button>
@@ -755,19 +754,19 @@
         
         <div data-acc-item class="border-b border-line">
           <dt data-acc-head class="h-section text-base">Are Business Extras required?</dt>
-          <dd data-acc-body class="max-w-prose pb-6 text-[0.9375rem] leading-relaxed text-ink-mid">No. They are completely optional. You can buy only the website, or add whichever extras your business actually needs. Nothing in that section is required to get a website.</dd>
+          <dd data-acc-body class="max-w-prose pb-6 text-[0.9375rem] leading-relaxed text-ink-mid">No. Buy the website on its own if that's all you want. Most people do.</dd>
         </div>
         <div data-acc-item class="border-b border-line">
           <dt data-acc-head class="h-section text-base">Are Business Extras monthly payments?</dt>
-          <dd data-acc-body class="max-w-prose pb-6 text-[0.9375rem] leading-relaxed text-ink-mid">No. Every Business Extra is a one-time charge and none of them turn into a subscription. They join your one-time total and follow the same 25% now / 75% on approval schedule as the website.</dd>
+          <dd data-acc-body class="max-w-prose pb-6 text-[0.9375rem] leading-relaxed text-ink-mid">No — they're one-time, every one of them. Nothing there quietly becomes a monthly bill.</dd>
         </div>
         <div data-acc-item class="border-b border-line">
           <dt data-acc-head class="h-section text-base">How much do I actually pay today?</dt>
-          <dd data-acc-body class="max-w-prose pb-6 text-[0.9375rem] leading-relaxed text-ink-mid">A quarter of your one-time total, as a deposit to start the project. The remaining 75% is due only once the website is finished and you have approved it. Monthly services are not billed at all until your site is live — the order summary shows every number before you pay.</dd>
+          <dd data-acc-body class="max-w-prose pb-6 text-[0.9375rem] leading-relaxed text-ink-mid">A quarter of the one-time total. That's it for now. The rest is due once the site is built and you've said you're happy with it, and nothing monthly gets charged until you're actually live. The order summary spells out all three numbers before you pay anything.</dd>
         </div>
         <div data-acc-item class="border-b border-line">
           <dt data-acc-head class="h-section text-base">How long does it take?</dt>
-          <dd data-acc-body class="max-w-prose pb-6 text-[0.9375rem] leading-relaxed text-ink-mid">Within 7 days of receiving everything we need from you — logo, photos, business information, services and prices, opening hours, contact details, social links and any text you want used. That is a target we work to, not an unconditional guarantee: if content arrives late, the delivery date moves with it.</dd>
+          <dd data-acc-body class="max-w-prose pb-6 text-[0.9375rem] leading-relaxed text-ink-mid">About a week from the day we have everything — logo, photos, your services and prices, opening hours, how people reach you. It's a target, not a promise carved in stone: if the photos land three weeks later, so does the website.</dd>
         </div>
         <div data-acc-item class="border-b border-line">
           <dt data-acc-head class="h-section text-base">Can I add or stop a monthly service later?</dt>

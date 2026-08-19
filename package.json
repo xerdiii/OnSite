@@ -1,0 +1,22 @@
+{
+  "name": "onsite",
+  "version": "1.0.0",
+  "description": "Onsite — business websites, built and managed.",
+  "scripts": {
+    "css": "tailwindcss -c tailwind.config.js -i src/tailwind.css -o assets/tailwind.css --minify",
+    "css:watch": "tailwindcss -c tailwind.config.js -i src/tailwind.css -o assets/tailwind.css --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/xerdiii/OnSite.git"
+  },
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/xerdiii/OnSite/issues"
+  },
+  "homepage": "https://github.com/xerdiii/OnSite#readme",
+  "devDependencies": {
+    "tailwindcss": "^3.4.17"
+  },
+  "private": true
+}

@@ -1,7 +1,8 @@
-/* Shared Tailwind theme for the Onsite app pages.
-   Colours resolve through the tokens in theme.css so light and dark
-   both flow from one place. */
-tailwind.config = {
+/** Onsite — Tailwind build.
+ *  Colours resolve through the CSS custom properties in assets/theme.css,
+ *  so one token set drives light and dark. */
+module.exports = {
+  content: ['./*.html', './assets/*.js'],
   theme: {
     extend: {
       colors: {
@@ -17,11 +18,12 @@ tailwind.config = {
         'accent-tint':'rgb(var(--c-accent-tint) / <alpha-value>)'
       },
       fontFamily: {
-        display: ['Archivo', 'Helvetica Neue', 'Arial', 'sans-serif'],
+        display: ['Instrument Serif', 'Iowan Old Style', 'Georgia', 'serif'],
         sans:    ['Inter', 'Helvetica Neue', 'Arial', 'sans-serif'],
         mono:    ['IBM Plex Mono', 'ui-monospace', 'SFMono-Regular', 'monospace']
       },
       maxWidth: { shell: '76rem', prose: '38rem' }
     }
-  }
+  },
+  plugins: []
 };

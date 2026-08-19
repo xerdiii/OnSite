@@ -39,7 +39,7 @@
 
     var warm = key === 'cta' ? '#8FD9B4' : '#1B7A54';
     var earth = key === 'cta' ? '#D6BC8A' : '#94743E';
-    var op = key === 'cta' ? [0.40, 0.22] : [0.50, 0.28];
+    var op = key === 'cta' ? [0.26, 0.14] : [0.30, 0.16];
 
     return '<defs>' + lin +
       '<radialGradient id="lb-glowL-' + key + '">' +
@@ -80,22 +80,14 @@
   function specs(key) {
     var p = key === 'cta' ? 'c' : 'h';
     var left = [
-      { rx: 150, ratio: 0.74, tilt: -18, w: 2,   grad: p + '1', op: 0.92, dash: [0.30, 0.14, 0.18, 0.38], off: 40 },
-      { rx: 228, ratio: 0.68, tilt: 8,   w: 3.5, grad: p + '2', op: 0.80, dash: [0.42, 0.20, 0.10, 0.28], off: 120 },
-      { rx: 310, ratio: 0.72, tilt: -32, w: 6,   grad: p + '3', op: 0.72, dash: [0.26, 0.12, 0.34, 0.28], off: 0 },
-      { rx: 400, ratio: 0.64, tilt: 22,  w: 9,   grad: p + '4', op: 0.56, dash: [0.48, 0.24, 0.14, 0.14], off: 220 },
-      { rx: 500, ratio: 0.70, tilt: -8,  w: 14,  grad: p + '5', op: 0.40, dash: [0.34, 0.30, 0.20, 0.16], off: 90 },
-      { rx: 190, ratio: 0.70, tilt: 46,  w: 2.5, grad: p + '4', op: 0.84, dash: [0.18, 0.10, 0.26, 0.46], off: 150 },
-      { rx: 356, ratio: 0.54, tilt: 62,  w: 8,   grad: p + '1', op: 0.54, dash: [0.36, 0.22, 0.12, 0.30], off: 200 }
+      { rx: 210, ratio: 0.72, tilt: -14, w: 1.6, grad: p + '1', op: 0.55, dash: [0.34, 0.22, 0.16, 0.28], off: 40 },
+      { rx: 350, ratio: 0.66, tilt: 24,  w: 3,   grad: p + '2', op: 0.36, dash: [0.44, 0.26, 0.12, 0.18], off: 160 },
+      { rx: 500, ratio: 0.74, tilt: -6,  w: 6,   grad: p + '5', op: 0.20, dash: [0.30, 0.34, 0.18, 0.18], off: 90 }
     ];
     var right = [
-      { rx: 172, ratio: 0.62, tilt: 26,  w: 3.2, grad: p + '3', op: 0.80, dash: [0.24, 0.18, 0.30, 0.28], off: 70 },
-      { rx: 254, ratio: 0.80, tilt: -12, w: 5,   grad: p + '1', op: 0.72, dash: [0.38, 0.12, 0.22, 0.28], off: 10 },
-      { rx: 344, ratio: 0.58, tilt: 40,  w: 8.8, grad: p + '5', op: 0.60, dash: [0.30, 0.26, 0.16, 0.28], off: 180 },
-      { rx: 436, ratio: 0.76, tilt: -26, w: 13,  grad: p + '2', op: 0.46, dash: [0.44, 0.16, 0.24, 0.16], off: 60 },
-      { rx: 546, ratio: 0.60, tilt: 14,  w: 18,  grad: p + '4', op: 0.32, dash: [0.28, 0.34, 0.18, 0.20], off: 260 },
-      { rx: 208, ratio: 0.88, tilt: -38, w: 3.8, grad: p + '2', op: 0.74, dash: [0.16, 0.12, 0.34, 0.38], off: 90 },
-      { rx: 392, ratio: 0.90, tilt: -60, w: 11,  grad: p + '3', op: 0.44, dash: [0.32, 0.18, 0.20, 0.30], off: 40 }
+      { rx: 240, ratio: 0.64, tilt: 30,  w: 2,   grad: p + '3', op: 0.50, dash: [0.26, 0.20, 0.30, 0.24], off: 70 },
+      { rx: 390, ratio: 0.80, tilt: -20, w: 4,   grad: p + '1', op: 0.32, dash: [0.38, 0.16, 0.22, 0.24], off: 10 },
+      { rx: 546, ratio: 0.60, tilt: 12,  w: 8,   grad: p + '4', op: 0.18, dash: [0.28, 0.36, 0.18, 0.18], off: 260 }
     ];
     return { left: left, right: right };
   }
