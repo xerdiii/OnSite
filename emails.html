@@ -8,25 +8,27 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;700&family=Inter:wght@400;600&family=IBM+Plex+Mono:wght@400;600&display=swap" rel="stylesheet">
+<script>/* theme before paint, no flash */(function(){try{var t=localStorage.getItem('onsite.theme');if(t)document.documentElement.setAttribute('data-theme',t);}catch(e){}})();</script>
+<link rel="stylesheet" href="assets/theme.css">
 <script src="https://cdn.tailwindcss.com"></script>
 <script src="assets/tw.js"></script>
 <link rel="stylesheet" href="assets/onsite.css">
 <style>
-  .mail { background:#FFFFFF; border:1px solid #E3E1DC; border-radius:0.5rem; overflow:hidden; }
-  .mail-head { border-bottom:1px solid #E3E1DC; padding:0.9rem 1.25rem; background:#F7F6F3; }
-  .mail-body { padding:1.5rem 1.25rem; font-size:0.9375rem; line-height:1.7; color:#43484F; }
+  .mail { background:rgb(var(--c-surface)); border:1px solid rgb(var(--c-line)); border-radius:0.5rem; overflow:hidden; }
+  .mail-head { border-bottom:1px solid rgb(var(--c-line)); padding:0.9rem 1.25rem; background:rgb(var(--c-paper)); }
+  .mail-body { padding:1.5rem 1.25rem; font-size:0.9375rem; line-height:1.7; color:rgb(var(--c-ink-mid)); }
   .mail-body p + p { margin-top:0.9rem; }
-  .mail-body strong { color:#14161A; font-weight:600; }
-  .mail-body .rows { margin-top:1rem; border-top:1px solid #E3E1DC; }
+  .mail-body strong { color:rgb(var(--c-ink)); font-weight:600; }
+  .mail-body .rows { margin-top:1rem; border-top:1px solid rgb(var(--c-line)); }
   .mail-body .rows div { display:flex; justify-content:space-between; gap:1rem; padding:0.55rem 0;
-                         border-bottom:1px solid #E3E1DC; font-size:0.875rem; }
-  .mail-body .rows span:first-child { color:#6E747C; }
-  .mail-body .rows span:last-child { color:#14161A; font-weight:600; font-family:'IBM Plex Mono',monospace; }
-  .mail-cta { display:inline-block; margin-top:1.25rem; background:#1C2B3A; color:#FFFFFF;
+                         border-bottom:1px solid rgb(var(--c-line)); font-size:0.875rem; }
+  .mail-body .rows span:first-child { color:rgb(var(--c-ink-soft)); }
+  .mail-body .rows span:last-child { color:rgb(var(--c-ink)); font-weight:600; font-family:'IBM Plex Mono',monospace; }
+  .mail-cta { display:inline-block; margin-top:1.25rem; background:rgb(var(--c-accent)); color:rgb(var(--c-surface));
               border-radius:0.375rem; padding:0.7rem 1.25rem; font-size:0.875rem; font-weight:600; }
-  .ph { font-family:'IBM Plex Mono',ui-monospace,monospace; font-size:0.8125rem; color:#43484F;
-        border:1px dashed #CFCCC5; border-radius:0.25rem; padding:0.15rem 0.4rem; display:inline-block;
-        background:#FFFFFF; }
+  .ph { font-family:'IBM Plex Mono',ui-monospace,monospace; font-size:0.8125rem; color:rgb(var(--c-ink-mid));
+        border:1px dashed rgb(var(--c-line-firm)); border-radius:0.25rem; padding:0.15rem 0.4rem; display:inline-block;
+        background:rgb(var(--c-surface)); }
 </style>
 <link rel="stylesheet" href="assets/mobile.css">
 </head>
@@ -260,5 +262,6 @@
 
 <script src="assets/cookies.js"></script>
 <script src="assets/mobile.js"></script>
+<script src="assets/theme.js"></script>
 </body>
 </html>

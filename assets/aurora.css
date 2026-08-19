@@ -71,8 +71,8 @@
   content: "";
   position: absolute; inset: 0;
   background:
-    radial-gradient(46% 62% at 50% 48%, rgba(247,246,243,0.94) 0%, rgba(247,246,243,0.80) 42%, rgba(247,246,243,0.28) 72%, rgba(247,246,243,0) 100%),
-    linear-gradient(180deg, rgba(247,246,243,0.55) 0%, rgba(247,246,243,0) 22%, rgba(247,246,243,0) 78%, rgba(247,246,243,0.60) 100%);
+    radial-gradient(46% 62% at 50% 48%, rgb(var(--c-wash) / 0.94) 0%, rgb(var(--c-wash) / 0.80) 42%, rgb(var(--c-wash) / 0.28) 72%, rgb(var(--c-wash) / 0) 100%),
+    linear-gradient(180deg, rgb(var(--c-wash) / 0.55) 0%, rgb(var(--c-wash) / 0) 22%, rgb(var(--c-wash) / 0) 78%, rgb(var(--c-wash) / 0.60) 100%);
 }
 
 /* Ambient glow behind the card itself */
@@ -89,7 +89,7 @@
 }
 
 [data-aurora] .card {
-  background: rgba(255,255,255,0.96);
+  background: rgb(var(--c-surface) / 0.96);
   -webkit-backdrop-filter: blur(8px);
   backdrop-filter: blur(8px);
   box-shadow: 0 1px 2px rgba(20,22,26,0.04), 0 18px 44px -22px rgba(11,46,32,0.28);
@@ -101,7 +101,7 @@
 [data-aurora] > .ft { position: relative; z-index: 1; }
 
 [data-aurora] > header {
-  background: color-mix(in srgb, #F7F6F3 90%, transparent);
+  background: color-mix(in srgb, rgb(var(--c-paper)) 90%, transparent);
   -webkit-backdrop-filter: blur(10px);
   backdrop-filter: blur(10px);
 }
@@ -122,8 +122,8 @@
   .au-cluster--r { animation-name: au-drift-r-m; }
   .aurora::after {
     background:
-      radial-gradient(70% 44% at 50% 50%, rgba(247,246,243,0.96) 0%, rgba(247,246,243,0.86) 46%, rgba(247,246,243,0.30) 78%, rgba(247,246,243,0) 100%),
-      linear-gradient(180deg, rgba(247,246,243,0.42) 0%, rgba(247,246,243,0) 26%, rgba(247,246,243,0) 74%, rgba(247,246,243,0.50) 100%);
+      radial-gradient(70% 44% at 50% 50%, rgb(var(--c-wash) / 0.96) 0%, rgb(var(--c-wash) / 0.86) 46%, rgb(var(--c-wash) / 0.30) 78%, rgb(var(--c-wash) / 0) 100%),
+      linear-gradient(180deg, rgb(var(--c-wash) / 0.42) 0%, rgb(var(--c-wash) / 0) 26%, rgb(var(--c-wash) / 0) 74%, rgb(var(--c-wash) / 0.50) 100%);
   }
   [data-aurora] main > div::before { width: 190%; top: 34%; }
 }
@@ -141,7 +141,7 @@
 
 /* The muted grey is the one tone that struggles over a tinted field. */
 [data-aurora] main .text-ink-soft,
-[data-aurora] main .eyebrow { color: #43484F; }
+[data-aurora] main .eyebrow { color: rgb(var(--c-ink-mid)); }
 
 .au-spin--l6 { animation: au-ccw 116s linear infinite; }
 .au-spin--l7 { animation: au-cw  152s linear infinite; }

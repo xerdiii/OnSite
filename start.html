@@ -8,22 +8,24 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;700&family=Inter:wght@400;600&family=IBM+Plex+Mono:wght@400;600&display=swap" rel="stylesheet">
+<script>/* theme before paint, no flash */(function(){try{var t=localStorage.getItem('onsite.theme');if(t)document.documentElement.setAttribute('data-theme',t);}catch(e){}})();</script>
+<link rel="stylesheet" href="assets/theme.css">
 <script src="https://cdn.tailwindcss.com"></script>
 <script>
   tailwind.config = {
     theme: {
       extend: {
         colors: {
-          paper:      '#F7F6F3',
-          surface:    '#FFFFFF',
-          ink:        '#14161A',
-          'ink-mid':  '#43484F',
-          'ink-soft': '#6E747C',
-          line:       '#E3E1DC',
-          'line-firm':'#CFCCC5',
-          accent:     '#1C2B3A',
-          'accent-hi':'#27394B',
-          'accent-tint': '#EEF0F2'
+          paper:        'rgb(var(--c-paper) / <alpha-value>)',
+          surface:      'rgb(var(--c-surface) / <alpha-value>)',
+          ink:          'rgb(var(--c-ink) / <alpha-value>)',
+          'ink-mid':    'rgb(var(--c-ink-mid) / <alpha-value>)',
+          'ink-soft':   'rgb(var(--c-ink-soft) / <alpha-value>)',
+          line:         'rgb(var(--c-line) / <alpha-value>)',
+          'line-firm':  'rgb(var(--c-line-firm) / <alpha-value>)',
+          accent:       'rgb(var(--c-accent) / <alpha-value>)',
+          'accent-hi':  'rgb(var(--c-accent-hi) / <alpha-value>)',
+          'accent-tint':'rgb(var(--c-accent-tint) / <alpha-value>)'
         },
         fontFamily: {
           display: ['Archivo', 'Helvetica Neue', 'Arial', 'sans-serif'],
@@ -46,28 +48,28 @@
     font-size:0.6875rem; font-weight:400; letter-spacing:0.16em; text-transform:uppercase;
   }
   .doc-title { font-size: clamp(2rem, 4.6vw, 3.1rem); }
-  .arrow { color:#1C2B3A; font-weight:600; }
+  .arrow { color:rgb(var(--c-accent)); font-weight:600; }
 
   /* Form controls — same hairline language as the selection cards */
-  .field label { display:block; font-size:0.875rem; font-weight:600; color:#14161A; }
-  .field .hint { display:block; margin-top:0.2rem; font-size:0.8125rem; line-height:1.45; color:#6E747C; }
+  .field label { display:block; font-size:0.875rem; font-weight:600; color:rgb(var(--c-ink)); }
+  .field .hint { display:block; margin-top:0.2rem; font-size:0.8125rem; line-height:1.45; color:rgb(var(--c-ink-soft)); }
   .field input[type="text"],
   .field input[type="email"],
   .field input[type="tel"],
   .field input[type="url"],
   .field input[type="file"],
   .field textarea {
-    margin-top:0.55rem; width:100%; background:#FFFFFF; border:1px solid #E3E1DC; border-radius:0.375rem;
-    padding:0.6rem 0.75rem; font-size:0.9375rem; color:#14161A; font-family:inherit;
+    margin-top:0.55rem; width:100%; background:rgb(var(--c-surface)); border:1px solid rgb(var(--c-line)); border-radius:0.375rem;
+    padding:0.6rem 0.75rem; font-size:0.9375rem; color:rgb(var(--c-ink)); font-family:inherit;
     transition: border-color 180ms ease;
   }
   .field textarea { min-height:6.5rem; resize:vertical; line-height:1.55; }
-  .field input:hover, .field textarea:hover { border-color:#CFCCC5; }
-  .field input:focus, .field textarea:focus { outline:none; border-color:#1C2B3A; box-shadow: inset 0 0 0 1px #1C2B3A; }
-  .field input[type="file"] { padding:0.5rem 0.75rem; font-size:0.875rem; color:#43484F; }
+  .field input:hover, .field textarea:hover { border-color:rgb(var(--c-line-firm)); }
+  .field input:focus, .field textarea:focus { outline:none; border-color:rgb(var(--c-accent)); box-shadow: inset 0 0 0 1px rgb(var(--c-accent)); }
+  .field input[type="file"] { padding:0.5rem 0.75rem; font-size:0.875rem; color:rgb(var(--c-ink-mid)); }
 
   a, button { transition: background-color 180ms ease, color 180ms ease, border-color 180ms ease; }
-  a:focus-visible, button:focus-visible { outline:2px solid #1C2B3A; outline-offset:3px; border-radius:2px; }
+  a:focus-visible, button:focus-visible { outline:2px solid rgb(var(--c-accent)); outline-offset:3px; border-radius:2px; }
   .skip:not(:focus){ position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap; }
   @media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto;} a,button{transition:none;} }
 </style>
@@ -282,5 +284,6 @@
 <script src="assets/footer.js"></script>
 <script src="assets/cookies.js"></script>
 <script src="assets/mobile.js"></script>
+<script src="assets/theme.js"></script>
 </body>
 </html>

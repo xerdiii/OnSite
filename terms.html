@@ -8,22 +8,24 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;700&family=Inter:wght@400;600&family=IBM+Plex+Mono:wght@400;600&display=swap" rel="stylesheet">
+<script>/* theme before paint, no flash */(function(){try{var t=localStorage.getItem('onsite.theme');if(t)document.documentElement.setAttribute('data-theme',t);}catch(e){}})();</script>
+<link rel="stylesheet" href="assets/theme.css">
 <script src="https://cdn.tailwindcss.com"></script>
 <script>
   tailwind.config = {
     theme: {
       extend: {
         colors: {
-          paper:      '#F7F6F3',
-          surface:    '#FFFFFF',
-          ink:        '#14161A',
-          'ink-mid':  '#43484F',
-          'ink-soft': '#6E747C',
-          line:       '#E3E1DC',
-          'line-firm':'#CFCCC5',
-          accent:     '#1C2B3A',
-          'accent-hi':'#27394B',
-          'accent-tint': '#EEF0F2'
+          paper:        'rgb(var(--c-paper) / <alpha-value>)',
+          surface:      'rgb(var(--c-surface) / <alpha-value>)',
+          ink:          'rgb(var(--c-ink) / <alpha-value>)',
+          'ink-mid':    'rgb(var(--c-ink-mid) / <alpha-value>)',
+          'ink-soft':   'rgb(var(--c-ink-soft) / <alpha-value>)',
+          line:         'rgb(var(--c-line) / <alpha-value>)',
+          'line-firm':  'rgb(var(--c-line-firm) / <alpha-value>)',
+          accent:       'rgb(var(--c-accent) / <alpha-value>)',
+          'accent-hi':  'rgb(var(--c-accent-hi) / <alpha-value>)',
+          'accent-tint':'rgb(var(--c-accent-tint) / <alpha-value>)'
         },
         fontFamily: {
           display: ['Archivo', 'Helvetica Neue', 'Arial', 'sans-serif'],
@@ -52,25 +54,25 @@
     font-size:0.625rem; letter-spacing:0.14em; text-transform:uppercase;
     padding:0.25rem 0.5rem; border-radius:0.25rem; white-space:nowrap;
   }
-  .tag-once  { background:#EEF0F2; color:#1C2B3A; border:1px solid #CFCCC5; }
-  .tag-month { background:#1C2B3A; color:#FFFFFF; }
+  .tag-once  { background:rgb(var(--c-accent-tint)); color:rgb(var(--c-accent-text)); border:1px solid rgb(var(--c-line-firm)); }
+  .tag-month { background:rgb(var(--c-accent)); color:rgb(var(--c-on-accent)); }
 
-  .arrow { color:#1C2B3A; font-weight:600; }
+  .arrow { color:rgb(var(--c-accent)); font-weight:600; }
 
   /* Clause body copy — one measure, one rhythm, all the way down */
-  .clause p { font-size:0.9375rem; line-height:1.7; color:#43484F; max-width:38rem; }
+  .clause p { font-size:0.9375rem; line-height:1.7; color:rgb(var(--c-ink-mid)); max-width:38rem; }
   .clause p + p { margin-top:0.9rem; }
   .clause ul { margin-top:0.9rem; max-width:38rem; }
-  .clause li { font-size:0.9375rem; line-height:1.7; color:#43484F; padding-left:1.1rem; position:relative; }
+  .clause li { font-size:0.9375rem; line-height:1.7; color:rgb(var(--c-ink-mid)); padding-left:1.1rem; position:relative; }
   .clause li + li { margin-top:0.35rem; }
-  .clause li::before { content:"→"; position:absolute; left:0; color:#1C2B3A; font-weight:600; }
-  .clause strong { color:#14161A; font-weight:600; }
+  .clause li::before { content:"→"; position:absolute; left:0; color:rgb(var(--c-accent)); font-weight:600; }
+  .clause strong { color:rgb(var(--c-ink)); font-weight:600; }
   .ph { font-family:'IBM Plex Mono',ui-monospace,monospace; font-size:0.8125rem; letter-spacing:0.03em;
-        color:#43484F; border:1px dashed #CFCCC5; border-radius:0.25rem; padding:0.2rem 0.45rem;
-        display:inline-block; background:#FFFFFF; }
+        color:rgb(var(--c-ink-mid)); border:1px dashed rgb(var(--c-line-firm)); border-radius:0.25rem; padding:0.2rem 0.45rem;
+        display:inline-block; background:rgb(var(--c-surface)); }
 
   a, button { transition: background-color 180ms ease, color 180ms ease, border-color 180ms ease; }
-  a:focus-visible { outline:2px solid #1C2B3A; outline-offset:3px; border-radius:2px; }
+  a:focus-visible { outline:2px solid rgb(var(--c-accent)); outline-offset:3px; border-radius:2px; }
   .skip:not(:focus){ position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap; }
   @media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto;} a{transition:none;} }
 </style>
@@ -562,5 +564,6 @@
 <script src="assets/footer.js"></script>
 <script src="assets/cookies.js"></script>
 <script src="assets/mobile.js"></script>
+<script src="assets/theme.js"></script>
 </body>
 </html>

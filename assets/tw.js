@@ -1,19 +1,20 @@
 /* Shared Tailwind theme for the Onsite app pages.
-   Mirrors the inline config on the landing page so both feel like one product. */
+   Colours resolve through the tokens in theme.css so light and dark
+   both flow from one place. */
 tailwind.config = {
   theme: {
     extend: {
       colors: {
-        paper:        '#F7F6F3',
-        surface:      '#FFFFFF',
-        ink:          '#14161A',
-        'ink-mid':    '#43484F',
-        'ink-soft':   '#6E747C',
-        line:         '#E3E1DC',
-        'line-firm':  '#CFCCC5',
-        accent:       '#1C2B3A',
-        'accent-hi':  '#27394B',
-        'accent-tint':'#EEF0F2'
+        paper:        'rgb(var(--c-paper) / <alpha-value>)',
+        surface:      'rgb(var(--c-surface) / <alpha-value>)',
+        ink:          'rgb(var(--c-ink) / <alpha-value>)',
+        'ink-mid':    'rgb(var(--c-ink-mid) / <alpha-value>)',
+        'ink-soft':   'rgb(var(--c-ink-soft) / <alpha-value>)',
+        line:         'rgb(var(--c-line) / <alpha-value>)',
+        'line-firm':  'rgb(var(--c-line-firm) / <alpha-value>)',
+        accent:       'rgb(var(--c-accent) / <alpha-value>)',
+        'accent-hi':  'rgb(var(--c-accent-hi) / <alpha-value>)',
+        'accent-tint':'rgb(var(--c-accent-tint) / <alpha-value>)'
       },
       fontFamily: {
         display: ['Archivo', 'Helvetica Neue', 'Arial', 'sans-serif'],

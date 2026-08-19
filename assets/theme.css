@@ -1,0 +1,117 @@
+/* ───────────────────────────────────────────────────────────────
+   Onsite — colour tokens
+   Every palette value in the product resolves through these. Light is
+   the default; dark applies when the visitor picks it, or when their
+   system asks for it and they have not chosen otherwise.
+
+   Channels are space-separated RGB so Tailwind can apply its own
+   alpha (rgb(var(--c-ink) / 0.7)).
+   ─────────────────────────────────────────────────────────────── */
+
+:root {
+  --c-paper:       247 246 243;
+  --c-surface:     255 255 255;
+  --c-ink:          20  22  26;
+  --c-ink-mid:      67  72  79;
+  --c-ink-soft:    104 110 118;
+  --c-line:        227 225 220;
+  --c-line-firm:   207 204 197;
+  --c-accent:       28  43  58;
+  --c-accent-hi:    39  57  75;
+  --c-accent-tint: 238 240 242;
+
+  /* Accent used as *text* on the page ground */
+  --c-accent-text:  28  43  58;
+  /* Ground the artwork washes back to */
+  --c-wash:        247 246 243;
+  --c-shadow:       20  22  26;
+  --c-on-accent:   255 255 255;
+}
+
+/* Dark: the ground drops away, the panels lift, and the deep navy stays
+   a panel colour rather than becoming an unreadable text colour. */
+:root[data-theme="dark"] {
+  --c-paper:        15  17  21;
+  --c-surface:      23  26  31;
+  --c-ink:         242 241 238;
+  --c-ink-mid:     186 191 198;
+  --c-ink-soft:    142 148 157;
+  --c-line:         42  47  55;
+  --c-line-firm:    60  66  75;
+  --c-accent:       34  52  72;
+  --c-accent-hi:    45  67  91;
+  --c-accent-tint:  27  37  49;
+
+  --c-accent-text: 150 190 224;
+  --c-wash:         15  17  21;
+  --c-shadow:        0   0   0;
+  --c-on-accent:   255 255 255;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --c-paper:        15  17  21;
+    --c-surface:      23  26  31;
+    --c-ink:         242 241 238;
+    --c-ink-mid:     186 191 198;
+    --c-ink-soft:    142 148 157;
+    --c-line:         42  47  55;
+    --c-line-firm:    60  66  75;
+    --c-accent:       34  52  72;
+    --c-accent-hi:    45  67  91;
+    --c-accent-tint:  27  37  49;
+
+    --c-accent-text: 150 190 224;
+    --c-wash:         15  17  21;
+    --c-shadow:        0   0   0;
+  --c-on-accent:   255 255 255;
+  }
+}
+
+/* Accent reads as a panel in dark, so anything using it as ink switches
+   to the lighter tone instead. */
+:root[data-theme="dark"] .text-accent,
+:root[data-theme="dark"] .arrow,
+:root[data-theme="dark"] .btn-ghost,
+:root[data-theme="dark"] .btn-light { color: rgb(var(--c-accent-text)); }
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .text-accent,
+  :root:not([data-theme="light"]) .arrow,
+  :root:not([data-theme="light"]) .btn-ghost,
+  :root:not([data-theme="light"]) .btn-light { color: rgb(var(--c-accent-text)); }
+}
+
+/* Theme toggle */
+.theme-toggle {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 40px; height: 40px; flex: none;
+  border: 1px solid rgb(var(--c-line)); border-radius: 0.375rem;
+  background: rgb(var(--c-surface)); color: rgb(var(--c-ink));
+  cursor: pointer; transition: border-color 180ms ease, background-color 180ms ease;
+}
+.theme-toggle:hover { border-color: rgb(var(--c-line-firm)); }
+.theme-toggle svg { display: block; width: 18px; height: 18px; }
+.theme-toggle .icon-moon { display: none; }
+:root[data-theme="dark"] .theme-toggle .icon-sun { display: none; }
+:root[data-theme="dark"] .theme-toggle .icon-moon { display: block; }
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .theme-toggle .icon-sun { display: none; }
+  :root:not([data-theme="light"]) .theme-toggle .icon-moon { display: block; }
+}
+.m-drawer .theme-toggle { width: 100%; height: 52px; gap: 0.6rem; margin-top: 1rem; font-weight: 600; }
+.m-drawer .theme-toggle span { font-size: 0.9375rem; }
+
+/* Colour-scheme hint so form controls and scrollbars follow the theme */
+:root[data-theme="dark"] { color-scheme: dark; }
+:root[data-theme="light"] { color-scheme: light; }
+
+/* A white button keeps dark ink even in dark mode — the accent-as-ink
+   swap above is for elements sitting on the page ground, not on white. */
+:root[data-theme="dark"] .bg-white.text-accent { color: rgb(var(--c-accent)); }
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .bg-white.text-accent { color: rgb(var(--c-accent)); }
+}
+
+/* The skip link inverts against the page, so it has to follow the theme */
+.skip { background: rgb(var(--c-ink)) !important; color: rgb(var(--c-paper)) !important; }

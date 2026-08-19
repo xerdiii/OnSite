@@ -8,19 +8,21 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;700&family=Inter:wght@400;600&family=IBM+Plex+Mono:wght@400;600&display=swap" rel="stylesheet">
+<script>/* theme before paint, no flash */(function(){try{var t=localStorage.getItem('onsite.theme');if(t)document.documentElement.setAttribute('data-theme',t);}catch(e){}})();</script>
+<link rel="stylesheet" href="assets/theme.css">
 <script src="https://cdn.tailwindcss.com"></script>
 <script src="assets/tw.js"></script>
 <link rel="stylesheet" href="assets/onsite.css">
 <style>
   .qa dt { font-family:'Archivo','Helvetica Neue',Arial,sans-serif; font-weight:600; letter-spacing:-0.02em;
-           font-size:1rem; color:#14161A; }
-  .qa dd { margin-top:0.6rem; font-size:0.9375rem; line-height:1.7; color:#43484F; max-width:38rem; }
+           font-size:1rem; color:rgb(var(--c-ink)); }
+  .qa dd { margin-top:0.6rem; font-size:0.9375rem; line-height:1.7; color:rgb(var(--c-ink-mid)); max-width:38rem; }
   .qa dd + dd { margin-top:0.7rem; }
-  .qa strong { color:#14161A; font-weight:600; }
-  .qa > div { padding:1.6rem 0; border-bottom:1px solid #E3E1DC; }
+  .qa strong { color:rgb(var(--c-ink)); font-weight:600; }
+  .qa > div { padding:1.6rem 0; border-bottom:1px solid rgb(var(--c-line)); }
   .ph { font-family:'IBM Plex Mono',ui-monospace,monospace; font-size:0.8125rem; letter-spacing:0.03em;
-        color:#43484F; border:1px dashed #CFCCC5; border-radius:0.25rem; padding:0.2rem 0.45rem;
-        display:inline-block; background:#FFFFFF; }
+        color:rgb(var(--c-ink-mid)); border:1px dashed rgb(var(--c-line-firm)); border-radius:0.25rem; padding:0.2rem 0.45rem;
+        display:inline-block; background:rgb(var(--c-surface)); }
 </style>
 <link rel="stylesheet" href="assets/mobile.css">
 </head>
@@ -432,5 +434,6 @@
 <script src="assets/footer.js"></script>
 <script src="assets/cookies.js"></script>
 <script src="assets/mobile.js"></script>
+<script src="assets/theme.js"></script>
 </body>
 </html>
