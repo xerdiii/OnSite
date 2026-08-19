@@ -4,6 +4,10 @@
    the default; dark applies when the visitor picks it, or when their
    system asks for it and they have not chosen otherwise.
 
+   One accent, and it is the green from the logo mark. It earns its
+   place on buttons, links, figures and the drawn underline — nowhere
+   else. Everything behind it is paper, ink and a hairline.
+
    Channels are space-separated RGB so Tailwind can apply its own
    alpha (rgb(var(--c-ink) / 0.7)).
    ─────────────────────────────────────────────────────────────── */
@@ -14,62 +18,58 @@
   --c-ink:          20  22  26;
   --c-ink-mid:      67  72  79;
   --c-ink-soft:    104 110 118;
-  --c-line:        227 225 220;
-  --c-line-firm:   207 204 197;
-  --c-accent:       28  43  58;
-  --c-accent-hi:    39  57  75;
-  --c-accent-tint: 238 240 242;
+  --c-line:        228 226 220;
+  --c-line-firm:   205 202 194;
+  --c-accent:       17 122  80;
+  --c-accent-hi:    12  95  62;
+  --c-accent-tint: 235 243 238;
 
-  /* Accent used as *text* on the page ground */
-  --c-accent-text:  28  43  58;
-  /* Ground the artwork washes back to */
-  --c-wash:        247 246 243;
+  /* Accent used as *text* on the page ground — a shade down so it
+     clears 4.5:1 against paper. */
+  --c-accent-text:  14 103  67;
   --c-shadow:       20  22  26;
   --c-on-accent:   255 255 255;
 }
 
-/* Dark: the ground drops away, the panels lift, and the deep navy stays
-   a panel colour rather than becoming an unreadable text colour. */
+/* Dark: the ground drops away and the panels lift. The green comes up
+   in lightness so it stays legible instead of turning to sludge. */
 :root[data-theme="dark"] {
-  --c-paper:        15  17  21;
-  --c-surface:      23  26  31;
+  --c-paper:        16  18  21;
+  --c-surface:      24  27  31;
   --c-ink:         242 241 238;
   --c-ink-mid:     186 191 198;
   --c-ink-soft:    142 148 157;
-  --c-line:         42  47  55;
-  --c-line-firm:    60  66  75;
-  --c-accent:       34  52  72;
-  --c-accent-hi:    45  67  91;
-  --c-accent-tint:  27  37  49;
+  --c-line:         41  46  53;
+  --c-line-firm:    62  68  77;
+  --c-accent:       19 128  85;
+  --c-accent-hi:    26 150 100;
+  --c-accent-tint:  24  44  35;
 
-  --c-accent-text: 150 190 224;
-  --c-wash:         15  17  21;
+  --c-accent-text:  86 196 143;
   --c-shadow:        0   0   0;
   --c-on-accent:   255 255 255;
 }
 
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
-    --c-paper:        15  17  21;
-    --c-surface:      23  26  31;
+    --c-paper:        16  18  21;
+    --c-surface:      24  27  31;
     --c-ink:         242 241 238;
     --c-ink-mid:     186 191 198;
     --c-ink-soft:    142 148 157;
-    --c-line:         42  47  55;
-    --c-line-firm:    60  66  75;
-    --c-accent:       34  52  72;
-    --c-accent-hi:    45  67  91;
-    --c-accent-tint:  27  37  49;
+    --c-line:         41  46  53;
+    --c-line-firm:    62  68  77;
+    --c-accent:       19 128  85;
+    --c-accent-hi:    26 150 100;
+    --c-accent-tint:  24  44  35;
 
-    --c-accent-text: 150 190 224;
-    --c-wash:         15  17  21;
+    --c-accent-text:  86 196 143;
     --c-shadow:        0   0   0;
-  --c-on-accent:   255 255 255;
+    --c-on-accent:   255 255 255;
   }
 }
 
-/* Accent reads as a panel in dark, so anything using it as ink switches
-   to the lighter tone instead. */
+/* Accent-as-ink is a touch lighter in dark mode than accent-as-panel. */
 :root[data-theme="dark"] .text-accent,
 :root[data-theme="dark"] .arrow,
 :root[data-theme="dark"] .btn-ghost,
@@ -85,13 +85,13 @@
 /* Theme toggle */
 .theme-toggle {
   display: inline-flex; align-items: center; justify-content: center;
-  width: 40px; height: 40px; flex: none;
-  border: 1px solid rgb(var(--c-line)); border-radius: 0.375rem;
-  background: rgb(var(--c-surface)); color: rgb(var(--c-ink));
-  cursor: pointer; transition: border-color 180ms ease, background-color 180ms ease;
+  width: 38px; height: 38px; flex: none;
+  border: 1px solid rgb(var(--c-line)); border-radius: 0.25rem;
+  background: rgb(var(--c-surface)); color: rgb(var(--c-ink-mid));
+  cursor: pointer; transition: border-color 160ms ease, color 160ms ease;
 }
-.theme-toggle:hover { border-color: rgb(var(--c-line-firm)); }
-.theme-toggle svg { display: block; width: 18px; height: 18px; }
+.theme-toggle:hover { border-color: rgb(var(--c-line-firm)); color: rgb(var(--c-ink)); }
+.theme-toggle svg { display: block; width: 17px; height: 17px; }
 .theme-toggle .icon-moon { display: none; }
 :root[data-theme="dark"] .theme-toggle .icon-sun { display: none; }
 :root[data-theme="dark"] .theme-toggle .icon-moon { display: block; }
@@ -106,21 +106,21 @@
 :root[data-theme="dark"] { color-scheme: dark; }
 :root[data-theme="light"] { color-scheme: light; }
 
-/* A white button keeps dark ink even in dark mode — the accent-as-ink
-   swap above is for elements sitting on the page ground, not on white. */
-:root[data-theme="dark"] .bg-white.text-accent { color: rgb(var(--c-accent)); }
+/* A white button sits on white whatever the theme, so it keeps the darker
+   green rather than the lifted one used against the page ground. */
+:root[data-theme="dark"] .bg-white.text-accent { color: rgb(14 103 67); }
 @media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) .bg-white.text-accent { color: rgb(var(--c-accent)); }
+  :root:not([data-theme="light"]) .bg-white.text-accent { color: rgb(14 103 67); }
 }
 
 /* The skip link inverts against the page, so it has to follow the theme */
 .skip { background: rgb(var(--c-ink)) !important; color: rgb(var(--c-paper)) !important; }
 
 /* ───────────────────────────────────────────────────────────────
-   Display face
-   The large headings run in Instrument Serif — an editorial cut with
-   real contrast, against Inter for reading and Plex Mono for labels.
-   Small UI headings stay on Archivo so the interface keeps its grip.
+   Type
+   Two faces and a label face. Instrument Serif carries the headlines,
+   Inter does everything that has to be read or clicked, IBM Plex Mono
+   is reserved for eyebrows, tags and figures in tables.
    ─────────────────────────────────────────────────────────────── */
 .h-display,
 h1.h-display,
@@ -133,20 +133,29 @@ h1.doc-title {
   letter-spacing: -0.012em;
 }
 
-.h-display, h1.h-display { line-height: 1.1; }
-.h-section.sec-title, h2.sec-title { line-height: 1.14; }
-.h-section.doc-title, h1.doc-title { line-height: 1.12; }
+.h-display, h1.h-display { line-height: 1.08; }
+.h-section.sec-title, h2.sec-title { line-height: 1.12; }
+.h-section.doc-title, h1.doc-title { line-height: 1.1; }
 
-/* The serif carries more width per character, so the big sizes come
-   down a touch and the small screens come down further. */
-.hero-title { font-size: clamp(2.6rem, 6.6vw, 4.6rem); }
-.sec-title  { font-size: clamp(1.9rem, 3.7vw, 2.8rem); }
-.doc-title  { font-size: clamp(2.1rem, 4.8vw, 3.2rem); }
+/* Headings that live inside interface — cards, rows, list items — stay
+   on Inter so the page does not read as one long magazine feature. */
+.h-section {
+  font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif;
+  font-weight: 600;
+  letter-spacing: -0.017em;
+  line-height: 1.25;
+}
+
+/* Strong, not enormous. The serif carries more width per character, so
+   the ceiling comes down and small screens come down further. */
+.hero-title { font-size: clamp(2.5rem, 5.4vw, 3.9rem); }
+.sec-title  { font-size: clamp(1.8rem, 3.1vw, 2.4rem); }
+.doc-title  { font-size: clamp(2rem, 4.2vw, 2.8rem); }
 
 @media (max-width: 640px) {
-  .hero-title { font-size: clamp(2.15rem, 9vw, 2.6rem); line-height: 1.12; }
-  .sec-title  { font-size: clamp(1.65rem, 6.8vw, 2rem); }
-  .doc-title  { font-size: clamp(1.8rem, 7.4vw, 2.2rem); }
+  .hero-title { font-size: clamp(2.1rem, 8.6vw, 2.5rem); line-height: 1.12; }
+  .sec-title  { font-size: clamp(1.6rem, 6.6vw, 1.95rem); }
+  .doc-title  { font-size: clamp(1.75rem, 7.2vw, 2.15rem); }
 }
 
 /* One drawn mark: an off-kilter underline under a single word in the headline.
@@ -154,12 +163,12 @@ h1.doc-title {
 .marked { position: relative; white-space: nowrap; }
 .marked::after {
   content: "";
-  position: absolute; left: -1%; right: -2%; bottom: -0.06em;
-  height: 0.34em;
+  position: absolute; left: -1%; right: -2%; bottom: -0.05em;
+  height: 0.3em;
   background-image: url("data:image/svg+xml;utf8,\
 <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 240 20' preserveAspectRatio='none'>\
-<path d='M4 14.5c38-6 74-8.5 116-7 30 1 62 4.5 116 1.5' fill='none' stroke='%23199A62' stroke-width='5' stroke-linecap='round'/>\
-<path d='M12 18c44-4.5 86-5.5 128-4' fill='none' stroke='%23199A62' stroke-width='2.4' stroke-linecap='round' opacity='0.45'/>\
+<path d='M4 14.5c38-6 74-8.5 116-7 30 1 62 4.5 116 1.5' fill='none' stroke='%23117A50' stroke-width='5' stroke-linecap='round'/>\
+<path d='M12 18c44-4.5 86-5.5 128-4' fill='none' stroke='%23117A50' stroke-width='2.4' stroke-linecap='round' opacity='0.42'/>\
 </svg>");
   background-repeat: no-repeat; background-size: 100% 100%;
   pointer-events: none;

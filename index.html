@@ -4,26 +4,21 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Onsite — A professional website for your business, from €79.99</title>
-<meta name="description" content="A custom website for €79.99 one-time with the features you pick, or the Professional Website at €249.99 one-time with all ten website features built in. Add only the services you want — one-time or monthly, always clearly separated.">
+<meta name="description" content="We build one-page websites for small businesses. €79.99 with the features you pick, or €249.99 with all ten built in. Both paid once — a quarter to start, the rest when you have seen it.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;700&family=Instrument+Serif:ital@0;1&family=Inter:wght@400;600&family=IBM+Plex+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400&family=Instrument+Serif&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <script>/* theme before paint, no flash */(function(){try{var t=localStorage.getItem('onsite.theme');if(t)document.documentElement.setAttribute('data-theme',t);}catch(e){}})();</script>
 <style>
   html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
   body { font-feature-settings: "kern" 1, "liga" 1; }
 
-  .h-display { font-family:'Archivo','Helvetica Neue',Arial,sans-serif; font-weight:600; letter-spacing:-0.028em; line-height:1.04; }
-  .h-section { font-family:'Archivo','Helvetica Neue',Arial,sans-serif; font-weight:600; letter-spacing:-0.022em; line-height:1.12; }
   .eyebrow {
     font-family:'IBM Plex Mono',ui-monospace,monospace;
     font-size:0.6875rem; font-weight:400; letter-spacing:0.16em; text-transform:uppercase;
   }
-  .lede { font-size:1.0625rem; line-height:1.65; }
-  @media (min-width:768px){ .lede { font-size:1.1875rem; } }
-
-  .hero-title { font-size: clamp(2.4rem, 6.2vw, 4.4rem); }
-  .sec-title  { font-size: clamp(1.75rem, 3.4vw, 2.6rem); }
+  .lede { font-size:1.0625rem; line-height:1.6; }
+  @media (min-width:768px){ .lede { font-size:1.125rem; } }
 
   /* Price tags — the one device that keeps one-time and monthly from ever blurring */
   .tag {
@@ -34,61 +29,38 @@
   .tag-month { background:rgb(var(--c-accent)); color:rgb(var(--c-on-accent)); }
   .tag-soon  { background:transparent; color:rgb(var(--c-ink-soft)); border:1px dashed rgb(var(--c-line-firm)); }
 
-  .arrow { color:rgb(var(--c-accent)); font-weight:600; }
+  .arrow { color:rgb(var(--c-accent-text)); font-weight:600; }
 
-  /* Selection cards */
-  .pick { display:block; cursor:pointer; }
-  .pick input { position:absolute; opacity:0; width:0; height:0; }
-  .pick .box {
-    border:1px solid rgb(var(--c-line)); background:rgb(var(--c-surface)); border-radius:0.5rem;
-    transition: border-color 180ms ease, background-color 180ms ease;
+  /* The four steps — the numeral does the work, nothing else has to */
+  .step-n {
+    font-family:'Instrument Serif','Iowan Old Style',Georgia,serif;
+    font-size:2.25rem; line-height:1; letter-spacing:0.01em;
+    color:rgb(var(--c-accent-text));
   }
-  .pick:hover .box { border-color:rgb(var(--c-line-firm)); }
-  .pick input:checked + .box { border-color:rgb(var(--c-accent)); background:rgb(var(--c-surface)); box-shadow: inset 0 0 0 1px rgb(var(--c-accent)); }
-  .pick input:focus-visible + .box { outline:2px solid rgb(var(--c-accent)); outline-offset:3px; }
-  .pick .mark {
-    width:1.125rem; height:1.125rem; border:1px solid rgb(var(--c-line-firm)); border-radius:0.25rem;
-    display:flex; align-items:center; justify-content:center; flex:none; background:rgb(var(--c-surface));
-  }
-  .pick input:checked + .box .mark { background:rgb(var(--c-accent)); border-color:rgb(var(--c-accent)); }
-  .pick .mark svg { opacity:0; color:rgb(var(--c-surface)); }
-  .pick input:checked + .box .mark svg { opacity:1; }
+  @media (min-width:1280px){ .step-n { font-size:2.5rem; } }
 
-  fieldset:disabled .pick { cursor:not-allowed; opacity:0.45; }
+  /* Price rows — used for the monthly services and every extra */
+  .rate { display:flex; align-items:baseline; justify-content:space-between; gap:1.25rem; }
+  .rate dt { font-weight:600; color:rgb(var(--c-ink)); font-size:0.9375rem; }
+  .rate dd { font-size:0.9375rem; font-weight:600; white-space:nowrap; color:rgb(var(--c-ink)); }
+  .rate + .note { margin-top:0.3rem; font-size:0.8125rem; line-height:1.55; color:rgb(var(--c-ink-mid)); max-width:34rem; }
 
-  /* Business Extras — the card's own add/added control */
-  .mono-label {
-    font-family:'IBM Plex Mono',ui-monospace,monospace;
-    font-size:0.6875rem; letter-spacing:0.14em; text-transform:uppercase;
-  }
-  .x-cta {
-    margin-top:auto; display:inline-flex; align-items:center; justify-content:center;
-    border-radius:0.375rem; border:1px solid rgb(var(--c-line-firm)); background:rgb(var(--c-surface));
-    padding:0.5rem 0.9rem; font-size:0.8125rem; font-weight:600; color:rgb(var(--c-accent));
-    transition: background-color 180ms ease, border-color 180ms ease, color 180ms ease;
-  }
-  .pick:hover .x-cta { border-color:rgb(var(--c-accent)); }
-  .x-added { display:none; }
-  .pick input:checked + .box .x-cta { background:rgb(var(--c-accent)); border-color:rgb(var(--c-accent)); color:rgb(var(--c-surface)); }
-  .pick input:checked + .box .x-add { display:none; }
-  .pick input:checked + .box .x-added { display:inline; }
-
-  a, button { transition: background-color 180ms ease, color 180ms ease, border-color 180ms ease, opacity 180ms ease; }
+  a, button { transition: background-color 160ms ease, color 160ms ease, border-color 160ms ease, opacity 160ms ease; }
   a:focus-visible, button:focus-visible { outline:2px solid rgb(var(--c-accent)); outline-offset:3px; border-radius:2px; }
   button:disabled { opacity:0.4; cursor:not-allowed; }
 
   .skip:not(:focus){ position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap; }
-  @media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto;} a,button,.pick .box{transition:none;} }
+  @media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto;} a,button{transition:none;} }
 </style>
 <link rel="stylesheet" href="assets/mobile.css">
-<link rel="stylesheet" href="assets/landing-bg.css">
+<link rel="stylesheet" href="assets/previews.css">
 <link rel="stylesheet" href="assets/tailwind.css">
 <link rel="stylesheet" href="assets/theme.css">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 </head>
 
 <body class="bg-paper font-sans text-ink antialiased">
-<a href="#main" class="skip absolute left-4 top-4 z-10 bg-ink px-4 py-2 text-sm text-white">Skip to content</a>
+<a href="#main" class="skip absolute left-4 top-4 z-30 bg-ink px-4 py-2 text-sm text-white">Skip to content</a>
 
 <!-- 1 — NAVIGATION -->
 <header class="sticky top-0 z-20 border-b border-line bg-paper">
@@ -97,13 +69,14 @@
       <span class="block h-3.5 w-3.5 rounded-sm bg-accent" aria-hidden="true"></span>
       <span class="h-section text-lg tracking-tight">Onsite</span>
     </a>
-    <div class="flex items-center gap-5 md:gap-8">
-      <a href="#pricing" class="text-sm font-semibold text-ink-mid hover:text-ink">Pricing</a>
-      <a href="#extras" class="hidden text-sm font-semibold text-ink-mid hover:text-ink lg:inline">Extras</a>
-      <a href="faq.html" class="hidden text-sm font-semibold text-ink-mid hover:text-ink sm:inline">FAQ</a>
-      <a href="contact.html" class="hidden text-sm font-semibold text-ink-mid hover:text-ink sm:inline">Contact</a>
-      <a href="login.html" class="text-sm font-semibold text-ink-mid hover:text-ink">Log in</a>
-      <a href="#pricing" class="rounded-md bg-accent px-4 py-2.5 text-sm font-semibold text-white hover:bg-accent-hi">Get Started</a>
+    <div class="flex items-center gap-5 md:gap-7">
+      <a href="#work" class="hidden text-sm font-medium text-ink-mid hover:text-ink lg:inline">Our work</a>
+      <a href="#pricing" class="text-sm font-medium text-ink-mid hover:text-ink">Pricing</a>
+      <a href="#extras" class="hidden text-sm font-medium text-ink-mid hover:text-ink lg:inline">Extras</a>
+      <a href="faq.html" class="hidden text-sm font-medium text-ink-mid hover:text-ink sm:inline">FAQ</a>
+      <a href="contact.html" class="hidden text-sm font-medium text-ink-mid hover:text-ink sm:inline">Contact</a>
+      <a href="login.html" class="text-sm font-medium text-ink-mid hover:text-ink">Log in</a>
+      <a href="signup.html" class="rounded-md bg-accent px-4 py-2.5 text-sm font-semibold text-white hover:bg-accent-hi">Get started</a>
     </div>
   </nav>
 </header>
@@ -111,206 +84,408 @@
 <main id="main">
 
   <!-- 2 — HERO -->
-  <section data-bg="hero" class="border-b border-line">
-    <div class="mx-auto max-w-shell px-6 pb-16 pt-16 md:px-10 md:pb-24 md:pt-28">
-      <h1 class="h-display hero-title mt-6 max-w-4xl text-ink">
-        You run the business.<br>We build the <span class="marked">website</span>.
-      </h1>
-      <p class="lede mt-5 max-w-prose text-ink-mid md:mt-7">
-        You're not going to learn a website builder at eleven at night. Tell us what you do,
-        we'll build the site, and you pay a quarter of it to get us started.
-      </p>
+  <section class="hero border-b border-line">
+    <div class="mx-auto max-w-shell px-6 pb-16 pt-14 md:px-10 md:pb-20 md:pt-20">
+      <div class="grid grid-cols-1 items-center gap-14 lg:grid-cols-12 lg:gap-12">
 
-      <!-- Price and payment, above the fold on a phone -->
-      <div class="mt-7 flex flex-wrap items-center gap-x-5 gap-y-3 border-y border-line py-5">
-        <div>
-          <p class="text-[0.8125rem] text-ink-soft">Starting from</p>
-          <p class="h-section mt-1 text-3xl text-ink">€79.99</p>
+        <div class="lg:col-span-6">
+          <h1 class="h-display hero-title text-ink">
+            You run the business.<br>We build the <span class="marked">website</span>.
+          </h1>
+          <p class="lede mt-6 max-w-prose text-ink-mid">
+            You're not going to learn a website builder at eleven at night. Tell us what you do,
+            we'll build the site, and you pay a quarter of it to get us started.
+          </p>
+
+          <!-- Price and payment, above the fold on a phone -->
+          <div class="mt-8 flex flex-wrap items-center gap-x-5 gap-y-3 border-y border-line py-5">
+            <div>
+              <p class="text-[0.8125rem] text-ink-soft">Starting from</p>
+              <p class="h-display mt-0.5 text-[2rem] text-ink">€79.99</p>
+            </div>
+            <span class="tag tag-once">One-time</span>
+            <p class="w-full text-[0.8125rem] leading-relaxed text-ink-mid sm:w-auto sm:flex-1">
+              A quarter today. You see the finished thing before the rest is due — and nothing monthly
+              starts until the site is actually up.
+            </p>
+          </div>
+
+          <div class="mt-7 flex flex-col gap-3 sm:flex-row sm:items-center">
+            <a href="signup.html" class="inline-flex min-h-[52px] items-center justify-center rounded-md bg-accent px-7 py-4 text-base font-semibold text-white hover:bg-accent-hi">
+              Build my website
+            </a>
+            <a href="#work" class="inline-flex min-h-[52px] items-center px-1 text-base font-medium text-ink-mid underline decoration-line-firm decoration-2 underline-offset-[6px] hover:text-ink hover:decoration-accent">
+              See what we've built
+            </a>
+          </div>
         </div>
-        <span class="tag tag-once">One-time</span>
-        <p class="w-full text-[0.8125rem] leading-relaxed text-ink-mid sm:w-auto sm:flex-1">
-          A quarter today. You see the finished thing before the rest is due — and nothing monthly
-          starts until the site is actually up.
-        </p>
+
+        <!-- The visual is the argument: this is what you get -->
+        <div class="lg:col-span-6 lg:pl-8">
+          <div class="hero-shots" role="img" aria-label="Two previews of the kind of one-page business website we build — a restaurant site on a laptop and a barber shop site on a phone.">
+
+            <figure class="shot" style="--s-bg:#FBF6EC;--s-ink:#241D16;--s-acc:#A24A28;--s-band:#E5D9C4;--s-card:rgba(255,255,255,0.72);--s-tile:#E5D9C4">
+              <div class="shot-bar"><i></i><i></i><i></i><u></u></div>
+              <div class="shot-view">
+                <div class="pv-nav">
+                  <span class="pv-mark"><b></b>Osteria Nove</span>
+                  <span class="pv-links"><span>Menu</span><span>Hours</span><span>Find us</span></span>
+                  <span class="pv-pill">Book a table</span>
+                </div>
+                <div class="pv-band pv-band--tall"></div>
+                <div class="pv-hero">
+                  <p class="pv-eyebrow">Kitchen open 12 – 10</p>
+                  <h3 class="pv-h1">Small plates, <em>long</em> evenings.</h3>
+                  <p class="pv-sub">Seasonal cooking two streets back from the harbour. Walk-ins are fine. Tables of six and up are worth booking ahead.</p>
+                  <div class="pv-cta">
+                    <span class="pv-pill">Book a table</span>
+                    <span class="pv-pill pv-pill--line">Read the menu</span>
+                  </div>
+                </div>
+                <div class="pv-list">
+                  <div class="pv-line"><span>Tuesday – Thursday</span><span>12:00 – 22:00</span></div>
+                  <div class="pv-line"><span>Friday &amp; Saturday</span><span>12:00 – 23:30</span></div>
+                  <div class="pv-line"><span>Sunday</span><span>13:00 – 20:00</span></div>
+                </div>
+                <div class="pv-strip"><span>12 Harbour Row</span><span>Directions</span></div>
+              </div>
+            </figure>
+
+            <div class="shot-phone" style="--s-bg:#F4F1EC;--s-ink:#1B1A18;--s-acc:#A8761E;--s-band:#DED8CC">
+              <div class="phone-notch"></div>
+              <div class="shot-view">
+                <div class="pv-nav">
+                  <span class="pv-mark"><b></b>Corner &amp; Co.</span>
+                  <span class="pv-pill">Call</span>
+                </div>
+                <div class="pv-hero">
+                  <h3 class="pv-h1">Walk in. Sit down.</h3>
+                  <p class="pv-sub">Two chairs, no appointments before noon.</p>
+                  <div class="pv-cta"><span class="pv-pill">Get directions</span></div>
+                </div>
+                <div class="pv-band"></div>
+                <div class="pv-list">
+                  <div class="pv-line"><span>Cut</span><span>€18</span></div>
+                  <div class="pv-line"><span>Cut &amp; beard</span><span>€25</span></div>
+                  <div class="pv-line"><span>Under 12s</span><span>€12</span></div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
       </div>
 
-      <div class="mt-7 flex flex-col gap-3 sm:flex-row sm:items-center">
-        <a href="signup.html" class="inline-flex min-h-[52px] items-center justify-center rounded-md bg-accent px-7 py-4 text-base font-semibold text-white hover:bg-accent-hi">
-          Build My Website
-        </a>
-        <a href="#how" class="inline-flex min-h-[52px] items-center px-1 text-base font-semibold text-ink-mid underline decoration-line-firm decoration-2 underline-offset-[6px] hover:text-ink hover:decoration-accent">
-          Or read how it works first
-        </a>
-      </div>
-
-      <p class="mt-10 max-w-prose border-t border-line pt-6 text-[0.9375rem] leading-relaxed text-ink-mid">
+      <p class="mt-14 max-w-prose border-t border-line pt-6 text-[0.9375rem] leading-relaxed text-ink-mid lg:mt-16">
         Two prices, €79.99 or €249.99, both paid once. Everything else is optional, and any monthly
         service can be stopped whenever you like.
       </p>
     </div>
   </section>
 
-  <!-- 3 — WHAT WE OFFER -->
-  <section class="border-b border-line bg-surface">
-    <div class="mx-auto max-w-shell px-6 py-16 md:px-10 md:py-20">
-      <h2 class="h-section sec-title max-w-2xl">There are three things here. You need one of them.</h2>
-      <p class="mt-5 max-w-prose text-[0.9375rem] leading-relaxed text-ink-mid">
-        The website. That's the bit you actually have to buy. The rest is there if it's useful to you
-        and ignorable if it isn't.
-      </p>
-
-      <!-- Deliberately uneven: the website gets the room, the rest sit beside it -->
-      <div class="mt-12 grid grid-cols-1 gap-10 lg:grid-cols-12 lg:gap-14">
-
-        <div class="lg:col-span-6">
-          <div class="rounded-xl border-2 border-accent bg-paper p-7 md:p-9">
-            <h3 class="h-section text-2xl">The website</h3>
-            <p class="mt-3 max-w-prose text-[0.9375rem] leading-relaxed text-ink-mid">
-              Built around what you actually do, written the way you'd say it out loud, and made to work
-              on a phone — because that's where people will find you. Hosting, the security padlock and
-              the domain are part of it. You don't buy those separately and you don't renew them.
-            </p>
-            <dl class="mt-6 space-y-2.5 border-t border-line pt-5 text-[0.9375rem]">
-              <div class="flex items-baseline justify-between gap-3">
-                <dt class="text-ink-mid">Custom Website</dt>
-                <dd class="h-section text-lg text-ink">€79.99</dd>
-              </div>
-              <div class="flex items-baseline justify-between gap-3">
-                <dt class="text-ink-mid">Professional Website</dt>
-                <dd class="h-section text-lg text-ink">€249.99</dd>
-              </div>
-            </dl>
-            <p class="mt-4 text-[0.8125rem] text-ink-soft">Paid once, either way.</p>
-            <a href="#pricing" class="mt-6 inline-block text-sm font-semibold text-accent underline decoration-line-firm decoration-2 underline-offset-4 hover:decoration-accent">Compare the two</a>
-          </div>
-        </div>
-
-        <div class="lg:col-span-5 lg:col-start-8 lg:pt-6">
-          <div>
-            <h3 class="h-section text-lg">Monthly services</h3>
-            <p class="mt-2.5 max-w-prose text-[0.9375rem] leading-relaxed text-ink-mid">
-              Booking, maintenance, review management, a digital menu. None of them are bundled into the
-              website price and none of them start until you're live. Stop any of them whenever you want.
-            </p>
-            <p class="mt-3 text-[0.8125rem] text-ink-soft">€19.99 to €29.99 a month each.</p>
-            <a href="#services" class="mt-3 inline-block text-sm font-semibold text-accent underline decoration-line-firm decoration-2 underline-offset-4 hover:decoration-accent">See what each one does</a>
-          </div>
-
-          <div class="mt-9 border-t border-line pt-7">
-            <h3 class="h-section text-lg">Business extras</h3>
-            <p class="mt-2.5 max-w-prose text-[0.9375rem] leading-relaxed text-ink-mid">
-              A logo, business cards, a flyer, the menu, an email address on your own domain. Twelve
-              one-off jobs for the things a website doesn't cover.
-            </p>
-            <p class="mt-3 text-[0.8125rem] text-ink-soft">From €19.99, paid once.</p>
-            <a href="#extras" class="mt-3 inline-block text-sm font-semibold text-accent underline decoration-line-firm decoration-2 underline-offset-4 hover:decoration-accent">See all twelve</a>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- 4b — ASIDE -->
-  <section class="border-b border-line">
-    <div class="mx-auto max-w-shell px-6 py-14 md:px-10 md:py-20">
-      <div class="grid grid-cols-1 gap-8 lg:grid-cols-12 lg:gap-16">
-        <div class="lg:col-span-7 lg:col-start-2">
-          <h2 class="h-section sec-title max-w-xl">Why a quarter, and not the whole thing?</h2>
-          <p class="mt-6 max-w-prose text-[1.0625rem] leading-relaxed text-ink-mid">
-            Because you have never met us. Handing a stranger four hundred euro for a website that
-            doesn't exist yet is a bad deal, and we'd rather not ask for it.
-          </p>
-          <p class="mt-4 max-w-prose text-[1.0625rem] leading-relaxed text-ink-mid">
-            So you pay a quarter, we build the thing, and you look at it on your own phone before the
-            rest is due. If it's wrong, we fix it. If you walk away, you've spent a quarter, not the lot.
-          </p>
-        </div>
-        <aside class="lg:col-span-3 lg:pt-14">
-          <p class="border-l-2 border-accent pl-5 text-[0.9375rem] leading-relaxed text-ink-soft">
-            The other half of it: we get paid for finishing, not for starting. That tends to focus
-            the mind.
-          </p>
-          <p class="mt-6 pl-5 text-[0.9375rem] leading-relaxed text-ink-soft">
-            There's no discovery call, no strategy workshop and no onboarding sequence. You send us
-            your opening hours and some photos. We send you back a website.
-          </p>
-        </aside>
-      </div>
-    </div>
-  </section>
-
-  <!-- 5 — WEBSITES -->
-  <section id="pricing" class="border-b border-line bg-surface">
+  <!-- 3 — WORK -->
+  <section id="work" class="scroll-mt-16 border-b border-line bg-surface">
     <div class="mx-auto max-w-shell px-6 py-16 md:px-10 md:py-24">
-      <h2 class="h-section sec-title mt-5 max-w-2xl">Two ways to get one.</h2>
-      <p class="mt-5 max-w-prose text-[0.9375rem] leading-relaxed text-ink-mid">
-        Both paid once. Hosting, the padlock and the domain come with either one. Neither includes a
-        monthly service — you pick those separately, or not at all.
-      </p>
 
-      <div class="mt-12 grid grid-cols-1 gap-6 lg:grid-cols-2">
+      <div class="grid grid-cols-1 gap-8 lg:grid-cols-12">
+        <div class="lg:col-span-7">
+          <p class="eyebrow text-ink-soft">The work</p>
+          <h2 class="h-section sec-title mt-4">What a €79.99 page actually looks like.</h2>
+        </div>
+        <div class="lg:col-span-4 lg:col-start-9 lg:pt-9">
+          <p class="max-w-prose text-[0.9375rem] leading-relaxed text-ink-mid">
+            Four builds, four different trades. Same idea each time: one page, the three or four things
+            a customer came for, and nothing in the way of them.
+          </p>
+        </div>
+      </div>
 
-        <div class="flex flex-col rounded-lg border border-line bg-paper p-7 md:p-8">
-          <div class="flex items-start justify-between gap-4">
-            <div>
-              <h3 class="h-section text-xl">Custom Website</h3>
-              <p class="mt-2 text-[0.8125rem] leading-relaxed text-ink-mid">
-                One page, built around the handful of things your customers actually need.
+      <div class="mt-14 grid grid-cols-1 gap-14 md:gap-16 lg:grid-cols-2 lg:gap-x-12">
+
+        <!-- left column -->
+        <div class="flex flex-col gap-14 md:gap-16">
+
+          <article class="work-item">
+            <figure class="shot" aria-hidden="true" style="--s-bg:#FDFAF4;--s-ink:#241C15;--s-acc:#B04A2F;--s-band:#EADFCB;--s-tile:#EADFCB;--s-card:rgba(255,255,255,0.75)">
+              <div class="shot-bar"><i></i><i></i><i></i><u></u></div>
+              <div class="shot-view">
+                <div class="pv-nav">
+                  <span class="pv-mark"><b></b>Kettle &amp; Crumb</span>
+                  <span class="pv-links"><span>Today</span><span>Menu</span><span>Visit</span></span>
+                </div>
+                <div class="pv-split">
+                  <div class="pv-hero">
+                    <p class="pv-eyebrow">Bread from 7am</p>
+                    <h3 class="pv-h1">Everything is <em>baked here</em>.</h3>
+                    <p class="pv-sub">Sourdough, pastries and a short lunch menu that changes when the weather does.</p>
+                    <div class="pv-cta"><span class="pv-pill">Today&rsquo;s menu</span></div>
+                  </div>
+                  <div></div>
+                </div>
+                <div class="pv-grid pv-grid--3">
+                  <div class="pv-tile"></div><div class="pv-tile"></div><div class="pv-tile"></div>
+                </div>
+                <div class="pv-strip"><span>Mon – Sat, 7:00 – 16:00</span><span>Mill Lane</span></div>
+              </div>
+            </figure>
+            <div class="mt-6">
+              <p class="eyebrow text-ink-soft">01 — Café &amp; bakery</p>
+              <h3 class="h-section mt-2.5 text-xl">A menu that changes weekly, without a phone call</h3>
+              <p class="mt-3 max-w-prose text-[0.9375rem] leading-relaxed text-ink-mid">
+                Photos of the counter, the day&rsquo;s menu, opening hours and a map. The owner sends the new
+                lunch list over on a Sunday and it is up on Monday.
               </p>
             </div>
-            <div class="shrink-0 text-right">
-              <p class="h-section text-3xl text-ink">€79.99</p>
-              <span class="tag tag-once mt-2 inline-block">One-time</span>
+          </article>
+
+          <article class="work-item">
+            <figure class="shot" aria-hidden="true" style="--s-bg:#F7F3F4;--s-ink:#231A1E;--s-acc:#7C3B57;--s-band:#E4D6DB;--s-tile:#E4D6DB;--s-card:rgba(255,255,255,0.78)">
+              <div class="shot-bar"><i></i><i></i><i></i><u></u></div>
+              <div class="shot-view">
+                <div class="pv-nav">
+                  <span class="pv-mark"><b></b>Studio Ivy</span>
+                  <span class="pv-links"><span>Treatments</span><span>Prices</span><span>Team</span></span>
+                  <span class="pv-pill">Book</span>
+                </div>
+                <div class="pv-band pv-band--tall"></div>
+                <div class="pv-hero">
+                  <h3 class="pv-h1">Colour, cuts and <em>quiet</em>.</h3>
+                  <p class="pv-sub">Four chairs above the bookshop. Evening slots on Thursdays.</p>
+                  <div class="pv-cta"><span class="pv-pill">Book online</span><span class="pv-pill pv-pill--line">Price list</span></div>
+                </div>
+                <div class="pv-list">
+                  <div class="pv-line"><span>Cut &amp; finish</span><span>from €45</span></div>
+                  <div class="pv-line"><span>Full head colour</span><span>from €95</span></div>
+                  <div class="pv-line"><span>Balayage</span><span>from €130</span></div>
+                </div>
+              </div>
+            </figure>
+            <div class="mt-6">
+              <p class="eyebrow text-ink-soft">02 — Hair &amp; beauty salon</p>
+              <h3 class="h-section mt-2.5 text-xl">Booking first, price list right underneath</h3>
+              <p class="mt-3 max-w-prose text-[0.9375rem] leading-relaxed text-ink-mid">
+                Built for someone deciding on their phone at a bus stop. Book, see the prices, see the
+                room — in that order, because that is the order they ask in.
+              </p>
             </div>
-          </div>
-          <p class="mt-5 border-t border-line pt-5 text-[0.8125rem] leading-relaxed text-ink-mid">
-            <span class="arrow">&rarr;</span> Pick at least three from the list below. Picking ten costs the same
-            as picking three.
+          </article>
+
+        </div>
+
+        <!-- right column, deliberately dropped a little -->
+        <div class="flex flex-col gap-14 md:gap-16 lg:pt-20">
+
+          <article class="work-item">
+            <figure class="shot" aria-hidden="true" style="--s-bg:#FFFFFF;--s-ink:#101820;--s-acc:#1F4E7A;--s-band:#DEE6EE;--s-tile:#DEE6EE;--s-card:#F1F4F8">
+              <div class="shot-bar"><i></i><i></i><i></i><u></u></div>
+              <div class="shot-view">
+                <div class="pv-nav">
+                  <span class="pv-mark"><b></b>Rowan Heating</span>
+                  <span class="pv-links"><span>Services</span><span>Areas</span></span>
+                  <span class="pv-pill">Call now</span>
+                </div>
+                <div class="pv-hero">
+                  <p class="pv-eyebrow">Registered &amp; insured</p>
+                  <h3 class="pv-h1">Boiler out? <em>Call.</em></h3>
+                  <p class="pv-sub">Repairs, servicing and installs across the county. Same day where we can, straight about it when we cannot.</p>
+                  <div class="pv-cta"><span class="pv-pill">Call now</span><span class="pv-pill pv-pill--line">Ask a question</span></div>
+                </div>
+                <div class="pv-grid pv-grid--2">
+                  <div class="pv-card"><b>Boiler repair</b><p>Diagnosis, parts and a fixed callout.</p></div>
+                  <div class="pv-card"><b>Annual service</b><p>Booked in before the cold sets in.</p></div>
+                  <div class="pv-card"><b>New installs</b><p>Quoted in writing, no site visit fee.</p></div>
+                  <div class="pv-card"><b>Radiators</b><p>Flushing, balancing, replacements.</p></div>
+                </div>
+                <div class="pv-strip"><span>Covering the county</span><span>Mon – Sat</span></div>
+              </div>
+            </figure>
+            <div class="mt-6">
+              <p class="eyebrow text-ink-soft">03 — Plumbing &amp; heating</p>
+              <h3 class="h-section mt-2.5 text-xl">One job: get the phone to ring</h3>
+              <p class="mt-3 max-w-prose text-[0.9375rem] leading-relaxed text-ink-mid">
+                Nobody browses a heating engineer. The number sits in the header, in the first screen and
+                in the footer, and every tap on it dials.
+              </p>
+            </div>
+          </article>
+
+          <article class="work-item">
+            <figure class="shot" aria-hidden="true" style="--s-bg:#F5F5F3;--s-ink:#1A1A18;--s-acc:#7A5A18;--s-band:#DCDBD4;--s-tile:#DCDBD4;--s-card:#FFFFFF">
+              <div class="shot-bar"><i></i><i></i><i></i><u></u></div>
+              <div class="shot-view">
+                <div class="pv-nav">
+                  <span class="pv-mark"><b></b>Mill Lane Motors</span>
+                  <span class="pv-links"><span>Servicing</span><span>Tests</span><span>Contact</span></span>
+                </div>
+                <div class="pv-split">
+                  <div></div>
+                  <div class="pv-hero">
+                    <h3 class="pv-h1">Booked in by <em>Friday</em>.</h3>
+                    <p class="pv-sub">Servicing, diagnostics and pre-test checks.</p>
+                    <div class="pv-cta"><span class="pv-pill">Request a slot</span></div>
+                  </div>
+                </div>
+                <div class="pv-list">
+                  <div class="pv-line"><span>Full service</span><span>from €159</span></div>
+                  <div class="pv-line"><span>Pre-test check</span><span>€45</span></div>
+                  <div class="pv-line"><span>Diagnostics</span><span>€60</span></div>
+                  <div class="pv-line"><span>Tyres &amp; brakes</span><span>quoted</span></div>
+                </div>
+                <div class="pv-strip"><span>Unit 4, Mill Lane</span><span>Drop-off from 8am</span></div>
+              </div>
+            </figure>
+            <div class="mt-6">
+              <p class="eyebrow text-ink-soft">04 — Garage &amp; servicing</p>
+              <h3 class="h-section mt-2.5 text-xl">Prices up front, the form lands on the desk</h3>
+              <p class="mt-3 max-w-prose text-[0.9375rem] leading-relaxed text-ink-mid">
+                Half the calls a garage takes are &ldquo;how much for a service&rdquo;. Putting the number on the
+                page answers that before the phone rings, and the request form goes to the office inbox.
+              </p>
+            </div>
+          </article>
+
+        </div>
+      </div>
+
+      <p class="mt-16 max-w-prose border-t border-line pt-6 text-[0.8125rem] leading-relaxed text-ink-soft">
+        Straight up: these four are our own example builds, not client sites, and the businesses in them
+        are invented. They are here so you can see the components, the spacing and the type you would
+        actually be getting. Yours gets built around your trade, your photos and your prices.
+      </p>
+    </div>
+  </section>
+
+  <!-- 4 — WHAT WE OFFER -->
+  <section class="border-b border-line">
+    <div class="mx-auto max-w-shell px-6 py-16 md:px-10 md:py-20">
+      <div class="grid grid-cols-1 gap-10 lg:grid-cols-12 lg:gap-14">
+
+        <div class="lg:col-span-5">
+          <h2 class="h-section sec-title">There are three things here. You need one of them.</h2>
+          <p class="mt-5 max-w-prose text-[0.9375rem] leading-relaxed text-ink-mid">
+            The website is the bit you actually have to buy. The other two are there if they are useful
+            to you and ignorable if they are not.
           </p>
         </div>
 
-        <div class="flex flex-col rounded-lg border border-line-firm bg-paper p-7 md:p-8">
-          <div class="flex items-start justify-between gap-4">
-            <div>
-              <h3 class="h-section text-xl">Professional Website</h3>
-              <p class="mt-2 text-[0.8125rem] leading-relaxed text-ink-mid">
-                The full thing, with all ten features already in it. Nothing to choose.
-              </p>
+        <div class="lg:col-span-6 lg:col-start-7">
+          <div class="border-t-2 border-accent pt-6">
+            <div class="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-1">
+              <h3 class="h-section text-xl">The website</h3>
+              <p class="text-[0.9375rem] font-semibold text-ink">€79.99 or €249.99 <span class="font-normal text-ink-soft">· once</span></p>
             </div>
-            <div class="shrink-0 text-right">
-              <p class="h-section text-3xl text-ink">€249.99</p>
-              <span class="tag tag-once mt-2 inline-block">One-time</span>
+            <p class="mt-3 max-w-prose text-[0.9375rem] leading-relaxed text-ink-mid">
+              Built around what you actually do, written the way you would say it out loud, and made to
+              work on a phone — because that is where people will find you. Hosting, the security padlock
+              and the domain are part of it. You do not buy those separately and you do not renew them.
+            </p>
+            <a href="#pricing" class="mt-4 inline-block text-sm font-semibold text-accent underline decoration-line-firm decoration-2 underline-offset-4 hover:decoration-accent">Compare the two</a>
+          </div>
+
+          <div class="mt-9 grid grid-cols-1 gap-9 border-t border-line pt-7 sm:grid-cols-2 sm:gap-8">
+            <div>
+              <h3 class="h-section text-base">Monthly services</h3>
+              <p class="mt-2 text-[0.875rem] leading-relaxed text-ink-mid">
+                Booking, maintenance, review management, a digital menu. None of them are bundled into
+                the website price and none of them start until you are live.
+              </p>
+              <p class="mt-2.5 text-[0.8125rem] text-ink-soft">€19.99 – €29.99 a month each.</p>
+              <a href="#services" class="mt-2.5 inline-block text-sm font-semibold text-accent underline decoration-line-firm decoration-2 underline-offset-4 hover:decoration-accent">What each one does</a>
+            </div>
+            <div>
+              <h3 class="h-section text-base">Business extras</h3>
+              <p class="mt-2 text-[0.875rem] leading-relaxed text-ink-mid">
+                A logo, business cards, a flyer, the menu, an email address on your own domain. Twelve
+                one-off jobs for the things a website does not cover.
+              </p>
+              <p class="mt-2.5 text-[0.8125rem] text-ink-soft">From €19.99, paid once.</p>
+              <a href="#extras" class="mt-2.5 inline-block text-sm font-semibold text-accent underline decoration-line-firm decoration-2 underline-offset-4 hover:decoration-accent">See all twelve</a>
             </div>
           </div>
-          <p class="mt-5 border-t border-line pt-5 text-[0.8125rem] leading-relaxed text-ink-mid">
-            <span class="arrow">&rarr;</span> Still no monthly service attached. That stays your call.
-          </p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- 5 — PRICING -->
+  <section id="pricing" class="scroll-mt-16 border-b border-line bg-surface">
+    <div class="mx-auto max-w-shell px-6 py-16 md:px-10 md:py-24">
+      <p class="eyebrow text-ink-soft">Websites</p>
+      <h2 class="h-section sec-title mt-4 max-w-2xl">Two ways to get one.</h2>
+      <p class="mt-5 max-w-prose text-[0.9375rem] leading-relaxed text-ink-mid">
+        Both paid once. Hosting, the padlock and the domain come with either. Neither includes a monthly
+        service — you pick those separately, or not at all.
+      </p>
+
+      <div class="mt-12 grid grid-cols-1 gap-8 lg:grid-cols-12 lg:gap-10">
+
+        <!-- The smaller option gets the smaller column. The hierarchy is the layout. -->
+        <div class="lg:col-span-5">
+          <div class="h-full border-t border-line-firm bg-paper px-6 py-7 md:px-7">
+            <h3 class="h-section text-lg">Custom Website</h3>
+            <p class="mt-4 flex items-baseline gap-2.5">
+              <span class="h-display text-4xl text-ink">€79.99</span>
+              <span class="tag tag-once">One-time</span>
+            </p>
+            <p class="mt-5 border-t border-line pt-5 text-[0.9375rem] leading-relaxed text-ink-mid">
+              One page, built around the handful of things your customers actually need.
+            </p>
+            <ul class="mt-4 space-y-2 text-[0.875rem] leading-relaxed text-ink-mid">
+              <li><span class="arrow">&rarr;</span> You pick at least three of the ten features below.</li>
+              <li><span class="arrow">&rarr;</span> Picking ten costs the same as picking three.</li>
+              <li><span class="arrow">&rarr;</span> Hosting, padlock and domain included.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="lg:col-span-7">
+          <div class="h-full border-t-2 border-accent bg-paper px-6 py-7 md:px-9 md:py-9">
+            <div class="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-2">
+              <h3 class="h-section text-xl">Professional Website</h3>
+              <span class="eyebrow text-accent">Everything included</span>
+            </div>
+            <p class="mt-4 flex items-baseline gap-2.5">
+              <span class="h-display text-5xl text-ink">€249.99</span>
+              <span class="tag tag-once">One-time</span>
+            </p>
+            <p class="mt-5 border-t border-line pt-5 text-[0.9375rem] leading-relaxed text-ink-mid">
+              The complete build. All ten features are in it already, so there is nothing to choose and
+              nothing to add later because you picked wrong at the start.
+            </p>
+            <ul class="mt-4 grid grid-cols-1 gap-x-8 gap-y-2 text-[0.875rem] leading-relaxed text-ink-mid sm:grid-cols-2">
+              <li><span class="arrow">&rarr;</span> All ten features built in.</li>
+              <li><span class="arrow">&rarr;</span> Hosting, padlock and domain included.</li>
+              <li><span class="arrow">&rarr;</span> Still no monthly service attached.</li>
+              <li><span class="arrow">&rarr;</span> Same 25% now, 75% on approval.</li>
+            </ul>
+          </div>
         </div>
 
       </div>
 
       <!-- The ten website features -->
-      <div class="mt-10 border-t border-line pt-8">
+      <div class="mt-12 border-t border-line pt-8">
         <div class="flex flex-wrap items-baseline gap-x-4 gap-y-1">
           <p class="text-sm font-semibold text-ink">The ten features</p>
           <span class="ml-auto text-[0.8125rem] text-ink-soft">part of the build, never monthly</span>
         </div>
         <div class="mt-5 grid grid-cols-1 gap-x-10 gap-y-3 sm:grid-cols-2 xl:grid-cols-3">
-          <p class="text-[0.8125rem] leading-snug text-ink-mid"><span class="arrow">&rarr;</span> <strong class="font-semibold text-ink">Contact form</strong> — messages land in your inbox.</p>
-          <p class="text-[0.8125rem] leading-snug text-ink-mid"><span class="arrow">&rarr;</span> <strong class="font-semibold text-ink">Google Maps</strong> — your location, one-tap directions.</p>
-          <p class="text-[0.8125rem] leading-snug text-ink-mid"><span class="arrow">&rarr;</span> <strong class="font-semibold text-ink">WhatsApp button</strong> — opens a chat in one tap.</p>
-          <p class="text-[0.8125rem] leading-snug text-ink-mid"><span class="arrow">&rarr;</span> <strong class="font-semibold text-ink">Photo gallery</strong> — your work, space or products.</p>
-          <p class="text-[0.8125rem] leading-snug text-ink-mid"><span class="arrow">&rarr;</span> <strong class="font-semibold text-ink">Business information</strong> — name, address, phone, email.</p>
-          <p class="text-[0.8125rem] leading-snug text-ink-mid"><span class="arrow">&rarr;</span> <strong class="font-semibold text-ink">Services section</strong> — what you do, in your customers' words.</p>
-          <p class="text-[0.8125rem] leading-snug text-ink-mid"><span class="arrow">&rarr;</span> <strong class="font-semibold text-ink">Testimonials</strong> — feedback from your customers.</p>
-          <p class="text-[0.8125rem] leading-snug text-ink-mid"><span class="arrow">&rarr;</span> <strong class="font-semibold text-ink">Opening hours</strong> — before they turn up.</p>
-          <p class="text-[0.8125rem] leading-snug text-ink-mid"><span class="arrow">&rarr;</span> <strong class="font-semibold text-ink">Social links</strong> — straight to your profiles.</p>
-          <p class="text-[0.8125rem] leading-snug text-ink-mid"><span class="arrow">&rarr;</span> <strong class="font-semibold text-ink">Call button</strong> — one tap dials your number.</p>
+          <p class="text-[0.875rem] leading-snug text-ink-mid"><span class="arrow">&rarr;</span> <strong class="font-semibold text-ink">Contact form</strong> — messages land in your inbox.</p>
+          <p class="text-[0.875rem] leading-snug text-ink-mid"><span class="arrow">&rarr;</span> <strong class="font-semibold text-ink">Google Maps</strong> — your location, one-tap directions.</p>
+          <p class="text-[0.875rem] leading-snug text-ink-mid"><span class="arrow">&rarr;</span> <strong class="font-semibold text-ink">WhatsApp button</strong> — opens a chat in one tap.</p>
+          <p class="text-[0.875rem] leading-snug text-ink-mid"><span class="arrow">&rarr;</span> <strong class="font-semibold text-ink">Photo gallery</strong> — your work, space or products.</p>
+          <p class="text-[0.875rem] leading-snug text-ink-mid"><span class="arrow">&rarr;</span> <strong class="font-semibold text-ink">Business information</strong> — name, address, phone, email.</p>
+          <p class="text-[0.875rem] leading-snug text-ink-mid"><span class="arrow">&rarr;</span> <strong class="font-semibold text-ink">Services section</strong> — what you do, in your customers&rsquo; words.</p>
+          <p class="text-[0.875rem] leading-snug text-ink-mid"><span class="arrow">&rarr;</span> <strong class="font-semibold text-ink">Testimonials</strong> — feedback from your customers.</p>
+          <p class="text-[0.875rem] leading-snug text-ink-mid"><span class="arrow">&rarr;</span> <strong class="font-semibold text-ink">Opening hours</strong> — before they turn up.</p>
+          <p class="text-[0.875rem] leading-snug text-ink-mid"><span class="arrow">&rarr;</span> <strong class="font-semibold text-ink">Social links</strong> — straight to your profiles.</p>
+          <p class="text-[0.875rem] leading-snug text-ink-mid"><span class="arrow">&rarr;</span> <strong class="font-semibold text-ink">Call button</strong> — one tap dials your number.</p>
         </div>
       </div>
 
-      <div class="mt-10 flex flex-wrap items-center gap-4 border-t border-line pt-8">
+      <div class="mt-10 flex flex-wrap items-center gap-x-6 gap-y-4 border-t border-line pt-8">
         <a href="signup.html" class="inline-flex items-center justify-center rounded-md bg-accent px-7 py-4 text-base font-semibold text-white hover:bg-accent-hi">
           Create an account to build your package
         </a>
@@ -322,372 +497,142 @@
     </div>
   </section>
 
-  <!-- 4 — HOW IT WORKS -->
-  <section id="how" class="scroll-mt-20 border-b border-line">
+  <!-- 6 — WHY A QUARTER + THE FOUR STEPS -->
+  <section id="how" class="scroll-mt-16 border-b border-line bg-accent-tint">
     <div class="mx-auto max-w-shell px-6 py-16 md:px-10 md:py-24">
-      <h2 class="h-section sec-title mt-5 max-w-2xl">A quarter now. The rest when you've seen it.</h2>
-      <p class="mt-5 max-w-prose text-[0.9375rem] leading-relaxed text-ink-mid">
-        Nobody pays for a website that doesn't exist yet, and nothing monthly gets charged while
-        we're still building.
-      </p>
 
-      <ol class="mt-12 grid grid-cols-1 gap-px overflow-hidden rounded-lg border border-line bg-line sm:grid-cols-2 xl:grid-cols-4">
-        <li class="bg-paper px-6 py-7">
-          <span class="text-[0.8125rem] font-semibold text-ink-soft">Step 01</span>
+      <div class="grid grid-cols-1 gap-10 lg:grid-cols-12 lg:gap-14">
+        <div class="lg:col-span-7">
+          <h2 class="h-section sec-title max-w-xl">Why a quarter, and not the whole thing?</h2>
+          <p class="mt-6 max-w-prose text-[1.0625rem] leading-relaxed text-ink-mid">
+            Because you have never met us. Handing a stranger four hundred euro for a website that does
+            not exist yet is a bad deal, and we would rather not ask for it.
+          </p>
+          <p class="mt-4 max-w-prose text-[1.0625rem] leading-relaxed text-ink-mid">
+            So you pay a quarter, we build the thing, and you look at it on your own phone before the
+            rest is due. If it is wrong, we fix it. If you walk away, you have spent a quarter, not the lot.
+          </p>
+        </div>
+        <aside class="lg:col-span-4 lg:col-start-9 lg:pt-16">
+          <p class="border-l-2 border-accent pl-5 text-[0.9375rem] leading-relaxed text-ink-mid">
+            The other half of it: we get paid for finishing, not for starting. That tends to focus the mind.
+          </p>
+          <p class="mt-6 pl-5 text-[0.9375rem] leading-relaxed text-ink-soft">
+            No discovery call, no strategy workshop, no onboarding sequence. You send us your opening
+            hours and some photos. We send you back a website.
+          </p>
+        </aside>
+      </div>
+
+      <ol class="mt-16 grid grid-cols-1 border-t border-line-firm sm:grid-cols-2 xl:grid-cols-4">
+
+        <li class="border-b border-line py-7 sm:pr-8 xl:border-b-0 xl:border-r xl:pr-7">
+          <p class="step-n">01</p>
           <h3 class="h-section mt-3 text-lg">Pay 25%</h3>
-          <p class="mt-2.5 text-[0.8125rem] leading-relaxed text-ink-mid">
-            A quarter of the one-time total. That books the work in. Nothing else today.
+          <p class="mt-2.5 max-w-prose text-[0.875rem] leading-relaxed text-ink-mid">
+            A quarter of the one-time total, and that books the work in. Nothing else is charged today.
           </p>
         </li>
-        <li class="bg-paper px-6 py-7">
-          <span class="text-[0.8125rem] font-semibold text-ink-soft">Step 02</span>
+
+        <li class="border-b border-line py-7 sm:pl-8 xl:border-b-0 xl:border-r xl:pl-7 xl:pr-7">
+          <p class="step-n">02</p>
           <h3 class="h-section mt-3 text-lg">Send your content</h3>
-          <p class="mt-2.5 text-[0.8125rem] leading-relaxed text-ink-mid">
-            Logo, photos, what you do, what it costs, when you're open.
-            <a href="start.html" class="font-semibold text-accent underline underline-offset-2 hover:text-accent-hi">Here's the list</a>.
+          <p class="mt-2.5 max-w-prose text-[0.875rem] leading-relaxed text-ink-mid">
+            Logo, photos, what you do, what it costs, when you are open.
+            <a href="start.html" class="font-semibold text-accent underline underline-offset-2 hover:text-accent-hi">Here is the list</a>.
           </p>
         </li>
-        <li class="bg-paper px-6 py-7">
-          <span class="text-[0.8125rem] font-semibold text-ink-soft">Step 03</span>
+
+        <li class="border-b border-line py-7 sm:border-b-0 sm:pr-8 xl:border-r xl:px-7">
+          <p class="step-n">03</p>
           <h3 class="h-section mt-3 text-lg">We build it</h3>
-          <p class="mt-2.5 text-[0.8125rem] leading-relaxed text-ink-mid">
-            Roughly a week from the day the last photo lands, not from the day you paid.
+          <p class="mt-2.5 max-w-prose text-[0.875rem] leading-relaxed text-ink-mid">
+            Roughly a week from the day the last photo lands — not from the day you paid.
           </p>
         </li>
-        <li class="bg-paper px-6 py-7">
-          <span class="text-[0.8125rem] font-semibold text-ink-soft">Step 04</span>
-          <h3 class="h-section mt-3 text-lg">Review &amp; pay 75%</h3>
-          <p class="mt-2.5 text-[0.8125rem] leading-relaxed text-ink-mid">
-            You look it over on your own phone. If it's right, you pay the rest and we put it up.
+
+        <li class="py-7 sm:pl-8 xl:pl-7">
+          <p class="step-n">04</p>
+          <h3 class="h-section mt-3 text-lg">Approve it, pay the rest</h3>
+          <p class="mt-2.5 max-w-prose text-[0.875rem] leading-relaxed text-ink-mid">
+            You look it over on your own phone. If it is right, you pay the remaining 75% and we put it up.
           </p>
         </li>
+
       </ol>
+
+      <p class="mt-8 max-w-prose text-[0.8125rem] leading-relaxed text-ink-soft">
+        Nothing monthly is charged while we are still building. If you have added a monthly service, it
+        starts the day the site goes live.
+      </p>
     </div>
   </section>
 
-
-  <!-- 6 — MONTHLY SERVICES -->
-  <section id="services" class="border-b border-line">
+  <!-- 7 — MONTHLY SERVICES -->
+  <section id="services" class="scroll-mt-16 border-b border-line">
     <div class="mx-auto max-w-shell px-6 py-16 md:px-10 md:py-24">
-      <h2 class="h-section sec-title mt-5 max-w-2xl">Optional, and they start when you go live.</h2>
-      <p class="mt-5 max-w-prose text-[0.9375rem] leading-relaxed text-ink-mid">
-        Never folded into the website price, never charged while we're building, and you can stop any
-        of them at the end of the month you've paid for.
-      </p>
+      <div class="grid grid-cols-1 gap-10 lg:grid-cols-12 lg:gap-14">
 
-      <div class="mt-12 grid grid-cols-1 gap-2.5 sm:grid-cols-2 xl:grid-cols-4">
-
-        <div class="rounded-lg border border-line bg-surface p-5">
-          <div class="flex items-baseline justify-between gap-3">
-            <h3 class="h-section text-base">Online Booking</h3>
-            <span class="h-section whitespace-nowrap text-lg text-ink">€29.99</span>
-          </div>
-          <span class="tag tag-month mt-2 inline-block">Per month</span>
-          <p class="mt-2.5 text-[0.8125rem] leading-snug text-ink-mid">People book themselves in, at the times you allow. Your phone stays in your pocket.</p>
-        </div>
-
-        <div class="rounded-lg border border-line bg-surface p-5">
-          <div class="flex items-baseline justify-between gap-3">
-            <h3 class="h-section text-base">Website Maintenance</h3>
-            <span class="h-section whitespace-nowrap text-lg text-ink">€19.99</span>
-          </div>
-          <span class="tag tag-month mt-2 inline-block">Per month</span>
-          <p class="mt-2.5 text-[0.8125rem] leading-snug text-ink-mid">Fifteen changes a month. Text us the new price, we change the price.</p>
-        </div>
-
-        <div class="rounded-lg border border-line bg-surface p-5">
-          <div class="flex items-baseline justify-between gap-3">
-            <h3 class="h-section text-base">Review Management</h3>
-            <span class="h-section whitespace-nowrap text-lg text-ink">€29.99</span>
-          </div>
-          <span class="tag tag-month mt-2 inline-block">Per month</span>
-          <p class="mt-2.5 text-[0.8125rem] leading-snug text-ink-mid">We watch your Google reviews and help you answer them, including the awkward ones.</p>
-        </div>
-
-        <div class="rounded-lg border border-line bg-surface p-5">
-          <div class="flex items-baseline justify-between gap-3">
-            <h3 class="h-section text-base">Digital Menu</h3>
-            <span class="h-section whitespace-nowrap text-lg text-ink">€19.99</span>
-          </div>
-          <div class="mt-2 flex flex-wrap gap-1.5">
-            <span class="tag tag-month">Per month</span>
-            <span class="tag tag-once">+ €49.99 setup</span>
-          </div>
-          <p class="mt-2.5 text-[0.8125rem] leading-snug text-ink-mid">For restaurants, cafés and bars — your menu on the web, changed when the kitchen changes.</p>
-        </div>
-
-      </div>
-
-      <div class="mt-8 rounded-lg border border-line bg-paper px-6 py-5">
-        <p class="text-sm font-semibold text-ink">One-time upgrade</p>
-        <div class="mt-3 flex flex-wrap items-baseline justify-between gap-4">
-          <div class="max-w-prose">
-            <h3 class="h-section text-base">Local SEO — €199.99</h3>
-            <p class="mt-1.5 text-[0.8125rem] leading-relaxed text-ink-mid">
-              Groundwork so people searching for your trade in your area can find you: page titles and
-              descriptions, consistent business details, and a structure search engines can read.
-              <strong class="font-semibold text-ink">Not</strong> a subscription.
-            </p>
-          </div>
-          <span class="tag tag-once">One-time</span>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- 6 — BUSINESS EXTRAS -->
-  <section id="extras" class="relative border-b border-line">
-    <div class="mx-auto max-w-shell px-6 py-16 md:px-10 md:py-24">
-
-      <p class="eyebrow text-ink-soft">Business Extras</p>
-      <h2 class="h-section sec-title mt-5 max-w-2xl">Need more than a website?</h2>
-      <p class="mt-5 max-w-prose text-[0.9375rem] leading-relaxed text-ink-mid">
-        Add the professional materials your business needs. Choose only what you need — these are
-        optional one-time services that help you look more professional, promote your business, and
-        make it easier for customers to contact you.
-      </p>
-
-      <!-- One-time vs monthly, stated once and plainly -->
-      <div class="mt-8 grid grid-cols-1 gap-px overflow-hidden rounded-lg border border-line bg-line sm:grid-cols-2">
-        <div class="bg-paper px-5 py-4">
-          <span class="tag tag-once">One-time</span>
-          <p class="mt-2.5 text-[0.8125rem] leading-snug text-ink-mid">
-            Pay once for a specific design, setup or business asset. Everything in this section is one-time.
+        <div class="lg:col-span-4">
+          <p class="eyebrow text-ink-soft">Monthly services</p>
+          <h2 class="h-section sec-title mt-4">Optional, and they start when you go live.</h2>
+          <p class="mt-5 max-w-prose text-[0.9375rem] leading-relaxed text-ink-mid">
+            Never folded into the website price, never charged while we are building, and you can stop
+            any of them at the end of the month you have paid for.
           </p>
         </div>
-        <div class="bg-paper px-5 py-4">
-          <span class="tag tag-month">Per month</span>
-          <p class="mt-2.5 text-[0.8125rem] leading-snug text-ink-mid">
-            Recurring services that continue while your subscription is active. Nothing here is monthly.
-          </p>
-        </div>
-      </div>
 
-      <div class="mt-10 border-t-2 border-accent pt-5">
-        <div class="flex flex-wrap items-baseline gap-x-4 gap-y-1">
-          <span class="font-mono text-xs font-semibold tracking-widest text-ink-soft">OPTIONAL</span>
-          <h3 class="h-section text-xl">Only pay for what you need</h3>
-          <span class="ml-auto font-mono text-xs uppercase tracking-widest text-ink-soft">Twelve services</span>
-        </div>
-        <p class="mt-4 max-w-prose text-[0.8125rem] leading-relaxed text-ink-mid">
-          Extras are added inside your dashboard alongside a website build, not sold on their own.
-        </p>
+        <div class="lg:col-span-7 lg:col-start-6">
+          <dl class="border-t border-line-firm">
 
-        <!-- BRAND & DESIGN -->
-        <div class="mt-6">
-          <div class="m-chips mt-3" role="tablist" aria-label="Extras categories">
-            <button type="button" class="m-chip is-on" data-ex-filter="all">All</button>
-            <button type="button" class="m-chip" data-ex-filter="brand">Branding</button>
-            <button type="button" class="m-chip" data-ex-filter="marketing">Marketing</button>
-            <button type="button" class="m-chip" data-ex-filter="business">Business</button>
-            <button type="button" class="m-chip" data-ex-filter="documents">Documents</button>
-            <button type="button" class="m-chip" data-ex-filter="soon">Coming soon</button>
-          </div>
-        </div>
-        <div data-ex-group="brand"><p class="mt-8 text-sm font-semibold text-ink">Brand & design</p>
-        <div class="mt-3 grid grid-cols-1 gap-2.5 sm:grid-cols-2 xl:grid-cols-3">
-
-          <div class="rounded-lg border border-line bg-surface  p-4 flex h-full flex-col">
-              <span class="flex items-baseline justify-between gap-3">
-                <span class="h-section text-base">Logo Design</span>
-                <span class="h-section whitespace-nowrap text-lg text-ink">€49.99</span>
-              </span>
-              <span class="mt-2 block"><span class="tag tag-once">One-time</span></span>
-              <span class="mt-2.5 block text-[0.8125rem] leading-snug text-ink-mid">A custom professional logo designed specifically for your business.</span>
+            <div class="border-b border-line py-5">
+              <div class="rate">
+                <dt>Online Booking</dt>
+                <dd>€29.99 <span class="font-normal text-ink-soft">/ month</span></dd>
               </div>
+              <p class="note">People book themselves in, at the times you allow. Your phone stays in your pocket.</p>
+            </div>
 
-          <div class="rounded-lg border border-line bg-surface  p-4 flex h-full flex-col">
-              <span class="flex items-baseline justify-between gap-3">
-                <span class="h-section text-base">Brand Kit</span>
-                <span class="h-section whitespace-nowrap text-lg text-ink">€79.99</span>
-              </span>
-              <span class="mt-2 block"><span class="tag tag-once">One-time</span></span>
-              <span class="mt-2.5 block text-[0.8125rem] leading-snug text-ink-mid">Create a consistent brand with your logo, colours, fonts and simple brand guidelines.</span>
-              <span class="mt-2 block text-[0.8125rem] leading-snug text-ink-soft">
-                <span class="arrow">&rarr;</span> Logo · Brand colours · Fonts · Basic brand guidelines
-              </span>
+            <div class="border-b border-line py-5">
+              <div class="rate">
+                <dt>Website Maintenance</dt>
+                <dd>€19.99 <span class="font-normal text-ink-soft">/ month</span></dd>
               </div>
+              <p class="note">Fifteen changes a month. Text us the new price, we change the price.</p>
+            </div>
 
-          <div class="rounded-lg border border-line bg-surface  p-4 flex h-full flex-col">
-              <span class="flex items-baseline justify-between gap-3">
-                <span class="h-section text-base">Business Card Design</span>
-                <span class="h-section whitespace-nowrap text-lg text-ink">€29.99</span>
-              </span>
-              <span class="mt-2 block"><span class="tag tag-once">One-time</span></span>
-              <span class="mt-2.5 block text-[0.8125rem] leading-snug text-ink-mid">A professional business card design, ready for printing or sharing digitally.</span>
+            <div class="border-b border-line py-5">
+              <div class="rate">
+                <dt>Review Management</dt>
+                <dd>€29.99 <span class="font-normal text-ink-soft">/ month</span></dd>
               </div>
+              <p class="note">We watch your Google reviews and help you answer them, including the awkward ones.</p>
+            </div>
 
-          <div class="rounded-lg border border-line bg-surface  p-4 flex h-full flex-col">
-              <span class="flex items-baseline justify-between gap-3">
-                <span class="h-section text-base">Flyer / Poster Design</span>
-                <span class="h-section whitespace-nowrap text-lg text-ink">€39.99</span>
-              </span>
-              <span class="mt-2 block"><span class="tag tag-once">One-time</span></span>
-              <span class="mt-2.5 block text-[0.8125rem] leading-snug text-ink-mid">A professional promotional design for offers, events, services or announcements.</span>
+            <div class="border-b border-line py-5">
+              <div class="rate">
+                <dt>Digital Menu</dt>
+                <dd>€19.99 <span class="font-normal text-ink-soft">/ month</span></dd>
               </div>
-
-          <div class="rounded-lg border border-line bg-surface  p-4 flex h-full flex-col">
-              <span class="flex items-baseline justify-between gap-3">
-                <span class="h-section text-base">Menu Design</span>
-                <span class="h-section whitespace-nowrap text-lg text-ink">€39.99</span>
-              </span>
-              <span class="mt-2 block"><span class="tag tag-once">One-time</span></span>
-              <span class="mt-2.5 block text-[0.8125rem] leading-snug text-ink-mid">A clean, professional menu designed for restaurants, cafés, salons or other businesses.</span>
-              </div>
-
-        </div></div>
-
-        <!-- SOCIAL & MARKETING -->
-        <div data-ex-group="marketing"><p class="mt-9 text-sm font-semibold text-ink">Social & marketing</p>
-        <div class="mt-3 grid grid-cols-1 gap-2.5 sm:grid-cols-2 xl:grid-cols-3">
-
-          <div class="rounded-lg border border-line bg-surface  p-4 flex h-full flex-col">
-              <span class="flex items-baseline justify-between gap-3">
-                <span class="h-section text-base">Social Media Starter Pack</span>
-                <span class="h-section whitespace-nowrap text-lg text-ink">€59.99</span>
-              </span>
-              <span class="mt-2 block"><span class="tag tag-once">One-time</span></span>
-              <span class="mt-2.5 block text-[0.8125rem] leading-snug text-ink-mid">Give your social profiles a professional and consistent look.</span>
-              <span class="mt-2 block text-[0.8125rem] leading-snug text-ink-soft">
-                <span class="arrow">&rarr;</span> Profile picture · Social banner · 5 branded posts
-              </span>
-              </div>
-
-          <div class="rounded-lg border border-line bg-surface  p-4 flex h-full flex-col">
-              <span class="flex items-baseline justify-between gap-3">
-                <span class="h-section text-base">Promo Video / Short Ad</span>
-                <span class="h-section whitespace-nowrap text-lg text-ink">From €49.99</span>
-              </span>
-              <span class="mt-2 block"><span class="tag tag-once">One-time</span></span>
-              <span class="mt-2.5 block text-[0.8125rem] leading-snug text-ink-mid">A short promotional video showcasing your business, service, product or special offer.</span>
-              <span class="mt-2 block text-[0.8125rem] leading-snug text-ink-soft">
-                <span class="arrow">&rarr;</span> Final price depends on the video length and complexity. We confirm it with you before anything is charged.
-              </span>
-              </div>
-
-          <div class="rounded-lg border border-line bg-surface  p-4 flex h-full flex-col">
-              <span class="flex items-baseline justify-between gap-3">
-                <span class="h-section text-base">AI Business Photos</span>
-                <span class="h-section whitespace-nowrap text-lg text-ink">From €30.00</span>
-              </span>
-              <span class="mt-2 block"><span class="tag tag-once">One-time</span></span>
-              <span class="mt-2.5 block text-[0.8125rem] leading-snug text-ink-mid">Professional AI-assisted images for your products, services or marketing.</span>
-              <span class="mt-2 block text-[0.8125rem] leading-snug text-ink-soft">
-                <span class="arrow">&rarr;</span> Final price depends on the number and complexity of images. AI-assisted images are not photographs of your actual products unless you supply the source material.
-              </span>
-              </div>
-
-          <div class="rounded-lg border border-line bg-surface  p-4 flex h-full flex-col">
-              <span class="flex items-baseline justify-between gap-3">
-                <span class="h-section text-base">Google Review QR Card</span>
-                <span class="h-section whitespace-nowrap text-lg text-ink">€19.99</span>
-              </span>
-              <span class="mt-2 block"><span class="tag tag-once">One-time</span></span>
-              <span class="mt-2.5 block text-[0.8125rem] leading-snug text-ink-mid">A custom QR code card so customers can scan and leave a Google review.</span>
-              <span class="mt-2 block text-[0.8125rem] leading-snug text-ink-soft">
-                <span class="arrow">&rarr;</span> It makes leaving a review easier. What customers write is up to them.
-              </span>
-              </div>
-
-        </div></div>
-
-        <!-- BUSINESS SETUP -->
-        <div data-ex-group="business"><p class="mt-9 text-sm font-semibold text-ink">Business setup</p>
-        <div class="mt-3 grid grid-cols-1 gap-2.5 sm:grid-cols-2 xl:grid-cols-3">
-
-          <div class="rounded-lg border border-line bg-surface  p-4 flex h-full flex-col">
-              <span class="flex items-baseline justify-between gap-3">
-                <span class="h-section text-base">Business Email Setup</span>
-                <span class="h-section whitespace-nowrap text-lg text-ink">€29.99</span>
-              </span>
-              <span class="mt-2 block"><span class="tag tag-once">One-time</span></span>
-              <span class="mt-2.5 block text-[0.8125rem] leading-snug text-ink-mid">A professional email address on your own domain, such as hello@yourbusiness.com.</span>
-              <span class="mt-2 block text-[0.8125rem] leading-snug text-ink-soft">
-                <span class="arrow">&rarr;</span> The €29.99 covers the setup: the domain records, the mailbox configuration and getting it working on your phone and computer. If your email provider charges a monthly fee for the mailbox itself, that is paid to them and is not included here.
-              </span>
-              </div>
-
-          <div class="rounded-lg border border-line bg-surface  p-4 flex h-full flex-col">
-              <span class="flex items-baseline justify-between gap-3">
-                <span class="h-section text-base">WhatsApp Business Setup</span>
-                <span class="h-section whitespace-nowrap text-lg text-ink">€39.99</span>
-              </span>
-              <span class="mt-2 block"><span class="tag tag-once">One-time</span></span>
-              <span class="mt-2.5 block text-[0.8125rem] leading-snug text-ink-mid">Set up your WhatsApp Business profile so customers can contact you easily.</span>
-              <span class="mt-2 block text-[0.8125rem] leading-snug text-ink-soft">
-                <span class="arrow">&rarr;</span> Business profile · Business information · Contact details · Connected to your website
-              </span>
-              </div>
-
-        </div></div>
-
-        <!-- BUSINESS DOCUMENTS -->
-        <div data-ex-group="documents"><p class="mt-9 text-sm font-semibold text-ink">Business documents</p>
-        <div class="mt-3 grid grid-cols-1 gap-2.5 sm:grid-cols-2 xl:grid-cols-3">
-
-          <div class="rounded-lg border border-line bg-surface  p-4 flex h-full flex-col">
-              <span class="flex items-baseline justify-between gap-3">
-                <span class="h-section text-base">Business Document Templates</span>
-                <span class="h-section whitespace-nowrap text-lg text-ink">€29.99</span>
-              </span>
-              <span class="mt-2 block"><span class="tag tag-once">One-time</span></span>
-              <span class="mt-2.5 block text-[0.8125rem] leading-snug text-ink-mid">A professional set of branded documents for everyday business use.</span>
-              <span class="mt-2 block text-[0.8125rem] leading-snug text-ink-soft">
-                <span class="arrow">&rarr;</span> Invoice template · Quotation template · Receipt template
-              </span>
-              </div>
-
-        </div></div>
-
-        <div data-ex-group="soon"><p class="mt-9 text-sm font-semibold text-ink-soft">Coming soon</p>
-        <div class="mt-3 grid grid-cols-1 gap-2.5 sm:grid-cols-2 xl:grid-cols-3">
-
-          <div class="rounded-lg border border-dashed border-line-firm bg-paper p-4 flex h-full flex-col">
-              <span class="flex items-baseline justify-between gap-3">
-                <span class="h-section text-base">AI Receptionist</span>
-                <span class="tag tag-soon">Coming soon</span>
-              </span>
-              <span class="mt-2.5 block text-[0.8125rem] leading-snug text-ink-mid">Answers routine customer questions for you when you cannot get to the phone.</span>
-              <span class="mt-2 block text-[0.8125rem] leading-snug text-ink-soft">
-                <span class="arrow">&rarr;</span> In development — not available to order yet.
-              </span>
-          </div>
-
-          <div class="rounded-lg border border-dashed border-line-firm bg-paper p-4 flex h-full flex-col">
-              <span class="flex items-baseline justify-between gap-3">
-                <span class="h-section text-base">Social Media Content</span>
-                <span class="tag tag-soon">Coming soon</span>
-              </span>
-              <span class="mt-2.5 block text-[0.8125rem] leading-snug text-ink-mid">Regular posts for your business profiles, so your page does not sit untouched for months.</span>
-              <span class="mt-2 block text-[0.8125rem] leading-snug text-ink-soft">
-                <span class="arrow">&rarr;</span> In development — not available to order yet.
-              </span>
-          </div>
-
-        </div></div>
-
-        <!-- How extras are paid for -->
-        <div class="mt-9 border-t border-line pt-6">
-          <div class="flex flex-wrap items-start justify-between gap-6">
-            <div class="max-w-prose">
-              <p class="text-sm font-semibold text-ink">How extras are paid for</p>
-              <p class="mt-3 text-[0.8125rem] leading-relaxed text-ink-mid">
-                Extras join your one-time total and follow the same schedule as the website: 25% today,
-                the remaining 75% once the work is finished and you have approved it. Nothing here ever
-                becomes a monthly charge.
-              </p>
-              <p class="mt-2 text-[0.8125rem] leading-relaxed text-ink-soft">
-                <span class="arrow">&rarr;</span> Extras that do not depend on your website build — the QR
-                card, email and WhatsApp setup, document templates — are delivered on their own timeline
-                rather than waiting for the 7-day build, and their balance falls due when that piece is
-                approved.
-              </p>
-              <p class="mt-2 text-[0.8125rem] leading-relaxed text-ink-soft">
-                <span class="arrow">&rarr;</span> Where a price starts "from", we confirm the final figure
-                with you in writing before anything is charged.
+              <p class="note">
+                For restaurants, cafés and bars — your menu on the web, changed when the kitchen changes.
+                There is a <strong class="font-semibold text-ink">€49.99 one-time setup</strong> on top of the monthly fee.
               </p>
             </div>
-            <a href="signup.html" class="inline-flex items-center justify-center rounded-md bg-accent px-6 py-3.5 text-sm font-semibold text-white hover:bg-accent-hi">Create an account</a>
+
+          </dl>
+
+          <div class="mt-8 border border-line bg-surface px-6 py-5">
+            <div class="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-1">
+              <h3 class="h-section text-base">Local SEO</h3>
+              <p class="text-[0.9375rem] font-semibold text-ink">€199.99 <span class="font-normal text-ink-soft">· once</span></p>
+            </div>
+            <p class="mt-2.5 max-w-prose text-[0.8125rem] leading-relaxed text-ink-mid">
+              Groundwork so people searching for your trade in your area can find you: page titles and
+              descriptions, consistent business details, and a structure search engines can read.
+              <strong class="font-semibold text-ink">Not</strong> a subscription — it sits in this section
+              because it is bought after launch, not because it repeats.
+            </p>
           </div>
         </div>
 
@@ -695,11 +640,142 @@
     </div>
   </section>
 
-  <!-- 7 — FAQ -->
+  <!-- 8 — BUSINESS EXTRAS -->
+  <section id="extras" class="scroll-mt-16 border-b border-line bg-surface">
+    <div class="mx-auto max-w-shell px-6 py-16 md:px-10 md:py-24">
+
+      <div class="grid grid-cols-1 gap-8 lg:grid-cols-12">
+        <div class="lg:col-span-6">
+          <p class="eyebrow text-ink-soft">Business extras</p>
+          <h2 class="h-section sec-title mt-4">The things a website does not cover.</h2>
+        </div>
+        <div class="lg:col-span-5 lg:col-start-8 lg:pt-9">
+          <p class="max-w-prose text-[0.9375rem] leading-relaxed text-ink-mid">
+            Twelve one-off jobs. Every one is paid once, none of them turn into a monthly bill, and they
+            are added alongside a website build rather than sold on their own.
+          </p>
+        </div>
+      </div>
+
+      <div class="mt-14 grid grid-cols-1 gap-x-14 gap-y-12 lg:grid-cols-2">
+
+        <div>
+          <p class="eyebrow border-b border-line-firm pb-3 text-ink-soft">Brand &amp; design</p>
+          <dl>
+            <div class="border-b border-line py-4">
+              <div class="rate"><dt>Logo Design</dt><dd>€49.99</dd></div>
+              <p class="note">A custom logo drawn for your business, in the formats a printer and a phone both accept.</p>
+            </div>
+            <div class="border-b border-line py-4">
+              <div class="rate"><dt>Brand Kit</dt><dd>€79.99</dd></div>
+              <p class="note">Logo, brand colours, fonts and simple guidelines, so everything you print matches everything you post.</p>
+            </div>
+            <div class="border-b border-line py-4">
+              <div class="rate"><dt>Business Card Design</dt><dd>€29.99</dd></div>
+              <p class="note">Ready for printing or sharing digitally.</p>
+            </div>
+            <div class="border-b border-line py-4">
+              <div class="rate"><dt>Flyer / Poster Design</dt><dd>€39.99</dd></div>
+              <p class="note">For an offer, an event, a service or an announcement.</p>
+            </div>
+            <div class="border-b border-line py-4">
+              <div class="rate"><dt>Menu Design</dt><dd>€39.99</dd></div>
+              <p class="note">A clean printed menu for restaurants, cafés, salons and anyone else who hands one over.</p>
+            </div>
+          </dl>
+        </div>
+
+        <div>
+          <p class="eyebrow border-b border-line-firm pb-3 text-ink-soft">Social &amp; marketing</p>
+          <dl>
+            <div class="border-b border-line py-4">
+              <div class="rate"><dt>Social Media Starter Pack</dt><dd>€59.99</dd></div>
+              <p class="note">Profile picture, banner and five branded posts, so your profiles match your website.</p>
+            </div>
+            <div class="border-b border-line py-4">
+              <div class="rate"><dt>Promo Video / Short Ad</dt><dd>from €49.99</dd></div>
+              <p class="note">A short video of your business, a service or an offer. The final price depends on length and complexity, and we confirm it with you before anything is charged.</p>
+            </div>
+            <div class="border-b border-line py-4">
+              <div class="rate"><dt>AI Business Photos</dt><dd>from €30.00</dd></div>
+              <p class="note">AI-assisted images for products, services or marketing. Price depends on how many and how complex. These are not photographs of your actual products unless you supply the source material.</p>
+            </div>
+            <div class="border-b border-line py-4">
+              <div class="rate"><dt>Google Review QR Card</dt><dd>€19.99</dd></div>
+              <p class="note">A card customers scan to leave a Google review. It makes leaving one easier — what they write is still up to them.</p>
+            </div>
+          </dl>
+        </div>
+
+        <div>
+          <p class="eyebrow border-b border-line-firm pb-3 text-ink-soft">Business setup</p>
+          <dl>
+            <div class="border-b border-line py-4">
+              <div class="rate"><dt>Business Email Setup</dt><dd>€29.99</dd></div>
+              <p class="note">An address on your own domain, such as hello@yourbusiness.com. The €29.99 covers the setup — domain records, mailbox configuration, and getting it working on your phone and computer. If your email provider charges a monthly fee for the mailbox itself, that is paid to them and is not included here.</p>
+            </div>
+            <div class="border-b border-line py-4">
+              <div class="rate"><dt>WhatsApp Business Setup</dt><dd>€39.99</dd></div>
+              <p class="note">Business profile, business information and contact details, connected to your website so the button on the page opens a chat.</p>
+            </div>
+          </dl>
+        </div>
+
+        <div>
+          <p class="eyebrow border-b border-line-firm pb-3 text-ink-soft">Business documents</p>
+          <dl>
+            <div class="border-b border-line py-4">
+              <div class="rate"><dt>Business Document Templates</dt><dd>€29.99</dd></div>
+              <p class="note">Invoice, quotation and receipt templates, branded to match everything else.</p>
+            </div>
+          </dl>
+
+          <p class="eyebrow mt-10 border-b border-line pb-3 text-ink-soft">In development</p>
+          <dl>
+            <div class="border-b border-line py-4">
+              <div class="rate"><dt class="text-ink-mid">AI Receptionist</dt><dd><span class="tag tag-soon">Coming soon</span></dd></div>
+              <p class="note">Answers routine customer questions when you cannot get to the phone. Not available to order yet.</p>
+            </div>
+            <div class="border-b border-line py-4">
+              <div class="rate"><dt class="text-ink-mid">Social Media Content</dt><dd><span class="tag tag-soon">Coming soon</span></dd></div>
+              <p class="note">Regular posts for your business profiles, so the page does not sit untouched for months. Not available to order yet.</p>
+            </div>
+          </dl>
+        </div>
+
+      </div>
+
+      <div class="mt-14 grid grid-cols-1 gap-8 border-t border-line pt-8 lg:grid-cols-12 lg:gap-14">
+        <div class="lg:col-span-7">
+          <p class="text-sm font-semibold text-ink">How extras are paid for</p>
+          <p class="mt-3 max-w-prose text-[0.875rem] leading-relaxed text-ink-mid">
+            Extras join your one-time total and follow the same schedule as the website: 25% today, the
+            remaining 75% once the work is finished and you have approved it. Nothing here ever becomes
+            a monthly charge.
+          </p>
+          <p class="mt-2.5 max-w-prose text-[0.8125rem] leading-relaxed text-ink-soft">
+            <span class="arrow">&rarr;</span> Extras that do not depend on your website build — the QR card,
+            email and WhatsApp setup, document templates — are delivered on their own timeline rather than
+            waiting for the 7-day build, and their balance falls due when that piece is approved.
+          </p>
+          <p class="mt-2 max-w-prose text-[0.8125rem] leading-relaxed text-ink-soft">
+            <span class="arrow">&rarr;</span> Where a price starts &ldquo;from&rdquo;, we confirm the final
+            figure with you in writing before anything is charged.
+          </p>
+        </div>
+        <div class="lg:col-span-4 lg:col-start-9">
+          <a href="signup.html" class="inline-flex items-center justify-center rounded-md bg-accent px-6 py-3.5 text-sm font-semibold text-white hover:bg-accent-hi">Create an account</a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 9 — FAQ -->
   <section class="border-b border-line">
     <div class="mx-auto max-w-shell px-6 py-16 md:px-10 md:py-24">
       <p class="eyebrow text-ink-soft">Straight answers</p>
-      <h2 class="h-section sec-title mt-5 max-w-2xl">One-time, monthly, and what happens next.</h2>
+      <h2 class="h-section sec-title mt-4 max-w-2xl">One-time, monthly, and what happens next.</h2>
       <p class="mt-5 max-w-prose text-[0.9375rem] leading-relaxed text-ink-mid">
         The eight that come up most. The rest are answered in the
         <a href="faq.html" class="font-semibold text-accent underline underline-offset-2 hover:text-accent-hi">full FAQ</a>.
@@ -714,30 +790,25 @@
           <dt data-acc-head class="h-section text-base">What is the difference between €79.99 and €249.99?</dt>
           <dd data-acc-body class="max-w-prose pb-6 text-[0.9375rem] leading-relaxed text-ink-mid">The €79.99 Custom Website is built around the features you choose, with three as the minimum. The €249.99 Professional Website is the complete build: every feature on this page is included as standard, so there is nothing to select. Both are paid one time, and both take the same optional add-ons.</dd>
         </div>
-        
-        
         <div data-acc-item class="border-b border-line">
           <dt data-acc-head class="h-section text-base">Which services repeat every month?</dt>
-          <dd data-acc-body class="max-w-prose pb-6 text-[0.9375rem] leading-relaxed text-ink-mid">Online Booking System (€29.99 / month), Website Maintenance (€19.99 / month), Review Management (€29.99 / month), and the Digital Menu monthly fee (€19.99 / month). Everything else on this page is paid once.</dd>
+          <dd data-acc-body class="max-w-prose pb-6 text-[0.9375rem] leading-relaxed text-ink-mid">Online Booking (€29.99 / month), Website Maintenance (€19.99 / month), Review Management (€29.99 / month), and the Digital Menu monthly fee (€19.99 / month). Everything else on this page is paid once.</dd>
         </div>
-        
-        
-        
         <div data-acc-item class="border-b border-line">
           <dt data-acc-head class="h-section text-base">Are Business Extras required?</dt>
-          <dd data-acc-body class="max-w-prose pb-6 text-[0.9375rem] leading-relaxed text-ink-mid">No. Buy the website on its own if that's all you want. Most people do.</dd>
+          <dd data-acc-body class="max-w-prose pb-6 text-[0.9375rem] leading-relaxed text-ink-mid">No. Buy the website on its own if that is all you want. Most people do.</dd>
         </div>
         <div data-acc-item class="border-b border-line">
           <dt data-acc-head class="h-section text-base">Are Business Extras monthly payments?</dt>
-          <dd data-acc-body class="max-w-prose pb-6 text-[0.9375rem] leading-relaxed text-ink-mid">No — they're one-time, every one of them. Nothing there quietly becomes a monthly bill.</dd>
+          <dd data-acc-body class="max-w-prose pb-6 text-[0.9375rem] leading-relaxed text-ink-mid">No — they are one-time, every one of them. Nothing there quietly becomes a monthly bill.</dd>
         </div>
         <div data-acc-item class="border-b border-line">
           <dt data-acc-head class="h-section text-base">How much do I actually pay today?</dt>
-          <dd data-acc-body class="max-w-prose pb-6 text-[0.9375rem] leading-relaxed text-ink-mid">A quarter of the one-time total. That's it for now. The rest is due once the site is built and you've said you're happy with it, and nothing monthly gets charged until you're actually live. The order summary spells out all three numbers before you pay anything.</dd>
+          <dd data-acc-body class="max-w-prose pb-6 text-[0.9375rem] leading-relaxed text-ink-mid">A quarter of the one-time total. That is it for now. The rest is due once the site is built and you have said you are happy with it, and nothing monthly gets charged until you are actually live. The order summary spells out all three numbers before you pay anything.</dd>
         </div>
         <div data-acc-item class="border-b border-line">
           <dt data-acc-head class="h-section text-base">How long does it take?</dt>
-          <dd data-acc-body class="max-w-prose pb-6 text-[0.9375rem] leading-relaxed text-ink-mid">About a week from the day we have everything — logo, photos, your services and prices, opening hours, how people reach you. It's a target, not a promise carved in stone: if the photos land three weeks later, so does the website.</dd>
+          <dd data-acc-body class="max-w-prose pb-6 text-[0.9375rem] leading-relaxed text-ink-mid">About a week from the day we have everything — logo, photos, your services and prices, opening hours, how people reach you. It is a target, not a promise carved in stone: if the photos land three weeks later, so does the website.</dd>
         </div>
         <div data-acc-item class="border-b border-line">
           <dt data-acc-head class="h-section text-base">Can I add or stop a monthly service later?</dt>
@@ -747,19 +818,29 @@
     </div>
   </section>
 
-  <!-- 8 — FINAL CTA -->
+  <!-- 10 — CLOSING -->
   <section class="grain bg-accent">
     <div class="mx-auto max-w-shell px-6 py-16 md:px-10 md:py-24">
-      <h2 class="h-section max-w-2xl text-3xl text-white md:text-[2.5rem]">Ready when you are.</h2>
-      <p data-mobile-cta class="mt-3 text-white/80 sm:hidden">
-        Starting from <strong class="font-semibold text-white">€79.99</strong>. Pay only 25% to start.
-      </p>
-      <p class="mt-5 max-w-prose text-base leading-relaxed text-white/80">
-        Pick your features, see your total, and know exactly what you pay today and what — if anything — repeats.
-      </p>
-      <a href="#pricing" class="mt-9 inline-flex items-center justify-center rounded-md bg-white px-7 py-4 text-base font-semibold text-accent hover:bg-accent-tint">
-        Build my website — €79.99
-      </a>
+      <div class="grid grid-cols-1 gap-8 lg:grid-cols-12 lg:items-end lg:gap-14">
+        <div class="lg:col-span-7">
+          <h2 class="h-display max-w-2xl text-3xl text-white md:text-[2.75rem]">Ready when you are.</h2>
+          <p data-mobile-cta class="mt-3 text-white/80 sm:hidden">
+            From <strong class="font-semibold text-white">€79.99</strong>. Pay 25% to start.
+          </p>
+          <p class="mt-5 max-w-prose text-base leading-relaxed text-white/85">
+            Pick your features, see your total, and know exactly what you pay today and what — if
+            anything — repeats.
+          </p>
+        </div>
+        <div class="lg:col-span-4 lg:col-start-9">
+          <a href="signup.html" class="inline-flex min-h-[52px] items-center justify-center rounded-md bg-white px-7 py-4 text-base font-semibold text-accent hover:bg-accent-tint">
+            Build my website — €79.99
+          </a>
+          <p class="mt-4 text-[0.8125rem] leading-relaxed text-white/70">
+            Or <a href="contact.html" class="font-semibold text-white underline underline-offset-4">ask us something first</a>. A person answers.
+          </p>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -767,9 +848,9 @@
 
 <div data-site-footer></div>
 
-
-<script src="assets/landing-bg.js"></script>
 <script src="assets/mobile.js"></script>
 <script src="assets/theme.js"></script>
+<script src="assets/footer.js"></script>
+<script src="assets/cookies.js"></script>
 </body>
 </html>

@@ -13,6 +13,7 @@
   // Public-site navigation. Kept in one place so every page agrees.
   var LINKS = [
     { label: 'Home',            href: 'index.html' },
+    { label: 'Our work',        href: 'index.html#work' },
     { label: 'Services',        href: 'index.html#services' },
     { label: 'Pricing',         href: 'index.html#pricing' },
     { label: 'Business Extras', href: 'index.html#extras' },
@@ -58,7 +59,7 @@
     drawer.innerHTML =
       '<div class="m-drawer-head">' +
         '<span class="flex items-center gap-2.5">' +
-          '<span style="display:block;width:14px;height:14px;border-radius:3px;background:#1C2B3A"></span>' +
+          '<span style="display:block;width:14px;height:14px;border-radius:3px;background:rgb(var(--c-accent))"></span>' +
           '<span class="h-section" style="font-size:1.05rem">Onsite</span>' +
         '</span>' +
         '<button type="button" class="m-drawer-close" aria-label="Close menu">' + ICON_CLOSE + '</button>' +

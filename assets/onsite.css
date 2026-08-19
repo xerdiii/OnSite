@@ -6,8 +6,8 @@
 html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
 body { font-feature-settings: "kern" 1, "liga" 1; }
 
-.h-display { font-family:'Archivo','Helvetica Neue',Arial,sans-serif; font-weight:600; letter-spacing:-0.028em; line-height:1.04; }
-.h-section { font-family:'Archivo','Helvetica Neue',Arial,sans-serif; font-weight:600; letter-spacing:-0.022em; line-height:1.12; }
+.h-display { font-family:'Inter','Helvetica Neue',Arial,sans-serif; font-weight:600; letter-spacing:-0.02em; line-height:1.1; }
+.h-section { font-family:'Inter','Helvetica Neue',Arial,sans-serif; font-weight:600; letter-spacing:-0.017em; line-height:1.25; }
 
 .eyebrow {
   font-family:'IBM Plex Mono',ui-monospace,monospace;

@@ -698,7 +698,7 @@
     }
     function toggle(id, label, hint, on) {
       return '<label class="flex cursor-pointer items-start gap-3 border-b border-line py-3">' +
-        '<input id="' + id + '" type="checkbox" class="mt-1 h-4 w-4 flex-none accent-[#1C2B3A]"' + (on ? ' checked' : '') + '>' +
+        '<input id="' + id + '" type="checkbox" class="mt-1 h-4 w-4 flex-none accent-accent"' + (on ? ' checked' : '') + '>' +
         '<span><span class="block text-sm font-semibold">' + esc(label) + '</span>' +
         '<span class="block text-[0.8125rem] text-ink-soft">' + esc(hint) + '</span></span></label>';
     }
