@@ -204,3 +204,13 @@ body.m-locked { overflow: hidden; }
   .m-reveal.is-in { transition: none; }
   .m-flash { animation: none; }
 }
+
+/* Header-less label/value tables: keep the pair on one line as a card row
+   rather than stacking a bare value under its label. */
+@media (max-width: 640px) {
+  .m-cards tr:not(:has(> td[data-label])) {
+    display: flex; align-items: baseline; justify-content: space-between; gap: 1rem;
+  }
+  .m-cards tr:not(:has(> td[data-label])) td { flex: 0 1 auto; }
+  .m-cards tr:not(:has(> td[data-label])) td:first-child { color: #14161A; font-weight: 600; }
+}

@@ -108,11 +108,16 @@
   font-size: 0.6875rem; letter-spacing: 0.06em; color: #43484F; font-weight: 400;
 }
 
-.lb-card--1 { top: 12%;  left: 3%;   animation: lb-float-a 17s ease-in-out infinite alternate; }
-.lb-card--2 { top: 30%;  right: 4%;  animation: lb-float-b 21s ease-in-out infinite alternate; }
-.lb-card--3 { bottom: 22%; left: 6%; animation: lb-float-b 19s ease-in-out infinite alternate reverse; }
-.lb-card--4 { bottom: 14%; right: 7%; animation: lb-float-a 23s ease-in-out infinite alternate reverse; }
-.lb-card--5 { top: 58%; right: 14%;  animation: lb-float-a 25s ease-in-out infinite alternate; }
+/* The hero copy is left-aligned in a 38rem measure, so the chips live in
+   the free column on the right and stay clear of the trust strip. */
+/* Placed against the measured text extents: the copy reaches ~57% of the
+   hero width down to 50%, the payment line stretches to 88% at 55-65%,
+   and the trust strip to 86% at 85-90%. The chips sit in the gaps. */
+.lb-card--1 { top: 12%; right: 6%;  animation: lb-float-a 17s ease-in-out infinite alternate; }
+.lb-card--2 { top: 26%; right: 17%; animation: lb-float-b 21s ease-in-out infinite alternate; }
+.lb-card--3 { top: 40%; right: 5%;  animation: lb-float-b 19s ease-in-out infinite alternate reverse; }
+.lb-card--4 { top: 68%; right: 14%; animation: lb-float-a 23s ease-in-out infinite alternate reverse; }
+.lb-card--5 { top: 78%; right: 6%;  animation: lb-float-a 25s ease-in-out infinite alternate; }
 
 @keyframes lb-float-a {
   from { transform: translate3d(0, 0, 0); }
@@ -126,10 +131,14 @@
 /* Hide the cards wherever they would sit near the text column */
 @media (max-width: 1279px) { .lb-card--5 { display: none; } }
 @media (max-width: 1023px) { .lb-card--1, .lb-card--3 { display: none; } }
-@media (max-width: 767px) {
+/* Below the tablet breakpoint the hero text fills the column edge to edge,
+   so a floating chip has nowhere to sit without landing on a line of copy.
+   The ribbons carry the identity there instead. */
+@media (max-width: 767px) { .lb-cards { display: none; } }
+@media (min-width: 768px) and (max-width: 1023px) {
   .lb-card { font-size: 0.6875rem; padding: 0.45rem 0.65rem; }
-  .lb-card--2 { top: auto; bottom: 6%; right: 3%; }
-  .lb-card--4 { display: none; }
+  .lb-card--2 { top: 12%; right: 2%; }
+  .lb-card--4 { top: 78%; right: 2%; }
 }
 
 /* ── Section accents ───────────────────────────────────────── */

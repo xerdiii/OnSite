@@ -122,14 +122,14 @@
 
       '<div class="mt-6 grid grid-cols-1 gap-6 lg:grid-cols-2">' +
         '<div class="card p-6"><p class="mono-label text-ink-soft">Order</p>' +
-          '<table class="tbl mt-4"><tbody>' +
+          '<table class="tbl m-cards mt-4"><tbody>' +
             '<tr><td class="name">One-time total</td><td class="font-mono">' + money(u.oneTimeCents) + '</td></tr>' +
             '<tr><td class="name">25% deposit</td><td class="font-mono">' + money(dep) + '</td></tr>' +
             '<tr><td class="name">Remaining 75%</td><td class="font-mono">' + money(bal) + '</td></tr>' +
             '<tr><td class="name">Monthly services</td><td class="font-mono">' + (u.monthlyCents ? money(u.monthlyCents) + ' / mo' : '—') + '</td></tr>' +
           '</tbody></table></div>' +
         '<div class="card p-6"><p class="mono-label text-ink-soft">Account</p>' +
-          '<table class="tbl mt-4"><tbody>' +
+          '<table class="tbl m-cards mt-4"><tbody>' +
             '<tr><td class="name">Contact</td><td>' + esc(u.name) + '</td></tr>' +
             '<tr><td class="name">Email</td><td>' + esc(u.email) + '</td></tr>' +
             '<tr><td class="name">Created</td><td>' + esc(O.date(u.created)) + '</td></tr>' +
@@ -334,7 +334,7 @@
     return head('Settings', 'Internal configuration.', 'Demo only — nothing here is persisted to a server.') +
       '<div class="mt-8 grid grid-cols-1 gap-6 lg:grid-cols-2">' +
         '<div class="card p-6"><p class="mono-label text-ink-soft">Payment model</p>' +
-          '<table class="tbl mt-4"><tbody>' +
+          '<table class="tbl m-cards mt-4"><tbody>' +
             '<tr><td class="name">Deposit</td><td>25% of the one-time total</td></tr>' +
             '<tr><td class="name">Balance</td><td>75%, due on customer approval</td></tr>' +
             '<tr><td class="name">Monthly services</td><td>Start at launch, never during build</td></tr>' +

@@ -140,7 +140,7 @@
           '<button class="btn btn-ghost mt-4" data-act="preview">Open preview</button>' +
           '<p id="preview-note" class="mt-3 hidden text-[0.8125rem] leading-relaxed text-ink-soft">The staging site is simulated in this demo — there is no live preview to open yet.</p>' +
           '<p class="mono-label mt-6 text-ink-soft">Domain &amp; hosting</p>' +
-          '<table class="tbl mt-3"><tbody>' +
+          '<table class="tbl m-cards mt-3"><tbody>' +
             '<tr><td class="name">Domain</td><td>' + esc(s.customer.websiteUrl) + '</td></tr>' +
             '<tr><td class="name">Managed by</td><td>Onsite</td></tr>' +
             '<tr><td class="name">Hosting</td><td>' + (p.stage === 'live' ? 'Live — served by Onsite' : 'Staged, not yet published') + '</td></tr>' +
@@ -192,7 +192,7 @@
 
       '<div class="mt-6 grid grid-cols-1 gap-6 lg:grid-cols-2">' +
         '<div class="card p-6"><p class="mono-label text-ink-soft">Monthly services</p>' +
-          '<table class="tbl mt-4"><tbody>' +
+          '<table class="tbl m-cards mt-4"><tbody>' +
             o.monthlyItems.map(function (m) {
               return '<tr><td class="name">' + esc(m.name) + '</td><td class="font-mono">' + money(m.cents) + ' / mo</td><td>' +
                 statusTag(monthlyRunning ? 'active' : 'pending') + '</td></tr>';
