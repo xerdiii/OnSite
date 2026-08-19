@@ -134,7 +134,16 @@
 /* Below the tablet breakpoint the hero text fills the column edge to edge,
    so a floating chip has nowhere to sit without landing on a line of copy.
    The ribbons carry the identity there instead. */
-@media (max-width: 767px) { .lb-cards { display: none; } }
+/* Phone: two compact chips, dropped into the measured gaps between copy
+   blocks (33-42% and 58-63% of the hero). The mono suffix is hidden so the
+   chip stays narrow enough to clear the text on the left. */
+@media (max-width: 767px) {
+  .lb-card { font-size: 0.6875rem; padding: 0.4rem 0.6rem; gap: 0.35rem; border-radius: 0.5rem; }
+  .lb-card span.mono { display: none; }
+  .lb-card--1, .lb-card--3, .lb-card--5 { display: none; }
+  .lb-card--2 { top: 3.5%; right: 3%; }
+  .lb-card--4 { top: 34%; right: 3%; }
+}
 @media (min-width: 768px) and (max-width: 1023px) {
   .lb-card { font-size: 0.6875rem; padding: 0.45rem 0.65rem; }
   .lb-card--2 { top: 12%; right: 2%; }
@@ -166,12 +175,12 @@
   }
 }
 @keyframes lb-drift-l-m {
-  from { transform: translate3d(-6%, -14%, 0) scale(0.66); }
-  to   { transform: translate3d(-2%, -9%, 0) scale(0.74); }
+  from { transform: translate3d(40%, -16%, 0) scale(0.80); }
+  to   { transform: translate3d(46%, -9%, 0) scale(0.90); }
 }
 @keyframes lb-drift-r-m {
-  from { transform: translate3d(6%, 15%, 0) scale(0.70); }
-  to   { transform: translate3d(2%, 20%, 0) scale(0.62); }
+  from { transform: translate3d(-44%, 14%, 0) scale(0.84); }
+  to   { transform: translate3d(-50%, 21%, 0) scale(0.74); }
 }
 
 /* ── Motion preferences ────────────────────────────────────── */

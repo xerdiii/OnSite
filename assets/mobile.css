@@ -214,3 +214,84 @@ body.m-locked { overflow: hidden; }
   .m-cards tr:not(:has(> td[data-label])) td { flex: 0 1 auto; }
   .m-cards tr:not(:has(> td[data-label])) td:first-child { color: #14161A; font-weight: 600; }
 }
+
+/* ───────────────────────────────────────────────────────────────
+   iPhone hero — tighter rhythm so the whole offer lands on the
+   first screen without scrolling. Mobile only; desktop untouched.
+   ─────────────────────────────────────────────────────────────── */
+@media (max-width: 767px) {
+  [data-bg="hero"] > div { padding-top: 2rem; padding-bottom: 2.25rem; }
+  [data-bg="hero"] h1 { margin-top: 0.85rem; }
+  [data-bg="hero"] .lede { margin-top: 0.85rem; }
+  [data-bg="hero"] .lede br { display: none; }
+
+  /* price + payment block */
+  [data-bg="hero"] .border-y { margin-top: 1.25rem; padding-top: 1rem; padding-bottom: 1rem; }
+  [data-bg="hero"] .border-y .h-section { font-size: 1.75rem; }
+
+  /* buttons: full width, stacked, comfortable */
+  [data-bg="hero"] a[href="signup.html"],
+  [data-bg="hero"] a[href="#how"] { width: 100%; min-height: 52px; padding-top: 0.9rem; padding-bottom: 0.9rem; }
+  [data-bg="hero"] .mt-7.flex.flex-col { margin-top: 1.25rem; gap: 0.6rem; }
+
+  /* trust strip reads as one compact line-set */
+  [data-bg="hero"] ul.mt-10 { margin-top: 1.5rem; padding-top: 1rem; gap: 0.4rem; }
+  [data-bg="hero"] ul.mt-10 li { font-size: 0.625rem; }
+}
+
+/* How it works becomes a real vertical timeline on a phone */
+@media (max-width: 767px) {
+  #how ol { border: 0; background: none; border-radius: 0; gap: 0; overflow: visible; }
+  #how ol li {
+    position: relative; background: none; padding: 0 0 1.4rem 2.1rem;
+  }
+  #how ol li:last-child { padding-bottom: 0; }
+  #how ol li::before {
+    content: ""; position: absolute; left: 0.42rem; top: 1.55rem; bottom: -0.2rem;
+    width: 1px; background: #E3E1DC;
+  }
+  #how ol li:last-child::before { display: none; }
+  #how ol li::after {
+    content: ""; position: absolute; left: 0; top: 0.42rem;
+    width: 0.875rem; height: 0.875rem; border-radius: 999px;
+    background: #FFFFFF; border: 2px solid #1C2B3A;
+  }
+  #how ol li .mono-label { display: block; }
+  #how ol li h3 { margin-top: 0.3rem; }
+}
+
+/* Section rhythm: compact, never cramped */
+@media (max-width: 767px) {
+  main section > div { padding-top: 2.75rem; padding-bottom: 2.75rem; }
+  main section h2.sec-title { margin-top: 0.75rem; }
+  main section > div > p.mt-5 { margin-top: 0.75rem; }
+  main section .mt-12 { margin-top: 1.75rem; }
+  main section .mt-14 { margin-top: 2rem; }
+  main section .mt-10 { margin-top: 1.5rem; }
+}
+
+/* Small iPhones: pull the hero in tighter so both CTAs stay on screen one */
+@media (max-width: 360px) {
+  [data-bg="hero"] > div { padding-top: 1.5rem; padding-bottom: 1.75rem; }
+  [data-bg="hero"] .hero-title { font-size: 1.85rem; line-height: 1.1; }
+  [data-bg="hero"] .lede { font-size: 0.9375rem; margin-top: 0.7rem; }
+  [data-bg="hero"] .border-y { margin-top: 1rem; padding-top: 0.85rem; padding-bottom: 0.85rem; }
+  [data-bg="hero"] .border-y .h-section { font-size: 1.5rem; }
+  [data-bg="hero"] a[href="signup.html"],
+  [data-bg="hero"] a[href="#how"] { min-height: 48px; font-size: 0.9375rem; }
+  [data-bg="hero"] ul.mt-10 { margin-top: 1.1rem; padding-top: 0.85rem; }
+}
+
+/* 320px screens: the trust strip is the one block that pushes the second
+   CTA off the first screen. It repeats what the price block already says. */
+@media (max-width: 360px) {
+  [data-bg="hero"] ul.mt-10 { display: none; }
+}
+
+/* 320px: no room for chips beside the copy, and a few pixels back so both
+   CTAs clear the first screen. */
+@media (max-width: 360px) {
+  .lb-cards { display: none; }
+  [data-bg="hero"] > div { padding-bottom: 1.25rem; }
+  [data-bg="hero"] .mt-7.flex.flex-col { margin-top: 1rem; }
+}
