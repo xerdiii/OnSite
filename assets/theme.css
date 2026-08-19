@@ -115,3 +115,36 @@
 
 /* The skip link inverts against the page, so it has to follow the theme */
 .skip { background: rgb(var(--c-ink)) !important; color: rgb(var(--c-paper)) !important; }
+
+/* ───────────────────────────────────────────────────────────────
+   Display face
+   The large headings run in Instrument Serif — an editorial cut with
+   real contrast, against Inter for reading and Plex Mono for labels.
+   Small UI headings stay on Archivo so the interface keeps its grip.
+   ─────────────────────────────────────────────────────────────── */
+.h-display,
+h1.h-display,
+.h-section.sec-title,
+.h-section.doc-title,
+h2.sec-title,
+h1.doc-title {
+  font-family: 'Instrument Serif', 'Iowan Old Style', Georgia, 'Times New Roman', serif;
+  font-weight: 400;
+  letter-spacing: -0.012em;
+}
+
+.h-display, h1.h-display { line-height: 1.1; }
+.h-section.sec-title, h2.sec-title { line-height: 1.14; }
+.h-section.doc-title, h1.doc-title { line-height: 1.12; }
+
+/* The serif carries more width per character, so the big sizes come
+   down a touch and the small screens come down further. */
+.hero-title { font-size: clamp(2.6rem, 6.6vw, 4.6rem); }
+.sec-title  { font-size: clamp(1.9rem, 3.7vw, 2.8rem); }
+.doc-title  { font-size: clamp(2.1rem, 4.8vw, 3.2rem); }
+
+@media (max-width: 640px) {
+  .hero-title { font-size: clamp(2.15rem, 9vw, 2.6rem); line-height: 1.12; }
+  .sec-title  { font-size: clamp(1.65rem, 6.8vw, 2rem); }
+  .doc-title  { font-size: clamp(1.8rem, 7.4vw, 2.2rem); }
+}

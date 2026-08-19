@@ -14,7 +14,7 @@
   pointer-events: none;
   z-index: 0;
 }
-[data-bg] > div:not(.lb):not(.lb-cards) { position: relative; z-index: 2; }
+[data-bg] > div:not(.lb) { position: relative; z-index: 2; }
 
 .lb-stage {
   position: absolute;
@@ -84,72 +84,6 @@
   background: radial-gradient(52% 70% at 50% 50%, rgba(28,43,58,0.62) 0%, rgba(28,43,58,0.30) 46%, rgba(28,43,58,0) 100%);
 }
 
-/* ── Floating product cards ────────────────────────────────── */
-.lb-cards { position: absolute; inset: 0; pointer-events: none; z-index: 1; }
-.lb-card {
-  position: absolute;
-  display: inline-flex; align-items: center; gap: 0.5rem;
-  padding: 0.55rem 0.8rem;
-  border-radius: 0.625rem;
-  border: 1px solid rgb(var(--c-line) / 0.9);
-  background: rgb(var(--c-surface) / 0.86);
-  -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px);
-  box-shadow: 0 1px 2px rgba(20,22,26,0.04), 0 14px 30px -20px rgba(11,46,32,0.35);
-  font-size: 0.75rem; font-weight: 600; color: rgb(var(--c-ink)); white-space: nowrap;
-  will-change: transform;
-}
-.lb-card i {
-  width: 7px; height: 7px; border-radius: 999px; flex: none;
-  background: #1B7A54; box-shadow: 0 0 0 3px rgba(27,122,84,0.14);
-}
-.lb-card i.brown { background: #94743E; box-shadow: 0 0 0 3px rgba(148,116,62,0.14); }
-.lb-card span.mono {
-  font-family: 'IBM Plex Mono', ui-monospace, monospace;
-  font-size: 0.6875rem; letter-spacing: 0.06em; color: rgb(var(--c-ink-mid)); font-weight: 400;
-}
-
-/* The hero copy is left-aligned in a 38rem measure, so the chips live in
-   the free column on the right and stay clear of the trust strip. */
-/* Placed against the measured text extents: the copy reaches ~57% of the
-   hero width down to 50%, the payment line stretches to 88% at 55-65%,
-   and the trust strip to 86% at 85-90%. The chips sit in the gaps. */
-.lb-card--1 { top: 12%; right: 6%;  animation: lb-float-a 17s ease-in-out infinite alternate; }
-.lb-card--2 { top: 26%; right: 17%; animation: lb-float-b 21s ease-in-out infinite alternate; }
-.lb-card--3 { top: 40%; right: 5%;  animation: lb-float-b 19s ease-in-out infinite alternate reverse; }
-.lb-card--4 { top: 68%; right: 14%; animation: lb-float-a 23s ease-in-out infinite alternate reverse; }
-.lb-card--5 { top: 78%; right: 6%;  animation: lb-float-a 25s ease-in-out infinite alternate; }
-
-@keyframes lb-float-a {
-  from { transform: translate3d(0, 0, 0); }
-  to   { transform: translate3d(6px, -14px, 0); }
-}
-@keyframes lb-float-b {
-  from { transform: translate3d(0, 4px, 0); }
-  to   { transform: translate3d(-8px, -10px, 0); }
-}
-
-/* Hide the cards wherever they would sit near the text column */
-@media (max-width: 1279px) { .lb-card--5 { display: none; } }
-@media (max-width: 1023px) { .lb-card--1, .lb-card--3 { display: none; } }
-/* Below the tablet breakpoint the hero text fills the column edge to edge,
-   so a floating chip has nowhere to sit without landing on a line of copy.
-   The ribbons carry the identity there instead. */
-/* Phone: two compact chips, dropped into the measured gaps between copy
-   blocks (33-42% and 58-63% of the hero). The mono suffix is hidden so the
-   chip stays narrow enough to clear the text on the left. */
-@media (max-width: 767px) {
-  .lb-card { font-size: 0.6875rem; padding: 0.4rem 0.6rem; gap: 0.35rem; border-radius: 0.5rem; }
-  .lb-card span.mono { display: none; }
-  .lb-card--1, .lb-card--3, .lb-card--5 { display: none; }
-  .lb-card--2 { top: 3.5%; right: 3%; }
-  .lb-card--4 { top: 34%; right: 3%; }
-}
-@media (min-width: 768px) and (max-width: 1023px) {
-  .lb-card { font-size: 0.6875rem; padding: 0.45rem 0.65rem; }
-  .lb-card--2 { top: 12%; right: 2%; }
-  .lb-card--4 { top: 78%; right: 2%; }
-}
-
 /* ── Section accents ───────────────────────────────────────── */
 .lb-accent {
   position: absolute; inset: 0; pointer-events: none; z-index: 0; overflow: hidden;
@@ -185,6 +119,5 @@
 
 /* ── Motion preferences ────────────────────────────────────── */
 @media (prefers-reduced-motion: reduce) {
-  .lb-spin, .lb-glow, .lb-cluster, .lb-card, .lb-accent::before { animation: none !important; }
-  .lb-card { backdrop-filter: none; -webkit-backdrop-filter: none; }
+  .lb-spin, .lb-glow, .lb-cluster, .lb-accent::before { animation: none !important; }
 }

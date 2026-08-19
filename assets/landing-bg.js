@@ -115,48 +115,25 @@
     return div;
   }
 
-  // Decorative product chips. Illustrative UI, not claims about customers.
-  var CARDS = [
-    { cls: 1, dot: '', label: 'Website Live', mono: '✓' },
-    { cls: 2, dot: 'brown', label: '€79.99', mono: 'ONE-TIME' },
-    { cls: 3, dot: '', label: 'Online Booking', mono: '€29.99/mo' },
-    { cls: 4, dot: 'brown', label: 'Deposit received', mono: '25%' },
-    { cls: 5, dot: '', label: 'Change request', mono: 'COMPLETED' }
-  ];
-
-  function cards(section) {
-    var wrap = doc.createElement('div');
-    wrap.className = 'lb-cards';
-    wrap.setAttribute('aria-hidden', 'true');
-    wrap.innerHTML = CARDS.map(function (c) {
-      return '<div class="lb-card lb-card--' + c.cls + '">' +
-        '<i class="' + c.dot + '"></i>' + c.label +
-        '<span class="mono">' + c.mono + '</span></div>';
-    }).join('');
-    section.appendChild(wrap);
-  }
-
   function start() {
     var hero = doc.querySelector('[data-bg="hero"]');
     var cta = doc.querySelector('[data-bg="cta"]');
     if (!hero && !cta) return;
 
     var heroLayer = null;
-    if (hero) { heroLayer = layer(hero, 'hero'); cards(hero); }
+    if (hero) { heroLayer = layer(hero, 'hero'); }
     if (cta) { layer(cta, 'cta'); }
 
     // Quieten the hero artwork as it scrolls away. The height is cached so
     // the scroll handler only ever writes one style property — no layout
     // reads on scroll, and no dependency on rAF being scheduled.
     if (heroLayer && !reduced) {
-      var cardsWrap = hero.querySelector('.lb-cards');
       var heroH = hero.offsetHeight || 1;
       var last = 0;
 
       var update = function () {
         var p = Math.min(1, Math.max(0, global.scrollY / heroH));
         heroLayer.style.opacity = (1 - p * 0.85).toFixed(3);
-        if (cardsWrap) cardsWrap.style.opacity = Math.max(0, 1 - p * 1.6).toFixed(3);
       };
 
       global.addEventListener('scroll', function () {

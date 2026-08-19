@@ -291,7 +291,6 @@ body.m-locked { overflow: hidden; }
 /* 320px: no room for chips beside the copy, and a few pixels back so both
    CTAs clear the first screen. */
 @media (max-width: 360px) {
-  .lb-cards { display: none; }
   [data-bg="hero"] > div { padding-bottom: 1.25rem; }
   [data-bg="hero"] .mt-7.flex.flex-col { margin-top: 1rem; }
 }
