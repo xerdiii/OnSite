@@ -203,11 +203,24 @@
 
   function load() {
     if (state) return state;
+    var stored = null;
     try {
       var raw = global.localStorage.getItem(KEY);
-      state = raw ? JSON.parse(raw) : seed();
+      stored = raw ? JSON.parse(raw) : null;
     } catch (e) {
-      state = seed();                     // private mode, corrupted JSON, etc.
+      stored = null;                      // private mode, corrupted JSON, etc.
+    }
+    // Merge over the seed rather than trusting what is stored: a store written
+    // by an older version — or a half-written one — must not leave a view
+    // reading properties off undefined.
+    state = seed();
+    if (stored && typeof stored === 'object') {
+      Object.keys(state).forEach(function (k) {
+        if (stored[k] !== undefined && stored[k] !== null) state[k] = stored[k];
+      });
+      if (stored.session !== undefined) state.session = stored.session;
+      if (stored.draft !== undefined) state.draft = stored.draft;
+      save();                             // write the healed shape back
     }
     return state;
   }
