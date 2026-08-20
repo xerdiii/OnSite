@@ -154,24 +154,3 @@ a, button { transition: background-color 180ms ease, color 180ms ease, border-co
 }
 .build-card.is-on .build-state { background:rgb(var(--c-accent)); border-color:rgb(var(--c-accent)); color: rgb(var(--c-on-accent)); }
 
-/* ── Grain ─────────────────────────────────────────────────────
-   A little paper tooth on the closing panel so a large flat colour
-   does not read as a flat colour. One tiled SVG, no animation, no
-   extra requests. */
-/* ── Grain ─────────────────────────────────────────────────────
-   A little paper tooth on the closing panel so a large flat colour
-   does not read as a flat colour. One tiled SVG, no animation, no
-   extra requests. */
-.grain { position: relative; isolation: isolate; }
-.grain::before {
-  content: "";
-  position: absolute; inset: 0; z-index: 0; pointer-events: none;
-  opacity: 0.38;
-  background-image: url("data:image/svg+xml;utf8,\
-<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'>\
-<filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/>\
-<feColorMatrix type='saturate' values='0'/></filter>\
-<rect width='160' height='160' filter='url(%23n)' opacity='0.22'/></svg>");
-  mix-blend-mode: overlay;
-}
-.grain > div { position: relative; z-index: 1; }

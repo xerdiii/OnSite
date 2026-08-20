@@ -76,6 +76,14 @@
       load(i);
     }
 
+    // A late retry has to re-check the screen for itself. It can fire
+    // seconds after the fact, by which time the scroll may have left this
+    // chapter behind and everything has already been paused.
+    function onScreen(el) {
+      var r = el.getBoundingClientRect();
+      return r.bottom > 0 && r.top < (global.innerHeight || 0);
+    }
+
     function play(i) {
       var v = videos[i];
       if (!v) return;
@@ -85,6 +93,7 @@
         // A play() that lands before there are frames is rejected. Try
         // again once there are; a refused autoplay just leaves the poster.
         v.addEventListener('canplay', function () {
+          if (!onScreen(panels[i])) return;
           var q = v.play();
           if (q && q.catch) q.catch(function () {});
         }, { once: true });

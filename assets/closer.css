@@ -1,0 +1,93 @@
+/* ───────────────────────────────────────────────────────────────
+   Onsite — the closing panel
+   The last block on the landing page: a slow lake running behind a wash
+   of the same accent green the panel used to be painted flat.
+
+   The wash is what keeps this a brand panel rather than a stock video.
+   White type and a white button both have to hold against it at every
+   width, so the green never drops below about two thirds opaque
+   anywhere the copy sits. bg-accent stays on the section, so the panel
+   is the right colour before the film loads and if it never does.
+
+   Loaded only by index.html — nothing else on the site uses either of
+   these two pieces.
+   ─────────────────────────────────────────────────────────────── */
+
+
+/* ── Grain ─────────────────────────────────────────────────────
+   A little paper tooth on the closing panel so a large flat colour
+   does not read as a flat colour. One tiled SVG, no animation, no
+   extra requests. */
+.grain { position: relative; isolation: isolate; }
+.grain::before {
+  content: "";
+  position: absolute; inset: 0; z-index: 0; pointer-events: none;
+  opacity: 0.38;
+  background-image: url("data:image/svg+xml;utf8,\
+<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'>\
+<filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/>\
+<feColorMatrix type='saturate' values='0'/></filter>\
+<rect width='160' height='160' filter='url(%23n)' opacity='0.22'/></svg>");
+  mix-blend-mode: overlay;
+}
+.grain > div { position: relative; z-index: 1; }
+
+.closer { position: relative; overflow: hidden; }
+
+.closer .closer-media {
+  position: absolute; inset: 0; z-index: 0;
+  background-size: cover; background-position: center;
+}
+.closer .closer-media video {
+  display: block; width: 100%; height: 100%;
+  object-fit: cover;
+  object-position: var(--focus, center center);
+  /* Fades up once there are frames, so the panel never flicks from flat
+     green to picture. */
+  opacity: 0;
+  transition: opacity 900ms ease;
+}
+.closer[data-backdrop="on"] .closer-media video { opacity: 1; }
+
+.closer .closer-wash {
+  position: absolute; inset: 0; z-index: 1; pointer-events: none;
+  background:
+    /* The dip sits at 56% — the gutter between the copy and the button,
+       the one band of this panel no text crosses. Everywhere type lands
+       the green stays heavy enough for white to hold. */
+    linear-gradient(101deg,
+      rgb(var(--c-accent) / 0.91) 0%,
+      rgb(var(--c-accent) / 0.88) 54%,
+      rgb(var(--c-accent) / 0.62) 64%,
+      rgb(var(--c-accent) / 0.80) 75%,
+      rgb(var(--c-accent) / 0.86) 100%),
+    linear-gradient(180deg,
+      rgb(var(--c-accent) / 0.34) 0%,
+      rgb(var(--c-accent) / 0) 26%,
+      rgb(var(--c-accent) / 0) 64%,
+      rgb(var(--c-accent) / 0.38) 100%);
+}
+
+/* The grain sits over the wash rather than under it, and the copy over
+   both — .grain's own z-indexes assume a flat panel. */
+.closer.grain::before { z-index: 2; }
+.closer .closer-body { position: relative; z-index: 3; }
+
+/* Phones get the portrait encode, so the crop only has to hold centre,
+   and the wash turns bottom-weighted the way the reel's does — the copy
+   stacks into the lower half there. */
+@media (max-width: 767px) {
+  .closer .closer-media video { object-position: var(--focus-tall, center center); }
+  .closer .closer-wash {
+    background:
+      linear-gradient(180deg,
+        rgb(var(--c-accent) / 0.62) 0%,
+        rgb(var(--c-accent) / 0.70) 24%,
+        rgb(var(--c-accent) / 0.86) 58%,
+        rgb(var(--c-accent) / 0.94) 100%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .closer .closer-media video { transition: none; }
+}

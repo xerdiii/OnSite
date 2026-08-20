@@ -54,6 +54,7 @@
 </style>
 <link rel="stylesheet" href="assets/mobile.css">
 <link rel="stylesheet" href="assets/reel.css">
+<link rel="stylesheet" href="assets/closer.css">
 <link rel="stylesheet" href="assets/tailwind.css">
 <link rel="stylesheet" href="assets/theme.css">
 <noscript><style>
@@ -77,6 +78,9 @@
   }
   .reel-panel:nth-child(5) .reel-media {
     background: #08090A url("assets/media/barber-poster.jpg") center / cover no-repeat;
+  }
+  .closer-media {
+    background: url("assets/media/rose-poster.jpg") center / cover no-repeat;
   }
 </style></noscript>
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
@@ -720,8 +724,17 @@
   </section>
 
   <!-- 10 — CLOSING -->
-  <section class="grain bg-accent">
-    <div class="mx-auto max-w-shell px-6 py-16 md:px-10 md:py-24">
+  <section class="closer grain bg-accent" data-backdrop>
+    <div class="closer-media">
+      <video muted loop playsinline preload="none"
+             data-poster="assets/media/rose-poster.jpg"
+             data-poster-tall="assets/media/rose-poster-tall.jpg"
+             data-src="assets/media/rose.mp4"
+             data-src-tall="assets/media/rose-tall.mp4"
+             aria-hidden="true"></video>
+    </div>
+    <div class="closer-wash" aria-hidden="true"></div>
+    <div class="closer-body mx-auto max-w-shell px-6 py-16 md:px-10 md:py-24">
       <div class="grid grid-cols-1 gap-8 lg:grid-cols-12 lg:items-end lg:gap-14">
         <div class="lg:col-span-7">
           <h2 class="h-display max-w-2xl text-3xl text-white md:text-[2.75rem]">Ready when you are.</h2>
@@ -752,6 +765,7 @@
 <script src="assets/vendor/gsap.min.js" defer></script>
 <script src="assets/vendor/ScrollTrigger.min.js" defer></script>
 <script src="assets/reel.js" defer></script>
+<script src="assets/backdrop.js" defer></script>
 <script src="assets/mobile.js"></script>
 <script src="assets/theme.js"></script>
 <script src="assets/footer.js"></script>
