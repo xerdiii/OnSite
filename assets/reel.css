@@ -1,0 +1,296 @@
+/* ───────────────────────────────────────────────────────────────
+   Onsite — the industry reel
+   Five real films, one continuous scroll. The stage is sticky and a
+   viewport tall; the five panels are stacked inside it and handed
+   over to one another as the page moves — see assets/reel.js.
+
+   Nothing here is load-bearing. Without JavaScript the stage stops
+   being sticky, the panels fall into normal flow and each one reads
+   as a still with its copy over it.
+   ─────────────────────────────────────────────────────────────── */
+
+.reel {
+  position: relative;
+  background: #08090A;
+  color: #FFFFFF;
+  isolation: isolate;
+  /* One and a bit screens of scroll per chapter. The stage itself is
+     always exactly one viewport — this is only the runway. */
+  height: calc(5 * 128svh);
+}
+@supports not (height: 1svh) { .reel { height: calc(5 * 128vh); } }
+
+.reel-stage {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  height: 100svh;
+  overflow: clip;
+}
+/* Older Safari has no `overflow: clip` — hidden does the same job here
+   because nothing inside the stage needs to escape it. */
+@supports not (overflow: clip) { .reel-stage { overflow: hidden; } }
+
+/* ── Panels ────────────────────────────────────────────────────
+   All five sit on top of each other. Opacity and transform are set
+   from JavaScript; the CSS only says where they start. */
+.reel-panel {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  visibility: hidden;
+  will-change: opacity, transform;
+}
+.reel-panel:first-child { opacity: 1; visibility: visible; }
+
+.reel-media {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  background: #08090A;
+}
+
+.reel-media video {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  /* Each film frames its subject differently, so every panel sets its
+     own --focus (wide) and --focus-tall (portrait) below. */
+  object-position: var(--focus, center center);
+  background: #08090A;
+}
+
+/* ── Grade ─────────────────────────────────────────────────────
+   Three flat layers over the film: a scrim weighted towards the copy,
+   a little top and bottom weight, and a vignette. --scrim lets the
+   brighter films (the pasta, mostly) take a heavier hand without
+   dragging the darker ones down with them. */
+.reel-grade {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background:
+    linear-gradient(94deg,
+      rgb(6 7 8 / calc(0.80 * var(--scrim, 1))) 0%,
+      rgb(6 7 8 / calc(0.58 * var(--scrim, 1))) 26%,
+      rgb(6 7 8 / calc(0.20 * var(--scrim, 1))) 52%,
+      rgb(6 7 8 / calc(0.06 * var(--scrim, 1))) 74%,
+      rgb(6 7 8 / calc(0.18 * var(--scrim, 1))) 100%),
+    linear-gradient(180deg,
+      rgb(6 7 8 / 0.44) 0%,
+      rgb(6 7 8 / 0) 20%,
+      rgb(6 7 8 / 0) 46%,
+      rgb(6 7 8 / calc(0.62 * var(--scrim, 1))) 88%,
+      rgb(6 7 8 / calc(0.80 * var(--scrim, 1))) 100%),
+    radial-gradient(128% 94% at 52% 44%,
+      rgb(0 0 0 / 0) 42%,
+      rgb(0 0 0 / 0.30) 84%,
+      rgb(0 0 0 / 0.48) 100%);
+}
+
+/* Film grain — the same tiled noise the closing panel uses. */
+.reel-grade::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  opacity: 0.26;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml;utf8,\
+<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'>\
+<filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/>\
+<feColorMatrix type='saturate' values='0'/></filter>\
+<rect width='160' height='160' filter='url(%23n)' opacity='0.24'/></svg>");
+}
+
+/* ── Copy ──────────────────────────────────────────────────────
+   Lower left on a desktop, so the middle of every frame — which is
+   where all five films put their subject — stays clear. */
+.reel-copy {
+  position: relative;
+  z-index: 2;
+  height: 100%;
+  display: flex;
+  align-items: flex-end;
+}
+.reel-copy > div {
+  width: 100%;
+  max-width: 76rem;
+  margin: 0 auto;
+  padding: 0 1.5rem 12vh;
+}
+@media (min-width: 768px) { .reel-copy > div { padding: 0 2.5rem 13vh; } }
+
+.reel-text {
+  max-width: 30rem;
+  will-change: opacity, transform;
+}
+
+.reel-label {
+  margin: 0;
+  font-family: 'IBM Plex Mono', ui-monospace, monospace;
+  font-size: 0.6875rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgb(255 255 255 / 0.66);
+}
+.reel-label::before {
+  content: "";
+  display: inline-block;
+  vertical-align: middle;
+  width: 1.6rem;
+  height: 1px;
+  margin-right: 0.7rem;
+  background: rgb(255 255 255 / 0.45);
+}
+
+.reel-h {
+  margin: 1.3rem 0 0;
+  font-family: 'Instrument Serif', 'Iowan Old Style', Georgia, 'Times New Roman', serif;
+  font-weight: 400;
+  letter-spacing: -0.012em;
+  line-height: 1.08;
+  font-size: clamp(2rem, 3.4vw, 2.9rem);
+  color: #FFFFFF;
+  text-wrap: balance;
+}
+
+.reel-p {
+  margin: 1.05rem 0 0;
+  font-size: 1rem;
+  line-height: 1.65;
+  color: rgb(255 255 255 / 0.78);
+  max-width: 25rem;
+}
+
+/* ── Progress ──────────────────────────────────────────────────
+   Right edge on a desktop, five hairlines and a count. The active
+   one lengthens rather than lights up — no dots, no slideshow. */
+.reel-progress {
+  position: absolute;
+  z-index: 3;
+  right: 2.5rem;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.85rem;
+  pointer-events: none;
+}
+
+.reel-ticks {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.7rem;
+}
+
+.reel-tick {
+  display: block;
+  width: 1rem;
+  height: 1px;
+  background: rgb(255 255 255 / 0.34);
+  transition: width 520ms cubic-bezier(0.22, 1, 0.36, 1), background-color 520ms ease;
+}
+.reel-tick[data-on] {
+  width: 2.25rem;
+  background: rgb(255 255 255 / 0.92);
+}
+
+.reel-count {
+  font-family: 'IBM Plex Mono', ui-monospace, monospace;
+  font-size: 0.625rem;
+  letter-spacing: 0.16em;
+  color: rgb(255 255 255 / 0.58);
+  font-variant-numeric: tabular-nums;
+}
+
+/* ── Phones ────────────────────────────────────────────────────
+   Not the desktop layout narrowed: the crop moves to each film's own
+   portrait focus, the scrim turns bottom-weighted, and the count goes
+   up under the header where the copy can never reach it. */
+@media (max-width: 767px) {
+  .reel { height: calc(5 * 118svh); }
+  @supports not (height: 1svh) { .reel { height: calc(5 * 118vh); } }
+
+  .reel-media video { object-position: var(--focus-tall, var(--focus, center center)); }
+
+  .reel-grade {
+    background:
+      linear-gradient(180deg,
+        rgb(6 7 8 / calc(0.56 * var(--scrim, 1))) 0%,
+        rgb(6 7 8 / calc(0.16 * var(--scrim, 1))) 18%,
+        rgb(6 7 8 / calc(0.14 * var(--scrim, 1))) 38%,
+        rgb(6 7 8 / calc(0.66 * var(--scrim, 1))) 70%,
+        rgb(6 7 8 / calc(0.90 * var(--scrim, 1))) 100%),
+      radial-gradient(122% 68% at 50% 36%,
+        rgb(0 0 0 / 0) 46%,
+        rgb(0 0 0 / 0.30) 100%);
+  }
+
+  .reel-copy > div { padding: 0 1.25rem 8vh; }
+  .reel-text { max-width: 24rem; }
+
+  .reel-h { margin-top: 0.95rem; font-size: clamp(1.7rem, 7.6vw, 2.15rem); }
+  .reel-p { margin-top: 0.7rem; font-size: 0.9375rem; line-height: 1.6; max-width: 22rem; }
+
+  .reel-progress {
+    right: auto;
+    left: 1.25rem;
+    top: 5.5rem;
+    transform: none;
+    flex-direction: row-reverse;
+    align-items: center;
+    gap: 0.75rem;
+  }
+  .reel-ticks { flex-direction: row; align-items: center; gap: 0.45rem; }
+  .reel-tick { width: 0.75rem; }
+  .reel-tick[data-on] { width: 1.6rem; }
+}
+
+/* The short end of the range — a 320px phone, or any handset with the
+   browser chrome showing. Trim the lede rather than shrink the lot. */
+@media (max-width: 360px) {
+  .reel-copy > div { padding: 0 1.25rem 7vh; }
+  .reel-h { font-size: 1.6rem; }
+  .reel-p { font-size: 0.875rem; }
+}
+
+@media (max-width: 767px) and (max-height: 700px) {
+  .reel-p { display: none; }
+  .reel-h { font-size: clamp(1.5rem, 6.6vw, 1.8rem); }
+  .reel-copy > div { padding-bottom: 6vh; }
+}
+
+/* Landscape phones have no vertical room for a copy block this deep. */
+@media (max-width: 900px) and (orientation: landscape) and (max-height: 520px) {
+  .reel-p { display: none; }
+  .reel-copy > div { padding-bottom: 3rem; }
+  .reel-progress { top: auto; bottom: 1.25rem; left: 1.25rem; }
+}
+
+/* ── Calm ──────────────────────────────────────────────────────
+   prefers-reduced-motion, or no GSAP at all. The stage stops being
+   sticky, the five panels stack down the page and nothing is tied to
+   the scroll. Set by reel.js, and by the no-script rule below it. */
+.reel--calm { height: auto; }
+.reel--calm .reel-stage { position: static; height: auto; overflow: visible; }
+.reel--calm .reel-panel {
+  position: relative;
+  inset: auto;
+  height: 100vh;
+  height: 100svh;
+  opacity: 1;
+  visibility: visible;
+  transform: none;
+  filter: none;
+}
+.reel--calm .reel-text { opacity: 1; transform: none; }
+.reel--calm .reel-progress { display: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  .reel-tick { transition: none; }
+}

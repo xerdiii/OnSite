@@ -53,10 +53,17 @@
   @media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto;} a,button{transition:none;} }
 </style>
 <link rel="stylesheet" href="assets/mobile.css">
-<link rel="stylesheet" href="assets/previews.css">
-<link rel="stylesheet" href="assets/cinema.css">
+<link rel="stylesheet" href="assets/reel.css">
 <link rel="stylesheet" href="assets/tailwind.css">
 <link rel="stylesheet" href="assets/theme.css">
+<noscript><style>
+  /* Without JavaScript the reel is not a scroll piece: the stage stops
+     being sticky and the five panels stack down the page. */
+  .reel { height: auto; }
+  .reel-stage { position: static; height: auto; overflow: visible; }
+  .reel-panel { position: relative; inset: auto; height: 100svh; opacity: 1; visibility: visible; }
+  .reel-progress { display: none; }
+</style></noscript>
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 </head>
 
@@ -71,7 +78,6 @@
       <span class="h-section text-lg tracking-tight">Onsite</span>
     </a>
     <div class="flex items-center gap-5 md:gap-7">
-      <a href="#work" class="hidden text-sm font-medium text-ink-mid hover:text-ink lg:inline">Our work</a>
       <a href="#pricing" class="text-sm font-medium text-ink-mid hover:text-ink">Pricing</a>
       <a href="#extras" class="hidden text-sm font-medium text-ink-mid hover:text-ink lg:inline">Extras</a>
       <a href="faq.html" class="hidden text-sm font-medium text-ink-mid hover:text-ink sm:inline">FAQ</a>
@@ -87,9 +93,9 @@
   <!-- 2 — HERO -->
   <section class="hero">
     <div class="mx-auto max-w-shell px-6 pb-16 pt-14 md:px-10 md:pb-20 md:pt-20">
-      <div class="grid grid-cols-1 items-center gap-14 lg:grid-cols-12 lg:gap-12">
+      <div class="grid grid-cols-1 lg:grid-cols-12">
 
-        <div class="lg:col-span-6">
+        <div class="lg:col-span-7">
           <h1 class="h-display hero-title text-ink">
             You run the business.<br>We build the <span class="marked">website</span>.
           </h1>
@@ -115,67 +121,11 @@
             <a href="signup.html" class="inline-flex min-h-[52px] items-center justify-center rounded-md bg-accent px-7 py-4 text-base font-semibold text-white hover:bg-accent-hi">
               Build my website
             </a>
-            <a href="#work" class="inline-flex min-h-[52px] items-center px-1 text-base font-medium text-ink-mid underline decoration-line-firm decoration-2 underline-offset-[6px] hover:text-ink hover:decoration-accent">
-              See what we've built
+            <a href="#industries" class="inline-flex min-h-[52px] items-center px-1 text-base font-medium text-ink-mid underline decoration-line-firm decoration-2 underline-offset-[6px] hover:text-ink hover:decoration-accent">
+              See who we build for
             </a>
           </div>
         </div>
-
-        <!-- The visual is the argument: this is what you get -->
-        <div class="lg:col-span-6 lg:pl-8">
-          <div class="hero-shots" role="img" aria-label="Two previews of the kind of one-page business website we build — a restaurant site on a laptop and a barber shop site on a phone.">
-
-            <figure class="shot" style="--s-bg:#FBF6EC;--s-ink:#241D16;--s-acc:#A24A28;--s-band:#E5D9C4;--s-card:rgba(255,255,255,0.72);--s-tile:#E5D9C4">
-              <div class="shot-bar"><i></i><i></i><i></i><u></u></div>
-              <div class="shot-view">
-                <div class="pv-nav">
-                  <span class="pv-mark"><b></b>Osteria Nove</span>
-                  <span class="pv-links"><span>Menu</span><span>Hours</span><span>Find us</span></span>
-                  <span class="pv-pill">Book a table</span>
-                </div>
-                <div class="pv-band pv-band--tall"></div>
-                <div class="pv-hero">
-                  <p class="pv-eyebrow">Kitchen open 12 – 10</p>
-                  <h3 class="pv-h1">Small plates, <em>long</em> evenings.</h3>
-                  <p class="pv-sub">Seasonal cooking two streets back from the harbour. Walk-ins are fine. Tables of six and up are worth booking ahead.</p>
-                  <div class="pv-cta">
-                    <span class="pv-pill">Book a table</span>
-                    <span class="pv-pill pv-pill--line">Read the menu</span>
-                  </div>
-                </div>
-                <div class="pv-list">
-                  <div class="pv-line"><span>Tuesday – Thursday</span><span>12:00 – 22:00</span></div>
-                  <div class="pv-line"><span>Friday &amp; Saturday</span><span>12:00 – 23:30</span></div>
-                  <div class="pv-line"><span>Sunday</span><span>13:00 – 20:00</span></div>
-                </div>
-                <div class="pv-strip"><span>12 Harbour Row</span><span>Directions</span></div>
-              </div>
-            </figure>
-
-            <div class="shot-phone" style="--s-bg:#F4F1EC;--s-ink:#1B1A18;--s-acc:#A8761E;--s-band:#DED8CC">
-              <div class="phone-notch"></div>
-              <div class="shot-view">
-                <div class="pv-nav">
-                  <span class="pv-mark"><b></b>Corner &amp; Co.</span>
-                  <span class="pv-pill">Call</span>
-                </div>
-                <div class="pv-hero">
-                  <h3 class="pv-h1">Walk in. Sit down.</h3>
-                  <p class="pv-sub">Two chairs, no appointments before noon.</p>
-                  <div class="pv-cta"><span class="pv-pill">Get directions</span></div>
-                </div>
-                <div class="pv-band"></div>
-                <div class="pv-list">
-                  <div class="pv-line"><span>Cut</span><span>€18</span></div>
-                  <div class="pv-line"><span>Cut &amp; beard</span><span>€25</span></div>
-                  <div class="pv-line"><span>Under 12s</span><span>€12</span></div>
-                </div>
-              </div>
-            </div>
-
-          </div>
-        </div>
-
       </div>
 
       <p class="mt-14 max-w-prose border-t border-line pt-6 text-[0.9375rem] leading-relaxed text-ink-mid lg:mt-16">
@@ -186,209 +136,121 @@
   </section>
 
 
-  <!-- 2b — THE POUR
-       Full-bleed film between the hero and the work. Pinned and scrubbed
-       on a desktop, played on entry on a phone — see assets/cinema.js. -->
-  <section class="cinema" data-cinema aria-label="Websites for cafés">
-    <div class="cinema-media">
-      <video
-        muted
-        playsinline
-        preload="none"
-        poster="assets/media/espresso-poster.jpg"
-        data-poster-tall="assets/media/espresso-poster-mobile.jpg"
-        data-src-wide="assets/media/espresso-scrub.mp4"
-        data-src-tall="assets/media/espresso-mobile.mp4"
-        aria-hidden="true"></video>
-    </div>
-    <div class="cinema-grade" aria-hidden="true"></div>
-    <div class="cinema-edge cinema-edge--top" aria-hidden="true"></div>
-    <div class="cinema-edge cinema-edge--bottom" aria-hidden="true"></div>
+  <!-- 3 — THE REEL
+       Five real films, one sticky stage, one scroll. The panels are
+       stacked and handed over to one another as the page moves — see
+       assets/reel.js. Each one carries its own crop (--focus for a wide
+       screen, --focus-tall for a phone) and its own scrim weight, because
+       the five were not shot for us and do not sit the same way. -->
+  <section id="industries" class="reel" data-reel aria-label="The kinds of business we build for">
+    <div class="reel-stage">
 
-    <div class="cinema-copy">
-      <div>
-        <div class="cinema-text" data-cinema-copy>
-          <p class="cinema-label">Cafés &amp; coffee shops</p>
-          <h2 class="cinema-h">Built for cafés that care about every detail.</h2>
-          <p class="cinema-p">
-            Your menu, your hours and your room, put together with the same care
-            you give a shot.
-          </p>
-          <a class="cinema-cta" href="signup.html">Build your website <span aria-hidden="true">&rarr;</span></a>
+      <article class="reel-panel" data-reel-panel style="--focus:38% 50%;--focus-tall:57% 46%;--scrim:0.92">
+        <div class="reel-media">
+          <video muted loop playsinline preload="none"
+                 poster="assets/media/coffee-poster.jpg"
+                 data-src="assets/media/coffee.mp4"
+                 aria-hidden="true"></video>
         </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- 3 — WORK -->
-  <section id="work" class="scroll-mt-16 border-b border-line bg-surface">
-    <div class="mx-auto max-w-shell px-6 py-16 md:px-10 md:py-24">
-
-      <div class="grid grid-cols-1 gap-8 lg:grid-cols-12">
-        <div class="lg:col-span-7">
-          <p class="eyebrow text-ink-soft">The work</p>
-          <h2 class="h-section sec-title mt-4">What a €79.99 page actually looks like.</h2>
-        </div>
-        <div class="lg:col-span-4 lg:col-start-9 lg:pt-9">
-          <p class="max-w-prose text-[0.9375rem] leading-relaxed text-ink-mid">
-            Four builds, four different trades. Same idea each time: one page, the three or four things
-            a customer came for, and nothing in the way of them.
-          </p>
-        </div>
-      </div>
-
-      <div class="mt-14 grid grid-cols-1 gap-14 md:gap-16 lg:grid-cols-2 lg:gap-x-12">
-
-        <!-- left column -->
-        <div class="flex flex-col gap-14 md:gap-16">
-
-          <article class="work-item">
-            <figure class="shot" aria-hidden="true" style="--s-bg:#FDFAF4;--s-ink:#241C15;--s-acc:#B04A2F;--s-band:#EADFCB;--s-tile:#EADFCB;--s-card:rgba(255,255,255,0.75)">
-              <div class="shot-bar"><i></i><i></i><i></i><u></u></div>
-              <div class="shot-view">
-                <div class="pv-nav">
-                  <span class="pv-mark"><b></b>Kettle &amp; Crumb</span>
-                  <span class="pv-links"><span>Today</span><span>Menu</span><span>Visit</span></span>
-                </div>
-                <div class="pv-split">
-                  <div class="pv-hero">
-                    <p class="pv-eyebrow">Bread from 7am</p>
-                    <h3 class="pv-h1">Everything is <em>baked here</em>.</h3>
-                    <p class="pv-sub">Sourdough, pastries and a short lunch menu that changes when the weather does.</p>
-                    <div class="pv-cta"><span class="pv-pill">Today&rsquo;s menu</span></div>
-                  </div>
-                  <div></div>
-                </div>
-                <div class="pv-grid pv-grid--3">
-                  <div class="pv-tile"></div><div class="pv-tile"></div><div class="pv-tile"></div>
-                </div>
-                <div class="pv-strip"><span>Mon – Sat, 7:00 – 16:00</span><span>Mill Lane</span></div>
-              </div>
-            </figure>
-            <div class="mt-6">
-              <p class="eyebrow text-ink-soft">01 — Café &amp; bakery</p>
-              <h3 class="h-section mt-2.5 text-xl">A menu that changes weekly, without a phone call</h3>
-              <p class="mt-3 max-w-prose text-[0.9375rem] leading-relaxed text-ink-mid">
-                Photos of the counter, the day&rsquo;s menu, opening hours and a map. The owner sends the new
-                lunch list over on a Sunday and it is up on Monday.
-              </p>
+        <div class="reel-grade" aria-hidden="true"></div>
+        <div class="reel-copy">
+          <div>
+            <div class="reel-text" data-reel-text>
+              <p class="reel-label">Coffee shops</p>
+              <h2 class="reel-h">Built for the daily pour.</h2>
+              <p class="reel-p">Websites made for caf&eacute;s that want to look as good online as they do behind the counter.</p>
             </div>
-          </article>
-
-          <article class="work-item">
-            <figure class="shot" aria-hidden="true" style="--s-bg:#F7F3F4;--s-ink:#231A1E;--s-acc:#7C3B57;--s-band:#E4D6DB;--s-tile:#E4D6DB;--s-card:rgba(255,255,255,0.78)">
-              <div class="shot-bar"><i></i><i></i><i></i><u></u></div>
-              <div class="shot-view">
-                <div class="pv-nav">
-                  <span class="pv-mark"><b></b>Studio Ivy</span>
-                  <span class="pv-links"><span>Treatments</span><span>Prices</span><span>Team</span></span>
-                  <span class="pv-pill">Book</span>
-                </div>
-                <div class="pv-band pv-band--tall"></div>
-                <div class="pv-hero">
-                  <h3 class="pv-h1">Colour, cuts and <em>quiet</em>.</h3>
-                  <p class="pv-sub">Four chairs above the bookshop. Evening slots on Thursdays.</p>
-                  <div class="pv-cta"><span class="pv-pill">Book online</span><span class="pv-pill pv-pill--line">Price list</span></div>
-                </div>
-                <div class="pv-list">
-                  <div class="pv-line"><span>Cut &amp; finish</span><span>from €45</span></div>
-                  <div class="pv-line"><span>Full head colour</span><span>from €95</span></div>
-                  <div class="pv-line"><span>Balayage</span><span>from €130</span></div>
-                </div>
-              </div>
-            </figure>
-            <div class="mt-6">
-              <p class="eyebrow text-ink-soft">02 — Hair &amp; beauty salon</p>
-              <h3 class="h-section mt-2.5 text-xl">Booking first, price list right underneath</h3>
-              <p class="mt-3 max-w-prose text-[0.9375rem] leading-relaxed text-ink-mid">
-                Built for someone deciding on their phone at a bus stop. Book, see the prices, see the
-                room — in that order, because that is the order they ask in.
-              </p>
-            </div>
-          </article>
-
+          </div>
         </div>
+      </article>
 
-        <!-- right column, deliberately dropped a little -->
-        <div class="flex flex-col gap-14 md:gap-16 lg:pt-20">
-
-          <article class="work-item">
-            <figure class="shot" aria-hidden="true" style="--s-bg:#FFFFFF;--s-ink:#101820;--s-acc:#1F4E7A;--s-band:#DEE6EE;--s-tile:#DEE6EE;--s-card:#F1F4F8">
-              <div class="shot-bar"><i></i><i></i><i></i><u></u></div>
-              <div class="shot-view">
-                <div class="pv-nav">
-                  <span class="pv-mark"><b></b>Rowan Heating</span>
-                  <span class="pv-links"><span>Services</span><span>Areas</span></span>
-                  <span class="pv-pill">Call now</span>
-                </div>
-                <div class="pv-hero">
-                  <p class="pv-eyebrow">Registered &amp; insured</p>
-                  <h3 class="pv-h1">Boiler out? <em>Call.</em></h3>
-                  <p class="pv-sub">Repairs, servicing and installs across the county. Same day where we can, straight about it when we cannot.</p>
-                  <div class="pv-cta"><span class="pv-pill">Call now</span><span class="pv-pill pv-pill--line">Ask a question</span></div>
-                </div>
-                <div class="pv-grid pv-grid--2">
-                  <div class="pv-card"><b>Boiler repair</b><p>Diagnosis, parts and a fixed callout.</p></div>
-                  <div class="pv-card"><b>Annual service</b><p>Booked in before the cold sets in.</p></div>
-                  <div class="pv-card"><b>New installs</b><p>Quoted in writing, no site visit fee.</p></div>
-                  <div class="pv-card"><b>Radiators</b><p>Flushing, balancing, replacements.</p></div>
-                </div>
-                <div class="pv-strip"><span>Covering the county</span><span>Mon – Sat</span></div>
-              </div>
-            </figure>
-            <div class="mt-6">
-              <p class="eyebrow text-ink-soft">03 — Plumbing &amp; heating</p>
-              <h3 class="h-section mt-2.5 text-xl">One job: get the phone to ring</h3>
-              <p class="mt-3 max-w-prose text-[0.9375rem] leading-relaxed text-ink-mid">
-                Nobody browses a heating engineer. The number sits in the header, in the first screen and
-                in the footer, and every tap on it dials.
-              </p>
-            </div>
-          </article>
-
-          <article class="work-item">
-            <figure class="shot" aria-hidden="true" style="--s-bg:#F5F5F3;--s-ink:#1A1A18;--s-acc:#7A5A18;--s-band:#DCDBD4;--s-tile:#DCDBD4;--s-card:#FFFFFF">
-              <div class="shot-bar"><i></i><i></i><i></i><u></u></div>
-              <div class="shot-view">
-                <div class="pv-nav">
-                  <span class="pv-mark"><b></b>Mill Lane Motors</span>
-                  <span class="pv-links"><span>Servicing</span><span>Tests</span><span>Contact</span></span>
-                </div>
-                <div class="pv-split">
-                  <div></div>
-                  <div class="pv-hero">
-                    <h3 class="pv-h1">Booked in by <em>Friday</em>.</h3>
-                    <p class="pv-sub">Servicing, diagnostics and pre-test checks.</p>
-                    <div class="pv-cta"><span class="pv-pill">Request a slot</span></div>
-                  </div>
-                </div>
-                <div class="pv-list">
-                  <div class="pv-line"><span>Full service</span><span>from €159</span></div>
-                  <div class="pv-line"><span>Pre-test check</span><span>€45</span></div>
-                  <div class="pv-line"><span>Diagnostics</span><span>€60</span></div>
-                  <div class="pv-line"><span>Tyres &amp; brakes</span><span>quoted</span></div>
-                </div>
-                <div class="pv-strip"><span>Unit 4, Mill Lane</span><span>Drop-off from 8am</span></div>
-              </div>
-            </figure>
-            <div class="mt-6">
-              <p class="eyebrow text-ink-soft">04 — Garage &amp; servicing</p>
-              <h3 class="h-section mt-2.5 text-xl">Prices up front, the form lands on the desk</h3>
-              <p class="mt-3 max-w-prose text-[0.9375rem] leading-relaxed text-ink-mid">
-                Half the calls a garage takes are &ldquo;how much for a service&rdquo;. Putting the number on the
-                page answers that before the phone rings, and the request form goes to the office inbox.
-              </p>
-            </div>
-          </article>
-
+      <article class="reel-panel" data-reel-panel style="--focus:50% 50%;--focus-tall:50% 44%;--scrim:1.16">
+        <div class="reel-media">
+          <video muted loop playsinline preload="none"
+                 poster="assets/media/restaurant-poster.jpg"
+                 data-src="assets/media/restaurant.mp4"
+                 aria-hidden="true"></video>
         </div>
+        <div class="reel-grade" aria-hidden="true"></div>
+        <div class="reel-copy">
+          <div>
+            <div class="reel-text" data-reel-text>
+              <p class="reel-label">Restaurants</p>
+              <h2 class="reel-h">Make every visit start online.</h2>
+              <p class="reel-p">A website designed to turn hungry visitors into reservations and customers.</p>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <article class="reel-panel" data-reel-panel style="--focus:50% 45%;--focus-tall:43% 42%;--scrim:0.84">
+        <div class="reel-media">
+          <video muted loop playsinline preload="none"
+                 poster="assets/media/nails-poster.jpg"
+                 data-src="assets/media/nails.mp4"
+                 aria-hidden="true"></video>
+        </div>
+        <div class="reel-grade" aria-hidden="true"></div>
+        <div class="reel-copy">
+          <div>
+            <div class="reel-text" data-reel-text>
+              <p class="reel-label">Nail salons</p>
+              <h2 class="reel-h">Make your work impossible to ignore.</h2>
+              <p class="reel-p">A polished online presence for salons that care about every detail.</p>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <article class="reel-panel" data-reel-panel style="--focus:55% 46%;--focus-tall:62% 40%;--scrim:0.88">
+        <div class="reel-media">
+          <video muted loop playsinline preload="none"
+                 poster="assets/media/mechanic-poster.jpg"
+                 data-src="assets/media/mechanic.mp4"
+                 aria-hidden="true"></video>
+        </div>
+        <div class="reel-grade" aria-hidden="true"></div>
+        <div class="reel-copy">
+          <div>
+            <div class="reel-text" data-reel-text>
+              <p class="reel-label">Mechanics</p>
+              <h2 class="reel-h">Built for businesses that keep things moving.</h2>
+              <p class="reel-p">A professional website that makes it easy for customers to find you, contact you, and book.</p>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <article class="reel-panel" data-reel-panel style="--focus:50% 45%;--focus-tall:70% 40%;--scrim:0.94">
+        <div class="reel-media">
+          <video muted loop playsinline preload="none"
+                 poster="assets/media/barber-poster.jpg"
+                 data-src="assets/media/barber.mp4"
+                 aria-hidden="true"></video>
+        </div>
+        <div class="reel-grade" aria-hidden="true"></div>
+        <div class="reel-copy">
+          <div>
+            <div class="reel-text" data-reel-text>
+              <p class="reel-label">Barbershops</p>
+              <h2 class="reel-h">Sharp work deserves a sharp website.</h2>
+              <p class="reel-p">A modern online presence built for barbers who take their craft seriously.</p>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <div class="reel-progress" aria-hidden="true">
+        <div class="reel-ticks">
+          <i class="reel-tick" data-reel-tick></i>
+          <i class="reel-tick" data-reel-tick></i>
+          <i class="reel-tick" data-reel-tick></i>
+          <i class="reel-tick" data-reel-tick></i>
+          <i class="reel-tick" data-reel-tick></i>
+        </div>
+        <p class="reel-count" data-reel-count>01 / 05</p>
       </div>
 
-      <p class="mt-16 max-w-prose border-t border-line pt-6 text-[0.8125rem] leading-relaxed text-ink-soft">
-        Straight up: these four are our own example builds, not client sites, and the businesses in them
-        are invented. They are here so you can see the components, the spacing and the type you would
-        actually be getting. Yours gets built around your trade, your photos and your prices.
-      </p>
     </div>
   </section>
 
@@ -886,7 +748,7 @@
 
 <script src="assets/vendor/gsap.min.js" defer></script>
 <script src="assets/vendor/ScrollTrigger.min.js" defer></script>
-<script src="assets/cinema.js" defer></script>
+<script src="assets/reel.js" defer></script>
 <script src="assets/mobile.js"></script>
 <script src="assets/theme.js"></script>
 <script src="assets/footer.js"></script>

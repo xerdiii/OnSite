@@ -13,7 +13,6 @@
   // Public-site navigation. Kept in one place so every page agrees.
   var LINKS = [
     { label: 'Home',            href: 'index.html' },
-    { label: 'Our work',        href: 'index.html#work' },
     { label: 'Services',        href: 'index.html#services' },
     { label: 'Pricing',         href: 'index.html#pricing' },
     { label: 'Business Extras', href: 'index.html#extras' },
