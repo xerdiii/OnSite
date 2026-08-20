@@ -63,6 +63,21 @@
   .reel-stage { position: static; height: auto; overflow: visible; }
   .reel-panel { position: relative; inset: auto; height: 100svh; opacity: 1; visibility: visible; }
   .reel-progress { display: none; }
+  .reel-panel:nth-child(1) .reel-media {
+    background: #08090A url("assets/media/coffee-poster.jpg") center / cover no-repeat;
+  }
+  .reel-panel:nth-child(2) .reel-media {
+    background: #08090A url("assets/media/restaurant-poster.jpg") center / cover no-repeat;
+  }
+  .reel-panel:nth-child(3) .reel-media {
+    background: #08090A url("assets/media/nails-poster.jpg") center / cover no-repeat;
+  }
+  .reel-panel:nth-child(4) .reel-media {
+    background: #08090A url("assets/media/mechanic-poster.jpg") center / cover no-repeat;
+  }
+  .reel-panel:nth-child(5) .reel-media {
+    background: #08090A url("assets/media/barber-poster.jpg") center / cover no-repeat;
+  }
 </style></noscript>
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 </head>
@@ -139,17 +154,21 @@
   <!-- 3 — THE REEL
        Five real films, one sticky stage, one scroll. The panels are
        stacked and handed over to one another as the page moves — see
-       assets/reel.js. Each one carries its own crop (--focus for a wide
-       screen, --focus-tall for a phone) and its own scrim weight, because
-       the five were not shot for us and do not sit the same way. -->
+       assets/reel.js. A phone is served a portrait encode of each film
+       rather than a 16:9 one with three quarters of the frame cropped off,
+       so --focus only has to fine-tune the wide crop. Neither still is
+       fetched until the chapter is close: a `poster` attribute loads
+       eagerly, a data- one does not. -->
   <section id="industries" class="reel" data-reel aria-label="The kinds of business we build for">
     <div class="reel-stage">
 
-      <article class="reel-panel" data-reel-panel style="--focus:38% 50%;--focus-tall:57% 46%;--scrim:0.92">
+      <article class="reel-panel" data-reel-panel style="--focus:38% 50%;--scrim:0.92">
         <div class="reel-media">
           <video muted loop playsinline preload="none"
-                 poster="assets/media/coffee-poster.jpg"
+                 data-poster="assets/media/coffee-poster.jpg"
+                 data-poster-tall="assets/media/coffee-poster-tall.jpg"
                  data-src="assets/media/coffee.mp4"
+                 data-src-tall="assets/media/coffee-tall.mp4"
                  aria-hidden="true"></video>
         </div>
         <div class="reel-grade" aria-hidden="true"></div>
@@ -164,11 +183,13 @@
         </div>
       </article>
 
-      <article class="reel-panel" data-reel-panel style="--focus:50% 50%;--focus-tall:50% 44%;--scrim:1.16">
+      <article class="reel-panel" data-reel-panel style="--focus:50% 50%;--scrim:1.16">
         <div class="reel-media">
           <video muted loop playsinline preload="none"
-                 poster="assets/media/restaurant-poster.jpg"
+                 data-poster="assets/media/restaurant-poster.jpg"
+                 data-poster-tall="assets/media/restaurant-poster-tall.jpg"
                  data-src="assets/media/restaurant.mp4"
+                 data-src-tall="assets/media/restaurant-tall.mp4"
                  aria-hidden="true"></video>
         </div>
         <div class="reel-grade" aria-hidden="true"></div>
@@ -183,11 +204,13 @@
         </div>
       </article>
 
-      <article class="reel-panel" data-reel-panel style="--focus:50% 45%;--focus-tall:43% 42%;--scrim:0.84">
+      <article class="reel-panel" data-reel-panel style="--focus:50% 45%;--scrim:0.84">
         <div class="reel-media">
           <video muted loop playsinline preload="none"
-                 poster="assets/media/nails-poster.jpg"
+                 data-poster="assets/media/nails-poster.jpg"
+                 data-poster-tall="assets/media/nails-poster-tall.jpg"
                  data-src="assets/media/nails.mp4"
+                 data-src-tall="assets/media/nails-tall.mp4"
                  aria-hidden="true"></video>
         </div>
         <div class="reel-grade" aria-hidden="true"></div>
@@ -202,11 +225,13 @@
         </div>
       </article>
 
-      <article class="reel-panel" data-reel-panel style="--focus:55% 46%;--focus-tall:62% 40%;--scrim:0.88">
+      <article class="reel-panel" data-reel-panel style="--focus:55% 46%;--scrim:0.88">
         <div class="reel-media">
           <video muted loop playsinline preload="none"
-                 poster="assets/media/mechanic-poster.jpg"
+                 data-poster="assets/media/mechanic-poster.jpg"
+                 data-poster-tall="assets/media/mechanic-poster-tall.jpg"
                  data-src="assets/media/mechanic.mp4"
+                 data-src-tall="assets/media/mechanic-tall.mp4"
                  aria-hidden="true"></video>
         </div>
         <div class="reel-grade" aria-hidden="true"></div>
@@ -221,11 +246,13 @@
         </div>
       </article>
 
-      <article class="reel-panel" data-reel-panel style="--focus:50% 45%;--focus-tall:70% 40%;--scrim:0.94">
+      <article class="reel-panel" data-reel-panel style="--focus:50% 45%;--scrim:0.94">
         <div class="reel-media">
           <video muted loop playsinline preload="none"
-                 poster="assets/media/barber-poster.jpg"
+                 data-poster="assets/media/barber-poster.jpg"
+                 data-poster-tall="assets/media/barber-poster-tall.jpg"
                  data-src="assets/media/barber.mp4"
+                 data-src-tall="assets/media/barber-tall.mp4"
                  aria-hidden="true"></video>
         </div>
         <div class="reel-grade" aria-hidden="true"></div>

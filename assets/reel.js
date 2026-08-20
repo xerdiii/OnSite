@@ -24,8 +24,9 @@
   'use strict';
 
   var doc = global.document;
-  var TR = 0.28;   // handover length, in chapters
-  var LEAD = 0.20; // how far before the boundary the count flips
+  var TR = 0.34;   // handover length, in chapters
+  var LEAD = 0.25; // how far before the boundary the count flips
+  var TALL = '(max-width: 767px)';
 
   function list(nodes) { return Array.prototype.slice.call(nodes); }
 
@@ -45,17 +46,29 @@
     var idle = null;    // timer that stops the outgoing film
 
     // ── the films ──────────────────────────────────────────────
+    // A phone gets the portrait encode: a third of the bytes, and a
+    // quarter of the pixels to decode, because none of the frame is
+    // being cropped away by object-fit.
+    function tallNow() { return global.matchMedia(TALL).matches; }
+
     // Setting src is enough to start the load; calling load() as well
     // cancels any play() issued in the same tick.
     function load(i) {
       var v = videos[i];
-      if (!v || v.getAttribute('src')) return;
-      v.setAttribute('src', v.getAttribute('data-src'));
+      if (!v) return;
+      var tall = tallNow();
+      var src = (tall && v.getAttribute('data-src-tall')) || v.getAttribute('data-src');
+      if (v.getAttribute('src') === src) return;
+      // The two encodes are framed differently, so the still has to follow
+      // the clip or the first paint jumps.
+      var still = (tall && v.getAttribute('data-poster-tall')) || v.getAttribute('data-poster');
+      if (still) v.setAttribute('poster', still);
+      v.setAttribute('src', src);
     }
 
     // The chapter after this one gets its header and first frames, and
-    // nothing more — a few hundred kilobytes against a file that can run
-    // to eighty megabytes.
+    // nothing more — a couple of hundred kilobytes, so the handover has
+    // something to show the moment it starts.
     function prime(i) {
       var v = videos[i];
       if (!v || v.getAttribute('src')) return;
@@ -114,7 +127,7 @@
       // Let the outgoing film keep running until it has faded out,
       // rather than freezing a frame that is still half on screen.
       global.clearTimeout(idle);
-      idle = global.setTimeout(function () { stopAllBut(at); }, 900);
+      idle = global.setTimeout(function () { stopAllBut(at); }, 1500);
     }
 
     // ── on screen or not ───────────────────────────────────────
@@ -189,17 +202,28 @@
     var gsap = global.gsap;
     gsap.registerPlugin(global.ScrollTrigger);
 
+    // iOS grows and shrinks the viewport as its address bar comes and goes.
+    // Left alone, every one of those counts as a resize and refreshes the
+    // measurements mid-scroll, which is most of the judder on a handset.
+    global.ScrollTrigger.config({ ignoreMobileResize: true });
+
     // ── the reel ───────────────────────────────────────────────
-    function reelMode(soft) {
+    function reelMode(push) {
       reel.classList.remove('reel--calm');
       var unwatch = watch();
       resume = function () { if (near && at >= 0) play(at); };
 
-      // Only the frame on its way out softens. The incoming one arrives
-      // sharp — two blurred plates at once reads as a focus pull, not a
-      // dissolve.
-      var out = { autoAlpha: 0, scale: 0.965, yPercent: -1.4, ease: 'power1.inOut', duration: TR };
-      if (soft) out.filter = 'blur(5px)';
+      // The dissolve is linear on purpose. An eased crossfade dips in the
+      // middle — both frames half-lit at once — and reads as a dip to
+      // black rather than one scene becoming the next. The drift either
+      // side is eased, runs a little longer than the fade, and is the only
+      // other thing moving: opacity and transform are the two properties a
+      // compositor can carry on its own, which is what keeps this smooth
+      // on a phone. Nothing is blurred; a full-screen filter is the one
+      // effect that would put it back on the main thread.
+      var DRIFT = TR * 1.3;
+      var lift = push ? 1.075 : 1.05;   // a wide screen can take a bigger push
+      var sink = push ? 0.945 : 0.965;
 
       var tl = gsap.timeline({
         defaults: { overwrite: 'auto' },
@@ -207,7 +231,9 @@
           trigger: reel,
           start: 'top top',
           end: 'bottom bottom',
-          scrub: 0.55,
+          // Enough lag to smooth a trackpad flick without the picture
+          // feeling detached from the scroll.
+          scrub: 1,
           invalidateOnRefresh: true,
           onUpdate: function (self) {
             var i = Math.floor(self.progress * panels.length + LEAD);
@@ -216,18 +242,23 @@
         }
       });
 
-      gsap.set(panels[0], { autoAlpha: 1, scale: 1, yPercent: 0, filter: 'blur(0px)' });
+      gsap.set(panels[0], { autoAlpha: 1, scale: 1, yPercent: 0 });
       gsap.set(panels.slice(1), { autoAlpha: 0 });
 
       panels.forEach(function (panel, i) {
         var start = i - TR;
 
         if (i > 0) {
+          tl.fromTo(panel, { autoAlpha: 0 }, { autoAlpha: 1, ease: 'none', duration: TR }, start);
           tl.fromTo(panel,
-            { autoAlpha: 0, scale: 1.06, yPercent: 1.4, filter: 'blur(0px)' },
-            { autoAlpha: 1, scale: 1, yPercent: 0, filter: 'blur(0px)', ease: 'power1.inOut', duration: TR },
+            { scale: lift, yPercent: 1.6 },
+            { scale: 1, yPercent: 0, ease: 'power2.out', duration: DRIFT },
             start);
-          tl.to(panels[i - 1], out, start);
+
+          tl.to(panels[i - 1], { autoAlpha: 0, ease: 'none', duration: TR }, start);
+          tl.to(panels[i - 1],
+            { scale: sink, yPercent: -1.6, ease: 'power2.in', duration: DRIFT },
+            start);
         }
 
         // The copy leads the picture in and leaves before the handover,
@@ -237,9 +268,11 @@
         tl.fromTo(text,
           { autoAlpha: 0, y: 30 },
           { autoAlpha: 1, y: 0, ease: 'power2.out', duration: 0.2 },
-          i === 0 ? 0.02 : i - 0.06);
-        tl.to(text, { y: -16, ease: 'none', duration: 0.5 }, i + 0.14);
-        tl.to(text, { autoAlpha: 0, y: -36, ease: 'power2.in', duration: 0.16 }, i + 0.66);
+          i === 0 ? 0.02 : i - 0.02);
+        tl.to(text, { y: -16, ease: 'none', duration: 0.46 }, i + 0.12);
+        // Gone before the pictures start crossing, so the two never share
+        // the frame.
+        tl.to(text, { autoAlpha: 0, y: -34, ease: 'power2.in', duration: 0.14 }, i + 0.5);
       });
 
       return function () {
@@ -257,17 +290,17 @@
     var mm = gsap.matchMedia();
 
     // Every width has to be covered by a condition — gsap.matchMedia only
-    // runs the callback when at least one of them matches. Blur is the one
-    // thing a phone should not be asked to do over a full-screen film;
-    // everything else is the same everywhere.
+    // runs the callback when at least one of them matches. Crossing the
+    // breakpoint tears the reel down and rebuilds it, which is also what
+    // swaps the films over to the other encode.
     mm.add({
       quiet: '(prefers-reduced-motion: reduce)',
-      soft:  '(min-width: 768px)',
+      wide:  '(min-width: 768px)',
       snug:  '(max-width: 767px)'
     }, function (context) {
       var c = context.conditions;
       if (c.quiet) return calm();
-      return reelMode(!!c.soft);
+      return reelMode(!!c.wide);
     });
 
     global.addEventListener('pagehide', function () {

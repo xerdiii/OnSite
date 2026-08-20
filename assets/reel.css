@@ -4,9 +4,15 @@
    viewport tall; the five panels are stacked inside it and handed
    over to one another as the page moves — see assets/reel.js.
 
-   Nothing here is load-bearing. Without JavaScript the stage stops
-   being sticky, the panels fall into normal flow and each one reads
-   as a still with its copy over it.
+   Phones get their own encodes, cropped to portrait around each
+   subject, so the browser is not decoding a 16:9 frame to throw three
+   quarters of it away. That is most of why this scrolls smoothly on a
+   handset; the rest is that nothing here animates anything but opacity
+   and transform.
+
+   Nothing is load-bearing. Without JavaScript the stage stops being
+   sticky, the panels fall into normal flow and each one reads as a
+   still with its copy over it.
    ─────────────────────────────────────────────────────────────── */
 
 .reel {
@@ -16,9 +22,9 @@
   isolation: isolate;
   /* One and a bit screens of scroll per chapter. The stage itself is
      always exactly one viewport — this is only the runway. */
-  height: calc(5 * 128svh);
+  height: calc(5 * 132svh);
 }
-@supports not (height: 1svh) { .reel { height: calc(5 * 128vh); } }
+@supports not (height: 1svh) { .reel { height: calc(5 * 132vh); } }
 
 .reel-stage {
   position: sticky;
@@ -33,13 +39,17 @@
 
 /* ── Panels ────────────────────────────────────────────────────
    All five sit on top of each other. Opacity and transform are set
-   from JavaScript; the CSS only says where they start. */
+   from JavaScript; the CSS only says where they start.
+
+   No standing `will-change`: five permanently promoted full-screen
+   layers cost more than they save, and GSAP promotes whichever two are
+   actually moving for as long as they are moving. */
 .reel-panel {
   position: absolute;
   inset: 0;
   opacity: 0;
   visibility: hidden;
-  will-change: opacity, transform;
+  backface-visibility: hidden;
 }
 .reel-panel:first-child { opacity: 1; visibility: visible; }
 
@@ -91,7 +101,8 @@
       rgb(0 0 0 / 0.48) 100%);
 }
 
-/* Film grain — the same tiled noise the closing panel uses. */
+/* Film grain. A blend mode over full-screen video is real per-frame
+   work, so this is a desktop luxury — see the phone block. */
 .reel-grade::after {
   content: "";
   position: absolute;
@@ -125,7 +136,7 @@
 
 .reel-text {
   max-width: 30rem;
-  will-change: opacity, transform;
+  backface-visibility: hidden;
 }
 
 .reel-label {
@@ -193,7 +204,7 @@
   width: 1rem;
   height: 1px;
   background: rgb(255 255 255 / 0.34);
-  transition: width 520ms cubic-bezier(0.22, 1, 0.36, 1), background-color 520ms ease;
+  transition: width 620ms cubic-bezier(0.22, 1, 0.36, 1), background-color 620ms ease;
 }
 .reel-tick[data-on] {
   width: 2.25rem;
@@ -209,73 +220,96 @@
 }
 
 /* ── Phones ────────────────────────────────────────────────────
-   Not the desktop layout narrowed: the crop moves to each film's own
-   portrait focus, the scrim turns bottom-weighted, and the count goes
-   up under the header where the copy can never reach it. */
+   Not the desktop layout narrowed. The film is a portrait encode, the
+   scrim turns bottom-weighted, the grain comes off, and the chapter
+   mark sits under the copy where it reads as part of it. */
 @media (max-width: 767px) {
-  .reel { height: calc(5 * 118svh); }
-  @supports not (height: 1svh) { .reel { height: calc(5 * 118vh); } }
+  .reel { height: calc(5 * 122svh); }
 
-  .reel-media video { object-position: var(--focus-tall, var(--focus, center center)); }
+  .reel-media video { object-position: var(--focus-tall, center center); }
+
+  /* One blend-mode layer per panel is the most expensive thing on this
+     page and the least visible on a 6-inch screen. */
+  .reel-grade::after { display: none; }
 
   .reel-grade {
     background:
       linear-gradient(180deg,
-        rgb(6 7 8 / calc(0.56 * var(--scrim, 1))) 0%,
-        rgb(6 7 8 / calc(0.16 * var(--scrim, 1))) 18%,
-        rgb(6 7 8 / calc(0.14 * var(--scrim, 1))) 38%,
-        rgb(6 7 8 / calc(0.66 * var(--scrim, 1))) 70%,
-        rgb(6 7 8 / calc(0.90 * var(--scrim, 1))) 100%),
-      radial-gradient(122% 68% at 50% 36%,
-        rgb(0 0 0 / 0) 46%,
-        rgb(0 0 0 / 0.30) 100%);
+        rgb(6 7 8 / calc(0.50 * var(--scrim, 1))) 0%,
+        rgb(6 7 8 / calc(0.14 * var(--scrim, 1))) 20%,
+        rgb(6 7 8 / calc(0.12 * var(--scrim, 1))) 40%,
+        rgb(6 7 8 / calc(0.60 * var(--scrim, 1))) 68%,
+        rgb(6 7 8 / calc(0.88 * var(--scrim, 1))) 100%),
+      radial-gradient(120% 64% at 50% 34%,
+        rgb(0 0 0 / 0) 48%,
+        rgb(0 0 0 / 0.28) 100%);
   }
 
-  .reel-copy > div { padding: 0 1.25rem 8vh; }
-  .reel-text { max-width: 24rem; }
+  .reel-copy > div {
+    padding: 0 1.375rem calc(env(safe-area-inset-bottom, 0px) + 5.25rem);
+  }
+  .reel-text { max-width: 26rem; }
 
-  .reel-h { margin-top: 0.95rem; font-size: clamp(1.7rem, 7.6vw, 2.15rem); }
-  .reel-p { margin-top: 0.7rem; font-size: 0.9375rem; line-height: 1.6; max-width: 22rem; }
+  .reel-label { font-size: 0.625rem; letter-spacing: 0.2em; }
+  .reel-label::before { width: 1.25rem; margin-right: 0.6rem; }
 
+  .reel-h {
+    margin-top: 0.85rem;
+    font-size: clamp(1.75rem, 8.2vw, 2.3rem);
+    line-height: 1.04;
+    letter-spacing: -0.018em;
+  }
+  .reel-p {
+    margin-top: 0.75rem;
+    font-size: 0.9375rem;
+    line-height: 1.55;
+    max-width: 21rem;
+    color: rgb(255 255 255 / 0.74);
+  }
+
+  /* Bottom left, below the copy: a chapter mark rather than a control. */
   .reel-progress {
     right: auto;
-    left: 1.25rem;
-    top: 5.5rem;
+    top: auto;
+    left: 1.375rem;
+    bottom: calc(env(safe-area-inset-bottom, 0px) + 2.25rem);
     transform: none;
-    flex-direction: row-reverse;
+    flex-direction: row;
     align-items: center;
-    gap: 0.75rem;
+    gap: 0.8rem;
   }
-  .reel-ticks { flex-direction: row; align-items: center; gap: 0.45rem; }
-  .reel-tick { width: 0.75rem; }
-  .reel-tick[data-on] { width: 1.6rem; }
+  .reel-ticks { flex-direction: row; align-items: center; gap: 0.4rem; }
+  .reel-tick { width: 0.9rem; }
+  .reel-tick[data-on] { width: 1.9rem; }
 }
 
 /* The short end of the range — a 320px phone, or any handset with the
    browser chrome showing. Trim the lede rather than shrink the lot. */
 @media (max-width: 360px) {
-  .reel-copy > div { padding: 0 1.25rem 7vh; }
-  .reel-h { font-size: 1.6rem; }
+  .reel-copy > div { padding-left: 1.25rem; padding-right: 1.25rem; }
+  .reel-progress { left: 1.25rem; }
+  .reel-h { font-size: 1.7rem; }
   .reel-p { font-size: 0.875rem; }
 }
 
 @media (max-width: 767px) and (max-height: 700px) {
   .reel-p { display: none; }
-  .reel-h { font-size: clamp(1.5rem, 6.6vw, 1.8rem); }
-  .reel-copy > div { padding-bottom: 6vh; }
+  .reel-h { font-size: clamp(1.55rem, 7vw, 1.85rem); }
+  .reel-copy > div { padding-bottom: calc(env(safe-area-inset-bottom, 0px) + 4.5rem); }
+  .reel-progress { bottom: calc(env(safe-area-inset-bottom, 0px) + 1.75rem); }
 }
 
 /* Landscape phones have no vertical room for a copy block this deep. */
 @media (max-width: 900px) and (orientation: landscape) and (max-height: 520px) {
   .reel-p { display: none; }
-  .reel-copy > div { padding-bottom: 3rem; }
-  .reel-progress { top: auto; bottom: 1.25rem; left: 1.25rem; }
+  .reel-copy > div { padding-bottom: 3.75rem; }
+  .reel-progress { bottom: 1.25rem; }
 }
 
 /* ── Calm ──────────────────────────────────────────────────────
    prefers-reduced-motion, or no GSAP at all. The stage stops being
    sticky, the five panels stack down the page and nothing is tied to
-   the scroll. Set by reel.js, and by the no-script rule below it. */
+   the scroll. Set by reel.js, and by the no-script rule in the head. */
 .reel--calm { height: auto; }
 .reel--calm .reel-stage { position: static; height: auto; overflow: visible; }
 .reel--calm .reel-panel {
@@ -286,7 +320,6 @@
   opacity: 1;
   visibility: visible;
   transform: none;
-  filter: none;
 }
 .reel--calm .reel-text { opacity: 1; transform: none; }
 .reel--calm .reel-progress { display: none; }
