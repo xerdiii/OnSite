@@ -47,8 +47,19 @@
     if (nav && !nav.querySelector('.theme-toggle')) {
       var cluster = nav.querySelector('div.flex.items-center:last-child');
       var btn = button(false);
-      if (cluster) { cluster.insertBefore(btn, cluster.firstChild); }
-      else { nav.appendChild(btn); }
+      // Last in the cluster, but never past the menu button — the menu stays
+      // the outermost control. App shells have no menu button of ours and
+      // keep the toggle where it always was.
+      if (cluster) {
+        var menu = cluster.querySelector('.m-nav-toggle');
+        var before = menu || (doc.body.hasAttribute('data-app') ? cluster.firstChild : null);
+        cluster.insertBefore(btn, before);
+      }
+      else {
+        // No cluster to join (the sign-in and app headers): still keep the
+        // menu button outermost.
+        nav.insertBefore(btn, nav.querySelector('.m-nav-toggle'));
+      }
     }
 
     // Mobile drawer gets a labelled version

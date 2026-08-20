@@ -21,7 +21,7 @@
     { label: 'Log in',          href: 'login.html' }
   ];
 
-  var ICON_MENU = '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>';
+  var ICON_MENU = '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><path d="M4.5 9.5h15M4.5 15h9"/></svg>';
   var ICON_CLOSE = '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>';
 
   // ── Drawer navigation ────────────────────────────────────────
@@ -45,7 +45,9 @@
     toggle.setAttribute('aria-expanded', 'false');
     toggle.setAttribute('aria-controls', 'm-drawer');
     toggle.innerHTML = ICON_MENU;
-    nav.appendChild(toggle);
+    // Into the link cluster, not the nav: the nav is justify-between, so a
+    // third child of its own would sit in the middle of the bar.
+    (cluster || nav).appendChild(toggle);
 
     var here = (global.location.pathname.split('/').pop() || 'index.html');
 
