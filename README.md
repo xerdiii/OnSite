@@ -37,3 +37,15 @@ the element (`--s-bg` / `--s-ink` / `--s-acc`) and sizes its own text from the
 frame width, so one markup block works at any size and the mock palettes never
 leak into the site's own. The businesses inside them are invented, and the page
 says so — there are no client sites to show yet.
+
+## The espresso section
+
+`assets/cinema.js` and `assets/cinema.css` drive the full-bleed shot between
+the hero and the work. GSAP and ScrollTrigger are vendored into
+`assets/vendor/` rather than pulled from a CDN, same reasoning as Tailwind.
+
+Two encodes live in `assets/media/`: `espresso-scrub.mp4` is all-intra
+(`-g 1`) so seeking to an arbitrary frame is cheap enough to drive from the
+scroll position, and `espresso-mobile.mp4` is an ordinary portrait-cropped
+encode for the phone path, which autoplays rather than scrubs. Re-encode with
+`-g 1` if you ever swap the scrub clip, or the scrubbing will stutter.

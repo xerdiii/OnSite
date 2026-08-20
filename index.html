@@ -54,6 +54,7 @@
 </style>
 <link rel="stylesheet" href="assets/mobile.css">
 <link rel="stylesheet" href="assets/previews.css">
+<link rel="stylesheet" href="assets/cinema.css">
 <link rel="stylesheet" href="assets/tailwind.css">
 <link rel="stylesheet" href="assets/theme.css">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
@@ -84,7 +85,7 @@
 <main id="main">
 
   <!-- 2 — HERO -->
-  <section class="hero border-b border-line">
+  <section class="hero">
     <div class="mx-auto max-w-shell px-6 pb-16 pt-14 md:px-10 md:pb-20 md:pt-20">
       <div class="grid grid-cols-1 items-center gap-14 lg:grid-cols-12 lg:gap-12">
 
@@ -181,6 +182,41 @@
         Two prices, €79.99 or €249.99, both paid once. Everything else is optional, and any monthly
         service can be stopped whenever you like.
       </p>
+    </div>
+  </section>
+
+
+  <!-- 2b — THE POUR
+       Full-bleed film between the hero and the work. Pinned and scrubbed
+       on a desktop, played on entry on a phone — see assets/cinema.js. -->
+  <section class="cinema" data-cinema aria-label="Websites for cafés">
+    <div class="cinema-media">
+      <video
+        muted
+        playsinline
+        preload="none"
+        poster="assets/media/espresso-poster.jpg"
+        data-poster-tall="assets/media/espresso-poster-mobile.jpg"
+        data-src-wide="assets/media/espresso-scrub.mp4"
+        data-src-tall="assets/media/espresso-mobile.mp4"
+        aria-hidden="true"></video>
+    </div>
+    <div class="cinema-grade" aria-hidden="true"></div>
+    <div class="cinema-edge cinema-edge--top" aria-hidden="true"></div>
+    <div class="cinema-edge cinema-edge--bottom" aria-hidden="true"></div>
+
+    <div class="cinema-copy">
+      <div>
+        <div class="cinema-text" data-cinema-copy>
+          <p class="cinema-label">Cafés &amp; coffee shops</p>
+          <h2 class="cinema-h">Built for cafés that care about every detail.</h2>
+          <p class="cinema-p">
+            Your menu, your hours and your room, put together with the same care
+            you give a shot.
+          </p>
+          <a class="cinema-cta" href="signup.html">Build your website <span aria-hidden="true">&rarr;</span></a>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -848,6 +884,9 @@
 
 <div data-site-footer></div>
 
+<script src="assets/vendor/gsap.min.js" defer></script>
+<script src="assets/vendor/ScrollTrigger.min.js" defer></script>
+<script src="assets/cinema.js" defer></script>
 <script src="assets/mobile.js"></script>
 <script src="assets/theme.js"></script>
 <script src="assets/footer.js"></script>
