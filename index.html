@@ -31,6 +31,50 @@
 
   .arrow { color:rgb(var(--c-accent-text)); font-weight:600; }
 
+  /* Price cards — the two options are the first thing after the hero, so
+     they are objects you can pick up rather than panels ruled off the
+     page. The featured one is heavier at every level: border, shadow,
+     numeral, and the column it sits in. */
+  .price-card {
+    display:flex; flex-direction:column; height:100%;
+    background:rgb(var(--c-paper));
+    border:1px solid rgb(var(--c-line));
+    border-radius:0.75rem;
+    padding:1.5rem;
+    box-shadow:0 1px 2px rgb(var(--c-shadow) / 0.05);
+    transition: border-color 220ms ease, box-shadow 220ms ease, transform 220ms cubic-bezier(0.22,1,0.36,1);
+  }
+  @media (min-width:768px){ .price-card { padding:1.75rem; } }
+  .price-card:hover { border-color:rgb(var(--c-line-firm)); box-shadow:0 6px 24px rgb(var(--c-shadow) / 0.08); transform:translateY(-2px); }
+
+  .price-card--lead {
+    border-color:rgb(var(--c-accent));
+    box-shadow:0 2px 4px rgb(var(--c-shadow) / 0.06), 0 0 0 3px rgb(var(--c-accent) / 0.10);
+  }
+  @media (min-width:768px){ .price-card--lead { padding:2rem; } }
+  .price-card--lead:hover {
+    border-color:rgb(var(--c-accent));
+    box-shadow:0 12px 36px rgb(var(--c-shadow) / 0.12), 0 0 0 4px rgb(var(--c-accent) / 0.14);
+  }
+
+  .price-card-head { display:flex; flex-wrap:wrap; align-items:baseline; justify-content:space-between; gap:0.5rem 1.25rem; }
+  .price-card-figure { display:flex; align-items:baseline; gap:0.6rem; margin-top:0.9rem; }
+  .price-card-list { margin-top:1rem; display:grid; gap:0.5rem; font-size:0.875rem; line-height:1.55; color:rgb(var(--c-ink-mid)); }
+  .price-card-note { margin-top:1.25rem; border-top:1px solid rgb(var(--c-line)); padding-top:1.25rem; font-size:0.9375rem; line-height:1.6; color:rgb(var(--c-ink-mid)); }
+  .price-card-foot { margin-top:auto; padding-top:1.5rem; }
+
+  .price-badge {
+    font-family:'IBM Plex Mono',ui-monospace,monospace;
+    font-size:0.625rem; letter-spacing:0.14em; text-transform:uppercase;
+    color:rgb(var(--c-on-accent)); background:rgb(var(--c-accent));
+    border-radius:999px; padding:0.28rem 0.6rem; white-space:nowrap;
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    .price-card { transition:border-color 220ms ease; }
+    .price-card:hover { transform:none; }
+  }
+
   /* The four steps — the numeral does the work, nothing else has to */
   .step-n {
     font-family:'Instrument Serif','Iowan Old Style',Georgia,serif;
@@ -57,6 +101,7 @@
 <link rel="stylesheet" href="assets/closer.css">
 <link rel="stylesheet" href="assets/tailwind.css">
 <link rel="stylesheet" href="assets/theme.css">
+<link rel="stylesheet" href="assets/hero.css">
 <noscript><style>
   /* Without JavaScript the reel is not a scroll piece: the stage stops
      being sticky and the five panels stack down the page. */
@@ -90,7 +135,7 @@
 <a href="#main" class="skip absolute left-4 top-4 z-30 bg-ink px-4 py-2 text-sm text-white">Skip to content</a>
 
 <!-- 1 — NAVIGATION -->
-<header class="sticky top-0 z-20 border-b border-line bg-paper">
+<header class="fp-header sticky top-0 z-20 border-b border-line bg-paper">
   <nav class="mx-auto flex max-w-shell items-center justify-between px-6 py-4 md:px-10">
     <a href="#main" class="flex items-center gap-2.5">
       <span class="block h-3.5 w-3.5 rounded-sm bg-accent" aria-hidden="true"></span>
@@ -109,58 +154,259 @@
 
 <main id="main">
 
-  <!-- 2 — HERO -->
-  <section class="hero">
-    <div class="mx-auto max-w-shell px-6 pb-16 pt-14 md:px-10 md:pb-20 md:pt-20">
-      <div class="grid grid-cols-1 lg:grid-cols-12">
+  <!-- 2 — HERO
+       Full-bleed footage, glass navigation. The page header below is
+       held back while this is on screen (assets/hero.js) so there is
+       only ever one nav in view. -->
+  <section class="fp-hero relative h-screen w-full overflow-hidden" data-hero>
 
-        <div class="lg:col-span-7">
-          <h1 class="h-display hero-title text-ink">
-            You run the business.<br>We build the <span class="marked">website</span>.
-          </h1>
+    <video class="absolute inset-0 h-full w-full object-cover"
+           src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260703_053131_1ec3dd1c-d627-44fb-ab20-6e1fce41b0d5.mp4"
+           autoplay loop muted playsinline aria-hidden="true"></video>
+    <div class="absolute inset-0 bg-black/10"></div>
 
-          <!-- Price and payment, above the fold on a phone -->
-          <div class="mt-8 flex flex-wrap items-center gap-x-5 gap-y-3 border-y border-line py-5">
-            <div>
-              <p class="text-[0.8125rem] text-ink-soft">Starting from</p>
-              <p class="h-display mt-0.5 text-[2rem] text-ink">€79.99</p>
+    <div class="relative z-10 flex h-full flex-col">
+
+      <!-- Navigation -->
+      <nav class="relative w-full px-5 py-4 sm:px-6 sm:py-5 md:px-12 lg:px-16" aria-label="Main">
+        <div class="flex items-center justify-between">
+
+          <a href="index.html" class="flex items-center gap-2.5">
+            <span class="block h-3.5 w-3.5 rounded-sm bg-accent" aria-hidden="true"></span>
+            <span class="text-lg font-medium tracking-tight text-white sm:text-xl">Onsite</span>
+          </a>
+
+          <div class="hidden items-center gap-1 md:flex">
+
+            <div class="relative" data-hero-item>
+              <button type="button" data-hero-trigger aria-expanded="false"
+                      class="flex items-center gap-1 rounded-lg px-3 py-2 text-sm font-medium text-white/90 hover:text-white">
+                Websites
+                <svg data-hero-chev class="h-3.5 w-3.5 transition-transform duration-200" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+              </button>
+              <div data-hero-dd hidden class="liquid-glass animate-dropdown !absolute left-0 top-full min-w-[230px] rounded-xl px-2 py-3 shadow-xl">
+                <a href="#pricing" class="flex items-baseline justify-between gap-6 rounded-lg px-3 py-2 text-sm text-white/80 hover:bg-white/5 hover:text-white">Custom Website <span class="text-white/50">€79.99</span></a>
+                <a href="#pricing" class="flex items-baseline justify-between gap-6 rounded-lg px-3 py-2 text-sm text-white/80 hover:bg-white/5 hover:text-white">Professional Website <span class="text-white/50">€249.99</span></a>
+                <a href="#pricing" class="flex items-baseline justify-between gap-6 rounded-lg px-3 py-2 text-sm text-white/80 hover:bg-white/5 hover:text-white">The ten features <span class="text-white/50">included</span></a>
+              </div>
             </div>
-            <span class="tag tag-once">One-time</span>
-            <p class="w-full text-[0.8125rem] leading-relaxed text-ink-mid sm:w-auto sm:flex-1">
-              A quarter today. You see the finished thing before the rest is due — and nothing monthly
-              starts until the site is actually up.
-            </p>
+
+            <div class="relative" data-hero-item>
+              <button type="button" data-hero-trigger aria-expanded="false"
+                      class="flex items-center gap-1 rounded-lg px-3 py-2 text-sm font-medium text-white/90 hover:text-white">
+                Monthly
+                <svg data-hero-chev class="h-3.5 w-3.5 transition-transform duration-200" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+              </button>
+              <div data-hero-dd hidden class="liquid-glass animate-dropdown !absolute left-0 top-full min-w-[240px] rounded-xl px-2 py-3 shadow-xl">
+                <a href="#services" class="flex items-baseline justify-between gap-6 rounded-lg px-3 py-2 text-sm text-white/80 hover:bg-white/5 hover:text-white">Online Booking <span class="text-white/50">€29.99 / mo</span></a>
+                <a href="#services" class="flex items-baseline justify-between gap-6 rounded-lg px-3 py-2 text-sm text-white/80 hover:bg-white/5 hover:text-white">Website Maintenance <span class="text-white/50">€19.99 / mo</span></a>
+                <a href="#services" class="flex items-baseline justify-between gap-6 rounded-lg px-3 py-2 text-sm text-white/80 hover:bg-white/5 hover:text-white">Review Management <span class="text-white/50">€29.99 / mo</span></a>
+                <a href="#services" class="flex items-baseline justify-between gap-6 rounded-lg px-3 py-2 text-sm text-white/80 hover:bg-white/5 hover:text-white">Digital Menu <span class="text-white/50">€19.99 / mo</span></a>
+              </div>
+            </div>
+
+            <div class="relative" data-hero-item>
+              <button type="button" data-hero-trigger aria-expanded="false"
+                      class="flex items-center gap-1 rounded-lg px-3 py-2 text-sm font-medium text-white/90 hover:text-white">
+                Extras
+                <svg data-hero-chev class="h-3.5 w-3.5 transition-transform duration-200" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+              </button>
+              <div data-hero-dd hidden class="liquid-glass animate-dropdown !absolute left-0 top-full min-w-[235px] rounded-xl px-2 py-3 shadow-xl">
+                <a href="#extras" class="flex items-baseline justify-between gap-6 rounded-lg px-3 py-2 text-sm text-white/80 hover:bg-white/5 hover:text-white">Logo Design <span class="text-white/50">€49.99</span></a>
+                <a href="#extras" class="flex items-baseline justify-between gap-6 rounded-lg px-3 py-2 text-sm text-white/80 hover:bg-white/5 hover:text-white">Brand Kit <span class="text-white/50">€79.99</span></a>
+                <a href="#services" class="flex items-baseline justify-between gap-6 rounded-lg px-3 py-2 text-sm text-white/80 hover:bg-white/5 hover:text-white">Local SEO <span class="text-white/50">€199.99</span></a>
+              </div>
+            </div>
+
+            <a href="faq.html" class="rounded-lg px-3 py-2 text-sm font-medium text-white/90 hover:text-white">FAQ</a>
           </div>
 
-          <div class="mt-7 flex flex-col gap-3 sm:flex-row sm:items-center">
-            <a href="signup.html" class="inline-flex min-h-[52px] items-center justify-center rounded-md bg-accent px-7 py-4 text-base font-semibold text-white hover:bg-accent-hi">
-              Build my website
+          <div class="hidden items-center gap-4 md:flex">
+            <a href="login.html" class="text-sm font-medium text-white/90 hover:text-white">Log in</a>
+            <a href="signup.html" class="liquid-glass rounded-full px-5 py-2 text-sm font-medium text-white">Build my website</a>
+          </div>
+
+          <button type="button" data-hero-burger aria-expanded="false" aria-label="Open menu"
+                  class="relative h-6 w-6 text-white md:hidden">
+            <svg data-hero-icon="menu" class="absolute inset-0 h-6 w-6 transition-all duration-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" aria-hidden="true"><path d="M4.5 9.5h15M4.5 15h9"/></svg>
+            <svg data-hero-icon="close" class="absolute inset-0 h-6 w-6 -rotate-90 scale-75 opacity-0 transition-all duration-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+          </button>
+        </div>
+
+        <!-- Mobile menu -->
+        <div data-hero-menu style="transition-timing-function:cubic-bezier(0.16,1,0.3,1)"
+             class="duration-400 pointer-events-none absolute left-5 right-5 top-full z-20 origin-top -translate-y-4 opacity-0 transition-all md:hidden">
+          <div class="rounded-2xl bg-[#101215]/95 p-6 backdrop-blur-xl">
+
+            <div class="mb-4">
+              <a href="#pricing" class="block py-1 text-base font-medium text-white">Websites</a>
+              <div class="mt-1 pl-4">
+                <a href="#pricing" class="flex items-baseline justify-between gap-4 py-1.5 text-sm text-white/70">Custom Website <span class="text-white/50">€79.99</span></a>
+                <a href="#pricing" class="flex items-baseline justify-between gap-4 py-1.5 text-sm text-white/70">Professional Website <span class="text-white/50">€249.99</span></a>
+              </div>
+            </div>
+
+            <div class="mb-4">
+              <a href="#services" class="block py-1 text-base font-medium text-white">Monthly</a>
+              <div class="mt-1 pl-4">
+                <a href="#services" class="flex items-baseline justify-between gap-4 py-1.5 text-sm text-white/70">Online Booking <span class="text-white/50">€29.99 / mo</span></a>
+                <a href="#services" class="flex items-baseline justify-between gap-4 py-1.5 text-sm text-white/70">Website Maintenance <span class="text-white/50">€19.99 / mo</span></a>
+                <a href="#services" class="flex items-baseline justify-between gap-4 py-1.5 text-sm text-white/70">Review Management <span class="text-white/50">€29.99 / mo</span></a>
+                <a href="#services" class="flex items-baseline justify-between gap-4 py-1.5 text-sm text-white/70">Digital Menu <span class="text-white/50">€19.99 / mo</span></a>
+              </div>
+            </div>
+
+            <div class="mb-4">
+              <a href="#extras" class="block py-1 text-base font-medium text-white">Extras</a>
+              <div class="mt-1 pl-4">
+                <a href="#extras" class="flex items-baseline justify-between gap-4 py-1.5 text-sm text-white/70">Logo Design <span class="text-white/50">€49.99</span></a>
+                <a href="#extras" class="flex items-baseline justify-between gap-4 py-1.5 text-sm text-white/70">Brand Kit <span class="text-white/50">€79.99</span></a>
+                <a href="#services" class="flex items-baseline justify-between gap-4 py-1.5 text-sm text-white/70">Local SEO <span class="text-white/50">€199.99</span></a>
+              </div>
+            </div>
+
+            <div>
+              <a href="faq.html" class="block py-1 text-base font-medium text-white">FAQ</a>
+              <a href="contact.html" class="block py-1 text-base font-medium text-white">Contact</a>
+            </div>
+
+            <div class="mt-6 flex flex-col gap-3 border-t border-white/10 pt-6">
+              <a href="login.html" class="text-sm font-medium text-white/90">Log in</a>
+              <a href="signup.html" class="liquid-glass w-full rounded-full px-5 py-2.5 text-center text-sm font-medium text-white">Build my website</a>
+            </div>
+          </div>
+        </div>
+      </nav>
+
+      <!-- Hero copy -->
+      <div class="flex flex-1 items-start justify-center px-5 pt-16 sm:px-6 sm:pt-20 md:pt-24">
+        <div class="max-w-3xl text-center">
+          <h1 class="text-3xl leading-[1.05] tracking-[-0.02em] text-white sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl">
+            You run the<br>
+            business. <span class="text-white/60">We build</span><br>
+            <span class="text-white/60">the website.</span>
+          </h1>
+
+          <p class="mx-auto mt-6 max-w-md text-sm leading-relaxed text-white/80 sm:mt-8 sm:text-base md:text-lg">
+            One page, built around what your customers actually need. €79.99 or €249.99, both paid
+            once — a quarter today, the rest when you have seen it.
+          </p>
+
+          <div class="mt-6 flex flex-wrap items-center justify-center gap-3 sm:mt-8 sm:gap-4">
+            <a href="signup.html" class="rounded-full bg-accent px-5 py-2.5 text-sm font-semibold text-white hover:bg-accent-hi sm:px-6 sm:py-3">
+              Build my website — €79.99
             </a>
-            <a href="#industries" class="inline-flex min-h-[52px] items-center px-1 text-base font-medium text-ink-mid underline decoration-line-firm decoration-2 underline-offset-[6px] hover:text-ink hover:decoration-accent">
-              See what we <html lang="en">
-              <head>
-                <meta charset="UTF-8">
-                <meta name="viewport" content="width=device-width, initial-scale=1.0">
-                <title>Document</title>
-              </head>
-              <body>
-                
-              </body>
-              </html>
+            <a href="#industries" class="liquid-glass rounded-full px-5 py-2.5 text-sm font-semibold text-white hover:bg-white/10 sm:px-6 sm:py-3">
+              See what we build
             </a>
           </div>
         </div>
       </div>
-
-      <p class="mt-14 max-w-prose border-t border-line pt-6 text-[0.9375rem] leading-relaxed text-ink-mid lg:mt-16">
-        Two prices, €79.99 or €249.99, both paid once. Everything else is optional, and any monthly
-        service can be stopped whenever you like.
-      </p>
     </div>
   </section>
 
 
-  <!-- 3 — THE REEL
+  <!-- 3 — PRICING -->
+  <section id="pricing" class="scroll-mt-16 border-b border-line bg-surface">
+    <div class="mx-auto max-w-shell px-6 py-16 md:px-10 md:py-24">
+      <p class="eyebrow text-ink-soft">Websites</p>
+      <h2 class="h-section sec-title mt-4 max-w-2xl">Two ways to get one.</h2>
+      <p class="mt-5 max-w-prose text-[0.9375rem] leading-relaxed text-ink-mid">
+        Both paid once. Hosting, the padlock and the domain come with either. Neither includes a monthly
+        service — you pick those separately, or not at all.
+      </p>
+
+      <div class="mt-12 grid grid-cols-1 gap-8 lg:grid-cols-12 lg:gap-10">
+
+        <!-- The smaller option gets the smaller column. The hierarchy is the layout. -->
+        <div class="lg:col-span-5">
+          <div class="price-card">
+            <div class="price-card-head">
+              <h3 class="h-section text-lg">Custom Website</h3>
+            </div>
+            <p class="price-card-figure">
+              <span class="h-display text-[2.5rem] leading-none text-ink">€79.99</span>
+              <span class="tag tag-once">One-time</span>
+            </p>
+            <p class="price-card-note">
+              One page, built around the handful of things your customers actually need.
+            </p>
+            <ul class="price-card-list">
+              <li><span class="arrow">&rarr;</span> You pick at least three of the ten features below.</li>
+              <li><span class="arrow">&rarr;</span> Picking ten costs the same as picking three.</li>
+              <li><span class="arrow">&rarr;</span> Hosting, padlock and domain included.</li>
+            </ul>
+            <div class="price-card-foot">
+              <a href="signup.html" class="inline-flex min-h-[52px] w-full items-center justify-center rounded-md border border-line-firm px-6 py-3.5 text-[0.9375rem] font-semibold text-ink hover:border-accent hover:text-accent">
+                Start with €79.99
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="lg:col-span-7">
+          <div class="price-card price-card--lead">
+            <div class="price-card-head">
+              <h3 class="h-section text-xl">Professional Website</h3>
+              <span class="price-badge">Everything included</span>
+            </div>
+            <p class="price-card-figure">
+              <span class="h-display text-[3.25rem] leading-none text-ink">€249.99</span>
+              <span class="tag tag-once">One-time</span>
+            </p>
+            <p class="price-card-note">
+              The complete build. All ten features are in it already, so there is nothing to choose and
+              nothing to add later because you picked wrong at the start.
+            </p>
+            <ul class="price-card-list sm:grid-cols-2 sm:gap-x-8">
+              <li><span class="arrow">&rarr;</span> All ten features built in.</li>
+              <li><span class="arrow">&rarr;</span> Hosting, padlock and domain included.</li>
+              <li><span class="arrow">&rarr;</span> Still no monthly service attached.</li>
+              <li><span class="arrow">&rarr;</span> Same 25% now, 75% on approval.</li>
+            </ul>
+            <div class="price-card-foot">
+              <a href="signup.html" class="inline-flex min-h-[52px] w-full items-center justify-center rounded-md bg-accent px-6 py-3.5 text-[0.9375rem] font-semibold text-white hover:bg-accent-hi">
+                Build my website — €249.99
+              </a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- The ten website features -->
+      <div class="mt-12 border-t border-line pt-8">
+        <div class="flex flex-wrap items-baseline gap-x-4 gap-y-1">
+          <p class="text-sm font-semibold text-ink">The ten features</p>
+          <span class="ml-auto text-[0.8125rem] text-ink-soft">part of the build, never monthly</span>
+        </div>
+        <div class="mt-5 grid grid-cols-1 gap-x-10 gap-y-3 sm:grid-cols-2 xl:grid-cols-3">
+          <p class="text-[0.875rem] leading-snug text-ink"><span class="arrow">&rarr;</span> Contact form</p>
+          <p class="text-[0.875rem] leading-snug text-ink"><span class="arrow">&rarr;</span> Google Maps</p>
+          <p class="text-[0.875rem] leading-snug text-ink"><span class="arrow">&rarr;</span> WhatsApp button</p>
+          <p class="text-[0.875rem] leading-snug text-ink"><span class="arrow">&rarr;</span> Photo gallery</p>
+          <p class="text-[0.875rem] leading-snug text-ink"><span class="arrow">&rarr;</span> Business information</p>
+          <p class="text-[0.875rem] leading-snug text-ink"><span class="arrow">&rarr;</span> Services section</p>
+          <p class="text-[0.875rem] leading-snug text-ink"><span class="arrow">&rarr;</span> Testimonials</p>
+          <p class="text-[0.875rem] leading-snug text-ink"><span class="arrow">&rarr;</span> Opening hours</p>
+          <p class="text-[0.875rem] leading-snug text-ink"><span class="arrow">&rarr;</span> Social links</p>
+          <p class="text-[0.875rem] leading-snug text-ink"><span class="arrow">&rarr;</span> Call button</p>
+        </div>
+      </div>
+
+      <div class="mt-10 flex flex-wrap items-center gap-x-6 gap-y-4 border-t border-line pt-8">
+        <a href="signup.html" class="inline-flex items-center justify-center rounded-md bg-accent px-7 py-4 text-base font-semibold text-white hover:bg-accent-hi">
+          Create an account to build your package
+        </a>
+        <p class="max-w-prose text-[0.8125rem] leading-relaxed text-ink-soft">
+          You choose your website, features and services inside your dashboard, see the full total, and
+          pay 25% to start. Nothing is charged before you get there.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4 — THE REEL
        Five real films, one sticky stage, one scroll. The panels are
        stacked and handed over to one another as the page moves — see
        assets/reel.js. A phone is served a portrait encode of each film
@@ -290,7 +536,7 @@
     </div>
   </section>
 
-  <!-- 4 — WHAT WE OFFER -->
+  <!-- 5 — WHAT WE OFFER -->
   <section class="border-b border-line">
     <div class="mx-auto max-w-shell px-6 py-16 md:px-10 md:py-20">
       <div class="grid grid-cols-1 gap-10 lg:grid-cols-12 lg:gap-14">
@@ -339,94 +585,6 @@
           </div>
         </div>
 
-      </div>
-    </div>
-  </section>
-
-  <!-- 5 — PRICING -->
-  <section id="pricing" class="scroll-mt-16 border-b border-line bg-surface">
-    <div class="mx-auto max-w-shell px-6 py-16 md:px-10 md:py-24">
-      <p class="eyebrow text-ink-soft">Websites</p>
-      <h2 class="h-section sec-title mt-4 max-w-2xl">Two ways to get one.</h2>
-      <p class="mt-5 max-w-prose text-[0.9375rem] leading-relaxed text-ink-mid">
-        Both paid once. Hosting, the padlock and the domain come with either. Neither includes a monthly
-        service — you pick those separately, or not at all.
-      </p>
-
-      <div class="mt-12 grid grid-cols-1 gap-8 lg:grid-cols-12 lg:gap-10">
-
-        <!-- The smaller option gets the smaller column. The hierarchy is the layout. -->
-        <div class="lg:col-span-5">
-          <div class="h-full border-t border-line-firm bg-paper px-6 py-7 md:px-7">
-            <h3 class="h-section text-lg">Custom Website</h3>
-            <p class="mt-4 flex items-baseline gap-2.5">
-              <span class="h-display text-4xl text-ink">€79.99</span>
-              <span class="tag tag-once">One-time</span>
-            </p>
-            <p class="mt-5 border-t border-line pt-5 text-[0.9375rem] leading-relaxed text-ink-mid">
-              One page, built around the handful of things your customers actually need.
-            </p>
-            <ul class="mt-4 space-y-2 text-[0.875rem] leading-relaxed text-ink-mid">
-              <li><span class="arrow">&rarr;</span> You pick at least three of the ten features below.</li>
-              <li><span class="arrow">&rarr;</span> Picking ten costs the same as picking three.</li>
-              <li><span class="arrow">&rarr;</span> Hosting, padlock and domain included.</li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="lg:col-span-7">
-          <div class="h-full border-t-2 border-accent bg-paper px-6 py-7 md:px-9 md:py-9">
-            <div class="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-2">
-              <h3 class="h-section text-xl">Professional Website</h3>
-              <span class="eyebrow text-accent">Everything included</span>
-            </div>
-            <p class="mt-4 flex items-baseline gap-2.5">
-              <span class="h-display text-5xl text-ink">€249.99</span>
-              <span class="tag tag-once">One-time</span>
-            </p>
-            <p class="mt-5 border-t border-line pt-5 text-[0.9375rem] leading-relaxed text-ink-mid">
-              The complete build. All ten features are in it already, so there is nothing to choose and
-              nothing to add later because you picked wrong at the start.
-            </p>
-            <ul class="mt-4 grid grid-cols-1 gap-x-8 gap-y-2 text-[0.875rem] leading-relaxed text-ink-mid sm:grid-cols-2">
-              <li><span class="arrow">&rarr;</span> All ten features built in.</li>
-              <li><span class="arrow">&rarr;</span> Hosting, padlock and domain included.</li>
-              <li><span class="arrow">&rarr;</span> Still no monthly service attached.</li>
-              <li><span class="arrow">&rarr;</span> Same 25% now, 75% on approval.</li>
-            </ul>
-          </div>
-        </div>
-
-      </div>
-
-      <!-- The ten website features -->
-      <div class="mt-12 border-t border-line pt-8">
-        <div class="flex flex-wrap items-baseline gap-x-4 gap-y-1">
-          <p class="text-sm font-semibold text-ink">The ten features</p>
-          <span class="ml-auto text-[0.8125rem] text-ink-soft">part of the build, never monthly</span>
-        </div>
-        <div class="mt-5 grid grid-cols-1 gap-x-10 gap-y-3 sm:grid-cols-2 xl:grid-cols-3">
-          <p class="text-[0.875rem] leading-snug text-ink"><span class="arrow">&rarr;</span> Contact form</p>
-          <p class="text-[0.875rem] leading-snug text-ink"><span class="arrow">&rarr;</span> Google Maps</p>
-          <p class="text-[0.875rem] leading-snug text-ink"><span class="arrow">&rarr;</span> WhatsApp button</p>
-          <p class="text-[0.875rem] leading-snug text-ink"><span class="arrow">&rarr;</span> Photo gallery</p>
-          <p class="text-[0.875rem] leading-snug text-ink"><span class="arrow">&rarr;</span> Business information</p>
-          <p class="text-[0.875rem] leading-snug text-ink"><span class="arrow">&rarr;</span> Services section</p>
-          <p class="text-[0.875rem] leading-snug text-ink"><span class="arrow">&rarr;</span> Testimonials</p>
-          <p class="text-[0.875rem] leading-snug text-ink"><span class="arrow">&rarr;</span> Opening hours</p>
-          <p class="text-[0.875rem] leading-snug text-ink"><span class="arrow">&rarr;</span> Social links</p>
-          <p class="text-[0.875rem] leading-snug text-ink"><span class="arrow">&rarr;</span> Call button</p>
-        </div>
-      </div>
-
-      <div class="mt-10 flex flex-wrap items-center gap-x-6 gap-y-4 border-t border-line pt-8">
-        <a href="signup.html" class="inline-flex items-center justify-center rounded-md bg-accent px-7 py-4 text-base font-semibold text-white hover:bg-accent-hi">
-          Create an account to build your package
-        </a>
-        <p class="max-w-prose text-[0.8125rem] leading-relaxed text-ink-soft">
-          You choose your website, features and services inside your dashboard, see the full total, and
-          pay 25% to start. Nothing is charged before you get there.
-        </p>
       </div>
     </div>
   </section>
@@ -774,6 +932,7 @@
 <script src="assets/vendor/ScrollTrigger.min.js" defer></script>
 <script src="assets/reel.js" defer></script>
 <script src="assets/backdrop.js" defer></script>
+<script src="assets/hero.js" defer></script>
 <script src="assets/mobile.js"></script>
 <script src="assets/theme.js"></script>
 <script src="assets/footer.js"></script>

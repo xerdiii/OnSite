@@ -277,7 +277,7 @@ body.m-locked { overflow: hidden; }
 
 /* Section rhythm: compact, never cramped */
 @media (max-width: 767px) {
-  main section > div:not(.reel-stage) { padding-top: 3rem; padding-bottom: 3rem; }
+  main section:not(.fp-hero) > div:not(.reel-stage) { padding-top: 3rem; padding-bottom: 3rem; }
   main section .mt-14 { margin-top: 2.25rem; }
   main section .mt-12 { margin-top: 2rem; }
   main section .mt-16 { margin-top: 2.5rem; }
