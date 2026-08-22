@@ -46,17 +46,35 @@ window.__entryFallback=setTimeout(function(){
     <div class="card" id="card">
       <div class="card-in" id="cardIn" data-flow>
 
-        <div data-step="details" id="stepDetails">
-          <h1 id="h1">Create your account</h1>
-          <p id="sub"><b>One page</b>, built around what you actually do.</p>
+        <a class="card-back" href="index.html" aria-label="Go back">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg>
+        </a>
 
-          <div class="pair">
-            <div class="field field--box"><input id="first" type="text" autocomplete="given-name" aria-label="First name" placeholder="First name"></div>
-            <div class="field field--box"><input id="last" type="text" autocomplete="family-name" aria-label="Last name" placeholder="Last name"></div>
-          </div>
+        <div data-step="details" id="stepDetails">
+          <h1 id="h1" class="h1-ruled">Create your account</h1>
+
           <div class="field field--box"><input id="business" type="text" autocomplete="organization" aria-label="Business name" placeholder="Business name"></div>
           <div class="field field--box" id="email"><input type="email" autocomplete="email" aria-label="Email address" placeholder="Eg. jane@janeys-hair.co.uk"></div>
-          <div class="field field--box"><input id="phone" type="tel" autocomplete="tel" aria-label="Phone number" placeholder="Phone number"></div>
+
+          <div class="pair pair--phone">
+            <div class="field field--box field--cc" id="ccField">
+              <button type="button" class="cc-btn" id="ccBtn" aria-haspopup="listbox" aria-expanded="false" aria-label="Country dialling code">
+                <span class="cc-flag" id="ccFlag" aria-hidden="true">🇽🇰</span>
+                <span class="cc-dial" id="ccDial">+383</span>
+                <svg class="cc-caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9.5l6 6 6-6"/></svg>
+              </button>
+            </div>
+            <div class="field field--box"><input id="phone" type="tel" autocomplete="tel" aria-label="Phone number" placeholder="Phone number"></div>
+            <div class="cc-pop" id="ccPop" hidden>
+              <div class="cc-search">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M16.5 16.5L21 21"/></svg>
+                <input id="ccSearch" type="text" autocomplete="off" spellcheck="false" placeholder="Search country" aria-label="Search country">
+              </div>
+              <ul class="cc-list" id="ccList" role="listbox" aria-label="Countries"></ul>
+              <p class="cc-empty" id="ccEmpty" hidden>No country matches that.</p>
+            </div>
+          </div>
+
           <div class="pair">
             <div class="field field--box" id="pw"><input type="password" autocomplete="new-password" aria-label="Password" placeholder="Password"></div>
             <div class="field field--box"><input id="confirm" type="password" autocomplete="new-password" aria-label="Confirm password" placeholder="Confirm"></div>
@@ -175,6 +193,7 @@ window.__entryFallback=setTimeout(function(){
   });
 })();
 </script>
+<script src="assets/country.js"></script>
 <script src="assets/auth.js" defer></script>
 <script src="assets/cookies.js"></script>
 </body>

@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Onsite — A professional website for your business, from €79.99</title>
-<meta name="description" content="We build one-page websites for small businesses. €79.99 with the features you pick, or €249.99 with all ten built in. Both paid once — a quarter to start, the rest when you have seen it.">
+<meta name="description" content="We build one-page websites for small businesses. €79.99 with the features you pick, €249.99 with all ten built in, or €900 with the extras too. Paid once — a quarter to start, the rest when you have seen it.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400&family=Instrument+Serif&family=Inter:wght@400;500;600;700&family=Outfit:wght@200..800&display=swap" rel="stylesheet">
@@ -84,6 +84,10 @@
   @media (min-width:1280px){ .step-n { font-size:2.5rem; } }
 
   /* Price rows — used for the monthly services and every extra */
+  /* Business Extras — the list is one column on the left; the right is held
+     empty on purpose, and still holds its space on a phone. */
+  .extras-slot { min-height:280px; }
+  @media (min-width:1024px){ .extras-slot { position:sticky; top:6rem; min-height:560px; } }
   .rate { display:flex; align-items:baseline; justify-content:space-between; gap:1.25rem; }
   .rate dt { font-weight:600; color:rgb(var(--c-ink)); font-size:0.9375rem; }
   .rate dd { font-size:0.9375rem; font-weight:600; white-space:nowrap; color:rgb(var(--c-ink)); }
@@ -119,8 +123,7 @@
     <i class="fp-nav-dot" aria-hidden="true"></i>Onsite
   </a>
 
-  <button type="button" class="fp-nav-btn" data-menu-open aria-expanded="false" aria-controls="siteMenu">
-    <span class="fp-nav-btn-label">Menu</span>
+  <button type="button" class="fp-nav-btn fp-nav-btn--icon" data-menu-open aria-expanded="false" aria-controls="siteMenu" aria-label="Open menu">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" aria-hidden="true"><path d="M4.5 9.5h15M4.5 15h9"/></svg>
   </button>
 </header>
@@ -190,7 +193,7 @@
         </h1>
 
         <p class="fp-hero-p">
-          One page, built around what your customers came for.<br>&euro;79.99 or &euro;249.99, paid once.
+          One page, built around what your customers came for.<br>&euro;79.99, &euro;249.99 or &euro;900 &mdash; paid once.
         </p>
 
         <div class="fp-hero-cta">
@@ -204,34 +207,37 @@
 
   <div data-rails-region>
 
+  <!-- Held open for a phone. Empty on purpose; nothing shows on desktop. -->
+  <div class="m-slot m-slot--short" data-slot="after-hero" aria-hidden="true"></div>
+
   <!-- 3 — PRICING -->
   <section id="pricing" class="scroll-mt-16 border-b border-line bg-surface">
     <div class="mx-auto max-w-shell px-6 py-16 md:px-10 md:py-24">
       <p class="eyebrow text-ink-soft">Websites</p>
-      <h2 class="h-section sec-title mt-4 max-w-2xl">Two ways to get one.</h2>
+      <h2 class="h-section sec-title mt-4 max-w-2xl">Three ways to get one.</h2>
       <p class="mt-5 max-w-prose text-[0.9375rem] leading-relaxed text-ink-mid">
-        Both paid once. Hosting, the padlock and the domain come with either.
+        All paid once. The domain, the hosting and the padlock come with every one of them.
       </p>
 
-      <div class="mt-12 grid grid-cols-1 gap-8 lg:grid-cols-12 lg:gap-10">
+      <div class="mt-12 grid grid-cols-1 gap-8 lg:grid-cols-12 lg:gap-8">
 
         <!-- The smaller option gets the smaller column. The hierarchy is the layout. -->
-        <div class="lg:col-span-5">
+        <div class="lg:col-span-3">
           <div class="price-card">
             <div class="price-card-head">
               <h3 class="h-section text-lg">Custom Website</h3>
             </div>
             <p class="price-card-figure">
-              <span class="h-display text-[2.5rem] leading-none text-ink">€79.99</span>
+              <span class="h-display text-[2.25rem] leading-none text-ink">€79.99</span>
               <span class="tag tag-once">One-time</span>
             </p>
             <p class="price-card-note">
               One page, built around the handful of things your customers actually need.
             </p>
             <ul class="price-card-list">
-              <li><span class="arrow">&rarr;</span> Comes with the features you pick from the ten below.</li>
-              <li><span class="arrow">&rarr;</span> Picking ten costs the same as picking three.</li>
-              <li><span class="arrow">&rarr;</span> Hosting, padlock and domain included.</li>
+              <li><span class="arrow">&rarr;</span> The features you pick from the ten below.</li>
+              <li><span class="arrow">&rarr;</span> Ten costs the same as three.</li>
+              <li><span class="arrow">&rarr;</span> Domain, hosting and padlock &mdash; first year included.</li>
             </ul>
             <div class="price-card-foot">
               <a href="signup.html" class="inline-flex min-h-[52px] w-full items-center justify-center rounded-md border border-line-firm px-6 py-3.5 text-[0.9375rem] font-semibold text-ink hover:border-accent hover:text-accent">
@@ -241,34 +247,81 @@
           </div>
         </div>
 
-        <div class="lg:col-span-7">
-          <div class="price-card price-card--lead">
+        <div class="lg:col-span-4">
+          <div class="price-card">
             <div class="price-card-head">
-              <h3 class="h-section text-xl">Professional Website</h3>
-              <span class="price-badge">Everything included</span>
+              <h3 class="h-section text-lg">Professional Website</h3>
+              <span class="price-badge">All ten features</span>
             </div>
             <p class="price-card-figure">
-              <span class="h-display text-[3.25rem] leading-none text-ink">€249.99</span>
+              <span class="h-display text-[2.5rem] leading-none text-ink">€249.99</span>
               <span class="tag tag-once">One-time</span>
             </p>
             <p class="price-card-note">
               The complete build. All ten features are in it already, so there is nothing to choose and
               nothing to add later because you picked wrong at the start.
             </p>
-            <ul class="price-card-list sm:grid-cols-2 sm:gap-x-8">
+            <ul class="price-card-list">
               <li><span class="arrow">&rarr;</span> All ten features built in.</li>
-              <li><span class="arrow">&rarr;</span> Local SEO included.</li>
               <li><span class="arrow">&rarr;</span> Digital menu with a QR code.</li>
-              <li><span class="arrow">&rarr;</span> Hosting, padlock and domain included.</li>
+              <li><span class="arrow">&rarr;</span> Domain, hosting and padlock &mdash; first year included.</li>
             </ul>
             <div class="price-card-foot">
-              <a href="signup.html" class="inline-flex min-h-[52px] w-full items-center justify-center rounded-md bg-accent px-6 py-3.5 text-[0.9375rem] font-semibold text-white hover:bg-accent-hi">
+              <a href="signup.html" class="inline-flex min-h-[52px] w-full items-center justify-center rounded-md border border-line-firm px-6 py-3.5 text-[0.9375rem] font-semibold text-ink hover:border-accent hover:text-accent">
                 Build my website — €249.99
               </a>
             </div>
           </div>
         </div>
 
+        <div class="lg:col-span-5">
+          <div class="price-card price-card--lead">
+            <div class="price-card-head">
+              <h3 class="h-section text-xl">Complete Package</h3>
+              <span class="price-badge">Everything, extras included</span>
+            </div>
+            <p class="price-card-figure">
+              <span class="h-display text-[3.25rem] leading-none text-ink">€900</span>
+              <span class="tag tag-once">One-time</span>
+            </p>
+            <p class="price-card-note">
+              The website and the work around it. The ten features, the things a website does not cover,
+              and three years of hosting — bought once, with nothing left to add.
+            </p>
+            <ul class="price-card-list">
+              <li><span class="arrow">&rarr;</span> All ten features built in.</li>
+              <li><span class="arrow">&rarr;</span> Website maintenance included.</li>
+              <li><span class="arrow">&rarr;</span> Digital menu with a QR code.</li>
+              <li><span class="arrow">&rarr;</span> Local SEO included.</li>
+              <li><span class="arrow">&rarr;</span> Logo design, if you want one.</li>
+              <li><span class="arrow">&rarr;</span> Menu design.</li>
+              <li><span class="arrow">&rarr;</span> WhatsApp Business set up.</li>
+              <li><span class="arrow">&rarr;</span> Business email set up.</li>
+              <li><span class="arrow">&rarr;</span> Domain, hosting and padlock &mdash; first three years included.</li>
+            </ul>
+            <div class="price-card-foot">
+              <a href="signup.html" class="inline-flex min-h-[52px] w-full items-center justify-center rounded-md bg-accent px-6 py-3.5 text-[0.9375rem] font-semibold text-white hover:bg-accent-hi">
+                Build my website — €900
+              </a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Domain and hosting. Said once, here, so no card has to repeat it. -->
+      <div class="mt-8 border border-line bg-surface px-6 py-5">
+        <div class="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-1">
+          <h3 class="h-section text-base">Domain &amp; hosting</h3>
+          <p class="text-[0.9375rem] font-semibold text-ink">€10 <span class="font-normal text-ink-soft">/ month, once the included years run out</span></p>
+        </div>
+        <p class="mt-3 max-w-prose text-[0.875rem] leading-relaxed text-ink-mid">
+          Custom and Professional include the first year. Complete includes the first three. After that it
+          is €10 a month for the domain, the hosting and the padlock — nothing else changes.
+        </p>
+        <p class="mt-2 max-w-prose text-[0.875rem] leading-relaxed text-ink-mid">
+          You choose the domain name yourself. Type the one you want before you order and we register it for you.
+        </p>
       </div>
 
       <!-- The ten website features -->
@@ -312,7 +365,7 @@
         <div class="lg:col-span-5">
           <h2 class="h-section sec-title">There are three things here. You need one of them.</h2>
           <p class="mt-5 max-w-prose text-[0.9375rem] leading-relaxed text-ink-mid">
-            The website is the bit you have to buy. The other two are optional.
+            The website is the bit you buy. The other two are optional.
           </p>
         </div>
 
@@ -323,9 +376,8 @@
               <p class="text-[0.9375rem] font-semibold text-ink">€79.99 or €249.99 <span class="font-normal text-ink-soft">· once</span></p>
             </div>
             <p class="mt-3 max-w-prose text-[0.9375rem] leading-relaxed text-ink-mid">
-              Built around what you actually do, written the way you would say it out loud, and made to
-              work on a phone — because that is where people will find you. Hosting, the security padlock
-              and the domain are part of it. You do not buy those separately and you do not renew them.
+              Built around what you actually do, and made to work on a phone — because that is where
+              people find you. Domain, hosting and padlock included.
             </p>
             <a href="#pricing" class="mt-4 inline-block text-sm font-semibold text-accent underline decoration-line-firm decoration-2 underline-offset-4 hover:decoration-accent">Compare the two</a>
           </div>
@@ -334,8 +386,7 @@
             <div>
               <h3 class="h-section text-base">Monthly services</h3>
               <p class="mt-2 text-[0.875rem] leading-relaxed text-ink-mid">
-                Booking, maintenance, review management, a digital menu. None of them are bundled into
-                the website price and none of them start until you are live.
+                Booking, maintenance, review management, a digital menu. None of them start until you are live.
               </p>
               <p class="mt-2.5 text-[0.8125rem] text-ink-soft">€19.99 – €29.99 a month each.</p>
               <a href="#services" class="mt-2.5 inline-block text-sm font-semibold text-accent underline decoration-line-firm decoration-2 underline-offset-4 hover:decoration-accent">What each one does</a>
@@ -343,8 +394,7 @@
             <div>
               <h3 class="h-section text-base">Business extras</h3>
               <p class="mt-2 text-[0.875rem] leading-relaxed text-ink-mid">
-                A logo, business cards, a flyer, the menu, an email address on your own domain. Twelve
-                one-off jobs for the things a website does not cover.
+                A logo, cards, a flyer, the menu, an email on your own domain. Twelve one-off jobs.
               </p>
               <p class="mt-2.5 text-[0.8125rem] text-ink-soft">From €19.99, paid once.</p>
               <a href="#extras" class="mt-2.5 inline-block text-sm font-semibold text-accent underline decoration-line-firm decoration-2 underline-offset-4 hover:decoration-accent">See all twelve</a>
@@ -356,34 +406,14 @@
     </div>
   </section>
 
-  <!-- 6 — WHY A QUARTER + THE FOUR STEPS -->
+  <!-- 6 — THE FOUR STEPS -->
   <section id="how" class="scroll-mt-16 border-b border-line bg-accent-tint">
     <div class="mx-auto max-w-shell px-6 py-16 md:px-10 md:py-24">
 
-      <div class="grid grid-cols-1 gap-10 lg:grid-cols-12 lg:gap-14">
-        <div class="lg:col-span-7">
-          <h2 class="h-section sec-title max-w-xl">Why a quarter, and not the whole thing?</h2>
-          <p class="mt-6 max-w-prose text-[1.0625rem] leading-relaxed text-ink-mid">
-            Because you have never met us. Handing a stranger four hundred euro for a website that does
-            not exist yet is a bad deal, and we would rather not ask for it.
-          </p>
-          <p class="mt-4 max-w-prose text-[1.0625rem] leading-relaxed text-ink-mid">
-            So you pay a quarter, we build the thing, and you look at it on your own phone before the
-            rest is due. If it is wrong, we fix it. If you walk away, you have spent a quarter, not the lot.
-          </p>
-        </div>
-        <aside class="lg:col-span-4 lg:col-start-9 lg:pt-16">
-          <p class="border-l-2 border-accent pl-5 text-[0.9375rem] leading-relaxed text-ink-mid">
-            The other half of it: we get paid for finishing, not for starting. That tends to focus the mind.
-          </p>
-          <p class="mt-6 pl-5 text-[0.9375rem] leading-relaxed text-ink-soft">
-            No discovery call, no strategy workshop, no onboarding sequence. You send us your opening
-            hours and some photos. We send you back a website.
-          </p>
-        </aside>
-      </div>
+      <p class="eyebrow text-ink-soft">How it works</p>
+      <h2 class="h-section sec-title mt-4 max-w-xl">Four steps, start to live.</h2>
 
-      <ol class="mt-16 grid grid-cols-1 border-t border-line-firm sm:grid-cols-2 xl:grid-cols-4">
+      <ol class="mt-12 grid grid-cols-1 border-t border-line-firm sm:grid-cols-2 xl:grid-cols-4">
 
         <li class="border-b border-line py-7 sm:pr-8 xl:border-b-0 xl:border-r xl:pr-7">
           <p class="step-n">01</p>
@@ -426,6 +456,8 @@
       </p>
     </div>
   </section>
+
+  <div class="m-slot" data-slot="after-steps" aria-hidden="true"></div>
 
   <!-- 7 — MONTHLY SERVICES -->
   <section id="services" class="scroll-mt-16 border-b border-line">
@@ -489,88 +521,93 @@
   <section id="extras" class="scroll-mt-16 border-b border-line bg-surface">
     <div class="mx-auto max-w-shell px-6 py-16 md:px-10 md:py-24">
 
-      <div class="grid grid-cols-1 gap-8 lg:grid-cols-12">
+      <div class="grid grid-cols-1 gap-10 lg:grid-cols-12 lg:gap-14">
+
+        <!-- The whole list runs down this one column, top to bottom. -->
         <div class="lg:col-span-6">
           <p class="eyebrow text-ink-soft">Business extras</p>
           <h2 class="h-section sec-title mt-4">The things a website does not cover.</h2>
-        </div>
-        <div class="lg:col-span-5 lg:col-start-8 lg:pt-9">
-          <p class="max-w-prose text-[0.9375rem] leading-relaxed text-ink-mid">
+          <p class="mt-5 max-w-prose text-[0.9375rem] leading-relaxed text-ink-mid">
             Twelve one-off jobs, each paid once. Added alongside a build, never sold alone.
           </p>
+
+          <div class="mt-12 grid grid-cols-1 gap-y-12">
+
+            <div>
+              <p class="eyebrow border-b border-line-firm pb-3 text-ink-soft">Brand &amp; design</p>
+              <dl>
+                <div class="border-b border-line py-4">
+                  <div class="rate"><dt>Logo Design</dt><dd>€49.99</dd></div>
+                </div>
+                <div class="border-b border-line py-4">
+                  <div class="rate"><dt>Brand Kit</dt><dd>€79.99</dd></div>
+                </div>
+                <div class="border-b border-line py-4">
+                  <div class="rate"><dt>Business Card Design</dt><dd>€29.99</dd></div>
+                </div>
+                <div class="border-b border-line py-4">
+                  <div class="rate"><dt>Flyer / Poster Design</dt><dd>€39.99</dd></div>
+                </div>
+                <div class="border-b border-line py-4">
+                  <div class="rate"><dt>Menu Design</dt><dd>€39.99</dd></div>
+                </div>
+              </dl>
+            </div>
+
+            <div>
+              <p class="eyebrow border-b border-line-firm pb-3 text-ink-soft">Social &amp; marketing</p>
+              <dl>
+                <div class="border-b border-line py-4">
+                  <div class="rate"><dt>Social Media Starter Pack</dt><dd>€59.99</dd></div>
+                </div>
+                <div class="border-b border-line py-4">
+                  <div class="rate"><dt>Promo Video / Short Ad</dt><dd>from €49.99</dd></div>
+                </div>
+                <div class="border-b border-line py-4">
+                  <div class="rate"><dt>AI Business Photos</dt><dd>from €30.00</dd></div>
+                </div>
+                <div class="border-b border-line py-4">
+                  <div class="rate"><dt>Google Review QR Card</dt><dd>€19.99</dd></div>
+                </div>
+              </dl>
+            </div>
+
+            <div>
+              <p class="eyebrow border-b border-line-firm pb-3 text-ink-soft">Business setup</p>
+              <dl>
+                <div class="border-b border-line py-4">
+                  <div class="rate"><dt>Business Email Setup</dt><dd>€29.99</dd></div>
+                </div>
+                <div class="border-b border-line py-4">
+                  <div class="rate"><dt>WhatsApp Business Setup</dt><dd>€39.99</dd></div>
+                </div>
+              </dl>
+            </div>
+
+            <div>
+              <p class="eyebrow border-b border-line-firm pb-3 text-ink-soft">Business documents</p>
+              <dl>
+                <div class="border-b border-line py-4">
+                  <div class="rate"><dt>Business Document Templates</dt><dd>€29.99</dd></div>
+                </div>
+              </dl>
+
+              <p class="eyebrow mt-10 border-b border-line pb-3 text-ink-soft">In development</p>
+              <dl>
+                <div class="border-b border-line py-4">
+                  <div class="rate"><dt class="text-ink-mid">AI Receptionist</dt><dd><span class="tag tag-soon">Coming soon</span></dd></div>
+                </div>
+                <div class="border-b border-line py-4">
+                  <div class="rate"><dt class="text-ink-mid">Social Media Content</dt><dd><span class="tag tag-soon">Coming soon</span></dd></div>
+                </div>
+              </dl>
+            </div>
+          </div>
         </div>
-      </div>
 
-      <div class="mt-14 grid grid-cols-1 gap-x-14 gap-y-12 lg:grid-cols-2">
-
-        <div>
-          <p class="eyebrow border-b border-line-firm pb-3 text-ink-soft">Brand &amp; design</p>
-          <dl>
-            <div class="border-b border-line py-4">
-              <div class="rate"><dt>Logo Design</dt><dd>€49.99</dd></div>
-            </div>
-            <div class="border-b border-line py-4">
-              <div class="rate"><dt>Brand Kit</dt><dd>€79.99</dd></div>
-            </div>
-            <div class="border-b border-line py-4">
-              <div class="rate"><dt>Business Card Design</dt><dd>€29.99</dd></div>
-            </div>
-            <div class="border-b border-line py-4">
-              <div class="rate"><dt>Flyer / Poster Design</dt><dd>€39.99</dd></div>
-            </div>
-            <div class="border-b border-line py-4">
-              <div class="rate"><dt>Menu Design</dt><dd>€39.99</dd></div>
-            </div>
-          </dl>
-        </div>
-
-        <div>
-          <p class="eyebrow border-b border-line-firm pb-3 text-ink-soft">Social &amp; marketing</p>
-          <dl>
-            <div class="border-b border-line py-4">
-              <div class="rate"><dt>Social Media Starter Pack</dt><dd>€59.99</dd></div>
-            </div>
-            <div class="border-b border-line py-4">
-              <div class="rate"><dt>Promo Video / Short Ad</dt><dd>from €49.99</dd></div>
-            </div>
-            <div class="border-b border-line py-4">
-              <div class="rate"><dt>AI Business Photos</dt><dd>from €30.00</dd></div>
-            </div>
-            <div class="border-b border-line py-4">
-              <div class="rate"><dt>Google Review QR Card</dt><dd>€19.99</dd></div>
-            </div>
-          </dl>
-        </div>
-
-        <div>
-          <p class="eyebrow border-b border-line-firm pb-3 text-ink-soft">Business setup</p>
-          <dl>
-            <div class="border-b border-line py-4">
-              <div class="rate"><dt>Business Email Setup</dt><dd>€29.99</dd></div>
-            </div>
-            <div class="border-b border-line py-4">
-              <div class="rate"><dt>WhatsApp Business Setup</dt><dd>€39.99</dd></div>
-            </div>
-          </dl>
-        </div>
-
-        <div>
-          <p class="eyebrow border-b border-line-firm pb-3 text-ink-soft">Business documents</p>
-          <dl>
-            <div class="border-b border-line py-4">
-              <div class="rate"><dt>Business Document Templates</dt><dd>€29.99</dd></div>
-            </div>
-          </dl>
-
-          <p class="eyebrow mt-10 border-b border-line pb-3 text-ink-soft">In development</p>
-          <dl>
-            <div class="border-b border-line py-4">
-              <div class="rate"><dt class="text-ink-mid">AI Receptionist</dt><dd><span class="tag tag-soon">Coming soon</span></dd></div>
-            </div>
-            <div class="border-b border-line py-4">
-              <div class="rate"><dt class="text-ink-mid">Social Media Content</dt><dd><span class="tag tag-soon">Coming soon</span></dd></div>
-            </div>
-          </dl>
+        <!-- Held open on purpose. Nothing goes here yet. -->
+        <div class="lg:col-span-5 lg:col-start-8" aria-hidden="true">
+          <div class="extras-slot"></div>
         </div>
 
       </div>
@@ -605,7 +642,7 @@
       <p class="eyebrow text-ink-soft">Straight answers</p>
       <h2 class="h-section sec-title mt-4 max-w-2xl">One-time, monthly, and what happens next.</h2>
       <p class="mt-5 max-w-prose text-[0.9375rem] leading-relaxed text-ink-mid">
-        The eight that come up most. The rest are answered in the
+        The ones that come up most. The rest are answered in the
         <a href="faq.html" class="font-semibold text-accent underline underline-offset-2 hover:text-accent-hi">full FAQ</a>.
       </p>
 
@@ -615,12 +652,16 @@
           <dd data-acc-body class="max-w-prose pb-6 text-[0.9375rem] leading-relaxed text-ink-mid">The custom website itself, built with the features you select — that is the base website price, paid one time. Choosing more than three features does not increase it.</dd>
         </div>
         <div data-acc-item class="border-b border-line">
-          <dt data-acc-head class="h-section text-base">What is the difference between €79.99 and €249.99?</dt>
-          <dd data-acc-body class="max-w-prose pb-6 text-[0.9375rem] leading-relaxed text-ink-mid">The €79.99 Custom Website is built around the features you choose, with three as the minimum. The €249.99 Professional Website is the complete build: every feature on this page is included as standard, so there is nothing to select. Both are paid one time, and both take the same optional add-ons.</dd>
+          <dt data-acc-head class="h-section text-base">What is the difference between the three?</dt>
+          <dd data-acc-body class="max-w-prose pb-6 text-[0.9375rem] leading-relaxed text-ink-mid">The €79.99 Custom Website is built around the features you choose, with three as the minimum. The €249.99 Professional Website has all ten features built in, so there is nothing to select. The €900 Complete Package is that same website plus the work around it — maintenance, Local SEO, the digital menu, a logo and menu design, WhatsApp Business and business email — and three years of hosting instead of one. All three are paid one time.</dd>
+        </div>
+        <div data-acc-item class="border-b border-line">
+          <dt data-acc-head class="h-section text-base">What happens to my domain and hosting?</dt>
+          <dd data-acc-body class="max-w-prose pb-6 text-[0.9375rem] leading-relaxed text-ink-mid">Your domain, the hosting and the security padlock are included — the first year with Custom and Professional, the first three years with Complete. After that it is €10 a month, and that is the only thing that changes. You pick the domain name yourself: type the one you want before you order and we register it in your name.</dd>
         </div>
         <div data-acc-item class="border-b border-line">
           <dt data-acc-head class="h-section text-base">Which services repeat every month?</dt>
-          <dd data-acc-body class="max-w-prose pb-6 text-[0.9375rem] leading-relaxed text-ink-mid">Online Booking (€29.99 / month), Website Maintenance (€19.99 / month), Review Management (€29.99 / month), and the Digital Menu monthly fee (€19.99 / month). Everything else on this page is paid once.</dd>
+          <dd data-acc-body class="max-w-prose pb-6 text-[0.9375rem] leading-relaxed text-ink-mid">Online Booking (€29.99 / month), Website Maintenance (€19.99 / month), Review Management (€29.99 / month), and the Digital Menu monthly fee (€19.99 / month) — plus the €10 a month for domain and hosting once your included years run out. Everything else on this page is paid once.</dd>
         </div>
         <div data-acc-item class="border-b border-line">
           <dt data-acc-head class="h-section text-base">Are Business Extras required?</dt>
@@ -645,6 +686,36 @@
       </dl>
     </div>
   </section>
+
+  <!-- 9b — WHY A QUARTER (after the questions, where it answers the last one) -->
+  <section class="border-b border-line bg-accent-tint">
+    <div class="mx-auto max-w-shell px-6 py-16 md:px-10 md:py-24">
+      <div class="grid grid-cols-1 gap-10 lg:grid-cols-12 lg:gap-14">
+        <div class="lg:col-span-7">
+          <h2 class="h-section sec-title max-w-xl">Why a quarter, and not the whole thing?</h2>
+          <p class="mt-6 max-w-prose text-[1.0625rem] leading-relaxed text-ink-mid">
+            Because you have never met us. Handing a stranger hundreds of euro for a website that does
+            not exist yet is a bad deal, and we would rather not ask for it.
+          </p>
+          <p class="mt-4 max-w-prose text-[1.0625rem] leading-relaxed text-ink-mid">
+            So you pay a quarter, we build the thing, and you look at it on your own phone before the
+            rest is due. If it is wrong, we fix it. If you walk away, you have spent a quarter, not the lot.
+          </p>
+        </div>
+        <aside class="lg:col-span-4 lg:col-start-9 lg:pt-16">
+          <p class="border-l-2 border-accent pl-5 text-[0.9375rem] leading-relaxed text-ink-mid">
+            The other half of it: we get paid for finishing, not for starting. That tends to focus the mind.
+          </p>
+          <p class="mt-6 pl-5 text-[0.9375rem] leading-relaxed text-ink-soft">
+            No discovery call, no strategy workshop, no onboarding sequence. You send us your opening
+            hours and some photos. We send you back a website.
+          </p>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <div class="m-slot" data-slot="before-closer" aria-hidden="true"></div>
 
   </div><!-- /rails region -->
 

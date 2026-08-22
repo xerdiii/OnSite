@@ -230,3 +230,135 @@
   });
   apply('all');
 })();
+
+/* ── Pull to refresh ─────────────────────────────────────────
+   Touch only, top of the page only. The puck follows the finger with
+   a square-root falloff so the pull gets heavier the further it goes,
+   the ring fills to the threshold, and release either springs back or
+   reloads. Anything with [data-no-ptr] on it, and the app shells, opt
+   out entirely — a drawer that scrolls is not a page you refresh. */
+(function () {
+  'use strict';
+
+  var doc = document;
+  if (doc.body.hasAttribute('data-app')) return;
+  if (!('ontouchstart' in window)) return;
+
+  var MAX = 96;        // furthest the puck travels
+  var TRIGGER = 68;    // pull past this and the release reloads
+  var CIRC = 56.5;     // 2πr for r = 9
+
+  var reduced = window.matchMedia &&
+                window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  var puck = doc.createElement('div');
+  puck.className = 'ptr';
+  puck.setAttribute('aria-hidden', 'true');
+  puck.innerHTML =
+    '<svg viewBox="0 0 24 24">' +
+      '<circle class="ptr-track" cx="12" cy="12" r="9"></circle>' +
+      '<circle class="ptr-arc" cx="12" cy="12" r="9"></circle>' +
+    '</svg>';
+  doc.body.appendChild(puck);
+
+  var arc = puck.querySelector('.ptr-arc');
+  var shift = doc.querySelector('main') || doc.body;
+
+  var startY = 0, dy = 0, pulling = false, armed = false, busy = false;
+
+  function move(px, ready) {
+    puck.style.transform =
+      'translate3d(0,' + (px - 46) + 'px,0) scale(' + (0.72 + Math.min(px / MAX, 1) * 0.28) + ')';
+    puck.style.opacity = Math.min(px / 34, 1);
+    if (!ready) arc.style.strokeDashoffset = CIRC * (1 - Math.min(px / TRIGGER, 1));
+    shift.style.transform = px > 0 ? 'translate3d(0,' + (px * 0.34) + 'px,0)' : '';
+  }
+
+  function reset(animated) {
+    puck.classList.toggle('is-settling', animated !== false);
+    shift.style.transition = animated === false ? '' : 'transform 380ms cubic-bezier(0.22,1,0.36,1)';
+    puck.classList.remove('is-ready', 'is-loading');
+    puck.style.transform = '';
+    puck.style.opacity = '';
+    arc.style.strokeDashoffset = '';
+    shift.style.transform = '';
+    window.setTimeout(function () {
+      puck.classList.remove('is-live', 'is-settling');
+      shift.style.transition = '';
+      shift.classList.remove('ptr-shift');
+    }, animated === false ? 0 : 400);
+  }
+
+  doc.addEventListener('touchstart', function (e) {
+    if (busy || e.touches.length !== 1) return;
+    if (window.scrollY > 0 || window.pageYOffset > 0) return;
+    if (doc.querySelector('.m-drawer.is-open, .site-menu.is-open')) return;
+    var t = e.target;
+    while (t && t !== doc.body) {
+      if (t.hasAttribute && t.hasAttribute('data-no-ptr')) return;
+      t = t.parentNode;
+    }
+    startY = e.touches[0].clientY;
+    dy = 0;
+    pulling = true;
+    armed = false;
+  }, { passive: true });
+
+  doc.addEventListener('touchmove', function (e) {
+    if (!pulling || busy) return;
+    var raw = e.touches[0].clientY - startY;
+
+    // Scrolled up, or the page moved under us — this was never a pull.
+    if (raw <= 0 || window.scrollY > 0) {
+      if (armed) { reset(true); }
+      pulling = false;
+      return;
+    }
+    // A few pixels of slack, so a slow scroll does not arm the gesture.
+    if (!armed) {
+      if (raw < 12) return;
+      armed = true;
+      puck.classList.add('is-live', 'is-settling');
+      shift.classList.add('ptr-shift');
+      // One frame with the transition on lets it fade in rather than jump.
+      window.setTimeout(function () { puck.classList.remove('is-settling'); }, 20);
+    }
+
+    e.preventDefault();
+
+    // Square-root falloff: the first centimetre is free, the last is not.
+    dy = Math.min(MAX, Math.sqrt(raw - 12) * 9.2);
+    var ready = dy >= TRIGGER;
+    if (ready !== puck.classList.contains('is-ready')) {
+      puck.classList.toggle('is-ready', ready);
+      if (ready && navigator.vibrate) { try { navigator.vibrate(8); } catch (err) {} }
+    }
+    move(dy, ready);
+  }, { passive: false });
+
+  function release() {
+    if (!pulling) return;
+    pulling = false;
+    if (!armed) return;
+
+    if (dy >= TRIGGER) {
+      busy = true;
+      puck.classList.add('is-settling', 'is-loading');
+      puck.style.transform = 'translate3d(0,' + (TRIGGER - 46) + 'px,0) scale(1)';
+      puck.style.opacity = '1';
+      shift.style.transition = 'transform 380ms cubic-bezier(0.22,1,0.36,1)';
+      shift.style.transform = 'translate3d(0,' + (TRIGGER * 0.34) + 'px,0)';
+      // Long enough that the spin reads as an action, short enough that it
+      // never feels like the page is stuck.
+      window.setTimeout(function () { window.location.reload(); }, reduced ? 120 : 520);
+    } else {
+      reset(true);
+    }
+  }
+
+  doc.addEventListener('touchend', release, { passive: true });
+  doc.addEventListener('touchcancel', function () {
+    if (armed && !busy) reset(true);
+    pulling = false;
+  }, { passive: true });
+})();

@@ -556,3 +556,130 @@ body.auth .card-in--flow { justify-content:flex-start; }
   .entry-pending #gBtn,
   .entry-pending #bottom { opacity:1; transform:none; clip-path:none; will-change:auto; }
 }
+
+
+/* ═══════════════════════════════════════════════════════════════
+   Signup — back control, ruled heading, country dialling picker
+   ═══════════════════════════════════════════════════════════════ */
+
+/* The card's top-left corner was empty on every size. It is now the way
+   back, which is the one control a phone had no way of offering. */
+.card-back {
+  position:absolute; z-index:6; left:18px; top:18px;
+  width:40px; height:40px; border-radius:999px;
+  display:flex; align-items:center; justify-content:center;
+  color:#2c3343; background:rgba(255,255,255,.72);
+  border:1px solid rgba(0,0,0,.09);
+  -webkit-backdrop-filter:blur(8px); backdrop-filter:blur(8px);
+  text-decoration:none; cursor:pointer;
+  transition:background-color .18s ease, border-color .18s ease, transform .18s ease;
+}
+.card-back svg { width:19px; height:19px; }
+.card-back:hover { background:#2c3343; border-color:#2c3343; color:#fff; }
+.card-back:active { transform:scale(.94); }
+.card-back:focus-visible { outline:2px solid var(--btn1); outline-offset:3px; }
+
+/* "Create your account", and a line under it. */
+.h1-ruled { padding-bottom:18px; border-bottom:1px solid rgba(0,0,0,.10); margin-bottom:24px !important; }
+
+/* ── Country + number ──────────────────────────────────────────
+   A quarter for the dialling code, the rest for the number. The two
+   never stack: a country box on its own line reads like a question
+   nobody asked. */
+.pair--phone { align-items:stretch; }
+.card-in--flow .pair--phone > .field--cc { flex:0 0 26%; min-width:94px; }
+.card-in--flow .pair--phone > .field--cc + .field { flex:1 1 auto; }
+
+.field--cc { position:relative; overflow:visible; padding:0 !important; }
+
+.cc-btn {
+  width:100%; height:100%; display:flex; align-items:center; gap:6px;
+  padding:0 10px 0 12px; margin:0; border:0; border-radius:inherit;
+  background:transparent; color:var(--ink); font:inherit; cursor:pointer;
+  -webkit-tap-highlight-color:transparent;
+}
+.cc-flag { font-size:17px; line-height:1; flex:none; }
+.cc-dial { font-size:16px; font-weight:600; letter-spacing:0; font-variant-numeric:tabular-nums; }
+.cc-caret { width:14px; height:14px; margin-left:auto; flex:none; opacity:.5; transition:transform .18s ease; }
+.field--cc.is-open { border-color:var(--btn1); }
+.field--cc.is-open .cc-caret { transform:rotate(180deg); }
+.cc-btn:focus-visible { outline:2px solid var(--btn1); outline-offset:2px; }
+
+.cc-pop {
+  position:absolute; z-index:60; left:0; top:calc(100% + 8px);
+  width:min(322px,78vw); box-sizing:border-box;
+  background:#fff; border:1px solid rgba(0,0,0,.10); border-radius:14px;
+  box-shadow:0 18px 44px rgba(16,22,30,.18), 0 2px 6px rgba(16,22,30,.06);
+  overflow:hidden;
+}
+.cc-pop[hidden] { display:none; }
+
+.cc-search { display:flex; align-items:center; gap:9px; padding:0 13px; height:46px; border-bottom:1px solid rgba(0,0,0,.08); }
+.cc-search svg { width:16px; height:16px; flex:none; color:#8a9099; }
+.cc-search input {
+  flex:1 1 auto; min-width:0; height:100%; border:0; outline:none; background:transparent;
+  font-family:inherit; font-size:15px; color:var(--ink);
+}
+.cc-search input::placeholder { color:#9aa0a8; }
+
+.cc-list { list-style:none; margin:0; padding:6px; max-height:258px; overflow-y:auto; overscroll-behavior:contain; }
+.cc-list li {
+  display:flex; align-items:center; gap:10px;
+  padding:9px 10px; border-radius:9px; cursor:pointer;
+  font-size:14.5px; line-height:1.2; color:var(--ink);
+}
+.cc-list li.is-active, .cc-list li:hover { background:#f1f3f6; }
+.cc-list li[aria-selected="true"] { font-weight:600; }
+.cc-o-flag { font-size:16px; flex:none; }
+.cc-o-name { flex:1 1 auto; min-width:0; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+.cc-o-dial { flex:none; color:#6b7280; font-variant-numeric:tabular-nums; }
+.cc-empty { margin:0; padding:16px 14px 18px; font-size:14px; color:#6b7280; }
+
+/* Phones: the pair rule above stacks at 520px. The dialling code is the
+   one pair that must not. */
+@media (max-width:520px) {
+  .card-in--flow .pair--phone { flex-direction:row; gap:10px; margin:0 0 13px; }
+  .card-in--flow .pair--phone > * { flex:0 0 auto; }
+  .card-in--flow .pair--phone > .field { margin:0; }
+  .card-in--flow .pair--phone > .field--cc { flex:0 0 27%; min-width:90px; }
+  .card-in--flow .pair--phone > .field--cc + .field { flex:1 1 auto; }
+}
+@media (max-width:699px) {
+  body.auth .card-back { left:14px; top:14px; }
+  body.auth .field--cc { padding:0 !important; }
+}
+@media (max-width:370px) {
+  .cc-caret { display:none; }
+  .cc-flag { font-size:15px; }
+  .cc-dial { font-size:15px; }
+  .card-in--flow .pair--phone > .field--cc { min-width:80px; }
+}
+
+/* The flow and phone rules set every .field to position:static at two
+   class levels, which is more specific than .field--cc on its own. The
+   dropdown needs this box as its containing block, so it says it again
+   with a class to spare. */
+.card-in--flow .field.field--cc,
+body.auth .field.field--cc { position:relative; }
+
+/* #email carries its own height from the reference frame, which left it
+   3px taller than every other box once the form went to flow. */
+.card-in--flow #email { height:var(--tp-em-h,58px); }
+
+/* The popover hangs off the pair, not off the quarter-width box, so it
+   can run the full width of the form on a phone without leaving the card. */
+.card-in--flow .pair.pair--phone { position:relative; }
+.cc-pop { width:min(322px,100%); }
+
+@media (max-width:699px) {
+  /* [data-step] keeps the 62px flow padding it needs on a tablet. On a
+     375px screen that left 199px of usable width inside a card that is
+     already padded — which is what made this form unusable on a phone. */
+  body.auth .card-in--flow [data-step] { padding:0; }
+
+  /* The back control is the one child that must stay out of the flow. */
+  body.auth .card-in > .card-back {
+    position:absolute; left:14px; top:14px; width:40px; height:40px;
+  }
+  body.auth .card-in { padding-top:66px; }
+}

@@ -87,9 +87,9 @@ body.m-locked { overflow: hidden; }
 @media (max-width: 640px) {
   /* Sections breathe on a laptop, crowd a phone. Tighten deliberately. */
   main section > div.mx-auto { padding-left: 1.25rem; padding-right: 1.25rem; }
-  main section > div.py-16 { padding-top: 3rem; padding-bottom: 3rem; }
-  main section > div.pt-16 { padding-top: 3rem; }
-  main section > div.pb-16 { padding-bottom: 3rem; }
+  main section > div.py-16 { padding-top: 4rem; padding-bottom: 4rem; }
+  main section > div.pt-16 { padding-top: 4rem; }
+  main section > div.pb-16 { padding-bottom: 4rem; }
 
   .hero-title { font-size: clamp(2rem, 8.5vw, 2.4rem); line-height: 1.08; }
   .sec-title  { font-size: clamp(1.5rem, 6.4vw, 1.85rem); }
@@ -277,10 +277,10 @@ body.m-locked { overflow: hidden; }
 
 /* Section rhythm: compact, never cramped */
 @media (max-width: 767px) {
-  main section:not(.fp-hero) > div:not(.reel-stage) { padding-top: 3rem; padding-bottom: 3rem; }
-  main section .mt-14 { margin-top: 2.25rem; }
-  main section .mt-12 { margin-top: 2rem; }
-  main section .mt-16 { margin-top: 2.5rem; }
+  main section:not(.fp-hero) > div:not(.reel-stage) { padding-top: 4.25rem; padding-bottom: 4.25rem; }
+  main section .mt-14 { margin-top: 2.75rem; }
+  main section .mt-12 { margin-top: 2.5rem; }
+  main section .mt-16 { margin-top: 3rem; }
 }
 
 /* Small iPhones: pull the hero in tighter so both CTAs stay on screen one */
@@ -292,4 +292,57 @@ body.m-locked { overflow: hidden; }
   .hero a[href="signup.html"],
   .hero a[href="#industries"] { min-height: 48px; font-size: 0.9375rem; }
   .hero .mt-7.flex.flex-col { margin-top: 1rem; }
+}
+
+
+/* ── Reserved media slots ───────────────────────────────────
+   Empty room on a phone, held open between sections for video or
+   stickers. Nothing renders in them yet and nothing renders on a
+   desktop, where the side rails already carry the moving picture. */
+.m-slot { display: none; }
+@media (max-width: 767px) {
+  .m-slot { display: block; height: 15rem; }
+  .m-slot--tall { height: 20rem; }
+  .m-slot--short { height: 10rem; }
+}
+
+/* ── Pull to refresh ────────────────────────────────────────
+   A puck that follows the drag with resistance, a ring that fills as
+   you approach the threshold, and a spin while the page reloads. The
+   page itself travels a fraction of the distance so the gesture has
+   something to push against. */
+.ptr {
+  position: fixed; z-index: 95; left: 50%; top: 0;
+  width: 40px; height: 40px; margin-left: -20px;
+  display: none; align-items: center; justify-content: center;
+  border-radius: 999px;
+  background: rgb(var(--c-paper));
+  border: 1px solid rgb(var(--c-line));
+  box-shadow: 0 6px 20px rgb(var(--c-shadow) / 0.16);
+  color: rgb(var(--c-accent));
+  opacity: 0;
+  transform: translate3d(0, -46px, 0) scale(0.72);
+  pointer-events: none;
+}
+.ptr.is-live { display: flex; }
+.ptr.is-settling { transition: transform 380ms cubic-bezier(0.22, 1, 0.36, 1), opacity 240ms ease; }
+.ptr svg { width: 22px; height: 22px; display: block; transform: rotate(-90deg); }
+.ptr circle { fill: none; stroke-width: 2.4; stroke-linecap: round; }
+.ptr .ptr-track { stroke: rgb(var(--c-line-firm)); }
+.ptr .ptr-arc { stroke: currentColor; stroke-dasharray: 56.5; stroke-dashoffset: 56.5; }
+
+/* Threshold reached — the ring closes and the puck gives a small nudge. */
+.ptr.is-ready { color: rgb(var(--c-accent)); }
+.ptr.is-ready .ptr-arc { stroke-dashoffset: 0 !important; }
+
+/* Released — hand over to a spinner and stop tracking the finger. */
+.ptr.is-loading svg { animation: ptr-spin 720ms linear infinite; }
+.ptr.is-loading .ptr-arc { stroke-dashoffset: 40 !important; }
+@keyframes ptr-spin { to { transform: rotate(270deg); } }
+
+.ptr-shift { will-change: transform; }
+
+@media (prefers-reduced-motion: reduce) {
+  .ptr.is-loading svg { animation: none; }
+  .ptr.is-settling { transition: opacity 160ms ease; }
 }
