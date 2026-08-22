@@ -7,7 +7,7 @@
 <meta name="description" content="We build one-page websites for small businesses. €79.99 with the features you pick, or €249.99 with all ten built in. Both paid once — a quarter to start, the rest when you have seen it.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400&family=Instrument+Serif&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400&family=Instrument+Serif&family=Inter:wght@400;500;600;700&family=Outfit:wght@200..800&display=swap" rel="stylesheet">
 <script>/* theme before paint, no flash */(function(){try{var t=localStorage.getItem('onsite.theme');if(t)document.documentElement.setAttribute('data-theme',t);}catch(e){}})();</script>
 <style>
   html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
@@ -135,21 +135,12 @@
 <a href="#main" class="skip absolute left-4 top-4 z-30 bg-ink px-4 py-2 text-sm text-white">Skip to content</a>
 
 <!-- 1 — NAVIGATION -->
-<header class="fp-header sticky top-0 z-20 border-b border-line bg-paper">
-  <nav class="mx-auto flex max-w-shell items-center justify-between px-6 py-4 md:px-10">
-    <a href="#main" class="flex items-center gap-2.5">
-      <span class="block h-3.5 w-3.5 rounded-sm bg-accent" aria-hidden="true"></span>
-      <span class="h-section text-lg tracking-tight">Onsite</span>
-    </a>
-    <div class="flex items-center gap-5 md:gap-7">
-      <a href="#pricing" class="text-sm font-medium text-ink-mid hover:text-ink">Pricing</a>
-      <a href="#extras" class="hidden text-sm font-medium text-ink-mid hover:text-ink lg:inline">Extras</a>
-      <a href="faq.html" class="hidden text-sm font-medium text-ink-mid hover:text-ink sm:inline">FAQ</a>
-      <a href="contact.html" class="hidden text-sm font-medium text-ink-mid hover:text-ink sm:inline">Contact</a>
-      <a href="login.html" class="text-sm font-medium text-ink-mid hover:text-ink">Log in</a>
-      <a href="signup.html" class="rounded-md bg-accent px-4 py-2.5 text-sm font-semibold text-white hover:bg-accent-hi">Get started</a>
-    </div>
-  </nav>
+<header class="fp-nav" data-nav>
+  <a class="fp-nav-brand" href="index.html">
+    <i class="fp-nav-dot" aria-hidden="true"></i>Onsite
+  </a>
+  <a class="fp-nav-mid" href="#services">Monthly</a>
+  <a class="fp-nav-login" href="login.html">Log in</a>
 </header>
 
 <main id="main">
@@ -158,148 +149,41 @@
        Full-bleed footage, glass navigation. The page header below is
        held back while this is on screen (assets/hero.js) so there is
        only ever one nav in view. -->
-  <section class="fp-hero relative h-screen w-full overflow-hidden" data-hero>
+  <section class="fp-hero relative h-screen w-full overflow-hidden" data-hero data-backdrop>
 
-    <video class="absolute inset-0 h-full w-full object-cover"
-           src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260703_053131_1ec3dd1c-d627-44fb-ab20-6e1fce41b0d5.mp4"
-           autoplay loop muted playsinline aria-hidden="true"></video>
-    <div class="absolute inset-0 bg-black/10"></div>
+    <div class="fp-hero-media">
+      <video muted loop playsinline preload="none"
+             data-poster="assets/media/hero-poster.jpg"
+             data-poster-tall="assets/media/hero-poster-tall.jpg"
+             data-src="assets/media/hero.mp4"
+             data-src-tall="assets/media/hero-tall.mp4"
+             aria-hidden="true"></video>
+    </div>
+    <div class="fp-hero-wash" aria-hidden="true"></div>
 
     <div class="relative z-10 flex h-full flex-col">
 
-      <!-- Navigation -->
-      <nav class="relative w-full px-5 py-4 sm:px-6 sm:py-5 md:px-12 lg:px-16" aria-label="Main">
-        <div class="flex items-center justify-between">
 
-          <a href="index.html" class="flex items-center gap-2.5">
-            <span class="block h-3.5 w-3.5 rounded-sm bg-accent" aria-hidden="true"></span>
-            <span class="text-lg font-medium tracking-tight text-white sm:text-xl">Onsite</span>
-          </a>
-
-          <div class="hidden items-center gap-1 md:flex">
-
-            <div class="relative" data-hero-item>
-              <button type="button" data-hero-trigger aria-expanded="false"
-                      class="flex items-center gap-1 rounded-lg px-3 py-2 text-sm font-medium text-white/90 hover:text-white">
-                Websites
-                <svg data-hero-chev class="h-3.5 w-3.5 transition-transform duration-200" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
-              </button>
-              <div data-hero-dd hidden class="liquid-glass animate-dropdown !absolute left-0 top-full min-w-[230px] rounded-xl px-2 py-3 shadow-xl">
-                <a href="#pricing" class="flex items-baseline justify-between gap-6 rounded-lg px-3 py-2 text-sm text-white/80 hover:bg-white/5 hover:text-white">Custom Website <span class="text-white/50">€79.99</span></a>
-                <a href="#pricing" class="flex items-baseline justify-between gap-6 rounded-lg px-3 py-2 text-sm text-white/80 hover:bg-white/5 hover:text-white">Professional Website <span class="text-white/50">€249.99</span></a>
-                <a href="#pricing" class="flex items-baseline justify-between gap-6 rounded-lg px-3 py-2 text-sm text-white/80 hover:bg-white/5 hover:text-white">The ten features <span class="text-white/50">included</span></a>
-              </div>
-            </div>
-
-            <div class="relative" data-hero-item>
-              <button type="button" data-hero-trigger aria-expanded="false"
-                      class="flex items-center gap-1 rounded-lg px-3 py-2 text-sm font-medium text-white/90 hover:text-white">
-                Monthly
-                <svg data-hero-chev class="h-3.5 w-3.5 transition-transform duration-200" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
-              </button>
-              <div data-hero-dd hidden class="liquid-glass animate-dropdown !absolute left-0 top-full min-w-[240px] rounded-xl px-2 py-3 shadow-xl">
-                <a href="#services" class="flex items-baseline justify-between gap-6 rounded-lg px-3 py-2 text-sm text-white/80 hover:bg-white/5 hover:text-white">Online Booking <span class="text-white/50">€29.99 / mo</span></a>
-                <a href="#services" class="flex items-baseline justify-between gap-6 rounded-lg px-3 py-2 text-sm text-white/80 hover:bg-white/5 hover:text-white">Website Maintenance <span class="text-white/50">€19.99 / mo</span></a>
-                <a href="#services" class="flex items-baseline justify-between gap-6 rounded-lg px-3 py-2 text-sm text-white/80 hover:bg-white/5 hover:text-white">Review Management <span class="text-white/50">€29.99 / mo</span></a>
-                <a href="#services" class="flex items-baseline justify-between gap-6 rounded-lg px-3 py-2 text-sm text-white/80 hover:bg-white/5 hover:text-white">Digital Menu <span class="text-white/50">€19.99 / mo</span></a>
-              </div>
-            </div>
-
-            <div class="relative" data-hero-item>
-              <button type="button" data-hero-trigger aria-expanded="false"
-                      class="flex items-center gap-1 rounded-lg px-3 py-2 text-sm font-medium text-white/90 hover:text-white">
-                Extras
-                <svg data-hero-chev class="h-3.5 w-3.5 transition-transform duration-200" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
-              </button>
-              <div data-hero-dd hidden class="liquid-glass animate-dropdown !absolute left-0 top-full min-w-[235px] rounded-xl px-2 py-3 shadow-xl">
-                <a href="#extras" class="flex items-baseline justify-between gap-6 rounded-lg px-3 py-2 text-sm text-white/80 hover:bg-white/5 hover:text-white">Logo Design <span class="text-white/50">€49.99</span></a>
-                <a href="#extras" class="flex items-baseline justify-between gap-6 rounded-lg px-3 py-2 text-sm text-white/80 hover:bg-white/5 hover:text-white">Brand Kit <span class="text-white/50">€79.99</span></a>
-                <a href="#services" class="flex items-baseline justify-between gap-6 rounded-lg px-3 py-2 text-sm text-white/80 hover:bg-white/5 hover:text-white">Local SEO <span class="text-white/50">€199.99</span></a>
-              </div>
-            </div>
-
-            <a href="faq.html" class="rounded-lg px-3 py-2 text-sm font-medium text-white/90 hover:text-white">FAQ</a>
-          </div>
-
-          <div class="hidden items-center gap-4 md:flex">
-            <a href="login.html" class="text-sm font-medium text-white/90 hover:text-white">Log in</a>
-            <a href="signup.html" class="liquid-glass rounded-full px-5 py-2 text-sm font-medium text-white">Build my website</a>
-          </div>
-
-          <button type="button" data-hero-burger aria-expanded="false" aria-label="Open menu"
-                  class="relative h-6 w-6 text-white md:hidden">
-            <svg data-hero-icon="menu" class="absolute inset-0 h-6 w-6 transition-all duration-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" aria-hidden="true"><path d="M4.5 9.5h15M4.5 15h9"/></svg>
-            <svg data-hero-icon="close" class="absolute inset-0 h-6 w-6 -rotate-90 scale-75 opacity-0 transition-all duration-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
-          </button>
-        </div>
-
-        <!-- Mobile menu -->
-        <div data-hero-menu style="transition-timing-function:cubic-bezier(0.16,1,0.3,1)"
-             class="duration-400 pointer-events-none absolute left-5 right-5 top-full z-20 origin-top -translate-y-4 opacity-0 transition-all md:hidden">
-          <div class="rounded-2xl bg-[#101215]/95 p-6 backdrop-blur-xl">
-
-            <div class="mb-4">
-              <a href="#pricing" class="block py-1 text-base font-medium text-white">Websites</a>
-              <div class="mt-1 pl-4">
-                <a href="#pricing" class="flex items-baseline justify-between gap-4 py-1.5 text-sm text-white/70">Custom Website <span class="text-white/50">€79.99</span></a>
-                <a href="#pricing" class="flex items-baseline justify-between gap-4 py-1.5 text-sm text-white/70">Professional Website <span class="text-white/50">€249.99</span></a>
-              </div>
-            </div>
-
-            <div class="mb-4">
-              <a href="#services" class="block py-1 text-base font-medium text-white">Monthly</a>
-              <div class="mt-1 pl-4">
-                <a href="#services" class="flex items-baseline justify-between gap-4 py-1.5 text-sm text-white/70">Online Booking <span class="text-white/50">€29.99 / mo</span></a>
-                <a href="#services" class="flex items-baseline justify-between gap-4 py-1.5 text-sm text-white/70">Website Maintenance <span class="text-white/50">€19.99 / mo</span></a>
-                <a href="#services" class="flex items-baseline justify-between gap-4 py-1.5 text-sm text-white/70">Review Management <span class="text-white/50">€29.99 / mo</span></a>
-                <a href="#services" class="flex items-baseline justify-between gap-4 py-1.5 text-sm text-white/70">Digital Menu <span class="text-white/50">€19.99 / mo</span></a>
-              </div>
-            </div>
-
-            <div class="mb-4">
-              <a href="#extras" class="block py-1 text-base font-medium text-white">Extras</a>
-              <div class="mt-1 pl-4">
-                <a href="#extras" class="flex items-baseline justify-between gap-4 py-1.5 text-sm text-white/70">Logo Design <span class="text-white/50">€49.99</span></a>
-                <a href="#extras" class="flex items-baseline justify-between gap-4 py-1.5 text-sm text-white/70">Brand Kit <span class="text-white/50">€79.99</span></a>
-                <a href="#services" class="flex items-baseline justify-between gap-4 py-1.5 text-sm text-white/70">Local SEO <span class="text-white/50">€199.99</span></a>
-              </div>
-            </div>
-
-            <div>
-              <a href="faq.html" class="block py-1 text-base font-medium text-white">FAQ</a>
-              <a href="contact.html" class="block py-1 text-base font-medium text-white">Contact</a>
-            </div>
-
-            <div class="mt-6 flex flex-col gap-3 border-t border-white/10 pt-6">
-              <a href="login.html" class="text-sm font-medium text-white/90">Log in</a>
-              <a href="signup.html" class="liquid-glass w-full rounded-full px-5 py-2.5 text-center text-sm font-medium text-white">Build my website</a>
-            </div>
-          </div>
-        </div>
-      </nav>
 
       <!-- Hero copy -->
-      <div class="flex flex-1 items-start justify-center px-5 pt-16 sm:px-6 sm:pt-20 md:pt-24">
-        <div class="max-w-3xl text-center">
-          <h1 class="text-3xl leading-[1.05] tracking-[-0.02em] text-white sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl">
-            You run the<br>
-            business. <span class="text-white/60">We build</span><br>
-            <span class="text-white/60">the website.</span>
-          </h1>
+      <div class="fp-hero-copy">
+        <p class="fp-badge">
+          <svg viewBox="0 0 582 557" aria-hidden="true" focusable="false"><path fill="#fff" fill-rule="evenodd" d="M449 0 435 0 415 10 200 249 187 276 189 299 212 326 232 332 289 334 289 516 301 543 324 556 346 556 374 536 573 311 582 288 579 264 559 240 539 233 478 230 478 32 470 13ZM442 38 446 250 466 267 540 270 547 285 341 520 332 522 324 514 321 314 307 300 295 297 233 297 224 291 221 282ZM1 67 4 81 17 90 216 90 223 87 232 74 228 57 215 49 18 49 5 57ZM0 285 4 300 17 308 105 308 118 299 121 291 119 278 111 270 103 267 17 267 4 275ZM1 495 4 511 10 517 23 520 179 520 191 516 200 500 196 488 182 479 18 479 9 483Z"/></svg>
+          Built for local businesses
+        </p>
 
-          <p class="mx-auto mt-6 max-w-md text-sm leading-relaxed text-white/80 sm:mt-8 sm:text-base md:text-lg">
-            One page, built around what your customers actually need. €79.99 or €249.99, both paid
-            once — a quarter today, the rest when you have seen it.
-          </p>
+        <h1 class="fp-hero-h">
+          You run the business.<br><span>We build the website.</span>
+        </h1>
 
-          <div class="mt-6 flex flex-wrap items-center justify-center gap-3 sm:mt-8 sm:gap-4">
-            <a href="signup.html" class="rounded-full bg-accent px-5 py-2.5 text-sm font-semibold text-white hover:bg-accent-hi sm:px-6 sm:py-3">
-              Build my website — €79.99
-            </a>
-            <a href="#industries" class="liquid-glass rounded-full px-5 py-2.5 text-sm font-semibold text-white hover:bg-white/10 sm:px-6 sm:py-3">
-              See what we build
-            </a>
-          </div>
+        <p class="fp-hero-p">
+          One page, built around what your customers actually need. &euro;79.99 or &euro;249.99,
+          both paid once &mdash; a quarter today, the rest when you have seen it.
+        </p>
+
+        <div class="fp-hero-cta">
+          <a class="fp-btn fp-btn--solid" href="signup.html">Build my website &mdash; &euro;79.99</a>
+          <a class="fp-btn fp-btn--glass" href="#industries">See what we build</a>
         </div>
       </div>
     </div>

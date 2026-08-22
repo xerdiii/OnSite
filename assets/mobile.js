@@ -26,8 +26,12 @@
 
   // ── Drawer navigation ────────────────────────────────────────
   function buildNav() {
-    // App shells (dashboard, admin) have their own navigation — no public drawer.
-    if (doc.body.hasAttribute("data-app")) return;
+    // App shells (dashboard, admin) have their own navigation — no public
+    // drawer. Neither does a page carrying [data-nav]: that nav is three
+    // items wide by design and has nothing to fold away, so the burger
+    // would be a control that opens a menu duplicating what is already
+    // on screen.
+    if (doc.body.hasAttribute("data-app") || doc.querySelector('[data-nav]')) return;
     var header = doc.querySelector("header");
     if (!header || doc.getElementById('m-drawer')) return;
 

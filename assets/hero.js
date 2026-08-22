@@ -1,122 +1,54 @@
 /* ───────────────────────────────────────────────────────────────
-   Onsite — landing hero behaviour
-   Progressive enhancement. Without this file the hero still reads and
-   every link in it still works: the dropdowns simply stay closed and
-   the page header never hides.
+   Onsite — the navigation
+   There is one nav and it is always on screen. Over the hero it is glass
+   on dark footage; once the hero has gone past it takes the page's own
+   surface, which is what makes it follow light and dark mode without a
+   second palette.
+
+   The switch is an IntersectionObserver on a sentinel rather than a
+   scroll handler: no listener firing on every frame, and the browser
+   works out the crossing itself.
    ─────────────────────────────────────────────────────────────── */
 (function (global) {
   'use strict';
 
   var doc = global.document;
-  var hero = doc.querySelector('[data-hero]');
-  if (!hero) return;
 
-  var items = [].slice.call(hero.querySelectorAll('[data-hero-item]'));
-  var canHover = global.matchMedia && global.matchMedia('(hover: hover)').matches;
+  function init() {
+    var nav = doc.querySelector('[data-nav]');
+    if (!nav) return;
 
-  // ── Desktop dropdowns ────────────────────────────────────────
-  function close(item) {
-    var dd = item.querySelector('[data-hero-dd]');
-    var chev = item.querySelector('[data-hero-chev]');
-    if (dd) dd.hidden = true;
-    if (chev) chev.classList.remove('rotate-180');
-    var trigger = item.querySelector('[data-hero-trigger]');
-    if (trigger) trigger.setAttribute('aria-expanded', 'false');
-  }
+    var hero = doc.querySelector('[data-hero]');
 
-  function open(item) {
-    var dd = item.querySelector('[data-hero-dd]');
-    if (!dd) return;
-    items.forEach(function (other) { if (other !== item) close(other); });
-    dd.hidden = false;
-    var chev = item.querySelector('[data-hero-chev]');
-    if (chev) chev.classList.add('rotate-180');
-    var trigger = item.querySelector('[data-hero-trigger]');
-    if (trigger) trigger.setAttribute('aria-expanded', 'true');
-  }
+    /* No hero on this page — the nav is solid from the start. */
+    if (!hero) { nav.classList.add('is-solid'); return; }
 
-  items.forEach(function (item) {
-    var dd = item.querySelector('[data-hero-dd]');
-    var trigger = item.querySelector('[data-hero-trigger]');
-    if (!dd || !trigger) return;
+    function solid(on) { nav.classList.toggle('is-solid', on); }
 
-    if (canHover) {
-      item.addEventListener('mouseenter', function () { open(item); });
-      item.addEventListener('mouseleave', function () { close(item); });
+    if (!('IntersectionObserver' in global)) {
+      /* Without an observer, read the scroll position directly. Passive,
+         and cheap enough at this granularity. */
+      var check = function () { solid(global.scrollY > hero.offsetHeight - nav.offsetHeight); };
+      global.addEventListener('scroll', check, { passive: true });
+      check();
+      return;
     }
 
-    // Touch, and keyboard through the button.
-    trigger.addEventListener('click', function (e) {
-      e.preventDefault();
-      if (dd.hidden) open(item); else close(item);
-    });
-  });
+    /* A one-pixel sentinel sitting at the point where the hero's last
+       screenful passes under the bar. */
+    var mark = doc.createElement('div');
+    mark.setAttribute('aria-hidden', 'true');
+    mark.style.cssText = 'position:absolute;left:0;bottom:0;width:1px;height:1px;pointer-events:none';
+    if (getComputedStyle(hero).position === 'static') hero.style.position = 'relative';
+    hero.appendChild(mark);
 
-  doc.addEventListener('keydown', function (e) {
-    if (e.key === 'Escape') items.forEach(close);
-  });
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) { solid(!e.isIntersecting); });
+    }, { rootMargin: '-' + (nav.offsetHeight + 4) + 'px 0px 0px 0px' });
 
-  doc.addEventListener('click', function (e) {
-    items.forEach(function (item) { if (!item.contains(e.target)) close(item); });
-  });
-
-  // ── Mobile menu ──────────────────────────────────────────────
-  var burger = hero.querySelector('[data-hero-burger]');
-  var menu = hero.querySelector('[data-hero-menu]');
-  var iconMenu = hero.querySelector('[data-hero-icon="menu"]');
-  var iconClose = hero.querySelector('[data-hero-icon="close"]');
-  var SHUT = ['pointer-events-none', '-translate-y-4', 'opacity-0'];
-  var OPEN = ['pointer-events-auto', 'translate-y-0', 'opacity-100'];
-
-  function setMenu(isOpen) {
-    if (!menu) return;
-    SHUT.concat(OPEN).forEach(function (c) { menu.classList.remove(c); });
-    (isOpen ? OPEN : SHUT).forEach(function (c) { menu.classList.add(c); });
-    if (iconMenu) {
-      iconMenu.classList.toggle('rotate-90', isOpen);
-      iconMenu.classList.toggle('scale-75', isOpen);
-      iconMenu.classList.toggle('opacity-0', isOpen);
-    }
-    if (iconClose) {
-      iconClose.classList.toggle('-rotate-90', !isOpen);
-      iconClose.classList.toggle('scale-75', !isOpen);
-      iconClose.classList.toggle('opacity-0', !isOpen);
-    }
-    if (burger) {
-      burger.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
-      burger.setAttribute('aria-label', isOpen ? 'Close menu' : 'Open menu');
-    }
+    io.observe(mark);
   }
 
-  if (burger && menu) {
-    burger.addEventListener('click', function () {
-      setMenu(menu.classList.contains('opacity-0'));
-    });
-    menu.addEventListener('click', function (e) {
-      if (e.target.closest('a')) setMenu(false);
-    });
-  }
-
-  // ── The page header waits its turn ───────────────────────────
-  // The hero carries the navigation while it is on screen; the page
-  // header slides in once the footage has scrolled away.
-  var header = doc.querySelector('.fp-header');
-  var root = doc.documentElement;
-
-  if (header) {
-    var sync = function () {
-      // A sliver of hero left is still hero — the header waits until
-      // the footage is nearly gone rather than flickering in over it.
-      if (hero.getBoundingClientRect().bottom > 120) root.setAttribute('data-hero-visible', '');
-      else root.removeAttribute('data-hero-visible');
-    };
-
-    sync();
-    global.addEventListener('scroll', sync, { passive: true });
-    global.addEventListener('resize', sync);
-
-    // Transitions only after the first frame, or the header would slide
-    // away in front of the visitor on every load.
-    global.setTimeout(function () { root.setAttribute('data-hero-ready', ''); }, 60);
-  }
+  if (doc.readyState === 'loading') doc.addEventListener('DOMContentLoaded', init);
+  else init();
 })(window);
