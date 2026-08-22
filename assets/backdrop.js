@@ -25,10 +25,25 @@
 
     var calm = global.matchMedia && global.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-    function still() {
-      var tall = global.matchMedia(TALL).matches;
-      return (tall && video.getAttribute('data-poster-tall')) || video.getAttribute('data-poster');
+    /* Some backdrops ship a light-mode grade as well as a dark one. The
+       suffix is chosen here rather than in CSS because CSS cannot swap a
+       video source. */
+    function lightNow() {
+      if (!video.getAttribute('data-src-light')) return false;
+      var set = doc.documentElement.getAttribute('data-theme');
+      if (set) return set === 'light';
+      return !(global.matchMedia && global.matchMedia('(prefers-color-scheme: dark)').matches);
     }
+
+    function pick(base) {
+      var tall = global.matchMedia(TALL).matches;
+      var light = lightNow();
+      return video.getAttribute('data-' + base + (light ? '-light' : '') + (tall ? '-tall' : '')) ||
+             video.getAttribute('data-' + base + (tall ? '-tall' : '')) ||
+             video.getAttribute('data-' + base);
+    }
+
+    function still() { return pick('poster'); }
 
     // Reduced motion: the still, painted on the media layer. No video
     // element is ever given a source.
@@ -40,12 +55,13 @@
     }
 
     function load() {
-      var tall = global.matchMedia(TALL).matches;
-      var src = (tall && video.getAttribute('data-src-tall')) || video.getAttribute('data-src');
+      var src = pick('src');
       if (video.getAttribute('src') === src) return;
       var art = still();
       if (art) video.setAttribute('poster', art);
       video.setAttribute('src', src);
+      var rate = parseFloat(video.getAttribute('data-rate'));
+      if (rate > 0) video.playbackRate = rate;
     }
 
     function onScreen() {
@@ -87,6 +103,21 @@
       if (doc.hidden) video.pause();
       else if (video.getAttribute('src')) play();
     });
+
+    /* The theme can change after the source was chosen — the toggle sets
+       data-theme on <html>. Swap the grade when it does. */
+    if (video.getAttribute('data-src-light')) {
+      new MutationObserver(function () {
+        if (video.getAttribute('src') && onScreen()) play();
+      }).observe(doc.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
+
+      if (global.matchMedia) {
+        var mqDark = global.matchMedia('(prefers-color-scheme: dark)');
+        if (mqDark.addEventListener) mqDark.addEventListener('change', function () {
+          if (video.getAttribute('src') && onScreen()) play();
+        });
+      }
+    }
   }
 
   function init() {

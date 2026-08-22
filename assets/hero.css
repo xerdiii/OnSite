@@ -158,8 +158,9 @@ html[data-hero-visible] .fp-header {
 }
 .fp-nav-mid:hover { background: rgb(255 255 255 / 0.12); }
 
+.fp-nav-end { justify-self: end; display: inline-flex; align-items: center; gap: 0.6rem; }
+
 .fp-nav-login {
-  justify-self: end;
   font-size: 0.9375rem; font-weight: 600; letter-spacing: -0.01em;
   padding: 0.45rem 1.05rem; border-radius: 999px;
   border: 1px solid rgb(255 255 255 / 0.4);
@@ -183,6 +184,33 @@ html[data-hero-visible] .fp-header {
 .fp-nav a:focus-visible { outline: 2px solid #fff; outline-offset: 3px; border-radius: 999px; }
 .fp-nav.is-solid a:focus-visible { outline-color: rgb(var(--c-accent)); }
 
+/* The theme control, seated with the account link. theme.js mounts it
+   into the last flex child of the nav, so it lands here. */
+.fp-nav .theme-toggle {
+  width: 38px; height: 38px; flex: none;
+  border-color: rgb(255 255 255 / 0.4);
+  background: rgb(255 255 255 / 0.06);
+  -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px);
+  color: #fff;
+}
+.fp-nav .theme-toggle:hover { background: #fff; border-color: #fff; color: #14161a; }
+.fp-nav.is-solid .theme-toggle {
+  border-color: rgb(var(--c-line-firm)); background: rgb(var(--c-surface)); color: rgb(var(--c-ink-mid));
+}
+.fp-nav.is-solid .theme-toggle:hover { background: rgb(var(--c-accent-tint)); color: rgb(var(--c-ink)); }
+
+/* The hero dissolves into whatever the page is standing on, so the band
+   resolves to the page token and follows light and dark on its own. */
+.fp-hero-fade {
+  position: absolute; left: 0; right: 0; bottom: 0; z-index: 2;
+  height: 34vh; pointer-events: none;
+  background: linear-gradient(180deg,
+    rgb(var(--c-paper) / 0) 0%,
+    rgb(var(--c-paper) / 0.28) 42%,
+    rgb(var(--c-paper) / 0.75) 74%,
+    rgb(var(--c-paper)) 100%);
+}
+
 /* ── Hero ──────────────────────────────────────────────────────
    The footage is graded red; the wash only has to keep white type off
    the brightest petals and darken the foot of the frame. */
@@ -194,18 +222,7 @@ html[data-hero-visible] .fp-header {
 }
 .fp-hero[data-backdrop="on"] .fp-hero-media video { opacity: 1; }
 
-.fp-hero-wash {
-  position: absolute; inset: 0; z-index: 1; pointer-events: none;
-  background:
-    linear-gradient(180deg,
-      rgb(8 5 7 / 0.62) 0%,
-      rgb(8 5 7 / 0.26) 22%,
-      rgb(8 5 7 / 0.30) 55%,
-      rgb(8 5 7 / 0.72) 100%),
-    radial-gradient(120% 88% at 50% 38%,
-      rgb(0 0 0 / 0) 40%,
-      rgb(0 0 0 / 0.34) 100%);
-}
+
 
 .fp-hero-copy {
   flex: 1 1 auto;
@@ -221,7 +238,7 @@ html[data-hero-visible] .fp-header {
   background: rgb(24 12 14 / 0.72);
   -webkit-backdrop-filter: blur(7px) saturate(120%); backdrop-filter: blur(7px) saturate(120%);
   box-shadow: 0 1px 2px rgb(0 0 0 / 0.22), 0 6px 18px rgb(0 0 0 / 0.18);
-  color: #fff; white-space: nowrap;
+  white-space: nowrap;
   font-family: 'IBM Plex Mono', ui-monospace, monospace;
   font-size: 0.6875rem; letter-spacing: 0.15em; text-transform: uppercase;
 }
@@ -233,14 +250,12 @@ html[data-hero-visible] .fp-header {
   font-variation-settings: 'wght' 560;
   font-size: clamp(2.4rem, 6.4vw, 5rem);
   line-height: 0.98; letter-spacing: -0.03em;
-  color: #fff; text-wrap: balance;
+  text-wrap: balance;
 }
-.fp-hero-h span { color: rgb(255 255 255 / 0.74); }
 
 .fp-hero-p {
   margin: 1.5rem 0 0; max-width: 34rem;
   font-size: clamp(0.9375rem, 1.4vw, 1.0625rem); line-height: 1.6;
-  color: rgb(255 255 255 / 0.95);
 }
 
 .fp-hero-cta { display: flex; flex-wrap: wrap; gap: 0.75rem; justify-content: center; margin-top: 2.2rem; }
@@ -275,4 +290,96 @@ html[data-hero-visible] .fp-header {
   .fp-hero-media video { transition: none; }
   .fp-btn, .fp-nav { transition: none; }
   .fp-btn:hover { transform: none; }
+}
+
+/* ── The hero in both modes ────────────────────────────────────
+   Dark mode gets the dark grade and white type. Light mode gets the
+   white grade — and dark type, because white letters on a white ground
+   are not a contrast problem, they are an invisible headline. The two
+   scrims are mirror images: each one only has to hold its own type off
+   the petals.
+
+   Written light-first on bare :root, with dark redefined under both the
+   explicit toggle and the system preference, the way theme.css does it. */
+.fp-hero-wash {
+  position: absolute; inset: 0; z-index: 1; pointer-events: none;
+  background:
+    radial-gradient(74% 52% at 50% 45%,
+      rgb(255 255 255 / 0.80) 0%,
+      rgb(255 255 255 / 0.42) 52%,
+      rgb(255 255 255 / 0) 100%),
+    linear-gradient(180deg,
+      rgb(255 255 255 / 0.55) 0%,
+      rgb(255 255 255 / 0) 22%);
+}
+.fp-hero-h { color: rgb(var(--c-ink)); }
+.fp-hero-p { color: rgb(var(--c-ink-mid)); }
+.fp-badge { background: rgb(22 18 19 / 0.86); color: #fff; }
+.fp-btn--solid { background: rgb(var(--c-ink)); color: rgb(var(--c-paper)); box-shadow: 0 6px 22px rgb(0 0 0 / 0.16); }
+.fp-btn--glass {
+  color: rgb(var(--c-ink)); border-color: rgb(var(--c-ink) / 0.28);
+  background: rgb(255 255 255 / 0.5);
+}
+.fp-btn--glass:hover { background: rgb(255 255 255 / 0.8); }
+.fp-nav:not(.is-solid) a { color: rgb(var(--c-ink)); text-shadow: 0 1px 12px rgb(255 255 255 / 0.6); }
+.fp-nav:not(.is-solid) .fp-nav-login { border-color: rgb(var(--c-ink) / 0.3); }
+.fp-nav:not(.is-solid) .fp-nav-login:hover { background: rgb(var(--c-ink)); color: rgb(var(--c-paper)); }
+.fp-nav:not(.is-solid) .fp-nav-mid:hover { background: rgb(var(--c-ink) / 0.08); }
+.fp-nav:not(.is-solid) .theme-toggle {
+  border-color: rgb(var(--c-ink) / 0.28); background: rgb(255 255 255 / 0.5); color: rgb(var(--c-ink));
+}
+.fp-nav:not(.is-solid) .theme-toggle:hover { background: rgb(var(--c-ink)); color: rgb(var(--c-paper)); }
+
+:root[data-theme="dark"] .fp-hero-wash {
+    background:
+      linear-gradient(180deg,
+        rgb(8 5 7 / 0.62) 0%,
+        rgb(8 5 7 / 0.26) 22%,
+        rgb(8 5 7 / 0.30) 55%,
+        rgb(8 5 7 / 0.72) 100%),
+      radial-gradient(120% 88% at 50% 38%,
+        rgb(0 0 0 / 0) 40%,
+        rgb(0 0 0 / 0.34) 100%);
+  }
+:root[data-theme="dark"] .fp-hero-h { color: #fff; }
+:root[data-theme="dark"] .fp-hero-p { color: rgb(255 255 255 / 0.95); }
+:root[data-theme="dark"] .fp-badge { background: rgb(24 12 14 / 0.72); }
+:root[data-theme="dark"] .fp-btn--solid { background: #fff; color: #14161a; box-shadow: 0 6px 22px rgb(0 0 0 / 0.26); }
+:root[data-theme="dark"] .fp-btn--glass { color: #fff; border-color: rgb(255 255 255 / 0.46); background: rgb(255 255 255 / 0.06); }
+:root[data-theme="dark"] .fp-btn--glass:hover { background: rgb(255 255 255 / 0.16); }
+:root[data-theme="dark"] .fp-nav:not(.is-solid) a { color: #fff; text-shadow: 0 1px 14px rgb(0 0 0 / 0.45); }
+:root[data-theme="dark"] .fp-nav:not(.is-solid) .fp-nav-login { border-color: rgb(255 255 255 / 0.4); }
+:root[data-theme="dark"] .fp-nav:not(.is-solid) .fp-nav-login:hover { background: #fff; color: #14161a; }
+:root[data-theme="dark"] .fp-nav:not(.is-solid) .fp-nav-mid:hover { background: rgb(255 255 255 / 0.12); }
+:root[data-theme="dark"] .fp-nav:not(.is-solid) .theme-toggle {
+    border-color: rgb(255 255 255 / 0.4); background: rgb(255 255 255 / 0.06); color: #fff;
+  }
+:root[data-theme="dark"] .fp-nav:not(.is-solid) .theme-toggle:hover { background: #fff; color: #14161a; }
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .fp-hero-wash {
+    background:
+      linear-gradient(180deg,
+        rgb(8 5 7 / 0.62) 0%,
+        rgb(8 5 7 / 0.26) 22%,
+        rgb(8 5 7 / 0.30) 55%,
+        rgb(8 5 7 / 0.72) 100%),
+      radial-gradient(120% 88% at 50% 38%,
+        rgb(0 0 0 / 0) 40%,
+        rgb(0 0 0 / 0.34) 100%);
+  }
+  :root:not([data-theme="light"]) .fp-hero-h { color: #fff; }
+  :root:not([data-theme="light"]) .fp-hero-p { color: rgb(255 255 255 / 0.95); }
+  :root:not([data-theme="light"]) .fp-badge { background: rgb(24 12 14 / 0.72); }
+  :root:not([data-theme="light"]) .fp-btn--solid { background: #fff; color: #14161a; box-shadow: 0 6px 22px rgb(0 0 0 / 0.26); }
+  :root:not([data-theme="light"]) .fp-btn--glass { color: #fff; border-color: rgb(255 255 255 / 0.46); background: rgb(255 255 255 / 0.06); }
+  :root:not([data-theme="light"]) .fp-btn--glass:hover { background: rgb(255 255 255 / 0.16); }
+  :root:not([data-theme="light"]) .fp-nav:not(.is-solid) a { color: #fff; text-shadow: 0 1px 14px rgb(0 0 0 / 0.45); }
+  :root:not([data-theme="light"]) .fp-nav:not(.is-solid) .fp-nav-login { border-color: rgb(255 255 255 / 0.4); }
+  :root:not([data-theme="light"]) .fp-nav:not(.is-solid) .fp-nav-login:hover { background: #fff; color: #14161a; }
+  :root:not([data-theme="light"]) .fp-nav:not(.is-solid) .fp-nav-mid:hover { background: rgb(255 255 255 / 0.12); }
+  :root:not([data-theme="light"]) .fp-nav:not(.is-solid) .theme-toggle {
+    border-color: rgb(255 255 255 / 0.4); background: rgb(255 255 255 / 0.06); color: #fff;
+  }
+  :root:not([data-theme="light"]) .fp-nav:not(.is-solid) .theme-toggle:hover { background: #fff; color: #14161a; }
 }

@@ -137,9 +137,10 @@
 
 /* ───────────────────────────────────────────────────────────────
    Type
-   Two faces and a label face. Instrument Serif carries the headlines,
-   Inter does everything that has to be read or clicked, IBM Plex Mono
-   is reserved for eyebrows, tags and figures in tables.
+   Two faces and a label face. Outfit on its weight axis carries the
+   headlines — the same letterform the sign-in pages use, so the whole
+   site reads as one thing. Inter does everything that has to be read or
+   clicked, IBM Plex Mono is reserved for eyebrows, tags and figures.
    ─────────────────────────────────────────────────────────────── */
 .h-display,
 h1.h-display,
@@ -147,14 +148,15 @@ h1.h-display,
 .h-section.doc-title,
 h2.sec-title,
 h1.doc-title {
-  font-family: 'Instrument Serif', 'Iowan Old Style', Georgia, 'Times New Roman', serif;
+  font-family: 'Outfit', 'Inter', 'Helvetica Neue', Arial, sans-serif;
   font-weight: 400;
-  letter-spacing: -0.012em;
+  font-variation-settings: 'wght' 584;
+  letter-spacing: -0.06em;
 }
 
-.h-display, h1.h-display { line-height: 1.08; }
-.h-section.sec-title, h2.sec-title { line-height: 1.12; }
-.h-section.doc-title, h1.doc-title { line-height: 1.1; }
+.h-display, h1.h-display { line-height: 1.0; }
+.h-section.sec-title, h2.sec-title { line-height: 1.04; }
+.h-section.doc-title, h1.doc-title { line-height: 1.02; }
 
 /* Headings that live inside interface — cards, rows, list items — stay
    on Inter so the page does not read as one long magazine feature. */
@@ -167,7 +169,7 @@ h1.doc-title {
 
 /* Strong, not enormous. The serif carries more width per character, so
    the ceiling comes down and small screens come down further. */
-.hero-title { font-size: clamp(2.5rem, 5.4vw, 3.9rem); }
+.hero-title { font-size: clamp(2.5rem, 5.4vw, 4.1rem); }
 .sec-title  { font-size: clamp(1.8rem, 3.1vw, 2.4rem); }
 .doc-title  { font-size: clamp(2rem, 4.2vw, 2.8rem); }
 
