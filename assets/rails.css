@@ -1,0 +1,107 @@
+/* ───────────────────────────────────────────────────────────────
+   Onsite — the side rails
+   Two tall video columns that flank the page and change as you scroll,
+   so the centre content reads as though it is moving through a room
+   rather than sitting on a blank page.
+
+   They live in the gutter either side of the 76rem shell. That gutter
+   only exists once the viewport is wide enough, so the rails only exist
+   there too — below that width they are gone entirely rather than
+   squeezed, and the content keeps its full measure.
+
+   Fixed, not sticky: the rail is a window that stays put while the page
+   moves behind it. pointer-events are off throughout, so nothing here
+   can ever intercept a click meant for the page.
+   ─────────────────────────────────────────────────────────────── */
+
+.rails {
+  position: fixed; inset: 0; z-index: 5;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 520ms ease;
+}
+.rails[data-rails="on"] { opacity: 1; }
+
+.rail {
+  position: absolute; top: 0; bottom: 0;
+  /* The gutter, less a little breathing room, clamped so the rail never
+     grows into a second column or shrinks into a stripe. */
+  width: clamp(88px, calc((100vw - 76rem) / 2 - 18px), 178px);
+  overflow: hidden;
+  background: rgb(var(--c-ink) / 0.04);
+  border-left: 1px solid rgb(var(--c-line-firm));
+  border-right: 1px solid rgb(var(--c-line-firm));
+}
+.rail--left  { left: 0; border-left: 0; }
+.rail--right { right: 0; border-right: 0; }
+
+.rail-clip {
+  position: absolute; inset: 0;
+  overflow: hidden;
+}
+
+.rail-vid {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  object-fit: cover; object-position: center;
+  display: block;
+  opacity: 0;
+  will-change: opacity, transform;
+}
+.rail-vid:first-child { opacity: 1; }
+
+/* A wash in the page's own colour, so the footage sits inside the design
+   rather than beside it, and never competes with the centre column. */
+.rail-wash {
+  position: absolute; inset: 0; pointer-events: none;
+  background:
+    linear-gradient(180deg,
+      rgb(var(--c-paper)) 0%,
+      rgb(var(--c-paper) / 0.55) 9%,
+      rgb(var(--c-paper) / 0.20) 22%,
+      rgb(var(--c-paper) / 0.20) 78%,
+      rgb(var(--c-paper) / 0.55) 91%,
+      rgb(var(--c-paper)) 100%),
+    linear-gradient(90deg,
+      rgb(var(--c-paper) / 0.30) 0%,
+      rgb(var(--c-paper) / 0.10) 50%,
+      rgb(var(--c-paper) / 0.30) 100%);
+}
+/* The inner edge is the one the eye reads against the content, so it
+   carries the rule; the outer edge fades into the page. */
+.rail--left .rail-wash  { border-right: 1px solid rgb(var(--c-line-firm)); }
+.rail--right .rail-wash { border-left: 1px solid rgb(var(--c-line-firm)); }
+
+/* The chapter mark, so the rail reads as a sequence rather than a
+   slideshow that happens to be playing. */
+.rail-mark {
+  position: absolute; left: 0; right: 0; bottom: 1.6rem;
+  text-align: center;
+  font-family: 'IBM Plex Mono', ui-monospace, monospace;
+  font-size: 0.5625rem; letter-spacing: 0.18em; text-transform: uppercase;
+  color: rgb(var(--c-ink-soft));
+}
+.rail--right .rail-mark { display: none; }
+
+/* Dark mode: the wash follows the page token, so only the tint of the
+   footage itself needs a nudge. */
+:root[data-theme="dark"] .rail { background: rgb(255 255 255 / 0.03); }
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .rail { background: rgb(255 255 255 / 0.03); }
+}
+
+/* Below the width where a real gutter exists, there are no rails at all.
+   Nothing is scaled down into a sliver, and nothing can push the page
+   sideways. */
+@media (max-width: 1279px) {
+  .rails { display: none; }
+}
+@media (min-width: 1280px) and (max-width: 1439px) {
+  .rail { width: clamp(76px, calc((100vw - 76rem) / 2 - 14px), 120px); }
+  .rail-mark { display: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .rails { transition: none; }
+  .rail-vid { transition: none; }
+}

@@ -47,21 +47,18 @@ window.__entryFallback=setTimeout(function(){
       <div class="card-in" id="cardIn">
 
         <!-- STEP 1 — credentials -->
-        <div data-step="credentials" class="cred-step" id="stepCred">
+        <div data-step="credentials" class="cred-step cred-step--nopw" id="stepCred">
           <h1 class="col center" id="h1">Welcome back!</h1>
-          <p class="col center" id="sub"><b>Log in</b> to follow your build and payments.</p>
+          <p class="col center" id="sub"><b>Enter your email</b> and we&#8217;ll send you a 6-digit code.</p>
 
           <div class="field" id="email">
             <input type="email" autocomplete="email" aria-label="Email address" placeholder="Eg. jane@janeys-hair.co.uk">
-          </div>
-          <div class="field" id="pw">
-            <input type="password" autocomplete="current-password" aria-label="Password" placeholder="Password">
           </div>
 
           <p class="auth-err" id="credErr" role="alert" hidden></p>
 
           <button type="button" id="loginBtn">
-            <span>Log in</span>
+            <span>Send me a code</span>
             <svg viewBox="0 0 22 22" aria-hidden="true" focusable="false"><path d="M3 11h15.4M11 3.3l7.7 7.7-7.7 7.7" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </button>
 
@@ -76,13 +73,12 @@ window.__entryFallback=setTimeout(function(){
           <p id="bottom">Don&#8217;t have an account? <a href="signup.html">Create one</a></p>
 
           <div class="rowlinks">
-            <a href="forgot-password.html">Forgot password?</a>
-            <a href="forgot-email.html">Forgot email?</a>
+            <a href="forgot-email.html">Forgot which email you used?</a>
           </div>
 
           <p class="aux">
-            <strong>Demo build.</strong> Sign-in is simulated in your browser — any email and password
-            are accepted, nothing is sent anywhere, and no real account is created.
+            <strong>Demo build.</strong> Sign-in is simulated in your browser — any email is accepted,
+            nothing is sent anywhere, and no real account is created.
             <a href="#" id="staffLink">Staff sign-in &rarr;</a>
           </p>
           </div>
@@ -172,7 +168,7 @@ window.__entryFallback=setTimeout(function(){
   // No Google integration exists in a demo build, and a button that
   // silently signs you in would be a lie about what happened. It says so.
   document.getElementById('gBtn').addEventListener('click', function () {
-    credErr.textContent = 'Google sign-in is not part of this demo build. Use the email and password above.';
+    credErr.textContent = 'Google sign-in is not part of this demo build. Use the email above.';
     credErr.hidden = false;
   });
 

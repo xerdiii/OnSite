@@ -254,6 +254,19 @@ body.stacked .home-mark { left:20px; top:16px; font-size:14px; }
 .cred-step .rowlinks { top:664px; }
 .cred-step .aux { top:716px; }
 
+/* Passwordless: one field instead of two, so the rest of the column
+   comes up to close the gap the password box used to fill. Scoped by
+   class, never by id — the tablet and phone blocks below override on
+   class specificity and an id here would strand this at desktop
+   coordinates. */
+.cred-step--nopw #loginBtn { top:300px; }
+.cred-step--nopw .auth-err { top:274px; }
+.cred-step--nopw .divider { top:412px; }
+.cred-step--nopw #gBtn { top:470px; }
+.cred-step--nopw #bottom { top:548px; }
+.cred-step--nopw .rowlinks { top:598px; }
+.cred-step--nopw .aux { top:642px; }
+
 .code-step .btn-primary-pill { top:300px; }
 .code-step .auth-err { top:274px; }
 .code-step .rowlinks { top:382px; }
@@ -451,7 +464,13 @@ body.auth #codeField {
   position:static; left:auto; top:auto;
   height:56px; margin:0 0 12px; padding:0 16px; border-radius:12px;
 }
-body.auth .field input { font-size:16px; letter-spacing:0; }
+/* 16px exactly, and it has to be said at id specificity: #email input
+   and #pw input carry their own sizes from the reference frame, and
+   anything under 16px makes iOS zoom the page on focus. */
+body.auth .field input,
+body.auth #email input,
+body.auth #pw input,
+body.auth #codeField input { font-size:16px; letter-spacing:0; }
 body.auth #loginBtn, body.auth .btn-primary-pill { height:58px; margin:10px 0 0; padding-left:0; gap:10px; font-size:16px; }
 body.auth .divider { margin:22px 0; }
 body.auth .divider i { flex:1 1 auto; }

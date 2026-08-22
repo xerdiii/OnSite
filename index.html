@@ -98,6 +98,7 @@
 </style>
 <link rel="stylesheet" href="assets/mobile.css">
 <link rel="stylesheet" href="assets/closer.css">
+<link rel="stylesheet" href="assets/rails.css">
 <link rel="stylesheet" href="assets/tailwind.css">
 <link rel="stylesheet" href="assets/theme.css">
 <link rel="stylesheet" href="assets/hero.css">
@@ -153,6 +154,9 @@
 
 <main id="main">
 
+  <!-- Side video rails. Fixed, decorative, and gone below 1280px. -->
+  <div class="rails" data-rails aria-hidden="true"></div>
+
   <!-- 2 — HERO
        Full-bleed footage, glass navigation. The page header below is
        held back while this is on screen (assets/hero.js) so there is
@@ -197,6 +201,8 @@
     </div>
   </section>
 
+
+  <div data-rails-region>
 
   <!-- 3 — PRICING -->
   <section id="pricing" class="scroll-mt-16 border-b border-line bg-surface">
@@ -640,6 +646,8 @@
     </div>
   </section>
 
+  </div><!-- /rails region -->
+
   <!-- 10 — CLOSING -->
   <section class="closer grain" data-backdrop>
     <div class="closer-media">
@@ -680,6 +688,7 @@
 <script src="assets/vendor/gsap.min.js" defer></script>
 <script src="assets/vendor/ScrollTrigger.min.js" defer></script>
 <script src="assets/backdrop.js" defer></script>
+<script src="assets/rails.js" defer></script>
 <script src="assets/hero.js" defer></script>
 <script src="assets/mobile.js"></script>
 <script src="assets/theme.js"></script>
