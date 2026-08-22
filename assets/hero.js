@@ -1,13 +1,11 @@
 /* ───────────────────────────────────────────────────────────────
-   Onsite — the navigation
-   There is one nav and it is always on screen. Over the hero it is glass
-   on dark footage; once the hero has gone past it takes the page's own
-   surface, which is what makes it follow light and dark mode without a
-   second palette.
+   Onsite — the site menu
+   The bar carries the mark and one control. Everything else lives in a
+   panel behind it: the sections, the account link and the theme switch.
 
-   The switch is an IntersectionObserver on a sentinel rather than a
-   scroll handler: no listener firing on every frame, and the browser
-   works out the crossing itself.
+   Standard dialog manners — focus moves in, Escape and the scrim close
+   it, the page behind cannot scroll, and focus returns to the button
+   that opened it.
    ─────────────────────────────────────────────────────────────── */
 (function (global) {
   'use strict';
@@ -15,38 +13,49 @@
   var doc = global.document;
 
   function init() {
-    var nav = doc.querySelector('[data-nav]');
-    if (!nav) return;
+    var menu = doc.querySelector('[data-menu]');
+    var opener = doc.querySelector('[data-menu-open]');
+    if (!menu || !opener) return;
 
-    var hero = doc.querySelector('[data-hero]');
+    var panel = menu.querySelector('.site-menu-panel');
+    var last = null;
 
-    /* No hero on this page — the nav is solid from the start. */
-    if (!hero) { nav.classList.add('is-solid'); return; }
-
-    function solid(on) { nav.classList.toggle('is-solid', on); }
-
-    if (!('IntersectionObserver' in global)) {
-      /* Without an observer, read the scroll position directly. Passive,
-         and cheap enough at this granularity. */
-      var check = function () { solid(global.scrollY > hero.offsetHeight - nav.offsetHeight); };
-      global.addEventListener('scroll', check, { passive: true });
-      check();
-      return;
+    function open() {
+      last = doc.activeElement;
+      menu.hidden = false;
+      /* One frame before the class, so the panel has a laid-out start
+         position to transition from rather than jumping. */
+      requestAnimationFrame(function () {
+        requestAnimationFrame(function () { menu.classList.add('is-open'); });
+      });
+      doc.body.classList.add('menu-locked');
+      opener.setAttribute('aria-expanded', 'true');
+      var first = panel.querySelector('a, button');
+      if (first) first.focus();
     }
 
-    /* A one-pixel sentinel sitting at the point where the hero's last
-       screenful passes under the bar. */
-    var mark = doc.createElement('div');
-    mark.setAttribute('aria-hidden', 'true');
-    mark.style.cssText = 'position:absolute;left:0;bottom:0;width:1px;height:1px;pointer-events:none';
-    if (getComputedStyle(hero).position === 'static') hero.style.position = 'relative';
-    hero.appendChild(mark);
+    function close() {
+      menu.classList.remove('is-open');
+      doc.body.classList.remove('menu-locked');
+      opener.setAttribute('aria-expanded', 'false');
+      var done = function () { menu.hidden = true; panel.removeEventListener('transitionend', done); };
+      if (global.matchMedia && global.matchMedia('(prefers-reduced-motion:reduce)').matches) done();
+      else panel.addEventListener('transitionend', done);
+      if (last && last.focus) last.focus();
+    }
 
-    var io = new IntersectionObserver(function (entries) {
-      entries.forEach(function (e) { solid(!e.isIntersecting); });
-    }, { rootMargin: '-' + (nav.offsetHeight + 4) + 'px 0px 0px 0px' });
-
-    io.observe(mark);
+    opener.addEventListener('click', open);
+    [].forEach.call(menu.querySelectorAll('[data-menu-close]'), function (b) {
+      b.addEventListener('click', close);
+    });
+    /* Any destination closes it — including the in-page anchors, which
+       would otherwise scroll behind a panel that is still covering them. */
+    [].forEach.call(menu.querySelectorAll('a'), function (a) {
+      a.addEventListener('click', close);
+    });
+    doc.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && !menu.hidden) close();
+    });
   }
 
   if (doc.readyState === 'loading') doc.addEventListener('DOMContentLoaded', init);

@@ -128,88 +128,53 @@ html[data-hero-visible] .fp-header {
    ─────────────────────────────────────────────────────────────── */
 .fp-nav {
   position: fixed; top: 0; left: 0; right: 0; z-index: 60;
-  display: grid; grid-template-columns: 1fr auto 1fr; align-items: center;
+  display: flex; align-items: center; justify-content: space-between;
   gap: 1rem;
-  padding: 0.85rem clamp(1.1rem, 4vw, 3rem);
-  padding-top: calc(0.85rem + env(safe-area-inset-top, 0px));
+  padding: 0.9rem clamp(1.1rem, 4vw, 3rem);
+  padding-top: calc(0.9rem + env(safe-area-inset-top, 0px));
   font-family: 'Inter', system-ui, sans-serif;
   background: transparent;
-  border-bottom: 1px solid transparent;
-  transition: background-color 300ms ease, border-color 300ms ease,
-              backdrop-filter 300ms ease, color 300ms ease;
+  pointer-events: none;
 }
+.fp-nav > * { pointer-events: auto; }
 
-.fp-nav a { text-decoration: none; color: #fff; }
+.fp-nav a { text-decoration: none; color: rgb(var(--c-ink)); }
 
 .fp-nav-brand {
   justify-self: start;
   display: inline-flex; align-items: center; gap: 0.6rem;
   font-size: 1.0625rem; font-weight: 600; letter-spacing: -0.015em;
-  text-shadow: 0 1px 14px rgb(0 0 0 / 0.45);
 }
 .fp-nav-dot { width: 12px; height: 12px; border-radius: 3px; background: rgb(var(--c-accent)); display: block; flex: none; }
 
-.fp-nav-mid {
-  justify-self: center;
-  font-size: 0.9375rem; font-weight: 500; letter-spacing: -0.01em;
-  padding: 0.4rem 0.9rem; border-radius: 999px;
-  text-shadow: 0 1px 14px rgb(0 0 0 / 0.45);
-  transition: background-color 200ms ease;
-}
-.fp-nav-mid:hover { background: rgb(255 255 255 / 0.12); }
 
-.fp-nav-end { justify-self: end; display: inline-flex; align-items: center; gap: 0.6rem; }
 
-.fp-nav-login {
-  font-size: 0.9375rem; font-weight: 600; letter-spacing: -0.01em;
-  padding: 0.45rem 1.05rem; border-radius: 999px;
-  border: 1px solid rgb(255 255 255 / 0.4);
-  text-shadow: 0 1px 14px rgb(0 0 0 / 0.45);
-  transition: background-color 200ms ease, border-color 200ms ease, color 200ms ease;
-}
-.fp-nav-login:hover { background: #fff; border-color: #fff; color: #14161a; text-shadow: none; }
 
 /* Past the hero: the page's own surface, in whichever theme is on. */
-.fp-nav.is-solid {
-  background: rgb(var(--c-paper) / 0.88);
-  -webkit-backdrop-filter: blur(14px) saturate(150%);
-  backdrop-filter: blur(14px) saturate(150%);
-  border-bottom-color: rgb(var(--c-line));
-}
-.fp-nav.is-solid a { color: rgb(var(--c-ink)); text-shadow: none; }
-.fp-nav.is-solid .fp-nav-mid:hover { background: rgb(var(--c-accent-tint)); }
-.fp-nav.is-solid .fp-nav-login { border-color: rgb(var(--c-line-firm)); }
-.fp-nav.is-solid .fp-nav-login:hover { background: rgb(var(--c-accent)); border-color: rgb(var(--c-accent)); color: rgb(var(--c-on-accent)); }
 
 .fp-nav a:focus-visible { outline: 2px solid #fff; outline-offset: 3px; border-radius: 999px; }
-.fp-nav.is-solid a:focus-visible { outline-color: rgb(var(--c-accent)); }
 
 /* The theme control, seated with the account link. theme.js mounts it
    into the last flex child of the nav, so it lands here. */
-.fp-nav .theme-toggle {
-  width: 38px; height: 38px; flex: none;
-  border-color: rgb(255 255 255 / 0.4);
-  background: rgb(255 255 255 / 0.06);
-  -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px);
-  color: #fff;
-}
-.fp-nav .theme-toggle:hover { background: #fff; border-color: #fff; color: #14161a; }
-.fp-nav.is-solid .theme-toggle {
-  border-color: rgb(var(--c-line-firm)); background: rgb(var(--c-surface)); color: rgb(var(--c-ink-mid));
-}
-.fp-nav.is-solid .theme-toggle:hover { background: rgb(var(--c-accent-tint)); color: rgb(var(--c-ink)); }
 
 /* The hero dissolves into whatever the page is standing on, so the band
    resolves to the page token and follows light and dark on its own. */
 .fp-hero-fade {
-  position: absolute; left: 0; right: 0; bottom: 0; z-index: 2;
-  height: 34vh; pointer-events: none;
+  position: absolute; left: -1px; right: -1px; bottom: -1px; z-index: 2;
+  height: 46vh; pointer-events: none;
   background: linear-gradient(180deg,
     rgb(var(--c-paper) / 0) 0%,
-    rgb(var(--c-paper) / 0.28) 42%,
-    rgb(var(--c-paper) / 0.75) 74%,
+    rgb(var(--c-paper) / 0.06) 26%,
+    rgb(var(--c-paper) / 0.22) 46%,
+    rgb(var(--c-paper) / 0.52) 64%,
+    rgb(var(--c-paper) / 0.82) 80%,
+    rgb(var(--c-paper)) 94%,
     rgb(var(--c-paper)) 100%);
 }
+/* The section below starts on the same colour the band resolves to, so
+   the two are continuous rather than merely close. */
+.fp-hero + section,
+.fp-hero + * { background: rgb(var(--c-paper)); }
 
 /* ── Hero ──────────────────────────────────────────────────────
    The footage is graded red; the wash only has to keep white type off
@@ -321,15 +286,12 @@ html[data-hero-visible] .fp-header {
   background: rgb(255 255 255 / 0.5);
 }
 .fp-btn--glass:hover { background: rgb(255 255 255 / 0.8); }
-.fp-nav:not(.is-solid) a { color: rgb(var(--c-ink)); text-shadow: 0 1px 12px rgb(255 255 255 / 0.6); }
-.fp-nav:not(.is-solid) .fp-nav-login { border-color: rgb(var(--c-ink) / 0.3); }
-.fp-nav:not(.is-solid) .fp-nav-login:hover { background: rgb(var(--c-ink)); color: rgb(var(--c-paper)); }
-.fp-nav:not(.is-solid) .fp-nav-mid:hover { background: rgb(var(--c-ink) / 0.08); }
-.fp-nav:not(.is-solid) .theme-toggle {
-  border-color: rgb(var(--c-ink) / 0.28); background: rgb(255 255 255 / 0.5); color: rgb(var(--c-ink));
-}
-.fp-nav:not(.is-solid) .theme-toggle:hover { background: rgb(var(--c-ink)); color: rgb(var(--c-paper)); }
 
+:root[data-theme="dark"] .fp-nav a { color: #fff; text-shadow: 0 1px 14px rgb(0 0 0 / 0.45); }
+:root[data-theme="dark"] .fp-nav-btn {
+  border-color: rgb(255 255 255 / 0.34); background: rgb(255 255 255 / 0.1); color: #fff;
+}
+:root[data-theme="dark"] .fp-nav-btn:hover { background: #fff; border-color: #fff; color: #14161a; }
 :root[data-theme="dark"] .fp-hero-wash {
     background:
       linear-gradient(180deg,
@@ -357,6 +319,11 @@ html[data-hero-visible] .fp-header {
 :root[data-theme="dark"] .fp-nav:not(.is-solid) .theme-toggle:hover { background: #fff; color: #14161a; }
 
 @media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .fp-nav a { color: #fff; text-shadow: 0 1px 14px rgb(0 0 0 / 0.45); }
+  :root:not([data-theme="light"]) .fp-nav-btn {
+    border-color: rgb(255 255 255 / 0.34); background: rgb(255 255 255 / 0.1); color: #fff;
+  }
+  :root:not([data-theme="light"]) .fp-nav-btn:hover { background: #fff; border-color: #fff; color: #14161a; }
   :root:not([data-theme="light"]) .fp-hero-wash {
     background:
       linear-gradient(180deg,
@@ -382,4 +349,89 @@ html[data-hero-visible] .fp-header {
     border-color: rgb(255 255 255 / 0.4); background: rgb(255 255 255 / 0.06); color: #fff;
   }
   :root:not([data-theme="light"]) .fp-nav:not(.is-solid) .theme-toggle:hover { background: #fff; color: #14161a; }
+}
+
+
+/* ───────────────────────────────────────────────────────────────
+   The menu
+   The bar shows the mark and one control. Pricing, features, the
+   monthly services, the account link and the theme switch all live
+   behind it, so the top of the page stays off the picture — which is
+   the point of a full-bleed hero.
+   ─────────────────────────────────────────────────────────────── */
+.fp-nav-btn {
+  display: inline-flex; align-items: center; gap: 0.55rem;
+  min-height: 40px; padding: 0 0.95rem;
+  border-radius: 999px; cursor: pointer;
+  font-family: inherit; font-size: 0.9375rem; font-weight: 600; letter-spacing: -0.01em;
+  border: 1px solid rgb(var(--c-ink) / 0.26);
+  background: rgb(255 255 255 / 0.44);
+  -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px);
+  color: rgb(var(--c-ink));
+  transition: background-color 200ms ease, border-color 200ms ease, color 200ms ease;
+}
+.fp-nav-btn svg { width: 19px; height: 19px; flex: none; }
+.fp-nav-btn:hover { background: rgb(var(--c-ink)); border-color: rgb(var(--c-ink)); color: rgb(var(--c-paper)); }
+.fp-nav-btn--icon { padding: 0; width: 40px; justify-content: center; }
+.fp-nav-btn--icon .fp-nav-btn-label { display: none; }
+.fp-nav-btn:focus-visible { outline: 2px solid rgb(var(--c-accent)); outline-offset: 3px; }
+
+.site-menu { position: fixed; inset: 0; z-index: 90; }
+.site-menu[hidden] { display: none; }
+.site-menu-scrim {
+  position: absolute; inset: 0; border: 0; padding: 0; cursor: pointer;
+  background: rgb(8 6 7 / 0.42);
+  -webkit-backdrop-filter: blur(3px); backdrop-filter: blur(3px);
+  opacity: 0; transition: opacity 260ms ease;
+}
+.site-menu.is-open .site-menu-scrim { opacity: 1; }
+
+.site-menu-panel {
+  position: absolute; top: 0; right: 0; bottom: 0;
+  width: min(23rem, 88vw);
+  display: flex; flex-direction: column;
+  padding: 0.9rem clamp(1.25rem, 4vw, 1.75rem) calc(1.5rem + env(safe-area-inset-bottom, 0px));
+  padding-top: calc(0.9rem + env(safe-area-inset-top, 0px));
+  background: rgb(var(--c-paper));
+  border-left: 1px solid rgb(var(--c-line));
+  box-shadow: -18px 0 48px rgb(0 0 0 / 0.18);
+  transform: translateX(100%);
+  transition: transform 340ms cubic-bezier(0.22, 1, 0.36, 1);
+  overflow-y: auto; overscroll-behavior: contain;
+}
+.site-menu.is-open .site-menu-panel { transform: translateX(0); }
+
+.site-menu-head { display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
+.site-menu-head .fp-nav-brand { color: rgb(var(--c-ink)); text-shadow: none; }
+
+.site-menu-links { display: flex; flex-direction: column; margin-top: 1.75rem; }
+.site-menu-links a {
+  padding: 0.85rem 0;
+  border-bottom: 1px solid rgb(var(--c-line));
+  color: rgb(var(--c-ink)); text-decoration: none;
+  font-family: 'Outfit', 'Inter', sans-serif;
+  font-variation-settings: 'wght' 560;
+  font-size: 1.5rem; letter-spacing: -0.04em; line-height: 1.1;
+  transition: color 160ms ease;
+}
+.site-menu-links a:hover { color: rgb(var(--c-accent-text)); }
+
+.site-menu-foot { margin-top: auto; padding-top: 1.75rem; display: grid; gap: 0.7rem; }
+.site-menu-login,
+.site-menu-cta {
+  display: inline-flex; align-items: center; justify-content: center;
+  min-height: 52px; border-radius: 999px; text-decoration: none;
+  font-size: 0.9375rem; font-weight: 600; letter-spacing: -0.005em;
+  transition: background-color 180ms ease, color 180ms ease, border-color 180ms ease;
+}
+.site-menu-login { border: 1px solid rgb(var(--c-line-firm)); color: rgb(var(--c-ink)); }
+.site-menu-login:hover { border-color: rgb(var(--c-accent)); color: rgb(var(--c-accent-text)); }
+.site-menu-cta { background: rgb(var(--c-accent)); color: rgb(var(--c-on-accent)); }
+.site-menu-cta:hover { background: rgb(var(--c-accent-hi)); }
+.site-menu-theme .theme-toggle { width: 100%; height: 52px; border-radius: 999px; gap: 0.6rem; font-weight: 600; }
+
+body.menu-locked { overflow: hidden; }
+
+@media (prefers-reduced-motion: reduce) {
+  .site-menu-scrim, .site-menu-panel { transition: none; }
 }

@@ -97,33 +97,11 @@
   @media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto;} a,button{transition:none;} }
 </style>
 <link rel="stylesheet" href="assets/mobile.css">
-<link rel="stylesheet" href="assets/reel.css">
 <link rel="stylesheet" href="assets/closer.css">
 <link rel="stylesheet" href="assets/tailwind.css">
 <link rel="stylesheet" href="assets/theme.css">
 <link rel="stylesheet" href="assets/hero.css">
 <noscript><style>
-  /* Without JavaScript the reel is not a scroll piece: the stage stops
-     being sticky and the five panels stack down the page. */
-  .reel { height: auto; }
-  .reel-stage { position: static; height: auto; overflow: visible; }
-  .reel-panel { position: relative; inset: auto; height: 100svh; opacity: 1; visibility: visible; }
-  .reel-progress { display: none; }
-  .reel-panel:nth-child(1) .reel-media {
-    background: #08090A url("assets/media/coffee-poster.jpg") center / cover no-repeat;
-  }
-  .reel-panel:nth-child(2) .reel-media {
-    background: #08090A url("assets/media/restaurant-poster.jpg") center / cover no-repeat;
-  }
-  .reel-panel:nth-child(3) .reel-media {
-    background: #08090A url("assets/media/nails-poster.jpg") center / cover no-repeat;
-  }
-  .reel-panel:nth-child(4) .reel-media {
-    background: #08090A url("assets/media/mechanic-poster.jpg") center / cover no-repeat;
-  }
-  .reel-panel:nth-child(5) .reel-media {
-    background: #08090A url("assets/media/barber-poster.jpg") center / cover no-repeat;
-  }
   .closer-media {
     background: url("assets/media/rose-poster.jpg") center / cover no-repeat;
   }
@@ -139,11 +117,39 @@
   <a class="fp-nav-brand" href="index.html">
     <i class="fp-nav-dot" aria-hidden="true"></i>Onsite
   </a>
-  <a class="fp-nav-mid" href="#services">Monthly</a>
-  <div class="fp-nav-end">
-    <a class="fp-nav-login" href="login.html">Log in</a>
-  </div>
+
+  <button type="button" class="fp-nav-btn" data-menu-open aria-expanded="false" aria-controls="siteMenu">
+    <span class="fp-nav-btn-label">Menu</span>
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" aria-hidden="true"><path d="M4.5 9.5h15M4.5 15h9"/></svg>
+  </button>
 </header>
+
+<div class="site-menu" id="siteMenu" data-menu hidden>
+  <button type="button" class="site-menu-scrim" data-menu-close tabindex="-1" aria-hidden="true"></button>
+  <div class="site-menu-panel" role="dialog" aria-modal="true" aria-label="Menu">
+    <div class="site-menu-head">
+      <span class="fp-nav-brand"><i class="fp-nav-dot" aria-hidden="true"></i>Onsite</span>
+      <button type="button" class="fp-nav-btn fp-nav-btn--icon" data-menu-close aria-label="Close menu">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+      </button>
+    </div>
+
+    <nav class="site-menu-links" aria-label="Main">
+      <a href="#pricing">Pricing</a>
+      <a href="#features">Features</a>
+      <a href="#services">Monthly</a>
+      <a href="#extras">Extras</a>
+      <a href="faq.html">FAQ</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+
+    <div class="site-menu-foot">
+      <a class="site-menu-login" href="login.html">Log in</a>
+      <a class="site-menu-cta" href="signup.html">Build my website</a>
+      <div class="site-menu-theme" data-theme-slot></div>
+    </div>
+  </div>
+</div>
 
 <main id="main">
 
@@ -154,7 +160,7 @@
   <section class="fp-hero relative h-screen w-full overflow-hidden" data-hero data-backdrop>
 
     <div class="fp-hero-media">
-      <video muted loop playsinline preload="none" data-rate="0.55"
+      <video muted loop playsinline preload="none"
              data-poster="assets/media/hero-poster.jpg"
              data-poster-tall="assets/media/hero-poster-tall.jpg"
              data-poster-light="assets/media/hero-light-poster.jpg"
@@ -174,10 +180,6 @@
 
       <!-- Hero copy -->
       <div class="fp-hero-copy">
-        <p class="fp-badge">
-          <svg viewBox="0 0 582 557" aria-hidden="true" focusable="false"><path fill="#fff" fill-rule="evenodd" d="M449 0 435 0 415 10 200 249 187 276 189 299 212 326 232 332 289 334 289 516 301 543 324 556 346 556 374 536 573 311 582 288 579 264 559 240 539 233 478 230 478 32 470 13ZM442 38 446 250 466 267 540 270 547 285 341 520 332 522 324 514 321 314 307 300 295 297 233 297 224 291 221 282ZM1 67 4 81 17 90 216 90 223 87 232 74 228 57 215 49 18 49 5 57ZM0 285 4 300 17 308 105 308 118 299 121 291 119 278 111 270 103 267 17 267 4 275ZM1 495 4 511 10 517 23 520 179 520 191 516 200 500 196 488 182 479 18 479 9 483Z"/></svg>
-          Built for local businesses
-        </p>
 
         <h1 class="fp-hero-h">
           You run the business.<br>We build the website.
@@ -189,7 +191,7 @@
 
         <div class="fp-hero-cta">
           <a class="fp-btn fp-btn--solid" href="signup.html">Build my website &mdash; &euro;79.99</a>
-          <a class="fp-btn fp-btn--glass" href="#industries">See what we build</a>
+          <a class="fp-btn fp-btn--glass" href="#pricing">See the pricing</a>
         </div>
       </div>
     </div>
@@ -221,7 +223,7 @@
               One page, built around the handful of things your customers actually need.
             </p>
             <ul class="price-card-list">
-              <li><span class="arrow">&rarr;</span> You pick at least three of the ten features below.</li>
+              <li><span class="arrow">&rarr;</span> Comes with the features you pick from the ten below.</li>
               <li><span class="arrow">&rarr;</span> Picking ten costs the same as picking three.</li>
               <li><span class="arrow">&rarr;</span> Hosting, padlock and domain included.</li>
             </ul>
@@ -249,9 +251,9 @@
             </p>
             <ul class="price-card-list sm:grid-cols-2 sm:gap-x-8">
               <li><span class="arrow">&rarr;</span> All ten features built in.</li>
+              <li><span class="arrow">&rarr;</span> Local SEO included.</li>
+              <li><span class="arrow">&rarr;</span> Digital menu with a QR code.</li>
               <li><span class="arrow">&rarr;</span> Hosting, padlock and domain included.</li>
-              <li><span class="arrow">&rarr;</span> Still no monthly service attached.</li>
-              <li><span class="arrow">&rarr;</span> Same 25% now, 75% on approval.</li>
             </ul>
             <div class="price-card-foot">
               <a href="signup.html" class="inline-flex min-h-[52px] w-full items-center justify-center rounded-md bg-accent px-6 py-3.5 text-[0.9375rem] font-semibold text-white hover:bg-accent-hi">
@@ -266,7 +268,7 @@
       <!-- The ten website features -->
       <div class="mt-12 border-t border-line pt-8">
         <div class="flex flex-wrap items-baseline gap-x-4 gap-y-1">
-          <p class="text-sm font-semibold text-ink">The ten features</p>
+          <p id="features" class="scroll-mt-24 text-sm font-semibold text-ink">The ten features</p>
           <span class="ml-auto text-[0.8125rem] text-ink-soft">part of the build, never monthly</span>
         </div>
         <div class="mt-5 grid grid-cols-1 gap-x-10 gap-y-3 sm:grid-cols-2 xl:grid-cols-3">
@@ -295,135 +297,6 @@
     </div>
   </section>
 
-  <!-- 4 — THE REEL
-       Five real films, one sticky stage, one scroll. The panels are
-       stacked and handed over to one another as the page moves — see
-       assets/reel.js. A phone is served a portrait encode of each film
-       rather than a 16:9 one with three quarters of the frame cropped off,
-       so --focus only has to fine-tune the wide crop. Neither still is
-       fetched until the chapter is close: a `poster` attribute loads
-       eagerly, a data- one does not. -->
-  <section id="industries" class="reel" data-reel aria-label="The kinds of business we build for">
-    <div class="reel-stage">
-
-      <article class="reel-panel" data-reel-panel style="--focus:38% 50%;--scrim:0.92">
-        <div class="reel-media">
-          <video muted loop playsinline preload="none"
-                 data-poster="assets/media/coffee-poster.jpg"
-                 data-poster-tall="assets/media/coffee-poster-tall.jpg"
-                 data-src="assets/media/coffee.mp4"
-                 data-src-tall="assets/media/coffee-tall.mp4"
-                 aria-hidden="true"></video>
-        </div>
-        <div class="reel-grade" aria-hidden="true"></div>
-        <div class="reel-copy">
-          <div>
-            <div class="reel-text" data-reel-text>
-              <p class="reel-label">Coffee shops</p>
-              <h2 class="reel-h">Built for the daily pour.</h2>
-              <p class="reel-p">Websites made for caf&eacute;s that want to look as good online as they do behind the counter.</p>
-            </div>
-          </div>
-        </div>
-      </article>
-
-      <article class="reel-panel" data-reel-panel style="--focus:50% 50%;--scrim:1.16">
-        <div class="reel-media">
-          <video muted loop playsinline preload="none"
-                 data-poster="assets/media/restaurant-poster.jpg"
-                 data-poster-tall="assets/media/restaurant-poster-tall.jpg"
-                 data-src="assets/media/restaurant.mp4"
-                 data-src-tall="assets/media/restaurant-tall.mp4"
-                 aria-hidden="true"></video>
-        </div>
-        <div class="reel-grade" aria-hidden="true"></div>
-        <div class="reel-copy">
-          <div>
-            <div class="reel-text" data-reel-text>
-              <p class="reel-label">Restaurants</p>
-              <h2 class="reel-h">Make every visit start online.</h2>
-              <p class="reel-p">A website designed to turn hungry visitors into reservations and customers.</p>
-            </div>
-          </div>
-        </div>
-      </article>
-
-      <article class="reel-panel" data-reel-panel style="--focus:50% 45%;--scrim:0.84">
-        <div class="reel-media">
-          <video muted loop playsinline preload="none"
-                 data-poster="assets/media/nails-poster.jpg"
-                 data-poster-tall="assets/media/nails-poster-tall.jpg"
-                 data-src="assets/media/nails.mp4"
-                 data-src-tall="assets/media/nails-tall.mp4"
-                 aria-hidden="true"></video>
-        </div>
-        <div class="reel-grade" aria-hidden="true"></div>
-        <div class="reel-copy">
-          <div>
-            <div class="reel-text" data-reel-text>
-              <p class="reel-label">Nail salons</p>
-              <h2 class="reel-h">Make your work impossible to ignore.</h2>
-              <p class="reel-p">A polished online presence for salons that care about every detail.</p>
-            </div>
-          </div>
-        </div>
-      </article>
-
-      <article class="reel-panel" data-reel-panel style="--focus:55% 46%;--scrim:0.88">
-        <div class="reel-media">
-          <video muted loop playsinline preload="none"
-                 data-poster="assets/media/mechanic-poster.jpg"
-                 data-poster-tall="assets/media/mechanic-poster-tall.jpg"
-                 data-src="assets/media/mechanic.mp4"
-                 data-src-tall="assets/media/mechanic-tall.mp4"
-                 aria-hidden="true"></video>
-        </div>
-        <div class="reel-grade" aria-hidden="true"></div>
-        <div class="reel-copy">
-          <div>
-            <div class="reel-text" data-reel-text>
-              <p class="reel-label">Mechanics</p>
-              <h2 class="reel-h">Built for businesses that keep things moving.</h2>
-              <p class="reel-p">A professional website that makes it easy for customers to find you, contact you, and book.</p>
-            </div>
-          </div>
-        </div>
-      </article>
-
-      <article class="reel-panel" data-reel-panel style="--focus:50% 45%;--scrim:0.94">
-        <div class="reel-media">
-          <video muted loop playsinline preload="none"
-                 data-poster="assets/media/barber-poster.jpg"
-                 data-poster-tall="assets/media/barber-poster-tall.jpg"
-                 data-src="assets/media/barber.mp4"
-                 data-src-tall="assets/media/barber-tall.mp4"
-                 aria-hidden="true"></video>
-        </div>
-        <div class="reel-grade" aria-hidden="true"></div>
-        <div class="reel-copy">
-          <div>
-            <div class="reel-text" data-reel-text>
-              <p class="reel-label">Barbershops</p>
-              <h2 class="reel-h">Sharp work deserves a sharp website.</h2>
-              <p class="reel-p">A modern online presence built for barbers who take their craft seriously.</p>
-            </div>
-          </div>
-        </div>
-      </article>
-
-      <div class="reel-progress" aria-hidden="true">
-        <div class="reel-ticks">
-          <i class="reel-tick" data-reel-tick></i>
-          <i class="reel-tick" data-reel-tick></i>
-          <i class="reel-tick" data-reel-tick></i>
-          <i class="reel-tick" data-reel-tick></i>
-          <i class="reel-tick" data-reel-tick></i>
-        </div>
-        <p class="reel-count" data-reel-count>01 / 05</p>
-      </div>
-
-    </div>
-  </section>
 
   <!-- 5 — WHAT WE OFFER -->
   <section class="border-b border-line">
@@ -806,7 +679,6 @@
 
 <script src="assets/vendor/gsap.min.js" defer></script>
 <script src="assets/vendor/ScrollTrigger.min.js" defer></script>
-<script src="assets/reel.js" defer></script>
 <script src="assets/backdrop.js" defer></script>
 <script src="assets/hero.js" defer></script>
 <script src="assets/mobile.js"></script>

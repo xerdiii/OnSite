@@ -20,13 +20,13 @@
   --c-ink-soft:    104 110 118;
   --c-line:        228 226 220;
   --c-line-firm:   205 202 194;
-  --c-accent:       17 122  80;
-  --c-accent-hi:    12  95  62;
-  --c-accent-tint: 235 243 238;
+  --c-accent:      201  32  39;
+  --c-accent-hi:   170  22  30;
+  --c-accent-tint: 252 236 236;
 
   /* Accent used as *text* on the page ground — a shade down so it
      clears 4.5:1 against paper. */
-  --c-accent-text:  14 103  67;
+  --c-accent-text: 173  26  33;
   --c-shadow:       20  22  26;
   --c-on-accent:   255 255 255;
 }
@@ -41,11 +41,11 @@
   --c-ink-soft:    142 148 157;
   --c-line:         41  46  53;
   --c-line-firm:    62  68  77;
-  --c-accent:       19 128  85;
-  --c-accent-hi:    26 150 100;
-  --c-accent-tint:  24  44  35;
+  --c-accent:      226  58  62;
+  --c-accent-hi:   240  86  88;
+  --c-accent-tint:  48  22  24;
 
-  --c-accent-text:  86 196 143;
+  --c-accent-text: 252 133 133;
   --c-shadow:        0   0   0;
   --c-on-accent:   255 255 255;
 }
@@ -59,11 +59,11 @@
     --c-ink-soft:    142 148 157;
     --c-line:         41  46  53;
     --c-line-firm:    62  68  77;
-    --c-accent:       19 128  85;
-    --c-accent-hi:    26 150 100;
-    --c-accent-tint:  24  44  35;
+    --c-accent:      226  58  62;
+    --c-accent-hi:   240  86  88;
+    --c-accent-tint:  48  22  24;
 
-    --c-accent-text:  86 196 143;
+    --c-accent-text: 252 133 133;
     --c-shadow:        0   0   0;
     --c-on-accent:   255 255 255;
   }
@@ -127,9 +127,9 @@
 
 /* A white button sits on white whatever the theme, so it keeps the darker
    green rather than the lifted one used against the page ground. */
-:root[data-theme="dark"] .bg-white.text-accent { color: rgb(14 103 67); }
+:root[data-theme="dark"] .bg-white.text-accent { color: rgb(173 26 33); }
 @media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) .bg-white.text-accent { color: rgb(14 103 67); }
+  :root:not([data-theme="light"]) .bg-white.text-accent { color: rgb(173 26 33); }
 }
 
 /* The skip link inverts against the page, so it has to follow the theme */

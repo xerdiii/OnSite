@@ -42,6 +42,10 @@
   }
 
   function mount() {
+    // A page can name where the control belongs; the site menu does.
+    var slot = doc.querySelector('[data-theme-slot]');
+    if (slot && !slot.querySelector('.theme-toggle')) { slot.appendChild(button(true)); }
+
     // Public pages: next to the nav links. App shells: in the top bar.
     var nav = doc.querySelector('header nav') || doc.querySelector('header > div');
     if (nav && !nav.querySelector('.theme-toggle')) {

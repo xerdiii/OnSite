@@ -41,7 +41,7 @@
   position: relative;
   overflow: hidden;
   isolation: isolate;
-  background: #0A1410;
+  background: #0A090A;
   min-height: 82svh;
   display: flex;
   align-items: flex-end;
@@ -70,17 +70,17 @@
   position: absolute; inset: 0; z-index: 1; pointer-events: none;
   background:
     linear-gradient(97deg,
-      rgb(7 18 14 / 0.82) 0%,
-      rgb(7 18 14 / 0.76) 34%,
-      rgb(7 18 14 / 0.46) 62%,
-      rgb(7 18 14 / 0.38) 78%,
-      rgb(7 18 14 / 0.54) 100%),
+      rgb(10 9 10 / 0.82) 0%,
+      rgb(10 9 10 / 0.76) 34%,
+      rgb(10 9 10 / 0.46) 62%,
+      rgb(10 9 10 / 0.38) 78%,
+      rgb(10 9 10 / 0.54) 100%),
     linear-gradient(180deg,
-      rgb(7 18 14 / 0.34) 0%,
-      rgb(7 18 14 / 0.06) 22%,
-      rgb(7 18 14 / 0.12) 48%,
-      rgb(7 18 14 / 0.62) 78%,
-      rgb(7 18 14 / 0.74) 100%),
+      rgb(10 9 10 / 0.34) 0%,
+      rgb(10 9 10 / 0.06) 22%,
+      rgb(10 9 10 / 0.12) 48%,
+      rgb(10 9 10 / 0.62) 78%,
+      rgb(10 9 10 / 0.74) 100%),
     radial-gradient(128% 96% at 52% 46%,
       rgb(0 0 0 / 0) 42%,
       rgb(0 0 0 / 0.30) 86%,
@@ -139,7 +139,7 @@
   /* The button is white in both themes, so it takes the fixed darker
      green rather than --c-accent-text, which lifts to a pale green in
      dark mode and would vanish on white. */
-  background: #FFFFFF; color: rgb(14 103 67);
+  background: #FFFFFF; color: rgb(173 26 33);
   font-size: 1rem; font-weight: 600; letter-spacing: -0.005em;
   transition: transform 220ms cubic-bezier(0.22, 1, 0.36, 1), box-shadow 220ms ease;
   box-shadow: 0 1px 2px rgb(0 0 0 / 0.18);
@@ -167,11 +167,11 @@
   .closer .closer-wash {
     background:
       linear-gradient(180deg,
-        rgb(7 18 14 / 0.40) 0%,
-        rgb(7 18 14 / 0.12) 18%,
-        rgb(7 18 14 / 0.82) 46%,
-        rgb(7 18 14 / 0.90) 76%,
-        rgb(7 18 14 / 0.92) 100%),
+        rgb(10 9 10 / 0.40) 0%,
+        rgb(10 9 10 / 0.12) 18%,
+        rgb(10 9 10 / 0.82) 46%,
+        rgb(10 9 10 / 0.90) 76%,
+        rgb(10 9 10 / 0.92) 100%),
       radial-gradient(120% 62% at 50% 30%,
         rgb(0 0 0 / 0) 46%,
         rgb(0 0 0 / 0.26) 100%);

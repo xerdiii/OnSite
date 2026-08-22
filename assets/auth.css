@@ -78,7 +78,7 @@ body.auth {
   font-size:15px; font-weight:600; letter-spacing:-.01em;
   text-shadow:0 1px 12px rgba(0,0,0,.45);
 }
-.home-mark i { width:11px; height:11px; border-radius:3px; background:rgb(var(--c-accent,17 122 80)); display:block; }
+.home-mark i { width:11px; height:11px; border-radius:3px; background:rgb(var(--c-accent, 201 32 39)); display:block; }
 .home-mark:hover { text-decoration:underline; text-underline-offset:4px; }
 body.stacked .home-mark { left:20px; top:16px; font-size:14px; }
 
