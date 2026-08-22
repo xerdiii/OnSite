@@ -86,9 +86,6 @@
 /* Dark mode: the wash follows the page token, so only the tint of the
    footage itself needs a nudge. */
 :root[data-theme="dark"] .rail { background: rgb(255 255 255 / 0.03); }
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) .rail { background: rgb(255 255 255 / 0.03); }
-}
 
 /* Below the width where a real gutter exists, there are no rails at all.
    Nothing is scaled down into a sliver, and nothing can push the page

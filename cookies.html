@@ -8,7 +8,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400&family=Instrument+Serif&family=Inter:wght@400;500;600&family=Outfit:wght@200..800&display=swap" rel="stylesheet">
-<script>/* theme before paint, no flash */(function(){try{var t=localStorage.getItem('onsite.theme');if(t)document.documentElement.setAttribute('data-theme',t);}catch(e){}})();</script>
+<script>/* Theme before paint. Light is the site, dark is a choice you make — the attribute is always stamped so the system setting never decides for you. */(function(){var t='light';try{t=localStorage.getItem('onsite.theme')==='dark'?'dark':'light';}catch(e){}document.documentElement.setAttribute('data-theme',t);})();</script>
 <link rel="stylesheet" href="assets/onsite.css">
 <style>
   .clause p { font-size:0.9375rem; line-height:1.7; color:rgb(var(--c-ink-mid)); max-width:38rem; }
@@ -41,17 +41,17 @@
 
 <header class="sticky top-0 z-10 border-b border-line bg-paper">
   <nav class="mx-auto flex max-w-shell items-center justify-between px-6 py-4 md:px-10">
-    <a href="index.html" class="flex items-center gap-2.5">
+    <a href="./" class="flex items-center gap-2.5">
       <span class="block h-3.5 w-3.5 rounded-sm bg-accent" aria-hidden="true"></span>
       <span class="h-section text-lg tracking-tight">Onsite</span>
     </a>
 
     <div class="flex items-center gap-5 md:gap-7">
-      <a href="index.html#pricing" class="text-sm font-medium text-ink-mid hover:text-ink">Pricing</a>
-      <a href="faq.html" class="hidden text-sm font-medium text-ink-mid hover:text-ink sm:inline">FAQ</a>
-      <a href="contact.html" class="hidden text-sm font-medium text-ink-mid hover:text-ink sm:inline">Contact</a>
-      <a href="login.html" class="text-sm font-medium text-ink-mid hover:text-ink">Log in</a>
-      <a href="signup.html" class="rounded-md bg-accent px-4 py-2.5 text-sm font-semibold text-white hover:bg-accent-hi">Get started</a>
+      <a href="./#pricing" class="text-sm font-medium text-ink-mid hover:text-ink">Pricing</a>
+      <a href="faq" class="hidden text-sm font-medium text-ink-mid hover:text-ink sm:inline">FAQ</a>
+      <a href="contact" class="hidden text-sm font-medium text-ink-mid hover:text-ink sm:inline">Contact</a>
+      <a href="login" class="text-sm font-medium text-ink-mid hover:text-ink">Log in</a>
+      <a href="signup" class="rounded-md bg-accent px-4 py-2.5 text-sm font-semibold text-white hover:bg-accent-hi">Get started</a>
     </div>
   
   </nav>
@@ -69,7 +69,7 @@
       </p>
       <div class="mt-7 flex flex-wrap gap-3">
         <button class="btn btn-primary" data-cookie-settings type="button">Change my cookie choice</button>
-        <a href="terms.html" class="btn btn-ghost">Terms of Service</a>
+        <a href="terms" class="btn btn-ghost">Terms of Service</a>
       </div>
       <p class="mt-6 mono-label text-ink-soft">Last updated 18 August 2026</p>
     </div>
@@ -191,9 +191,9 @@
           </p>
           <p>
             Questions about any of this go through
-            <a href="dashboard.html#/support" class="font-semibold text-ink underline underline-offset-2">support</a>,
+            <a href="dashboard#/support" class="font-semibold text-ink underline underline-offset-2">support</a>,
             and the wider agreement is in the
-            <a href="terms.html" class="font-semibold text-ink underline underline-offset-2">Terms of Service</a>.
+            <a href="terms" class="font-semibold text-ink underline underline-offset-2">Terms of Service</a>.
           </p>
         </div>
       </article>

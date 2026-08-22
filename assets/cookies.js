@@ -78,7 +78,7 @@
 
   function policyHref() {
     // Every page sits at the site root, so a flat link is right.
-    return 'cookies.html';
+    return 'cookies';
   }
 
   function remove() {

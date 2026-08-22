@@ -113,7 +113,6 @@ html[data-hero-visible] .fp-header {
   }
 }
 
-
 /* ───────────────────────────────────────────────────────────────
    The one navigation
    Three things and nothing else: the mark, Monthly, Log in. It is on
@@ -146,9 +145,6 @@ html[data-hero-visible] .fp-header {
   font-size: 1.0625rem; font-weight: 600; letter-spacing: -0.015em;
 }
 .fp-nav-dot { width: 12px; height: 12px; border-radius: 3px; background: rgb(var(--c-accent)); display: block; flex: none; }
-
-
-
 
 /* Past the hero: the page's own surface, in whichever theme is on. */
 
@@ -186,8 +182,6 @@ html[data-hero-visible] .fp-header {
   opacity: 0; transition: opacity 900ms ease;
 }
 .fp-hero[data-backdrop="on"] .fp-hero-media video { opacity: 1; }
-
-
 
 .fp-hero-copy {
   flex: 1 1 auto;
@@ -293,16 +287,16 @@ html[data-hero-visible] .fp-header {
 }
 :root[data-theme="dark"] .fp-nav-btn:hover { background: #fff; border-color: #fff; color: #14161a; }
 :root[data-theme="dark"] .fp-hero-wash {
-    background:
-      linear-gradient(180deg,
-        rgb(8 5 7 / 0.62) 0%,
-        rgb(8 5 7 / 0.26) 22%,
-        rgb(8 5 7 / 0.30) 55%,
-        rgb(8 5 7 / 0.72) 100%),
-      radial-gradient(120% 88% at 50% 38%,
-        rgb(0 0 0 / 0) 40%,
-        rgb(0 0 0 / 0.34) 100%);
-  }
+  background:
+    linear-gradient(180deg,
+      rgb(8 5 7 / 0.62) 0%,
+      rgb(8 5 7 / 0.26) 22%,
+      rgb(8 5 7 / 0.30) 55%,
+      rgb(8 5 7 / 0.72) 100%),
+    radial-gradient(120% 88% at 50% 38%,
+      rgb(0 0 0 / 0) 40%,
+      rgb(0 0 0 / 0.34) 100%);
+}
 :root[data-theme="dark"] .fp-hero-h { color: #fff; }
 :root[data-theme="dark"] .fp-hero-p { color: rgb(255 255 255 / 0.95); }
 :root[data-theme="dark"] .fp-badge { background: rgb(24 12 14 / 0.72); }
@@ -314,43 +308,9 @@ html[data-hero-visible] .fp-header {
 :root[data-theme="dark"] .fp-nav:not(.is-solid) .fp-nav-login:hover { background: #fff; color: #14161a; }
 :root[data-theme="dark"] .fp-nav:not(.is-solid) .fp-nav-mid:hover { background: rgb(255 255 255 / 0.12); }
 :root[data-theme="dark"] .fp-nav:not(.is-solid) .theme-toggle {
-    border-color: rgb(255 255 255 / 0.4); background: rgb(255 255 255 / 0.06); color: #fff;
-  }
-:root[data-theme="dark"] .fp-nav:not(.is-solid) .theme-toggle:hover { background: #fff; color: #14161a; }
-
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) .fp-nav a { color: #fff; text-shadow: 0 1px 14px rgb(0 0 0 / 0.45); }
-  :root:not([data-theme="light"]) .fp-nav-btn {
-    border-color: rgb(255 255 255 / 0.34); background: rgb(255 255 255 / 0.1); color: #fff;
-  }
-  :root:not([data-theme="light"]) .fp-nav-btn:hover { background: #fff; border-color: #fff; color: #14161a; }
-  :root:not([data-theme="light"]) .fp-hero-wash {
-    background:
-      linear-gradient(180deg,
-        rgb(8 5 7 / 0.62) 0%,
-        rgb(8 5 7 / 0.26) 22%,
-        rgb(8 5 7 / 0.30) 55%,
-        rgb(8 5 7 / 0.72) 100%),
-      radial-gradient(120% 88% at 50% 38%,
-        rgb(0 0 0 / 0) 40%,
-        rgb(0 0 0 / 0.34) 100%);
-  }
-  :root:not([data-theme="light"]) .fp-hero-h { color: #fff; }
-  :root:not([data-theme="light"]) .fp-hero-p { color: rgb(255 255 255 / 0.95); }
-  :root:not([data-theme="light"]) .fp-badge { background: rgb(24 12 14 / 0.72); }
-  :root:not([data-theme="light"]) .fp-btn--solid { background: #fff; color: #14161a; box-shadow: 0 6px 22px rgb(0 0 0 / 0.26); }
-  :root:not([data-theme="light"]) .fp-btn--glass { color: #fff; border-color: rgb(255 255 255 / 0.46); background: rgb(255 255 255 / 0.06); }
-  :root:not([data-theme="light"]) .fp-btn--glass:hover { background: rgb(255 255 255 / 0.16); }
-  :root:not([data-theme="light"]) .fp-nav:not(.is-solid) a { color: #fff; text-shadow: 0 1px 14px rgb(0 0 0 / 0.45); }
-  :root:not([data-theme="light"]) .fp-nav:not(.is-solid) .fp-nav-login { border-color: rgb(255 255 255 / 0.4); }
-  :root:not([data-theme="light"]) .fp-nav:not(.is-solid) .fp-nav-login:hover { background: #fff; color: #14161a; }
-  :root:not([data-theme="light"]) .fp-nav:not(.is-solid) .fp-nav-mid:hover { background: rgb(255 255 255 / 0.12); }
-  :root:not([data-theme="light"]) .fp-nav:not(.is-solid) .theme-toggle {
-    border-color: rgb(255 255 255 / 0.4); background: rgb(255 255 255 / 0.06); color: #fff;
-  }
-  :root:not([data-theme="light"]) .fp-nav:not(.is-solid) .theme-toggle:hover { background: #fff; color: #14161a; }
+  border-color: rgb(255 255 255 / 0.4); background: rgb(255 255 255 / 0.06); color: #fff;
 }
-
+:root[data-theme="dark"] .fp-nav:not(.is-solid) .theme-toggle:hover { background: #fff; color: #14161a; }
 
 /* ───────────────────────────────────────────────────────────────
    The menu

@@ -33,7 +33,7 @@ window.__entryFallback=setTimeout(function(){
       <source src="assets/media/falcon-wide.mp4" type="video/mp4">
     </video>
     <div class="scrim" aria-hidden="true"></div>
-    <a class="home-mark" href="index.html"><i aria-hidden="true"></i>Onsite</a>
+    <a class="home-mark" href="./"><i aria-hidden="true"></i>Onsite</a>
     <div class="hero" id="hero">
       <div class="hl-wrap">
         <span class="hl" id="hl1">Start your</span>
@@ -46,7 +46,7 @@ window.__entryFallback=setTimeout(function(){
     <div class="card" id="card">
       <div class="card-in" id="cardIn" data-flow>
 
-        <a class="card-back" href="index.html" aria-label="Go back">
+        <a class="card-back" href="./" aria-label="Go back">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg>
         </a>
 
@@ -80,8 +80,18 @@ window.__entryFallback=setTimeout(function(){
             <div class="field field--box"><input id="confirm" type="password" autocomplete="new-password" aria-label="Confirm password" placeholder="Confirm"></div>
           </div>
 
-          <label class="checkline"><input id="agree" type="checkbox"> I agree to the <a href="terms.html">Terms of Service</a> and <a href="privacy.html">Privacy Policy</a>.</label>
-          <label class="checkline"><input id="agreeMarketing" type="checkbox"> Send me the occasional update. Optional, and easy to stop.</label>
+          <div class="consents">
+            <label class="checkline">
+              <input id="agree" type="checkbox">
+              <span class="checkbox" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3.4 8.4l3 3 6.2-6.6"/></svg></span>
+              <span class="checkline-t">I agree to the <a href="terms">Terms of Service</a> and <a href="privacy">Privacy Policy</a>.</span>
+            </label>
+            <label class="checkline">
+              <input id="agreeMarketing" type="checkbox">
+              <span class="checkbox" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3.4 8.4l3 3 6.2-6.6"/></svg></span>
+              <span class="checkline-t">Send me the occasional update. Optional, and easy to stop.</span>
+            </label>
+          </div>
 
           <p class="auth-err" id="detErr" role="alert" hidden></p>
 
@@ -91,7 +101,8 @@ window.__entryFallback=setTimeout(function(){
           </button>
 
           <div class="botcluster">
-            <p id="bottom">Already have an account? <a href="login.html">Log in</a></p>
+            <p id="bottom">Already have an account? <a href="login">Log in</a></p>
+            <div class="rowlinks"><a href="trouble">Trouble signing up?</a></div>
             <p class="aux">
               <strong>Demo build.</strong> Nothing is sent anywhere and no real account is created.
               You pay nothing here — the 25% deposit is taken later, from your dashboard.
@@ -181,7 +192,7 @@ window.__entryFallback=setTimeout(function(){
       return;
     }
     Onsite.signIn(emailEl.value.trim(), 'customer');
-    location.href = 'dashboard.html';
+    location.href = 'dashboard';
   });
 
   codeEl.addEventListener('input', function () { codeErr.hidden = true; });

@@ -15,15 +15,21 @@
   var MOON = '<svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">' +
     '<path d="M20 14.2A8.2 8.2 0 0 1 9.8 4a8.4 8.4 0 1 0 10.2 10.2z"/></svg>';
 
+  // Light is what the site is. Dark is a choice, and only a choice —
+  // the operating system's preference is deliberately not consulted.
   function current() {
-    var set = doc.documentElement.getAttribute('data-theme');
-    if (set) return set;
-    return global.matchMedia && global.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    return doc.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'light';
   }
 
   function apply(theme) {
     doc.documentElement.setAttribute('data-theme', theme);
     try { global.localStorage.setItem(KEY, theme); } catch (e) { /* private mode */ }
+    label(theme);
+  }
+
+  // Mount only labels the buttons. Writing the default back to storage on
+  // every page load would turn 'never chose' into 'chose light'.
+  function label(theme) {
     [].forEach.call(doc.querySelectorAll('.theme-toggle'), function (b) {
       b.setAttribute('aria-label', theme === 'dark' ? 'Switch to light theme' : 'Switch to dark theme');
       b.setAttribute('aria-pressed', theme === 'dark' ? 'true' : 'false');
@@ -70,7 +76,7 @@
     var body = doc.querySelector('.m-drawer-body');
     if (body && !body.querySelector('.theme-toggle')) { body.appendChild(button(true)); }
 
-    apply(current());
+    label(current());
   }
 
   // The drawer is built by mobile.js, which may run after this file.

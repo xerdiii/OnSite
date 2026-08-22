@@ -33,7 +33,7 @@ window.__entryFallback=setTimeout(function(){
       <source src="assets/media/falcon-wide.mp4" type="video/mp4">
     </video>
     <div class="scrim" aria-hidden="true"></div>
-    <a class="home-mark" href="index.html"><i aria-hidden="true"></i>Onsite</a>
+    <a class="home-mark" href="./"><i aria-hidden="true"></i>Onsite</a>
     <div class="hero" id="hero">
       <div class="hl-wrap">
         <span class="hl" id="hl1">Follow your build</span>
@@ -70,10 +70,11 @@ window.__entryFallback=setTimeout(function(){
           </button>
 
           <div class="botcluster">
-          <p id="bottom">Don&#8217;t have an account? <a href="signup.html">Create one</a></p>
+          <p id="bottom">Don&#8217;t have an account? <a href="signup">Create one</a></p>
 
           <div class="rowlinks">
-            <a href="forgot-email.html">Forgot which email you used?</a>
+            <a href="forgot-email">Forgot which email you used?</a>
+            <a href="trouble">Trouble signing in?</a>
           </div>
 
           <p class="aux">
@@ -129,8 +130,8 @@ window.__entryFallback=setTimeout(function(){
   // Only ever redirect to a local page. Without this, ?next=https://example.com
   // would turn the login into an open redirect — a classic phishing lever.
   function safeNext(value) {
-    if (!value) return 'dashboard.html';
-    return /^[A-Za-z0-9_-]+\.html(#[A-Za-z0-9/_-]*)?$/.test(value) ? value : 'dashboard.html';
+    if (!value) return 'dashboard';
+    return /^[A-Za-z0-9_-]+(#[A-Za-z0-9/_-]*)?$/.test(value) ? value : 'dashboard';
   }
 
   var next = safeNext(params.get('next'));
@@ -176,7 +177,7 @@ window.__entryFallback=setTimeout(function(){
     e.preventDefault();
     emailEl.value = 'team@onsite.demo';
     role = 'admin';
-    next = 'admin.html';
+    next = 'admin';
     toCodeStep();
   });
 

@@ -12,13 +12,13 @@
 
   // Public-site navigation. Kept in one place so every page agrees.
   var LINKS = [
-    { label: 'Home',            href: 'index.html' },
-    { label: 'Services',        href: 'index.html#services' },
-    { label: 'Pricing',         href: 'index.html#pricing' },
-    { label: 'Business Extras', href: 'index.html#extras' },
-    { label: 'FAQ',             href: 'faq.html' },
-    { label: 'Contact',         href: 'contact.html' },
-    { label: 'Log in',          href: 'login.html' }
+    { label: 'Home',            href: './' },
+    { label: 'Services',        href: './#services' },
+    { label: 'Pricing',         href: './#pricing' },
+    { label: 'Business Extras', href: './#extras' },
+    { label: 'FAQ',             href: 'faq' },
+    { label: 'Contact',         href: 'contact' },
+    { label: 'Log in',          href: 'login' }
   ];
 
   var ICON_MENU = '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><path d="M4.5 9.5h15M4.5 15h9"/></svg>';
@@ -53,7 +53,13 @@
     // third child of its own would sit in the middle of the bar.
     (cluster || nav).appendChild(toggle);
 
-    var here = (global.location.pathname.split('/').pop() || 'index.html');
+    // Paths carry no extension now and the landing page is an empty
+    // segment, so both ends of the comparison normalise to one word.
+    function key(path) {
+      var last = path.split('/').pop().replace(/\.html$/, '');
+      return (last === '' || last === '.' || last === 'index') ? 'home' : last;
+    }
+    var here = key(global.location.pathname);
 
     var drawer = doc.createElement('div');
     drawer.id = 'm-drawer';
@@ -71,11 +77,11 @@
       '</div>' +
       '<div class="m-drawer-body">' +
         LINKS.map(function (l, i) {
-          var active = l.href.split('#')[0] === here;
+          var active = key(l.href.split('#')[0]) === here;
           return '<a class="m-drawer-link" href="' + l.href + '" style="animation-delay:' + (i * 35) + 'ms">' +
             l.label + '<span>' + (active ? '•' : '→') + '</span></a>';
         }).join('') +
-        '<a class="m-drawer-cta" href="signup.html">Build My Website</a>' +
+        '<a class="m-drawer-cta" href="signup">Build My Website</a>' +
         '<p class="m-drawer-note">Pay 25% to start. You review the finished website before the remaining 75% is due.</p>' +
       '</div>';
     doc.body.appendChild(drawer);

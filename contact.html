@@ -8,7 +8,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400&family=Instrument+Serif&family=Inter:wght@400;500;600&family=Outfit:wght@200..800&display=swap" rel="stylesheet">
-<script>/* theme before paint, no flash */(function(){try{var t=localStorage.getItem('onsite.theme');if(t)document.documentElement.setAttribute('data-theme',t);}catch(e){}})();</script>
+<script>/* Theme before paint. Light is the site, dark is a choice you make — the attribute is always stamped so the system setting never decides for you. */(function(){var t='light';try{t=localStorage.getItem('onsite.theme')==='dark'?'dark':'light';}catch(e){}document.documentElement.setAttribute('data-theme',t);})();</script>
 <link rel="stylesheet" href="assets/onsite.css">
 <style>
   .ph { font-family:'IBM Plex Mono',ui-monospace,monospace; font-size:0.8125rem; letter-spacing:0.03em;
@@ -33,17 +33,17 @@
 
 <header class="sticky top-0 z-10 border-b border-line bg-paper">
   <nav class="mx-auto flex max-w-shell items-center justify-between px-6 py-4 md:px-10">
-    <a href="index.html" class="flex items-center gap-2.5">
+    <a href="./" class="flex items-center gap-2.5">
       <span class="block h-3.5 w-3.5 rounded-sm bg-accent" aria-hidden="true"></span>
       <span class="h-section text-lg tracking-tight">Onsite</span>
     </a>
 
     <div class="flex items-center gap-5 md:gap-7">
-      <a href="index.html#pricing" class="text-sm font-medium text-ink-mid hover:text-ink">Pricing</a>
-      <a href="faq.html" class="hidden text-sm font-medium text-ink-mid hover:text-ink sm:inline">FAQ</a>
-      <a href="contact.html" class="hidden text-sm font-medium text-ink-mid hover:text-ink sm:inline">Contact</a>
-      <a href="login.html" class="text-sm font-medium text-ink-mid hover:text-ink">Log in</a>
-      <a href="signup.html" class="rounded-md bg-accent px-4 py-2.5 text-sm font-semibold text-white hover:bg-accent-hi">Get started</a>
+      <a href="./#pricing" class="text-sm font-medium text-ink-mid hover:text-ink">Pricing</a>
+      <a href="faq" class="hidden text-sm font-medium text-ink-mid hover:text-ink sm:inline">FAQ</a>
+      <a href="contact" class="hidden text-sm font-medium text-ink-mid hover:text-ink sm:inline">Contact</a>
+      <a href="login" class="text-sm font-medium text-ink-mid hover:text-ink">Log in</a>
+      <a href="signup" class="rounded-md bg-accent px-4 py-2.5 text-sm font-semibold text-white hover:bg-accent-hi">Get started</a>
     </div>
   
   </nav>
@@ -96,7 +96,7 @@
               <div class="demo-note mt-6">
                 We use the name, email and message you submit here to answer your enquiry, and for
                 nothing else. We will not add you to a mailing list from this form. See our
-                <a href="privacy.html" class="font-semibold text-ink underline underline-offset-2">Privacy Policy</a>
+                <a href="privacy" class="font-semibold text-ink underline underline-offset-2">Privacy Policy</a>
                 for how we handle it.
               </div>
 
@@ -148,15 +148,15 @@
             <p class="mt-3 text-[0.8125rem] leading-relaxed text-ink-mid">
               Your dashboard keeps support messages, change requests and payment history together.
             </p>
-            <a href="login.html" class="btn btn-primary btn-block mt-4">Log in to your dashboard</a>
+            <a href="login" class="btn btn-primary btn-block mt-4">Log in to your dashboard</a>
           </div>
 
           <div class="card mt-4 p-6">
             <p class="mono-label text-ink-soft">Before you write</p>
             <ul class="mt-3 space-y-2 text-[0.8125rem] text-ink-mid">
-              <li><span class="arrow">&rarr;</span> Pricing and the payment schedule are on the <a href="index.html#pricing" class="font-semibold text-accent underline underline-offset-2">pricing page</a>.</li>
-              <li><span class="arrow">&rarr;</span> Most questions are answered in the <a href="faq.html" class="font-semibold text-accent underline underline-offset-2">FAQ</a>.</li>
-              <li><span class="arrow">&rarr;</span> Cancelling is explained in the <a href="refunds.html" class="font-semibold text-accent underline underline-offset-2">Cancellation &amp; Refund Policy</a>.</li>
+              <li><span class="arrow">&rarr;</span> Pricing and the payment schedule are on the <a href="./#pricing" class="font-semibold text-accent underline underline-offset-2">pricing page</a>.</li>
+              <li><span class="arrow">&rarr;</span> Most questions are answered in the <a href="faq" class="font-semibold text-accent underline underline-offset-2">FAQ</a>.</li>
+              <li><span class="arrow">&rarr;</span> Cancelling is explained in the <a href="refunds" class="font-semibold text-accent underline underline-offset-2">Cancellation &amp; Refund Policy</a>.</li>
             </ul>
           </div>
         </div>

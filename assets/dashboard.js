@@ -628,7 +628,7 @@
                 '<label class="mt-5 flex cursor-pointer items-start gap-2.5 border-t border-white/20 pt-4">' +
                   '<input type="checkbox" data-act="toggle-agree" class="mt-0.5 h-4 w-4 flex-none accent-white"' + (d.agreed ? ' checked' : '') + '>' +
                   '<span class="text-xs leading-relaxed text-white/80">I have read and agree to the ' +
-                    '<a href="terms.html" class="font-semibold text-white underline underline-offset-2">Terms of Service</a> ' +
+                    '<a href="terms" class="font-semibold text-white underline underline-offset-2">Terms of Service</a> ' +
                     'and acknowledge the payment schedule shown above.</span></label>' +
 
                 '<button class="btn btn-light btn-block mt-4" data-act="pay-deposit"' + (draftReady() ? '' : ' disabled') + '>' +
@@ -684,7 +684,7 @@
           '<li><span class="arrow">&rarr;</span> Cancel here or by email — no minimum term, no reason required.</li>' +
           '<li><span class="arrow">&rarr;</span> Cancellation takes effect at the end of the period you have already paid for.</li>' +
           '<li><span class="arrow">&rarr;</span> Cancelling a service does not take your website offline.</li>' +
-          '<li><span class="arrow">&rarr;</span> Full detail in the <a href="refunds.html" class="font-semibold text-accent underline underline-offset-2">Cancellation &amp; Refund Policy</a>.</li>' +
+          '<li><span class="arrow">&rarr;</span> Full detail in the <a href="refunds" class="font-semibold text-accent underline underline-offset-2">Cancellation &amp; Refund Policy</a>.</li>' +
         '</ul>' +
         '<a href="#/services" class="btn btn-ghost mt-5">Add a service</a>' +
       '</div>';
@@ -787,7 +787,7 @@
           '<ul class="mt-3 space-y-2 text-[0.8125rem] text-ink-mid">' +
             '<li><span class="arrow">&rarr;</span> Website changes go through <a href="#/request" class="font-semibold text-accent underline underline-offset-2">Request a Change</a>, not support.</li>' +
             '<li><span class="arrow">&rarr;</span> Payment questions are usually answered on <a href="#/payments" class="font-semibold text-accent underline underline-offset-2">Payments</a>.</li>' +
-            '<li><span class="arrow">&rarr;</span> Terms, cancellation and ownership are in the <a href="terms.html" class="font-semibold text-accent underline underline-offset-2">Terms of Service</a>.</li>' +
+            '<li><span class="arrow">&rarr;</span> Terms, cancellation and ownership are in the <a href="terms" class="font-semibold text-accent underline underline-offset-2">Terms of Service</a>.</li>' +
           '</ul>' +
         '</div>' +
       '</div>' +
@@ -1013,7 +1013,7 @@
     },
     logout: function () {
       O.signOut();
-      location.href = 'login.html';
+      location.href = 'login';
     }
   };
 

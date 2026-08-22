@@ -8,7 +8,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400&family=Instrument+Serif&family=Inter:wght@400;500;600&family=Outfit:wght@200..800&display=swap" rel="stylesheet">
-<script>/* theme before paint, no flash */(function(){try{var t=localStorage.getItem('onsite.theme');if(t)document.documentElement.setAttribute('data-theme',t);}catch(e){}})();</script>
+<script>/* Theme before paint. Light is the site, dark is a choice you make — the attribute is always stamped so the system setting never decides for you. */(function(){var t='light';try{t=localStorage.getItem('onsite.theme')==='dark'?'dark':'light';}catch(e){}document.documentElement.setAttribute('data-theme',t);})();</script>
 <link rel="stylesheet" href="assets/onsite.css">
 <style>
   .qa dt { font-family:'Inter','Helvetica Neue',Arial,sans-serif; font-weight:600; letter-spacing:-0.02em;
@@ -32,17 +32,17 @@
 
 <header class="sticky top-0 z-10 border-b border-line bg-paper">
   <nav class="mx-auto flex max-w-shell items-center justify-between px-6 py-4 md:px-10">
-    <a href="index.html" class="flex items-center gap-2.5">
+    <a href="./" class="flex items-center gap-2.5">
       <span class="block h-3.5 w-3.5 rounded-sm bg-accent" aria-hidden="true"></span>
       <span class="h-section text-lg tracking-tight">Onsite</span>
     </a>
 
     <div class="flex items-center gap-5 md:gap-7">
-      <a href="index.html#pricing" class="text-sm font-medium text-ink-mid hover:text-ink">Pricing</a>
-      <a href="faq.html" class="hidden text-sm font-medium text-ink-mid hover:text-ink sm:inline">FAQ</a>
-      <a href="contact.html" class="hidden text-sm font-medium text-ink-mid hover:text-ink sm:inline">Contact</a>
-      <a href="login.html" class="text-sm font-medium text-ink-mid hover:text-ink">Log in</a>
-      <a href="signup.html" class="rounded-md bg-accent px-4 py-2.5 text-sm font-semibold text-white hover:bg-accent-hi">Get started</a>
+      <a href="./#pricing" class="text-sm font-medium text-ink-mid hover:text-ink">Pricing</a>
+      <a href="faq" class="hidden text-sm font-medium text-ink-mid hover:text-ink sm:inline">FAQ</a>
+      <a href="contact" class="hidden text-sm font-medium text-ink-mid hover:text-ink sm:inline">Contact</a>
+      <a href="login" class="text-sm font-medium text-ink-mid hover:text-ink">Log in</a>
+      <a href="signup" class="rounded-md bg-accent px-4 py-2.5 text-sm font-semibold text-white hover:bg-accent-hi">Get started</a>
     </div>
   
   </nav>
@@ -56,7 +56,7 @@
       <h1 class="h-display doc-title mt-5 max-w-3xl">Everything people ask before they buy.</h1>
       <p class="mt-6 max-w-prose text-[0.9375rem] leading-relaxed text-ink-mid">
         If something is not answered here, ask us directly — the
-        <a href="contact.html" class="font-semibold text-ink underline underline-offset-2">contact page</a>
+        <a href="contact" class="font-semibold text-ink underline underline-offset-2">contact page</a>
         goes to a person, not a queue.
       </p>
     </div>
@@ -186,7 +186,7 @@
             <dt data-acc-head>What do you need from me?</dt>
             <div data-acc-body>            <dd>Logo, photos, business information, services and prices, opening hours, contact details,
               social links, and any specific text you want used. There is a
-              <a href="start.html" class="font-semibold text-ink underline underline-offset-2">form that walks through all of it</a>.</dd></div>
+              <a href="start" class="font-semibold text-ink underline underline-offset-2">form that walks through all of it</a>.</dd></div>
           </div>
 
           <div data-acc-item>
@@ -272,7 +272,7 @@
             <dt data-acc-head>Can I order just a logo without a website?</dt>
             <div data-acc-body>            <dd>Not at the moment. Business Extras are currently sold as add-ons alongside a website
               build rather than as standalone purchases. If you want something on its own, ask us on the
-              <a href="contact.html" class="font-semibold text-ink underline underline-offset-2">contact page</a>
+              <a href="contact" class="font-semibold text-ink underline underline-offset-2">contact page</a>
               and we will tell you what is possible.</dd></div>
           </div>
 
@@ -355,7 +355,7 @@
               <strong>My Services</strong> or email us. It stops at the end of the period you have already
               paid for, and cancelling a service does not take your website down.</dd>
             <dd>The detail is in the
-              <a href="refunds.html" class="font-semibold text-ink underline underline-offset-2">Cancellation &amp; Refund Policy</a>.</dd></div>
+              <a href="refunds" class="font-semibold text-ink underline underline-offset-2">Cancellation &amp; Refund Policy</a>.</dd></div>
           </div>
 
           <div data-acc-item>
@@ -377,7 +377,7 @@
             <dt data-acc-head>How do I contact support?</dt>
             <div data-acc-body>            <dd>From the <strong>Support</strong> section of your dashboard, which keeps the whole thread
               in one place, or by email at <span class="ph">[SUPPORT EMAIL]</span>. The
-              <a href="contact.html" class="font-semibold text-ink underline underline-offset-2">contact page</a>
+              <a href="contact" class="font-semibold text-ink underline underline-offset-2">contact page</a>
               works before you have an account.</dd></div>
           </div>
 
@@ -386,7 +386,7 @@
             <div data-acc-body>            <dd>No. We do not sell your information and we do not share it for anyone else's advertising.
               It goes to the providers we need to run the service — payment processing, hosting, email
               delivery, domain registration — and nowhere else. They are listed in the
-              <a href="privacy.html" class="font-semibold text-ink underline underline-offset-2">Privacy Policy</a>.</dd></div>
+              <a href="privacy" class="font-semibold text-ink underline underline-offset-2">Privacy Policy</a>.</dd></div>
           </div>
 
           <div data-acc-item>
@@ -402,14 +402,14 @@
               exported if you ask, then removed. Invoices and payment records are kept for as long as tax
               and accounting law requires. You can ask for a copy of your information, or ask us to delete
               what we are not legally required to keep — see the
-              <a href="privacy.html" class="font-semibold text-ink underline underline-offset-2">Privacy Policy</a>.</dd></div>
+              <a href="privacy" class="font-semibold text-ink underline underline-offset-2">Privacy Policy</a>.</dd></div>
           </div>
 
           <div data-acc-item>
             <dt data-acc-head>Does the site use tracking cookies?</dt>
             <div data-acc-body>            <dd>No. There is no analytics, advertising or tracking on this site — only a cookie that
               remembers your consent choice and the storage that keeps you signed in. The
-              <a href="cookies.html" class="font-semibold text-ink underline underline-offset-2">Cookie Policy</a>
+              <a href="cookies" class="font-semibold text-ink underline underline-offset-2">Cookie Policy</a>
               lists both in full.</dd></div>
           </div>
 
@@ -422,8 +422,8 @@
           Ask before you buy. We would rather answer a question now than have you order the wrong thing.
         </p>
         <div class="mt-6 flex flex-wrap gap-3">
-          <a href="contact.html" class="btn btn-light">Contact us</a>
-          <a href="index.html#pricing" class="btn btn-ghost">See pricing</a>
+          <a href="contact" class="btn btn-light">Contact us</a>
+          <a href="./#pricing" class="btn btn-ghost">See pricing</a>
         </div>
       </div>
 

@@ -8,7 +8,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400&family=Instrument+Serif&family=Inter:wght@400;500;600&family=Outfit:wght@200..800&display=swap" rel="stylesheet">
-<script>/* theme before paint, no flash */(function(){try{var t=localStorage.getItem('onsite.theme');if(t)document.documentElement.setAttribute('data-theme',t);}catch(e){}})();</script>
+<script>/* Theme before paint. Light is the site, dark is a choice you make — the attribute is always stamped so the system setting never decides for you. */(function(){var t='light';try{t=localStorage.getItem('onsite.theme')==='dark'?'dark':'light';}catch(e){}document.documentElement.setAttribute('data-theme',t);})();</script>
 <link rel="stylesheet" href="assets/onsite.css">
 <link rel="stylesheet" href="assets/mobile.css">
 <link rel="stylesheet" href="assets/tailwind.css">
@@ -24,7 +24,7 @@
   <div class="mx-auto flex max-w-shell items-center justify-between gap-4 px-6 py-3.5 md:px-10">
     <div class="flex items-center gap-3">
       <button id="nav-toggle" type="button" class="btn btn-ghost px-2.5 py-1.5 lg:hidden" aria-label="Menu">☰</button>
-      <a href="index.html" class="flex items-center gap-2.5">
+      <a href="./" class="flex items-center gap-2.5">
         <span class="block h-3.5 w-3.5 rounded-sm bg-accent" aria-hidden="true"></span>
         <span class="h-section text-lg tracking-tight">Onsite</span>
       </a>
@@ -103,11 +103,11 @@
   <div class="mx-auto flex max-w-shell flex-col gap-3 px-6 py-8 sm:flex-row sm:items-center sm:justify-between md:px-10">
     <p class="text-[0.8125rem] text-ink-soft">Onsite — client dashboard (demo)</p>
     <div class="flex flex-wrap gap-x-6 gap-y-2">
-      <a href="index.html" class="mono-label text-ink-soft hover:text-ink">Website</a>
-      <a href="terms.html" class="mono-label text-ink-soft hover:text-ink">Terms</a>
-      <a href="cookies.html" class="mono-label text-ink-soft hover:text-ink">Cookies</a>
+      <a href="./" class="mono-label text-ink-soft hover:text-ink">Website</a>
+      <a href="terms" class="mono-label text-ink-soft hover:text-ink">Terms</a>
+      <a href="cookies" class="mono-label text-ink-soft hover:text-ink">Cookies</a>
       <a href="#" data-cookie-settings class="mono-label text-ink-soft hover:text-ink">Cookie settings</a>
-      <a href="admin.html" class="mono-label text-ink-soft hover:text-ink">Admin (demo)</a>
+      <a href="admin" class="mono-label text-ink-soft hover:text-ink">Admin (demo)</a>
     </div>
   </div>
 </footer>

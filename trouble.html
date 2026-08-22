@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Trouble signing in — Onsite</title>
+<meta name="description" content="Locked out, code never arrived, email already registered — the fixes for every way signing in or signing up goes wrong.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@200..800&display=swap" rel="stylesheet">
+<script>/* Pre-paint entrance guard. With JS off the class is never added and
+   the finished page simply renders — that is the whole no-JS story. */
+document.documentElement.classList.add('entry-pending');
+window.__entryFallback=setTimeout(function(){
+  document.documentElement.classList.remove('entry-pending');
+},3500);</script>
+<link rel="stylesheet" href="assets/auth.css">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+</head>
+
+<body class="auth">
+
+<div class="stage">
+
+  <section class="photo">
+    <video class="photo-img photo-img--tall" muted loop playsinline preload="none"
+           poster="assets/media/falcon-poster.webp"
+           aria-label="A peregrine falcon in a high-speed dive, feathers rippling, eye locked forward">
+      <source src="assets/media/falcon.mp4" type="video/mp4">
+    </video>
+    <video class="photo-img photo-img--wide" aria-hidden="true" muted loop playsinline preload="none"
+           poster="assets/media/falcon-poster-wide.webp">
+      <source src="assets/media/falcon-wide.mp4" type="video/mp4">
+    </video>
+    <div class="scrim" aria-hidden="true"></div>
+    <a class="home-mark" href="./"><i aria-hidden="true"></i>Onsite</a>
+    <div class="hero" id="hero">
+      <div class="hl-wrap">
+        <span class="hl" id="hl1">Locked out?</span>
+        <span class="hl" id="hl2">Start here.</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="pane">
+    <div class="card" id="card">
+      <div class="card-in" id="cardIn" data-flow>
+
+        <a class="card-back" href="login" aria-label="Back to log in">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg>
+        </a>
+
+        <div data-step="help" id="stepHelp">
+          <h1 id="h1" class="h1-ruled">Trouble signing in</h1>
+
+          <!-- The two fastest exits, before anything has to be read. -->
+          <div class="tr-fast">
+            <a class="tr-fast-a" href="forgot-password">
+              <span class="tr-fast-t">Reset my password</span>
+              <svg viewBox="0 0 22 22" aria-hidden="true"><path d="M3 11h15.4M11 3.3l7.7 7.7-7.7 7.7" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+            <a class="tr-fast-a" href="forgot-email">
+              <span class="tr-fast-t">Find my email address</span>
+              <svg viewBox="0 0 22 22" aria-hidden="true"><path d="M3 11h15.4M11 3.3l7.7 7.7-7.7 7.7" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+          </div>
+
+          <p class="tr-group">Signing in</p>
+          <div class="tr-list" data-tr>
+
+            <div class="tr-item">
+              <button type="button" class="tr-head" aria-expanded="false">
+                <span>My password is not accepted</span>
+                <i aria-hidden="true"></i>
+              </button>
+              <div class="tr-body">
+                <p>Passwords are case sensitive, so check Caps Lock first, then check for a space picked up from a paste. If it still fails, <a href="forgot-password">reset it</a> — the reset link works even when you cannot remember what the old one was.</p>
+              </div>
+            </div>
+
+            <div class="tr-item">
+              <button type="button" class="tr-head" aria-expanded="false">
+                <span>I do not know which email I used</span>
+                <i aria-hidden="true"></i>
+              </button>
+              <div class="tr-body">
+                <p>Your business name or the phone number you gave us is enough to find it. <a href="forgot-email">Look it up here</a> and we show you the address with most of it masked, so you can recognise it without it being readable by anyone standing behind you.</p>
+              </div>
+            </div>
+
+            <div class="tr-item">
+              <button type="button" class="tr-head" aria-expanded="false">
+                <span>The code never arrived</span>
+                <i aria-hidden="true"></i>
+              </button>
+              <div class="tr-body">
+                <p>Give it two minutes, then check the spam or promotions folder. If it is still missing, ask for a new code — the old one stops working the moment a new one is sent, so only the newest code in your inbox is the live one.</p>
+                <p>Codes also expire on their own after ten minutes. A code you found half an hour later will be refused even though it looks right.</p>
+              </div>
+            </div>
+
+            <div class="tr-item">
+              <button type="button" class="tr-head" aria-expanded="false">
+                <span>It says there is no account with that email</span>
+                <i aria-hidden="true"></i>
+              </button>
+              <div class="tr-body">
+                <p>Usually one of two things: the account is under a different address — a personal one rather than the business one, or the other way round — or the sign-up was never finished past the code step. <a href="forgot-email">Search by business name</a> to settle which.</p>
+              </div>
+            </div>
+
+          </div>
+
+          <p class="tr-group">Signing up</p>
+          <div class="tr-list" data-tr>
+
+            <div class="tr-item">
+              <button type="button" class="tr-head" aria-expanded="false">
+                <span>It says this email is already registered</span>
+                <i aria-hidden="true"></i>
+              </button>
+              <div class="tr-body">
+                <p>You already have an account, which is the good version of this problem. <a href="login">Log in</a> instead, and <a href="forgot-password">reset the password</a> if you do not have it. Nothing you paid for is lost.</p>
+              </div>
+            </div>
+
+            <div class="tr-item">
+              <button type="button" class="tr-head" aria-expanded="false">
+                <span>The two passwords will not match</span>
+                <i aria-hidden="true"></i>
+              </button>
+              <div class="tr-body">
+                <p>Almost always a trailing space from a paste, or Caps Lock on for one field and off for the other. Clear both boxes and type it twice by hand.</p>
+              </div>
+            </div>
+
+            <div class="tr-item">
+              <button type="button" class="tr-head" aria-expanded="false">
+                <span>The verification code is refused</span>
+                <i aria-hidden="true"></i>
+              </button>
+              <div class="tr-body">
+                <p>Six digits, no spaces. If you asked for more than one code, only the last one counts. Ask for a fresh one and use that.</p>
+              </div>
+            </div>
+
+            <div class="tr-item">
+              <button type="button" class="tr-head" aria-expanded="false">
+                <span>Which country code do I pick?</span>
+                <i aria-hidden="true"></i>
+              </button>
+              <div class="tr-body">
+                <p>The one your phone number belongs to, not the one you happen to be standing in. Type the country name or the dialling code into the search box and pick it from the list.</p>
+              </div>
+            </div>
+
+          </div>
+
+          <div class="tr-out">
+            <p class="tr-out-h">Still stuck?</p>
+            <p class="tr-out-p">Tell us the business name and roughly when you ordered. A person reads it and answers — usually the same day.</p>
+            <a class="btn-primary-pill" href="contact">
+              <span>Message us</span>
+              <svg viewBox="0 0 22 22" aria-hidden="true" focusable="false"><path d="M3 11h15.4M11 3.3l7.7 7.7-7.7 7.7" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+          </div>
+
+          <div class="botcluster">
+            <p id="bottom">Remembered it? <a href="login">Log in</a> &middot; No account yet? <a href="signup">Create one</a></p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<script>
+(function () {
+  'use strict';
+  // One open at a time inside a group. Closed is the honest default —
+  // eight open answers is a wall of text, not a help page.
+  function shut(head) {
+    var body = head.parentNode.querySelector('.tr-body');
+    // From its measured height, not from auto — a transition needs two
+    // definite ends, and 'auto' is not one of them.
+    body.style.height = body.scrollHeight + 'px';
+    body.offsetHeight;
+    body.style.height = '0px';
+    head.setAttribute('aria-expanded', 'false');
+    head.parentNode.classList.remove('is-open');
+  }
+
+  function open(head) {
+    var body = head.parentNode.querySelector('.tr-body');
+    body.style.height = body.scrollHeight + 'px';
+    head.setAttribute('aria-expanded', 'true');
+    head.parentNode.classList.add('is-open');
+    // Release to auto once it has arrived, so a reflow — a rotated phone,
+    // a resized window — cannot leave the panel clipped at a stale height.
+    body.addEventListener('transitionend', function done(e) {
+      if (e.propertyName !== 'height') return;
+      body.removeEventListener('transitionend', done);
+      if (head.getAttribute('aria-expanded') === 'true') body.style.height = 'auto';
+    });
+  }
+
+  [].forEach.call(document.querySelectorAll('[data-tr]'), function (list) {
+    [].forEach.call(list.querySelectorAll('.tr-head'), function (head) {
+      head.addEventListener('click', function () {
+        var wasOpen = head.getAttribute('aria-expanded') === 'true';
+        [].forEach.call(list.querySelectorAll('.tr-head'), function (h) {
+          if (h.getAttribute('aria-expanded') === 'true') shut(h);
+        });
+        if (!wasOpen) open(head);
+      });
+    });
+  });
+})();
+</script>
+<script src="assets/auth.js" defer></script>
+<script src="assets/cookies.js"></script>
+</body>
+</html>

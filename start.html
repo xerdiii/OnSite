@@ -8,7 +8,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400&family=Instrument+Serif&family=Inter:wght@400;500;600&family=Outfit:wght@200..800&display=swap" rel="stylesheet">
-<script>/* theme before paint, no flash */(function(){try{var t=localStorage.getItem('onsite.theme');if(t)document.documentElement.setAttribute('data-theme',t);}catch(e){}})();</script>
+<script>/* Theme before paint. Light is the site, dark is a choice you make — the attribute is always stamped so the system setting never decides for you. */(function(){var t='light';try{t=localStorage.getItem('onsite.theme')==='dark'?'dark':'light';}catch(e){}document.documentElement.setAttribute('data-theme',t);})();</script>
 <style>
   html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
   body { font-feature-settings: "kern" 1, "liga" 1; }
@@ -65,17 +65,17 @@
 <!-- NAVIGATION -->
 <header class="sticky top-0 z-10 border-b border-line bg-paper">
   <nav class="mx-auto flex max-w-shell items-center justify-between px-6 py-4 md:px-10">
-    <a href="index.html" class="flex items-center gap-2.5">
+    <a href="./" class="flex items-center gap-2.5">
       <span class="block h-3.5 w-3.5 rounded-sm bg-accent" aria-hidden="true"></span>
       <span class="h-section text-lg tracking-tight">Onsite</span>
     </a>
 
     <div class="flex items-center gap-5 md:gap-7">
-      <a href="index.html#pricing" class="text-sm font-medium text-ink-mid hover:text-ink">Pricing</a>
-      <a href="faq.html" class="hidden text-sm font-medium text-ink-mid hover:text-ink sm:inline">FAQ</a>
-      <a href="contact.html" class="hidden text-sm font-medium text-ink-mid hover:text-ink sm:inline">Contact</a>
-      <a href="login.html" class="text-sm font-medium text-ink-mid hover:text-ink">Log in</a>
-      <a href="signup.html" class="rounded-md bg-accent px-4 py-2.5 text-sm font-semibold text-white hover:bg-accent-hi">Get started</a>
+      <a href="./#pricing" class="text-sm font-medium text-ink-mid hover:text-ink">Pricing</a>
+      <a href="faq" class="hidden text-sm font-medium text-ink-mid hover:text-ink sm:inline">FAQ</a>
+      <a href="contact" class="hidden text-sm font-medium text-ink-mid hover:text-ink sm:inline">Contact</a>
+      <a href="login" class="text-sm font-medium text-ink-mid hover:text-ink">Log in</a>
+      <a href="signup" class="rounded-md bg-accent px-4 py-2.5 text-sm font-semibold text-white hover:bg-accent-hi">Get started</a>
     </div>
   
   </nav>
@@ -245,7 +245,7 @@
               <div class="border-t border-line px-5 py-4">
                 <p class="text-[0.8125rem] leading-relaxed text-ink-soft">
                   Full delivery terms are in clause 05 of the
-                  <a href="terms.html#s5" class="font-semibold text-ink underline underline-offset-2 hover:text-accent">Terms of Service</a>.
+                  <a href="terms#s5" class="font-semibold text-ink underline underline-offset-2 hover:text-accent">Terms of Service</a>.
                 </p>
               </div>
             </div>
