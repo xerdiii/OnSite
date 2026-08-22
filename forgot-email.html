@@ -2,147 +2,168 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Recover your email — Onsite</title>
-<meta name="description" content="Find which email address your Onsite account uses.">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Forgot your email — Onsite</title>
+<meta name="description" content="Find the email address on your Onsite account.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400&family=Instrument+Serif&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<script>/* theme before paint, no flash */(function(){try{var t=localStorage.getItem('onsite.theme');if(t)document.documentElement.setAttribute('data-theme',t);}catch(e){}})();</script>
-<link rel="stylesheet" href="assets/onsite.css">
-<link rel="stylesheet" href="assets/mobile.css">
-<link rel="stylesheet" href="assets/tailwind.css">
-<link rel="stylesheet" href="assets/theme.css">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@200..800&display=swap" rel="stylesheet">
+<script>/* Pre-paint entrance guard. With JS off the class is never added and
+   the finished page simply renders — that is the whole no-JS story. */
+document.documentElement.classList.add('entry-pending');
+window.__entryFallback=setTimeout(function(){
+  document.documentElement.classList.remove('entry-pending');
+},3500);</script>
+<link rel="stylesheet" href="assets/auth.css">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 </head>
 
-<body class="bg-paper font-sans text-ink antialiased">
+<body class="auth">
 
-<header class="border-b border-line bg-paper">
-  <nav class="mx-auto flex max-w-shell items-center justify-between px-6 py-4 md:px-10">
-    <a href="index.html" class="flex items-center gap-2.5">
-      <span class="block h-3.5 w-3.5 rounded-sm bg-accent" aria-hidden="true"></span>
-      <span class="h-section text-lg tracking-tight">Onsite</span>
-    </a>
-    <a href="login.html" class="text-sm font-semibold text-ink-mid hover:text-ink">Back to log in</a>
-  </nav>
-</header>
+<div class="stage">
 
-<main class="mx-auto flex max-w-shell justify-center px-6 py-14 md:px-10 md:py-20">
-  <div class="w-full max-w-md">
-
-    <p class="eyebrow text-ink-soft">Account recovery</p>
-    <h1 class="h-display doc-title mt-4">Which email did you use?</h1>
-    <p class="mt-4 text-[0.9375rem] leading-relaxed text-ink-mid">
-      Tell us the business name and phone number on the account and we will show you a hint for the
-      address it uses.
-    </p>
-
-    <!-- STEP 1 — identify -->
-    <section id="step-find" class="card mt-8 p-6">
-      <div class="field">
-        <label for="business">Business name</label>
-        <input id="business" type="text" autocomplete="organization" placeholder="Janey's Hair Studio">
+  <section class="photo">
+    <video class="photo-img photo-img--tall" muted loop playsinline preload="none"
+           poster="assets/media/falcon-poster.webp"
+           aria-label="A peregrine falcon in a high-speed dive, feathers rippling, eye locked forward">
+      <source src="assets/media/falcon.mp4" type="video/mp4">
+    </video>
+    <video class="photo-img photo-img--wide" aria-hidden="true" muted loop playsinline preload="none"
+           poster="assets/media/falcon-poster-wide.webp">
+      <source src="assets/media/falcon-wide.mp4" type="video/mp4">
+    </video>
+    <div class="scrim" aria-hidden="true"></div>
+    <a class="home-mark" href="index.html"><i aria-hidden="true"></i>Onsite</a>
+    <div class="hero" id="hero">
+      <div class="badge">
+        <svg viewBox="0 0 582 557" aria-hidden="true" focusable="false"><path fill="#fff" fill-rule="evenodd" d="M449 0 435 0 415 10 200 249 187 276 189 299 212 326 232 332 289 334 289 516 301 543 324 556 346 556 374 536 573 311 582 288 579 264 559 240 539 233 478 230 478 32 470 13ZM442 38 446 250 466 267 540 270 547 285 341 520 332 522 324 514 321 314 307 300 295 297 233 297 224 291 221 282ZM1 67 4 81 17 90 216 90 223 87 232 74 228 57 215 49 18 49 5 57ZM0 285 4 300 17 308 105 308 118 299 121 291 119 278 111 270 103 267 17 267 4 275ZM1 495 4 511 10 517 23 520 179 520 191 516 200 500 196 488 182 479 18 479 9 483Z"/></svg>
+        <span id="badgeTxt">Built for local businesses</span>
       </div>
-      <div class="field mt-5">
-        <label for="phone">Phone number on the account</label>
-        <input id="phone" type="tel" autocomplete="tel" placeholder="+44 7700 900412">
+      <div class="hl-wrap">
+        <span class="hl" id="hl1">Lost the</span>
+        <span class="hl" id="hl2">email address?</span>
       </div>
-      <p id="find-error" class="mt-3 hidden text-[0.8125rem] font-semibold text-accent"></p>
-      <button id="btn-find" type="button" class="btn btn-primary btn-block mt-6">Continue</button>
-      <p class="mt-4 text-[0.8125rem] text-ink-soft">
-        Know your email but not the password?
-        <a href="forgot-password.html" class="font-semibold text-accent underline underline-offset-2 hover:text-accent-hi">Reset your password</a>.
-      </p>
-    </section>
-
-    <!-- STEP 2 — result -->
-    <section id="step-result" class="card mt-8 hidden p-6">
-      <p class="mono-label text-ink-soft">Result</p>
-      <h2 id="result-title" class="h-section mt-3 text-xl">We found one account</h2>
-      <p id="result-body" class="mt-2 text-[0.9375rem] leading-relaxed text-ink-mid"></p>
-
-      <div id="result-hint" class="card-quiet mt-5 p-4">
-        <p class="mono-label text-ink-soft">Email on the account</p>
-        <p id="masked-email" class="h-section mt-2 text-lg"></p>
-        <p class="mt-2 text-[0.8125rem] leading-relaxed text-ink-soft">
-          Part of the address is hidden on purpose. If this looks right, log in with the full address.
-        </p>
-      </div>
-
-      <a href="login.html" class="btn btn-primary btn-block mt-6">Continue to log in</a>
-      <button id="btn-again" type="button" class="mt-4 w-full text-[0.8125rem] font-semibold text-ink-mid hover:text-ink">Try different details</button>
-    </section>
-
-    <div class="demo-note mt-6">
-      <strong>This is a demo.</strong> The lookup is simulated against a single example account and
-      never reveals another customer's details. In production this would be rate-limited and would
-      send the result to the address on file rather than showing it on screen.
     </div>
+  </section>
 
-  </div>
-</main>
+  <section class="pane">
+    <div class="card" id="card">
+      <div class="card-in" id="cardIn" data-flow>
 
-<div data-site-footer></div>
+        <div data-step="find" id="stepFind">
+          <h1 id="h1">Find your account</h1>
+          <p id="sub"><b>Your business name</b> or the phone number you gave us.</p>
+
+          <div class="field field--box"><input id="business" type="text" autocomplete="organization" aria-label="Business name" placeholder="Business name"></div>
+          <div class="field field--box"><input id="phone" type="tel" autocomplete="tel" aria-label="Phone number" placeholder="Phone number"></div>
+
+          <p class="auth-err" id="findErr" role="alert" hidden></p>
+
+          <button type="button" id="findBtn" class="btn-primary-pill">
+            <span>Find my account</span>
+            <svg viewBox="0 0 22 22" aria-hidden="true" focusable="false"><path d="M3 11h15.4M11 3.3l7.7 7.7-7.7 7.7" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+
+          <div class="botcluster">
+            <p id="bottom">Remembered it? <a href="login.html">Log in</a></p>
+            <div class="rowlinks">
+              <a href="forgot-password.html">Forgot password?</a>
+              <a href="contact.html">Ask us instead</a>
+            </div>
+            <p class="aux"><strong>Demo build.</strong> This searches one example account held in your browser.</p>
+          </div>
+        </div>
+
+        <div data-step="result" id="stepResult" hidden>
+          <h1 class="step-h1" id="resultTitle">We found one account</h1>
+          <p class="step-sub" id="resultBody"></p>
+
+          <div class="field field--box" id="maskedBox">
+            <input id="maskedEmail" type="text" readonly aria-label="Masked email address on the account">
+          </div>
+
+          <p class="aux" id="resultHint">Only part of the address is shown. If it looks right, log in with it — or
+            <a href="forgot-password.html">reset the password</a>.</p>
+
+          <a href="login.html" class="btn-primary-pill" id="toLoginBtn" style="text-decoration:none">
+            <span>Go to log in</span>
+            <svg viewBox="0 0 22 22" aria-hidden="true" focusable="false"><path d="M3 11h15.4M11 3.3l7.7 7.7-7.7 7.7" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+
+          <div class="botcluster">
+            <div class="rowlinks">
+              <button type="button" class="linkbtn" id="againBtn">Search again</button>
+              <a href="contact.html">Ask us instead</a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+</div>
 
 <script src="assets/demo.js"></script>
 <script>
 (function () {
-  var stepFind = document.getElementById('step-find');
-  var stepResult = document.getElementById('step-result');
+  'use strict';
+  var stepFind = document.getElementById('stepFind');
+  var stepResult = document.getElementById('stepResult');
 
   // Shows the first character and the domain only.
   function mask(email) {
     var at = email.indexOf('@');
-    if (at < 1) return '•••';
-    return email[0] + '•'.repeat(Math.max(3, at - 1)) + email.slice(at);
+    if (at < 1) return '\u2022\u2022\u2022';
+    return email[0] + '\u2022'.repeat(Math.max(3, at - 1)) + email.slice(at);
   }
 
-  document.getElementById('btn-find').addEventListener('click', function () {
+  document.getElementById('findBtn').addEventListener('click', function () {
     var biz = document.getElementById('business').value.trim();
     var phone = document.getElementById('phone').value.trim();
-    var err = document.getElementById('find-error');
+    var err = document.getElementById('findErr');
 
     if (!biz && !phone) {
       err.textContent = 'Enter your business name or the phone number on the account.';
-      err.classList.remove('hidden');
+      err.hidden = false;
       return;
     }
-    err.classList.add('hidden');
+    err.hidden = true;
 
     var c = Onsite.load().customer;
     // Demo lookup: matches the one example account, loosely.
     var hit = (biz && c.business.toLowerCase().indexOf(biz.toLowerCase()) > -1) ||
-              (phone && c.phone.replace(/\D/g, '').slice(-6) === phone.replace(/\D/g, '').slice(-6)) ||
-              (!biz && !phone);
+              (phone && c.phone.replace(/\D/g, '').slice(-6) === phone.replace(/\D/g, '').slice(-6));
 
+    var maskedBox = document.getElementById('maskedBox');
     if (hit) {
-      document.getElementById('result-title').textContent = 'We found one account';
-      document.getElementById('result-body').textContent =
+      document.getElementById('resultTitle').textContent = 'We found one account';
+      document.getElementById('resultBody').textContent =
         'One account matches those details: ' + c.business + '.';
-      document.getElementById('masked-email').textContent = mask(c.email);
-      document.getElementById('result-hint').classList.remove('hidden');
+      document.getElementById('maskedEmail').value = mask(c.email);
+      maskedBox.hidden = false;
+      document.getElementById('resultHint').hidden = false;
+      document.getElementById('toLoginBtn').hidden = false;
     } else {
-      document.getElementById('result-title').textContent = 'No account matched';
-      document.getElementById('result-body').textContent =
+      document.getElementById('resultTitle').textContent = 'No account matched';
+      document.getElementById('resultBody').textContent =
         'Nothing matched those details. Check the spelling of the business name, or try the phone number you gave us when you ordered.';
-      document.getElementById('result-hint').classList.add('hidden');
+      maskedBox.hidden = true;
+      document.getElementById('resultHint').hidden = true;
+      document.getElementById('toLoginBtn').hidden = true;
     }
 
-    stepFind.classList.add('hidden');
-    stepResult.classList.remove('hidden');
+    stepFind.hidden = true;
+    stepResult.hidden = false;
   });
 
-  document.getElementById('btn-again').addEventListener('click', function () {
-    stepResult.classList.add('hidden');
-    stepFind.classList.remove('hidden');
+  document.getElementById('againBtn').addEventListener('click', function () {
+    stepResult.hidden = true;
+    stepFind.hidden = false;
   });
 })();
 </script>
-
-<script src="assets/footer.js"></script>
+<script src="assets/auth.js" defer></script>
 <script src="assets/cookies.js"></script>
-<script src="assets/mobile.js"></script>
-<script src="assets/theme.js"></script>
 </body>
 </html>

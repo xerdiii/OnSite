@@ -2,110 +2,136 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Log in — Onsite</title>
 <meta name="description" content="Log in to your Onsite dashboard to follow your website build, payments and change requests.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400&family=Instrument+Serif&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<script>/* theme before paint, no flash */(function(){try{var t=localStorage.getItem('onsite.theme');if(t)document.documentElement.setAttribute('data-theme',t);}catch(e){}})();</script>
-<link rel="stylesheet" href="assets/onsite.css">
-<link rel="stylesheet" href="assets/mobile.css">
-<link rel="stylesheet" href="assets/tailwind.css">
-<link rel="stylesheet" href="assets/theme.css">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@200..800&display=swap" rel="stylesheet">
+<script>/* Pre-paint entrance guard. With JS off the class is never added and
+   the finished page simply renders — that is the whole no-JS story. */
+document.documentElement.classList.add('entry-pending');
+window.__entryFallback=setTimeout(function(){
+  document.documentElement.classList.remove('entry-pending');
+},3500);</script>
+<link rel="stylesheet" href="assets/auth.css">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 </head>
 
-<body class="bg-paper font-sans text-ink antialiased">
+<body class="auth">
 
-<header class="border-b border-line bg-paper">
-  <nav class="mx-auto flex max-w-shell items-center justify-between px-6 py-4 md:px-10">
-    <a href="index.html" class="flex items-center gap-2.5">
-      <span class="block h-3.5 w-3.5 rounded-sm bg-accent" aria-hidden="true"></span>
-      <span class="h-section text-lg tracking-tight">Onsite</span>
-    </a>
-    <a href="signup.html" class="text-sm font-semibold text-ink-mid hover:text-ink">Create account</a>
-  </nav>
-</header>
+<div class="stage">
 
-<main class="mx-auto flex max-w-shell justify-center px-6 py-14 md:px-10 md:py-20">
-  <div class="w-full max-w-md">
-
-    <p class="eyebrow text-ink-soft">Client access</p>
-    <h1 class="h-display doc-title mt-4">Log in to your dashboard.</h1>
-    <p class="mt-4 text-[0.9375rem] leading-relaxed text-ink-mid">
-      Follow your build, approve your website, and see exactly what has been paid and what is due.
-    </p>
-
-    <!-- STEP 1 — credentials -->
-    <section id="step-credentials" class="card mt-8 p-6">
-      <div class="field">
-        <label for="email">Email</label>
-        <input id="email" type="email" autocomplete="email" placeholder="jane@janeys-hair.co.uk">
+  <section class="photo">
+    <video class="photo-img photo-img--tall" muted loop playsinline preload="none"
+           poster="assets/media/falcon-poster.webp"
+           aria-label="A peregrine falcon in a high-speed dive, feathers rippling, eye locked forward">
+      <source src="assets/media/falcon.mp4" type="video/mp4">
+    </video>
+    <video class="photo-img photo-img--wide" aria-hidden="true" muted loop playsinline preload="none"
+           poster="assets/media/falcon-poster-wide.webp">
+      <source src="assets/media/falcon-wide.mp4" type="video/mp4">
+    </video>
+    <div class="scrim" aria-hidden="true"></div>
+    <a class="home-mark" href="index.html"><i aria-hidden="true"></i>Onsite</a>
+    <div class="hero" id="hero">
+      <div class="badge">
+        <svg viewBox="0 0 582 557" aria-hidden="true" focusable="false"><path fill="#fff" fill-rule="evenodd" d="M449 0 435 0 415 10 200 249 187 276 189 299 212 326 232 332 289 334 289 516 301 543 324 556 346 556 374 536 573 311 582 288 579 264 559 240 539 233 478 230 478 32 470 13ZM442 38 446 250 466 267 540 270 547 285 341 520 332 522 324 514 321 314 307 300 295 297 233 297 224 291 221 282ZM1 67 4 81 17 90 216 90 223 87 232 74 228 57 215 49 18 49 5 57ZM0 285 4 300 17 308 105 308 118 299 121 291 119 278 111 270 103 267 17 267 4 275ZM1 495 4 511 10 517 23 520 179 520 191 516 200 500 196 488 182 479 18 479 9 483Z"/></svg>
+        <span id="badgeTxt">Built for local businesses</span>
       </div>
-      <div class="field mt-5">
-        <label for="password">Password</label>
-        <input id="password" type="password" autocomplete="current-password" placeholder="••••••••">
+      <div class="hl-wrap">
+        <span class="hl" id="hl1">Follow your build</span>
+        <span class="hl" id="hl2">start to finish.</span>
       </div>
-
-      <p id="cred-error" class="mt-3 hidden text-[0.8125rem] font-semibold text-accent"></p>
-
-      <button id="btn-login" type="button" class="btn btn-primary btn-block mt-6">Log in</button>
-
-      <div class="mt-5 flex flex-wrap items-center justify-between gap-x-6 gap-y-2 border-t border-line pt-5">
-        <a href="forgot-password.html" class="text-[0.8125rem] font-semibold text-ink-mid hover:text-ink">Forgot password?</a>
-        <a href="forgot-email.html" class="text-[0.8125rem] font-semibold text-ink-mid hover:text-ink">Forgot email?</a>
-      </div>
-      <p class="mt-4 text-[0.8125rem] text-ink-soft">
-        No account yet?
-        <a href="signup.html" class="font-semibold text-accent underline underline-offset-2 hover:text-accent-hi">Create one</a>.
-      </p>
-    </section>
-
-    <!-- STEP 2 — verification code -->
-    <section id="step-code" class="card mt-8 hidden p-6">
-      <p class="mono-label text-ink-soft">Step 02 — verification</p>
-      <h2 class="h-section mt-3 text-xl">Enter your 6-digit code</h2>
-      <p class="mt-2 text-[0.8125rem] leading-relaxed text-ink-mid">
-        We sent a code to <span id="code-target" class="font-semibold text-ink"></span>.
-      </p>
-
-      <div class="demo-note mt-4">
-        <strong>Demo mode.</strong> No email or SMS is sent. Your generated code is
-        <span id="code-value" class="font-mono font-semibold text-ink"></span> — type it below.
-      </div>
-
-      <div class="field mt-5">
-        <label for="code" class="sr-only">6-digit code</label>
-        <input id="code" class="code-input" type="text" inputmode="numeric" maxlength="6" placeholder="000000">
-      </div>
-
-      <p id="code-error" class="mt-3 hidden text-[0.8125rem] font-semibold text-accent"></p>
-
-      <button id="btn-verify" type="button" class="btn btn-primary btn-block mt-5">Verify &amp; continue</button>
-      <div class="mt-4 flex items-center justify-between gap-4">
-        <button id="btn-resend" type="button" class="text-[0.8125rem] font-semibold text-ink-mid hover:text-ink">Send a new code</button>
-        <button id="btn-back" type="button" class="text-[0.8125rem] font-semibold text-ink-mid hover:text-ink">Back</button>
-      </div>
-    </section>
-
-    <div class="demo-note mt-6">
-      <strong>This is a demo.</strong> Authentication is simulated in your browser — any email and
-      password are accepted, nothing is sent anywhere, and no real account is created.
-      <span class="mt-2 block">
-        Customer demo: leave the fields as they are and log in.
-        <a href="#" id="staff-link" class="font-semibold text-ink underline underline-offset-2">Staff sign-in &rarr;</a>
-      </span>
     </div>
+  </section>
 
-  </div>
-</main>
+  <section class="pane">
+    <div class="card" id="card">
+      <div class="card-in" id="cardIn">
 
-<div data-site-footer></div>
+        <!-- STEP 1 — credentials -->
+        <div data-step="credentials" class="cred-step" id="stepCred">
+          <h1 class="col center" id="h1">Welcome back!</h1>
+          <p class="col center" id="sub"><b>Log in</b> to follow your build and payments.</p>
+
+          <div class="field" id="email">
+            <input type="email" autocomplete="email" aria-label="Email address" placeholder="Eg. jane@janeys-hair.co.uk">
+          </div>
+          <div class="field" id="pw">
+            <input type="password" autocomplete="current-password" aria-label="Password" placeholder="Password">
+          </div>
+
+          <p class="auth-err" id="credErr" role="alert" hidden></p>
+
+          <button type="button" id="loginBtn">
+            <span>Log in</span>
+            <svg viewBox="0 0 22 22" aria-hidden="true" focusable="false"><path d="M3 11h15.4M11 3.3l7.7 7.7-7.7 7.7" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+
+          <div class="divider"><i></i><b>OR</b><i></i></div>
+
+          <button type="button" id="gBtn">
+            <svg viewBox="0 0 48 48" aria-hidden="true" focusable="false"><path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/><path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/><path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/><path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/></svg>
+            <span>Sign in with Google</span>
+          </button>
+
+          <div class="botcluster">
+          <p id="bottom">Don&#8217;t have an account? <a href="signup.html">Create one</a></p>
+
+          <div class="rowlinks">
+            <a href="forgot-password.html">Forgot password?</a>
+            <a href="forgot-email.html">Forgot email?</a>
+          </div>
+
+          <p class="aux">
+            <strong>Demo build.</strong> Sign-in is simulated in your browser — any email and password
+            are accepted, nothing is sent anywhere, and no real account is created.
+            <a href="#" id="staffLink">Staff sign-in &rarr;</a>
+          </p>
+          </div>
+        </div>
+
+        <!-- STEP 2 — verification code -->
+        <div data-step="code" class="code-step" id="stepCode" hidden>
+          <h1 class="col center step-h1">Check your inbox</h1>
+          <p class="col center step-sub">Enter the 6-digit code we sent to <b id="codeTarget"></b>.</p>
+
+          <div class="field" id="codeField">
+            <input id="code" type="text" inputmode="numeric" maxlength="6" autocomplete="one-time-code"
+                   aria-label="Six digit verification code" placeholder="000000">
+          </div>
+
+          <p class="auth-err" id="codeErr" role="alert" hidden></p>
+
+          <button type="button" id="verifyBtn" class="btn-primary-pill">
+            <span>Verify &amp; continue</span>
+            <svg viewBox="0 0 22 22" aria-hidden="true" focusable="false"><path d="M3 11h15.4M11 3.3l7.7 7.7-7.7 7.7" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+
+          <div class="botcluster">
+          <div class="rowlinks">
+            <button type="button" class="linkbtn" id="resendBtn">Send a new code</button>
+            <button type="button" class="linkbtn" id="backBtn">Back</button>
+          </div>
+
+          <p class="aux">
+            <strong>Demo build.</strong> No email or SMS is sent. Your generated code is
+            <b id="codeValue"></b> — type it above.
+          </p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+</div>
 
 <script src="assets/demo.js"></script>
 <script>
 (function () {
+  'use strict';
   var params = new URLSearchParams(location.search);
 
   // Only ever redirect to a local page. Without this, ?next=https://example.com
@@ -119,35 +145,42 @@
   var role = 'customer';
   var code = null;
 
-  var stepCred = document.getElementById('step-credentials');
-  var stepCode = document.getElementById('step-code');
-  var emailEl  = document.getElementById('email');
+  var stepCred = document.getElementById('stepCred');
+  var stepCode = document.getElementById('stepCode');
+  var emailEl  = document.querySelector('#email input');
   var codeEl   = document.getElementById('code');
-  var credErr  = document.getElementById('cred-error');
-  var codeErr  = document.getElementById('code-error');
+  var credErr  = document.getElementById('credErr');
+  var codeErr  = document.getElementById('codeErr');
 
   function issueCode() {
     code = Onsite.newCode();
-    document.getElementById('code-value').textContent = code;
-    document.getElementById('code-target').textContent = emailEl.value || Onsite.load().customer.email;
+    document.getElementById('codeValue').textContent = code;
+    document.getElementById('codeTarget').textContent = emailEl.value || Onsite.load().customer.email;
   }
 
   function toCodeStep() {
-    credErr.classList.add('hidden');
+    credErr.hidden = true;
     issueCode();
-    stepCred.classList.add('hidden');
-    stepCode.classList.remove('hidden');
+    stepCred.hidden = true;
+    stepCode.hidden = false;
     codeEl.value = '';
     codeEl.focus();
   }
 
-  document.getElementById('btn-login').addEventListener('click', function () {
+  document.getElementById('loginBtn').addEventListener('click', function () {
     if (!emailEl.value.trim()) { emailEl.value = Onsite.load().customer.email; }
     role = 'customer';
     toCodeStep();
   });
 
-  document.getElementById('staff-link').addEventListener('click', function (e) {
+  // No Google integration exists in a demo build, and a button that
+  // silently signs you in would be a lie about what happened. It says so.
+  document.getElementById('gBtn').addEventListener('click', function () {
+    credErr.textContent = 'Google sign-in is not part of this demo build. Use the email and password above.';
+    credErr.hidden = false;
+  });
+
+  document.getElementById('staffLink').addEventListener('click', function (e) {
     e.preventDefault();
     emailEl.value = 'team@onsite.demo';
     role = 'admin';
@@ -155,35 +188,32 @@
     toCodeStep();
   });
 
-  document.getElementById('btn-verify').addEventListener('click', function () {
+  document.getElementById('verifyBtn').addEventListener('click', function () {
     if (codeEl.value.trim() !== code) {
-      codeErr.textContent = 'That code does not match. In demo mode the code is shown above.';
-      codeErr.classList.remove('hidden');
+      codeErr.textContent = 'That code does not match. In demo mode the code is shown below.';
+      codeErr.hidden = false;
       return;
     }
     Onsite.signIn(emailEl.value.trim(), role);
     location.href = next;
   });
 
-  codeEl.addEventListener('input', function () { codeErr.classList.add('hidden'); });
+  codeEl.addEventListener('input', function () { codeErr.hidden = true; });
 
-  document.getElementById('btn-resend').addEventListener('click', function () {
+  document.getElementById('resendBtn').addEventListener('click', function () {
     issueCode();
-    codeErr.classList.add('hidden');
+    codeErr.hidden = true;
     codeEl.value = '';
     codeEl.focus();
   });
 
-  document.getElementById('btn-back').addEventListener('click', function () {
-    stepCode.classList.add('hidden');
-    stepCred.classList.remove('hidden');
+  document.getElementById('backBtn').addEventListener('click', function () {
+    stepCode.hidden = true;
+    stepCred.hidden = false;
   });
 })();
 </script>
-
-<script src="assets/footer.js"></script>
+<script src="assets/auth.js" defer></script>
 <script src="assets/cookies.js"></script>
-<script src="assets/mobile.js"></script>
-<script src="assets/theme.js"></script>
 </body>
 </html>
