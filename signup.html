@@ -15,7 +15,27 @@ window.__entryFallback=setTimeout(function(){
   document.documentElement.classList.remove('entry-pending');
 },3500);</script>
 <link rel="stylesheet" href="assets/auth.css">
-<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<!-- Link preview. One title for every page: a link shared in a bio or a
+     story should say what this is, not which sub-page it landed on. The
+     card image is a raster because Instagram, WhatsApp and Facebook will
+     not render an SVG. -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="OnSite">
+<meta property="og:title" content="Professional Website Builder">
+<meta property="og:description" content="One-page websites for small businesses. 34 sections and features in every build, from €79.99. Pay a quarter to start and the rest once you have seen it.">
+<meta property="og:image" content="assets/brand/onsite-card.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="OnSite — web design and development">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Professional Website Builder">
+<meta name="twitter:description" content="One-page websites for small businesses. 34 sections and features in every build, from €79.99. Pay a quarter to start and the rest once you have seen it.">
+<meta name="twitter:image" content="assets/brand/onsite-card.png">
+<meta name="apple-mobile-web-app-title" content="OnSite">
+<meta name="application-name" content="OnSite">
+<meta name="theme-color" content="#14161A">
+<link rel="apple-touch-icon" href="assets/brand/onsite-touch.png">
+<link rel="icon" href="assets/brand/onsite-favicon.png" type="image/png">
 </head>
 
 <body class="auth">
@@ -33,7 +53,7 @@ window.__entryFallback=setTimeout(function(){
       <source src="assets/media/falcon-wide.mp4" type="video/mp4">
     </video>
     <div class="scrim" aria-hidden="true"></div>
-    <a class="home-mark" href="./"><i aria-hidden="true"></i>Onsite</a>
+    <a class="home-mark" href="./"><span class="brand-mark brand-mark--auth" role="img" aria-label="OnSite"></span>OnSite</a>
     <div class="hero" id="hero">
       <div class="hl-wrap">
         <span class="hl" id="hl1">Start your</span>

@@ -224,3 +224,26 @@ h1.doc-title {
   .i18n:not(.i18n--compact) { grid-template-columns: 1fr 1fr; }
   .i18n:not(.i18n--compact) .i18n-note { grid-column: 1 / -1; }
 }
+
+
+/* ── The mark ──────────────────────────────────────────────────
+   Inlined rather than linked so the ring can take currentColor and
+   follow the theme, while the play holds the accent in both. Sized
+   in em so it tracks whatever it is set beside. */
+.brand-mark { width: 1.55em; height: 1.55em; flex: none; display: block; }
+.brand-mark--nav { width: 1.5em; height: 1.5em; margin-right: 0.15rem; }
+
+
+/* ── The mark ──────────────────────────────────────────────────
+   Cut from gallery/logo of onsite.png at its own proportions —
+   345 × 205, so 1.683 : 1. Two files rather than one recoloured by
+   filter: the artwork is white, and a white mark is invisible on a
+   light page, so the ink cut is a real asset rather than an effect. */
+.brand-mark {
+  width: 2.61em; height: 1.55em; flex: none; display: block;
+  background: url("brand/onsite-mark-ink.png") center / contain no-repeat;
+}
+:root[data-theme="dark"] .brand-mark {
+  background-image: url("brand/onsite-mark.png");
+}
+.brand-mark--nav { width: 2.52em; height: 1.5em; }

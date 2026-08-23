@@ -48,7 +48,27 @@
 <link rel="stylesheet" href="assets/mobile.css">
 <link rel="stylesheet" href="assets/tailwind.css">
 <link rel="stylesheet" href="assets/theme.css">
-<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<!-- Link preview. One title for every page: a link shared in a bio or a
+     story should say what this is, not which sub-page it landed on. The
+     card image is a raster because Instagram, WhatsApp and Facebook will
+     not render an SVG. -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="OnSite">
+<meta property="og:title" content="Professional Website Builder">
+<meta property="og:description" content="One-page websites for small businesses. 34 sections and features in every build, from €79.99. Pay a quarter to start and the rest once you have seen it.">
+<meta property="og:image" content="assets/brand/onsite-card.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="OnSite — web design and development">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Professional Website Builder">
+<meta name="twitter:description" content="One-page websites for small businesses. 34 sections and features in every build, from €79.99. Pay a quarter to start and the rest once you have seen it.">
+<meta name="twitter:image" content="assets/brand/onsite-card.png">
+<meta name="apple-mobile-web-app-title" content="OnSite">
+<meta name="application-name" content="OnSite">
+<meta name="theme-color" content="#14161A">
+<link rel="apple-touch-icon" href="assets/brand/onsite-touch.png">
+<link rel="icon" href="assets/brand/onsite-favicon.png" type="image/png">
 </head>
 
 <!--
@@ -66,8 +86,8 @@
 <header class="sticky top-0 z-10 border-b border-line bg-paper">
   <nav class="mx-auto flex max-w-shell items-center justify-between px-6 py-4 md:px-10">
     <a href="./" class="flex items-center gap-2.5">
-      <span class="block h-3.5 w-3.5 rounded-sm bg-accent" aria-hidden="true"></span>
-      <span class="h-section text-lg tracking-tight">Onsite</span>
+      <span class="brand-mark" role="img" aria-label="OnSite"></span>
+      <span class="h-section text-lg tracking-tight">OnSite</span>
     </a>
 
     <div class="flex items-center gap-5 md:gap-7">

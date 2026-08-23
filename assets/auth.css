@@ -804,3 +804,17 @@ body.auth .field.field--cc { position:relative; }
 /* The body of this page is a document, not a two-field form: it must
    start at the top and scroll, never sit centred and overflow. */
 body.auth #stepHelp { justify-content:flex-start; }
+
+
+/* The auth pages sit the mark on the photograph, in white. */
+.home-mark .brand-mark--auth { width: 1.5em; height: 1.5em; flex: none; }
+.home-mark .brand-mark--auth path[stroke="currentColor"],
+.home-mark .brand-mark--auth rect { color: inherit; }
+
+
+/* The auth pages set the mark on the photograph, so it takes the white
+   cut in both themes. */
+.home-mark .brand-mark--auth {
+  width: 2.52em; height: 1.5em; flex: none; display: block;
+  background: url("brand/onsite-mark.png") center / contain no-repeat;
+}

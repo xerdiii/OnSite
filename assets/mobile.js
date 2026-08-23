@@ -71,7 +71,7 @@
       '<div class="m-drawer-head">' +
         '<span class="flex items-center gap-2.5">' +
           '<span style="display:block;width:14px;height:14px;border-radius:3px;background:rgb(var(--c-accent))"></span>' +
-          '<span class="h-section" style="font-size:1.05rem">Onsite</span>' +
+          '<span class="h-section" style="font-size:1.05rem">OnSite</span>' +
         '</span>' +
         '<button type="button" class="m-drawer-close" aria-label="Close menu">' + ICON_CLOSE + '</button>' +
       '</div>' +

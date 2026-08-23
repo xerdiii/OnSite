@@ -10,6 +10,9 @@
 (function (global) {
   'use strict';
 
+  // Cut from the original artwork, in white because the footer is ink.
+  var MARK = '<span class="ft-dot" role="img" aria-label="OnSite"></span>';
+
   var doc = global.document;
 
   var STYLES = '' +
@@ -33,7 +36,11 @@
       'color:rgba(255,255,255,0.5);border:1px dashed rgba(255,255,255,0.25);border-radius:0.25rem;' +
       'padding:0.3rem 0.5rem;display:inline-block}' +
     '.ft-mark{display:flex;align-items:center;gap:0.6rem}' +
-    '.ft-dot{width:0.75rem;height:0.75rem;border-radius:0.125rem;background:#11a05f;display:block}' +
+    /* This sheet is injected into the document head, so the URL resolves
+       against the page rather than against assets/ — it needs the full
+       path where the real stylesheets need only "brand/". */
+    '.ft-dot{width:2.28rem;height:1.35rem;flex:none;display:block;' +
+      'background:url("assets/brand/onsite-mark.png") center/contain no-repeat}' +
     '.ft-base{margin-top:2.5rem;padding-top:1.5rem;border-top:1px solid rgba(255,255,255,0.2);' +
       'display:flex;flex-wrap:wrap;gap:1rem 1.5rem;align-items:center;justify-content:space-between}' +
     '.ft-base p{font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:0.6875rem;' +
@@ -49,7 +56,7 @@
       '<div class="ft-grid">' +
 
         '<div>' +
-          '<a href="./" class="ft-mark"><span class="ft-dot"></span><h2>Onsite</h2></a>' +
+          '<a href="./" class="ft-mark">' + MARK + '<h2>OnSite</h2></a>' +
           '<p class="ft-blurb">Professional business websites, built and managed for local businesses. ' +
             'One-time build price, optional monthly services, and a payment schedule you can read in full ' +
             'before you pay anything.</p>' +

@@ -170,7 +170,27 @@
     background: url("assets/media/rose-poster.jpg") center / cover no-repeat;
   }
 </style></noscript>
-<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<!-- Link preview. One title for every page: a link shared in a bio or a
+     story should say what this is, not which sub-page it landed on. The
+     card image is a raster because Instagram, WhatsApp and Facebook will
+     not render an SVG. -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="OnSite">
+<meta property="og:title" content="Professional Website Builder">
+<meta property="og:description" content="One-page websites for small businesses. 34 sections and features in every build, from €79.99. Pay a quarter to start and the rest once you have seen it.">
+<meta property="og:image" content="assets/brand/onsite-card.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="OnSite — web design and development">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Professional Website Builder">
+<meta name="twitter:description" content="One-page websites for small businesses. 34 sections and features in every build, from €79.99. Pay a quarter to start and the rest once you have seen it.">
+<meta name="twitter:image" content="assets/brand/onsite-card.png">
+<meta name="apple-mobile-web-app-title" content="OnSite">
+<meta name="application-name" content="OnSite">
+<meta name="theme-color" content="#14161A">
+<link rel="apple-touch-icon" href="assets/brand/onsite-touch.png">
+<link rel="icon" href="assets/brand/onsite-favicon.png" type="image/png">
 </head>
 
 <body class="bg-paper font-sans text-ink antialiased">
@@ -179,7 +199,7 @@
 <!-- 1 — NAVIGATION -->
 <header class="fp-nav" data-nav>
   <a class="fp-nav-brand" href="./">
-    <i class="fp-nav-dot" aria-hidden="true"></i>Onsite
+    <span class="brand-mark brand-mark--nav" role="img" aria-label="OnSite"></span>OnSite
   </a>
 
   <button type="button" class="fp-nav-btn fp-nav-btn--icon" data-menu-open aria-expanded="false" aria-controls="siteMenu" aria-label="Open menu">
@@ -191,7 +211,7 @@
   <button type="button" class="site-menu-scrim" data-menu-close tabindex="-1" aria-hidden="true"></button>
   <div class="site-menu-panel" role="dialog" aria-modal="true" aria-label="Menu">
     <div class="site-menu-head">
-      <span class="fp-nav-brand"><i class="fp-nav-dot" aria-hidden="true"></i>Onsite</span>
+      <span class="fp-nav-brand"><span class="brand-mark brand-mark--nav" role="img" aria-label="OnSite"></span>OnSite</span>
       <button type="button" class="fp-nav-btn fp-nav-btn--icon" data-menu-close aria-label="Close menu">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
       </button>
