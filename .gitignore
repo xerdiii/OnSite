@@ -1,2 +1,5 @@
 node_modules/
 assets/media/original/
+
+_i18n_*.json
+_i18n_extract.json
