@@ -434,6 +434,19 @@
     return s.draft;
   }
 
+  // Which tier this account is on. The seed customer bought a Custom
+  // Website, so an account with an order but no explicit tier is one.
+  function tier() {
+    var s = O.load();
+    if (s.tier) return s.tier;
+    return (s.order && s.order.oneTimeCents > 0) ? 'custom' : 'none';
+  }
+  function paid() { var t = tier(); return t !== 'none' && t !== 'free'; }
+
+  // Add-ons a tier already covers cost nothing and cannot be unpicked.
+  function coveredOnce(key) { return (O.CATALOG.included || {})[key] || []; }
+  function coveredMonth(key) { return (O.CATALOG.includedMonthly || {})[key] || []; }
+
   // One-time and monthly totals for whatever is currently selected.
   function draftTotals() {
     var d = draft(), C = O.CATALOG;
@@ -442,209 +455,230 @@
     var base = C.websites.filter(function (w) { return w.key === d.base; })[0];
     if (base) once += base.cents;
 
-    C.oneTime.forEach(function (i) { if (d.oneTime.indexOf(i.name) > -1) once += i.cents; });
+    var inOnce = base ? coveredOnce(base.key) : [];
+    var inMonth = base ? coveredMonth(base.key) : [];
+
+    C.oneTime.forEach(function (i) {
+      if (d.oneTime.indexOf(i.name) < 0) return;
+      if (inOnce.indexOf(i.name) > -1) return;      // already in the tier
+      once += i.cents;
+    });
     C.monthly.forEach(function (m) {
       if (d.monthly.indexOf(m.name) < 0) return;
+      if (inMonth.indexOf(m.name) > -1) return;
       month += m.cents;
-      if (m.setupCents) once += m.setupCents;   // Digital Menu setup is one-time
     });
-    C.extras.forEach(function (x) { if (d.extras.indexOf(x.name) > -1) once += x.cents; });
 
-    return { once: once, month: month, deposit: O.deposit(once), balance: O.balance(once), base: base };
+    return { once: once, month: month, deposit: O.deposit(once),
+             balance: O.balance(once), base: base, inOnce: inOnce, inMonth: inMonth };
   }
 
   function draftReady() {
     var d = draft(), t = draftTotals();
     if (!t.base) return false;
-    if (t.base.minFeatures && d.features.length < t.base.minFeatures) return false;
+    if (t.base.key === 'custom' && d.features.length < 3) return false;
     return d.agreed;
   }
 
   routes['/build'] = function () {
-    var C = O.CATALOG, d = draft(), t = draftTotals(), s = O.load();
-    var isCustom = d.base === 'custom';
-    var isPro = d.base === 'pro';
-    var featuresOn = isPro ? C.features.slice() : d.features;
+    var C = O.CATALOG, d = draft(), t = draftTotals();
+    var base = t.base;
+    var key = base ? base.key : null;
+    var isFree = key === 'free';
+    var isCustom = key === 'custom';
+    var capped = base && base.cap > 0 && base.cap < C.features.length;   // Custom only
+    var featuresOn = (key === 'full' || key === 'complete') ? C.features.slice() : d.features;
+    var atCap = capped && d.features.length >= base.cap;
 
-    function tile(on, name, priceHtml, tagHtml, blurb, act, key, off) {
-      return '<button type="button" class="build-card' + (on ? ' is-on' : '') + '"' +
-        (off ? ' disabled' : '') + ' data-act="' + act + '" data-key="' + esc(key) + '">' +
-        '<span class="flex items-baseline justify-between gap-3">' +
-          '<span class="h-section text-base">' + esc(name) + '</span>' +
-          (priceHtml ? '<span class="h-section whitespace-nowrap text-base text-ink">' + priceHtml + '</span>' : '') +
+    function tile(o) {
+      var state = o.included ? 'Included' : (o.on ? 'Added' : 'Add');
+      return '<button type="button" class="build-card' +
+          (o.on || o.included ? ' is-on' : '') + (o.included ? ' is-locked' : '') + '"' +
+          (o.off || o.included ? ' disabled' : '') +
+          ' data-act="' + o.act + '" data-key="' + esc(o.key) + '">' +
+        '<span class="build-top">' +
+          '<span class="build-name">' + esc(o.name) + '</span>' +
+          (o.price ? '<span class="build-price">' + o.price + '</span>' : '') +
         '</span>' +
-        (tagHtml ? '<span class="mt-2 block">' + tagHtml + '</span>' : '') +
-        (blurb ? '<span class="mt-2 block text-[0.8125rem] leading-snug text-ink-mid">' + esc(blurb) + '</span>' : '') +
-        '<span class="build-state">' + (on ? '✓ Added' : 'Add') + '</span>' +
+        (o.tag ? '<span class="build-tags">' + o.tag + '</span>' : '') +
+        (o.blurb ? '<span class="build-blurb">' + esc(o.blurb) + '</span>' : '') +
+        '<span class="build-state">' + state + '</span>' +
       '</button>';
     }
 
-    // Step 1 — website
+    /* Step 01 — the tier */
     var websites = C.websites.map(function (w) {
-      return tile(d.base === w.key, w.name, money(w.cents), '<span class="tag tag-once">One-time</span>',
-        w.blurb + ' ' + w.note, 'pick-base', w.key);
+      return tile({
+        on: d.base === w.key, name: w.name,
+        price: w.cents === 0 ? 'Free' : money(w.cents),
+        tag: w.cents === 0
+          ? '<span class="tag tag-ok">No card needed</span>'
+          : '<span class="tag tag-once">One-time</span>' +
+            (w.years ? ' <span class="tag tag-wait">' + w.years + (w.years > 1 ? ' years' : ' year') + ' hosting</span>' : ''),
+        blurb: w.blurb + ' ' + w.note, act: 'pick-base', key: w.key
+      });
     }).join('');
 
-    // Step 2 — features
-    var featureNote = !d.base
-      ? 'Choose a website first.'
-      : (isPro
-          ? 'All ten website features are included in the Professional Website. Nothing to choose.'
-          : 'Pick at least three. ' + d.features.length + ' of ' + 3 + ' selected — picking more never changes the price.');
+    /* Step 02 — features */
+    var featureNote =
+      !base ? 'Choose a website first.' :
+      isFree ? 'The free page is a fixed layout — name, map, hours, photos and your buttons. Nothing to pick.' :
+      capped ? ('Pick between three and ' + base.cap + '. ' + d.features.length + ' of ' + base.cap +
+                ' chosen — anything in that range costs the same.') :
+      'All 34 are built in at this tier. Nothing to choose and nothing to add later.';
 
     var features = C.features.map(function (f) {
-      return tile(featuresOn.indexOf(f) > -1, f, '', '', '', 'toggle-feature', f, !isCustom);
+      var on = featuresOn.indexOf(f) > -1;
+      // At the cap, the ones already chosen stay clickable so you can
+      // swap; the rest go quiet rather than silently doing nothing.
+      var off = !isCustom || (atCap && !on);
+      return tile({ on: on, name: f, act: 'toggle-feature', key: f, off: off });
     }).join('');
 
-    // Step 3 — services
-    var oneTimeAddons = C.oneTime.map(function (i) {
-      return tile(d.oneTime.indexOf(i.name) > -1, i.name, money(i.cents),
-        '<span class="tag tag-once">One-time</span>', i.blurb, 'toggle-onetime', i.name, !d.base);
-    }).join('');
-
-    var monthly = C.monthly.map(function (m) {
-      var price = money(m.cents);
-      var tags = '<span class="tag tag-month">Per month</span>' +
-        (m.setupCents ? ' <span class="tag tag-once">+ ' + money(m.setupCents) + ' setup</span>' : '');
-      return tile(d.monthly.indexOf(m.name) > -1, m.name, price, tags, m.blurb, 'toggle-monthly', m.name, !d.base);
-    }).join('');
-
-    // Step 4 — extras, grouped
+    /* Step 03 — the add-ons, by group */
     var groups = {};
-    C.extras.forEach(function (x) { (groups[x.group] = groups[x.group] || []).push(x); });
-    var extras = Object.keys(groups).map(function (g) {
-      return '<p class="mono-label mt-6 text-ink-soft">' + esc(g) + '</p>' +
-        '<div class="mt-3 grid grid-cols-1 gap-2.5 sm:grid-cols-2 xl:grid-cols-3">' +
+    C.oneTime.forEach(function (x) { (groups[x.group] = groups[x.group] || []).push(x); });
+    var addons = Object.keys(groups).map(function (g) {
+      return '<p class="mono-label mt-7 text-ink-soft">' + esc((C.groups || {})[g] || g) + '</p>' +
+        '<div class="build-grid mt-3">' +
         groups[g].map(function (x) {
-          return tile(d.extras.indexOf(x.name) > -1, x.name,
-            (x.from ? 'From ' : '') + money(x.cents),
-            '<span class="tag tag-once">One-time</span>', x.blurb, 'toggle-extra', x.name, !d.base);
+          var inc = t.inOnce.indexOf(x.name) > -1;
+          return tile({
+            on: d.oneTime.indexOf(x.name) > -1, included: inc, name: x.name,
+            price: inc ? 'In your pack' : (x.from ? 'From ' : '') + money(x.cents),
+            tag: inc ? '' : '<span class="tag tag-once">One-time</span>',
+            act: 'toggle-onetime', key: x.name, off: !base || isFree
+          });
         }).join('') + '</div>';
     }).join('');
 
-    // Summary lines
-    var onceLines = [];
-    if (t.base) onceLines.push([t.base.name, money(t.base.cents)]);
-    C.oneTime.forEach(function (i) { if (d.oneTime.indexOf(i.name) > -1) onceLines.push([i.name, money(i.cents)]); });
-    C.monthly.forEach(function (m) {
-      if (d.monthly.indexOf(m.name) > -1 && m.setupCents) onceLines.push([m.name + ' — setup', money(m.setupCents)]);
-    });
-    C.extras.forEach(function (x) { if (d.extras.indexOf(x.name) > -1) onceLines.push([x.name + (x.from ? ' — from' : ''), money(x.cents)]); });
+    /* Step 04 — monthly */
+    var monthly = C.monthly.map(function (m) {
+      var inc = t.inMonth.indexOf(m.name) > -1;
+      return tile({
+        on: d.monthly.indexOf(m.name) > -1, included: inc, name: m.name,
+        price: inc ? 'In your pack' : money(m.cents),
+        tag: inc ? '' : '<span class="tag tag-month">Per month</span>',
+        act: 'toggle-monthly', key: m.name, off: !base || isFree
+      });
+    }).join('');
 
+    /* Summary */
+    var onceLines = [];
+    if (base) onceLines.push([base.name, base.cents === 0 ? 'Free' : money(base.cents)]);
+    C.oneTime.forEach(function (i) {
+      if (d.oneTime.indexOf(i.name) < 0) return;
+      onceLines.push([i.name + (i.from ? ' — from' : ''),
+        t.inOnce.indexOf(i.name) > -1 ? 'Included' : money(i.cents)]);
+    });
     var monthLines = C.monthly.filter(function (m) { return d.monthly.indexOf(m.name) > -1; })
-      .map(function (m) { return [m.name, money(m.cents) + ' / mo']; });
+      .map(function (m) {
+        return [m.name, t.inMonth.indexOf(m.name) > -1 ? 'Included' : money(m.cents) + ' / mo'];
+      });
 
     function rows(list, empty) {
       if (!list.length) return '<li class="py-2.5 text-ink-soft">' + empty + '</li>';
       return list.map(function (l) {
-        return '<li class="flex items-baseline justify-between gap-4 border-b border-line-firm py-2.5">' +
-          '<span>' + esc(l[0]) + '</span><span class="text-ink">' + l[1] + '</span></li>';
+        return '<li class="sum-row"><span>' + esc(l[0]) + '</span><span>' + l[1] + '</span></li>';
       }).join('');
     }
 
-    var blocked = !t.base ? 'Choose a website to continue.'
-      : (isCustom && d.features.length < 3) ? 'Pick at least three website features.'
+    var blocked = !base ? 'Choose a website to continue.'
+      : (isCustom && d.features.length < 3) ? 'Pick at least three features.'
       : (!d.agreed ? 'Agree to the Terms of Service to continue.'
-      : 'Only the 25% deposit is charged today.');
+      : (t.deposit > 0 ? 'Only the 25% deposit is charged today.' : 'Nothing is charged for the free page.'));
 
-    var warn = (s.project && s.project.stage && s.project.stage !== 'live')
-      ? '<div class="demo-note mt-4">You already have a project in progress. Submitting this package replaces it in the demo.</div>'
-      : '';
+    function step(n, title, aside, body) {
+      return '<section class="build-step">' +
+        '<div class="build-step-head">' +
+          '<span class="mono-label text-ink-soft">Step ' + n + '</span>' +
+          '<h2 class="h-section text-xl">' + title + '</h2>' +
+          (aside ? '<span class="build-step-aside mono-label text-ink-soft">' + aside + '</span>' : '') +
+        '</div>' + body + '</section>';
+    }
 
     return head('Build your package', 'Choose what you need.',
-      'Pick your website, the features it should have, any services, and any extras. You pay 25% today and the remaining 75% once you have reviewed and approved the finished site.') +
+      'Pick a website, what goes in it, and anything around it. You pay 25% today and the rest once you have seen the finished site.') +
 
-      '<div class="mt-8 grid grid-cols-1 gap-8 lg:grid-cols-12 lg:gap-10">' +
+      '<div class="build-wrap">' +
+        '<div class="build-main">' +
 
-        '<div class="lg:col-span-7 xl:col-span-8">' +
+          step('01', 'Your website', base ? esc(base.name) + ' selected' : 'Nothing chosen yet',
+            '<div class="build-grid mt-4">' + websites + '</div>') +
 
-          '<div class="border-t-2 border-accent pt-5">' +
-            '<div class="flex flex-wrap items-baseline gap-x-4"><span class="mono-label text-ink-soft">Step 01</span>' +
-            '<h2 class="h-section text-xl">Your website</h2>' +
-            '<span class="ml-auto mono-label text-ink-soft">Both paid once</span></div>' +
-            '<div class="mt-4 grid grid-cols-1 gap-2.5 sm:grid-cols-2">' + websites + '</div>' +
-          '</div>' +
+          step('02', 'What goes in it',
+            base ? (isFree ? 'Fixed layout' : (capped ? d.features.length + ' of ' + base.cap : 'All 34')) : '',
+            '<p class="build-note">' + esc(featureNote) + '</p>' +
+            '<div class="build-grid mt-4">' + features + '</div>') +
 
-          '<div class="mt-10 border-t-2 border-accent pt-5">' +
-            '<div class="flex flex-wrap items-baseline gap-x-4"><span class="mono-label text-ink-soft">Step 02</span>' +
-            '<h2 class="h-section text-xl">Website features</h2>' +
-            '<span class="ml-auto mono-label text-ink-soft">' + (isPro ? 'All included' : d.features.length + ' selected') + '</span></div>' +
-            '<p class="mt-3 max-w-prose text-[0.8125rem] leading-relaxed text-ink-mid">' + esc(featureNote) + '</p>' +
-            '<div class="mt-4 grid grid-cols-1 gap-2.5 sm:grid-cols-2 xl:grid-cols-3">' + features + '</div>' +
-          '</div>' +
+          step('03', 'Add-ons', 'Optional · paid once', addons) +
 
-          '<div class="mt-10 border-t-2 border-accent pt-5">' +
-            '<div class="flex flex-wrap items-baseline gap-x-4"><span class="mono-label text-ink-soft">Step 03</span>' +
-            '<h2 class="h-section text-xl">Services</h2></div>' +
-            '<p class="mono-label mt-5 text-ink-soft">One-time</p>' +
-            '<div class="mt-3 grid grid-cols-1 gap-2.5">' + oneTimeAddons + '</div>' +
-            '<p class="mono-label mt-6 text-ink-soft">Monthly — starts when your website goes live</p>' +
-            '<div class="mt-3 grid grid-cols-1 gap-2.5 sm:grid-cols-2">' + monthly + '</div>' +
-          '</div>' +
-
-          '<div class="mt-10 border-t-2 border-accent pt-5">' +
-            '<div class="flex flex-wrap items-baseline gap-x-4"><span class="mono-label text-ink-soft">Step 04</span>' +
-            '<h2 class="h-section text-xl">Business extras</h2>' +
-            '<span class="ml-auto mono-label text-ink-soft">Optional · one-time</span></div>' +
-            extras +
-          '</div>' +
+          step('04', 'Monthly services', 'Starts the day you go live',
+            '<div class="build-grid mt-4">' + monthly + '</div>') +
 
         '</div>' +
 
-        '<div class="lg:col-span-5 xl:col-span-4">' +
-          '<div class="lg:sticky lg:top-24">' +
-            '<div class="overflow-hidden rounded-lg border border-line bg-paper">' +
-              '<div class="border-b border-line px-5 py-4"><p class="eyebrow text-ink-soft">Your order</p></div>' +
+        '<aside class="build-side">' +
+          '<div class="build-sum">' +
+            '<div class="build-sum-head"><p class="eyebrow text-ink-soft">Your order</p></div>' +
 
-              '<div class="px-5 py-4">' +
-                '<p class="eyebrow text-ink-soft">One-time</p>' +
-                '<ul class="mt-2 font-mono text-[0.8125rem] text-ink-mid">' + rows(onceLines, 'Nothing selected yet') + '</ul>' +
-                '<div class="mt-2 flex items-baseline justify-between gap-4 border-t border-line-firm pt-2.5">' +
-                  '<span class="mono-label text-ink">One-time total</span>' +
-                  '<span class="h-section text-lg text-ink">' + money(t.once) + '</span></div>' +
-              '</div>' +
-
-              '<div class="border-t border-line px-5 py-4">' +
-                '<p class="eyebrow text-ink-soft">Monthly</p>' +
-                '<ul class="mt-2 font-mono text-[0.8125rem] text-ink-mid">' + rows(monthLines, 'No monthly services selected') + '</ul>' +
-                '<div class="mt-2 flex items-baseline justify-between gap-4 border-t border-line-firm pt-2.5">' +
-                  '<span class="mono-label text-ink">Monthly total</span>' +
-                  '<span class="h-section text-lg text-ink">' + money(t.month) + ' / month</span></div>' +
-              '</div>' +
-
-              '<div class="bg-accent px-5 py-5 text-white">' +
-                '<div class="flex items-baseline justify-between gap-4">' +
-                  '<span class="mono-label text-white">Pay today</span>' +
-                  '<span class="h-section text-2xl">' + money(t.deposit) + '</span></div>' +
-                '<p class="mt-1.5 text-xs leading-relaxed text-white/70">25% deposit to start your website.</p>' +
-                '<div class="mt-4 flex items-baseline justify-between gap-4 border-t border-white/20 pt-4">' +
-                  '<span class="mono-label text-white/70">After approval</span>' +
-                  '<span class="h-section text-lg">' + money(t.balance) + '</span></div>' +
-                '<p class="mt-1.5 text-xs leading-relaxed text-white/70">The remaining 75%, due only once you approve the finished site.</p>' +
-                '<div class="mt-4 flex items-baseline justify-between gap-4 border-t border-white/20 pt-4">' +
-                  '<span class="mono-label text-white/70">Monthly after launch</span>' +
-                  '<span class="h-section text-lg">' + money(t.month) + '</span></div>' +
-
-                '<label class="mt-5 flex cursor-pointer items-start gap-2.5 border-t border-white/20 pt-4">' +
-                  '<input type="checkbox" data-act="toggle-agree" class="mt-0.5 h-4 w-4 flex-none accent-white"' + (d.agreed ? ' checked' : '') + '>' +
-                  '<span class="text-xs leading-relaxed text-white/80">I have read and agree to the ' +
-                    '<a href="terms.html" class="font-semibold text-white underline underline-offset-2">Terms of Service</a> ' +
-                    'and acknowledge the payment schedule shown above.</span></label>' +
-
-                '<button class="btn btn-light btn-block mt-4" data-act="pay-deposit"' + (draftReady() ? '' : ' disabled') + '>' +
-                  (t.deposit > 0 ? 'Pay ' + money(t.deposit) + ' deposit &amp; start' : 'Pay deposit &amp; start') + '</button>' +
-                '<p class="mt-2.5 text-center text-xs text-white/60">' + esc(blocked) + '</p>' +
-                '<p class="mt-2 text-center text-[0.6875rem] leading-relaxed text-white/50">Demo build — no card is taken and no money moves.</p>' +
-              '</div>' +
-
-              '<div class="border-t border-line px-5 py-4">' +
-                '<button class="text-[0.8125rem] font-semibold text-ink-mid hover:text-ink" data-act="clear-draft">Clear this package</button>' +
-              '</div>' +
+            '<div class="build-sum-block">' +
+              '<p class="eyebrow text-ink-soft">One-time</p>' +
+              '<ul class="sum-list">' + rows(onceLines, 'Nothing selected yet') + '</ul>' +
+              '<div class="sum-total"><span class="mono-label text-ink">One-time total</span>' +
+                '<span class="h-section text-lg text-ink">' + money(t.once) + '</span></div>' +
             '</div>' +
-            warn +
-          '</div>' +
-        '</div>' +
 
+            '<div class="build-sum-block">' +
+              '<p class="eyebrow text-ink-soft">Monthly</p>' +
+              '<ul class="sum-list">' + rows(monthLines, 'None selected') + '</ul>' +
+              '<div class="sum-total"><span class="mono-label text-ink">Monthly total</span>' +
+                '<span class="h-section text-lg text-ink">' + money(t.month) + ' / mo</span></div>' +
+            '</div>' +
+
+            '<div class="build-pay">' +
+              '<div class="build-pay-row"><span class="mono-label">Pay today</span>' +
+                '<span class="h-section text-2xl">' + money(t.deposit) + '</span></div>' +
+              '<p class="build-pay-note">25% to start. Nothing else moves today.</p>' +
+              '<div class="build-pay-row build-pay-row--split"><span class="mono-label">After approval</span>' +
+                '<span class="h-section text-lg">' + money(t.balance) + '</span></div>' +
+              '<div class="build-pay-row build-pay-row--split"><span class="mono-label">Monthly after launch</span>' +
+                '<span class="h-section text-lg">' + money(t.month) + '</span></div>' +
+
+              '<label class="build-agree">' +
+                '<input type="checkbox" data-act="toggle-agree"' + (d.agreed ? ' checked' : '') + '>' +
+                '<span>I have read and agree to the ' +
+                  '<a href="terms.html">Terms of Service</a> and the payment schedule above.</span></label>' +
+
+              '<button class="btn btn-light btn-block mt-4" data-act="pay-deposit"' +
+                (draftReady() ? '' : ' disabled') + '>' +
+                (t.deposit > 0 ? 'Pay ' + money(t.deposit) + ' and start' : 'Start my free page') + '</button>' +
+              '<p class="build-pay-hint">' + esc(blocked) + '</p>' +
+              '<p class="build-pay-demo">Demo build — no card is taken and no money moves.</p>' +
+            '</div>' +
+
+            '<div class="build-sum-foot">' +
+              '<button data-act="clear-draft">Clear this package</button></div>' +
+          '</div>' +
+        '</aside>' +
+      '</div>';
+  };
+
+  /* ── Our work ────────────────────────────────────────────────
+     The place is built; the entries come from the staff dashboard
+     once that exists. An empty state that says so beats a section
+     that quietly is not there. */
+  routes['/work'] = function () {
+    return head('Our work', 'Websites we have built.',
+      'Every site here was built by us for a real business. Yours can be in it too — say the word when it goes live.') +
+      '<div class="work-empty">' +
+        '<div class="work-empty-mark" aria-hidden="true">' +
+          '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">' +
+          '<rect x="2.5" y="4" width="19" height="15" rx="2"/><path d="M2.5 8h19M6 6h.01M8.5 6h.01M11 6h.01"/></svg>' +
+        '</div>' +
+        '<p class="work-empty-h">Nothing here yet.</p>' +
+        '<p class="work-empty-p">The finished sites will be listed here as they go live — screenshot, ' +
+          'business, and a link you can open. We are wiring this up to the staff dashboard next.</p>' +
       '</div>';
   };
 
@@ -821,7 +855,7 @@
     'toggle-feature': function (el) { toggleIn(draft().features, el.getAttribute('data-key')); O.save(); render(true); },
     'toggle-onetime': function (el) { toggleIn(draft().oneTime, el.getAttribute('data-key')); O.save(); render(true); },
     'toggle-monthly': function (el) { toggleIn(draft().monthly, el.getAttribute('data-key')); O.save(); render(true); },
-    'toggle-extra':   function (el) { toggleIn(draft().extras,  el.getAttribute('data-key')); O.save(); render(true); },
+
     'toggle-agree':   function () { var d = draft(); d.agreed = !d.agreed; O.save(); render(true); },
     'clear-draft':    function () { var s = O.load(); s.draft = O.emptyDraft(); O.save(); render(true); },
 
@@ -830,11 +864,12 @@
       var s = O.load(), d = draft(), t = draftTotals(), C = O.CATALOG;
 
       var onceItems = [{ name: t.base.name, cents: t.base.cents }];
-      C.oneTime.forEach(function (i) { if (d.oneTime.indexOf(i.name) > -1) onceItems.push({ name: i.name, cents: i.cents }); });
-      C.monthly.forEach(function (m) {
-        if (d.monthly.indexOf(m.name) > -1 && m.setupCents) onceItems.push({ name: m.name + ' — setup', cents: m.setupCents });
+      C.oneTime.forEach(function (i) {
+        if (d.oneTime.indexOf(i.name) < 0) return;
+        // Anything the tier already covers goes on the order at zero
+        // rather than being left off it — they should see they got it.
+        onceItems.push({ name: i.name, cents: t.inOnce.indexOf(i.name) > -1 ? 0 : i.cents });
       });
-      C.extras.forEach(function (x) { if (d.extras.indexOf(x.name) > -1) onceItems.push({ name: x.name, cents: x.cents }); });
 
       s.order = {
         oneTimeCents: t.once,
@@ -844,7 +879,8 @@
                                .map(function (m) { return { name: m.name, cents: m.cents }; })
       };
 
-      s.project.features = d.base === 'pro' ? C.features.slice() : d.features.slice();
+      s.project.features = (d.base === 'full' || d.base === 'complete') ? C.features.slice() : d.features.slice();
+      s.tier = d.base;
       s.project.stage = 'content';
 
       var today = new Date().toISOString().slice(0, 10);
@@ -1081,6 +1117,33 @@
      back down three times. Arriving at a new route should start at the
      top; changing something on the route you are already on should not
      move you at all. */
+  // Nav items a free or brand-new account has no use for yet. They are
+  // removed rather than shown disabled: a sidebar of dead links is a
+  // worse first impression than a short one.
+  var PAID_ONLY = ['/website', '/payments', '/request', '/maintenance', '/subscriptions'];
+
+  // The bottom bar holds five at most before it stops being tappable, so
+  // the two halves of the audience get different fives: a paying customer
+  // needs their project, a free one needs the way up.
+  var FREE_ONLY = ['/build', '/work'];
+
+  function gateNav() {
+    var open = paid();
+    [].forEach.call(document.querySelectorAll('.app-nav a, .m-tab'), function (a) {
+      var route = (a.getAttribute('href') || '').replace('#', '');
+      if (PAID_ONLY.indexOf(route) > -1) { a.hidden = !open; return; }
+      // Build and Our work stay in the sidebar for everyone; only the
+      // bottom bar has to choose.
+      if (FREE_ONLY.indexOf(route) > -1 && a.classList.contains('m-tab')) a.hidden = open;
+    });
+    [].forEach.call(document.querySelectorAll('.app-nav .group-label'), function (p) {
+      // Hide a group heading whose whole group just disappeared.
+      var any = false, n = p.nextElementSibling;
+      while (n && n.tagName === 'A') { if (!n.hidden) any = true; n = n.nextElementSibling; }
+      p.hidden = !any;
+    });
+  }
+
   function render(keepPlace) {
     var y = keepPlace ? (window.scrollY || window.pageYOffset) : 0;
     var refocus = null;
@@ -1104,6 +1167,7 @@
     paintWho();
     paintStickyBar(route);
     if (window.OnsiteMobile) { window.OnsiteMobile.labelTables(view); }
+    gateNav();
     if (window.OnsiteI18n) { window.OnsiteI18n.mount(); }
 
     window.scrollTo(0, y);

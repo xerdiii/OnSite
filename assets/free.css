@@ -1,0 +1,201 @@
+/* ───────────────────────────────────────────────────────────────
+   Onsite — the free landing page offer
+
+   Built phone-first. The form is the page, so on a narrow screen it is
+   one column of full-width fields with 48px targets and nothing
+   competing beside it; the "what you get" panel drops underneath
+   rather than being squeezed into a sidebar nobody reads.
+   ─────────────────────────────────────────────────────────────── */
+
+.free-h {
+  font-family: 'Outfit', 'Inter', sans-serif;
+  font-size: clamp(2.1rem, 6.4vw, 3.9rem);
+  font-weight: 300; letter-spacing: -0.045em; line-height: 1.02;
+  color: rgb(var(--c-ink));
+}
+
+/* ── The three steps ───────────────────────────────────────── */
+.free-steps {
+  display: grid; gap: 0; list-style: none; margin: 0; padding: 0;
+  border-top: 1px solid rgb(var(--c-line-firm));
+}
+@media (min-width: 768px) { .free-steps { grid-template-columns: repeat(3, 1fr); } }
+.free-steps li {
+  padding: 1.4rem 1.5rem 1.4rem 0;
+  border-bottom: 1px solid rgb(var(--c-line));
+}
+@media (min-width: 768px) {
+  .free-steps li { border-bottom: 0; border-right: 1px solid rgb(var(--c-line)); padding-left: 1.5rem; }
+  .free-steps li:first-child { padding-left: 0; }
+  .free-steps li:last-child { border-right: 0; }
+}
+.free-step-n {
+  font-family: 'IBM Plex Mono', ui-monospace, monospace;
+  font-size: 0.6875rem; letter-spacing: 0.16em; color: rgb(var(--c-accent));
+}
+.free-step-h { margin-top: 0.7rem; font-weight: 600; font-size: 1rem; color: rgb(var(--c-ink)); }
+.free-step-p { margin-top: 0.35rem; font-size: 0.875rem; line-height: 1.55; color: rgb(var(--c-ink-mid)); max-width: 22rem; }
+
+/* ── The hosting explainer ─────────────────────────────────── */
+.free-note {
+  border-left: 2px solid rgb(var(--c-accent));
+  padding: 0.2rem 0 0.2rem 1.25rem;
+  max-width: 44rem;
+}
+.free-note-h { font-size: 0.9375rem; font-weight: 600; color: rgb(var(--c-ink)); }
+.free-note-p { margin-top: 0.5rem; font-size: 0.9375rem; line-height: 1.65; color: rgb(var(--c-ink-mid)); }
+.free-note-p strong { color: rgb(var(--c-ink)); font-weight: 600; }
+
+/* ── The form ──────────────────────────────────────────────── */
+.free-form { display: grid; gap: 1.35rem; max-width: 40rem; }
+
+.ff { display: grid; gap: 0.45rem; }
+.ff label {
+  font-size: 0.875rem; font-weight: 600; color: rgb(var(--c-ink));
+  display: flex; align-items: baseline; gap: 0.5rem;
+}
+.ff-opt {
+  font-family: 'IBM Plex Mono', ui-monospace, monospace;
+  font-size: 0.625rem; letter-spacing: 0.14em; text-transform: uppercase;
+  font-weight: 400; color: rgb(var(--c-ink-soft));
+}
+.ff input[type="text"], .ff input[type="url"], .ff input[type="tel"],
+.ff input[type="email"], .ff input[type="password"] {
+  width: 100%; min-height: 52px; padding: 0 0.95rem;
+  border: 1.5px solid rgb(var(--c-line-firm)); border-radius: 0.6rem;
+  background: rgb(var(--c-surface)); color: rgb(var(--c-ink));
+  /* 16px exactly: anything smaller and iOS zooms the page on focus. */
+  font-family: inherit; font-size: 16px;
+  transition: border-color 180ms ease, background-color 180ms ease;
+}
+.ff input::placeholder { color: rgb(var(--c-ink-soft)); }
+.ff input:hover { border-color: rgb(var(--c-ink) / 0.45); }
+.ff input:focus {
+  outline: none; border-color: rgb(var(--c-accent));
+  background: rgb(var(--c-paper));
+  box-shadow: 0 0 0 3px rgb(var(--c-accent) / 0.14);
+}
+.ff input[aria-invalid="true"] { border-color: rgb(var(--c-accent)); }
+
+.ff-help { font-size: 0.8125rem; line-height: 1.55; color: rgb(var(--c-ink-soft)); }
+.ff-help strong { color: rgb(var(--c-ink-mid)); font-weight: 600; }
+/* The error sits under its own field, never collected at the top. */
+.ff-err { font-size: 0.8125rem; font-weight: 600; color: rgb(var(--c-accent-text)); }
+.ff-err[hidden] { display: none; }
+
+.ff-row { display: grid; gap: 1.35rem; }
+@media (min-width: 560px) { .ff-row { grid-template-columns: 1fr 1fr; } }
+
+.ff-split { display: flex; align-items: center; gap: 1rem; margin-top: 0.4rem; }
+.ff-split::after { content: ''; flex: 1 1 auto; height: 1px; background: rgb(var(--c-line)); }
+.ff-split-l {
+  font-family: 'IBM Plex Mono', ui-monospace, monospace;
+  font-size: 0.625rem; letter-spacing: 0.16em; text-transform: uppercase;
+  color: rgb(var(--c-ink-soft));
+}
+
+/* ── File pickers ──────────────────────────────────────────── */
+.ff-drop {
+  position: relative; display: grid; gap: 0.2rem; justify-items: center;
+  padding: 1.4rem 1rem; text-align: center;
+  border: 1.5px dashed rgb(var(--c-line-firm)); border-radius: 0.6rem;
+  background: rgb(var(--c-surface));
+  transition: border-color 180ms ease, background-color 180ms ease;
+}
+.ff-drop:hover, .ff-drop.is-over { border-color: rgb(var(--c-accent)); background: rgb(var(--c-accent-tint)); }
+.ff-drop input {
+  position: absolute; inset: 0; width: 100%; height: 100%;
+  opacity: 0; cursor: pointer;
+}
+.ff-drop input:focus-visible + .ff-drop-t { outline: 2px solid rgb(var(--c-accent)); outline-offset: 3px; }
+.ff-drop-t { font-size: 0.9375rem; font-weight: 600; color: rgb(var(--c-ink)); }
+.ff-drop-s { font-size: 0.8125rem; color: rgb(var(--c-ink-soft)); }
+
+.ff-files { list-style: none; margin: 0.6rem 0 0; padding: 0; display: grid; gap: 0.4rem; }
+.ff-files li {
+  display: flex; align-items: center; gap: 0.6rem;
+  padding: 0.5rem 0.7rem; border-radius: 0.45rem;
+  background: rgb(var(--c-surface)); border: 1px solid rgb(var(--c-line));
+  font-size: 0.8125rem; color: rgb(var(--c-ink-mid));
+}
+.ff-files b { color: rgb(var(--c-ink)); font-weight: 600; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.ff-files span { margin-left: auto; flex: none; color: rgb(var(--c-ink-soft)); font-variant-numeric: tabular-nums; }
+
+.ff-form-err { margin: 0; font-size: 0.875rem; font-weight: 600; color: rgb(var(--c-accent-text)); }
+.ff-form-err[hidden] { display: none; }
+
+.free-submit {
+  display: inline-flex; align-items: center; justify-content: center; gap: 0.7rem;
+  width: 100%; min-height: 58px; padding: 0 1.5rem;
+  border: 0; border-radius: 999px; cursor: pointer;
+  background: rgb(var(--c-accent)); color: #fff;
+  font-family: inherit; font-size: 1rem; font-weight: 600;
+  box-shadow: 0 10px 26px rgb(var(--c-accent) / 0.28);
+  transition: background-color 200ms ease, transform 180ms ease;
+}
+.free-submit svg { width: 19px; height: 19px; }
+.free-submit:hover { background: rgb(var(--c-accent-hi)); }
+.free-submit:active { transform: scale(0.99); }
+.free-submit:disabled { opacity: 0.65; cursor: default; }
+.free-submit:focus-visible { outline: 2px solid rgb(var(--c-ink)); outline-offset: 3px; }
+@media (min-width: 560px) { .free-submit { width: auto; min-width: 20rem; } }
+
+.ff-foot { font-size: 0.8125rem; line-height: 1.6; color: rgb(var(--c-ink-soft)); }
+.ff-foot strong { color: rgb(var(--c-ink-mid)); }
+
+/* ── The side panel ────────────────────────────────────────── */
+.free-card {
+  border: 1px solid rgb(var(--c-line)); border-radius: 0.75rem;
+  background: rgb(var(--c-surface)); padding: 1.5rem;
+}
+@media (min-width: 1024px) { .free-card { position: sticky; top: 6rem; } }
+.free-card-split { height: 1px; background: rgb(var(--c-line)); margin: 1.5rem 0; }
+.free-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.65rem; }
+.free-list li {
+  position: relative; padding-left: 1.5rem;
+  font-size: 0.875rem; line-height: 1.5; color: rgb(var(--c-ink));
+}
+.free-list li::before {
+  content: ''; position: absolute; left: 0; top: 0.32em;
+  width: 0.72rem; height: 0.4rem;
+  border-left: 1.8px solid rgb(var(--c-accent));
+  border-bottom: 1.8px solid rgb(var(--c-accent));
+  transform: rotate(-45deg);
+}
+.free-list--off li { color: rgb(var(--c-ink-soft)); }
+.free-list--off li::before {
+  border: 0; top: 0.55em; width: 0.66rem; height: 1.8px;
+  background: rgb(var(--c-ink-soft)); transform: none;
+}
+
+/* ── Success ───────────────────────────────────────────────── */
+.free-done { max-width: 40rem; }
+.free-done-badge {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  padding: 0.4rem 0.8rem; border-radius: 999px;
+  background: rgb(var(--c-accent-tint)); color: rgb(var(--c-accent-text));
+  font-size: 0.75rem; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase;
+}
+.free-done-h {
+  margin-top: 1.2rem;
+  font-family: 'Outfit', 'Inter', sans-serif;
+  font-size: clamp(1.9rem, 5vw, 2.9rem); font-weight: 300;
+  letter-spacing: -0.04em; line-height: 1.05; color: rgb(var(--c-ink));
+}
+.free-done-p { margin-top: 1rem; font-size: 1rem; line-height: 1.7; color: rgb(var(--c-ink-mid)); }
+.free-clock {
+  margin-top: 1.6rem; padding: 1.1rem 1.25rem;
+  border: 1px solid rgb(var(--c-line-firm)); border-radius: 0.6rem;
+  background: rgb(var(--c-surface));
+  display: flex; align-items: baseline; gap: 0.8rem; flex-wrap: wrap;
+}
+.free-clock b {
+  font-family: 'Outfit', 'Inter', sans-serif; font-size: 1.9rem; font-weight: 300;
+  letter-spacing: -0.03em; color: rgb(var(--c-ink)); font-variant-numeric: tabular-nums;
+}
+.free-clock span { font-size: 0.875rem; color: rgb(var(--c-ink-mid)); }
+
+@media (prefers-reduced-motion: reduce) {
+  .ff input, .ff-drop, .free-submit { transition: none; }
+  .free-submit:active { transform: none; }
+}

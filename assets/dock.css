@@ -1,0 +1,87 @@
+/* ───────────────────────────────────────────────────────────────
+   Onsite — the corner dock
+
+   Two standing offers, bottom right, on every public page: the free
+   landing page and the extras list. They follow the scroll because
+   both are decisions someone makes part-way down a long page, not at
+   the top of it.
+
+   It gets out of the way when it has to. The cookie bar owns the
+   bottom of the screen at z-index 60, so the dock sits above the bar's
+   height while the bar is up, and drops back down once it is gone.
+   ─────────────────────────────────────────────────────────────── */
+
+.dock {
+  position: fixed;
+  right: clamp(0.85rem, 2.2vw, 1.6rem);
+  bottom: clamp(0.85rem, 2.2vw, 1.6rem);
+  z-index: 55;                      /* under the cookie bar (60), over the page */
+  display: flex; flex-direction: column; align-items: flex-end;
+  gap: 0.55rem;
+  pointer-events: none;             /* the gaps between buttons stay clickable */
+}
+.dock > * { pointer-events: auto; }
+
+/* While the cookie bar is up, stand clear of it. */
+body[data-cookiebar="up"] .dock { bottom: calc(clamp(0.85rem, 2.2vw, 1.6rem) + 5.5rem); }
+
+.dock-btn {
+  display: inline-flex; align-items: center; gap: 0.6rem;
+  min-height: 48px; padding: 0 1.15rem;
+  border-radius: 999px;
+  font-family: inherit; font-size: 0.9375rem; font-weight: 600;
+  letter-spacing: -0.01em; text-decoration: none; cursor: pointer;
+  border: 1px solid transparent;
+  box-shadow: 0 10px 30px rgb(var(--c-shadow) / 0.18), 0 2px 6px rgb(var(--c-shadow) / 0.10);
+  transition: transform 220ms cubic-bezier(0.22, 1, 0.36, 1),
+              background-color 200ms ease, border-color 200ms ease, box-shadow 200ms ease;
+}
+.dock-btn:active { transform: scale(0.97); }
+.dock-btn:focus-visible { outline: 2px solid rgb(var(--c-accent)); outline-offset: 3px; }
+.dock-btn svg { width: 17px; height: 17px; flex: none; }
+
+.dock-btn--free {
+  background: rgb(var(--c-accent)); color: #fff;
+}
+.dock-btn--free:hover { background: rgb(var(--c-accent-hi)); transform: translateY(-2px); }
+
+.dock-btn--extras {
+  background: rgb(var(--c-paper)); color: rgb(var(--c-ink));
+  border-color: rgb(var(--c-line-firm));
+  -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px);
+}
+.dock-btn--extras:hover { border-color: rgb(var(--c-ink)); transform: translateY(-2px); }
+
+/* A quiet pulse on the free offer, once, a few seconds in — enough to
+   catch the eye without becoming a thing that blinks forever. */
+.dock-btn--free::after {
+  content: ''; position: absolute; inset: 0; border-radius: inherit;
+  border: 2px solid rgb(var(--c-accent));
+  opacity: 0; pointer-events: none;
+  animation: dock-ping 2.6s ease-out 4s 2;
+}
+.dock-btn--free { position: relative; }
+@keyframes dock-ping {
+  0%   { opacity: 0.7; transform: scale(1); }
+  70%  { opacity: 0;   transform: scale(1.28); }
+  100% { opacity: 0;   transform: scale(1.28); }
+}
+
+/* ── Phones ────────────────────────────────────────────────────
+   Two full-width pills would eat the screen, so the extras button
+   drops to its icon and label only, and both shrink. */
+@media (max-width: 519px) {
+  .dock { gap: 0.45rem; right: 0.7rem; bottom: calc(0.7rem + env(safe-area-inset-bottom, 0px)); }
+  .dock-btn { min-height: 44px; padding: 0 0.95rem; font-size: 0.875rem; }
+  .dock-btn--free .dock-long { display: none; }
+}
+@media (min-width: 520px) { .dock-btn .dock-short { display: none; } }
+
+/* The dashboard has its own bottom tab bar; two floating buttons on
+   top of it is one thing too many. */
+body[data-app] .dock { display: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  .dock-btn, .dock-btn:hover { transition: none; transform: none; }
+  .dock-btn--free::after { animation: none; }
+}

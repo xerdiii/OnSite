@@ -15,6 +15,7 @@
     { label: 'Home',            href: './' },
     { label: 'Services',        href: './#services' },
     { label: 'Pricing',         href: './#pricing' },
+    { label: 'Free landing page', href: 'free.html' },
     { label: 'Extras',          href: 'extras.html' },
     { label: 'FAQ',             href: 'faq.html' },
     { label: 'Contact',         href: 'contact.html' },

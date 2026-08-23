@@ -154,3 +154,135 @@ a, button { transition: background-color 180ms ease, color 180ms ease, border-co
 }
 .build-card.is-on .build-state { background:rgb(var(--c-accent)); border-color:rgb(var(--c-accent)); color: rgb(var(--c-on-accent)); }
 
+
+/* ═══════════════════════════════════════════════════════════════
+   Dashboard — the builder, rebuilt phone-first
+
+   The old builder was a desktop two-column layout that got narrower
+   on a phone. This one is designed at 375px and grows: one column of
+   full-width cards with 44px targets, the running total handed to the
+   sticky bar that already exists at the bottom, and the summary panel
+   only becoming a sidebar once there is a column to put it in.
+   ═══════════════════════════════════════════════════════════════ */
+
+.build-wrap { display: grid; gap: 2rem; margin-top: 1.75rem; }
+@media (min-width: 1024px) {
+  .build-wrap { grid-template-columns: minmax(0, 1fr) 22rem; gap: 2.5rem; align-items: start; }
+}
+.build-main { min-width: 0; display: grid; gap: 2.5rem; }
+
+.build-step { border-top: 2px solid rgb(var(--c-accent)); padding-top: 1.15rem; }
+.build-step-head { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.4rem 1rem; }
+.build-step-aside { margin-left: auto; }
+.build-note {
+  margin-top: 0.8rem; max-width: 40rem;
+  font-size: 0.875rem; line-height: 1.6; color: rgb(var(--c-ink-mid));
+}
+
+/* One column on a phone. Two only once a card can hold its line of
+   text without breaking after three words. */
+.build-grid { display: grid; grid-template-columns: 1fr; gap: 0.6rem; }
+@media (min-width: 640px)  { .build-grid { grid-template-columns: 1fr 1fr; } }
+@media (min-width: 1280px) { .build-grid { grid-template-columns: 1fr 1fr 1fr; } }
+
+.build-card {
+  position: relative; display: block; width: 100%;
+  min-height: 56px; padding: 0.85rem 5.5rem 0.85rem 0.95rem;
+  text-align: left; cursor: pointer;
+  border: 1.5px solid rgb(var(--c-line)); border-radius: 0.6rem;
+  background: rgb(var(--c-surface)); color: rgb(var(--c-ink));
+  font: inherit;
+  transition: border-color 160ms ease, background-color 160ms ease, transform 160ms ease;
+}
+.build-card:hover:not(:disabled) { border-color: rgb(var(--c-ink) / 0.4); }
+.build-card:active:not(:disabled) { transform: scale(0.995); }
+.build-card:focus-visible { outline: 2px solid rgb(var(--c-accent)); outline-offset: 2px; }
+.build-card.is-on { border-color: rgb(var(--c-accent)); background: rgb(var(--c-accent-tint)); }
+.build-card:disabled { opacity: 0.55; cursor: not-allowed; }
+.build-card.is-locked { opacity: 1; cursor: default; border-style: dashed; }
+
+.build-top { display: flex; align-items: baseline; justify-content: space-between; gap: 0.75rem; }
+.build-name { font-weight: 600; font-size: 0.9375rem; line-height: 1.35; }
+.build-price { font-weight: 600; font-size: 0.9375rem; white-space: nowrap; color: rgb(var(--c-ink)); }
+.build-tags { display: block; margin-top: 0.45rem; }
+.build-blurb {
+  display: block; margin-top: 0.45rem;
+  font-size: 0.8125rem; line-height: 1.5; color: rgb(var(--c-ink-mid));
+}
+.build-state {
+  position: absolute; right: 0.85rem; top: 0.85rem;
+  font-family: 'IBM Plex Mono', ui-monospace, monospace;
+  font-size: 0.625rem; letter-spacing: 0.1em; text-transform: uppercase;
+  color: rgb(var(--c-ink-soft));
+}
+.build-card.is-on .build-state { color: rgb(var(--c-accent-text)); }
+
+/* ── Summary ─────────────────────────────────────────────────── */
+.build-sum {
+  overflow: hidden; border: 1px solid rgb(var(--c-line)); border-radius: 0.7rem;
+  background: rgb(var(--c-paper));
+}
+@media (min-width: 1024px) { .build-side { position: sticky; top: 6rem; } }
+.build-sum-head { border-bottom: 1px solid rgb(var(--c-line)); padding: 0.9rem 1.15rem; }
+.build-sum-block { padding: 1rem 1.15rem; border-bottom: 1px solid rgb(var(--c-line)); }
+.sum-list {
+  list-style: none; margin: 0.55rem 0 0; padding: 0;
+  font-family: 'IBM Plex Mono', ui-monospace, monospace;
+  font-size: 0.75rem; color: rgb(var(--c-ink-mid));
+}
+.sum-row {
+  display: flex; align-items: baseline; justify-content: space-between; gap: 1rem;
+  border-bottom: 1px solid rgb(var(--c-line)); padding: 0.5rem 0;
+}
+.sum-row span:last-child { color: rgb(var(--c-ink)); white-space: nowrap; }
+.sum-total {
+  display: flex; align-items: baseline; justify-content: space-between; gap: 1rem;
+  border-top: 1px solid rgb(var(--c-line-firm)); margin-top: 0.5rem; padding-top: 0.6rem;
+}
+
+.build-pay { background: rgb(var(--c-accent)); color: #fff; padding: 1.2rem 1.15rem; }
+.build-pay .mono-label { color: rgb(255 255 255 / 0.72); }
+.build-pay-row { display: flex; align-items: baseline; justify-content: space-between; gap: 1rem; }
+.build-pay-row--split { border-top: 1px solid rgb(255 255 255 / 0.2); margin-top: 0.9rem; padding-top: 0.9rem; }
+.build-pay-note { margin-top: 0.35rem; font-size: 0.75rem; line-height: 1.5; color: rgb(255 255 255 / 0.72); }
+.build-agree {
+  display: flex; align-items: flex-start; gap: 0.6rem; cursor: pointer;
+  border-top: 1px solid rgb(255 255 255 / 0.2); margin-top: 1.1rem; padding-top: 1rem;
+  font-size: 0.75rem; line-height: 1.55; color: rgb(255 255 255 / 0.85);
+}
+.build-agree input { width: 17px; height: 17px; margin-top: 1px; flex: none; accent-color: #fff; }
+.build-agree a { color: #fff; font-weight: 600; text-decoration: underline; text-underline-offset: 2px; }
+.build-pay-hint { margin-top: 0.6rem; text-align: center; font-size: 0.75rem; color: rgb(255 255 255 / 0.68); }
+.build-pay-demo { margin-top: 0.45rem; text-align: center; font-size: 0.6875rem; line-height: 1.5; color: rgb(255 255 255 / 0.55); }
+
+.build-sum-foot { padding: 0.85rem 1.15rem; }
+.build-sum-foot button {
+  border: 0; background: none; padding: 0; cursor: pointer; font: inherit;
+  font-size: 0.8125rem; font-weight: 600; color: rgb(var(--c-ink-mid));
+}
+.build-sum-foot button:hover { color: rgb(var(--c-ink)); }
+
+/* On a phone the summary panel is below the fold by definition, so the
+   sticky bar carries the number and this is the detail you scroll to. */
+@media (max-width: 1023px) {
+  .build-side { margin-bottom: 5.5rem; }
+}
+
+/* ── Our work, empty ─────────────────────────────────────────── */
+.work-empty {
+  margin-top: 2rem; padding: 3rem 1.5rem; text-align: center;
+  border: 1.5px dashed rgb(var(--c-line-firm)); border-radius: 0.8rem;
+  background: rgb(var(--c-surface));
+}
+.work-empty-mark { color: rgb(var(--c-ink-soft)); }
+.work-empty-mark svg { width: 44px; height: 44px; margin: 0 auto; display: block; }
+.work-empty-h { margin-top: 1rem; font-weight: 600; font-size: 1.0625rem; color: rgb(var(--c-ink)); }
+.work-empty-p {
+  margin: 0.5rem auto 0; max-width: 30rem;
+  font-size: 0.875rem; line-height: 1.65; color: rgb(var(--c-ink-mid));
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .build-card { transition: none; }
+  .build-card:active:not(:disabled) { transform: none; }
+}

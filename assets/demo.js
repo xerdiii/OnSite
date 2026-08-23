@@ -36,6 +36,12 @@
     return {
       session: null,
 
+      // Which pack this account is on. load() merges only keys the seed
+      // declares, so anything written at runtime has to exist here or it
+      // is silently dropped on the next read.
+      tier: 'custom',
+      freePage: null,
+
       customer: {
         firstName: 'Jane',
         lastName: 'Whitfield',
@@ -159,44 +165,162 @@
   // ── Catalogue ────────────────────────────────────────────
   // Single source of truth for the package builder in the dashboard.
   // Prices in cents; `from` marks a starting price we confirm before charging.
+  // Single source of truth for the package builder and for every price
+  // the dashboard prints. Cents everywhere; `from` marks a floor we
+  // confirm in writing before charging.
   var CATALOG = {
+    groups: {"website":"Website features","technical":"Business & technical","automation":"Automation","brand":"Brand & design"},
+
     websites: [
-      { key: 'custom', name: 'Custom Website', cents: 7999, minFeatures: 3,
-        blurb: 'A professional custom landing-page website, built around the features you choose.',
-        note: 'Pick at least three website features. Picking more never changes the price.' },
-      { key: 'pro', name: 'Professional Website', cents: 24999, minFeatures: 0,
-        blurb: 'The complete build, ready to go, with every website feature already in it.',
-        note: 'All ten website features included. Monthly services are still separate.' }
+      { key: 'free', name: 'Free Landing Page', cents: 0, cap: 0, years: 0,
+        blurb: 'One page, built and hosted by us, live inside 48 hours.',
+        note: 'On an address we provide. Your own domain is the upgrade.' },
+      { key: 'custom', name: 'Custom Website', cents: 7999, cap: 20, years: 1,
+        blurb: 'Any twenty of the 34, your pick, on your own domain.',
+        note: 'Three is the minimum, twenty the cap. Anything between costs the same.' },
+      { key: 'full', name: 'Full Website', cents: 24999, cap: 34, years: 1,
+        blurb: 'All 34 with no cap, plus the setup work every site needs anyway.',
+        note: 'Search indexing, analytics, legal pages and spam protection are done, not sold.' },
+      { key: 'complete', name: 'Complete Package', cents: 90000, cap: 34, years: 3,
+        blurb: 'The Full Website plus the work around it, and three years of hosting.',
+        note: 'Maintenance, Local SEO, logo and menu design, WhatsApp and business email included.' }
     ],
+
     features: [
-      'Contact form', 'Google Maps', 'WhatsApp button', 'Photo / gallery section',
-      'Business information', 'Services section', 'Testimonials', 'Opening hours',
-      'Social links', 'Call button'
+      'About Us section',
+      'FAQ section',
+      'Price list',
+      'Special offers section',
+      'Promotions section',
+      'Portfolio section',
+      'Projects showcase',
+      'Team / staff section',
+      'Before & after section',
+      'Service area section',
+      'Pricing comparison',
+      'Packages section',
+      'Events section',
+      'Announcements section',
+      'Custom landing page',
+      'Custom 404 page',
+      'Product catalog',
+      'Online menu',
+      'PDF menu integration',
+      'PDF catalog integration',
+      'Downloadable documents',
+      'Customer reviews integration',
+      'Sticky navigation',
+      'Sticky mobile buttons',
+      'Back-to-top button',
+      'Image lightbox',
+      'FAQ accordion',
+      'Interactive galleries',
+      'Video section',
+      'YouTube integration',
+      'Business inquiry form',
+      'Social sharing preview',
+      'Custom favicon',
+      'Mobile optimization'
     ],
+
     oneTime: [
-      { name: 'Local SEO', cents: 19999,
-        blurb: 'Page titles and descriptions, consistent business details, and a structure search engines can read. Not a subscription.' }
+      { group: 'website', name: 'Online booking system', cents: 6000 },
+      { group: 'website', name: 'Appointment calendar', cents: 5000 },
+      { group: 'website', name: 'Google Reviews integration', cents: 2000 },
+      { group: 'website', name: 'Newsletter signup', cents: 2000 },
+      { group: 'website', name: 'Email button', cents: 500 },
+      { group: 'website', name: 'Job application form', cents: 2500 },
+      { group: 'website', name: 'Careers section', cents: 1500 },
+      { group: 'website', name: 'Multi-language website', cents: 5000, from: true },
+      { group: 'website', name: 'Multiple locations', cents: 3000 },
+      { group: 'website', name: 'Location selector', cents: 2500 },
+      { group: 'website', name: 'Store locator', cents: 5000 },
+      { group: 'website', name: 'Membership section', cents: 4000 },
+      { group: 'website', name: 'Gift card section', cents: 3000 },
+      { group: 'website', name: 'Loyalty program', cents: 6000, from: true },
+      { group: 'website', name: 'Event registration', cents: 4000 },
+      { group: 'website', name: 'Blog section', cents: 3000 },
+      { group: 'website', name: 'News section', cents: 2000 },
+      { group: 'website', name: 'Website search', cents: 3000 },
+      { group: 'technical', name: 'Basic SEO setup', cents: 3000 },
+      { group: 'technical', name: 'Google Search indexing', cents: 1500 },
+      { group: 'technical', name: 'Google Business Profile setup', cents: 4000 },
+      { group: 'technical', name: 'Google Business Profile optimization', cents: 5000 },
+      { group: 'technical', name: 'Google Analytics setup', cents: 2500 },
+      { group: 'technical', name: 'Google Search Console setup', cents: 2500 },
+      { group: 'technical', name: 'Conversion tracking', cents: 4000 },
+      { group: 'technical', name: 'Website visitor tracking', cents: 2500 },
+      { group: 'technical', name: 'Professional business email setup', cents: 2500 },
+      { group: 'technical', name: 'Email signature setup', cents: 1500 },
+      { group: 'technical', name: 'Domain registration', cents: 1000 },
+      { group: 'technical', name: 'Domain connection', cents: 1000 },
+      { group: 'technical', name: 'SSL / HTTPS setup', cents: 1000 },
+      { group: 'technical', name: 'Website migration', cents: 5000, from: true },
+      { group: 'technical', name: 'Website redesign', cents: 10000, from: true },
+      { group: 'technical', name: 'Website speed optimization', cents: 5000 },
+      { group: 'technical', name: 'Image compression', cents: 1500 },
+      { group: 'technical', name: 'Accessibility improvements', cents: 4000 },
+      { group: 'technical', name: 'Cookie consent banner', cents: 2000 },
+      { group: 'technical', name: 'Privacy policy page', cents: 2000 },
+      { group: 'technical', name: 'Terms & conditions page', cents: 2000 },
+      { group: 'technical', name: 'Custom legal pages', cents: 3000, from: true },
+      { group: 'technical', name: 'Website backup system', cents: 3000 },
+      { group: 'technical', name: 'Security configuration', cents: 4000 },
+      { group: 'technical', name: 'Spam protection', cents: 2000 },
+      { group: 'technical', name: 'Contact form spam protection', cents: 1500 },
+      { group: 'technical', name: 'Broken-link checking', cents: 1500 },
+      { group: 'automation', name: 'Automatic email notifications', cents: 2500 },
+      { group: 'automation', name: 'Booking confirmation emails', cents: 3500 },
+      { group: 'automation', name: 'Contact form email notifications', cents: 1500 },
+      { group: 'automation', name: 'Quote request notifications', cents: 2000 },
+      { group: 'automation', name: 'Automated customer responses', cents: 4000 },
+      { group: 'automation', name: 'Appointment reminder emails', cents: 5000 },
+      { group: 'automation', name: 'Email autoresponder setup', cents: 3500 },
+      { group: 'automation', name: 'Lead notification system', cents: 4000 },
+      { group: 'automation', name: 'Customer inquiry tracking', cents: 4000 },
+      { group: 'automation', name: 'Simple CRM integration', cents: 7500, from: true },
+      { group: 'brand', name: 'Logo Design', cents: 4999 },
+      { group: 'brand', name: 'Brand Kit', cents: 7999 },
+      { group: 'brand', name: 'Business Card Design', cents: 2999 },
+      { group: 'brand', name: 'Flyer / Poster Design', cents: 3999 },
+      { group: 'brand', name: 'Menu Design', cents: 3999 },
+      { group: 'brand', name: 'Social Media Starter Pack', cents: 5999 },
+      { group: 'brand', name: 'Promo Video / Short Ad', cents: 4999, from: true },
+      { group: 'brand', name: 'AI Business Photos', cents: 3000, from: true },
+      { group: 'brand', name: 'Google Review QR Card', cents: 1999 },
+      { group: 'brand', name: 'WhatsApp Business Setup', cents: 3999 },
+      { group: 'brand', name: 'Business Document Templates', cents: 2999 }
     ],
+
     monthly: [
-      { name: 'Online Booking System', cents: 2999, blurb: 'Customers book appointments themselves, at the times you allow.' },
-      { name: 'Website Maintenance',   cents: 1999, blurb: 'Up to 15 changes a month — text, photos, prices, hours.' },
-      { name: 'Review Management',     cents: 2999, blurb: 'We help manage your Google Business and Maps reviews.' },
-      { name: 'Digital Menu',          cents: 1999, setupCents: 4999, blurb: 'Your menu on the web, changed when the kitchen changes.' }
+      { name: 'Website maintenance', cents: 2000 },
+      { name: 'Website content updates', cents: 1500 },
+      { name: 'Monthly image updates', cents: 1500 },
+      { name: 'Monthly text changes', cents: 1000 },
+      { name: 'Monthly SEO maintenance', cents: 4000 },
+      { name: 'Monthly SEO report', cents: 2500 },
+      { name: 'Google Business Profile maintenance', cents: 3000 },
+      { name: 'Website performance monitoring', cents: 2000 },
+      { name: 'Security & backup monitoring', cents: 2500 },
+      { name: 'Priority technical support', cents: 3000 }
     ],
-    extras: [
-      { group: 'Brand & design', name: 'Logo Design', cents: 4999, blurb: 'A custom professional logo for your business.' },
-      { group: 'Brand & design', name: 'Brand Kit', cents: 7999, blurb: 'Logo, brand colours, fonts and basic brand guidelines.' },
-      { group: 'Brand & design', name: 'Business Card Design', cents: 2999, blurb: 'Ready for printing or sharing digitally.' },
-      { group: 'Brand & design', name: 'Flyer / Poster Design', cents: 3999, blurb: 'For offers, events, services or announcements.' },
-      { group: 'Brand & design', name: 'Menu Design', cents: 3999, blurb: 'For restaurants, cafés, salons and similar.' },
-      { group: 'Social & marketing', name: 'Social Media Starter Pack', cents: 5999, blurb: 'Profile picture, banner and 5 branded posts.' },
-      { group: 'Social & marketing', name: 'Promo Video / Short Ad', cents: 4999, from: true, blurb: 'Final price depends on length and complexity.' },
-      { group: 'Social & marketing', name: 'AI Business Photos', cents: 3000, from: true, blurb: 'Final price depends on the number and complexity of images.' },
-      { group: 'Social & marketing', name: 'Google Review QR Card', cents: 1999, blurb: 'Makes leaving a review easier. What they write is up to them.' },
-      { group: 'Business setup', name: 'Professional Business Email Setup', cents: 2999, blurb: 'Setup only — a provider mailbox subscription is not included.' },
-      { group: 'Business setup', name: 'WhatsApp Business Setup', cents: 3999, blurb: 'Profile, business information and contact details.' },
-      { group: 'Business documents', name: 'Business Document Templates', cents: 2999, blurb: 'Invoice, quotation and receipt templates.' }
-    ]
+
+    // What each paid tier already covers, so the builder can mark those
+    // add-ons as included instead of charging for them twice.
+    included: {
+      free: [],
+      custom: [],
+      full: ['Basic SEO setup', 'Google Search indexing', 'Google Search Console setup',
+             'Google Analytics setup', 'Conversion tracking', 'Cookie consent banner',
+             'Privacy policy page', 'Terms & conditions page', 'Contact form spam protection'],
+      complete: ['Basic SEO setup', 'Google Search indexing', 'Google Search Console setup',
+                 'Google Analytics setup', 'Conversion tracking', 'Cookie consent banner',
+                 'Privacy policy page', 'Terms & conditions page', 'Contact form spam protection',
+                 'Google Business Profile setup', 'Google Business Profile optimization',
+                 'Logo Design', 'Menu Design', 'WhatsApp Business Setup',
+                 'Professional business email setup']
+    },
+    includedMonthly: { free: [], custom: [], full: [], complete: ['Website maintenance'] }
   };
 
   function emptyDraft() {

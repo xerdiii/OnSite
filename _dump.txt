@@ -1,0 +1,974 @@
+0	+ the domain
+1	, and how we handle your information is in the
+2	, and the wider agreement is in the
+3	, it covers up to
+4	, it stays yours. You remain the registrant and the owner, we simply point it at your website, and nothing about that changes if you leave.
+5	, one-time)
+6	, or email us. Both work; neither requires a phone call or a reason.
+7	, paid once.
+8	, so a typo cannot lock you out again.
+9	, where we do not have to keep it for legal or accounting reasons.
+10	, which works the same way from your point of view: data kept in your browser, on your device, that we can read when you come back.
+11	. A person answers.
+12	. A reasonable change is a small content update, for example:
+13	. It includes up to 15 reasonable changes a month, requested from your dashboard.
+14	. Nothing is pre-selected, refusing takes exactly one click, and refusing does not limit anything on this site.
+15	. Pay 25% to start.
+16	. The
+17	. The final price depends on the length and complexity of the video, and we confirm the figure with you in writing before anything is charged.
+18	. The final price depends on the number and complexity of the images. These are AI-assisted images, not photographs of your actual products, unless you supply source material we can work from.
+19	/ Client dashboard
+20	/ mo
+21	/ month
+22	/ month)
+23	/ month, after the one-time
+24	/ month, once the included years run out
+25	/mo
+26	01 — Overview & service scope
+27	01 — Who we are
+28	02 — Website features & scope
+29	02 — What we collect
+30	03 — Website maintenance
+31	03 — Why, and on what legal basis
+32	04 — Marketing email
+33	04 — Payment
+34	05 — Delivery
+35	05 — How long we keep it
+36	06 — Monthly billing
+37	06 — Who else processes it
+38	07 — Failed payments
+39	07 — Transfers outside the EEA
+40	08 — Cancellation & refunds
+41	08 — Your rights
+42	09 — Domain ownership
+43	09 — Security
+44	10 — Children
+45	10 — Website code & offboarding
+46	11 — Changes
+47	11 — Customer responsibilities
+48	12 — Intellectual property
+49	13 — Hosting & uptime
+50	14 — Liability
+51	15 reasonable website changes per month
+52	15 — Changes to these terms
+53	16 — Governing law
+54	180 days
+55	25% deposit
+56	25% of your one-time website total. That is the deposit, and it is the only thing charged on the day you order. On a
+57	34 sections and features, in every website
+58	99.9% monthly uptime target
+59	A cookie is a small piece of text your browser stores for a site. We also use
+60	A few sentences about the business, how long you have been going, the areas you cover. Rough notes are fine — we do the writing.
+61	A peregrine falcon in a high-speed dive, feathers rippling, eye locked forward
+62	A project
+63	A quarter of the one-time total, and that books the work in. Nothing else is charged today.
+64	A quarter of the one-time total. That is it for now. The rest is due once the site is built and you have said you are happy with it, and nothing monthly gets charged until you are actually live. The order summary spells out all three numbers before you pay anything.
+65	A short list, honestly described.
+66	AI Business Photos
+67	AI Receptionist
+68	About Us section
+69	About a week from the day we have everything — logo, photos, your services and prices, opening hours, how people reach you. It is a target, not a promise carved in stone: if the photos land three weeks later, so does the website.
+70	Accept all cookies
+71	Accessibility improvements
+72	Account
+73	Account Settings
+74	Account Settings → Notification preferences
+75	Account and project information
+76	Account details
+77	Account, data & support
+78	Account, project and payment emails
+79	Add a short description so we know what to change.
+80	Add-ons only. Your website price is on top, and monthly services start the day you go live.
+81	Admin (demo)
+82	After the build has started
+83	After the website is finished and you have reviewed and approved it. Not before. We do not take it automatically while you are still looking at the site — approving is the action that makes it due.
+84	All 34 — no limit of twenty.
+85	All done
+86	All of this is subject to your statutory rights, which we cannot and do not sign away — see clause 05.
+87	All paid once. The domain, the hosting and the padlock come with every one of them.
+88	Almost always a trailing space from a paste, or Caps Lock on for one field and off for the other. Clear both boxes and type it twice by hand.
+89	Already a customer?
+90	Already have an account?
+91	Already own one? Put it here. If not, tell us the name you would like and we will check what is free.
+92	Analytics
+93	Analytics and conversion tracking.
+94	Announcements section
+95	Answer support messages
+96	Any 20 of the 34, your pick.
+97	Any other feature or service is included
+98	Any text you want on the page
+99	Anything still missing pushes the delivery date out by however long it takes to arrive. Nothing else changes — your price stays exactly what you agreed at checkout.
+100	Anything you want written on the page
+101	Appointment calendar
+102	Appointment reminder emails
+103	Approve it, pay the rest
+104	Approximately 7 days after we receive everything needed to build it. That is a target we work to, not an unconditional guarantee — and the clock starts when the last piece of content arrives, not when you pay.
+105	Are Business Extras monthly payments?
+106	Are Business Extras required?
+107	Are there any other costs?
+108	Are these monthly payments?
+109	Ask before you buy. We would rather answer a question now than have you order the wrong thing.
+110	Ask us instead
+111	At checkout we ask you to confirm the payment schedule before you pay, and we record that confirmation. If the applicable rules require a specific early-commencement acknowledgement, it belongs at that same point in the flow — it is marked in the checkout for the same review.
+112	Automated customer responses
+113	Automatic email notifications
+114	Back
+115	Back to log in
+116	Back to pricing
+117	Back-to-top button
+118	Bakery
+119	Barbershop
+120	Basic SEO setup
+121	Basic SEO, Google indexing and Search Console.
+122	Because you have never met us. Handing a stranger hundreds of euro for a website that does not exist yet is a bad deal, and we would rather not ask for it.
+123	Before & after section
+124	Before we have started building
+125	Before you write
+126	Billing starts when your website goes live and continues each month until you cancel, under the cancellation terms below.
+127	Blog section
+128	Booking confirmation emails
+129	Booking, SEO, analytics, automation, a logo, an email on your own domain. Sixty-six one-off jobs and ten monthly services, each priced on its own page so you can tick your way to a total before you talk to anyone.
+130	Booking, SEO, analytics, automation, a logo, an email on your own domain. Sixty-six one-off jobs.
+131	Brand
+132	Brand & design
+133	Brand Kit
+134	Broken-link checking
+135	Build and host your website
+136	Build my website
+137	Build my website —
+138	Build updates, review requests, payment reminders, failures
+139	Build your package
+140	Built around what you actually do, and made to work on a phone — because that is where people find you. Domain, hosting and padlock included.
+141	Business & technical
+142	Business Card Design
+143	Business Document Templates
+144	Business Extras
+145	Business Information
+146	Business address
+147	Business email set up.
+148	Business information
+149	Business inquiry form
+150	Business name
+151	Businesses we build for
+152	Butcher
+153	Buying a website does not sign you up to a mailing list. Marketing email is a separate, unticked choice at checkout and in your account settings, and saying no has no effect on what you buy or how we support you.
+154	Café
+155	Can I add extras after ordering my website?
+156	Can I add or stop a monthly service later?
+157	Can I cancel a monthly service?
+158	Can I order just a logo without a website?
+159	Can I remove an extra before paying?
+160	Can I request changes after launch?
+161	Can I see the website before paying the final 75%?
+162	Can I take my website somewhere else?
+163	Cancellation & Refund Policy
+164	Cancellation & refunds
+165	Cancelling is explained in the
+166	Car wash
+167	Card details, payment status, subscriptions, refunds
+168	Card numbers, expiry dates and security codes go directly to the payment provider. We receive a reference, an amount and a status — never the card itself.
+169	Careers section
+170	Catalogues & documents
+171	Change my cookie choice
+172	Changes
+173	Changes & maintenance
+174	Changes made by Google, Meta or other third-party platforms
+175	Changes to these terms
+176	Changing text on the page
+177	Check your code
+178	Check your inbox
+179	Children
+180	Choose a new password
+181	Choose a website to begin
+182	Clear
+183	Close menu
+184	Codes also expire on their own after ten minutes. A code you found half an hour later will be refused even though it looks right.
+185	Coming soon
+186	Compare the two
+187	Complete Package is the Full Website plus the work around it: maintenance, Local SEO, a logo and menu design, WhatsApp Business and business email, and three years of hosting instead of one. All three are paid one time.
+188	Confirm
+189	Confirm new password
+190	Confirm password
+191	Confirm your email
+192	Consent
+193	Contact
+194	Contact details for the provider are on the
+195	Contact form email notifications
+196	Contact form spam protection
+197	Contact information
+198	Contact us
+199	Content you provide
+200	Content you provided
+201	Contents
+202	Continue
+203	Conversion tracking
+204	Cookie
+205	Cookie Policy
+206	Cookie banner, privacy and terms pages.
+207	Cookie consent banner
+208	Cookie settings
+209	Cookies
+210	Correct it
+211	Countries
+212	Country dialling code
+213	Create an account
+214	Create an account to build your package
+215	Create and run your account
+216	Create one
+217	Custom 404 page
+218	Custom Website (
+219	Custom Website builds any twenty of the 34, your choice, with three as the minimum. The
+220	Custom and Professional include the first year. Complete includes the first three. After that it is
+221	Custom builds any twenty of them. Full Website and the Complete Package build all thirty-four.
+222	Custom favicon
+223	Custom landing page
+224	Custom legal pages
+225	Customer inquiry tracking
+226	Customer responsibilities
+227	Customer reviews integration
+228	Days to build, counted from the last photo you send us.
+229	Delete it
+230	Delivery
+231	Demo build.
+232	Dentist
+233	Depending on what you select, your website may be a standard landing page or a custom multi-section business website. Hosting, SSL/HTTPS and the technical maintenance included in your selection are provided for as long as the relevant part of your order is active and paid for.
+234	Depending on where you live, you can ask us to:
+235	Deposit, final balance and any monthly services
+236	Different purposes rest on different grounds. Consent is not a blanket answer, and we do not claim it where the real basis is the contract between us.
+237	Digital Menu —
+238	Do I need an account?
+239	Do I own my domain?
+240	Do I own the website?
+241	Do monthly services start immediately?
+242	Do unused changes roll over?
+243	Do you sell my information?
+244	Does the site use tracking cookies?
+245	Domain
+246	Domain connection
+247	Domain ownership
+248	Domain registrar problems
+249	Domain registration
+250	Domain, hosting and padlock — first three years included.
+251	Domain, hosting and padlock — first year included.
+252	Don’t have an account?
+253	Downloadable documents
+254	Eg. jane@janeys-hair.co.uk
+255	Either way
+256	Email
+257	Email address
+258	Email autoresponder setup
+259	Email button
+260	Email delivery
+261	Email signature setup
+262	Enter the 6-digit code we sent to
+263	Enter your email
+264	Essential only
+265	Event registration
+266	Events section
+267	Every one-time and recurring charge is shown in the order summary before you pay, split into what is due today, what is due on approval, and what recurs monthly after launch.
+268	Everything in Full Website.
+269	Everything on offer
+270	Everything people ask before they buy.
+271	Everything this site stores today, in full:
+272	Extras
+273	Extras join your one-time total: 25% today, 75% on approval. Never monthly.
+274	Extras that do not depend on your website build — the QR card, email and WhatsApp setup, document templates — are delivered on their own timeline rather than waiting for the 7-day build, and their balance falls due when that piece is approved.
+275	FAQ accordion
+276	FAQ section
+277	Facebook, Instagram, TikTok, LinkedIn — one per line.
+278	Failed payments
+279	Failed payments and suspension
+280	Features
+281	Find my account
+282	Find my email address
+283	Find your account
+284	Finished work, your premises, your team, your products. Real photos from a phone beat stock images every time.
+285	Florist
+286	Flyer / Poster Design
+287	Follow your build
+288	For anything about your information, write to the contact address above or use the
+289	For example: Mon–Fri 08:00–18:00, Sat 09:00–13:00, Sun closed.
+290	Force majeure events and anything else outside our reasonable control
+291	Forgot email?
+292	Forgot password?
+293	Forgot which email you used?
+294	Frequently asked questions
+295	From
+296	From the
+297	Full Website
+298	Full Website (
+299	Full Website builds all thirty-four with no cap, and does the setup work every site needs anyway — search indexing, analytics, the cookie banner and legal pages, spam protection. The
+300	Full delivery terms are in clause 05 of the
+301	General enquiries
+302	Get in touch
+303	Get started
+304	Gift card section
+305	Give it two minutes, then check the spam or promotions folder. If it is still missing, ask for a new code — the old one stops working the moment a new one is sent, so only the newest code in your inbox is the live one.
+306	Give you a copy
+307	Give you a reasonable grace period to resolve it
+308	Go back
+309	Go to log in
+310	Google Analytics setup
+311	Google Business Profile maintenance
+312	Google Business Profile optimization
+313	Google Business Profile setup
+314	Google Drive, Dropbox, WeTransfer — easier than attaching a lot of large photos.
+315	Google Review QR Card
+316	Google Reviews integration
+317	Google Search Console setup
+318	Google Search indexing
+319	Governing law
+320	Gym
+321	Here is the list
+322	Home
+323	Hosting & uptime
+324	How do I contact support?
+325	How extras are paid for
+326	How it works
+327	How long does it take?
+328	How long does the website take?
+329	How long we keep it
+330	How much are AI Business Photos?
+331	How much do I actually pay today?
+332	How much do I pay to start?
+333	How much is a Promo Video?
+334	How to cancel
+335	How to cancel, and how long refunds take
+336	How to cancel.
+337	I agree to the
+338	I do not know which email I used
+339	If a monthly payment fails we tell you, give you a reasonable grace period to fix it, and only then suspend the affected service. Suspension is a pause — we do not delete your website or your data because a card expired. Settling the outstanding amount reactivates the service.
+340	If a monthly payment fails, we will:
+341	If any of that changes, this page changes with it and the banner will ask again.
+342	If something is not answered here, ask us directly — the
+343	If we change how we handle your information, we update this page and change the date at the top. Where the change materially affects you, we will tell you directly rather than relying on you noticing.
+344	If we register a domain for you
+345	If you bring your own domain
+346	If you brought your own domain, it stays yours — you are the registrant and nothing about that changes.
+347	If you cancel before the website is finished:
+348	If you review the site and it is not what you asked for, tell us what is wrong. Fixing that is part of the build, not a paid change. If you decide not to go ahead at all, the site does not go live and the balance is not charged.
+349	If you subscribe to
+350	If you want to leave and take an export or the source files with you, ask us. Where you have purchased an explicit source-code transfer or ownership option, we will hand over the agreed files once the applicable payment and requirements are complete. Where you have not, we can quote for an offboarding export.
+351	Image compression
+352	Image lightbox
+353	Improve what we offer
+354	Intellectual property
+355	Interactive galleries
+356	Internet, network or connectivity failures outside our infrastructure
+357	Invoices and payment records
+358	Invoices and tax records we are required to retain
+359	Is payment secure?
+360	It is the service you bought
+361	It makes leaving a review easier — customers scan the card and land straight on your review page. What they write is entirely up to them.
+362	It says there is no account with that email
+363	It says this email is already registered
+364	Job application form
+365	Jump to
+366	Keep accounting records
+367	Keep the service secure
+368	Keeps you signed in to the demo dashboard and holds the example customer data shown there.
+369	Key figures
+370	Last updated 18 August 2026
+371	Lasts
+372	Lead notification system
+373	Legal basis
+374	Legal obligation
+375	Legitimate interests
+376	Liability
+377	Local SEO setup included.
+378	Local businesses and tradespeople who need a proper website and do not want to become the person who runs it. Salons, plumbers, dentists, restaurants, valeting, electricians — anyone whose customers look them up before they call.
+379	Local storage
+380	Location selector
+381	Locked out
+382	Locked out?
+383	Log in
+384	Log in to your dashboard
+385	Log out
+386	Logo
+387	Logo Design
+388	Logo design, if you want one.
+389	Logo, photos & links
+390	Logo, photos, business information, services and prices, opening hours, contact details, social links, and any specific text you want used. There is a
+391	Logo, photos, what you do, what it costs, when you are open.
+392	Look it up here
+393	Lost business, lost profits or other indirect or consequential damages
+394	Lost the
+395	Loyalty program
+396	Main
+397	Maintenance, content updates, SEO upkeep, monitoring, priority support. None of them start until you are live.
+398	Major redesigns, new functionality, complex custom development, advanced integrations, large e-commerce builds and new pages beyond the agreed scope. These are quoted separately so you always know the cost before anything starts.
+399	Mark all read
+400	Marketing
+401	Marketing consent records
+402	Marketing email
+403	Masked email address on the account
+404	Mechanic
+405	Media & the basics
+406	Membership section
+407	Menu
+408	Menu Design
+409	Menu design.
+410	Message
+411	Message us
+412	Missing something? Send what you have. We will tell you exactly what is still outstanding rather than leaving you guessing.
+413	Mobile optimization
+414	Monthly
+415	Monthly SEO maintenance
+416	Monthly SEO report
+417	Monthly billing
+418	Monthly image updates
+419	Monthly services are billed automatically each month according to what you selected. Your monthly amount depends entirely on which services are active:
+420	Monthly services run month to month unless agreed otherwise, and you can cancel them. Once cancelled, the service stops at the end of the period you have already paid for.
+421	Monthly services — Online Booking, Website Maintenance, Review Management and the Digital Menu monthly fee — run month to month. There is no minimum term.
+422	Monthly services: turn them off under
+423	Monthly subscriptions are separate from that. They begin when your website goes live — you are not charged for a monthly service while the site is still being built.
+424	Monthly text changes
+425	Most cookie notices are longer than the list of cookies they describe. Ours is not. Nothing optional is set unless you accept it, and you can change your mind at any time.
+426	Most questions are answered in the
+427	Multi-language website
+428	Multiple locations
+429	My Services
+430	My Website
+431	My password is not accepted
+432	Name
+433	Needs consent
+434	New password
+435	News section
+436	Newsletter signup
+437	No cap and no choosing. All 34 are in it, and the setup work every website needs anyway — search, analytics, the legal pages — is done rather than sold to you afterwards.
+438	No country matches that.
+439	No discovery call, no strategy workshop, no onboarding sequence. You send us your opening hours and some photos. We send you back a website.
+440	No email or SMS is sent. Your generated code is
+441	No password is stored and no account is changed.
+442	No — they are one-time, every one of them. Nothing there quietly becomes a monthly bill.
+443	No. All 34 sections and features come with every website. The add-ons are extra work on top, and buying none of them is a perfectly normal order.
+444	No. Business Extras are one-time services and are charged once. They do not become monthly subscriptions.
+445	No. Selected monthly services begin when your website goes live, which is after the final payment. You are never billed for a booking system or maintenance on a site that is still being built.
+446	No. The allowance resets each month and unused changes do not carry forward.
+447	No. The one-time total covers the website and any one-time add-ons you selected. Hosting, SSL and domain management are part of the build. The only recurring charges are the monthly services you deliberately chose, at the prices shown at checkout.
+448	No. There is no analytics, advertising or tracking on this site — only a cookie that remembers your consent choice and the storage that keeps you signed in. The
+449	No. They are completely optional. You can purchase only the website, or choose the additional services your business actually needs.
+450	No. We do not sell your information and we do not share it for anyone else's advertising. It goes to the providers we need to run the service — payment processing, hosting, email delivery, domain registration — and nowhere else. They are listed in the
+451	None
+452	Not at the moment. Business Extras are currently sold as add-ons alongside a website build rather than as standalone purchases. If you want something on its own, ask us on the
+453	Not in use — see the
+454	Note for this build:
+455	Nothing bad happens and nothing costs more — the delivery date simply moves out by however long it takes. We will tell you what is still outstanding rather than waiting quietly.
+456	Nothing in these terms limits or excludes liability that cannot legally be limited or excluded — including liability for death or personal injury caused by negligence, for fraud, and any rights you have as a consumer that cannot be waived.
+457	Nothing in these terms transfers ownership of our reusable tools, frameworks, internal systems or infrastructure unless we have specifically agreed to that in writing.
+458	Nothing is sent anywhere and no real account is created. You pay nothing here — the 25% deposit is taken later, from your dashboard.
+459	Nothing is sent anywhere; the code appears on the next step.
+460	Nothing monthly is charged while we are still building. If you have added a monthly service, it starts the day the site goes live.
+461	Nothing on this page removes rights you have by law. Where consumer protection or distance-selling rules give you a right to cancel or a right to a remedy, those rights apply regardless of what this policy says.
+462	Nothing was actually changed on any account.
+463	Notifications
+464	Notify you that the payment did not go through
+465	OR
+466	Object
+467	Occasional news and offers, only if you asked for them
+468	OnSite
+469	Once the remaining 75% is paid, the website goes live or is transferred according to the service you selected, any monthly services begin, and your dashboard access opens.
+470	Once you have approved and paid, the balance is not refundable simply because you change your mind later — but see clause 05, and if something is genuinely wrong with what we delivered, that is our problem to fix.
+471	One page, built around the twenty sections your customers actually need.
+472	One page, built around what your customers came for.
+473	One per line. Include a price or a “from” price wherever you can — it is the thing customers look for first.
+474	One-off jobs you can add, from €5. None of them compulsory.
+475	One-time
+476	One-time project charges are split 25/75.
+477	One-time, monthly, and what happens next.
+478	Online Booking System —
+479	Online booking system
+480	Online menu
+481	Online menu with a QR code.
+482	Only if you ask. Marketing email is a separate unticked box at checkout and a switch in your account settings — buying a website does not opt you in. Every marketing email has an unsubscribe link, and service messages about your build and payments are separate from it.
+483	Only part of the address is shown. If it looks right, log in with it — or
+484	Only what the work actually needs:
+485	Onsite (“we”, “the Provider”) agrees to design, host and maintain your business website according to the products and services you select at checkout. You (“you”, “the customer”) agree to the terms below when you place that order.
+486	Onsite builds and manages business websites. The controller responsible for the information described here is:
+487	Onsite — client dashboard (demo)
+488	Open menu
+489	Opening hours
+490	Or
+491	Or a link to your files
+492	Order
+493	Order and payment information
+494	Other small content changes of a similar size
+495	Our reusable systems
+496	Our standard target is to deliver your website
+497	Outages at third-party providers, including hosting, DNS and registrars
+498	Overview
+499	Overview & service scope
+500	Ownership & leaving
+501	Ownership depends on what the material is:
+502	PDF catalog integration
+503	PDF menu integration
+504	Packages section
+505	Packages start at
+506	Paid today. The rest once you have seen it on your own phone.
+507	Password
+508	Passwords are case sensitive, so check Caps Lock first, then check for a space picked up from a paste. If it still fails,
+509	Paying
+510	Payment
+511	Payment processing
+512	Payment provider outages
+513	Payments
+514	Payments already processed for the current billing period are generally non-refundable, unless applicable law requires otherwise or we have specifically agreed otherwise in writing.
+515	Payments are processed through our payment provider. Onsite does not store your full card details — card number, expiry and security code go straight to the provider, and we receive a reference, an amount and a status.
+516	Performance of a contract
+517	Periods already paid
+518	Pharmacy
+519	Phone
+520	Photos
+521	Pick your features, see your total, know exactly what you pay today.
+522	Pick your website and services, and the order summary will show exactly what you pay today, what is due on approval, and what starts monthly once you are live.
+523	Pizzeria
+524	Port it
+525	Portfolio section
+526	Preferences
+527	Preventing abuse, fraud and outages; keeping backups
+528	Price list
+529	Pricing and the payment schedule are on the
+530	Pricing comparison
+531	Priority technical support
+532	Privacy Policy
+533	Privacy policy page
+534	Problems caused by content, code or configuration you supplied or requested
+535	Product catalog
+536	Professional Website (
+537	Professional business email setup
+538	Project content
+539	Projects showcase
+540	Promo Video / Short Ad
+541	Promo Videos start at
+542	Promotions section
+543	Provider
+544	Purpose
+545	Questions about any of this go through
+546	Questions before you order, or something about a project already under way — either is fine. If you already have an account, the
+547	Quote request notifications
+548	Ready to build your package?
+549	Receipt
+550	Refunds
+551	Registered details
+552	Registering and managing domains
+553	Remaining 75%
+554	Remembered it?
+555	Remembers the choice you made in the cookie banner, so we stop asking.
+556	Replacing photos
+557	Request a Change
+558	Requests
+559	Require any outstanding balance to be settled before reactivation
+560	Reset your password
+561	Restaurant
+562	Restrict
+563	Review Management —
+564	Revisions.
+565	Role
+566	Roughly a week from the day the last photo lands — not from the day you paid.
+567	SSL / HTTPS setup
+568	Salon
+569	Save the password
+570	Saved.
+571	Scheduled or emergency maintenance
+572	Search again
+573	Search by business name
+574	Search country
+575	Sections
+576	Sections and features in every website, whichever one you buy.
+577	Security
+578	Security & backup monitoring
+579	Security configuration
+580	See all 34
+581	See all sixty-six
+582	See pricing
+583	See the extras and build a total
+584	See the pricing
+585	Send a new code
+586	Send marketing email
+587	Send me a code
+588	Send me the occasional update. Optional, and easy to stop.
+589	Send message
+590	Send my content
+591	Send service messages
+592	Send the code
+593	Send us a message
+594	Send us what we need, and the clock starts.
+595	Send your content
+596	Sent to Onsite. Nothing has been published yet — we will action it and mark it completed.
+597	Service area section
+598	Service messages are different: build updates, review requests, payment confirmations and failure notices are part of the service and cannot be switched off while your project or subscription is active. Every marketing email carries an unsubscribe link, and the same switch is in
+599	Services or products, with prices
+600	Sign in with Google
+601	Sign-in is simulated in your browser — any email is accepted, nothing is sent anywhere, and no real account is created.
+602	Signing in
+603	Signing up
+604	Simple CRM integration
+605	Six digit verification code
+606	Six digits, no spaces. If you asked for more than one code, only the last one counts. Ask for a fresh one and use that.
+607	So you can sign in, follow the build and approve the site
+608	So you pay a quarter, we build the thing, and you look at it on your own phone before the rest is due. If it is wrong, we fix it. If you walk away, you have spent a quarter, not the lot.
+609	Social Media Content
+610	Social Media Starter Pack
+611	Social media links
+612	Social sharing preview
+613	Some of these start “from” a figure. Those are confirmed in writing before anything is charged.
+614	Some providers may process information outside the European Economic Area. Where that happens, the transfer needs a lawful safeguard — normally an adequacy decision or standard contractual clauses with the provider.
+615	Source code and infrastructure
+616	Spam protection
+617	Spam protection on every form.
+618	Special offers section
+619	Staff sign-in →
+620	Start here.
+621	Start with
+622	Start your
+623	Statutory withdrawal rights.
+624	Step 02 — after your deposit
+625	Sticky mobile buttons
+626	Sticky navigation
+627	Still not sure?
+628	Stopping, and getting money back.
+629	Store locator
+630	Strictly necessary
+631	Subject
+632	Subscriptions
+633	Support
+634	Support and change requests
+635	Support messages
+636	Support — existing customers
+637	Suspend the affected monthly services if it stays unpaid after that period
+638	Take payment
+639	Talk to a person.
+640	Tattoo studio
+641	Team / staff section
+642	Technical
+643	Technical information
+644	Tell us the business name and roughly when you ordered. A person reads it and answers — usually the same day.
+645	Tell us what is wrong and we fix it. Getting the site to match what you asked for is part of the build, not a paid change. If you decide not to go ahead at all, the site does not go live and the 75% is never charged.
+646	Ten of them,
+647	Terms
+648	Terms & conditions page
+649	Terms of Service
+650	That is the whole list. There is no analytics, no advertising, no tracking pixel, no social embed and no third-party script collecting anything about you on this site.
+651	That target is an aim rather than a warranty, and it excludes:
+652	The
+653	The 25% deposit
+654	The 34
+655	The 7 days start once all of this has reached us:
+656	The 7 days start only once everything has reached us. If content, approvals, feedback, login details, images or business information arrive late or incomplete, the delivery date moves out accordingly. We will tell you what is still outstanding.
+657	The balance becomes due only after we deliver the finished website and you approve it. We do not take it automatically, and we do not take it while you are still reviewing.
+658	The banner gives you two options of equal weight:
+659	The build
+660	The categories, and what we would use them for
+661	The checklist
+662	The code never arrived
+663	The custom website itself, built with the sections you select from the 34 — that is the base website price, paid one time. Choosing more of them does not increase it.
+664	The date at the top of this page shows when it was last updated.
+665	The detail is in the
+666	The first 34 are in every website at no extra cost. Everything under them is optional work, priced on its own. Tick what you want — the total adds itself up and nothing is sent anywhere.
+667	The full detail is in the
+668	The highest-quality file you have. If all you have is a photo of your van or your sign, send that.
+669	The number the call button will dial.
+670	The numbers, before the sales pitch.
+671	The one your phone number belongs to, not the one you happen to be standing in. Type the country name or the dialling code into the search box and pick it from the list.
+672	The one-time deposit pays for starting your project. Once work has begun it is generally not refundable, subject to your rights under applicable consumer law. Nothing here removes a right you have that cannot legally be excluded.
+673	The ones that come up most. The rest are answered in the
+674	The other half of it: we get paid for finishing, not for starting. That tends to focus the mind.
+675	The remaining 75%
+676	The service
+677	The short version: monthly services can be stopped whenever you like, the 75% balance is never taken before you approve the website, and the deposit pays for work that has already started. The detail is below.
+678	The ten monthly services — maintenance, content updates, image and text changes, SEO upkeep and reporting, Google Business Profile upkeep, performance monitoring, security and backup monitoring, priority support — from
+679	The two passwords will not match
+680	The verification code is refused
+681	The website
+682	The website and the work around it. All 34, the things a website does not cover, and three years of hosting — bought once, with nothing left to add.
+683	The website is the bit you buy. The other two are optional.
+684	The wider agreement is in the
+685	There are three things here. You need one of them.
+686	These have deliberately been left blank rather than guessed at. Where you buy as a consumer, mandatory protections in your own country of residence may apply regardless of what is eventually written here.
+687	These terms apply to every website, add-on and monthly service ordered from Onsite. They set out what we build, what you pay and when, how long delivery takes, and what happens if either of us wants to stop.
+688	Third-party assets
+689	Third-party hosting outages
+690	This form is not connected yet — submitting it does not send anything. Use the email addresses opposite in the meantime.
+691	This is a managed website service. While you are using it, we own and operate the project itself — the hosting, the deployment pipeline, any backend, and the managed infrastructure around your site — unless a separate written ownership agreement says otherwise.
+692	This is a service for businesses. It is not directed at children and we do not knowingly collect information about them.
+693	This policy covers the Onsite site you are reading. The website we build for your business is separate: if it uses a booking system, an embedded map or anything else that sets cookies, it needs its own notice, and we will set one up as part of the build.
+694	This searches one example account held in your browser.
+695	Three ways to get one.
+696	To change your mind, use the button at the top of this page or the
+697	To reply to what you asked
+698	To the extent permitted by law, we are not liable for losses arising from things outside our reasonable control, including:
+699	Transfers outside the EEA
+700	Trouble signing in?
+701	Trouble signing up?
+702	Twenty costs the same as three.
+703	Twice
+704	Type
+705	Understanding which parts of the service cause friction
+706	Until you log out or clear your browser
+707	Unused changes do not roll over into the next month. Major redesigns, new functionality, new pages beyond the agreed scope, custom development and large structural changes are not included and may require an additional quote.
+708	Unused maintenance changes
+709	Updating business information
+710	Updating opening hours
+711	Updating prices
+712	Updating text, replacing photos, changing prices, adding or editing services, changing opening hours, correcting business information — the everyday updates a working business needs.
+713	Used for Google Maps and directions. Skip it if you work on site at customers.
+714	Usually one of two things: the account is under a different address — a personal one rather than the business one, or the other way round — or the sign-up was never finished past the code step.
+715	Video section
+716	We are not going to pretend published pages are somehow locked. Anything served to a browser — the markup, styles and scripts of your live site — can be viewed and copied by anyone who visits it. That is how the web works. What we control is the official project and the infrastructure that runs it.
+717	We are not going to tell you our systems are unbreakable, because nobody can honestly say that. What we can say is what we do: keep the stack patched, keep backups, keep access narrow, and tell you promptly if something happens that affects your information.
+718	We build professional business websites and provide optional services alongside them: online booking, website maintenance, review management, local SEO and digital menus. You choose what you need at checkout and pay for nothing else.
+719	We build the website.
+720	We collect what we need to build your website, take payment for it and support you afterwards. This page says exactly what that is, why we hold it, who else touches it and how you get it back or removed.
+721	We confirm by email once everything has arrived, and tell you the delivery date from that point.
+722	We do not delete your data because a payment failed. Suspension is a pause, not a deletion.
+723	We do not hold your card details.
+724	We do not sell your information, and we do not share it for anyone else's advertising. We will disclose it if the law requires it, and we will tell you when we are allowed to.
+725	We found one account
+726	We have deliberately not printed exact durations we cannot yet stand behind. The retention schedule should be finalised alongside the legal review, and this clause updated with the actual periods.
+727	We keep information for as long as the reason for holding it lasts:
+728	We may update these terms as the service changes. If a change materially affects what you pay or what you receive, we will tell you before it applies to your account, and the version in force when you ordered continues to govern work already under way.
+729	We provide reliable hosting with SSL/HTTPS for your website, and we aim for a
+730	We reply to the email address you give us, usually the same working day.
+731	We tell you, give you a reasonable grace period to sort it out, and only then suspend the affected service. We do not delete your website or your data because a card expired. Settling the outstanding amount reactivates it.
+732	We treat both the same way in this policy, because the distinction matters to engineers and not to you.
+733	We use a small number of service providers to run the service. They act on our instructions and only for the purposes below.
+734	We use the name, email and message you submit here to answer your enquiry, and for nothing else. We will not add you to a mailing list from this form. See our
+735	We will not pretend otherwise about what is public: anything served to a browser, including the frontend markup, styles and scripts of your live site, can be viewed and copied by anyone who visits it. That is how the web works. What we control is the official project and the infrastructure that runs it, not the visibility of published pages.
+736	Website
+737	Website Maintenance
+738	Website Maintenance (
+739	Website Maintenance —
+740	Website backup system
+741	Website code & offboarding
+742	Website content updates
+743	Website content you supplied
+744	Website features & scope
+745	Website hosting
+746	Website maintenance
+747	Website maintenance included.
+748	Website migration
+749	Website performance monitoring
+750	Website redesign
+751	Website search
+752	Website speed optimization
+753	Website visitor tracking
+754	Welcome back!
+755	We’ll send a code
+756	What a cookie is here
+757	What comes with it, and what you can add.
+758	What counts as a website change?
+759	What do you need from me?
+760	What does Onsite do?
+761	What does the
+762	What does the Business Email Setup include?
+763	What each one does
+764	What happens if my monthly payment fails?
+765	What happens to my data if I leave?
+766	What happens to my domain and hosting?
+767	What happens to your website
+768	What if I am slow sending things?
+769	What if I do not have maintenance?
+770	What if I do not like it?
+771	What is included in the Brand Kit?
+772	What is not included?
+773	What is the difference between the three?
+774	What is the difference between the two websites?
+775	What they handle
+776	What we actually set
+777	What we agree to, in plain language.
+778	What we collect
+779	What we do
+780	What you do
+781	WhatsApp Business Setup
+782	WhatsApp Business set up.
+783	When do I pay the remaining 75%?
+784	When it takes effect
+785	Where a price starts “from”, we confirm the final figure with you in writing before anything is charged.
+786	Where consumer or distance-selling rules give you a right to withdraw, that right applies regardless of what this agreement says.
+787	Where enquiries from the contact form should land.
+788	Where the agreement permits, temporarily suspend the website or related services
+789	Where we rely on legitimate interests, you can object — see clause 08. Where we rely on consent, you can withdraw it at any time without affecting anything done before you did.
+790	Which country code do I pick?
+791	Which services repeat every month?
+792	Who else processes it
+793	Who is it for?
+794	Who we are
+795	Why
+796	Why, and on what legal basis
+797	Will the Google Review QR Card get me good reviews?
+798	Will you email me marketing?
+799	Withdraw consent
+800	Work outside your selected package is not included. Large redesigns, custom software, advanced functionality, e-commerce systems, additional pages beyond the agreed scope and similar work require a separate quote and a separate agreement before we start. We do not offer unlimited custom work at these prices.
+801	Write a message first.
+802	Write to
+803	Yes — that is the whole point of the order. You get the completed website to review, and the balance only becomes due once you are happy with it.
+804	Yes, and it exists for your benefit rather than ours. The dashboard is where you see the build status, send your content, review the finished site, approve it, see exactly what has been paid and what is outstanding, request changes and manage your subscriptions. Without it you would be chasing all of that by email.
+805	Yes, if you have
+806	Yes, month to month, with no minimum term. Turn it off in the dashboard under
+807	Yes, where available. Request additional services from your dashboard and we will add them to your account.
+808	Yes. Add and remove extras freely at checkout — the order total updates immediately, and nothing is charged until you pay the deposit.
+809	Yes. If you have bought an explicit source-code transfer option, we hand over the agreed files once the applicable payment and requirements are complete. If you have not, ask and we will quote for an offboarding export. Either way you are not held hostage.
+810	Yes. Monthly services are separate from the website. You can start with none of them, add one when you need it, and stop it without affecting the website you already paid for.
+811	You already have an account, which is the good version of this problem.
+812	You are responsible for the accuracy and legality of the business information and content you give us. We publish what you provide; we do not verify it.
+813	You can log in with it now.
+814	You choose the domain name yourself. Type the one you want before you order and we register it for you.
+815	You choose your website features at checkout, and what you choose there is what we build.
+816	You choose your website, features and services inside your dashboard, see the full total, and pay 25% to start. Nothing is charged before you get there.
+817	You have used all 15 changes this month. The allowance resets on the 1st.
+818	You look it over on your own phone. If it is right, you pay the remaining 75% and we put it up.
+819	You own the content you gave us and the specific pages, copy and design produced for your business. What stays with us is the managed project: the hosting, the deployment setup, and the reusable components and tooling we use across customers.
+820	You provide the content we need to build the website. By sending it to us, you confirm that you have the right to use and publish it — including logos, photos, videos, text, business information and any other material you supply.
+821	YouTube integration
+822	Your business & contact details
+823	Your business name
+824	Your business name or the phone number you gave us is enough to find it.
+825	Your choice, and changing it
+826	Your content
+827	Your dashboard keeps support messages, change requests and payment history together.
+828	Your deposit is 25% of the one-time website total. It is what starts the project: it books the work in and pays for the design and build time that begins once your content arrives.
+829	Your domain, the hosting and the security padlock are included — the first year with Custom and Professional, the first three years with Complete. After that it is
+830	Your information, and what we do with it.
+831	Your logo
+832	Your logo, brand colours, fonts and basic brand guidelines —
+833	Your name
+834	Your password is set.
+835	Your project
+836	Your rights
+837	Your statutory rights
+838	Your website and ours, plus server logs
+839	Your website is delivered
+840	Your website is served over HTTPS, access to customer data is limited to the people who need it to do the work, and card details never reach our systems because the payment provider handles them directly.
+841	Your website keeps running exactly as built. Changes are quoted individually, or you can activate maintenance whenever you like from the dashboard.
+842	Your website's specific content and design
+843	Your website, not just ours
+844	[CONTACT EMAIL]
+845	[DATA PROTECTION CONTACT — IF APPLICABLE]
+846	[DOMAIN REGISTRAR]
+847	[EMAIL PROVIDER]
+848	[GOVERNING LAW — LEGAL REVIEW]
+849	[HOSTING PROVIDER]
+850	[JURISDICTION FOR DISPUTES — LEGAL REVIEW]
+851	[JURISDICTION — LEGAL REVIEW]
+852	[LEGAL BUSINESS NAME]
+853	[LEGAL REVIEW REQUIRED: confirm each provider's transfer mechanism and list it here]
+854	[LEGAL REVIEW REQUIRED: early commencement / withdrawal wording — whether a withdrawal right applies to this service, its length, the effect of asking us to begin the build during that period, and the consent mechanism required at checkout]
+855	[LEGAL REVIEW REQUIRED: statutory withdrawal / cooling-off wording for the applicable jurisdiction, including whether a right of withdrawal applies to this service, its length, and the effect of the customer asking us to begin work during that period]
+856	[PAYMENT PROVIDER]
+857	[PHONE NUMBER]
+858	[REGISTERED BUSINESS ADDRESS]
+859	[REGISTRATION NUMBER IF APPLICABLE]
+860	[SUPERVISORY AUTHORITY — LEGAL REVIEW]
+861	[SUPPORT EMAIL]
+862	[TAX/VAT INFORMATION IF APPLICABLE]
+863	a month each.
+864	a month each. Plus the
+865	a month for domain and hosting once your included years run out. Everything else on this page is paid once.
+866	a month for the domain, the hosting and the padlock — nothing else changes.
+867	a month, and that is the only thing that changes. You pick the domain name yourself: type the one you want before you order and we register it in your name.
+868	and
+869	and tell us you want to stop. No form to fill in.
+870	and we show you the address with most of it masked, so you can recognise it without it being readable by anyone standing behind you.
+871	and we will respond within the period the law allows. If you are not satisfied, you can complain to your data protection authority —
+872	and we will tell you what is possible.
+873	and we’ll send you a 6-digit code.
+874	ask us something first
+875	contact form
+876	contact page
+877	cover?
+878	covers the setup work: domain records, mailbox configuration and getting it working on your devices. If your email provider charges a monthly fee for the mailbox itself, that is paid to them and is not included in our fee.
+879	email address?
+880	for how we handle it.
+881	form that walks through all of it
+882	from
+883	full FAQ
+884	goes to a person, not a queue.
+885	happens.
+886	if it is wrong or out of date.
+887	if it was specifically selected and paid for in your order.
+888	if you do not have it. Nothing you paid for is lost.
+889	in your dashboard, or email us — both work, and neither requires a reason. A project: email us and say you want to stop. Cancellation of a monthly service takes effect at the end of the period you have already paid for.
+890	includes all ten website features as standard, with nothing to select. It does not include any monthly service — those are chosen and billed separately.
+891	instead, and
+892	is built around features you pick, with three as the minimum, up to twenty. The
+893	is the complete build with all 34 sections and features included and nothing to choose. Neither includes the monthly services — those are chosen separately, and both websites take the same optional add-ons.
+894	link in the footer of any page. You can also clear cookies and site data in your browser settings, which resets everything including your demo dashboard session.
+895	lists both in full.
+896	local storage
+897	of receiving all the content and information we need from you. This is a target we work to, not an unconditional guarantee.
+898	of the information we hold about you.
+899	of us receiving everything below. Not from the day you paid — from the day the last piece arrives. The faster this form comes back, the faster you are live.
+900	one-time
+901	one-time)
+902	one-time.
+903	only
+904	onsite.demo.v1
+905	onsite_consent
+906	or
+907	or email us. It stops at the end of the period you have already paid for, and cancelling a service does not take your website down.
+908	or the phone number you gave us.
+909	order that is
+910	paid once
+911	payments are currently simulated for demonstration. No card is taken and no money moves until a real payment provider is connected.
+912	picked
+913	pricing page
+914	requires a minimum of three selected features. Selecting more than three does not change the price.
+915	reset it
+916	reset the password
+917	section of your dashboard keeps everything in one thread.
+918	section of your dashboard, which keeps the whole thread in one place, or by email at
+919	selected
+920	setup fee
+921	sixty-six one-off, ten monthly
+922	start to finish.
+923	such as stock photography, fonts and plugins — remain with their owners and stay subject to their own licences.
+924	support
+925	to
+926	to processing we base on legitimate interests.
+927	to settle which.
+928	to the email on your account.
+929	today.
+930	website today.
+931	what we do with it while a question about it is resolved.
+932	where consent is the basis, such as marketing email.
+933	within 7 days
+934	works before you have an account.
+935	yourbusiness.com
+936	· No account yet?
+937	· once
+938	— advertising and cross-site tracking. Not in use, and not something we intend to add.
+939	— as set out in clause 10.
+940	— at the end of the period you have already paid for. You keep the service until then.
+941	— becomes due once the website is completed and presented to you for approval. We do not take it automatically before you have reviewed the finished site.
+942	— cancelling a monthly service does not take your site down. Hosting continues under your build. What stops is that specific service: bookings stop accepting appointments, maintenance changes stop being included, and so on.
+943	— dashboard → My Services, or email
+944	— do not roll over and are not refundable.
+945	— email
+946	— for the period required by tax and accounting law in
+947	— keeping you logged in, remembering your cookie choice. These cannot be switched off, because the site cannot work without them. They are the only ones in use today.
+948	— not refunded pro-rata, because you had the service for that month. If you cancel the day after a payment and have not used the service at all, contact us.
+949	— paid back to the original payment method through our payment provider. How long it takes to appear depends on your bank, not on us.
+950	— paid before development begins. This is what starts the project.
+951	— receive it in a common machine-readable format, or have it sent to another provider where that applies.
+952	— remembering settings you choose. Not in use.
+953	— stays yours. We use it only to build and run your website.
+954	— tell us and we will refund the deposit, less any costs already committed on your behalf, such as a domain we registered for you.
+955	— the components, templates, frameworks, internal tooling and processes we reuse across customers. These stay ours.
+956	— the deposit covers the work already done and is generally not refundable. If we have barely begun, say so and we will look at it fairly rather than hiding behind the policy.
+957	— the limited data our hosting produces in order to serve and secure the site, such as server logs.
+958	— the logo, photos, text and links you send us to build the site.
+959	— the messages you send us and our replies.
+960	— the pages, copy and layout produced for your business, which you may take with you under a transfer or offboarding agreement.
+961	— the reset link works even when you cannot remember what the old one was.
+962	— trading address, opening hours, services and prices, and the other details that go on your website.
+963	— turn the service off in your dashboard under
+964	— type it above.
+965	— understanding which pages people read, so we can improve them. Not in use. If we add it, it will load only after you accept.
+966	— what you ordered, the amounts, the currency, dates, payment status and the identifiers our payment provider gives us.
+967	— while they are useful for supporting you, then deleted on our normal clean-up cycle.
+968	— while we host your site, plus a short window after cancellation so it can be restored or exported if you ask.
+969	— while you are subscribed, plus a record of the withdrawal so we do not email you again by mistake.
+970	— while your account is open, and for a reasonable period afterwards in case you come back or a dispute arises.
+971	— you owe nothing further. The 75% balance never becomes due on a project you cancelled, because it only becomes due on approval.
+972	— your name, business name, email address and phone number.
+973	€79.99, €249.99 or €900 — paid once.
