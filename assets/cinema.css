@@ -1,0 +1,141 @@
+/* ───────────────────────────────────────────────────────────────
+   Onsite — the editorial layer
+
+   Four devices borrowed from cinematic agency sites and cut down to
+   fit a small-business price list rather than a showreel:
+
+     · a marquee of the trades, standing in for a client logo strip
+       until there are logos to show
+     · numbered key figures that count up once, when you reach them
+     · a label that swaps on hover by sliding, not by changing colour
+     · a fade-and-lift on section headings as they arrive
+
+   All four are decoration. Every one of them renders its finished
+   state with JavaScript off and under prefers-reduced-motion, because
+   a price list that only reads when the animation runs is not a price
+   list.
+   ─────────────────────────────────────────────────────────────── */
+
+/* ── Marquee ───────────────────────────────────────────────────
+   Two identical tracks side by side, the pair translated by exactly
+   half its width. When the first track has walked off the left the
+   second is precisely where the first began, so the loop has no seam
+   and needs no JavaScript to measure anything. */
+.marquee {
+  position: relative;
+  overflow: hidden;
+  padding: 1.6rem 0;
+  border-top: 1px solid rgb(var(--c-line));
+  border-bottom: 1px solid rgb(var(--c-line));
+  background: rgb(var(--c-surface));
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+  mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+}
+.marquee-track {
+  display: flex; width: max-content;
+  animation: marquee 42s linear infinite;
+}
+.marquee:hover .marquee-track { animation-play-state: paused; }
+.marquee-set {
+  display: flex; align-items: center; flex: none;
+  gap: 2.75rem; padding-right: 2.75rem;
+}
+.marquee-item {
+  font-family: 'Outfit', 'Inter', sans-serif;
+  font-size: clamp(1.35rem, 3.4vw, 2.15rem);
+  font-weight: 300; letter-spacing: -0.02em;
+  line-height: 1; white-space: nowrap;
+  color: rgb(var(--c-ink) / 0.42);
+  transition: color 220ms ease;
+}
+.marquee-item[data-hot] { color: rgb(var(--c-ink)); }
+.marquee-dot {
+  width: 6px; height: 6px; flex: none; border-radius: 999px;
+  background: rgb(var(--c-accent));
+}
+@keyframes marquee { to { transform: translate3d(-50%, 0, 0); } }
+
+/* ── Key figures ───────────────────────────────────────────────
+   Numbered the way a contents page is numbered, because the point is
+   that there are a known number of them. */
+.figures {
+  display: grid; gap: 0;
+  grid-template-columns: 1fr;
+  border-top: 1px solid rgb(var(--c-line-firm));
+}
+@media (min-width: 640px) { .figures { grid-template-columns: 1fr 1fr; } }
+@media (min-width: 1024px) { .figures { grid-template-columns: repeat(4, 1fr); } }
+
+.figure {
+  padding: 1.9rem 1.5rem 1.9rem 0;
+  border-bottom: 1px solid rgb(var(--c-line));
+}
+@media (min-width: 1024px) {
+  .figure { border-bottom: 0; border-right: 1px solid rgb(var(--c-line)); padding-left: 1.6rem; }
+  .figure:first-child { padding-left: 0; }
+  .figure:last-child { border-right: 0; }
+}
+.figure-n {
+  font-family: 'IBM Plex Mono', ui-monospace, monospace;
+  font-size: 0.6875rem; letter-spacing: 0.16em;
+  color: rgb(var(--c-ink-soft));
+}
+.figure-v {
+  display: block; margin-top: 0.9rem;
+  font-family: 'Outfit', 'Inter', sans-serif;
+  font-size: clamp(2.75rem, 6vw, 4.25rem);
+  font-weight: 200; letter-spacing: -0.045em; line-height: 0.9;
+  color: rgb(var(--c-ink));
+  /* The digits change width as they count; tabular figures stop the
+     whole row from twitching sideways while it runs. */
+  font-variant-numeric: tabular-nums;
+}
+.figure-l {
+  margin-top: 0.7rem; max-width: 15rem;
+  font-size: 0.875rem; line-height: 1.5; color: rgb(var(--c-ink-mid));
+}
+
+/* ── Sliding label ─────────────────────────────────────────────
+   The visible label lifts out of the box while its copy comes up from
+   below. Two spans, one clip, no width measuring — and the duplicate
+   is aria-hidden so it is never read twice. */
+.swap {
+  position: relative; display: inline-block; overflow: hidden;
+  vertical-align: bottom;
+}
+.swap > span {
+  display: block;
+  transition: transform 420ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+.swap > span:last-child {
+  position: absolute; left: 0; top: 0;
+  transform: translate3d(0, 105%, 0);
+}
+a:hover > .swap > span:first-child,
+button:hover > .swap > span:first-child { transform: translate3d(0, -105%, 0); }
+a:hover > .swap > span:last-child,
+button:hover > .swap > span:last-child { transform: translate3d(0, 0, 0); }
+/* Keyboard users get the same thing focus brings, not a dead control. */
+a:focus-visible > .swap > span:first-child { transform: translate3d(0, -105%, 0); }
+a:focus-visible > .swap > span:last-child { transform: translate3d(0, 0, 0); }
+
+/* ── Arrival ───────────────────────────────────────────────────
+   A fade with 14px of lift. Set by script so that with JS off the
+   content is simply there — never hidden by a stylesheet that is
+   waiting for an observer that will not arrive. */
+.rise { opacity: 0; transform: translate3d(0, 14px, 0); }
+.rise.is-in {
+  opacity: 1; transform: none;
+  transition: opacity 620ms cubic-bezier(0.22, 1, 0.36, 1),
+              transform 620ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+.rise[data-rise-delay="1"].is-in { transition-delay: 70ms; }
+.rise[data-rise-delay="2"].is-in { transition-delay: 140ms; }
+.rise[data-rise-delay="3"].is-in { transition-delay: 210ms; }
+
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track { animation: none; }
+  .swap > span { transition: none; }
+  .swap > span:last-child { display: none; }
+  .rise, .rise.is-in { opacity: 1; transform: none; transition: none; }
+}

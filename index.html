@@ -162,6 +162,7 @@
 <link rel="stylesheet" href="assets/mobile.css">
 <link rel="stylesheet" href="assets/closer.css">
 <link rel="stylesheet" href="assets/rails.css">
+<link rel="stylesheet" href="assets/cinema.css">
 <link rel="stylesheet" href="assets/tailwind.css">
 <link rel="stylesheet" href="assets/theme.css">
 <link rel="stylesheet" href="assets/hero.css">
@@ -276,13 +277,83 @@
         </p>
 
         <div class="fp-hero-cta">
-          <a class="fp-btn fp-btn--solid" href="signup.html">Build my website &mdash; &euro;79.99</a>
-          <a class="fp-btn fp-btn--glass" href="#pricing">See the pricing</a>
+          <a class="fp-btn fp-btn--solid" href="signup.html"><span class="swap"><span>Build my website &mdash; <span class="cur" data-eur="79.99">€79.99</span></span><span aria-hidden="true">Build my website &mdash; <span class="cur" data-eur="79.99">€79.99</span></span></span></a>
+          <a class="fp-btn fp-btn--glass" href="#pricing"><span class="swap"><span>See the pricing</span><span aria-hidden="true">See the pricing</span></span></a>
         </div>
       </div>
     </div>
   </section>
 
+
+  <!-- Between the hero and the price: who this is actually for. It
+       reads as a client strip, which is what it becomes the day there
+       are logos to put in it. -->
+  <div class="marquee" role="region" aria-label="Businesses we build for">
+    <div class="marquee-track">
+      <div class="marquee-set" aria-hidden="false">
+          <span class="marquee-item">Barbershop</span>
+          <i class="marquee-dot" aria-hidden="true"></i>
+          <span class="marquee-item">Café</span>
+          <i class="marquee-dot" aria-hidden="true"></i>
+          <span class="marquee-item">Salon</span>
+          <i class="marquee-dot" aria-hidden="true"></i>
+          <span class="marquee-item">Mechanic</span>
+          <i class="marquee-dot" aria-hidden="true"></i>
+          <span class="marquee-item">Restaurant</span>
+          <i class="marquee-dot" aria-hidden="true"></i>
+          <span class="marquee-item">Dentist</span>
+          <i class="marquee-dot" aria-hidden="true"></i>
+          <span class="marquee-item">Bakery</span>
+          <i class="marquee-dot" aria-hidden="true"></i>
+          <span class="marquee-item">Gym</span>
+          <i class="marquee-dot" aria-hidden="true"></i>
+          <span class="marquee-item">Florist</span>
+          <i class="marquee-dot" aria-hidden="true"></i>
+          <span class="marquee-item">Car wash</span>
+          <i class="marquee-dot" aria-hidden="true"></i>
+          <span class="marquee-item">Tattoo studio</span>
+          <i class="marquee-dot" aria-hidden="true"></i>
+          <span class="marquee-item">Pizzeria</span>
+          <i class="marquee-dot" aria-hidden="true"></i>
+          <span class="marquee-item">Butcher</span>
+          <i class="marquee-dot" aria-hidden="true"></i>
+          <span class="marquee-item">Pharmacy</span>
+          <i class="marquee-dot" aria-hidden="true"></i>
+      </div>
+      <!-- The second set is the same list again, and it is what makes
+           the loop seamless. It must not be read out twice. -->
+      <div class="marquee-set" aria-hidden="true">
+          <span class="marquee-item">Barbershop</span>
+          <i class="marquee-dot" aria-hidden="true"></i>
+          <span class="marquee-item">Café</span>
+          <i class="marquee-dot" aria-hidden="true"></i>
+          <span class="marquee-item">Salon</span>
+          <i class="marquee-dot" aria-hidden="true"></i>
+          <span class="marquee-item">Mechanic</span>
+          <i class="marquee-dot" aria-hidden="true"></i>
+          <span class="marquee-item">Restaurant</span>
+          <i class="marquee-dot" aria-hidden="true"></i>
+          <span class="marquee-item">Dentist</span>
+          <i class="marquee-dot" aria-hidden="true"></i>
+          <span class="marquee-item">Bakery</span>
+          <i class="marquee-dot" aria-hidden="true"></i>
+          <span class="marquee-item">Gym</span>
+          <i class="marquee-dot" aria-hidden="true"></i>
+          <span class="marquee-item">Florist</span>
+          <i class="marquee-dot" aria-hidden="true"></i>
+          <span class="marquee-item">Car wash</span>
+          <i class="marquee-dot" aria-hidden="true"></i>
+          <span class="marquee-item">Tattoo studio</span>
+          <i class="marquee-dot" aria-hidden="true"></i>
+          <span class="marquee-item">Pizzeria</span>
+          <i class="marquee-dot" aria-hidden="true"></i>
+          <span class="marquee-item">Butcher</span>
+          <i class="marquee-dot" aria-hidden="true"></i>
+          <span class="marquee-item">Pharmacy</span>
+          <i class="marquee-dot" aria-hidden="true"></i>
+      </div>
+    </div>
+  </div>
 
   <div data-rails-region>
 
@@ -293,7 +364,7 @@
   <section id="pricing" class="scroll-mt-16 border-b border-line bg-surface">
     <div class="mx-auto max-w-shell px-6 py-16 md:px-10 md:py-24">
       <p class="eyebrow text-ink-soft">Websites</p>
-      <h2 class="h-section sec-title mt-4 max-w-2xl">Three ways to get one.</h2>
+      <h2 class="h-section sec-title mt-4 max-w-2xl" data-rise>Three ways to get one.</h2>
       <p class="mt-5 max-w-prose text-[0.9375rem] leading-relaxed text-ink-mid">
         All paid once. The domain, the hosting and the padlock come with every one of them.
       </p>
@@ -440,7 +511,7 @@
       <div class="grid grid-cols-1 gap-10 lg:grid-cols-12 lg:gap-14">
 
         <div class="lg:col-span-5">
-          <h2 class="h-section sec-title">There are three things here. You need one of them.</h2>
+          <h2 class="h-section sec-title" data-rise>There are three things here. You need one of them.</h2>
           <p class="mt-5 max-w-prose text-[0.9375rem] leading-relaxed text-ink-mid">
             The website is the bit you buy. The other two are optional.
           </p>
@@ -490,7 +561,7 @@
     <div class="mx-auto max-w-shell px-6 py-16 md:px-10 md:py-24">
 
       <p class="eyebrow text-ink-soft">How it works</p>
-      <h2 class="h-section sec-title mt-4 max-w-xl">Four steps, start to live.</h2>
+      <h2 class="h-section sec-title mt-4 max-w-xl" data-rise>Four steps, start to live.</h2>
 
       <ol class="mt-12 grid grid-cols-1 border-t border-line-firm sm:grid-cols-2 xl:grid-cols-4">
 
@@ -545,7 +616,7 @@
 
         <div class="lg:col-span-6">
           <p class="eyebrow text-ink-soft">Business extras</p>
-          <h2 class="h-section sec-title mt-4">The things a website does not cover.</h2>
+          <h2 class="h-section sec-title mt-4" data-rise>The things a website does not cover.</h2>
           <p class="mt-5 max-w-prose text-[0.9375rem] leading-relaxed text-ink-mid">
             Booking, SEO, analytics, automation, a logo, an email on your own domain. Sixty-six one-off
             jobs and ten monthly services, each priced on its own page so you can tick your way to a
@@ -579,7 +650,7 @@
   <section class="border-b border-line">
     <div class="mx-auto max-w-shell px-6 py-16 md:px-10 md:py-24">
       <p class="eyebrow text-ink-soft">Straight answers</p>
-      <h2 class="h-section sec-title mt-4 max-w-2xl">One-time, monthly, and what happens next.</h2>
+      <h2 class="h-section sec-title mt-4 max-w-2xl" data-rise>One-time, monthly, and what happens next.</h2>
       <p class="mt-5 max-w-prose text-[0.9375rem] leading-relaxed text-ink-mid">
         The ones that come up most. The rest are answered in the
         <a href="faq.html" class="font-semibold text-accent underline underline-offset-2 hover:text-accent-hi">full FAQ</a>.
@@ -647,7 +718,7 @@
 
       <div class="grid grid-cols-1 gap-10 lg:grid-cols-12 lg:gap-14">
         <div class="lg:col-span-7">
-          <h2 class="h-section sec-title max-w-xl">Why a quarter, and not the whole thing?</h2>
+          <h2 class="h-section sec-title max-w-xl" data-rise>Why a quarter, and not the whole thing?</h2>
           <p class="mt-6 max-w-prose text-[1.0625rem] leading-relaxed text-ink-mid">
             Because you have never met us. Handing a stranger hundreds of euro for a website that does
             not exist yet is a bad deal, and we would rather not ask for it.
@@ -666,6 +737,37 @@
             hours and some photos. We send you back a website.
           </p>
         </aside>
+      </div>
+    </div>
+  </section>
+
+  <!-- 9c — KEY FIGURES -->
+  <section class="border-b border-line">
+    <div class="mx-auto max-w-shell px-6 py-16 md:px-10 md:py-20">
+      <p class="eyebrow text-ink-soft" data-rise>Key figures</p>
+      <h2 class="h-section sec-title mt-4 max-w-xl" data-rise data-rise-delay="1">The numbers, before the sales pitch.</h2>
+
+      <div class="figures mt-12" data-rise data-rise-delay="2">
+        <div class="figure">
+          <p class="figure-n">01</p>
+          <span class="figure-v" data-count>34</span>
+          <p class="figure-l">Sections and features in every website, whichever one you buy.</p>
+        </div>
+        <div class="figure">
+          <p class="figure-n">02</p>
+          <span class="figure-v" data-count>66</span>
+          <p class="figure-l">One-off jobs you can add, from €5. None of them compulsory.</p>
+        </div>
+        <div class="figure">
+          <p class="figure-n">03</p>
+          <span class="figure-v" data-count>7</span>
+          <p class="figure-l">Days to build, counted from the last photo you send us.</p>
+        </div>
+        <div class="figure">
+          <p class="figure-n">04</p>
+          <span class="figure-v" data-count>25%</span>
+          <p class="figure-l">Paid today. The rest once you have seen it on your own phone.</p>
+        </div>
       </div>
     </div>
   </section>
@@ -716,6 +818,7 @@
 <script src="assets/backdrop.js" defer></script>
 <script src="assets/rails.js" defer></script>
 <script src="assets/hero.js" defer></script>
+<script src="assets/cinema.js" defer></script>
 <script src="assets/picker.js" defer></script>
 <script src="assets/mobile.js"></script>
 <script src="assets/theme.js"></script>

@@ -24,18 +24,23 @@
 
 .rail {
   position: absolute; top: 0; bottom: 0;
+  /* Feathered with a mask rather than an overlay: the strip fades to
+     nothing at both ends, so it works on paper and on ink without a
+     grey seam where the two met. */
+  -webkit-mask-image: linear-gradient(180deg, transparent 0%, #000 11%, #000 89%, transparent 100%);
+  mask-image: linear-gradient(180deg, transparent 0%, #000 11%, #000 89%, transparent 100%);
   /* The gutter, less a little breathing room, clamped so the rail never
      grows into a second column or shrinks into a stripe. Wide enough
      that the footage reads as footage — below about 130px a 16:9 clip
      is cropped to a sliver and you cannot tell what you are looking at. */
   width: clamp(96px, calc((100vw - 70rem) / 2 - 10px), 260px);
   overflow: hidden;
-  background: rgb(var(--c-ink) / 0.04);
-  border-left: 1px solid rgb(var(--c-line-firm));
-  border-right: 1px solid rgb(var(--c-line-firm));
+  /* A dark bed in both themes. The footage is the point; a light bed
+     under it just lifts the blacks and flattens the picture. */
+  background: #0b0d10;
 }
-.rail--left  { left: 0; border-left: 0; }
-.rail--right { right: 0; border-right: 0; }
+.rail--left  { left: 0; }
+.rail--right { right: 0; }
 
 .rail-clip {
   position: absolute; inset: 0;
@@ -61,23 +66,18 @@
    rather than beside it, and never competes with the centre column. */
 .rail-wash {
   position: absolute; inset: 0; pointer-events: none;
+  /* Only a vignette now — it shapes the edges of the picture instead of
+     painting over it, so the footage keeps its own contrast. */
   background:
-    linear-gradient(180deg,
-      rgb(var(--c-paper)) 0%,
-      rgb(var(--c-paper) / 0.55) 9%,
-      rgb(var(--c-paper) / 0.20) 22%,
-      rgb(var(--c-paper) / 0.20) 78%,
-      rgb(var(--c-paper) / 0.55) 91%,
-      rgb(var(--c-paper)) 100%),
-    linear-gradient(90deg,
-      rgb(var(--c-paper) / 0.30) 0%,
-      rgb(var(--c-paper) / 0.10) 50%,
-      rgb(var(--c-paper) / 0.30) 100%);
+    linear-gradient(180deg, rgb(0 0 0 / 0.55) 0%, rgb(0 0 0 / 0) 26%,
+                            rgb(0 0 0 / 0) 74%, rgb(0 0 0 / 0.55) 100%),
+    linear-gradient(90deg,  rgb(0 0 0 / 0.28) 0%, rgb(0 0 0 / 0) 40%,
+                            rgb(0 0 0 / 0) 60%, rgb(0 0 0 / 0.28) 100%);
 }
-/* The inner edge is the one the eye reads against the content, so it
-   carries the rule; the outer edge fades into the page. */
-.rail--left .rail-wash  { border-right: 1px solid rgb(var(--c-line-firm)); }
-.rail--right .rail-wash { border-left: 1px solid rgb(var(--c-line-firm)); }
+/* A hairline of light on the inner edge, so the strip has an edge
+   against the content without a border that survives the mask. */
+.rail--left .rail-wash  { border-right: 1px solid rgb(255 255 255 / 0.10); }
+.rail--right .rail-wash { border-left: 1px solid rgb(255 255 255 / 0.10); }
 
 /* The chapter mark, so the rail reads as a sequence rather than a
    slideshow that happens to be playing. */
@@ -86,13 +86,16 @@
   text-align: center;
   font-family: 'IBM Plex Mono', ui-monospace, monospace;
   font-size: 0.5625rem; letter-spacing: 0.18em; text-transform: uppercase;
-  color: rgb(var(--c-ink-soft));
+  color: rgb(255 255 255 / 0.62);
+  text-shadow: 0 1px 8px rgb(0 0 0 / 0.6);
 }
 .rail--right .rail-mark { display: none; }
 
 /* Dark mode: the wash follows the page token, so only the tint of the
    footage itself needs a nudge. */
-:root[data-theme="dark"] .rail { background: rgb(255 255 255 / 0.03); }
+/* The bed is already dark in both themes, so dark mode has nothing to
+   correct — it only loses the faint separation from the page. */
+:root[data-theme="dark"] .rail-wash { border-color: rgb(255 255 255 / 0.16); }
 
 /* Below the width where a real gutter exists, there are no rails at all.
    Nothing is scaled down into a sliver, and nothing can push the page
