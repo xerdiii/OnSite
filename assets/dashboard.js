@@ -53,40 +53,187 @@
   // ── Sections ─────────────────────────────────────────────────
   var routes = {};
 
+  var A = function () { return window.OnsiteApp; };
+
+  // The preview frame. Not a screenshot — an iframe of preview.html,
+  // which renders from the same store this dashboard writes to, so it
+  // can never drift from what the customer actually told us.
+  function previewCard(s) {
+    var url = (s.project && s.project.previewUrl) || 'preview.onsite.app';
+    var live = s.project && s.project.stage === 'live';
+    return '' +
+    '<div class="prev">' +
+      '<div class="prev-chrome">' +
+        '<span class="prev-dots" aria-hidden="true"><i></i><i></i><i></i></span>' +
+        '<span class="prev-url">' + esc(live ? (s.customer.websiteUrl || url) : url) + '</span>' +
+        '<span class="prev-tabs">' +
+          '<button type="button" class="prev-tab is-on" data-prev-view="desktop" aria-label="Desktop view">' +
+            '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2.5" y="4" width="19" height="13" rx="2"/><path d="M9 20h6"/></svg></button>' +
+          '<button type="button" class="prev-tab" data-prev-view="phone" aria-label="Phone view">' +
+            '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="7" y="2.5" width="10" height="19" rx="2.5"/><path d="M11 18.5h2"/></svg></button>' +
+        '</span>' +
+      '</div>' +
+      '<div class="prev-stage" data-view="desktop">' +
+        '<iframe class="prev-frame" src="preview.html" title="Preview of your website" loading="lazy"></iframe>' +
+      '</div>' +
+      '<div class="prev-foot">' +
+        '<a class="btn btn-primary" href="preview.html" target="_blank" rel="noopener">Open full size</a>' +
+        '<a class="btn btn-ghost" href="#/website">Everything about my site</a>' +
+        '<span class="prev-note">Live preview of your own page</span>' +
+      '</div>' +
+    '</div>';
+  }
+
+  function approveCard(s) {
+    var bal = O.balance(s.order.oneTimeCents);
+    if (s.project.stage === 'review') {
+      return '<div class="approve mt-5">' +
+        '<p class="approve-h">Your website is ready for you to look at.</p>' +
+        '<p class="approve-p">Go through every section. Anything wrong, send it back and we fix it — that ' +
+          'costs nothing and there is no limit before approval. Approving is what makes the remaining ' +
+          money(bal) + ' due.</p>' +
+        '<div class="approve-row">' +
+          '<button type="button" class="btn btn-primary" data-act="approve-site">Approve and go live</button>' +
+          '<a class="btn btn-ghost" href="#/request">Something needs changing</a>' +
+        '</div>' +
+      '</div>';
+    }
+    if (s.project.stage === 'live') {
+      return '<div class="approve mt-5" style="border-color:rgb(var(--c-line-firm));background:rgb(var(--c-surface))">' +
+        '<p class="approve-h">Your site is live.</p>' +
+        '<p class="approve-p">Tell us any time something needs changing. If you are happy with how this went, ' +
+          'a rating helps other businesses decide.</p>' +
+        '<div class="approve-row">' +
+          '<button type="button" class="btn btn-primary" data-rate-open>Rate us</button>' +
+          '<a class="btn btn-ghost" href="#/request">Request a change</a>' +
+        '</div>' +
+      '</div>';
+    }
+    return '';
+  }
+
+  function freeUpsell() {
+    return '<div class="upsell mt-6">' +
+      '<p class="upsell-h">Want your own name instead?</p>' +
+      '<p class="upsell-p">Your page is live on an address we gave you. For ' +
+        '<span class="cur" data-eur="10">€10</span> a month we register the domain you want, move the ' +
+        'page across, and the old address keeps working. Or step up to a full build and get all 34 ' +
+        'sections, your own domain for a year, and the setup work done.</p>' +
+      '<div class="approve-row">' +
+        '<a class="btn btn-primary" href="#/build">See the builds</a>' +
+        '<a class="btn btn-ghost" href="extras.html">Browse the extras</a>' +
+      '</div>' +
+    '</div>';
+  }
+
   routes['/overview'] = function () {
     var s = O.load(), o = s.order;
-    var dep = O.deposit(o.oneTimeCents), bal = O.balance(o.oneTimeCents);
+    var app = A();
+    var free = tier() === 'free';
+    var st = app ? app.ratingStats() : { avg: 0, total: 0 };
+    var dep = O.deposit(o.oneTimeCents);
     var paidDeposit = s.project.stage !== 'deposit';
-    var live = s.project.stage === 'live';
 
-    return head('Overview', 'Welcome back, ' + s.customer.firstName + '.',
-      s.customer.business + ' — ' + O.statusLabel() + '.') +
+    var hoursSet = ((s.freePage && s.freePage.hours) || s.customer.hours || []).length;
 
-      '<div class="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-3">' +
-        '<div class="card p-5"><p class="mono-label text-ink-soft">Website status</p>' +
-          '<p class="h-section mt-2 text-lg">' + esc(O.statusLabel()) + '</p>' +
-          '<p class="mt-1 text-[0.8125rem] text-ink-soft">Updated ' + esc(O.date(s.project.lastUpdate)) + '</p></div>' +
-        '<div class="card p-5"><p class="mono-label text-ink-soft">Paid so far</p>' +
-          '<p class="h-section mt-2 text-lg">' + money(paidDeposit ? dep : 0) + '</p>' +
-          '<p class="mt-1 text-[0.8125rem] text-ink-soft">of ' + money(o.oneTimeCents) + ' one-time</p></div>' +
-        '<div class="card p-5"><p class="mono-label text-ink-soft">Monthly services</p>' +
-          '<p class="h-section mt-2 text-lg">' + money(o.monthlyCents) + '</p>' +
-          '<p class="mt-1 text-[0.8125rem] text-ink-soft">' + (live ? 'Billing monthly' : 'Starts when you go live') + '</p></div>' +
+    return head('Overview', 'Welcome back, ' + esc(s.customer.firstName) + '.',
+      esc(s.customer.business) + ' — ' + esc(O.statusLabel()) + '.') +
+
+      '<div class="stats mt-7">' +
+        '<div class="stat"><p class="stat-l">Status</p><p class="stat-v">' + esc(O.statusLabel()) +
+          '</p><p class="stat-s">Updated ' + esc(O.date(s.project.lastUpdate)) + '</p></div>' +
+        '<div class="stat"><p class="stat-l">Paid so far</p><p class="stat-v">' +
+          money(paidDeposit ? dep : 0) + '</p><p class="stat-s">of ' + money(o.oneTimeCents) + ' one-time</p></div>' +
+        '<div class="stat"><p class="stat-l">Your pack</p><p class="stat-v">' +
+          esc(app ? app.tierName(tier()) : '—') + '</p><p class="stat-s">' +
+          (free ? 'Free, hosted by us' : 'Paid once') + '</p></div>' +
+        '<div class="stat"><p class="stat-l">Our rating</p><p class="stat-v">' +
+          (st.total ? st.avg.toFixed(1) : '—') + '</p><p class="stat-s">' +
+          (st.total ? 'from ' + st.total + ' businesses' : 'no ratings yet') + '</p></div>' +
       '</div>' +
 
-      '<div class="mt-8 grid grid-cols-1 gap-6 lg:grid-cols-5">' +
-        '<div class="card p-6 lg:col-span-3">' +
-          '<p class="mono-label text-ink-soft">Project progress</p>' +
-          '<div class="mt-4">' + tracker() + '</div>' +
-          '<a href="#/website" class="btn btn-primary mt-5">Open my website</a>' +
+      '<div class="mt-7">' + previewCard(s) + '</div>' +
+      approveCard(s) +
+      (free ? freeUpsell() : '') +
+
+      '<div class="mt-7 grid grid-cols-1 gap-5 xl:grid-cols-2">' +
+
+        '<div class="panel">' +
+          '<div class="panel-head"><h2>What happens next</h2></div>' +
+          '<div class="panel-body">' +
+            '<ul class="ord-steps">' +
+              (app ? app.STAGES.map(function (stg, i) {
+                var at = app.stageIndex(s.project.stage);
+                return '<li class="ord-step ' + (i < at ? 'is-done' : (i === at ? 'is-now' : '')) + '">' +
+                  esc(stg.label) + '</li>';
+              }).join('') : '') +
+            '</ul>' +
+          '</div>' +
         '</div>' +
-        '<div class="card p-6 lg:col-span-2">' +
-          '<p class="mono-label text-ink-soft">What happens next</p>' +
-          '<ul class="timeline mt-4 text-[0.8125rem] leading-relaxed text-ink-mid">' +
-            '<li><span class="font-semibold text-ink">Review your website.</span> Open it, look through every section and tell us anything that is wrong.</li>' +
-            '<li class="pending"><span class="font-semibold text-ink">Approve it.</span> Approval is what makes the remaining 75% due — ' + money(bal) + '.</li>' +
-            '<li class="pending"><span class="font-semibold text-ink">Go live.</span> Your site is published and your monthly services begin.</li>' +
-          '</ul>' +
+
+        '<div class="panel">' +
+          '<div class="panel-head"><h2>Your details</h2>' +
+            '<a href="#/business" class="text-[0.8125rem] font-semibold text-accent">Edit</a></div>' +
+          '<div class="panel-body">' +
+            '<div class="ord-line"><span>Business</span><b>' + esc(s.customer.business) + '</b></div>' +
+            '<div class="ord-line"><span>Phone</span><b>' + esc(s.customer.phone || '—') + '</b></div>' +
+            '<div class="ord-line"><span>Opening hours</span><b>' +
+              (hoursSet ? hoursSet + ' days set' : 'Not set') + '</b></div>' +
+            '<div class="ord-line"><span>Map link</span><b>' +
+              ((s.freePage && s.freePage.maps) ? 'Added' : 'Not added') + '</b></div>' +
+          '</div>' +
+        '</div>' +
+
+      '</div>';
+  };
+
+  /* ── Ratings ────────────────────────────────────────────────
+     Ours, from customers, collected here rather than pulled from
+     Google — so they exist on day one and we own them. */
+  routes['/reviews'] = function () {
+    var app = A();
+    var st = app ? app.ratingStats() : { list: [], total: 0, avg: 0, buckets: [0,0,0,0,0] };
+    var mine = st.list.filter(function (r) { return r.mine; })[0];
+
+    var bars = [5, 4, 3, 2, 1].map(function (n) {
+      var count = st.buckets[n - 1];
+      var pct = st.total ? Math.round(count / st.total * 100) : 0;
+      return '<div class="rate-bar"><span>' + n + '</span>' +
+        '<i><b style="width:' + pct + '%"></b></i><span>' + count + '</span></div>';
+    }).join('');
+
+    var items = st.list.length ? st.list.map(function (r) {
+      return '<div class="review-item">' +
+        '<div class="review-top">' +
+          (app ? app.starsHtml(r.stars, { small: true, readonly: true }) : '') +
+          '<span class="review-who">' + esc(r.business || r.who) + '</span>' +
+          '<span class="review-when">' + esc(O.date(r.at)) + (r.mine ? ' · yours' : '') + '</span>' +
+        '</div>' +
+        (r.body ? '<p class="review-body">' + esc(r.body) + '</p>' : '') +
+      '</div>';
+    }).join('') : '<p class="text-[0.875rem] text-ink-soft">No ratings yet.</p>';
+
+    return head('Ratings', 'What businesses say about us.',
+      'Collected here, from customers who actually paid. Not scraped from anywhere and not filtered.') +
+
+      '<div class="mt-7 grid grid-cols-1 gap-5 lg:grid-cols-3">' +
+        '<div class="panel lg:col-span-1">' +
+          '<div class="panel-body">' +
+            '<div class="rate-avg">' +
+              '<span class="rate-avg-n">' + (st.total ? st.avg.toFixed(1) : '—') + '</span>' +
+              '<div>' + (app ? app.starsHtml(Math.round(st.avg), { readonly: true }) : '') +
+                '<p class="mt-1 text-[0.75rem] text-ink-soft">' + st.total + ' rating' +
+                (st.total === 1 ? '' : 's') + '</p></div>' +
+            '</div>' +
+            '<div class="rate-bars">' + bars + '</div>' +
+            '<button type="button" class="btn btn-primary btn-block mt-5" data-rate-open>' +
+              (mine ? 'Edit my rating' : 'Rate us') + '</button>' +
+            (mine ? '' : '<p class="mt-2 text-center text-[0.75rem] text-ink-soft">Takes about ten seconds.</p>') +
+          '</div>' +
+        '</div>' +
+        '<div class="panel lg:col-span-2">' +
+          '<div class="panel-head"><h2>Everything people wrote</h2></div>' +
+          '<div class="panel-body">' + items + '</div>' +
         '</div>' +
       '</div>';
   };
@@ -857,6 +1004,21 @@
     'toggle-monthly': function (el) { toggleIn(draft().monthly, el.getAttribute('data-key')); O.save(); render(true); },
 
     'toggle-agree':   function () { var d = draft(); d.agreed = !d.agreed; O.save(); render(true); },
+    'approve-site': function () {
+      var s = O.load();
+      if (s.project.stage !== 'review') return;
+      s.project.stage = 'live';
+      s.project.lastUpdate = new Date().toISOString().slice(0, 10);
+      (s.payments || []).forEach(function (p) {
+        if (p.status === 'due-after-approval') { p.status = 'due'; p.date = s.project.lastUpdate; }
+      });
+      O.notify('You approved your website. The remaining balance is now due.');
+      O.save();
+      render(true);
+    },
+    'go-build':   function () { location.hash = '#/build'; },
+    'go-website': function () { location.hash = '#/website'; },
+
     'clear-draft':    function () { var s = O.load(); s.draft = O.emptyDraft(); O.save(); render(true); },
 
     'pay-deposit': function () {
@@ -1127,16 +1289,24 @@
   // needs their project, a free one needs the way up.
   var FREE_ONLY = ['/build', '/work'];
 
+  // Five is the ceiling for a bottom bar. Requests lives in the sidebar
+  // and in the overview, so it is the one that gives up its slot.
+  var TAB_NEVER = ['/request'];
+
   function gateNav() {
     var open = paid();
     [].forEach.call(document.querySelectorAll('.app-nav a, .m-tab'), function (a) {
       var route = (a.getAttribute('href') || '').replace('#', '');
+      var isTab = a.classList.contains('m-tab');
+
+      // The bottom bar is capped first: whatever else is true about a
+      // route, it cannot claim a sixth slot down there.
+      if (isTab && TAB_NEVER.indexOf(route) > -1) { a.hidden = true; return; }
+      if (isTab && FREE_ONLY.indexOf(route) > -1) { a.hidden = open; return; }
       if (PAID_ONLY.indexOf(route) > -1) { a.hidden = !open; return; }
-      // Build and Our work stay in the sidebar for everyone; only the
-      // bottom bar has to choose.
-      if (FREE_ONLY.indexOf(route) > -1 && a.classList.contains('m-tab')) a.hidden = open;
+      a.hidden = false;
     });
-    [].forEach.call(document.querySelectorAll('.app-nav .group-label'), function (p) {
+    [].forEach.call(document.querySelectorAll('.nav-group'), function (p) {
       // Hide a group heading whose whole group just disappeared.
       var any = false, n = p.nextElementSibling;
       while (n && n.tagName === 'A') { if (!n.hidden) any = true; n = n.nextElementSibling; }
@@ -1168,6 +1338,8 @@
     paintStickyBar(route);
     if (window.OnsiteMobile) { window.OnsiteMobile.labelTables(view); }
     gateNav();
+    if (window.OnsiteApp) { window.OnsiteApp.paintRail(); window.OnsiteApp.bindPreviews(); }
+    if (window.OnsiteSheet) window.OnsiteSheet.close();
     if (window.OnsiteI18n) { window.OnsiteI18n.mount(); }
 
     window.scrollTo(0, y);
@@ -1209,5 +1381,8 @@
   // Every figure on this screen is formatted at render time by O.euro(),
   // so a currency change means re-rendering — in place, without moving you.
   document.addEventListener('onsite:i18n', function () { render(true); });
+
+  // app.js posts ratings and needs the view redrawn afterwards.
+  window.OnsiteDash = { render: render };
   render();
 })();

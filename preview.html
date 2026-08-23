@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Preview — OnSite</title>
+<meta name="robots" content="noindex">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@200..800&display=swap" rel="stylesheet">
+<style>
+/* ───────────────────────────────────────────────────────────────
+   The customer's own landing page, rendered from their own answers.
+
+   This is what the dashboard shows in its preview frame. It is not a
+   screenshot and not a mock-up: it reads the same store the rest of
+   the app writes to, so the moment they change their hours the
+   preview changes too. Standalone styles on purpose — it must look
+   like their site, not like ours.
+   ─────────────────────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; }
+body {
+  margin: 0; background: #fff; color: #14161a;
+  font-family: 'Inter', system-ui, sans-serif; -webkit-font-smoothing: antialiased;
+}
+img { max-width: 100%; display: block; }
+.wrap { max-width: 64rem; margin: 0 auto; padding: 0 1.5rem; }
+
+.p-hero { position: relative; padding: 5rem 0 3.5rem; background: #0d0f12; color: #fff; overflow: hidden; }
+.p-hero::after {
+  content: ''; position: absolute; inset: 0;
+  background: radial-gradient(120% 80% at 20% 0%, rgb(255 255 255 / 0.1), transparent 60%);
+}
+.p-hero .wrap { position: relative; z-index: 1; }
+.p-kicker { font-size: 0.75rem; letter-spacing: 0.22em; text-transform: uppercase; color: rgb(255 255 255 / 0.55); }
+.p-name {
+  margin: 0.9rem 0 0; font-family: 'Outfit', sans-serif; font-weight: 300;
+  font-size: clamp(2.4rem, 7vw, 4.5rem); letter-spacing: -0.045em; line-height: 1.02;
+}
+.p-tag { margin-top: 1rem; font-size: 1.0625rem; line-height: 1.6; color: rgb(255 255 255 / 0.72); max-width: 34rem; }
+
+.p-cta { display: flex; flex-wrap: wrap; gap: 0.7rem; margin-top: 2rem; }
+.p-btn {
+  display: inline-flex; align-items: center; gap: 0.55rem;
+  min-height: 52px; padding: 0 1.4rem; border-radius: 999px;
+  font-size: 1rem; font-weight: 600; text-decoration: none;
+  transition: transform 180ms ease;
+}
+.p-btn:hover { transform: translateY(-2px); }
+.p-btn svg { width: 18px; height: 18px; }
+.p-btn--call { background: #fff; color: #14161a; }
+.p-btn--wa { background: #25d366; color: #08331a; }
+.p-btn--map { background: rgb(255 255 255 / 0.1); color: #fff; border: 1px solid rgb(255 255 255 / 0.3); }
+
+.p-sec { padding: 3.5rem 0; border-bottom: 1px solid #eceae6; }
+.p-h { font-family: 'Outfit', sans-serif; font-weight: 400; font-size: 1.75rem; letter-spacing: -0.03em; margin: 0; }
+
+.p-hours { list-style: none; margin: 1.5rem 0 0; padding: 0; max-width: 26rem; }
+.p-hours li {
+  display: flex; justify-content: space-between; gap: 1.5rem;
+  padding: 0.65rem 0; border-bottom: 1px solid #f0eeea; font-size: 0.9375rem;
+}
+.p-hours li:last-child { border-bottom: 0; }
+.p-hours .d { color: #5b6169; }
+.p-hours .t { font-weight: 600; }
+.p-hours li.shut .t { color: #9aa0a8; font-weight: 500; }
+.p-hours li.today { background: #fdf3f3; margin: 0 -0.7rem; padding-left: 0.7rem; padding-right: 0.7rem; border-radius: 0.4rem; }
+.p-hours li.today .d::after { content: ' · today'; color: #c92027; font-weight: 600; }
+
+.p-gal { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.7rem; margin-top: 1.5rem; }
+.p-gal div {
+  aspect-ratio: 4 / 5; border-radius: 0.5rem; background: #f2f0ec;
+  display: grid; place-items: center; color: #b6b2ab; font-size: 0.75rem;
+  border: 1px dashed #ddd9d2;
+}
+@media (max-width: 520px) { .p-gal { grid-template-columns: repeat(2, 1fr); } }
+
+.p-find { display: grid; gap: 1.5rem; margin-top: 1.5rem; }
+@media (min-width: 700px) { .p-find { grid-template-columns: 1fr 1fr; } }
+.p-map {
+  display: grid; place-items: center; min-height: 12rem; border-radius: 0.6rem;
+  background: #eef1f4; border: 1px solid #e2e6ea; color: #5b6169;
+  text-decoration: none; font-size: 0.875rem; font-weight: 600; gap: 0.5rem; text-align: center; padding: 1.5rem;
+}
+.p-map:hover { background: #e6eaee; }
+.p-map svg { width: 26px; height: 26px; }
+
+.p-contact { list-style: none; margin: 0; padding: 0; }
+.p-contact li { padding: 0.6rem 0; border-bottom: 1px solid #f0eeea; font-size: 0.9375rem; }
+.p-contact a { color: #14161a; font-weight: 600; text-decoration: none; }
+.p-contact a:hover { text-decoration: underline; }
+.p-contact span { display: block; font-size: 0.75rem; color: #8a9099; margin-bottom: 0.15rem; }
+
+.p-foot { padding: 2.5rem 0 3.5rem; font-size: 0.8125rem; color: #8a9099; }
+.p-foot b { color: #5b6169; font-weight: 600; }
+
+.p-empty { padding: 5rem 1.5rem; text-align: center; color: #8a9099; font-size: 0.9375rem; }
+</style>
+</head>
+<body>
+<div id="page"></div>
+
+<script src="assets/demo.js"></script>
+<script>
+(function () {
+  'use strict';
+  var esc = function (t) {
+    return String(t == null ? '' : t)
+      .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+  };
+
+  var s = window.Onsite ? window.Onsite.load() : null;
+  var c = s && s.customer;
+  var host = document.getElementById('page');
+
+  if (!c || !c.business) {
+    host.innerHTML = '<p class="p-empty">Nothing to preview yet.</p>';
+    return;
+  }
+
+  var free = s.freePage || {};
+  var hours = (free.hours && free.hours.length) ? free.hours : (c.hours || []);
+  var todayName = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'][new Date().getDay()];
+
+  var tel = (c.phone || '').replace(/[^\d+]/g, '');
+  var wa = (c.whatsapp || c.phone || '').replace(/[^\d]/g, '');
+  var maps = free.maps || '';
+  var social = free.social || (c.socials && c.socials.instagram) || '';
+  var socialHref = social && !/^https?:/i.test(social) ? 'https://' + social : social;
+
+  var ICON = {
+    phone: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M6.5 3h3l1.5 4-2 1.4a12 12 0 0 0 5.6 5.6l1.4-2 4 1.5v3a2 2 0 0 1-2.2 2A17 17 0 0 1 4.5 5.2 2 2 0 0 1 6.5 3z"/></svg>',
+    wa: '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15L2 22l5.2-1.4A10 10 0 1 0 12 2zm5.3 14.1c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .1-1.7-.1a12 12 0 0 1-5.9-5.1c-.5-.8-.8-1.7-.8-2.5 0-.9.5-1.4.7-1.6.2-.2.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 1.9c.1.2 0 .4-.1.6l-.4.5c-.1.2-.3.3-.1.6.4.7 1 1.3 1.6 1.8.6.4 1.1.6 1.3.7.2.1.4.1.5-.1l.7-.8c.2-.2.3-.2.6-.1l1.8.9c.3.1.4.2.5.3 0 .1 0 .6-.2 1.1z"/></svg>',
+    map: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s7-5.6 7-11a7 7 0 1 0-14 0c0 5.4 7 11 7 11z"/><circle cx="12" cy="10" r="2.6"/></svg>'
+  };
+
+  var photos = Math.max(0, Math.min(3, free.images || 0));
+  var gallery = '';
+  for (var i = 0; i < 3; i++) {
+    gallery += '<div>' + (i < photos ? 'Photo ' + (i + 1) : 'Photo') + '</div>';
+  }
+
+  host.innerHTML =
+    '<header class="p-hero"><div class="wrap">' +
+      '<p class="p-kicker">' + esc(c.address ? c.address.split(',').pop().trim() : 'Local business') + '</p>' +
+      '<h1 class="p-name">' + esc(c.business) + '</h1>' +
+      '<p class="p-tag">Open the map for directions, or call us straight from this page. ' +
+        'Everything you need to reach us is here.</p>' +
+      '<div class="p-cta">' +
+        (tel ? '<a class="p-btn p-btn--call" href="tel:' + esc(tel) + '">' + ICON.phone + 'Call us</a>' : '') +
+        (wa ? '<a class="p-btn p-btn--wa" href="https://wa.me/' + esc(wa) + '">' + ICON.wa + 'WhatsApp</a>' : '') +
+        (maps ? '<a class="p-btn p-btn--map" href="' + esc(maps) + '">' + ICON.map + 'Directions</a>' : '') +
+      '</div>' +
+    '</div></header>' +
+
+    (hours.length ?
+    '<section class="p-sec"><div class="wrap">' +
+      '<h2 class="p-h">Opening hours</h2>' +
+      '<ul class="p-hours">' + hours.map(function (h) {
+        var shut = /closed/i.test(h.open);
+        return '<li class="' + (shut ? 'shut ' : '') + (h.day === todayName ? 'today' : '') + '">' +
+          '<span class="d">' + esc(h.day) + '</span><span class="t">' + esc(h.open) + '</span></li>';
+      }).join('') + '</ul>' +
+    '</div></section>' : '') +
+
+    '<section class="p-sec"><div class="wrap">' +
+      '<h2 class="p-h">Have a look</h2>' +
+      '<div class="p-gal">' + gallery + '</div>' +
+    '</div></section>' +
+
+    '<section class="p-sec"><div class="wrap">' +
+      '<h2 class="p-h">Find us</h2>' +
+      '<div class="p-find">' +
+        (maps ? '<a class="p-map" href="' + esc(maps) + '">' + ICON.map + 'Open in Google Maps</a>'
+              : '<div class="p-map">Map link not added yet</div>') +
+        '<ul class="p-contact">' +
+          (c.phone ? '<li><span>Phone</span><a href="tel:' + esc(tel) + '">' + esc(c.phone) + '</a></li>' : '') +
+          (c.email ? '<li><span>Email</span><a href="mailto:' + esc(c.email) + '">' + esc(c.email) + '</a></li>' : '') +
+          (socialHref ? '<li><span>Social</span><a href="' + esc(socialHref) + '">' + esc(social) + '</a></li>' : '') +
+        '</ul>' +
+      '</div>' +
+    '</div></section>' +
+
+    '<footer class="p-foot"><div class="wrap">' +
+      '<b>' + esc(c.business) + '</b> — built and hosted by OnSite.' +
+    '</div></footer>';
+})();
+</script>
+</body>
+</html>

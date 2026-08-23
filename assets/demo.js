@@ -114,6 +114,17 @@
 
       maintenance: { included: 15, used: 3 },
 
+      // Ratings customers leave on their own dashboard. Seeded with a
+      // few so the averages and the bars have something to draw; the
+      // `mine` flag marks the one this account left, so the Rate us
+      // button knows whether to say rate or edit.
+      ratings: [
+        { id: "R-7", stars: 5, body: "Sent them the photos on Tuesday and the site was up on Thursday. Two customers found me through it in the first week.", who: "Tomas B.", business: "Berisha Plumbing", at: "2026-08-14", mine: false },
+        { id: "R-6", stars: 5, body: "I did not have to understand anything about hosting, which is exactly why I had put this off for two years.", who: "Marco F.", business: "Trattoria Ferretti", at: "2026-08-09", mine: false },
+        { id: "R-5", stars: 4, body: "Quick and clear. I would have liked one more round of changes on the photos but the result is good.", who: "Aoife D.", business: "Doyle Dental Care", at: "2026-08-02", mine: false },
+        { id: "R-4", stars: 5, body: "The price was the price. Nothing appeared at the end that was not agreed at the start.", who: "Ellie G.", business: "Grant Mobile Valeting", at: "2026-07-28", mine: false }
+      ],
+
       changeRequests: [
         { id: 'CR-118', type: 'Opening hours', description: 'Late opening on Thursdays until 20:00.',
           created: '2026-08-15', deadline: '', status: 'completed', notes: '' },

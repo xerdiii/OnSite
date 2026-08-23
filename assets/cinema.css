@@ -139,3 +139,36 @@ a:focus-visible > .swap > span:last-child { transform: translate3d(0, 0, 0); }
   .swap > span:last-child { display: none; }
   .rise, .rise.is-in { opacity: 1; transform: none; transition: none; }
 }
+
+
+/* ── Ratings on the public page ────────────────────────────────
+   The section hides itself until the script has something real to put
+   in it, so an empty grid never ships to someone with JS off. */
+.pub-rates { display: grid; gap: 1rem; grid-template-columns: 1fr; }
+@media (min-width: 700px)  { .pub-rates { grid-template-columns: 1fr 1fr; } }
+@media (min-width: 1100px) { .pub-rates { grid-template-columns: repeat(3, 1fr); } }
+
+.pub-rate {
+  border: 1px solid rgb(var(--c-line)); border-radius: 0.7rem;
+  background: rgb(var(--c-paper)); padding: 1.25rem;
+  display: flex; flex-direction: column; gap: 0.8rem;
+}
+.pub-rate-stars { display: inline-flex; gap: 0.1rem; color: #f5a524; }
+.pub-rate-stars svg { width: 15px; height: 15px; }
+.pub-rate-stars .off { color: rgb(var(--c-line-firm)); }
+.pub-rate-body {
+  font-size: 0.9375rem; line-height: 1.65; color: rgb(var(--c-ink));
+  /* Long ones would make the row ragged; three lines then an ellipsis. */
+  display: -webkit-box; -webkit-line-clamp: 5; -webkit-box-orient: vertical; overflow: hidden;
+}
+.pub-rate-who {
+  margin-top: auto; padding-top: 0.5rem; border-top: 1px solid rgb(var(--c-line));
+  font-size: 0.8125rem; color: rgb(var(--c-ink-soft));
+}
+.pub-rate-who b { display: block; color: rgb(var(--c-ink)); font-weight: 600; font-size: 0.875rem; }
+
+.rate-head-n {
+  font-family: 'Outfit', sans-serif; font-weight: 400; font-size: 1.5rem;
+  letter-spacing: -0.03em; color: rgb(var(--c-ink));
+}
+.rate-head-s { font-size: 0.8125rem; color: rgb(var(--c-ink-soft)); }

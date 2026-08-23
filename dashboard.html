@@ -12,6 +12,7 @@
 <link rel="stylesheet" href="assets/onsite.css">
 <link rel="stylesheet" href="assets/mobile.css">
 <link rel="stylesheet" href="assets/tailwind.css">
+<link rel="stylesheet" href="assets/app.css">
 <link rel="stylesheet" href="assets/theme.css">
 <link rel="stylesheet" href="assets/dock.css">
 <!-- Link preview. One title for every page: a link shared in a bio or a
@@ -70,36 +71,91 @@
   </div>
 </header>
 
-<div class="mx-auto flex max-w-shell gap-8 px-6 py-8 md:px-10 md:py-10">
+<div class="app">
 
-  <!-- SIDEBAR -->
-  <aside id="sidebar" class="hidden w-56 flex-none lg:block">
-    <nav class="app-nav sticky top-24">
-      <p class="group-label mono-label text-ink-soft">Order</p>
-      <a href="#/build">Build your package</a>
-      <p class="group-label mono-label text-ink-soft">Your project</p>
-      <a href="#/overview">Overview</a>
-      <a href="#/website">My Website</a>
-      <a href="#/payments">Payments</a>
-      <p class="group-label mono-label text-ink-soft">Your content</p>
-      <a href="#/business">Business Information</a>
-      <a href="#/request">Request a Change</a>
-      <a href="#/maintenance">Website Maintenance</a>
-      <p class="group-label mono-label text-ink-soft">OnSite</p>
-      <a href="#/work">Our work</a>
-      <p class="group-label mono-label text-ink-soft">Account</p>
-      <a href="#/services">My Services</a>
-      <a href="#/subscriptions">Subscriptions</a>
-      <a href="#/account">Account Settings</a>
-      <a href="#/support">Support</a>
-      <div class="mt-6 border-t border-line pt-4">
-        <button id="logout" type="button" class="btn btn-ghost btn-block text-[0.8125rem]">Log out</button>
-      </div>
-    </nav>
+  <!-- LEFT — navigation -->
+  <aside class="app-side" id="sidebar">
+    <div class="app-side-in">
+      <nav class="app-nav" aria-label="Dashboard">
+        <p class="nav-group" data-group>Your website</p>
+        <a class="nav-a" href="#/overview" data-nav="/overview"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 10.5 12 4l9 6.5V20a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/></svg><span>Overview</span></a>
+        <a class="nav-a" href="#/website" data-nav="/website"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18"/></svg><span>My website</span></a>
+        <a class="nav-a" href="#/reviews" data-nav="/reviews"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m12 3.6 2.6 5.3 5.9.9-4.3 4.1 1 5.8-5.2-2.7-5.2 2.7 1-5.8L3.5 9.8l5.9-.9z"/></svg><span>Ratings</span></a>
+        <p class="nav-group" data-group>Money</p>
+        <a class="nav-a" href="#/payments" data-nav="/payments"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="5.5" width="19" height="13" rx="2"/><path d="M2.5 10h19"/></svg><span>Payments</span></a>
+        <a class="nav-a" href="#/subscriptions" data-nav="/subscriptions"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12a8 8 0 0 1 13.7-5.7L20 8M20 12a8 8 0 0 1-13.7 5.7L4 16"/><path d="M20 4v4h-4M4 20v-4h4"/></svg><span>Subscriptions</span></a>
+        <a class="nav-a" href="#/build" data-nav="/build"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg><span>Build a package</span></a>
+        <p class="nav-group" data-group>Your content</p>
+        <a class="nav-a" href="#/business" data-nav="/business"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8h.01"/></svg><span>Business info</span></a>
+        <a class="nav-a" href="#/request" data-nav="/request"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5h16M4 12h10M4 19h7"/></svg><span>Request a change</span></a>
+        <a class="nav-a" href="#/maintenance" data-nav="/maintenance"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.5 6a4 4 0 0 0 5 5l-8 8a2.8 2.8 0 0 1-4-4z"/></svg><span>Maintenance</span></a>
+        <p class="nav-group" data-group>OnSite</p>
+        <a class="nav-a" href="#/work" data-nav="/work"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="4.5" width="19" height="15" rx="2"/><path d="M2.5 9h19"/></svg><span>Our work</span></a>
+        <a class="nav-a" href="#/services" data-nav="/services"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg><span>My services</span></a>
+        <a class="nav-a" href="#/account" data-nav="/account"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="3.5"/><path d="M4.5 20c1.6-3.6 4.3-5.4 7.5-5.4S18 16.4 19.5 20"/></svg><span>Account</span></a>
+        <a class="nav-a" href="#/support" data-nav="/support"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M9.6 9.5a2.4 2.4 0 1 1 3.2 2.3c-.6.3-.8.7-.8 1.4M12 16.5h.01"/></svg><span>Support</span></a>
+        <div class="mt-6 border-t border-line pt-4">
+          <button id="logout" type="button" class="btn btn-ghost btn-block text-[0.8125rem]">Log out</button>
+        </div>
+      </nav>
+    </div>
   </aside>
 
-  <!-- VIEW -->
-  <main id="view" class="min-w-0 flex-1"></main>
+  <!-- MIDDLE — the view -->
+  <main id="view" class="app-view"></main>
+
+  <!-- RIGHT — the order rail. Never scrolls away, because it is the
+       thing people open the dashboard to check. -->
+  <aside class="rail-order" aria-label="Your order">
+    <div class="rail-order-in" data-order-rail></div>
+  </aside>
+
+</div>
+
+<!-- The rail again, as a pull-up sheet, for anything under 1440px -->
+<div class="sheet-bar" data-sheet-bar hidden>
+  <div class="sheet-bar-fig">
+    <p data-sheet-l>Your order</p>
+    <p data-sheet-v>&mdash;</p>
+  </div>
+  <button type="button" class="sheet-open" data-sheet-open>View order</button>
+</div>
+
+<div class="sheet" id="orderSheet" hidden>
+  <button type="button" class="sheet-scrim" data-sheet-close aria-label="Close"></button>
+  <div class="sheet-panel" role="dialog" aria-modal="true" aria-label="Your order">
+    <div class="sheet-grab" aria-hidden="true"></div>
+    <div data-order-sheet></div>
+  </div>
+</div>
+
+<!-- Rate us -->
+<div class="mdl" id="rateModal" hidden>
+  <button type="button" class="mdl-scrim" data-rate-close aria-label="Close"></button>
+  <div class="mdl-box" role="dialog" aria-modal="true" aria-labelledby="rateH">
+    <button type="button" class="mdl-x" data-rate-close aria-label="Close">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg>
+    </button>
+    <h2 class="mdl-h" id="rateH">How did we do?</h2>
+    <p class="mdl-p">Your rating shows on our site next to your business name. Nothing else from your account is shared.</p>
+
+    <div class="mdl-field">
+      <label id="rateStarsL">Your rating</label>
+      <div class="stars" role="radiogroup" aria-labelledby="rateStarsL" data-rate-stars></div>
+    </div>
+
+    <div class="mdl-field">
+      <label for="rateBody">What happened?</label>
+      <textarea id="rateBody" placeholder="What was good, what was not. A sentence is plenty."></textarea>
+    </div>
+
+    <p class="ff-form-err" data-rate-err hidden></p>
+
+    <div class="mdl-row">
+      <button type="button" class="btn btn-primary" data-rate-save>Post my rating</button>
+      <button type="button" class="btn btn-ghost" data-rate-close>Cancel</button>
+    </div>
+  </div>
 </div>
 
 <!-- Sticky package total (mobile, builder only) -->
@@ -120,6 +176,7 @@
   <a class="m-tab" href="#/payments" data-tab="/payments"><svg viewBox="0 0 24 24" fill="none" stroke="rgb(var(--c-ink-soft))" stroke-width="1.8" stroke-linecap="round"><rect x="2.5" y="5.5" width="19" height="13" rx="2"/><path d="M2.5 10h19"/></svg>Payments</a>
   <a class="m-tab" href="#/request" data-tab="/request"><svg viewBox="0 0 24 24" fill="none" stroke="rgb(var(--c-ink-soft))" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h16M4 12h10M4 19h7"/></svg>Requests</a>
   <a class="m-tab" href="#/build" data-tab="/build"><svg viewBox="0 0 24 24" fill="none" stroke="rgb(var(--c-ink-soft))" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg>Build</a>
+  <a class="m-tab" href="#/reviews" data-tab="/reviews"><svg viewBox="0 0 24 24" fill="none" stroke="rgb(var(--c-ink-soft))" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3.6 2.6 5.3 5.9.9-4.3 4.1 1 5.8-5.2-2.7-5.2 2.7 1-5.8L3.5 9.8l5.9-.9z"/></svg>Ratings</a>
   <a class="m-tab" href="#/work" data-tab="/work"><svg viewBox="0 0 24 24" fill="none" stroke="rgb(var(--c-ink-soft))" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="4.5" width="19" height="15" rx="2"/><path d="M2.5 9h19"/></svg>Our work</a>
   <a class="m-tab" href="#/account" data-tab="/account"><svg viewBox="0 0 24 24" fill="none" stroke="rgb(var(--c-ink-soft))" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="8" r="3.5"/><path d="M4.5 20c1.6-3.6 4.3-5.4 7.5-5.4S18 16.4 19.5 20"/></svg>Account</a>
 </nav>
@@ -139,6 +196,7 @@
 
 <script src="assets/demo.js"></script>
 <script src="assets/mobile.js"></script>
+<script src="assets/app.js"></script>
 <script src="assets/dashboard.js"></script>
 <script src="assets/cookies.js"></script>
 <script src="assets/theme.js"></script>
