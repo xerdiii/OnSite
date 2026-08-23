@@ -135,6 +135,49 @@
   listFiles('ff-images', MAX_IMAGES, MAX_IMAGE_MB, 'Photos');
   listFiles('ff-video', 1, MAX_VIDEO_MB, 'Videos');
 
+  /* ── Opening hours ──────────────────────────────────────── */
+  function hoursRows() { return [].slice.call(doc.querySelectorAll('[data-hrow]')); }
+
+  hoursRows().forEach(function (row) {
+    var input = row.querySelector('[data-hours]');
+    var shut = row.querySelector('[data-shut]');
+    shut.addEventListener('click', function () {
+      var closed = row.classList.toggle('is-shut');
+      shut.setAttribute('aria-pressed', closed ? 'true' : 'false');
+      // Remember what they had typed, so un-closing a day gives it back
+      // instead of making them type the times again.
+      if (closed) { input.dataset.was = input.value; input.value = 'Closed'; input.readOnly = true; }
+      else { input.value = input.dataset.was || '09:00 – 17:00'; input.readOnly = false; }
+    });
+  });
+
+  var applyAll = doc.querySelector('[data-hours-all]');
+  if (applyAll) {
+    applyAll.addEventListener('click', function () {
+      var rows = hoursRows();
+      var first = rows[0];
+      var value = first.querySelector('[data-hours]').value;
+      var closed = first.classList.contains('is-shut');
+      rows.slice(1).forEach(function (row) {
+        var input = row.querySelector('[data-hours]');
+        var shut = row.querySelector('[data-shut]');
+        input.value = value;
+        input.readOnly = closed;
+        row.classList.toggle('is-shut', closed);
+        shut.setAttribute('aria-pressed', closed ? 'true' : 'false');
+      });
+      applyAll.textContent = 'Copied to every day';
+      global.setTimeout(function () { applyAll.textContent = 'Use Monday for every day'; }, 1800);
+    });
+  }
+
+  function readHours() {
+    return hoursRows().map(function (row) {
+      return { day: row.querySelector('.hours-day').textContent,
+               open: row.querySelector('[data-hours]').value.trim() || 'Closed' };
+    });
+  }
+
   /* ── Submit ─────────────────────────────────────────────── */
   var formErr = doc.getElementById('ffErr');
 
@@ -171,7 +214,9 @@
         s.customer.business = name;
         s.customer.email = email;
         s.customer.phone = doc.getElementById('ff-phone').value.trim();
+        s.customer.hours = readHours();
         s.freePage = {
+          hours: readHours(),
           maps: doc.getElementById('ff-maps').value.trim(),
           social: doc.getElementById('ff-social').value.trim(),
           images: (doc.getElementById('ff-images').files || []).length,
@@ -185,6 +230,27 @@
         global.Onsite.signIn(email, 'customer');
       }
     } catch (ignored) { /* demo store only; the receipt still shows */ }
+
+    // Tell the inbox, if the endpoint is wired up. The receipt does not
+    // wait on it and does not depend on it: a mail server having a bad
+    // day is not a reason to lose the customer's two minutes of typing.
+    try {
+      global.fetch && global.fetch('/api/signup', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: name,
+          maps: doc.getElementById('ff-maps').value.trim(),
+          phone: doc.getElementById('ff-phone').value.trim(),
+          social: doc.getElementById('ff-social').value.trim(),
+          email: email,
+          hours: readHours(),
+          images: (doc.getElementById('ff-images').files || []).length,
+          video: (doc.getElementById('ff-video').files || []).length,
+          company: ''                       // honeypot, left empty by humans
+        })
+      }).catch(function () { /* not configured yet, or offline */ });
+    } catch (ignored) { /* older browser without fetch */ }
 
     done(name);
   });

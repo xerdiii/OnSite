@@ -89,11 +89,12 @@
       <div class="free-note mt-10">
         <p class="free-note-h">About the address</p>
         <p class="free-note-p">
-          Your free page lives on a web address we provide, on our hosting. You do not have to buy a
-          domain, understand DNS, or set anything up — that is the part that stops most people, so we
-          took it off you. When you want your own name instead
+          Your free page goes live on an address we give you — something like
+          <strong>your-business.onsite.app</strong> — on our hosting, with the padlock already on it.
+          You do not buy a domain, touch DNS, or set anything up. That is the part that stops most
+          people, so we took it off you entirely. When you want your own name instead
           — <strong>yourbusiness.com</strong> — we register it and move the page across for
-          <span class="cur" data-eur="10">€10</span> a month.
+          <span class="cur" data-eur="10">€10</span> a month, and the old address keeps working.
         </p>
       </div>
     </div>
@@ -143,6 +144,52 @@
                        placeholder="instagram.com/yourbusiness">
                 <p class="ff-err" data-err-for="ff-social" hidden></p>
               </div>
+            </div>
+
+            <div class="ff">
+              <label id="hours-label">Opening hours</label>
+              <p class="ff-help">
+                Write them how you would say them. Set Monday, then
+                <strong>use it for every day</strong> and fix the odd ones.
+              </p>
+              <div class="hours" role="group" aria-labelledby="hours-label">
+                <div class="hours-row" data-hrow>
+                  <span class="hours-day">Monday</span>
+                  <input type="text" data-hours="Monday" value="09:00 – 17:00" aria-label="Monday opening hours">
+                  <button type="button" class="hours-shut" data-shut aria-pressed="false">Closed</button>
+                </div>
+                <div class="hours-row" data-hrow>
+                  <span class="hours-day">Tuesday</span>
+                  <input type="text" data-hours="Tuesday" value="09:00 – 17:00" aria-label="Tuesday opening hours">
+                  <button type="button" class="hours-shut" data-shut aria-pressed="false">Closed</button>
+                </div>
+                <div class="hours-row" data-hrow>
+                  <span class="hours-day">Wednesday</span>
+                  <input type="text" data-hours="Wednesday" value="09:00 – 17:00" aria-label="Wednesday opening hours">
+                  <button type="button" class="hours-shut" data-shut aria-pressed="false">Closed</button>
+                </div>
+                <div class="hours-row" data-hrow>
+                  <span class="hours-day">Thursday</span>
+                  <input type="text" data-hours="Thursday" value="09:00 – 17:00" aria-label="Thursday opening hours">
+                  <button type="button" class="hours-shut" data-shut aria-pressed="false">Closed</button>
+                </div>
+                <div class="hours-row" data-hrow>
+                  <span class="hours-day">Friday</span>
+                  <input type="text" data-hours="Friday" value="09:00 – 17:00" aria-label="Friday opening hours">
+                  <button type="button" class="hours-shut" data-shut aria-pressed="false">Closed</button>
+                </div>
+                <div class="hours-row" data-hrow>
+                  <span class="hours-day">Saturday</span>
+                  <input type="text" data-hours="Saturday" value="09:00 – 17:00" aria-label="Saturday opening hours">
+                  <button type="button" class="hours-shut" data-shut aria-pressed="false">Closed</button>
+                </div>
+                <div class="hours-row" data-hrow>
+                  <span class="hours-day">Sunday</span>
+                  <input type="text" data-hours="Sunday" value="09:00 – 17:00" aria-label="Sunday opening hours">
+                  <button type="button" class="hours-shut" data-shut aria-pressed="false">Closed</button>
+                </div>
+              </div>
+              <button type="button" class="hours-apply" data-hours-all>Use Monday for every day</button>
             </div>
 
             <div class="ff-split">
@@ -219,7 +266,7 @@
               <li>Your name, what you do, and where</li>
               <li>A map that opens directions</li>
               <li>A call button and a WhatsApp button</li>
-              <li>Your opening hours</li>
+              <li>Your opening hours, day by day</li>
               <li>Up to three photos and one video</li>
               <li>One link to your social page</li>
               <li>Works properly on a phone</li>
