@@ -745,6 +745,11 @@
         '</div>' +
       '</div>' +
 
+      '<div class="card mt-6 p-6"><p class="mono-label text-ink-soft">Language and currency</p>' +
+        '<p class="mt-3 text-[0.8125rem] text-ink-mid">How the dashboard reads, and the currency your totals are shown in.</p>' +
+        '<div class="mt-5" data-i18n-slot></div>' +
+      '</div>' +
+
       '<div class="card mt-6 p-6"><p class="mono-label text-ink-soft">Session</p>' +
         '<p class="mt-3 text-[0.8125rem] text-ink-mid">Signed in as ' + esc(s.session ? s.session.email : c.email) + '.</p>' +
         '<button class="btn btn-ghost mt-4" data-act="logout">Log out</button>' +
@@ -1099,6 +1104,7 @@
     paintWho();
     paintStickyBar(route);
     if (window.OnsiteMobile) { window.OnsiteMobile.labelTables(view); }
+    if (window.OnsiteI18n) { window.OnsiteI18n.mount(); }
 
     window.scrollTo(0, y);
     if (refocus) {
@@ -1135,5 +1141,9 @@
   });
 
   window.addEventListener('hashchange', function () { render(false); });
+
+  // Every figure on this screen is formatted at render time by O.euro(),
+  // so a currency change means re-rendering — in place, without moving you.
+  document.addEventListener('onsite:i18n', function () { render(true); });
   render();
 })();

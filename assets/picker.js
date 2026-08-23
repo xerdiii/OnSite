@@ -43,6 +43,8 @@
       // Round to cents first, then decide. A deposit of 39.9975 is €40, not
       // €39.99 — but the design extras carry a real .99 and must keep it.
       var c = Math.round(n * 100) / 100;
+      // Totals follow the chosen currency like every other price does.
+      if (global.OnsiteI18n) return global.OnsiteI18n.format(c);
       return '€' + (c % 1 === 0 ? c : c.toFixed(2));
     }
 
@@ -116,6 +118,10 @@
     });
 
     total();
+
+    // Switching currency has to move these numbers too — they are computed,
+    // so no data-eur span exists for the currency pass to find.
+    if (global.OnsiteI18n) global.OnsiteI18n.onChange(total);
   }
 
   if (doc.readyState === 'loading') doc.addEventListener('DOMContentLoaded', init);

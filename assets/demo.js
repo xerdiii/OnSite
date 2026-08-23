@@ -11,8 +11,13 @@
   var KEY = 'onsite.demo.v1';
 
   // ── Money ────────────────────────────────────────────────────
-  // Held in whole cents everywhere, formatted only at the edge.
-  function euro(cents) { return '€' + (cents / 100).toFixed(2); }
+  // Held in whole euro cents everywhere, formatted only at the edge.
+  // Euro is the billing currency and the only one stored; display
+  // follows whatever the visitor picked, when the switcher is loaded.
+  function euro(cents) {
+    if (global.OnsiteI18n) return global.OnsiteI18n.format(cents / 100);
+    return '€' + (cents / 100).toFixed(2);
+  }
   function euroMonth(cents) { return euro(cents) + ' / month'; }
 
   // Deposit is 25%, rounded down; the balance takes the remainder so
