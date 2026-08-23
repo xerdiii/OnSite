@@ -15,10 +15,10 @@
     { label: 'Home',            href: './' },
     { label: 'Services',        href: './#services' },
     { label: 'Pricing',         href: './#pricing' },
-    { label: 'Business Extras', href: './#extras' },
-    { label: 'FAQ',             href: 'faq' },
-    { label: 'Contact',         href: 'contact' },
-    { label: 'Log in',          href: 'login' }
+    { label: 'Extras',          href: 'extras.html' },
+    { label: 'FAQ',             href: 'faq.html' },
+    { label: 'Contact',         href: 'contact.html' },
+    { label: 'Log in',          href: 'login.html' }
   ];
 
   var ICON_MENU = '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><path d="M4.5 9.5h15M4.5 15h9"/></svg>';
@@ -53,8 +53,8 @@
     // third child of its own would sit in the middle of the bar.
     (cluster || nav).appendChild(toggle);
 
-    // Paths carry no extension now and the landing page is an empty
-    // segment, so both ends of the comparison normalise to one word.
+    // The landing page is linked as './' and everything else carries
+    // .html, so both ends of the comparison normalise to one word.
     function key(path) {
       var last = path.split('/').pop().replace(/\.html$/, '');
       return (last === '' || last === '.' || last === 'index') ? 'home' : last;
@@ -81,7 +81,7 @@
           return '<a class="m-drawer-link" href="' + l.href + '" style="animation-delay:' + (i * 35) + 'ms">' +
             l.label + '<span>' + (active ? '•' : '→') + '</span></a>';
         }).join('') +
-        '<a class="m-drawer-cta" href="signup">Build My Website</a>' +
+        '<a class="m-drawer-cta" href="signup.html">Build My Website</a>' +
         '<p class="m-drawer-note">Pay 25% to start. You review the finished website before the remaining 75% is due.</p>' +
       '</div>';
     doc.body.appendChild(drawer);

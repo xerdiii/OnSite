@@ -31,6 +31,14 @@
     var fromEl  = scope.querySelector('[data-pick-from]');
     var clear   = scope.querySelector('[data-pick-clear]');
 
+    /* The sticky bar, when the page has one. It is a mirror of the panel
+       below, never a second source of truth. */
+    var bar     = doc.querySelector('[data-ex-bar-sum]');
+    var barCount= doc.querySelector('[data-ex-bar-count]');
+    var barOnce = doc.querySelector('[data-ex-bar-once]');
+    var barMon  = doc.querySelector('[data-ex-bar-month]');
+    var barMonV = doc.querySelector('[data-ex-bar-monthv]');
+
     function money(n) {
       // Round to cents first, then decide. A deposit of 39.9975 is €40, not
       // €39.99 — but the design extras carry a real .99 and must keep it.
@@ -69,6 +77,14 @@
       monRow.hidden = month === 0;
       fromEl.hidden = !from;
       panel.hidden = n === 0;
+
+      if (bar) {
+        bar.hidden = n === 0;
+        barCount.textContent = n;
+        barOnce.textContent = money(once);
+        barMonV.textContent = money(month);
+        barMon.hidden = month === 0;
+      }
 
       write(boxes.filter(function (b) { return b.checked; })
                  .map(function (b) { return b.getAttribute('data-pick'); }));

@@ -6,7 +6,7 @@
   'use strict';
 
   var O = window.Onsite;
-  if (!O.requireSession('admin')) return;
+  if (!O.requireSession('admin.html')) return;
 
   var view = document.getElementById('view');
   var esc = O.esc;
@@ -291,7 +291,7 @@
     var rows = EMAILS.map(function (e) {
       return '<tr><td class="name">' + esc(e.name) + '</td><td>' + esc(e.trigger) + '</td>' +
         '<td>' + tag(e.status === 'Specified' ? 'pending' : 'pending') + ' <span class="text-[0.8125rem]">' + esc(e.status) + '</span></td>' +
-        '<td><a class="btn btn-ghost px-3 py-1 text-[0.75rem]" href="emails#' + esc(e.key) + '">Preview</a></td></tr>';
+        '<td><a class="btn btn-ghost px-3 py-1 text-[0.75rem]" href="emails.html#' + esc(e.key) + '">Preview</a></td></tr>';
     }).join('');
 
     return head('Email status', 'Transactional email the system sends.',
@@ -326,7 +326,7 @@
       '<div class="card mt-6 p-6">' + table(['Business', 'Contact', 'Website', 'Deposit', 'Outcome'], rows) + '</div>' +
       '<div class="card mt-6 p-6"><p class="mono-label text-ink-soft">Policy reminder</p>' +
         '<p class="mt-3 max-w-prose text-[0.8125rem] leading-relaxed text-ink-mid">Before refusing a refund, check the ' +
-          '<a href="refunds" class="font-semibold text-accent underline underline-offset-2">Cancellation &amp; Refund Policy</a> ' +
+          '<a href="refunds.html" class="font-semibold text-accent underline underline-offset-2">Cancellation &amp; Refund Policy</a> ' +
           'and the customer\'s statutory position. Mandatory consumer rights cannot be excluded by the policy.</p></div>';
   };
 
@@ -358,7 +358,7 @@
         '<p class="mt-3 max-w-prose text-[0.8125rem] leading-relaxed text-ink-mid">' +
           'Still to connect before launch: a real payment provider, real authentication with hashed ' +
           'passwords, the transactional email templates in ' +
-          '<a href="emails" class="font-semibold text-accent underline underline-offset-2">emails</a>, ' +
+          '<a href="emails.html" class="font-semibold text-accent underline underline-offset-2">emails</a>, ' +
           'and the contact and content forms. Every [PLACEHOLDER] in the policy pages and footer needs ' +
           'the real registered details.' +
         '</p>' +
@@ -377,10 +377,10 @@
     },
     'reset-demo': function () {
       O.reset();
-      O.signIn('team@onsite.demo', 'admin');
+      O.signIn('team@onsite.demo', 'admin.html');
       document.getElementById('reset-note').classList.remove('hidden');
     },
-    logout: function () { O.signOut(); location.href = 'login'; }
+    logout: function () { O.signOut(); location.href = 'login.html'; }
   };
 
   function render() {

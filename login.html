@@ -70,11 +70,11 @@ window.__entryFallback=setTimeout(function(){
           </button>
 
           <div class="botcluster">
-          <p id="bottom">Don&#8217;t have an account? <a href="signup">Create one</a></p>
+          <p id="bottom">Don&#8217;t have an account? <a href="signup.html">Create one</a></p>
 
           <div class="rowlinks">
-            <a href="forgot-email">Forgot which email you used?</a>
-            <a href="trouble">Trouble signing in?</a>
+            <a href="forgot-email.html">Forgot which email you used?</a>
+            <a href="trouble.html">Trouble signing in?</a>
           </div>
 
           <p class="aux">
@@ -130,8 +130,8 @@ window.__entryFallback=setTimeout(function(){
   // Only ever redirect to a local page. Without this, ?next=https://example.com
   // would turn the login into an open redirect — a classic phishing lever.
   function safeNext(value) {
-    if (!value) return 'dashboard';
-    return /^[A-Za-z0-9_-]+(#[A-Za-z0-9/_-]*)?$/.test(value) ? value : 'dashboard';
+    if (!value) return 'dashboard.html';
+    return /^[A-Za-z0-9_-]+\.html(#[A-Za-z0-9/_-]*)?$/.test(value) ? value : 'dashboard.html';
   }
 
   var next = safeNext(params.get('next'));
@@ -176,8 +176,8 @@ window.__entryFallback=setTimeout(function(){
   document.getElementById('staffLink').addEventListener('click', function (e) {
     e.preventDefault();
     emailEl.value = 'team@onsite.demo';
-    role = 'admin';
-    next = 'admin';
+    role = 'admin.html';
+    next = 'admin.html';
     toCodeStep();
   });
 

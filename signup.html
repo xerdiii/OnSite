@@ -84,7 +84,7 @@ window.__entryFallback=setTimeout(function(){
             <label class="checkline">
               <input id="agree" type="checkbox">
               <span class="checkbox" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3.4 8.4l3 3 6.2-6.6"/></svg></span>
-              <span class="checkline-t">I agree to the <a href="terms">Terms of Service</a> and <a href="privacy">Privacy Policy</a>.</span>
+              <span class="checkline-t">I agree to the <a href="terms.html">Terms of Service</a> and <a href="privacy.html">Privacy Policy</a>.</span>
             </label>
             <label class="checkline">
               <input id="agreeMarketing" type="checkbox">
@@ -101,8 +101,8 @@ window.__entryFallback=setTimeout(function(){
           </button>
 
           <div class="botcluster">
-            <p id="bottom">Already have an account? <a href="login">Log in</a></p>
-            <div class="rowlinks"><a href="trouble">Trouble signing up?</a></div>
+            <p id="bottom">Already have an account? <a href="login.html">Log in</a></p>
+            <div class="rowlinks"><a href="trouble.html">Trouble signing up?</a></div>
             <p class="aux">
               <strong>Demo build.</strong> Nothing is sent anywhere and no real account is created.
               You pay nothing here — the 25% deposit is taken later, from your dashboard.
@@ -192,7 +192,7 @@ window.__entryFallback=setTimeout(function(){
       return;
     }
     Onsite.signIn(emailEl.value.trim(), 'customer');
-    location.href = 'dashboard';
+    location.href = 'dashboard.html';
   });
 
   codeEl.addEventListener('input', function () { codeErr.hidden = true; });

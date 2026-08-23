@@ -260,7 +260,7 @@
   function requireSession(role) {
     var s = session();
     if (!s || (role && s.role !== role)) {
-      global.location.href = 'login?next=' + encodeURIComponent(
+      global.location.href = 'login.html?next=' + encodeURIComponent(
         global.location.pathname.split('/').pop() + global.location.hash
       );
       return null;

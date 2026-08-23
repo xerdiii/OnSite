@@ -59,19 +59,19 @@
           '<p class="ft-label">Product</p>' +
           '<div class="ft-list">' +
             '<a href="./#pricing">Products &amp; pricing</a>' +
-            '<a href="faq">FAQ</a>' +
-            '<a href="start">What we need from you</a>' +
-            '<a href="login">Client dashboard</a>' +
+            '<a href="faq.html">FAQ</a>' +
+            '<a href="start.html">What we need from you</a>' +
+            '<a href="login.html">Client dashboard</a>' +
           '</div>' +
         '</div>' +
 
         '<div>' +
           '<p class="ft-label">Policies</p>' +
           '<div class="ft-list">' +
-            '<a href="terms">Terms of Service</a>' +
-            '<a href="privacy">Privacy Policy</a>' +
-            '<a href="cookies">Cookie Policy</a>' +
-            '<a href="refunds">Cancellation &amp; Refund Policy</a>' +
+            '<a href="terms.html">Terms of Service</a>' +
+            '<a href="privacy.html">Privacy Policy</a>' +
+            '<a href="cookies.html">Cookie Policy</a>' +
+            '<a href="refunds.html">Cancellation &amp; Refund Policy</a>' +
             '<button class="ft-btn" data-cookie-settings type="button">Cookie settings</button>' +
           '</div>' +
         '</div>' +
@@ -79,7 +79,7 @@
         '<div>' +
           '<p class="ft-label">Contact</p>' +
           '<div class="ft-contact">' +
-            '<a href="contact">Contact us</a>' +
+            '<a href="contact.html">Contact us</a>' +
             '<span class="ft-ph">[LEGAL BUSINESS NAME]</span>' +
             '<span class="ft-ph">[REGISTERED BUSINESS ADDRESS]</span>' +
             '<span class="ft-ph">[CONTACT EMAIL]</span>' +
