@@ -22,7 +22,7 @@ module.exports = {
         sans:    ['Inter', 'Helvetica Neue', 'Arial', 'sans-serif'],
         mono:    ['IBM Plex Mono', 'ui-monospace', 'SFMono-Regular', 'monospace']
       },
-      maxWidth: { shell: '76rem', prose: '38rem' }
+      maxWidth: { shell: '70rem', prose: '38rem' }
     }
   },
   plugins: []

@@ -811,14 +811,14 @@
       if (d.base !== key) { d.features = []; }
       d.base = key;
       O.save();
-      render();
+      render(true);
     },
-    'toggle-feature': function (el) { toggleIn(draft().features, el.getAttribute('data-key')); O.save(); render(); },
-    'toggle-onetime': function (el) { toggleIn(draft().oneTime, el.getAttribute('data-key')); O.save(); render(); },
-    'toggle-monthly': function (el) { toggleIn(draft().monthly, el.getAttribute('data-key')); O.save(); render(); },
-    'toggle-extra':   function (el) { toggleIn(draft().extras,  el.getAttribute('data-key')); O.save(); render(); },
-    'toggle-agree':   function () { var d = draft(); d.agreed = !d.agreed; O.save(); render(); },
-    'clear-draft':    function () { var s = O.load(); s.draft = O.emptyDraft(); O.save(); render(); },
+    'toggle-feature': function (el) { toggleIn(draft().features, el.getAttribute('data-key')); O.save(); render(true); },
+    'toggle-onetime': function (el) { toggleIn(draft().oneTime, el.getAttribute('data-key')); O.save(); render(true); },
+    'toggle-monthly': function (el) { toggleIn(draft().monthly, el.getAttribute('data-key')); O.save(); render(true); },
+    'toggle-extra':   function (el) { toggleIn(draft().extras,  el.getAttribute('data-key')); O.save(); render(true); },
+    'toggle-agree':   function () { var d = draft(); d.agreed = !d.agreed; O.save(); render(true); },
+    'clear-draft':    function () { var s = O.load(); s.draft = O.emptyDraft(); O.save(); render(true); },
 
     'pay-deposit': function () {
       if (!draftReady()) return;
@@ -1069,7 +1069,27 @@
     bar.classList.add('is-up');
   }
 
-  function render() {
+  /* render(true) keeps you where you were.
+     Ticking a feature rebuilds the view — that is how this screen has
+     always worked — but it also used to throw the page back to the top
+     and drop focus, so choosing three things in a row meant scrolling
+     back down three times. Arriving at a new route should start at the
+     top; changing something on the route you are already on should not
+     move you at all. */
+  function render(keepPlace) {
+    var y = keepPlace ? (window.scrollY || window.pageYOffset) : 0;
+    var refocus = null;
+
+    if (keepPlace && document.activeElement && document.activeElement.closest) {
+      var was = document.activeElement.closest('[data-act]');
+      if (was) {
+        refocus = '[data-act="' + was.getAttribute('data-act') + '"]' +
+                  (was.getAttribute('data-key')
+                    ? '[data-key="' + was.getAttribute('data-key').replace(/"/g, '\\"') + '"]'
+                    : '');
+      }
+    }
+
     var route = (location.hash || '#/overview').replace('#', '');
     if (!routes[route]) route = '/overview';
     view.innerHTML = routes[route]();
@@ -1079,7 +1099,12 @@
     paintWho();
     paintStickyBar(route);
     if (window.OnsiteMobile) { window.OnsiteMobile.labelTables(view); }
-    window.scrollTo(0, 0);
+
+    window.scrollTo(0, y);
+    if (refocus) {
+      var again = view.querySelector(refocus);
+      if (again) again.focus({ preventScroll: true });
+    }
   }
 
   // Delegated so re-rendered markup keeps working.
@@ -1109,6 +1134,6 @@
     }
   });
 
-  window.addEventListener('hashchange', render);
+  window.addEventListener('hashchange', function () { render(false); });
   render();
 })();

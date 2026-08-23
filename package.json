@@ -4,7 +4,8 @@
   "description": "Onsite — business websites, built and managed.",
   "scripts": {
     "css": "tailwindcss -c tailwind.config.js -i src/tailwind.css -o assets/tailwind.css --minify",
-    "css:watch": "tailwindcss -c tailwind.config.js -i src/tailwind.css -o assets/tailwind.css --watch"
+    "css:watch": "tailwindcss -c tailwind.config.js -i src/tailwind.css -o assets/tailwind.css --watch",
+    "dev": "node dev-server.js"
   },
   "repository": {
     "type": "git",
