@@ -166,6 +166,7 @@
 <link rel="stylesheet" href="assets/tailwind.css">
 <link rel="stylesheet" href="assets/theme.css">
 <link rel="stylesheet" href="assets/dock.css">
+<link rel="stylesheet" href="assets/support.css">
 <link rel="stylesheet" href="assets/hero.css">
 <noscript><style>
   .closer-media {
@@ -204,9 +205,14 @@
     <span class="brand-mark brand-mark--nav" role="img" aria-label="OnSite"></span>OnSite
   </a>
 
+  <div class="fp-nav-right">
+    <a class="fp-nav-link" href="extras.html">Extras</a>
+    <a class="fp-nav-link" href="faq.html">FAQ</a>
+    <a class="fp-nav-link fp-nav-link--free" href="free.html">Free page</a>
   <button type="button" class="fp-nav-btn fp-nav-btn--icon" data-menu-open aria-expanded="false" aria-controls="siteMenu" aria-label="Open menu">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" aria-hidden="true"><path d="M4.5 9.5h15M4.5 15h9"/></svg>
   </button>
+  </div>
 </header>
 
 <div class="site-menu" id="siteMenu" data-menu hidden>
@@ -226,12 +232,17 @@
       <a href="extras.html">Extras</a>
       <a href="faq.html">FAQ</a>
       <a href="contact.html">Contact</a>
+      <a href="support.html">Help &amp; support</a>
     </nav>
 
     <div class="site-menu-foot">
       <a class="site-menu-login" href="login.html">Log in</a>
-      <a class="site-menu-cta" href="signup.html">Build my website</a>
-      <div class="site-menu-theme" data-theme-slot></div>
+      <a class="site-menu-cta" href="free.html">Get a free landing page</a>
+
+      <div class="site-menu-set">
+        <p class="site-menu-set-l">Appearance</p>
+        <div class="site-menu-theme" data-theme-slot></div>
+      </div>
     </div>
   </div>
 </div>
@@ -846,5 +857,6 @@
 <script src="assets/cookies.js"></script>
 <script src="assets/i18n.js"></script>
 <script src="assets/dock.js"></script>
+<script src="assets/support.js"></script>
 </body>
 </html>

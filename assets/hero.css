@@ -395,3 +395,93 @@ body.menu-locked { overflow: hidden; }
 @media (prefers-reduced-motion: reduce) {
   .site-menu-scrim, .site-menu-panel { transition: none; }
 }
+
+/* ── The menu cannot block the page ────────────────────────────
+   Belt and braces after the iOS bug: even if the hidden attribute
+   fails to come back for any reason, a menu that is not .is-open
+   passes every pointer straight through to the page underneath. It
+   can be invisible, but it can never be in the way. */
+.site-menu:not(.is-open) { pointer-events: none; }
+.site-menu.is-open { pointer-events: auto; }
+
+/* iOS ignores overflow:hidden on body once the page has momentum, so
+   the panel takes the scroll instead of letting it chain to the page. */
+body.menu-locked { overflow: hidden; overscroll-behavior: none; }
+.site-menu-panel { overscroll-behavior: contain; -webkit-overflow-scrolling: touch; }
+
+/* ── The panel, made for a phone ───────────────────────────────
+   Full width under 520px rather than a 23rem sheet with a dead strip
+   beside it, rows big enough to hit, and the safe area respected so
+   the last item is not under the home indicator. */
+@media (max-width: 519px) {
+  .site-menu-panel { width: 100%; }
+}
+.site-menu-panel {
+  padding-bottom: calc(1.5rem + env(safe-area-inset-bottom, 0px));
+  overflow-y: auto;
+}
+
+.site-menu-links a {
+  display: flex; align-items: center; justify-content: space-between;
+  min-height: 54px;
+}
+/* A chevron on each row, so it reads as somewhere to go rather than
+   as a list of words. */
+.site-menu-links a::after {
+  content: ''; width: 8px; height: 8px; flex: none;
+  border-right: 2px solid rgb(var(--c-ink) / 0.28);
+  border-bottom: 2px solid rgb(var(--c-ink) / 0.28);
+  transform: rotate(-45deg);
+  transition: transform 180ms ease, border-color 180ms ease;
+}
+.site-menu-links a:hover::after,
+.site-menu-links a:active::after {
+  border-color: rgb(var(--c-accent));
+  transform: rotate(-45deg) translate(2px, 2px);
+}
+
+/* The settings block at the bottom: theme on one row, language and
+   currency under it. Grouped and labelled so it is obviously settings
+   and not more navigation. */
+.site-menu-set {
+  margin-top: 1.1rem; padding-top: 1.1rem;
+  border-top: 1px solid rgb(var(--c-line));
+}
+.site-menu-set-l {
+  font-family: 'IBM Plex Mono', ui-monospace, monospace;
+  font-size: 0.625rem; letter-spacing: 0.16em; text-transform: uppercase;
+  color: rgb(var(--c-ink-soft)); margin-bottom: 0.6rem;
+}
+.site-menu-theme .theme-toggle {
+  width: 100%; height: 48px; gap: 0.6rem; border-radius: 0.55rem;
+  font-weight: 600; justify-content: center;
+}
+
+/* ── Landing-page nav links ────────────────────────────────────
+   The bar was the mark and one control, which is right over a
+   full-bleed hero — but Extras and the free page were then two taps
+   away behind a menu, on the page that most people land on. They come
+   out onto the bar from 640px up; below that the menu still holds
+   everything, because a phone bar cannot carry four things and stay
+   tappable. */
+.fp-nav-right { display: flex; align-items: center; gap: 0.35rem; pointer-events: auto; }
+
+.fp-nav-link {
+  display: none;
+  align-items: center; min-height: 40px; padding: 0 0.85rem;
+  border-radius: 999px; text-decoration: none;
+  font-size: 0.9375rem; font-weight: 500; letter-spacing: -0.01em;
+  color: inherit;
+  transition: background-color 180ms ease, color 180ms ease;
+}
+@media (min-width: 640px) { .fp-nav-link { display: inline-flex; } }
+.fp-nav-link:hover { background: rgb(var(--c-ink) / 0.08); }
+
+.fp-nav-link--free {
+  font-weight: 600; color: rgb(var(--c-accent));
+  background: rgb(var(--c-accent) / 0.1);
+}
+.fp-nav-link--free:hover { background: rgb(var(--c-accent)); color: #fff; }
+
+:root[data-theme="dark"] .fp-nav:not(.is-solid) .fp-nav-link { color: #fff; }
+:root[data-theme="dark"] .fp-nav:not(.is-solid) .fp-nav-link:hover { background: rgb(255 255 255 / 0.14); }

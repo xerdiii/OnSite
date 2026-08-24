@@ -114,6 +114,10 @@
 
       maintenance: { included: 15, used: 3 },
 
+      // Support threads. Declared here or load() drops them on the
+      // next read — it only merges keys the seed knows about.
+      threads: [],
+
       // Ratings customers leave on their own dashboard. Seeded with a
       // few so the averages and the bars have something to draw; the
       // `mine` flag marks the one this account left, so the Rate us

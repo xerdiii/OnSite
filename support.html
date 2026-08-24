@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Help &amp; support — OnSite</title>
+<meta name="description" content="Ask a question or report a problem. A person reads every message and replies within four hours.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400&family=Inter:wght@400;500;600;700&family=Outfit:wght@200..800&display=swap" rel="stylesheet">
+<script>/* Theme before paint. Light is the site, dark is a choice you make — the attribute is always stamped so the system setting never decides for you. */(function(){var t='light';try{t=localStorage.getItem('onsite.theme')==='dark'?'dark':'light';}catch(e){}document.documentElement.setAttribute('data-theme',t);})();</script>
+<link rel="stylesheet" href="assets/onsite.css">
+<link rel="stylesheet" href="assets/support.css">
+<link rel="stylesheet" href="assets/mobile.css">
+<link rel="stylesheet" href="assets/tailwind.css">
+<link rel="stylesheet" href="assets/theme.css">
+<link rel="stylesheet" href="assets/dock.css">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="OnSite">
+<meta property="og:title" content="Professional Website Builder">
+<meta property="og:description" content="Ask a question or report a problem. A person reads every message and replies within four hours.">
+<meta property="og:image" content="assets/brand/onsite-card.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Professional Website Builder">
+<meta name="twitter:image" content="assets/brand/onsite-card.png">
+<meta name="theme-color" content="#14161A">
+<link rel="apple-touch-icon" href="assets/brand/onsite-touch.png">
+<link rel="icon" href="assets/brand/onsite-favicon.png" type="image/png">
+</head>
+
+<body class="bg-paper font-sans text-ink antialiased">
+<a href="#main" class="skip absolute left-4 top-4 z-20 bg-ink px-4 py-2 text-sm text-white">Skip to content</a>
+
+<header class="sticky top-0 z-10 border-b border-line bg-paper">
+  <nav class="mx-auto flex max-w-shell items-center justify-between px-6 py-4 md:px-10">
+    <a href="./" class="flex items-center gap-2.5">
+      <span class="brand-mark" role="img" aria-label="OnSite"></span>
+      <span class="h-section text-lg tracking-tight">OnSite</span>
+    </a>
+    <div class="flex items-center gap-5 md:gap-7">
+      <a href="free.html" class="hidden text-sm font-semibold text-accent hover:text-accent-hi sm:inline">Free page</a>
+      <a href="extras.html" class="hidden text-sm font-medium text-ink-mid hover:text-ink sm:inline">Extras</a>
+      <a href="faq.html" class="hidden text-sm font-medium text-ink-mid hover:text-ink sm:inline">FAQ</a>
+      <a href="contact.html" class="hidden text-sm font-medium text-ink-mid hover:text-ink sm:inline">Contact</a>
+      <a href="login.html" class="text-sm font-medium text-ink-mid hover:text-ink">Log in</a>
+    </div>
+  </nav>
+</header>
+
+<main id="main">
+  <div class="sup">
+
+    <!-- ── Left: the thread list. On a phone this is the whole page
+             until you open one. ─────────────────────────────────── -->
+    <aside class="sup-list" data-sup-list>
+      <div class="sup-list-head">
+        <div>
+          <p class="eyebrow text-ink-soft">Help &amp; support</p>
+          <h1 class="sup-h1">Your messages</h1>
+        </div>
+        <button type="button" class="sup-new" data-sup-new>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
+          <span>New</span>
+        </button>
+      </div>
+
+      <div class="sup-sla">
+        <span class="sup-sla-dot" aria-hidden="true"></span>
+        <span>A person replies within <b>4 hours</b>, 09:00&ndash;21:00</span>
+      </div>
+
+      <div class="sup-threads" data-sup-threads></div>
+    </aside>
+
+    <!-- ── Right: the open thread, or the composer ──────────────── -->
+    <section class="sup-pane" data-sup-pane>
+      <div class="sup-pane-in" data-sup-view></div>
+    </section>
+
+  </div>
+</main>
+
+<div data-site-footer></div>
+
+<script src="assets/demo.js"></script>
+<script src="assets/support.js" defer></script>
+<script src="assets/footer.js"></script>
+<script src="assets/cookies.js"></script>
+<script src="assets/mobile.js"></script>
+<script src="assets/theme.js"></script>
+<script src="assets/dock.js"></script>
+<script src="assets/i18n.js"></script>
+</body>
+</html>

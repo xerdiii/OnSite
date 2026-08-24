@@ -34,13 +34,13 @@
     var dock = doc.createElement('div');
     dock.className = 'dock';
     dock.setAttribute('data-no-i18n', '');
+    // Extras lives in the top bar on every page, so a second button for
+    // it down here was two roads to the same place. The free page is the
+    // only standing offer that belongs in a corner.
     dock.innerHTML =
       '<a class="dock-btn dock-btn--free" href="free.html">' + ICON_SPARK +
         '<span class="dock-long">Get your free landing page</span>' +
         '<span class="dock-short">Free landing page</span>' +
-      '</a>' +
-      '<a class="dock-btn dock-btn--extras" href="extras.html">' + ICON_LIST +
-        '<span>Extras</span>' +
       '</a>';
     doc.body.appendChild(dock);
   }

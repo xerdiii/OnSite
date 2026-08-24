@@ -1,0 +1,299 @@
+/* ───────────────────────────────────────────────────────────────
+   Onsite — help & support
+
+   Two panes on a desktop: the threads on the left, the open one on the
+   right. On a phone there is only ever one — the list is the page, and
+   opening a thread slides the conversation in over it, with a back
+   arrow. That is the pattern people already know from every messaging
+   app on the device, and it beats a squeezed two-column layout.
+
+   The reply promise sits at the top of the list and the waiting state
+   is drawn on the message itself, so nobody has to wonder whether it
+   sent.
+   ─────────────────────────────────────────────────────────────── */
+
+.sup {
+  display: grid;
+  grid-template-columns: 1fr;
+  min-height: calc(100vh - 4.6rem);
+  max-width: 78rem; margin: 0 auto;
+}
+@media (min-width: 900px) {
+  .sup {
+    grid-template-columns: 21rem minmax(0, 1fr);
+    min-height: calc(100vh - 4.6rem);
+  }
+}
+
+/* ══ Thread list ═══════════════════════════════════════════════ */
+.sup-list {
+  border-right: 1px solid rgb(var(--c-line));
+  display: flex; flex-direction: column; min-width: 0;
+}
+.sup-list-head {
+  display: flex; align-items: flex-start; justify-content: space-between; gap: 1rem;
+  padding: 1.5rem 1.25rem 1rem;
+}
+@media (min-width: 900px) { .sup-list-head { padding: 1.75rem 1.25rem 1rem; } }
+.sup-h1 {
+  margin-top: 0.5rem;
+  font-family: 'Outfit', sans-serif; font-weight: 300;
+  font-size: 1.9rem; letter-spacing: -0.04em; line-height: 1; color: rgb(var(--c-ink));
+}
+.sup-new {
+  display: inline-flex; align-items: center; gap: 0.4rem; flex: none;
+  min-height: 40px; padding: 0 0.9rem; border-radius: 999px; cursor: pointer;
+  border: 0; background: rgb(var(--c-ink)); color: rgb(var(--c-paper));
+  font: 600 0.875rem inherit; font-family: inherit;
+  transition: transform 160ms ease;
+}
+.sup-new:active { transform: scale(0.97); }
+.sup-new svg { width: 15px; height: 15px; }
+
+/* The promise, stated once, where it answers the question people are
+   actually asking: how long am I going to be waiting. */
+.sup-sla {
+  display: flex; align-items: center; gap: 0.55rem;
+  margin: 0 1.25rem 1rem; padding: 0.65rem 0.8rem;
+  border-radius: 0.55rem; background: rgb(var(--c-surface));
+  border: 1px solid rgb(var(--c-line));
+  font-size: 0.8125rem; color: rgb(var(--c-ink-mid));
+}
+.sup-sla b { color: rgb(var(--c-ink)); font-weight: 600; }
+.sup-sla-dot {
+  width: 7px; height: 7px; border-radius: 999px; flex: none;
+  background: #22c55e; box-shadow: 0 0 0 3px rgb(34 197 94 / 0.18);
+}
+
+.sup-threads { flex: 1 1 auto; overflow-y: auto; padding: 0 0.75rem 1.5rem; }
+
+.sup-thread {
+  display: block; width: 100%; text-align: left; cursor: pointer;
+  border: 0; background: none; font: inherit;
+  padding: 0.85rem 0.75rem; border-radius: 0.6rem;
+  transition: background-color 150ms ease;
+}
+.sup-thread:hover { background: rgb(var(--c-ink) / 0.04); }
+.sup-thread.is-on { background: rgb(var(--c-ink) / 0.07); }
+.sup-thread + .sup-thread { margin-top: 0.15rem; }
+
+.sup-thread-top { display: flex; align-items: baseline; gap: 0.6rem; }
+.sup-thread-s {
+  font-weight: 600; font-size: 0.9375rem; color: rgb(var(--c-ink));
+  overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+}
+.sup-thread-w { margin-left: auto; flex: none; font-size: 0.6875rem; color: rgb(var(--c-ink-soft)); }
+.sup-thread-p {
+  margin-top: 0.25rem; font-size: 0.8125rem; line-height: 1.45; color: rgb(var(--c-ink-soft));
+  display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
+}
+.sup-thread-tags { display: flex; align-items: center; gap: 0.35rem; margin-top: 0.45rem; }
+
+.sup-tag {
+  font-family: 'IBM Plex Mono', ui-monospace, monospace;
+  font-size: 0.5625rem; letter-spacing: 0.1em; text-transform: uppercase;
+  padding: 0.18rem 0.4rem; border-radius: 0.25rem;
+}
+.sup-tag--wait { background: rgb(245 165 36 / 0.16); color: #a1660a; }
+.sup-tag--done { background: rgb(34 197 94 / 0.15); color: #15803d; }
+.sup-tag--kind { background: rgb(var(--c-ink) / 0.07); color: rgb(var(--c-ink-mid)); }
+:root[data-theme="dark"] .sup-tag--wait { color: #f5c168; }
+:root[data-theme="dark"] .sup-tag--done { color: #6ee7a3; }
+
+.sup-empty { padding: 2.5rem 1.25rem; text-align: center; color: rgb(var(--c-ink-soft)); font-size: 0.875rem; }
+
+/* ══ The pane ══════════════════════════════════════════════════ */
+.sup-pane { min-width: 0; display: flex; flex-direction: column; }
+.sup-pane-in { flex: 1 1 auto; display: flex; flex-direction: column; min-height: 0; }
+
+/* On a phone the pane covers the list entirely, sliding in from the
+   right the way a conversation does everywhere else on the device. */
+@media (max-width: 899px) {
+  .sup-pane {
+    position: fixed; inset: 0; z-index: 40;
+    background: rgb(var(--c-paper));
+    transform: translateX(100%);
+    transition: transform 300ms cubic-bezier(0.22, 1, 0.36, 1);
+    visibility: hidden;
+  }
+  .sup-pane.is-open { transform: none; visibility: visible; }
+  .sup-list { border-right: 0; }
+}
+
+.sup-bar {
+  display: flex; align-items: center; gap: 0.75rem; flex: none;
+  padding: 0.85rem 1rem; border-bottom: 1px solid rgb(var(--c-line));
+  background: rgb(var(--c-paper));
+  padding-top: calc(0.85rem + env(safe-area-inset-top, 0px));
+}
+@media (min-width: 900px) { .sup-bar { padding-top: 0.85rem; } }
+.sup-back {
+  width: 38px; height: 38px; flex: none; border-radius: 999px; cursor: pointer;
+  border: 1px solid rgb(var(--c-line)); background: rgb(var(--c-surface));
+  color: rgb(var(--c-ink)); display: flex; align-items: center; justify-content: center;
+}
+.sup-back svg { width: 17px; height: 17px; }
+@media (min-width: 900px) { .sup-back { display: none; } }
+.sup-bar-t { font-weight: 600; font-size: 0.9375rem; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.sup-bar-s { font-size: 0.75rem; color: rgb(var(--c-ink-soft)); }
+
+.sup-log {
+  flex: 1 1 auto; min-height: 0; overflow-y: auto;
+  padding: 1.25rem 1rem; display: flex; flex-direction: column; gap: 0.75rem;
+}
+@media (min-width: 900px) { .sup-log { padding: 1.5rem; } }
+
+.sup-msg {
+  max-width: min(38rem, 82%); padding: 0.75rem 0.95rem;
+  border-radius: 1rem; font-size: 0.9375rem; line-height: 1.6;
+  white-space: pre-wrap; word-wrap: break-word;
+}
+.sup-msg--me {
+  align-self: flex-end; border-bottom-right-radius: 0.3rem;
+  background: rgb(var(--c-ink)); color: rgb(var(--c-paper));
+}
+.sup-msg--them {
+  align-self: flex-start; border-bottom-left-radius: 0.3rem;
+  background: rgb(var(--c-surface)); border: 1px solid rgb(var(--c-line)); color: rgb(var(--c-ink));
+}
+.sup-meta {
+  font-size: 0.6875rem; color: rgb(var(--c-ink-soft));
+  padding: 0 0.3rem;
+}
+.sup-meta--me { align-self: flex-end; }
+.sup-meta--them { align-self: flex-start; }
+
+/* The waiting state, drawn on the conversation rather than announced
+   in a toast that disappears. It is the answer to "did that send". */
+.sup-wait {
+  align-self: flex-start; display: flex; align-items: center; gap: 0.6rem;
+  margin-top: 0.3rem; padding: 0.7rem 0.9rem;
+  border: 1px dashed rgb(var(--c-line-firm)); border-radius: 0.7rem;
+  font-size: 0.8125rem; color: rgb(var(--c-ink-mid));
+}
+.sup-wait-p { display: flex; gap: 0.2rem; }
+.sup-wait-p i {
+  width: 5px; height: 5px; border-radius: 999px; background: rgb(var(--c-ink-soft));
+  animation: sup-pulse 1.2s ease-in-out infinite;
+}
+.sup-wait-p i:nth-child(2) { animation-delay: 0.16s; }
+.sup-wait-p i:nth-child(3) { animation-delay: 0.32s; }
+@keyframes sup-pulse { 0%, 60%, 100% { opacity: 0.25; } 30% { opacity: 1; } }
+.sup-wait b { color: rgb(var(--c-ink)); font-weight: 600; }
+
+.sup-form {
+  flex: none; display: flex; gap: 0.5rem; align-items: flex-end;
+  padding: 0.75rem 1rem calc(0.75rem + env(safe-area-inset-bottom, 0px));
+  border-top: 1px solid rgb(var(--c-line));
+}
+.sup-in {
+  flex: 1 1 auto; min-width: 0; resize: none;
+  min-height: 46px; max-height: 9rem; padding: 0.7rem 0.9rem;
+  border: 1.5px solid rgb(var(--c-line-firm)); border-radius: 0.8rem;
+  background: rgb(var(--c-surface)); color: rgb(var(--c-ink));
+  font-family: inherit; font-size: 16px; line-height: 1.5;
+}
+.sup-in:focus {
+  outline: none; border-color: rgb(var(--c-accent));
+  box-shadow: 0 0 0 3px rgb(var(--c-accent) / 0.14);
+}
+.sup-send {
+  flex: none; width: 46px; height: 46px; border: 0; border-radius: 0.8rem; cursor: pointer;
+  background: rgb(var(--c-accent)); color: #fff;
+  display: flex; align-items: center; justify-content: center;
+}
+.sup-send svg { width: 18px; height: 18px; }
+.sup-send:disabled { opacity: 0.4; cursor: default; }
+
+/* ══ Composer ══════════════════════════════════════════════════ */
+.sup-new-wrap { padding: 1.5rem 1rem; overflow-y: auto; }
+@media (min-width: 900px) { .sup-new-wrap { padding: 2rem; max-width: 42rem; } }
+.sup-new-h {
+  font-family: 'Outfit', sans-serif; font-weight: 300;
+  font-size: clamp(1.6rem, 5vw, 2.2rem); letter-spacing: -0.035em; line-height: 1.05;
+  color: rgb(var(--c-ink));
+}
+.sup-new-p { margin-top: 0.7rem; font-size: 0.9375rem; line-height: 1.6; color: rgb(var(--c-ink-mid)); }
+
+.sup-kinds { display: grid; grid-template-columns: 1fr 1fr; gap: 0.6rem; margin-top: 1.5rem; }
+@media (min-width: 560px) { .sup-kinds { grid-template-columns: repeat(4, 1fr); } }
+.sup-kind {
+  display: flex; flex-direction: column; align-items: flex-start; gap: 0.5rem;
+  padding: 0.85rem; cursor: pointer; text-align: left;
+  border: 1.5px solid rgb(var(--c-line)); border-radius: 0.65rem;
+  background: rgb(var(--c-surface)); color: rgb(var(--c-ink));
+  font: inherit; transition: border-color 150ms ease, background-color 150ms ease;
+}
+.sup-kind svg { width: 19px; height: 19px; color: rgb(var(--c-ink-mid)); }
+.sup-kind span { font-size: 0.8125rem; font-weight: 600; line-height: 1.3; }
+.sup-kind:hover { border-color: rgb(var(--c-ink) / 0.4); }
+.sup-kind.is-on { border-color: rgb(var(--c-accent)); background: rgb(var(--c-accent-tint)); }
+.sup-kind.is-on svg { color: rgb(var(--c-accent)); }
+
+.sup-field { margin-top: 1.25rem; }
+.sup-field label { display: block; font-size: 0.875rem; font-weight: 600; margin-bottom: 0.45rem; color: rgb(var(--c-ink)); }
+.sup-field input, .sup-field textarea {
+  width: 100%; padding: 0.75rem 0.9rem;
+  border: 1.5px solid rgb(var(--c-line-firm)); border-radius: 0.6rem;
+  background: rgb(var(--c-surface)); color: rgb(var(--c-ink));
+  font-family: inherit; font-size: 16px; line-height: 1.55;
+}
+.sup-field textarea { min-height: 8rem; resize: vertical; }
+.sup-field input:focus, .sup-field textarea:focus {
+  outline: none; border-color: rgb(var(--c-accent));
+  box-shadow: 0 0 0 3px rgb(var(--c-accent) / 0.14);
+}
+.sup-err { margin-top: 0.5rem; font-size: 0.8125rem; font-weight: 600; color: rgb(var(--c-accent-text)); }
+.sup-err[hidden] { display: none; }
+
+.sup-post {
+  display: inline-flex; align-items: center; justify-content: center; gap: 0.6rem;
+  width: 100%; min-height: 52px; margin-top: 1.4rem; padding: 0 1.4rem;
+  border: 0; border-radius: 999px; cursor: pointer;
+  background: rgb(var(--c-accent)); color: #fff;
+  font: 600 1rem inherit; font-family: inherit;
+}
+.sup-post:hover { background: rgb(var(--c-accent-hi)); }
+@media (min-width: 560px) { .sup-post { width: auto; min-width: 16rem; } }
+
+.sup-blank {
+  flex: 1 1 auto; display: none; flex-direction: column;
+  align-items: center; justify-content: center; gap: 0.6rem; padding: 3rem 1.5rem; text-align: center;
+}
+@media (min-width: 900px) { .sup-blank { display: flex; } }
+.sup-blank svg { width: 42px; height: 42px; color: rgb(var(--c-ink-soft)); }
+.sup-blank p { font-size: 0.9375rem; color: rgb(var(--c-ink-soft)); max-width: 22rem; line-height: 1.6; }
+
+/* ══ The corner button ═════════════════════════════════════════ */
+.sup-fab {
+  position: fixed; z-index: 56;
+  left: clamp(0.85rem, 2.2vw, 1.6rem);
+  bottom: clamp(0.85rem, 2.2vw, 1.6rem);
+  display: inline-flex; align-items: center; gap: 0.55rem;
+  min-height: 48px; padding: 0 1.1rem;
+  border: 1px solid rgb(var(--c-line-firm)); border-radius: 999px; cursor: pointer;
+  background: rgb(var(--c-paper)); color: rgb(var(--c-ink));
+  font: 600 0.9375rem inherit; font-family: inherit; text-decoration: none;
+  box-shadow: 0 10px 30px rgb(var(--c-shadow) / 0.16);
+  -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px);
+  transition: transform 200ms cubic-bezier(0.22, 1, 0.36, 1), border-color 180ms ease;
+}
+.sup-fab:hover { transform: translateY(-2px); border-color: rgb(var(--c-ink)); }
+.sup-fab svg { width: 18px; height: 18px; flex: none; }
+.sup-fab-n {
+  min-width: 18px; height: 18px; padding: 0 5px; border-radius: 999px;
+  background: rgb(var(--c-accent)); color: #fff;
+  font-size: 0.625rem; font-weight: 700; line-height: 18px; text-align: center;
+}
+.sup-fab-n[hidden] { display: none; }
+body[data-cookiebar="up"] .sup-fab { bottom: calc(clamp(0.85rem, 2.2vw, 1.6rem) + 5.5rem); }
+@media (max-width: 519px) {
+  .sup-fab { left: 0.7rem; bottom: calc(0.7rem + env(safe-area-inset-bottom, 0px)); padding: 0 0.9rem; min-height: 44px; }
+  .sup-fab-t { display: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sup-pane, .sup-fab, .sup-kind, .sup-new { transition: none; }
+  .sup-fab:hover, .sup-new:active { transform: none; }
+  .sup-wait-p i { animation: none; opacity: 0.5; }
+}
