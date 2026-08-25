@@ -1,5 +1,5 @@
 /* ───────────────────────────────────────────────────────────────
-   Onsite — the corner dock
+   Sitehouse — the corner dock
    Injected rather than written into seventeen pages, so the offer can
    change in one file. Skipped on the app shells, on the pages the two
    buttons already lead to, and inside the sign-up flow, where a

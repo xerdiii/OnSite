@@ -1,5 +1,5 @@
 /* ───────────────────────────────────────────────────────────────
-   Onsite — local dev server
+   Sitehouse — local dev server
 
      npm run dev        →  http://localhost:5174
 
@@ -96,5 +96,5 @@ http.createServer((req, res) => {
   if (req.method === 'HEAD') { res.end(); return; }
   fs.createReadStream(file).pipe(res);
 }).listen(port, function () {
-  console.log('Onsite — serving ' + root + ' on http://localhost:' + port);
+  console.log('Sitehouse — serving ' + root + ' on http://localhost:' + port);
 });

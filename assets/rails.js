@@ -1,5 +1,5 @@
 /* ───────────────────────────────────────────────────────────────
-   Onsite — the side rails
+   Sitehouse — the side rails
    Two fixed columns either side of the shell, carrying one sequence of
    clips that advances with scroll position. Both rails show the same
    chapter at the same moment — one element the page passes through,

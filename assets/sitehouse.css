@@ -1,5 +1,5 @@
 /* ───────────────────────────────────────────────────────────────
-   Onsite — shared app styles
+   Sitehouse — shared app styles
    Same type, colour and hairline language as the landing page.
    ─────────────────────────────────────────────────────────────── */
 
@@ -286,3 +286,35 @@ a, button { transition: background-color 180ms ease, color 180ms ease, border-co
   .build-card { transition: none; }
   .build-card:active:not(:disabled) { transform: none; }
 }
+
+/* Contact form result. Three states, all of them honest — there is no
+   green tick until something has actually been delivered. */
+.contact-note {
+  margin-top: 0.9rem; padding: 0.75rem 0.9rem;
+  border-radius: 0.5rem; font-size: 0.875rem; line-height: 1.6;
+  border: 1px solid rgb(var(--c-line-firm)); background: rgb(var(--c-surface));
+  color: rgb(var(--c-ink-mid));
+}
+.contact-note[hidden] { display: none; }
+.contact-note a { color: rgb(var(--c-ink)); font-weight: 600; text-decoration: underline; text-underline-offset: 2px; }
+.contact-note strong { color: rgb(var(--c-ink)); font-weight: 600; }
+.contact-note.is-bad { border-color: rgb(var(--c-accent)); color: rgb(var(--c-accent-text)); }
+.contact-note.is-good { border-color: #22c55e; }
+
+
+/* ── Rendering budget ──────────────────────────────────────────
+   The landing page is long. Sections below the fold are skipped until
+   they are near the viewport, with a reserved height so the scrollbar
+   stays honest and nothing shifts when they do render.
+
+   Deliberately excluded: the hero, anything fixed or sticky, the side
+   rails and the closer — those animate, and skipping their layout is
+   how you get a jump instead of a saving. */
+main > section:nth-of-type(n + 4):not(.fp-hero):not(.closer) {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 700px;
+}
+
+/* Media never reflows the page while it loads. */
+img, video { max-width: 100%; height: auto; }
+.prev-frame, .rail-vid, .photo-img, .closer-media video { height: 100%; }

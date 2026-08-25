@@ -1,5 +1,5 @@
 /* ───────────────────────────────────────────────────────────────
-   Onsite — the free landing page form
+   Sitehouse — the free landing page form
 
    Validation happens on the field, next to the field, and only after
    someone has actually left it — telling people they are wrong while
@@ -209,8 +209,8 @@
     // Demo build: hand the details to the local store so the dashboard
     // has something real to show, then swap the form for the receipt.
     try {
-      if (global.Onsite) {
-        var s = global.Onsite.load();
+      if (global.Sitehouse) {
+        var s = global.Sitehouse.load();
         s.customer.business = name;
         s.customer.email = email;
         s.customer.phone = doc.getElementById('ff-phone').value.trim();
@@ -226,8 +226,8 @@
           status: 'building'
         };
         s.tier = 'free';
-        global.Onsite.save();
-        global.Onsite.signIn(email, 'customer');
+        global.Sitehouse.save();
+        global.Sitehouse.signIn(email, 'customer');
       }
     } catch (ignored) { /* demo store only; the receipt still shows */ }
 

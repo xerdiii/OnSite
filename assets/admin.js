@@ -1,11 +1,11 @@
 /* ───────────────────────────────────────────────────────────────
-   Onsite — internal admin (demo)
+   Sitehouse — internal admin (demo)
    Read-mostly views over the same mock store the dashboard uses.
    ─────────────────────────────────────────────────────────────── */
 (function () {
   'use strict';
 
-  var O = window.Onsite;
+  var O = window.Sitehouse;
   if (!O.requireSession('admin.html')) return;
 
   var view = document.getElementById('view');
@@ -353,7 +353,7 @@
           'These pages are a product/UX implementation and are not a substitute for legal advice. ' +
           'Before accepting real customers, review the Terms of Service, Privacy Policy, Cookie Policy, ' +
           'cancellation/refund terms, withdrawal/consumer-rights wording, tax information, and ' +
-          'data-processing arrangements for the jurisdictions in which Onsite operates.' +
+          'data-processing arrangements for the jurisdictions in which Sitehouse operates.' +
         '</p>' +
         '<p class="mt-3 max-w-prose text-[0.8125rem] leading-relaxed text-ink-mid">' +
           'Still to connect before launch: a real payment provider, real authentication with hashed ' +
@@ -377,7 +377,7 @@
     },
     'reset-demo': function () {
       O.reset();
-      O.signIn('team@onsite.demo', 'admin.html');
+      O.signIn('team@sitehouse.demo', 'admin.html');
       document.getElementById('reset-note').classList.remove('hidden');
     },
     logout: function () { O.signOut(); location.href = 'login.html'; }
@@ -394,7 +394,7 @@
     [].forEach.call(document.querySelectorAll('.app-nav a'), function (a) {
       a.classList.toggle('is-active', a.getAttribute('href') === '#' + route);
     });
-    if (window.OnsiteMobile) { window.OnsiteMobile.labelTables(view); }
+    if (window.SitehouseMobile) { window.SitehouseMobile.labelTables(view); }
     window.scrollTo(0, 0);
   }
 

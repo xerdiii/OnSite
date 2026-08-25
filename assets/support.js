@@ -1,5 +1,5 @@
 /* ───────────────────────────────────────────────────────────────
-   Onsite — help & support
+   Sitehouse — help & support
 
    A thread stays in the list from the moment it is posted until it is
    answered, and the waiting state is drawn on the conversation itself.
@@ -15,7 +15,7 @@
   'use strict';
 
   var doc = global.document;
-  var O = global.Onsite;
+  var O = global.Sitehouse;
   if (!O) return;
 
   var REPLY_HOURS = 4;
@@ -117,7 +117,7 @@
       var mine = m.from === 'you';
       return '<div class="sup-msg sup-msg--' + (mine ? 'me' : 'them') + '">' + esc(m.body) + '</div>' +
              '<p class="sup-meta sup-meta--' + (mine ? 'me' : 'them') + '">' +
-               (mine ? 'You' : 'OnSite') + ' · ' + clock(m.at) + '</p>';
+               (mine ? 'You' : 'Sitehouse') + ' · ' + clock(m.at) + '</p>';
     }).join('');
 
     var waiting = th.status === 'waiting'
@@ -239,22 +239,8 @@
     paneEl = doc.querySelector('[data-sup-pane]');
     if (!listEl || !viewEl) return;
 
-    // Seed one answered thread so the list is never a blank slate on a
-    // first visit — it shows what an answer actually looks like.
-    if (!all().length) {
-      var s = O.load();
-      var day = 86400000;
-      s.threads = [{
-        id: 'T-seed', kind: 'question', subject: 'Can I change the photos later?',
-        at: Date.now() - day, status: 'answered',
-        messages: [
-          { from: 'you', at: Date.now() - day, body: 'If I send photos now, can I swap them out in a few months?' },
-          { from: 'onsite', at: Date.now() - day + 5400000,
-            body: 'Yes, any time. Send the new ones through here and we swap them the same day. It is included while your site is being built, and part of Website Maintenance once you are live.' }
-        ]
-      }];
-      commit();
-    }
+    // No seeded conversation. An invented exchange in a real support
+    // inbox is a fake testimonial wearing a different hat.
 
     blank();
 

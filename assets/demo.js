@@ -1,5 +1,5 @@
 /* ───────────────────────────────────────────────────────────────
-   Onsite — demo data store and mock authentication
+   Sitehouse — demo data store and mock authentication
    DEMO ONLY. Nothing here is secure and nothing leaves the browser:
    state lives in localStorage, the "verification code" is generated
    client-side and shown on screen, and no password is ever checked.
@@ -8,14 +8,14 @@
 (function (global) {
   'use strict';
 
-  var KEY = 'onsite.demo.v1';
+  var KEY = 'sitehouse.demo.v1';
 
   // ── Money ────────────────────────────────────────────────────
   // Held in whole euro cents everywhere, formatted only at the edge.
   // Euro is the billing currency and the only one stored; display
   // follows whatever the visitor picked, when the switcher is loaded.
   function euro(cents) {
-    if (global.OnsiteI18n) return global.OnsiteI18n.format(cents / 100);
+    if (global.SitehouseI18n) return global.SitehouseI18n.format(cents / 100);
     return '€' + (cents / 100).toFixed(2);
   }
   function euroMonth(cents) { return euro(cents) + ' / month'; }
@@ -74,7 +74,7 @@
         stage: 'review',
         deliveryDate: '2026-08-19',
         lastUpdate: '2026-08-17',
-        previewUrl: 'preview.janeys-hair.co.uk',
+        previewUrl: 'preview.sitehouse.eu',
         features: [
           'Contact form', 'Google Maps', 'WhatsApp button', 'Photo / gallery section',
           'Business information', 'Services section', 'Opening hours', 'Social links', 'Call button'
@@ -122,12 +122,11 @@
       // few so the averages and the bars have something to draw; the
       // `mine` flag marks the one this account left, so the Rate us
       // button knows whether to say rate or edit.
-      ratings: [
-        { id: "R-7", stars: 5, body: "Sent them the photos on Tuesday and the site was up on Thursday. Two customers found me through it in the first week.", who: "Tomas B.", business: "Berisha Plumbing", at: "2026-08-14", mine: false },
-        { id: "R-6", stars: 5, body: "I did not have to understand anything about hosting, which is exactly why I had put this off for two years.", who: "Marco F.", business: "Trattoria Ferretti", at: "2026-08-09", mine: false },
-        { id: "R-5", stars: 4, body: "Quick and clear. I would have liked one more round of changes on the photos but the result is good.", who: "Aoife D.", business: "Doyle Dental Care", at: "2026-08-02", mine: false },
-        { id: "R-4", stars: 5, body: "The price was the price. Nothing appeared at the end that was not agreed at the start.", who: "Ellie G.", business: "Grant Mobile Valeting", at: "2026-07-28", mine: false }
-      ],
+      // Ratings customers leave on their own dashboard. Empty on
+      // purpose: seeding it would put invented businesses on the public
+      // page, and the band that renders them stays hidden until a real
+      // one arrives.
+      ratings: [],
 
       changeRequests: [
         { id: 'CR-118', type: 'Opening hours', description: 'Late opening on Thursdays until 20:00.',
@@ -142,7 +141,7 @@
         { id: 'SUP-31', subject: 'Can I add a second phone number?', status: 'answered', created: '2026-08-12',
           messages: [
             { from: 'you',    at: '2026-08-12', body: 'Can the page show my mobile as well as the salon line?' },
-            { from: 'Onsite', at: '2026-08-12', body: 'Yes — send both numbers and we will label them Salon and Mobile. No change request needed, it is part of the build.' }
+            { from: 'Sitehouse', at: '2026-08-12', body: 'Yes — send both numbers and we will label them Salon and Mobile. No change request needed, it is part of the build.' }
           ] }
       ],
 
@@ -492,7 +491,7 @@
       .replace(/"/g, '&quot;').replace(/'/g, '&#39;');
   }
 
-  global.Onsite = {
+  global.Sitehouse = {
     CATALOG: CATALOG, emptyDraft: emptyDraft,
     euro: euro, euroMonth: euroMonth, deposit: deposit, balance: balance, date: date,
     load: load, save: save, reset: reset,

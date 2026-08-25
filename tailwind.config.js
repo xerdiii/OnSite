@@ -1,4 +1,4 @@
-/** Onsite — Tailwind build.
+/** Sitehouse — Tailwind build.
  *  Colours resolve through the CSS custom properties in assets/theme.css,
  *  so one token set drives light and dark. */
 module.exports = {

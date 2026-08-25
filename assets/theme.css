@@ -1,5 +1,5 @@
 /* ───────────────────────────────────────────────────────────────
-   Onsite — colour tokens
+   Sitehouse — colour tokens
    Every palette value in the product resolves through these. Light is
    the default; dark applies when the visitor picks it, or when their
    system asks for it and they have not chosen otherwise.
@@ -235,15 +235,15 @@ h1.doc-title {
 
 
 /* ── The mark ──────────────────────────────────────────────────
-   Cut from gallery/logo of onsite.png at its own proportions —
+   Cut from gallery/logo of sitehouse.png at its own proportions —
    345 × 205, so 1.683 : 1. Two files rather than one recoloured by
    filter: the artwork is white, and a white mark is invisible on a
    light page, so the ink cut is a real asset rather than an effect. */
 .brand-mark {
   width: 2.61em; height: 1.55em; flex: none; display: block;
-  background: url("brand/onsite-mark-ink.png") center / contain no-repeat;
+  background: url("brand/sitehouse-mark-ink.png") center / contain no-repeat;
 }
 :root[data-theme="dark"] .brand-mark {
-  background-image: url("brand/onsite-mark.png");
+  background-image: url("brand/sitehouse-mark.png");
 }
 .brand-mark--nav { width: 2.52em; height: 1.5em; }

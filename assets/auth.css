@@ -1,5 +1,5 @@
 /* ───────────────────────────────────────────────────────────────
-   Onsite — authentication pages
+   Sitehouse — authentication pages
    A pixel-locked composition reconstructed from a 1464×949 reference
    frame: falcon footage on the left, a glass card on the right.
 
@@ -816,5 +816,5 @@ body.auth #stepHelp { justify-content:flex-start; }
    cut in both themes. */
 .home-mark .brand-mark--auth {
   width: 2.52em; height: 1.5em; flex: none; display: block;
-  background: url("brand/onsite-mark.png") center / contain no-repeat;
+  background: url("brand/sitehouse-mark.png") center / contain no-repeat;
 }

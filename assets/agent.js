@@ -1,5 +1,5 @@
 /* ───────────────────────────────────────────────────────────────
-   Onsite — the dashboard assistant
+   Sitehouse — the dashboard assistant
 
    Deliberately a hybrid, and the split matters.
 
@@ -23,7 +23,7 @@
   'use strict';
 
   var doc = global.document;
-  var O = global.Onsite;
+  var O = global.Sitehouse;
   if (!O) return;
 
   var log, input, sendBtn, panel, fab, dot, headSub, chips;

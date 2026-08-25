@@ -1,0 +1,16 @@
+# Sitehouse — https://sitehouse.eu
+
+User-agent: *
+Allow: /
+
+# Application surfaces. Nothing here renders without a session, and a
+# sign-in wall in search results helps nobody.
+Disallow: /dashboard
+Disallow: /admin
+Disallow: /emails
+Disallow: /preview
+Disallow: /forgot-password
+Disallow: /forgot-email
+Disallow: /api/
+
+Sitemap: https://sitehouse.eu/sitemap.xml

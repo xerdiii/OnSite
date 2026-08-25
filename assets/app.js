@@ -1,5 +1,5 @@
 /* ───────────────────────────────────────────────────────────────
-   Onsite — dashboard: order rail, website preview, ratings
+   Sitehouse — dashboard: order rail, website preview, ratings
 
    Three pieces the old dashboard did not have, kept out of
    dashboard.js so that file stays about routing and the package
@@ -15,7 +15,7 @@
   'use strict';
 
   var doc = global.document;
-  var O = global.Onsite;
+  var O = global.Sitehouse;
   if (!O) return;
 
   function esc(t) {
@@ -175,7 +175,7 @@
     doc.addEventListener('keydown', function (e) {
       if (e.key === 'Escape' && !el.hidden) close();
     });
-    global.OnsiteSheet = { close: close };
+    global.SitehouseSheet = { close: close };
   })();
 
   /* ══ Ratings ═════════════════════════════════════════════════ */
@@ -271,7 +271,7 @@
       });
       O.save();
       close();
-      if (global.OnsiteDash && global.OnsiteDash.render) global.OnsiteDash.render(true);
+      if (global.SitehouseDash && global.SitehouseDash.render) global.SitehouseDash.render(true);
     });
 
     doc.addEventListener('click', function (e) {
@@ -317,7 +317,7 @@
   });
 
   /* ══ Exposed to dashboard.js ═════════════════════════════════ */
-  global.OnsiteApp = {
+  global.SitehouseApp = {
     paintRail: paintRail,
     bindPreviews: bindPreviews,
     starsHtml: starsHtml,

@@ -30,8 +30,8 @@ const TIMEOUT_MS = 25000;
    opposite of what someone checking their invoice wants. */
 function brief(ctx) {
   return [
-    'You are the assistant inside the OnSite client dashboard.',
-    'OnSite builds one-page websites for small businesses.',
+    'You are the assistant inside the Sitehouse client dashboard.',
+    'Sitehouse builds one-page websites for small businesses.',
     '',
     'Rules:',
     '- Be brief. Two or three sentences unless asked for more.',

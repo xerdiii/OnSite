@@ -1,7 +1,7 @@
 {
-  "name": "onsite",
+  "name": "sitehouse",
   "version": "1.0.0",
-  "description": "Onsite — business websites, built and managed.",
+  "description": "Sitehouse — professional websites for small businesses.",
   "scripts": {
     "css": "tailwindcss -c tailwind.config.js -i src/tailwind.css -o assets/tailwind.css --minify",
     "css:watch": "tailwindcss -c tailwind.config.js -i src/tailwind.css -o assets/tailwind.css --watch",
@@ -9,13 +9,13 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/xerdiii/OnSite.git"
+    "url": "git+https://github.com/xerdiii/Sitehouse.git"
   },
   "type": "commonjs",
   "bugs": {
-    "url": "https://github.com/xerdiii/OnSite/issues"
+    "url": "https://github.com/xerdiii/Sitehouse/issues"
   },
-  "homepage": "https://github.com/xerdiii/OnSite#readme",
+  "homepage": "https://sitehouse.eu",
   "devDependencies": {
     "tailwindcss": "^3.4.17"
   },

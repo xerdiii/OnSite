@@ -3,40 +3,49 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Dashboard — Onsite</title>
-<meta name="description" content="Your Onsite dashboard: website status, payments, business information, change requests and support.">
+<title>Your dashboard — Sitehouse</title>
+<meta name="description" content="Your website, your order and your payments.">
+<link rel="canonical" href="https://sitehouse.eu/dashboard">
+<meta name="robots" content="noindex, nofollow">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Sitehouse">
+<meta property="og:locale" content="en_GB">
+<meta property="og:url" content="https://sitehouse.eu/dashboard">
+<meta property="og:title" content="Your dashboard — Sitehouse">
+<meta property="og:description" content="Your website, your order and your payments.">
+<meta property="og:image" content="https://sitehouse.eu/assets/brand/sitehouse-card.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Sitehouse — professional websites for small businesses">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:url" content="https://sitehouse.eu/dashboard">
+<meta name="twitter:title" content="Your dashboard — Sitehouse">
+<meta name="twitter:description" content="Your website, your order and your payments.">
+<meta name="twitter:image" content="https://sitehouse.eu/assets/brand/sitehouse-card.png">
+<meta name="twitter:image:alt" content="Sitehouse — professional websites for small businesses">
+
+<meta name="apple-mobile-web-app-title" content="Sitehouse">
+<meta name="application-name" content="Sitehouse">
+<meta name="theme-color" content="#14161A">
+<link rel="apple-touch-icon" href="/assets/brand/sitehouse-touch.png">
+<link rel="icon" href="/assets/brand/sitehouse-favicon.png" type="image/png">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebPage","@id":"https://sitehouse.eu/dashboard#webpage","url":"https://sitehouse.eu/dashboard","name":"Your dashboard — Sitehouse","description":"Your website, your order and your payments.","isPartOf":{"@id":"https://sitehouse.eu/#website"},"inLanguage":"en-GB"}]}</script>
+<link rel="dns-prefetch" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400&family=Instrument+Serif&family=Inter:wght@400;500;600&family=Outfit:wght@200..800&display=swap" rel="stylesheet">
-<script>/* Theme before paint. Light is the site, dark is a choice you make — the attribute is always stamped so the system setting never decides for you. */(function(){var t='light';try{t=localStorage.getItem('onsite.theme')==='dark'?'dark':'light';}catch(e){}document.documentElement.setAttribute('data-theme',t);})();</script>
-<link rel="stylesheet" href="assets/onsite.css">
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400&family=Instrument+Serif&family=Inter:wght@400;500;600&family=Outfit:wght@200..800&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400&family=Instrument+Serif&family=Inter:wght@400;500;600&family=Outfit:wght@200..800&display=swap" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400&family=Instrument+Serif&family=Inter:wght@400;500;600&family=Outfit:wght@200..800&display=swap"></noscript>
+<script>/* Theme before paint. Light is the site, dark is a choice you make — the attribute is always stamped so the system setting never decides for you. */(function(){var t='light';try{t=localStorage.getItem('sitehouse.theme')==='dark'?'dark':'light';}catch(e){}document.documentElement.setAttribute('data-theme',t);})();</script>
+<link rel="stylesheet" href="assets/sitehouse.css">
 <link rel="stylesheet" href="assets/mobile.css">
 <link rel="stylesheet" href="assets/tailwind.css">
 <link rel="stylesheet" href="assets/app.css">
 <link rel="stylesheet" href="assets/agent.css">
 <link rel="stylesheet" href="assets/theme.css">
 <link rel="stylesheet" href="assets/dock.css">
-<!-- Link preview. One title for every page: a link shared in a bio or a
-     story should say what this is, not which sub-page it landed on. The
-     card image is a raster because Instagram, WhatsApp and Facebook will
-     not render an SVG. -->
-<meta property="og:type" content="website">
-<meta property="og:site_name" content="OnSite">
-<meta property="og:title" content="Professional Website Builder">
-<meta property="og:description" content="One-page websites for small businesses. 34 sections and features in every build, from €79.99. Pay a quarter to start and the rest once you have seen it.">
-<meta property="og:image" content="assets/brand/onsite-card.png">
-<meta property="og:image:width" content="1200">
-<meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="OnSite — web design and development">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Professional Website Builder">
-<meta name="twitter:description" content="One-page websites for small businesses. 34 sections and features in every build, from €79.99. Pay a quarter to start and the rest once you have seen it.">
-<meta name="twitter:image" content="assets/brand/onsite-card.png">
-<meta name="apple-mobile-web-app-title" content="OnSite">
-<meta name="application-name" content="OnSite">
-<meta name="theme-color" content="#14161A">
-<link rel="apple-touch-icon" href="assets/brand/onsite-touch.png">
-<link rel="icon" href="assets/brand/onsite-favicon.png" type="image/png">
 </head>
 
 <body data-app class="bg-paper font-sans text-ink antialiased has-tabbar">
@@ -48,8 +57,8 @@
     <div class="flex items-center gap-3">
       <button id="nav-toggle" type="button" class="btn btn-ghost px-2.5 py-1.5 lg:hidden" aria-label="Menu">☰</button>
       <a href="./" class="flex items-center gap-2.5">
-        <span class="brand-mark" role="img" aria-label="OnSite"></span>
-        <span class="h-section text-lg tracking-tight">OnSite</span>
+        <span class="brand-mark" role="img" aria-label="Sitehouse"></span>
+        <span class="h-section text-lg tracking-tight">Sitehouse</span>
       </a>
       <span class="hidden text-[0.8125rem] text-ink-soft sm:inline">/ Client dashboard</span>
     </div>
@@ -90,7 +99,7 @@
         <a class="nav-a" href="#/business" data-nav="/business"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8h.01"/></svg><span>Business info</span></a>
         <a class="nav-a" href="#/request" data-nav="/request"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5h16M4 12h10M4 19h7"/></svg><span>Request a change</span></a>
         <a class="nav-a" href="#/maintenance" data-nav="/maintenance"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.5 6a4 4 0 0 0 5 5l-8 8a2.8 2.8 0 0 1-4-4z"/></svg><span>Maintenance</span></a>
-        <p class="nav-group" data-group>OnSite</p>
+        <p class="nav-group" data-group>Sitehouse</p>
         <a class="nav-a" href="#/work" data-nav="/work"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="4.5" width="19" height="15" rx="2"/><path d="M2.5 9h19"/></svg><span>Our work</span></a>
         <a class="nav-a" href="#/services" data-nav="/services"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg><span>My services</span></a>
         <a class="nav-a" href="#/account" data-nav="/account"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="3.5"/><path d="M4.5 20c1.6-3.6 4.3-5.4 7.5-5.4S18 16.4 19.5 20"/></svg><span>Account</span></a>
@@ -184,7 +193,7 @@
 
 <footer class="border-t border-line bg-paper">
   <div class="mx-auto flex max-w-shell flex-col gap-3 px-6 py-8 sm:flex-row sm:items-center sm:justify-between md:px-10">
-    <p class="text-[0.8125rem] text-ink-soft">Onsite — client dashboard (demo)</p>
+    <p class="text-[0.8125rem] text-ink-soft">Sitehouse — client dashboard (demo)</p>
     <div class="flex flex-wrap gap-x-6 gap-y-2">
       <a href="./" class="mono-label text-ink-soft hover:text-ink">Website</a>
       <a href="terms.html" class="mono-label text-ink-soft hover:text-ink">Terms</a>

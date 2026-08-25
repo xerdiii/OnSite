@@ -1,5 +1,5 @@
 /* ───────────────────────────────────────────────────────────────
-   Onsite — customer ratings on the public page
+   Sitehouse — customer ratings on the public page
 
    Reads the same store the dashboard writes to. In the demo that is
    localStorage; behind a real backend this becomes one fetch and
@@ -14,9 +14,9 @@
 
   var doc = global.document;
   var host = doc.querySelector('[data-ratings]');
-  if (!host || !global.Onsite) return;
+  if (!host || !global.Sitehouse) return;
 
-  var list = (global.Onsite.load().ratings || []).slice();
+  var list = (global.Sitehouse.load().ratings || []).slice();
   if (!list.length) return;
 
   function esc(t) {

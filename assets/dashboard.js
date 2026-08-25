@@ -1,12 +1,12 @@
 /* ───────────────────────────────────────────────────────────────
-   Onsite — client dashboard (demo)
+   Sitehouse — client dashboard (demo)
    Hash-routed sections rendered into #view. All state is the mock
    store in demo.js; no network calls, no real payments.
    ─────────────────────────────────────────────────────────────── */
 (function () {
   'use strict';
 
-  var O = window.Onsite;
+  var O = window.Sitehouse;
   if (!O.requireSession('customer')) return;
 
   var view = document.getElementById('view');
@@ -53,13 +53,13 @@
   // ── Sections ─────────────────────────────────────────────────
   var routes = {};
 
-  var A = function () { return window.OnsiteApp; };
+  var A = function () { return window.SitehouseApp; };
 
   // The preview frame. Not a screenshot — an iframe of preview.html,
   // which renders from the same store this dashboard writes to, so it
   // can never drift from what the customer actually told us.
   function previewCard(s) {
-    var url = (s.project && s.project.previewUrl) || 'preview.onsite.app';
+    var url = (s.project && s.project.previewUrl) || 'preview.sitehouse.eu';
     var live = s.project && s.project.stage === 'live';
     return '' +
     '<div class="prev">' +
@@ -289,8 +289,8 @@
           '<p class="mono-label mt-6 text-ink-soft">Domain &amp; hosting</p>' +
           '<table class="tbl m-cards mt-3"><tbody>' +
             '<tr><td class="name">Domain</td><td>' + esc(s.customer.websiteUrl) + '</td></tr>' +
-            '<tr><td class="name">Managed by</td><td>Onsite</td></tr>' +
-            '<tr><td class="name">Hosting</td><td>' + (p.stage === 'live' ? 'Live — served by Onsite' : 'Staged, not yet published') + '</td></tr>' +
+            '<tr><td class="name">Managed by</td><td>Sitehouse</td></tr>' +
+            '<tr><td class="name">Hosting</td><td>' + (p.stage === 'live' ? 'Live — served by Sitehouse' : 'Staged, not yet published') + '</td></tr>' +
             '<tr><td class="name">SSL / HTTPS</td><td>' + (p.stage === 'live' ? 'Active' : 'Issued at launch') + '</td></tr>' +
           '</tbody></table>' +
           '<p class="mono-label mt-6 text-ink-soft">Selected features</p>' +
@@ -412,7 +412,7 @@
       '</div>' +
 
       '<div class="mt-6 flex flex-wrap items-center gap-4">' +
-        '<button class="btn btn-primary" data-act="submit-business">Send changes to Onsite</button>' +
+        '<button class="btn btn-primary" data-act="submit-business">Send changes to Sitehouse</button>' +
         '<p class="text-[0.8125rem] text-ink-soft">Creates a change request. Nothing goes live until we action it.</p>' +
       '</div>' +
       '<p id="business-done" class="mt-4 hidden text-[0.8125rem] font-semibold text-accent"></p>';
@@ -1102,7 +1102,7 @@
       O.save();
       O.notify('Change request received — your business information is queued for review.');
       var d = document.getElementById('business-done');
-      d.textContent = 'Sent to Onsite. Nothing has been published yet — we will action it and mark it completed.';
+      d.textContent = 'Sent to Sitehouse. Nothing has been published yet — we will action it and mark it completed.';
       d.classList.remove('hidden');
       paintBell();
     },
@@ -1211,7 +1211,7 @@
         messages: [{ from: 'you', at: new Date().toISOString().slice(0, 10), body: body }]
       });
       O.save();
-      O.notify('Message sent to Onsite. We usually reply the same working day.');
+      O.notify('Message sent to Sitehouse. We usually reply the same working day.');
       render();
     },
     logout: function () {
@@ -1336,11 +1336,11 @@
     paintBell();
     paintWho();
     paintStickyBar(route);
-    if (window.OnsiteMobile) { window.OnsiteMobile.labelTables(view); }
+    if (window.SitehouseMobile) { window.SitehouseMobile.labelTables(view); }
     gateNav();
-    if (window.OnsiteApp) { window.OnsiteApp.paintRail(); window.OnsiteApp.bindPreviews(); }
-    if (window.OnsiteSheet) window.OnsiteSheet.close();
-    if (window.OnsiteI18n) { window.OnsiteI18n.mount(); }
+    if (window.SitehouseApp) { window.SitehouseApp.paintRail(); window.SitehouseApp.bindPreviews(); }
+    if (window.SitehouseSheet) window.SitehouseSheet.close();
+    if (window.SitehouseI18n) { window.SitehouseI18n.mount(); }
 
     window.scrollTo(0, y);
     if (refocus) {
@@ -1380,9 +1380,9 @@
 
   // Every figure on this screen is formatted at render time by O.euro(),
   // so a currency change means re-rendering — in place, without moving you.
-  document.addEventListener('onsite:i18n', function () { render(true); });
+  document.addEventListener('sitehouse:i18n', function () { render(true); });
 
   // app.js posts ratings and needs the view redrawn afterwards.
-  window.OnsiteDash = { render: render };
+  window.SitehouseDash = { render: render };
   render();
 })();

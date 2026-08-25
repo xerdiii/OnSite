@@ -1,5 +1,5 @@
 /* ───────────────────────────────────────────────────────────────
-   Onsite — theme switch
+   Sitehouse — theme switch
    The stored choice is applied by a tiny inline snippet in <head>
    before paint; this file only builds the control and handles the
    click. No choice stored means "follow the system".
@@ -8,7 +8,7 @@
   'use strict';
 
   var doc = global.document;
-  var KEY = 'onsite.theme';
+  var KEY = 'sitehouse.theme';
 
   var SUN = '<svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round">' +
     '<circle cx="12" cy="12" r="4.2"/><path d="M12 2.6v2.2M12 19.2v2.2M4.2 12H2M22 12h-2.2M5.6 5.6 7.2 7.2M16.8 16.8l1.6 1.6M18.4 5.6 16.8 7.2M7.2 16.8l-1.6 1.6"/></svg>';

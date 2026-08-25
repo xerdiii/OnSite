@@ -1,5 +1,5 @@
 /* ───────────────────────────────────────────────────────────────
-   Onsite — authentication layout engine
+   Sitehouse — authentication layout engine
    Three modes off one markup tree.
 
      land     ≥700px landscape. The photo column eases back as the frame

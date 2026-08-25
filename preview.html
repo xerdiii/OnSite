@@ -3,9 +3,38 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Preview — OnSite</title>
-<meta name="robots" content="noindex">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@200..800&display=swap" rel="stylesheet">
+<title>Website preview — Sitehouse</title>
+<meta name="description" content="A preview of your own page.">
+<link rel="canonical" href="https://sitehouse.eu/preview">
+<meta name="robots" content="noindex, nofollow">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Sitehouse">
+<meta property="og:locale" content="en_GB">
+<meta property="og:url" content="https://sitehouse.eu/preview">
+<meta property="og:title" content="Website preview — Sitehouse">
+<meta property="og:description" content="A preview of your own page.">
+<meta property="og:image" content="https://sitehouse.eu/assets/brand/sitehouse-card.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Sitehouse — professional websites for small businesses">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:url" content="https://sitehouse.eu/preview">
+<meta name="twitter:title" content="Website preview — Sitehouse">
+<meta name="twitter:description" content="A preview of your own page.">
+<meta name="twitter:image" content="https://sitehouse.eu/assets/brand/sitehouse-card.png">
+<meta name="twitter:image:alt" content="Sitehouse — professional websites for small businesses">
+
+<meta name="apple-mobile-web-app-title" content="Sitehouse">
+<meta name="application-name" content="Sitehouse">
+<meta name="theme-color" content="#14161A">
+<link rel="apple-touch-icon" href="/assets/brand/sitehouse-touch.png">
+<link rel="icon" href="/assets/brand/sitehouse-favicon.png" type="image/png">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebPage","@id":"https://sitehouse.eu/preview#webpage","url":"https://sitehouse.eu/preview","name":"Website preview — Sitehouse","description":"A preview of your own page.","isPartOf":{"@id":"https://sitehouse.eu/#website"},"inLanguage":"en-GB"}]}</script>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@200..800&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@200..800&display=swap" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@200..800&display=swap"></noscript>
 <style>
 /* ───────────────────────────────────────────────────────────────
    The customer's own landing page, rendered from their own answers.
@@ -107,7 +136,7 @@ img { max-width: 100%; display: block; }
       .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
   };
 
-  var s = window.Onsite ? window.Onsite.load() : null;
+  var s = window.Sitehouse ? window.Sitehouse.load() : null;
   var c = s && s.customer;
   var host = document.getElementById('page');
 
@@ -180,7 +209,7 @@ img { max-width: 100%; display: block; }
     '</div></section>' +
 
     '<footer class="p-foot"><div class="wrap">' +
-      '<b>' + esc(c.business) + '</b> — built and hosted by OnSite.' +
+      '<b>' + esc(c.business) + '</b> — built and hosted by Sitehouse.' +
     '</div></footer>';
 })();
 </script>

@@ -1,5 +1,5 @@
 /* ───────────────────────────────────────────────────────────────
-   Onsite — shared site footer
+   Sitehouse — shared site footer
    Injected into <div data-site-footer></div> so every page carries the
    same navigation, policy links and contact block.
 
@@ -11,7 +11,7 @@
   'use strict';
 
   // Cut from the original artwork, in white because the footer is ink.
-  var MARK = '<span class="ft-dot" role="img" aria-label="OnSite"></span>';
+  var MARK = '<span class="ft-dot" role="img" aria-label="Sitehouse"></span>';
 
   var doc = global.document;
 
@@ -40,7 +40,7 @@
        against the page rather than against assets/ — it needs the full
        path where the real stylesheets need only "brand/". */
     '.ft-dot{width:2.28rem;height:1.35rem;flex:none;display:block;' +
-      'background:url("assets/brand/onsite-mark.png") center/contain no-repeat}' +
+      'background:url("assets/brand/sitehouse-mark.png") center/contain no-repeat}' +
     '.ft-base{margin-top:2.5rem;padding-top:1.5rem;border-top:1px solid rgba(255,255,255,0.2);' +
       'display:flex;flex-wrap:wrap;gap:1rem 1.5rem;align-items:center;justify-content:space-between}' +
     '.ft-base p{font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:0.6875rem;' +
@@ -56,7 +56,7 @@
       '<div class="ft-grid">' +
 
         '<div>' +
-          '<a href="./" class="ft-mark">' + MARK + '<h2>OnSite</h2></a>' +
+          '<a href="./" class="ft-mark">' + MARK + '<h2>Sitehouse</h2></a>' +
           '<p class="ft-blurb">Professional business websites, built and managed for local businesses. ' +
             'One-time build price, optional monthly services, and a payment schedule you can read in full ' +
             'before you pay anything.</p>' +
@@ -87,10 +87,11 @@
           '<p class="ft-label">Contact</p>' +
           '<div class="ft-contact">' +
             '<a href="contact.html">Contact us</a>' +
+            '<a href="support.html">Help &amp; support</a>' +
             '<span class="ft-ph">[LEGAL BUSINESS NAME]</span>' +
             '<span class="ft-ph">[REGISTERED BUSINESS ADDRESS]</span>' +
-            '<span class="ft-ph">[CONTACT EMAIL]</span>' +
-            '<span class="ft-ph">[SUPPORT EMAIL]</span>' +
+            '<a href="mailto:hello@sitehouse.eu">hello@sitehouse.eu</a>' +
+            '<a href="mailto:help@sitehouse.eu">help@sitehouse.eu</a>' +
             '<span class="ft-ph">[PHONE NUMBER]</span>' +
           '</div>' +
         '</div>' +

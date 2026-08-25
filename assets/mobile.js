@@ -1,5 +1,5 @@
 /* ───────────────────────────────────────────────────────────────
-   Onsite — mobile behaviour
+   Sitehouse — mobile behaviour
    Progressive enhancement only: every page works without this file,
    it just adds the drawer navigation, the FAQ accordion, scroll
    reveals and the table-to-card labelling on small screens.
@@ -72,7 +72,7 @@
       '<div class="m-drawer-head">' +
         '<span class="flex items-center gap-2.5">' +
           '<span style="display:block;width:14px;height:14px;border-radius:3px;background:rgb(var(--c-accent))"></span>' +
-          '<span class="h-section" style="font-size:1.05rem">OnSite</span>' +
+          '<span class="h-section" style="font-size:1.05rem">Sitehouse</span>' +
         '</span>' +
         '<button type="button" class="m-drawer-close" aria-label="Close menu">' + ICON_CLOSE + '</button>' +
       '</div>' +
@@ -114,7 +114,7 @@
       if (e.key === 'Escape' && drawer.classList.contains('is-open')) close();
     });
 
-    global.OnsiteMobileNav = { open: open, close: close };
+    global.SitehouseMobileNav = { open: open, close: close };
   }
 
   // ── FAQ accordion ────────────────────────────────────────────
@@ -207,7 +207,7 @@
     labelTables();
   }
 
-  global.OnsiteMobile = { labelTables: labelTables, reveal: reveal, reduced: reduced };
+  global.SitehouseMobile = { labelTables: labelTables, reveal: reveal, reduced: reduced };
 
   if (doc.readyState === 'loading') { doc.addEventListener('DOMContentLoaded', start); }
   else { start(); }

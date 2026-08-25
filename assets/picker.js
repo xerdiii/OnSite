@@ -1,5 +1,5 @@
 /* ───────────────────────────────────────────────────────────────
-   Onsite — add-on picker
+   Sitehouse — add-on picker
    Ticking a box adds a number. That is the whole feature: no form
    submit, no navigation, no reload, nothing sent anywhere. The choice
    is kept in this browser so it survives a refresh and can be handed
@@ -13,7 +13,7 @@
   'use strict';
 
   var doc = global.document;
-  var KEY = 'onsite.picks';
+  var KEY = 'sitehouse.picks';
 
   function init() {
     var scope = doc.querySelector('[data-picker]');
@@ -44,7 +44,7 @@
       // €39.99 — but the design extras carry a real .99 and must keep it.
       var c = Math.round(n * 100) / 100;
       // Totals follow the chosen currency like every other price does.
-      if (global.OnsiteI18n) return global.OnsiteI18n.format(c);
+      if (global.SitehouseI18n) return global.SitehouseI18n.format(c);
       return '€' + (c % 1 === 0 ? c : c.toFixed(2));
     }
 
@@ -121,7 +121,7 @@
 
     // Switching currency has to move these numbers too — they are computed,
     // so no data-eur span exists for the currency pass to find.
-    if (global.OnsiteI18n) global.OnsiteI18n.onChange(total);
+    if (global.SitehouseI18n) global.SitehouseI18n.onChange(total);
   }
 
   if (doc.readyState === 'loading') doc.addEventListener('DOMContentLoaded', init);
