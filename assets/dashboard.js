@@ -7,7 +7,7 @@
   'use strict';
 
   var O = window.Sitehouse;
-  if (!O.requireSession('customer')) return;
+  // Gated below, once Supabase has restored the session.
 
   var view = document.getElementById('view');
   var esc = O.esc;
@@ -1216,6 +1216,7 @@
     },
     logout: function () {
       O.signOut();
+      if (window.SitehouseAuth) window.SitehouseAuth.signOut();
       location.href = 'login.html';
     }
   };
@@ -1382,7 +1383,13 @@
   // so a currency change means re-rendering — in place, without moving you.
   document.addEventListener('sitehouse:i18n', function () { render(true); });
 
+  // Nothing renders until there is a real session behind it.
+  O.requireAuth().then(function () { render(false); });
+
   // app.js posts ratings and needs the view redrawn afterwards.
   window.SitehouseDash = { render: render };
-  render();
+
+  // No bare render() here on purpose: it would paint the whole
+  // dashboard for a signed-out visitor in the moment before
+  // requireAuth() resolves and redirects them.
 })();

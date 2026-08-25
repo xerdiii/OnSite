@@ -391,6 +391,26 @@
     save();
   }
 
+  /* Resolves with the session, or sends them to the login page and
+     never resolves. Supabase rehydrates from storage asynchronously,
+     so a synchronous read on page load sees nothing and would bounce
+     a perfectly valid session. */
+  function requireAuth() {
+    var back = 'login.html?next=' + encodeURIComponent(
+      global.location.pathname.split('/').pop() + global.location.hash);
+
+    if (!global.SitehouseAuth) {
+      // Auth script missing entirely — fail closed, never open.
+      global.location.href = back;
+      return new Promise(function () {});
+    }
+    return global.SitehouseAuth.session().then(function (s) {
+      if (s) return s;
+      global.location.href = back;
+      return new Promise(function () {});
+    });
+  }
+
   function signOut() {
     var s = load();
     s.session = null;
@@ -400,6 +420,8 @@
   function session() { return load().session; }
 
   // Pages behind the login gate call this on load.
+  // Kept for anything still calling it synchronously. Real gating is
+  // requireAuth() below, which waits for Supabase.
   function requireSession(role) {
     var s = session();
     if (!s || (role && s.role !== role)) {
@@ -496,6 +518,7 @@
     euro: euro, euroMonth: euroMonth, deposit: deposit, balance: balance, date: date,
     load: load, save: save, reset: reset,
     newCode: newCode, signIn: signIn, signOut: signOut, session: session, requireSession: requireSession,
+    requireAuth: requireAuth,
     stages: stages, statusLabel: statusLabel, advance: advance,
     notify: notify, unreadCount: unreadCount, markAllRead: markAllRead,
     maintenanceActive: maintenanceActive, changesLeft: changesLeft,

@@ -6,7 +6,7 @@
   'use strict';
 
   var O = window.Sitehouse;
-  if (!O.requireSession('admin.html')) return;
+  if (!O.requireSession('admin.html')) return;   // staff console, unchanged
 
   var view = document.getElementById('view');
   var esc = O.esc;
@@ -380,7 +380,7 @@
       O.signIn('team@sitehouse.demo', 'admin.html');
       document.getElementById('reset-note').classList.remove('hidden');
     },
-    logout: function () { O.signOut(); location.href = 'login.html'; }
+    logout: function () { O.signOut(); if (window.SitehouseAuth) window.SitehouseAuth.signOut(); location.href = 'login.html'; }
   };
 
   function render() {

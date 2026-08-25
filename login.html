@@ -109,9 +109,7 @@ window.__entryFallback=setTimeout(function(){
           </div>
 
           <p class="aux">
-            <strong>Demo build.</strong> Sign-in is simulated in your browser — any email is accepted,
-            nothing is sent anywhere, and no real account is created.
-            <a href="#" id="staffLink">Staff sign-in &rarr;</a>
+            We email you a six-digit code instead of asking for a password. It is valid for one hour.
           </p>
           </div>
         </div>
@@ -140,8 +138,7 @@ window.__entryFallback=setTimeout(function(){
           </div>
 
           <p class="aux">
-            <strong>Demo build.</strong> No email or SMS is sent. Your generated code is
-            <b id="codeValue"></b> — type it above.
+            Nothing arrived? Check spam, then send a new code — only the newest one works.
           </p>
           </div>
         </div>
@@ -153,9 +150,19 @@ window.__entryFallback=setTimeout(function(){
 </div>
 
 <script src="assets/demo.js"></script>
+<script src="assets/supabase-auth.js" type="module"></script>
 <script>
 (function () {
   'use strict';
+
+  // supabase-auth.js is a module and therefore deferred; this runs
+  // first. Wait for it instead of assuming it is there.
+  function whenAuth(go) {
+    if (window.SitehouseAuth) { go(); return; }
+    document.addEventListener('sitehouse:auth-ready', go, { once: true });
+  }
+
+  whenAuth(function () {
   var params = new URLSearchParams(location.search);
 
   // Only ever redirect to a local page. Without this, ?next=https://example.com
@@ -166,8 +173,6 @@ window.__entryFallback=setTimeout(function(){
   }
 
   var next = safeNext(params.get('next'));
-  var role = 'customer';
-  var code = null;
 
   var stepCred = document.getElementById('stepCred');
   var stepCode = document.getElementById('stepCode');
@@ -175,65 +180,99 @@ window.__entryFallback=setTimeout(function(){
   var codeEl   = document.getElementById('code');
   var credErr  = document.getElementById('credErr');
   var codeErr  = document.getElementById('codeErr');
+  var loginBtn = document.getElementById('loginBtn');
+  var verifyBtn= document.getElementById('verifyBtn');
+  var gBtn     = document.getElementById('gBtn');
 
-  function issueCode() {
-    code = Sitehouse.newCode();
-    document.getElementById('codeValue').textContent = code;
-    document.getElementById('codeTarget').textContent = emailEl.value || Sitehouse.load().customer.email;
-  }
+  var EMAIL = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+  var busy = false;
 
-  function toCodeStep() {
+  function fail(box, msg) { box.textContent = msg; box.hidden = false; }
+  function label(btn, text) { var s = btn.querySelector('span'); if (s) s.textContent = text; }
+
+  /* Already signed in? Nothing to do here. */
+  SitehouseAuth.session().then(function (session) {
+    if (session) location.replace(next);
+  });
+
+  /* Returning from the Google redirect lands here with tokens in the
+     URL; the client consumes them and this fires. */
+  SitehouseAuth.onChange(function (event, session) {
+    if (session && (event === 'SIGNED_IN' || event === 'INITIAL_SESSION')) location.replace(next);
+  });
+
+  function toCodeStep(email) {
     credErr.hidden = true;
-    issueCode();
+    document.getElementById('codeTarget').textContent = email;
     stepCred.hidden = true;
     stepCode.hidden = false;
     codeEl.value = '';
     codeEl.focus();
   }
 
-  document.getElementById('loginBtn').addEventListener('click', function () {
-    if (!emailEl.value.trim()) { emailEl.value = Sitehouse.load().customer.email; }
-    role = 'customer';
-    toCodeStep();
+  loginBtn.addEventListener('click', function () {
+    if (busy) return;
+    var email = emailEl.value.trim();
+    if (!EMAIL.test(email)) { fail(credErr, 'Enter the email address on your account.'); emailEl.focus(); return; }
+
+    busy = true; loginBtn.disabled = true; label(loginBtn, 'Sending…');
+    SitehouseAuth.sendCode(email).then(function () {
+      toCodeStep(email);
+    }).catch(function (err) {
+      fail(credErr, SitehouseAuth.message(err));
+    }).then(function () {
+      busy = false; loginBtn.disabled = false; label(loginBtn, 'Send me a code');
+    });
   });
 
-  // No Google integration exists in a demo build, and a button that
-  // silently signs you in would be a lie about what happened. It says so.
-  document.getElementById('gBtn').addEventListener('click', function () {
-    credErr.textContent = 'Google sign-in is not part of this demo build. Use the email above.';
-    credErr.hidden = false;
+  emailEl.addEventListener('keydown', function (e) { if (e.key === 'Enter') loginBtn.click(); });
+
+  gBtn.addEventListener('click', function () {
+    if (busy) return;
+    busy = true; gBtn.disabled = true;
+    SitehouseAuth.google(next === 'dashboard.html' ? null : next).catch(function (err) {
+      fail(credErr, SitehouseAuth.message(err));
+      busy = false; gBtn.disabled = false;
+    });
   });
 
-  document.getElementById('staffLink').addEventListener('click', function (e) {
-    e.preventDefault();
-    emailEl.value = 'team@sitehouse.demo';
-    role = 'admin.html';
-    next = 'admin.html';
-    toCodeStep();
+  verifyBtn.addEventListener('click', function () {
+    if (busy) return;
+    var token = codeEl.value.trim();
+    if (!/^\d{6}$/.test(token)) { fail(codeErr, 'The code is six digits.'); return; }
+
+    busy = true; verifyBtn.disabled = true; label(verifyBtn, 'Checking…');
+    SitehouseAuth.verifyCode(document.getElementById('codeTarget').textContent, token)
+      .then(function () { location.replace(next); })
+      .catch(function (err) {
+        fail(codeErr, SitehouseAuth.message(err));
+        busy = false; verifyBtn.disabled = false; label(verifyBtn, 'Verify & continue');
+      });
   });
 
-  document.getElementById('verifyBtn').addEventListener('click', function () {
-    if (codeEl.value.trim() !== code) {
-      codeErr.textContent = 'That code does not match. In demo mode the code is shown below.';
-      codeErr.hidden = false;
-      return;
-    }
-    Sitehouse.signIn(emailEl.value.trim(), role);
-    location.href = next;
+  codeEl.addEventListener('input', function () {
+    codeErr.hidden = true;
+    // Six digits and nothing else — paste from a mail app often brings
+    // spaces with it.
+    codeEl.value = codeEl.value.replace(/\D/g, '').slice(0, 6);
+    if (codeEl.value.length === 6) verifyBtn.click();
   });
-
-  codeEl.addEventListener('input', function () { codeErr.hidden = true; });
 
   document.getElementById('resendBtn').addEventListener('click', function () {
-    issueCode();
+    var email = document.getElementById('codeTarget').textContent;
     codeErr.hidden = true;
-    codeEl.value = '';
-    codeEl.focus();
+    SitehouseAuth.sendCode(email).then(function () {
+      fail(codeErr, 'A new code is on its way.');
+      codeErr.classList.add('is-info');
+    }).catch(function (err) { fail(codeErr, SitehouseAuth.message(err)); });
+    codeEl.value = ''; codeEl.focus();
   });
 
   document.getElementById('backBtn').addEventListener('click', function () {
     stepCode.hidden = true;
     stepCred.hidden = false;
+    credErr.hidden = true;
+  });
   });
 })();
 </script>

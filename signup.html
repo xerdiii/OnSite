@@ -135,8 +135,8 @@ window.__entryFallback=setTimeout(function(){
             <p id="bottom">Already have an account? <a href="login.html">Log in</a></p>
             <div class="rowlinks"><a href="trouble.html">Trouble signing up?</a></div>
             <p class="aux">
-              <strong>Demo build.</strong> Nothing is sent anywhere and no real account is created.
-              You pay nothing here — the 25% deposit is taken later, from your dashboard.
+              You pay nothing here. We email a six-digit code to confirm the address, and the 25%
+              deposit is taken later, from your dashboard.
             </p>
           </div>
         </div>
@@ -163,8 +163,7 @@ window.__entryFallback=setTimeout(function(){
               <button type="button" class="linkbtn" id="backBtn">Back</button>
             </div>
             <p class="aux">
-              <strong>Demo build.</strong> No email or SMS is sent. Your generated code is
-              <b id="codeValue"></b> — type it above.
+              Nothing arrived? Check spam, then send a new code — only the newest one works.
             </p>
           </div>
         </div>
@@ -176,9 +175,19 @@ window.__entryFallback=setTimeout(function(){
 </div>
 
 <script src="assets/demo.js"></script>
+<script src="assets/supabase-auth.js" type="module"></script>
 <script>
 (function () {
   'use strict';
+
+  // supabase-auth.js is a module and therefore deferred; this runs
+  // first. Wait for it instead of assuming it is there.
+  function whenAuth(go) {
+    if (window.SitehouseAuth) { go(); return; }
+    document.addEventListener('sitehouse:auth-ready', go, { once: true });
+  }
+
+  whenAuth(function () {
   var code = null;
   var stepDetails = document.getElementById('stepDetails');
   var stepCode = document.getElementById('stepCode');
@@ -187,51 +196,87 @@ window.__entryFallback=setTimeout(function(){
   var detErr = document.getElementById('detErr');
   var codeErr = document.getElementById('codeErr');
 
-  function issueCode() {
-    code = Sitehouse.newCode();
-    document.getElementById('codeValue').textContent = code;
-    document.getElementById('codeTarget').textContent = emailEl.value || 'your email';
-  }
+  var EMAIL = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+  var busy = false;
+  var createBtn = document.getElementById('createBtn');
+  var verifyBtn = document.getElementById('verifyBtn');
 
-  document.getElementById('createBtn').addEventListener('click', function () {
+  function fail(box, msg) { box.textContent = msg; box.hidden = false; }
+  function label(btn, text) { var s = btn.querySelector('span'); if (s) s.textContent = text; }
+
+  SitehouseAuth.onChange(function (event, session) {
+    if (session && (event === 'SIGNED_IN' || event === 'INITIAL_SESSION')) location.replace('dashboard.html');
+  });
+
+  createBtn.addEventListener('click', function () {
+    if (busy) return;
+    var email = emailEl.value.trim();
     var pw = document.querySelector('#pw input').value;
     var cf = document.getElementById('confirm').value;
+    var business = document.getElementById('business').value.trim();
 
-    if (pw && cf && pw !== cf) {
-      detErr.textContent = 'Those passwords do not match.';
-      detErr.hidden = false;
-      return;
-    }
+    if (!business) { fail(detErr, 'We need the name customers know you by.'); return; }
+    if (!EMAIL.test(email)) { fail(detErr, 'Check that email address.'); return; }
+    if (pw && cf && pw !== cf) { fail(detErr, 'Those passwords do not match.'); return; }
     if (!document.getElementById('agree').checked) {
-      detErr.textContent = 'Please agree to the Terms of Service to continue.';
-      detErr.hidden = false;
+      fail(detErr, 'Please agree to the Terms of Service to continue.');
       return;
     }
     detErr.hidden = true;
-    if (!emailEl.value.trim()) { emailEl.value = Sitehouse.load().customer.email; }
 
-    issueCode();
-    stepDetails.hidden = true;
-    stepCode.hidden = false;
-    codeEl.focus();
+    // Keep what they typed so the dashboard has it the moment they land.
+    var s = Sitehouse.load();
+    s.customer.business = business;
+    s.customer.email = email;
+    var cc = document.getElementById('ccField');
+    var dial = cc ? cc.getAttribute('data-dial') : '';
+    var phone = document.getElementById('phone').value.trim();
+    if (phone) s.customer.phone = (dial ? dial + ' ' : '') + phone;
+    Sitehouse.save();
+
+    busy = true; createBtn.disabled = true; label(createBtn, 'Sending…');
+    SitehouseAuth.sendCode(email).then(function () {
+      document.getElementById('codeTarget').textContent = email;
+      stepDetails.hidden = true;
+      stepCode.hidden = false;
+      codeEl.focus();
+    }).catch(function (err) {
+      fail(detErr, SitehouseAuth.message(err));
+    }).then(function () {
+      busy = false; createBtn.disabled = false; label(createBtn, 'Create account');
+    });
   });
 
-  document.getElementById('verifyBtn').addEventListener('click', function () {
-    if (codeEl.value.trim() !== code) {
-      codeErr.textContent = 'That code does not match. In demo mode the code is shown below.';
-      codeErr.hidden = false;
-      return;
-    }
-    Sitehouse.signIn(emailEl.value.trim(), 'customer');
-    location.href = 'dashboard.html';
+  verifyBtn.addEventListener('click', function () {
+    if (busy) return;
+    var token = codeEl.value.trim();
+    if (!/^\d{6}$/.test(token)) { fail(codeErr, 'The code is six digits.'); return; }
+
+    busy = true; verifyBtn.disabled = true; label(verifyBtn, 'Checking…');
+    SitehouseAuth.verifyCode(document.getElementById('codeTarget').textContent, token)
+      .then(function () { location.replace('dashboard.html'); })
+      .catch(function (err) {
+        fail(codeErr, SitehouseAuth.message(err));
+        busy = false; verifyBtn.disabled = false; label(verifyBtn, 'Verify & continue');
+      });
   });
 
-  codeEl.addEventListener('input', function () { codeErr.hidden = true; });
+  codeEl.addEventListener('input', function () {
+    codeErr.hidden = true;
+    codeEl.value = codeEl.value.replace(/\D/g, '').slice(0, 6);
+    if (codeEl.value.length === 6) verifyBtn.click();
+  });
+
   document.getElementById('resendBtn').addEventListener('click', function () {
-    issueCode(); codeErr.hidden = true; codeEl.value = ''; codeEl.focus();
+    SitehouseAuth.sendCode(document.getElementById('codeTarget').textContent)
+      .then(function () { fail(codeErr, 'A new code is on its way.'); })
+      .catch(function (err) { fail(codeErr, SitehouseAuth.message(err)); });
+    codeEl.value = ''; codeEl.focus();
   });
-  document.getElementById('backBtn').addEventListener('click', function () {
+
+    document.getElementById('backBtn').addEventListener('click', function () {
     stepCode.hidden = true; stepDetails.hidden = false;
+  });
   });
 })();
 </script>
