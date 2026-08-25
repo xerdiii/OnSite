@@ -210,7 +210,12 @@
       try { global.sessionStorage.setItem('sitehouse.next', next || 'dashboard.html'); } catch (e) {}
 
       return client().then(function (sb) {
-        var back = global.location.origin + '/login.html' +
+        // Extensionless on purpose. Supabase matches redirect_to against
+        // its allow list as a literal string, and the list holds
+        // ".../login". Vercel's cleanUrls serves /login from login.html,
+        // and the dev server resolves it the same way, so this one form
+        // is valid everywhere and actually matches.
+        var back = global.location.origin + '/login' +
                    (next ? '?next=' + encodeURIComponent(next) : '');
         return sb.auth.signInWithOAuth({
           provider: 'google',
