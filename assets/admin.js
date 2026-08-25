@@ -1,5 +1,5 @@
 /* ───────────────────────────────────────────────────────────────
-   Sitehouse — internal admin (demo)
+   Sitehouse — internal admin
    Read-mostly views over the same mock store the dashboard uses.
    ─────────────────────────────────────────────────────────────── */
 (function () {
@@ -331,7 +331,7 @@
   };
 
   routes['/settings'] = function () {
-    return head('Settings', 'Internal configuration.', 'Demo only — nothing here is persisted to a server.') +
+    return head('Settings', 'Internal configuration.', 'These settings live in this browser. There is no server behind them yet.') +
       '<div class="mt-8 grid grid-cols-1 gap-6 lg:grid-cols-2">' +
         '<div class="card p-6"><p class="mono-label text-ink-soft">Payment model</p>' +
           '<table class="tbl m-cards mt-4"><tbody>' +
@@ -340,10 +340,10 @@
             '<tr><td class="name">Monthly services</td><td>Start at launch, never during build</td></tr>' +
             '<tr><td class="name">Target delivery</td><td>7 days from receiving all content</td></tr>' +
           '</tbody></table></div>' +
-        '<div class="card p-6"><p class="mono-label text-ink-soft">Demo controls</p>' +
+        '<div class="card p-6"><p class="mono-label text-ink-soft">Local data</p>' +
           '<p class="mt-3 text-[0.8125rem] leading-relaxed text-ink-mid">The client dashboard and this admin share one mock store in your browser. Reset it to put the example customer back to “ready for review”.</p>' +
           '<button class="btn btn-ghost mt-4" data-act="reset-demo">Reset demo data</button>' +
-          '<p id="reset-note" class="mt-3 hidden text-[0.8125rem] font-semibold text-accent">Demo data reset.</p>' +
+          '<p id="reset-note" class="mt-3 hidden text-[0.8125rem] font-semibold text-accent">Local data cleared.</p>' +
         '</div>' +
       '</div>' +
 
@@ -377,7 +377,6 @@
     },
     'reset-demo': function () {
       O.reset();
-      O.signIn('team@sitehouse.demo', 'admin.html');
       document.getElementById('reset-note').classList.remove('hidden');
     },
     logout: function () { O.signOut(); if (window.SitehouseAuth) window.SitehouseAuth.signOut(); location.href = 'login.html'; }

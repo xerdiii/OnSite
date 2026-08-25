@@ -56,7 +56,10 @@
   <div class="mx-auto flex max-w-shell items-center justify-between gap-4 px-6 py-3.5 md:px-10">
     <div class="flex items-center gap-3">
       <button id="nav-toggle" type="button" class="btn btn-ghost px-2.5 py-1.5 lg:hidden" aria-label="Menu">☰</button>
-      <a href="./" class="flex items-center gap-2.5">
+      <!-- Absolute, not "./": the dashboard is reached at /dashboard and
+           at /dashboard.html, and a relative href does not mean the same
+           thing at both. This one always lands on the landing page. -->
+      <a href="/" class="flex items-center gap-2.5" title="Back to sitehouse.eu">
         <span class="brand-mark" role="img" aria-label="Sitehouse"></span>
         <span class="h-section text-lg tracking-tight">Sitehouse</span>
       </a>
@@ -195,7 +198,7 @@
   <div class="mx-auto flex max-w-shell flex-col gap-3 px-6 py-8 sm:flex-row sm:items-center sm:justify-between md:px-10">
     <p class="text-[0.8125rem] text-ink-soft">Sitehouse — client dashboard (demo)</p>
     <div class="flex flex-wrap gap-x-6 gap-y-2">
-      <a href="./" class="mono-label text-ink-soft hover:text-ink">Website</a>
+      <a href="/" class="mono-label text-ink-soft hover:text-ink">Website</a>
       <a href="terms.html" class="mono-label text-ink-soft hover:text-ink">Terms</a>
       <a href="cookies.html" class="mono-label text-ink-soft hover:text-ink">Cookies</a>
       <a href="#" data-cookie-settings class="mono-label text-ink-soft hover:text-ink">Cookie settings</a>

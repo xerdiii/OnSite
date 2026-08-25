@@ -206,7 +206,7 @@
     var name = doc.getElementById('ff-name').value.trim();
     var email = doc.getElementById('ff-email').value.trim();
 
-    // Demo build: hand the details to the local store so the dashboard
+    // Hand the details to the local store so the dashboard
     // has something real to show, then swap the form for the receipt.
     try {
       if (global.Sitehouse) {
@@ -227,9 +227,8 @@
         };
         s.tier = 'free';
         global.Sitehouse.save();
-        global.Sitehouse.signIn(email, 'customer');
       }
-    } catch (ignored) { /* demo store only; the receipt still shows */ }
+    } catch (ignored) { /* local store only; the receipt still shows */ }
 
     // Tell the inbox, if the endpoint is wired up. The receipt does not
     // wait on it and does not depend on it: a mail server having a bad

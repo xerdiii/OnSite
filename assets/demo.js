@@ -1,5 +1,5 @@
 /* ───────────────────────────────────────────────────────────────
-   Sitehouse — demo data store and mock authentication
+   Sitehouse — project store
    DEMO ONLY. Nothing here is secure and nothing leaves the browser:
    state lives in localStorage, the "verification code" is generated
    client-side and shown on screen, and no password is ever checked.
@@ -8,7 +8,10 @@
 (function (global) {
   'use strict';
 
-  var KEY = 'sitehouse.demo.v1';
+  // Bumped from .demo.v1: the old key holds the seeded example account,
+  // and merging it into a real one would put a stranger's salon in
+  // somebody's dashboard.
+  var KEY = 'sitehouse.store.v2';
 
   // ── Money ────────────────────────────────────────────────────
   // Held in whole euro cents everywhere, formatted only at the edge.
@@ -25,154 +28,89 @@
   function deposit(cents) { return Math.floor(cents * 0.25); }
   function balance(cents) { return cents - deposit(cents); }
 
-  function date(iso) {
+  function date(iso, blank) {
+    if (!iso) return blank || '—';
     var d = new Date(iso + 'T00:00:00');
+    if (isNaN(d.getTime())) return blank || '—';
     return d.toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' });
   }
 
-  // ── Seed data ────────────────────────────────────────────────
-  // Janey's one-time total is Custom Website (€79.99) + Local SEO (€199.99).
+  // ── A new account ────────────────────────────────────────────
+  // Empty, because a new account is empty. Nothing here is invented:
+  // every field fills in from what the customer actually tells us.
+  //
+  // Keys must exist even when blank — load() merges only the keys this
+  // function declares, so anything written at runtime and missing here
+  // is silently dropped on the next read.
   function seed() {
     return {
       session: null,
 
-      // Which pack this account is on. load() merges only keys the seed
-      // declares, so anything written at runtime has to exist here or it
-      // is silently dropped on the next read.
-      tier: 'custom',
+      // Which pack this account is on: none until one is chosen.
+      tier: 'none',
       freePage: null,
+      onboarded: false,
 
       customer: {
-        firstName: 'Jane',
-        lastName: 'Whitfield',
-        business: "Janey's Hair Studio",
-        email: 'jane@janeys-hair.co.uk',
-        phone: '+44 7700 900412',
-        address: '14 Mill Street, Leeds LS1 5DQ',
-        websiteUrl: 'janeys-hair.co.uk',
-        googleProfile: 'Janey’s Hair Studio — Leeds',
-        whatsapp: '+44 7700 900412',
-        socials: {
-          instagram: 'instagram.com/janeyshairstudio',
-          facebook: 'facebook.com/janeyshairstudio',
-          tiktok: ''
-        },
+        firstName: '',
+        lastName: '',
+        business: '',
+        email: '',
+        phone: '',
+        address: '',
+        websiteUrl: '',
+        googleProfile: '',
+        whatsapp: '',
+        socials: { instagram: '', facebook: '', tiktok: '' },
         hours: [
-          { day: 'Monday',    open: 'Closed' },
-          { day: 'Tuesday',   open: '09:00 – 18:00' },
-          { day: 'Wednesday', open: '09:00 – 18:00' },
-          { day: 'Thursday',  open: '09:00 – 20:00' },
-          { day: 'Friday',    open: '09:00 – 20:00' },
-          { day: 'Saturday',  open: '08:30 – 16:00' },
-          { day: 'Sunday',    open: 'Closed' }
+          { day: 'Monday',    open: '' },
+          { day: 'Tuesday',   open: '' },
+          { day: 'Wednesday', open: '' },
+          { day: 'Thursday',  open: '' },
+          { day: 'Friday',    open: '' },
+          { day: 'Saturday',  open: '' },
+          { day: 'Sunday',    open: '' }
         ],
-        createdAt: '2026-08-04'
+        createdAt: null
       },
 
       project: {
-        // deposit → content → build → review → final payment → live
-        stage: 'review',
-        deliveryDate: '2026-08-19',
-        lastUpdate: '2026-08-17',
+        // none → deposit → content → build → review → final payment → live
+        stage: 'none',
+        deliveryDate: null,
+        lastUpdate: null,
         previewUrl: 'preview.sitehouse.eu',
-        features: [
-          'Contact form', 'Google Maps', 'WhatsApp button', 'Photo / gallery section',
-          'Business information', 'Services section', 'Opening hours', 'Social links', 'Call button'
-        ]
+        features: []
       },
 
       order: {
-        oneTimeCents: 27998,      // 7999 + 19999
-        monthlyCents: 4998,       // 2999 + 1999
-        oneTimeItems: [
-          { name: 'Custom Website', cents: 7999 },
-          { name: 'Local SEO',      cents: 19999 }
-        ],
-        monthlyItems: [
-          { name: 'Online Booking System', cents: 2999 },
-          { name: 'Website Maintenance',   cents: 1999 }
-        ]
+        oneTimeCents: 0,
+        monthlyCents: 0,
+        oneTimeItems: [],
+        monthlyItems: []
       },
 
-      payments: [
-        { id: 'INV-1042', date: '2026-08-04', description: '25% deposit — Custom Website + Local SEO',
-          cents: 6999, kind: 'one-time', status: 'paid' },
-        { id: 'INV-1043', date: null, description: 'Remaining 75% — due after you approve the website',
-          cents: 20999, kind: 'one-time', status: 'due-after-approval' }
-      ],
+      payments: [],
 
-      services: [
-        { name: 'Custom Website',        cents: 7999,  cadence: 'once',  state: 'active' },
-        { name: 'Local SEO',             cents: 19999, cadence: 'once',  state: 'active' },
-        { name: 'Online Booking System', cents: 2999,  cadence: 'month', state: 'active' },
-        { name: 'Website Maintenance',   cents: 1999,  cadence: 'month', state: 'active' },
-        { name: 'Review Management',     cents: 2999,  cadence: 'month', state: 'available' },
-        { name: 'Digital Menu',          cents: 1999,  cadence: 'month', state: 'available', setupCents: 4999 },
-        { name: 'Social Media Content',  cents: null,  cadence: null,    state: 'soon' },
-        { name: 'AI Receptionist',       cents: null,  cadence: null,    state: 'soon' }
-      ],
+      // Filled in when an order is placed, from the catalogue.
+      services: [],
 
-      maintenance: { included: 15, used: 3 },
+      maintenance: { included: 0, used: 0 },
 
-      // Support threads. Declared here or load() drops them on the
-      // next read — it only merges keys the seed knows about.
       threads: [],
 
-      // Ratings customers leave on their own dashboard. Seeded with a
-      // few so the averages and the bars have something to draw; the
-      // `mine` flag marks the one this account left, so the Rate us
-      // button knows whether to say rate or edit.
       // Ratings customers leave on their own dashboard. Empty on
       // purpose: seeding it would put invented businesses on the public
       // page, and the band that renders them stays hidden until a real
       // one arrives.
       ratings: [],
 
-      changeRequests: [
-        { id: 'CR-118', type: 'Opening hours', description: 'Late opening on Thursdays until 20:00.',
-          created: '2026-08-15', deadline: '', status: 'completed', notes: '' },
-        { id: 'CR-121', type: 'Prices', description: 'Cut & blow dry goes from £38 to £42.',
-          created: '2026-08-16', deadline: '2026-08-20', status: 'in-progress', notes: '' },
-        { id: 'CR-124', type: 'Photos', description: 'Three new photos of the salon after the refit.',
-          created: '2026-08-17', deadline: '', status: 'pending', notes: 'Photos sent by email.' }
-      ],
+      changeRequests: [],
+      support: [],
+      notifications: [],
 
-      support: [
-        { id: 'SUP-31', subject: 'Can I add a second phone number?', status: 'answered', created: '2026-08-12',
-          messages: [
-            { from: 'you',    at: '2026-08-12', body: 'Can the page show my mobile as well as the salon line?' },
-            { from: 'Sitehouse', at: '2026-08-12', body: 'Yes — send both numbers and we will label them Salon and Mobile. No change request needed, it is part of the build.' }
-          ] }
-      ],
-
-      notifications: [
-        { id: 'N-4', at: '2026-08-17', text: 'Your website is ready for review.', read: false },
-        { id: 'N-3', at: '2026-08-17', text: 'Your remaining 75% website payment becomes due once you approve.', read: false },
-        { id: 'N-2', at: '2026-08-15', text: 'Your change request CR-118 has been completed.', read: true },
-        { id: 'N-1', at: '2026-08-04', text: 'Deposit received — your project has been created.', read: true }
-      ],
-
-      // Admin-side roster. The first row is the customer above.
-      users: [
-        { name: 'Jane Whitfield',   business: "Janey's Hair Studio", email: 'jane@janeys-hair.co.uk',
-          website: 'Ready for review', deposit: 'paid', final: 'pending', monthly: 'pending-launch',
-          monthlyCents: 4998, oneTimeCents: 27998, created: '2026-08-04' },
-        { name: 'Tomas Berisha',    business: 'Berisha Plumbing',    email: 'tomas@berishaplumbing.com',
-          website: 'Live', deposit: 'paid', final: 'paid', monthly: 'active',
-          monthlyCents: 1999, oneTimeCents: 7999, created: '2026-06-11' },
-        { name: 'Aoife Doyle',      business: 'Doyle Dental Care',   email: 'aoife@doyledental.ie',
-          website: 'Building', deposit: 'paid', final: 'pending', monthly: 'pending-launch',
-          monthlyCents: 4998, oneTimeCents: 24999, created: '2026-08-13' },
-        { name: 'Marco Ferretti',   business: 'Trattoria Ferretti',  email: 'marco@trattoriaferretti.it',
-          website: 'Live', deposit: 'paid', final: 'paid', monthly: 'active',
-          monthlyCents: 4998, oneTimeCents: 29998, created: '2026-05-02' },
-        { name: 'Ellie Grant',      business: 'Grant Mobile Valeting', email: 'ellie@grantvaleting.co.uk',
-          website: 'Awaiting content', deposit: 'paid', final: 'pending', monthly: 'pending-launch',
-          monthlyCents: 0, oneTimeCents: 7999, created: '2026-08-16' },
-        { name: 'Petrit Krasniqi',  business: 'Krasniqi Electrical',  email: 'petrit@krasniqielectric.com',
-          website: 'Cancelled', deposit: 'paid', final: 'cancelled', monthly: 'cancelled',
-          monthlyCents: 0, oneTimeCents: 7999, created: '2026-03-21' }
-      ]
+      // Admin-side roster, from real signups only.
+      users: []
     };
   }
 
@@ -381,10 +319,6 @@
   // ── Mock auth ────────────────────────────────────────────────
   // A code is generated in the browser and displayed on screen. There is
   // no email, no SMS, no server and no password check.
-  function newCode() {
-    return String(Math.floor(100000 + Math.random() * 900000));
-  }
-
   function signIn(email, role) {
     var s = load();
     s.session = { email: email || s.customer.email, role: role || 'customer', at: new Date().toISOString() };
@@ -475,6 +409,7 @@
 
   function statusLabel() {
     var map = {
+      none:    'Not started',
       deposit: 'Deposit received',
       content: 'Awaiting your content',
       build:   'Website in progress',
@@ -533,7 +468,7 @@
     CATALOG: CATALOG, emptyDraft: emptyDraft,
     euro: euro, euroMonth: euroMonth, deposit: deposit, balance: balance, date: date,
     load: load, save: save, reset: reset,
-    newCode: newCode, signIn: signIn, signOut: signOut, session: session, requireSession: requireSession,
+    signIn: signIn, signOut: signOut, session: session, requireSession: requireSession,
     requireAuth: requireAuth,
     stages: stages, statusLabel: statusLabel, advance: advance,
     notify: notify, unreadCount: unreadCount, markAllRead: markAllRead,

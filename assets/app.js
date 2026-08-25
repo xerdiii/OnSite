@@ -39,7 +39,70 @@
   }
 
   /* ══ The order rail ══════════════════════════════════════════ */
+  /* The builder is live: the rail must show what is being chosen, not
+     the order that was placed months ago. */
+  function onBuilder() {
+    return (global.location.hash || '').indexOf('/build') > -1;
+  }
+
+  function draftRailHtml() {
+    var D2 = global.SitehouseDraft;
+    if (!D2 || !D2.totals) return null;
+    var t = D2.totals();
+    var lines = D2.lines();
+
+    var once = lines.once.map(function (l) {
+      return '<div class="ord-line"><span>' + esc(l[0]) + '</span><b>' + l[1] + '</b></div>';
+    }).join('') || '<div class="ord-line"><span>Nothing chosen yet</span><b>&mdash;</b></div>';
+
+    var month = lines.month.map(function (l) {
+      return '<div class="ord-line"><span>' + esc(l[0]) + '</span><b>' + l[1] + '</b></div>';
+    }).join('');
+
+    return '' +
+      '<div class="ord">' +
+        '<div class="ord-due' + (t.deposit ? '' : ' ord-due--clear') + '">' +
+          '<p class="ord-due-l">Pay today &mdash; 25%</p>' +
+          '<p class="ord-due-v">' + money(t.deposit) + '</p>' +
+          '<p class="ord-due-p">' + (t.base
+            ? 'The rest is due only once you have approved the finished site.'
+            : 'Choose a website to begin.') + '</p>' +
+          (D2.blocked() ? '<p class="ord-due-p">' + esc(D2.blocked()) + '</p>' : '') +
+          '<label class="ord-agree">' +
+            '<input type="checkbox" data-act="toggle-agree"' + (D2.agreed() ? ' checked' : '') + '>' +
+            '<span>I agree to the <a href="terms.html" target="_blank" rel="noopener">Terms of Service</a>.</span>' +
+          '</label>' +
+          '<button type="button" class="ord-btn" data-act="pay-deposit"' + (t.ready ? '' : ' disabled') + '>' +
+            (t.base && t.base.key === 'free' ? 'Request my free page' : 'Pay and start') +
+          '</button>' +
+        '</div>' +
+      '</div>' +
+
+      '<div class="ord">' +
+        '<div class="ord-head"><p>Building</p><p>' + esc(t.base ? t.base.name : 'nothing yet') + '</p></div>' +
+        '<div class="ord-body">' +
+          once +
+          '<div class="ord-sum"><span>One-time</span><b>' + money(t.once) + '</b></div>' +
+          (month
+            ? '<div style="margin-top:.9rem;padding-top:.7rem;border-top:1px solid rgb(var(--c-line))">' +
+              month + '<div class="ord-sum"><span>Monthly</span><b>' + money(t.month) + '</b></div></div>'
+            : '') +
+        '</div>' +
+      '</div>' +
+
+      '<div class="ord">' +
+        '<div class="ord-body"><p style="font-size:.8125rem;line-height:1.6;color:rgb(var(--c-ink-mid))">' +
+          'After approval: <b>' + money(t.balance) + '</b>. ' +
+          'Monthly starts the day you go live.' +
+        '</p></div>' +
+      '</div>';
+  }
+
   function railHtml() {
+    if (onBuilder()) {
+      var d = draftRailHtml();
+      if (d) return d;
+    }
     var s = O.load();
     var o = s.order || { oneTimeCents: 0, monthlyCents: 0, oneTimeItems: [], monthlyItems: [] };
     var tier = s.tier || 'none';
@@ -133,7 +196,19 @@
     var s = O.load(), o = s.order || {};
     var bar = doc.querySelector('[data-sheet-bar]');
     if (!bar) return;
+
+    // Nothing ordered and not currently choosing: no number to show.
+    if (!onBuilder() && !(o.oneTimeCents || o.monthlyCents)) { bar.hidden = true; return; }
     bar.hidden = false;
+
+    if (onBuilder() && global.SitehouseDraft) {
+      var dt = global.SitehouseDraft.totals();
+      doc.querySelector('[data-sheet-l]').textContent =
+        dt.base ? 'Pay today — 25%' : 'Choose a website';
+      doc.querySelector('[data-sheet-v]').textContent = money(dt.deposit);
+      return;
+    }
+
     var stage = (s.project && s.project.stage) || 'deposit';
     var owed = stage === 'deposit' ? O.deposit(o.oneTimeCents || 0)
              : (stageIndex(stage) < stageIndex('final') ? O.balance(o.oneTimeCents || 0) : (o.monthlyCents || 0));

@@ -109,18 +109,48 @@
     S.save();
   }
 
+  var synced = Promise.resolve();       // the most recent profile sync
+
   function syncProfile(sb, session) {
     if (!session) return Promise.resolve();
     var S = global.Sitehouse;
-    var c = S ? S.load().customer : {};
-    return sb.from('profiles').upsert({
-      id: session.user.id,
-      email: session.user.email,
-      business: c.business || null,
-      phone: c.phone || null
-    }, { onConflict: 'id' }).then(function (r) {
-      if (r.error) console.warn('profile sync', r.error.message);
-    });
+    if (!S) return Promise.resolve();
+
+    synced = sb.from('profiles')
+      .select('business, phone')
+      .eq('id', session.user.id)
+      .maybeSingle()
+      .then(function (r) {
+        if (r.error) console.warn('profile read', r.error.message);
+        var row = r.data || {};
+        var st = S.load();
+        var c = st.customer;
+
+        // The account is the authority on anything it already knows.
+        if (row.business && !c.business) c.business = row.business;
+        if (row.phone && !c.phone) c.phone = row.phone;
+        c.email = session.user.email || c.email;
+
+        /* Somebody whose account already carries a business name has
+           been through onboarding, whatever this particular browser
+           remembers. Asking again is asking a customer to introduce
+           themselves twice. */
+        if (c.business && String(c.business).trim()) st.onboarded = true;
+        S.save();
+
+        return sb.from('profiles').upsert({
+          id: session.user.id,
+          email: session.user.email,
+          business: c.business || null,
+          phone: c.phone || null
+        }, { onConflict: 'id' });
+      })
+      .then(function (r) {
+        if (r && r.error) console.warn('profile sync', r.error.message);
+      })
+      ['catch'](function (e) { console.warn('profile sync', e && e.message); });
+
+    return synced;
   }
 
   /* Nothing that talks to a mail server is allowed to hang the button.
@@ -236,8 +266,10 @@
     needsOnboarding: function () {
       var S = global.Sitehouse;
       if (!S) return false;
-      var c = S.load().customer || {};
-      return !c.business || !String(c.business).trim();
+      var st = S.load();
+      if (st.onboarded) return false;
+      var c = st.customer || {};
+      return !c.business || !String(c.business).trim() || st.tier === 'none';
     },
 
     session: function () {
@@ -323,6 +355,12 @@
     var onAuthPage = here === 'login' || here === 'signup';
     if (!CAME_BACK && !onAuthPage) return;      // nothing to finish
 
+    // What the account already knows beats what this browser remembers,
+    // so wait for the profile before deciding anything.
+    synced['catch'](function () {}).then(function () { routeNow(session, here); });
+  }
+
+  function routeNow(session, here) {
     // Business name first. Everything downstream — the package
     // builder, the order, the invoice — is addressed to a business,
     // and Google cannot tell us what it is called.

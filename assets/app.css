@@ -72,10 +72,19 @@
 
 /* ══ Right — the order rail ═════════════════════════════════════ */
 .rail-order { display: none; }
+
 @media (min-width: 1440px) {
   .rail-order { display: block; padding-top: 1.75rem; }
   .rail-order-in { position: sticky; top: 5.5rem; display: grid; gap: 1rem; }
 }
+
+/* An overlay that is not open must not be in the way. The sheet is
+   position:fixed inset:0, so during the 300ms it spends closing — and
+   on any browser that drops the timer — it would otherwise sit
+   invisibly over the whole page and swallow every click, including
+   the one on the logo. */
+.sheet:not(.is-open) { pointer-events: none; }
+.sheet.is-open { pointer-events: auto; }
 
 .ord {
   border: 1px solid rgb(var(--c-line)); border-radius: 0.7rem;
@@ -91,6 +100,16 @@
   font-size: 0.625rem; letter-spacing: 0.16em; text-transform: uppercase;
   color: rgb(var(--c-ink-soft));
 }
+.ord-agree {
+  display: flex; align-items: flex-start; gap: 0.55rem;
+  margin: 0.9rem 0 0.15rem;
+  font-size: 0.8125rem; line-height: 1.5; cursor: pointer;
+}
+.ord-agree input { margin-top: 0.15rem; flex: none; accent-color: rgb(var(--c-accent)); }
+.ord-agree a { text-decoration: underline; }
+
+.ord-btn[disabled] { opacity: 0.45; cursor: not-allowed; }
+
 .ord-body { padding: 0.9rem 1rem; }
 .ord-line {
   display: flex; align-items: baseline; justify-content: space-between; gap: 0.9rem;

@@ -168,6 +168,8 @@ a, button { transition: background-color 180ms ease, color 180ms ease, border-co
 .build-wrap { display: grid; gap: 2rem; margin-top: 1.75rem; }
 @media (min-width: 1024px) {
   .build-wrap { grid-template-columns: minmax(0, 1fr) 22rem; gap: 2.5rem; align-items: start; }
+  /* one column: the rail carries the summary */
+  .build-wrap--solo { grid-template-columns: minmax(0, 1fr); }
 }
 .build-main { min-width: 0; display: grid; gap: 2.5rem; }
 
@@ -217,56 +219,8 @@ a, button { transition: background-color 180ms ease, color 180ms ease, border-co
 }
 .build-card.is-on .build-state { color: rgb(var(--c-accent-text)); }
 
-/* ── Summary ─────────────────────────────────────────────────── */
-.build-sum {
-  overflow: hidden; border: 1px solid rgb(var(--c-line)); border-radius: 0.7rem;
-  background: rgb(var(--c-paper));
-}
-@media (min-width: 1024px) { .build-side { position: sticky; top: 6rem; } }
-.build-sum-head { border-bottom: 1px solid rgb(var(--c-line)); padding: 0.9rem 1.15rem; }
-.build-sum-block { padding: 1rem 1.15rem; border-bottom: 1px solid rgb(var(--c-line)); }
-.sum-list {
-  list-style: none; margin: 0.55rem 0 0; padding: 0;
-  font-family: 'IBM Plex Mono', ui-monospace, monospace;
-  font-size: 0.75rem; color: rgb(var(--c-ink-mid));
-}
-.sum-row {
-  display: flex; align-items: baseline; justify-content: space-between; gap: 1rem;
-  border-bottom: 1px solid rgb(var(--c-line)); padding: 0.5rem 0;
-}
-.sum-row span:last-child { color: rgb(var(--c-ink)); white-space: nowrap; }
-.sum-total {
-  display: flex; align-items: baseline; justify-content: space-between; gap: 1rem;
-  border-top: 1px solid rgb(var(--c-line-firm)); margin-top: 0.5rem; padding-top: 0.6rem;
-}
-
-.build-pay { background: rgb(var(--c-accent)); color: #fff; padding: 1.2rem 1.15rem; }
-.build-pay .mono-label { color: rgb(255 255 255 / 0.72); }
-.build-pay-row { display: flex; align-items: baseline; justify-content: space-between; gap: 1rem; }
-.build-pay-row--split { border-top: 1px solid rgb(255 255 255 / 0.2); margin-top: 0.9rem; padding-top: 0.9rem; }
-.build-pay-note { margin-top: 0.35rem; font-size: 0.75rem; line-height: 1.5; color: rgb(255 255 255 / 0.72); }
-.build-agree {
-  display: flex; align-items: flex-start; gap: 0.6rem; cursor: pointer;
-  border-top: 1px solid rgb(255 255 255 / 0.2); margin-top: 1.1rem; padding-top: 1rem;
-  font-size: 0.75rem; line-height: 1.55; color: rgb(255 255 255 / 0.85);
-}
-.build-agree input { width: 17px; height: 17px; margin-top: 1px; flex: none; accent-color: #fff; }
-.build-agree a { color: #fff; font-weight: 600; text-decoration: underline; text-underline-offset: 2px; }
-.build-pay-hint { margin-top: 0.6rem; text-align: center; font-size: 0.75rem; color: rgb(255 255 255 / 0.68); }
-.build-pay-demo { margin-top: 0.45rem; text-align: center; font-size: 0.6875rem; line-height: 1.5; color: rgb(255 255 255 / 0.55); }
-
-.build-sum-foot { padding: 0.85rem 1.15rem; }
-.build-sum-foot button {
-  border: 0; background: none; padding: 0; cursor: pointer; font: inherit;
-  font-size: 0.8125rem; font-weight: 600; color: rgb(var(--c-ink-mid));
-}
-.build-sum-foot button:hover { color: rgb(var(--c-ink)); }
-
-/* On a phone the summary panel is below the fold by definition, so the
-   sticky bar carries the number and this is the detail you scroll to. */
-@media (max-width: 1023px) {
-  .build-side { margin-bottom: 5.5rem; }
-}
+/* The builder's own summary column is gone — the order rail in
+   app.css is the one place a total appears. Its styles went with it. */
 
 /* ── Our work, empty ─────────────────────────────────────────── */
 .work-empty {

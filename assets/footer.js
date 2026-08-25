@@ -100,7 +100,7 @@
 
       '<div class="ft-base">' +
         '<p>[REGISTRATION NUMBER IF APPLICABLE] · [TAX/VAT INFORMATION IF APPLICABLE]</p>' +
-        '<p>Demo build — payments and sign-in are simulated</p>' +
+        '<p>Card payments are not switched on yet — nothing is charged online.</p>' +
       '</div>' +
     '</div>';
   }
