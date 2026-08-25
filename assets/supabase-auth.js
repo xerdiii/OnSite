@@ -123,24 +123,48 @@
     });
   }
 
+  /* Nothing that talks to a mail server is allowed to hang the button.
+     Supabase's auth endpoint waits ~35s on a bad SMTP host and then
+     returns 504; without this the UI sat on "Sending…" for as long as
+     the request took, which reads as broken long before it is. */
+  function withTimeout(promise, ms, what) {
+    var timer;
+    return Promise.race([
+      promise.then(function (v) { clearTimeout(timer); return v; },
+                   function (e) { clearTimeout(timer); throw e; }),
+      new Promise(function (_, reject) {
+        timer = setTimeout(function () {
+          var err = new Error('timeout:' + what);
+          err.timeout = true;
+          reject(err);
+        }, ms);
+      })
+    ]);
+  }
+
   /* ── Public surface ────────────────────────────────────────── */
   var Auth = {
     /* Email → Supabase sends a 6-digit code. */
-    sendCode: function (email) {
-      return client().then(function (sb) {
+    sendCode: function (email, opts) {
+      opts = opts || {};
+      return withTimeout(client().then(function (sb) {
         return sb.auth.signInWithOtp({
           email: String(email || '').trim(),
-          options: { shouldCreateUser: true }
+          options: {
+            // false on the reset/recovery paths: sending a code to an
+            // address with no account would silently create one.
+            shouldCreateUser: opts.createUser !== false
+          }
         });
       }).then(function (r) {
         if (r.error) throw r.error;
         return true;
-      });
+      }), 20000, 'send');
     },
 
     /* Code → a real session, or a real rejection. */
     verifyCode: function (email, token) {
-      return client().then(function (sb) {
+      return withTimeout(client().then(function (sb) {
         return sb.auth.verifyOtp({
           email: String(email || '').trim(),
           token: String(token || '').trim(),
@@ -150,7 +174,33 @@
           adopt(r.data.session);
           return syncProfile(sb, r.data.session).then(function () { return r.data.session; });
         });
-      });
+      }), 20000, 'verify');
+    },
+
+    /* Sets a new password on the account that is currently signed in.
+       The reset flow signs them in with a code first, so by the time
+       this runs the session is real and Supabase knows who they are. */
+    setPassword: function (password) {
+      return withTimeout(client().then(function (sb) {
+        return sb.auth.updateUser({ password: String(password || '') });
+      }).then(function (r) {
+        if (r.error) throw r.error;
+        return true;
+      }), 20000, 'password');
+    },
+
+    /* Email + password, for accounts that have set one. */
+    signInWithPassword: function (email, password) {
+      return withTimeout(client().then(function (sb) {
+        return sb.auth.signInWithPassword({
+          email: String(email || '').trim(),
+          password: String(password || '')
+        });
+      }).then(function (r) {
+        if (r.error) throw r.error;
+        adopt(r.data.session);
+        return r.data.session;
+      }), 20000, 'password-login');
     },
 
     google: function (next) {
@@ -225,6 +275,15 @@
                'Use Google above, or write to help@sitehouse.eu.';
       }
       if (m.indexOf('failed to fetch') > -1) return 'No connection. Check your internet and try again.';
+      // Our own ceiling, or Supabase's 504 when SMTP does not answer.
+      if (m.indexOf('timeout') > -1 || m.indexOf('504') > -1 || m.indexOf('upstream') > -1) {
+        return 'The email server is not responding. Use Google above, or write to help@sitehouse.eu.';
+      }
+      if (m.indexOf('user not found') > -1 || m.indexOf('signups not allowed') > -1) {
+        return 'We have no account with that address. Check the spelling, or create one.';
+      }
+      if (m.indexOf('should be different') > -1) return 'That is the password you already have. Pick a different one.';
+      if (m.indexOf('at least') > -1 && m.indexOf('character') > -1) return 'Passwords need at least eight characters.';
       return 'That did not work. Try again, or ask support.';
     },
 

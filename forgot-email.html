@@ -78,11 +78,13 @@ window.__entryFallback=setTimeout(function(){
       <div class="card-in" id="cardIn" data-flow>
 
         <div data-step="find" id="stepFind">
-          <h1 id="h1">Find your account</h1>
-          <p id="sub"><b>Your business name</b> or the phone number you gave us.</p>
+          <h1 id="h1">Which email was it?</h1>
+          <p id="sub">Try the address you think you used. If there is an account on it, a code arrives.</p>
 
-          <div class="field field--box"><input id="business" type="text" autocomplete="organization" aria-label="Business name" placeholder="Business name"></div>
-          <div class="field field--box"><input id="phone" type="tel" autocomplete="tel" aria-label="Phone number" placeholder="Phone number"></div>
+          <div class="field field--box" id="email">
+            <input type="email" autocomplete="email" aria-label="Email address"
+                   placeholder="The address you think you used">
+          </div>
 
           <p class="auth-err" id="findErr" role="alert" hidden></p>
 
@@ -97,12 +99,15 @@ window.__entryFallback=setTimeout(function(){
               <a href="forgot-password.html">Forgot password?</a>
               <a href="trouble.html">Trouble signing in?</a>
             </div>
-            <p class="aux"><strong>Demo build.</strong> This searches one example account held in your browser.</p>
+            <p class="aux">
+              We never confirm whether an address has an account — that would let anyone go fishing.
+              Stuck? <a href="mailto:help@sitehouse.eu">help@sitehouse.eu</a> and a person will verify you properly.
+            </p>
           </div>
         </div>
 
         <div data-step="result" id="stepResult" hidden>
-          <h2 class="step-h1" id="resultTitle">We found one account</h2>
+          <h2 class="step-h1" id="resultTitle">Check that inbox</h2>
           <p class="step-sub" id="resultBody"></p>
 
           <div class="field field--box" id="maskedBox">
@@ -132,61 +137,70 @@ window.__entryFallback=setTimeout(function(){
 </div>
 
 <script src="assets/demo.js"></script>
+<script src="assets/supabase-auth.js" type="module"></script>
 <script>
 (function () {
   'use strict';
-  var stepFind = document.getElementById('stepFind');
-  var stepResult = document.getElementById('stepResult');
 
-  // Shows the first character and the domain only.
-  function mask(email) {
-    var at = email.indexOf('@');
-    if (at < 1) return '\u2022\u2022\u2022';
-    return email[0] + '\u2022'.repeat(Math.max(3, at - 1)) + email.slice(at);
+  function whenAuth(go) {
+    if (window.SitehouseAuth) { go(); return; }
+    document.addEventListener('sitehouse:auth-ready', go, { once: true });
   }
 
-  document.getElementById('findBtn').addEventListener('click', function () {
-    var biz = document.getElementById('business').value.trim();
-    var phone = document.getElementById('phone').value.trim();
-    var err = document.getElementById('findErr');
+  whenAuth(function () {
+    var EMAIL = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+    var busy = false;
+    var stepFind = document.getElementById('stepFind');
+    var stepResult = document.getElementById('stepResult');
+    var findBtn = document.getElementById('findBtn');
+    var findErr = document.getElementById('findErr');
+    var emailEl = document.querySelector('#email input');
 
-    if (!biz && !phone) {
-      err.textContent = 'Enter your business name or the phone number on the account.';
-      err.hidden = false;
-      return;
-    }
-    err.hidden = true;
+    function fail(box, msg) { box.textContent = msg; box.hidden = false; }
+    function label(btn, t) { var sp = btn.querySelector('span'); if (sp) sp.textContent = t; }
 
-    var c = Sitehouse.load().customer;
-    // Demo lookup: matches the one example account, loosely.
-    var hit = (biz && c.business.toLowerCase().indexOf(biz.toLowerCase()) > -1) ||
-              (phone && c.phone.replace(/\D/g, '').slice(-6) === phone.replace(/\D/g, '').slice(-6));
+    findBtn.addEventListener('click', function () {
+      if (busy) return;
+      var email = emailEl.value.trim();
+      if (!EMAIL.test(email)) { fail(findErr, 'Type the address you want to try.'); emailEl.focus(); return; }
+      findErr.hidden = true;
 
-    var maskedBox = document.getElementById('maskedBox');
-    if (hit) {
-      document.getElementById('resultTitle').textContent = 'We found one account';
+      busy = true; findBtn.disabled = true; label(findBtn, 'Sending…');
+
+      // createUser:false so a wrong guess cannot create an account.
+      SitehouseAuth.sendCode(email, { createUser: false }).then(function () {
+        show(email);
+      }).catch(function (err) {
+        var m = String(err && err.message || '').toLowerCase();
+        // "no such user" must look identical to success, or this page
+        // becomes a way to test which addresses are registered.
+        if (m.indexOf('not found') > -1 || m.indexOf('signups not allowed') > -1) { show(email); return; }
+        fail(findErr, SitehouseAuth.message(err));
+      }).then(function () {
+        busy = false; findBtn.disabled = false; label(findBtn, 'Send me a code');
+      });
+    });
+
+    function show(email) {
       document.getElementById('resultBody').textContent =
-        'One account matches those details: ' + c.business + '.';
-      document.getElementById('maskedEmail').value = mask(c.email);
-      maskedBox.hidden = false;
-      document.getElementById('resultHint').hidden = false;
-      document.getElementById('toLoginBtn').hidden = false;
-    } else {
-      document.getElementById('resultTitle').textContent = 'No account matched';
-      document.getElementById('resultBody').textContent =
-        'Nothing matched those details. Check the spelling of the business name, or try the phone number you gave us when you ordered.';
-      maskedBox.hidden = true;
-      document.getElementById('resultHint').hidden = true;
-      document.getElementById('toLoginBtn').hidden = true;
+        'If ' + email + ' has an account, a six-digit code is on its way to it. ' +
+        'Enter the code to sign in. Nothing arrives if there is no account on that address.';
+      var box = document.getElementById('maskedBox');
+      if (box) box.hidden = true;
+      var hint = document.getElementById('resultHint');
+      if (hint) hint.hidden = true;
+      var toLogin = document.getElementById('toLoginBtn');
+      if (toLogin) { toLogin.hidden = false; }
+      stepFind.hidden = true;
+      stepResult.hidden = false;
     }
 
-    stepFind.hidden = true;
-    stepResult.hidden = false;
-  });
-
-  document.getElementById('againBtn').addEventListener('click', function () {
-    stepResult.hidden = true;
-    stepFind.hidden = false;
+    var again = document.getElementById('againBtn');
+    if (again) again.addEventListener('click', function () {
+      stepResult.hidden = true;
+      stepFind.hidden = false;
+      emailEl.focus();
+    });
   });
 })();
 </script>
