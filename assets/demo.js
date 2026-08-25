@@ -399,12 +399,28 @@
     var back = 'login.html?next=' + encodeURIComponent(
       global.location.pathname.split('/').pop() + global.location.hash);
 
-    if (!global.SitehouseAuth) {
-      // Auth script missing entirely — fail closed, never open.
+    // supabase-auth.js is a module, so it executes AFTER this file and
+    // after the dashboard script that calls this. Checking for it
+    // synchronously bounced every signed-in visitor straight back to
+    // the login page. Wait for it, with a ceiling so a genuinely
+    // missing script still fails closed rather than hanging.
+    function auth() {
+      if (global.SitehouseAuth) return Promise.resolve(global.SitehouseAuth);
+      return new Promise(function (resolve, reject) {
+        var done = false;
+        global.document.addEventListener('sitehouse:auth-ready', function () {
+          done = true; resolve(global.SitehouseAuth);
+        }, { once: true });
+        setTimeout(function () { if (!done) reject(new Error('auth script never loaded')); }, 8000);
+      });
+    }
+
+    return auth().catch(function () {
       global.location.href = back;
       return new Promise(function () {});
-    }
-    return global.SitehouseAuth.session().then(function (s) {
+    }).then(function (A) {
+      return A.session();
+    }).then(function (s) {
       if (s) return s;
       global.location.href = back;
       return new Promise(function () {});
