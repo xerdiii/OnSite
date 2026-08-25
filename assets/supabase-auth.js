@@ -29,6 +29,30 @@
   var doc = global.document;
   var clientPromise = null;
 
+  /* Was this page load the return leg of an OAuth redirect?
+     Supabase only honours `redirectTo` if the exact URL is in the
+     project's allow list; otherwise it quietly sends people to the
+     Site URL instead — which is why Google sign-in was landing on the
+     home page. Reading the marker before the client boots (it strips
+     these from the URL) means we can finish the journey ourselves
+     whichever page we were dropped on. */
+  var CAME_BACK = (function () {
+    var q = global.location.search || '';
+    var h = global.location.hash || '';
+    return /[?&]code=/.test(q) || /access_token=|[?&]error_code=/.test(h + q);
+  })();
+
+  /* Where they were trying to go before being asked to sign in. */
+  function intended() {
+    try {
+      var q = new URLSearchParams(global.location.search).get('next');
+      if (q && /^[A-Za-z0-9_-]+\.html(#[A-Za-z0-9/_-]*)?$/.test(q)) return q;
+      var kept = global.sessionStorage.getItem('sitehouse.next');
+      if (kept) return kept;
+    } catch (e) {}
+    return null;
+  }
+
   function client() {
     if (clientPromise) return clientPromise;
     clientPromise = import(CDN).then(function (m) {
@@ -130,6 +154,11 @@
     },
 
     google: function (next) {
+      // Remember the destination on this device. If Supabase ignores
+      // redirectTo and drops them on the Site URL, the router below
+      // still knows where they were going.
+      try { global.sessionStorage.setItem('sitehouse.next', next || 'dashboard.html'); } catch (e) {}
+
       return client().then(function (sb) {
         var back = global.location.origin + '/login.html' +
                    (next ? '?next=' + encodeURIComponent(next) : '');
@@ -144,6 +173,16 @@
         if (r.error) throw r.error;
         return true;                    // the browser is navigating away
       });
+    },
+
+    /* Has this account told us who they are yet? Google gives us a
+       name and an email and nothing else, so the business name is the
+       one thing still missing before a package can be built. */
+    needsOnboarding: function () {
+      var S = global.Sitehouse;
+      if (!S) return false;
+      var c = S.load().customer || {};
+      return !c.business || !String(c.business).trim();
     },
 
     session: function () {
@@ -199,7 +238,48 @@
      assuming the global already exists. */
   try { doc.dispatchEvent(new CustomEvent('sitehouse:auth-ready')); } catch (e) {}
 
+  /* ── Finish the journey ────────────────────────────────────────
+     A signed-in person who has just come back from Google must end up
+     in the dashboard, not wherever Supabase happened to drop them.
+     This runs on every page precisely because we cannot rely on being
+     dropped on the right one.
+
+     It only ever redirects when there is something to finish: the
+     OAuth return leg, or sitting on the login/signup pages while
+     already signed in. Browsing the site signed in is left alone. */
+  function pageName() {
+    var last = global.location.pathname.split('/').pop().replace(/\.html$/, '');
+    return last === '' || last === 'index' ? 'home' : last;
+  }
+
+  function route(session) {
+    if (!session) return;
+
+    var here = pageName();
+    var onAuthPage = here === 'login' || here === 'signup';
+    if (!CAME_BACK && !onAuthPage) return;      // nothing to finish
+
+    // Business name first. Everything downstream — the package
+    // builder, the order, the invoice — is addressed to a business,
+    // and Google cannot tell us what it is called.
+    if (Auth.needsOnboarding() && here !== 'onboarding') {
+      global.location.replace('onboarding.html');
+      return;
+    }
+
+    if (here === 'onboarding') return;          // it will move them on itself
+
+    var next = intended() || 'dashboard.html';
+    try { global.sessionStorage.removeItem('sitehouse.next'); } catch (e) {}
+    global.location.replace(next);
+  }
+
   /* Adopt whatever session already exists, as early as possible, so a
      page does not flash a signed-out state before catching up. */
-  Auth.onChange(function () {});
+  Auth.onChange(function (event, session) {
+    if (event === 'SIGNED_IN' || event === 'INITIAL_SESSION') route(session);
+  });
+
+  Auth.route = route;
+  Auth.cameBack = CAME_BACK;
 })(window);

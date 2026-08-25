@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>One last thing — Sitehouse</title>
+<meta name="description" content="Tell us the name of your business and we will open your dashboard.">
+<link rel="canonical" href="https://sitehouse.eu/onboarding">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#14161A">
+<link rel="apple-touch-icon" href="/assets/brand/sitehouse-touch.png">
+<link rel="icon" href="/assets/brand/sitehouse-favicon.png" type="image/png">
+<link rel="dns-prefetch" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400&family=Inter:wght@400;500;600;700&family=Outfit:wght@200..800&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400&family=Inter:wght@400;500;600;700&family=Outfit:wght@200..800&display=swap" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400&family=Inter:wght@400;500;600;700&family=Outfit:wght@200..800&display=swap"></noscript>
+<script>(function(){var t='light';try{t=localStorage.getItem('sitehouse.theme')==='dark'?'dark':'light';}catch(e){}document.documentElement.setAttribute('data-theme',t);})();</script>
+<link rel="stylesheet" href="assets/sitehouse.css">
+<link rel="stylesheet" href="assets/free.css">
+<link rel="stylesheet" href="assets/tailwind.css">
+<link rel="stylesheet" href="assets/theme.css">
+<style>
+  /* One question on a screen. Nothing else competes with it — no nav,
+     no footer, no offers. The only thing to do here is answer. */
+  .ob { min-height: 100svh; display: grid; place-items: center; padding: 1.5rem; }
+  .ob-card { width: min(30rem, 100%); }
+  .ob-mark { display: flex; align-items: center; gap: 0.6rem; margin-bottom: 2.5rem; }
+  .ob-mark span:last-child { font-family: 'Outfit', sans-serif; font-size: 1.15rem; font-weight: 500; letter-spacing: -0.02em; }
+  .ob-step {
+    font-family: 'IBM Plex Mono', ui-monospace, monospace;
+    font-size: 0.625rem; letter-spacing: 0.18em; text-transform: uppercase;
+    color: rgb(var(--c-ink-soft));
+  }
+  .ob-h {
+    margin-top: 0.9rem;
+    font-family: 'Outfit', sans-serif; font-weight: 300;
+    font-size: clamp(2rem, 7vw, 2.9rem); letter-spacing: -0.04em; line-height: 1.05;
+    color: rgb(var(--c-ink));
+  }
+  .ob-p { margin-top: 0.9rem; font-size: 1rem; line-height: 1.65; color: rgb(var(--c-ink-mid)); }
+  .ob-hi { color: rgb(var(--c-ink)); font-weight: 600; }
+  .ob-field { margin-top: 2rem; }
+  .ob-field label { display: block; font-size: 0.875rem; font-weight: 600; margin-bottom: 0.5rem; }
+  .ob-field input {
+    width: 100%; min-height: 58px; padding: 0 1.05rem;
+    border: 1.5px solid rgb(var(--c-line-firm)); border-radius: 0.7rem;
+    background: rgb(var(--c-surface)); color: rgb(var(--c-ink));
+    font-family: inherit; font-size: 17px;
+  }
+  .ob-field input:focus {
+    outline: none; border-color: rgb(var(--c-accent));
+    box-shadow: 0 0 0 3px rgb(var(--c-accent) / 0.14);
+  }
+  .ob-err { margin-top: 0.5rem; font-size: 0.8125rem; font-weight: 600; color: rgb(var(--c-accent-text)); }
+  .ob-err[hidden] { display: none; }
+  .ob-go {
+    display: flex; align-items: center; justify-content: center; gap: 0.6rem;
+    width: 100%; min-height: 56px; margin-top: 1.25rem;
+    border: 0; border-radius: 999px; cursor: pointer;
+    background: rgb(var(--c-accent)); color: #fff;
+    font-family: inherit; font-size: 1rem; font-weight: 600;
+  }
+  .ob-go:hover { background: rgb(var(--c-accent-hi)); }
+  .ob-go:disabled { opacity: 0.6; cursor: default; }
+  .ob-go svg { width: 18px; height: 18px; }
+  .ob-skip {
+    display: block; margin: 1rem auto 0; border: 0; background: none; cursor: pointer;
+    font-family: inherit; font-size: 0.8125rem; color: rgb(var(--c-ink-soft));
+    text-decoration: underline; text-underline-offset: 3px;
+  }
+  .ob-skip:hover { color: rgb(var(--c-ink)); }
+</style>
+</head>
+
+<body class="bg-paper font-sans text-ink antialiased">
+
+<main class="ob">
+  <div class="ob-card">
+    <div class="ob-mark">
+      <span class="brand-mark" role="img" aria-label="Sitehouse"></span>
+      <span>Sitehouse</span>
+    </div>
+
+    <p class="ob-step">Step 1 of 1</p>
+    <h1 class="ob-h" id="obH">What is the business called?</h1>
+    <p class="ob-p" id="obP">
+      It goes on your website, your invoices and everything we send you. You can change it later.
+    </p>
+
+    <form id="obForm" novalidate>
+      <div class="ob-field">
+        <label for="ob-business">Business name</label>
+        <input id="ob-business" type="text" autocomplete="organization"
+               autocapitalize="words" placeholder="Janey&#8217;s Hair Studio" required>
+        <p class="ob-err" id="obErr" hidden></p>
+      </div>
+
+      <button type="submit" class="ob-go" id="obGo">
+        <span>Open my dashboard</span>
+        <svg viewBox="0 0 22 22" aria-hidden="true"><path d="M3 11h15.4M11 3.3l7.7 7.7-7.7 7.7" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+    </form>
+
+    <button type="button" class="ob-skip" id="obOut">Not you? Sign out</button>
+  </div>
+</main>
+
+<script src="assets/demo.js"></script>
+<script src="assets/supabase-auth.js" type="module"></script>
+<script>
+(function () {
+  'use strict';
+
+  function whenAuth(go) {
+    if (window.SitehouseAuth) { go(); return; }
+    document.addEventListener('sitehouse:auth-ready', go, { once: true });
+  }
+
+  whenAuth(function () {
+    var form = document.getElementById('obForm');
+    var input = document.getElementById('ob-business');
+    var err = document.getElementById('obErr');
+    var go = document.getElementById('obGo');
+    var busy = false;
+
+    /* Nobody reaches this page without a session. If they somehow do,
+       send them to sign in rather than collecting data from a stranger. */
+    SitehouseAuth.session().then(function (session) {
+      if (!session) { location.replace('login.html?next=dashboard.html'); return; }
+
+      var c = Sitehouse.load().customer || {};
+      if (c.business && c.business.trim()) { location.replace('dashboard.html#/build'); return; }
+
+      // Greet them by name when Google gave us one.
+      if (c.firstName) {
+        document.getElementById('obH').textContent = 'Nice to meet you, ' + c.firstName + '.';
+        document.getElementById('obP').innerHTML =
+          'One question and you are in: <span class="ob-hi">what is the business called?</span> ' +
+          'It goes on your website and your invoices, and you can change it later.';
+      }
+      input.focus();
+    });
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      if (busy) return;
+
+      var name = input.value.trim();
+      if (name.length < 2) {
+        err.textContent = 'We need the name your customers know you by.';
+        err.hidden = false;
+        input.focus();
+        return;
+      }
+      err.hidden = true;
+      busy = true;
+      go.disabled = true;
+      go.querySelector('span').textContent = 'Opening…';
+
+      var s = Sitehouse.load();
+      s.customer.business = name;
+      Sitehouse.save();
+
+      /* Write it to the profile too, so it survives a new device. If
+         that fails we still let them through — the name is saved
+         locally and the dashboard is where they were promised. */
+      SitehouseAuth.ready().then(function (sb) {
+        return SitehouseAuth.session().then(function (session) {
+          if (!session) return null;
+          return sb.from('profiles')
+                   .update({ business: name })
+                   .eq('id', session.user.id);
+        });
+      }).catch(function (e2) {
+        console.warn('profile update failed, continuing', e2 && e2.message);
+      }).then(function () {
+        location.replace('dashboard.html#/build');
+      });
+    });
+
+    document.getElementById('obOut').addEventListener('click', function () {
+      SitehouseAuth.signOut().then(function () { location.replace('login.html'); });
+    });
+  });
+})();
+</script>
+</body>
+</html>

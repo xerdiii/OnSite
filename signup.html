@@ -82,6 +82,13 @@ window.__entryFallback=setTimeout(function(){
         </a>
 
         <div data-step="details" id="stepDetails">
+          <button type="button" id="gBtn">
+            <svg viewBox="0 0 48 48" aria-hidden="true" focusable="false"><path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/><path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/><path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/><path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/></svg>
+            <span>Continue with Google</span>
+          </button>
+
+          <div class="divider"><i></i><b>OR</b><i></i></div>
+
           <h1 id="h1" class="h1-ruled">Create your account</h1>
 
           <div class="field field--box"><input id="business" type="text" autocomplete="organization" aria-label="Business name" placeholder="Business name"></div>
@@ -199,14 +206,27 @@ window.__entryFallback=setTimeout(function(){
   var EMAIL = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
   var busy = false;
   var createBtn = document.getElementById('createBtn');
+  var gBtn = document.getElementById('gBtn');
+
+  gBtn.addEventListener('click', function () {
+    if (busy) return;
+    busy = true; gBtn.disabled = true;
+    // Whatever they have already typed is kept, so if they come back
+    // from Google the business name is not asked for twice.
+    var typed = document.getElementById('business').value.trim();
+    if (typed) { var st = Sitehouse.load(); st.customer.business = typed; Sitehouse.save(); }
+
+    SitehouseAuth.google('dashboard.html').catch(function (err) {
+      fail(detErr, SitehouseAuth.message(err));
+      busy = false; gBtn.disabled = false;
+    });
+  });
   var verifyBtn = document.getElementById('verifyBtn');
 
   function fail(box, msg) { box.textContent = msg; box.hidden = false; }
   function label(btn, text) { var s = btn.querySelector('span'); if (s) s.textContent = text; }
 
-  SitehouseAuth.onChange(function (event, session) {
-    if (session && (event === 'SIGNED_IN' || event === 'INITIAL_SESSION')) location.replace('dashboard.html');
-  });
+  // Central router in supabase-auth.js handles where to go next.
 
   createBtn.addEventListener('click', function () {
     if (busy) return;

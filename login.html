@@ -197,9 +197,9 @@ window.__entryFallback=setTimeout(function(){
 
   /* Returning from the Google redirect lands here with tokens in the
      URL; the client consumes them and this fires. */
-  SitehouseAuth.onChange(function (event, session) {
-    if (session && (event === 'SIGNED_IN' || event === 'INITIAL_SESSION')) location.replace(next);
-  });
+  // Redirecting after sign-in is handled centrally in
+  // supabase-auth.js, which also copes with Supabase dropping the
+  // OAuth return on a different page than we asked for.
 
   function toCodeStep(email) {
     credErr.hidden = true;
