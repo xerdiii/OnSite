@@ -815,7 +815,7 @@ body.auth #stepHelp { justify-content:flex-start; }
 /* The auth pages set the mark on the photograph, so it takes the white
    cut in both themes. */
 .home-mark .brand-mark--auth {
-  width: 2.52em; height: 1.5em; flex: none; display: block;
+  width: 1.21em; height: 1.5em; flex: none; display: block;
   background: url("brand/sitehouse-mark.png") center / contain no-repeat;
 }
 

@@ -235,15 +235,17 @@ h1.doc-title {
 
 
 /* ── The mark ──────────────────────────────────────────────────
-   Cut from gallery/logo of sitehouse.png at its own proportions —
-   345 × 205, so 1.683 : 1. Two files rather than one recoloured by
-   filter: the artwork is white, and a white mark is invisible on a
-   light page, so the ink cut is a real asset rather than an effect. */
+   Cut from the SITEHOUSE lockup at its own proportions — the glyph
+   alone, 175 × 217, so 0.807 : 1. It is portrait where the old ON mark
+   was landscape, so every box below is width-derived from its height.
+   Two files rather than one recoloured by filter: the artwork is
+   white, and a white mark is invisible on a light page, so the ink cut
+   is a real asset rather than an effect. */
 .brand-mark {
-  width: 2.61em; height: 1.55em; flex: none; display: block;
+  width: 1.25em; height: 1.55em; flex: none; display: block;
   background: url("brand/sitehouse-mark-ink.png") center / contain no-repeat;
 }
 :root[data-theme="dark"] .brand-mark {
   background-image: url("brand/sitehouse-mark.png");
 }
-.brand-mark--nav { width: 2.52em; height: 1.5em; }
+.brand-mark--nav { width: 1.21em; height: 1.5em; }
