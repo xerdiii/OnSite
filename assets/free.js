@@ -269,7 +269,7 @@
         '<div class="free-clock"><b>48</b><span>hours at most — due by ' + when + '</span></div>' +
         '<p class="free-done-p">Nothing else is needed from you right now. If you want to add photos or ' +
           'change something, it is all in your dashboard.</p>' +
-        '<a href="dashboard.html" class="free-submit" style="margin-top:1.6rem;text-decoration:none">' +
+        '<a href="start.html" class="free-submit" style="margin-top:1.6rem;text-decoration:none">' +
           '<span>Open my dashboard</span>' +
           '<svg viewBox="0 0 22 22" aria-hidden="true"><path d="M3 11h15.4M11 3.3l7.7 7.7-7.7 7.7" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>' +
         '</a>' +

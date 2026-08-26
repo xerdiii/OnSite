@@ -6,8 +6,8 @@
    Two things a plain file server does not do, and the site needs both:
 
    1. Clean URLs. Every link on the site is extensionless — /login, not
-      /login.html — so a request for /login has to fall back to
-      login.html. Real hosts do this (GitHub Pages and Netlify out of
+      /index.html — so a request for /login has to fall back to
+      index.html. Real hosts do this (GitHub Pages and Netlify out of
       the box, Vercel with cleanUrls). Without it every page 404s.
 
    2. Range requests, so <video> streams in chunks the way it will in
@@ -37,8 +37,8 @@ function isFile(p) {
 }
 
 // /            → index.html
-// /login       → login.html          (this is the one that was missing)
-// /login/      → login/index.html, then login.html
+// /login       → index.html          (this is the one that was missing)
+// /login/      → login/index.html, then index.html
 function resolve(rel) {
   const base = path.join(root, path.normalize(rel).replace(/^([/\\])+/, ''));
   if (!base.startsWith(root)) return null;                 // no climbing out

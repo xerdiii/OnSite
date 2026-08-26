@@ -68,7 +68,6 @@
             '<a href="./#pricing">Products &amp; pricing</a>' +
             '<a href="faq.html">FAQ</a>' +
             '<a href="start.html">What we need from you</a>' +
-            '<a href="login.html">Client dashboard</a>' +
           '</div>' +
         '</div>' +
 

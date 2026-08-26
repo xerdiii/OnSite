@@ -1,9 +1,8 @@
 /* ───────────────────────────────────────────────────────────────
    Sitehouse — project store
-   DEMO ONLY. Nothing here is secure and nothing leaves the browser:
-   state lives in localStorage, the "verification code" is generated
-   client-side and shown on screen, and no password is ever checked.
-   Replace with a real backend + auth provider before launch.
+   Browser-only. State lives in localStorage and nothing leaves the
+   page: this is what the package builder and the pricing tables read
+   and write. There is no account, no server and no sign-in.
    ─────────────────────────────────────────────────────────────── */
 (function (global) {
   'use strict';
@@ -11,84 +10,19 @@
   // Bumped from .demo.v1: the old key holds the seeded example account,
   // and merging it into a real one would put a stranger's salon in
   // somebody's dashboard.
-  var BASE = 'sitehouse.store.v2';
-  var ANON = BASE + '.anon';
-  var KEY = ANON;
+  /* One visitor, one bucket. The store used to be partitioned per
+     signed-in account; with authentication removed there is nobody to
+     partition it by, so this is the whole of it. The two legacy keys
+     below are cleared because they can still hold an old account's
+     data on a shared machine. */
+  var KEY = 'sitehouse.store.v2.anon';
 
-  // Everything written before sign-in — a business name typed on the
-  // signup form, a package chosen while browsing — lands in the
-  // anonymous bucket. It follows the person into their own bucket the
-  // first time they authenticate, and only if theirs is still empty:
-  // a returning account's real data must never be overwritten by
-  // whatever this browser happened to be holding.
-  /* The id inside the stored Supabase session, or '' if there is none.
-     Handles both storage shapes: plain JSON, and the "base64-" prefixed
-     form newer clients write. Falls back to the sub claim of the access
-     token, which is there in every version. */
-  function storedUserId() {
+  (function () {
     try {
-      var ls = global.localStorage;
-      for (var i = 0; i < ls.length; i++) {
-        var k = ls.key(i);
-        if (!k || k.indexOf('sb-') !== 0 || k.indexOf('-auth-token') < 0) continue;
-        if (k.indexOf('code-verifier') > -1) continue;   // a PKCE leftover, not a session
-
-        var raw = ls.getItem(k);
-        if (!raw) continue;
-        if (raw.indexOf('base64-') === 0) {
-          try { raw = global.atob(raw.slice(7)); } catch (e) { continue; }
-        }
-
-        var parsed;
-        try { parsed = JSON.parse(raw); } catch (e) { continue; }
-        if (!parsed || typeof parsed !== 'object') continue;
-
-        if (parsed.user && parsed.user.id) return parsed.user.id;
-
-        var jwt = parsed.access_token;
-        if (typeof jwt === 'string' && jwt.split('.').length === 3) {
-          try {
-            var body = jwt.split('.')[1].replace(/-/g, '+').replace(/_/g, '/');
-            var claims = JSON.parse(global.atob(body + '==='.slice((body.length + 3) % 4)));
-            if (claims && claims.sub) return claims.sub;
-          } catch (e) {}
-        }
-      }
+      global.localStorage.removeItem('sitehouse.demo.v1');
+      global.localStorage.removeItem('sitehouse.store.v2');
     } catch (e) {}
-    return '';
-  }
-
-  function bindUser(uid) {
-    var want = uid ? BASE + '.' + uid : ANON;
-    if (want === KEY) return;
-
-    var carry = null;
-    if (uid && KEY === ANON) {
-      try {
-        var mine = global.localStorage.getItem(want);
-        if (!mine) carry = global.localStorage.getItem(ANON);
-      } catch (e) {}
-    }
-
-    KEY = want;
-    state = null;                        // force a read from the new bucket
-
-    if (carry) {
-      try {
-        global.localStorage.setItem(KEY, carry);
-        global.localStorage.removeItem(ANON);
-      } catch (e) {}
-    }
-  }
-
-  /* Signing out must leave nothing behind on a shared machine. The
-     account's own bucket stays — it is theirs and it is keyed to them
-     — but the anonymous one is wiped and becomes active again. */
-  function unbindUser() {
-    KEY = ANON;
-    state = null;
-    try { global.localStorage.removeItem(ANON); } catch (e) {}
-  }
+  })();
 
   // ── Money ────────────────────────────────────────────────────
   // Held in whole euro cents everywhere, formatted only at the edge.
@@ -399,9 +333,9 @@
     }
   }
 
-  /* supabase-auth.js listens here and pushes to the account. Kept as a
-     subscription rather than a direct call so demo.js never has to know
-     that a server exists. */
+  /* A change hook. Nothing subscribes now that there is no account to
+     push to, but the builder and the picker both save, and keeping the
+     seam costs nothing. */
   function onSave(fn) { if (typeof fn === 'function') savers.push(fn); }
 
   /* Adopt a whole state that came from somewhere else — the account's
@@ -430,87 +364,6 @@
     state = seed();
     save();
     return state;
-  }
-
-  /* Point at the right bucket before any page script gets a chance to
-     read the store. */
-  (function () {
-    var uid = storedUserId();
-    if (uid) bindUser(uid);
-
-    // Two keys from before the store was partitioned. They can only
-    // hold somebody's data on a shared machine, and nothing reads them.
-    try {
-      global.localStorage.removeItem('sitehouse.demo.v1');
-      global.localStorage.removeItem('sitehouse.store.v2');
-    } catch (e) {}
-  })();
-
-  // ── Mock auth ────────────────────────────────────────────────
-  // A code is generated in the browser and displayed on screen. There is
-  // no email, no SMS, no server and no password check.
-  function signIn(email, role) {
-    var s = load();
-    s.session = { email: email || s.customer.email, role: role || 'customer', at: new Date().toISOString() };
-    save();
-  }
-
-  /* Resolves with the session, or sends them to the login page and
-     never resolves. Supabase rehydrates from storage asynchronously,
-     so a synchronous read on page load sees nothing and would bounce
-     a perfectly valid session. */
-  function requireAuth() {
-    var back = 'login.html?next=' + encodeURIComponent(
-      global.location.pathname.split('/').pop() + global.location.hash);
-
-    // supabase-auth.js is a module, so it executes AFTER this file and
-    // after the dashboard script that calls this. Checking for it
-    // synchronously bounced every signed-in visitor straight back to
-    // the login page. Wait for it, with a ceiling so a genuinely
-    // missing script still fails closed rather than hanging.
-    function auth() {
-      if (global.SitehouseAuth) return Promise.resolve(global.SitehouseAuth);
-      return new Promise(function (resolve, reject) {
-        var done = false;
-        global.document.addEventListener('sitehouse:auth-ready', function () {
-          done = true; resolve(global.SitehouseAuth);
-        }, { once: true });
-        setTimeout(function () { if (!done) reject(new Error('auth script never loaded')); }, 8000);
-      });
-    }
-
-    return auth().catch(function () {
-      global.location.href = back;
-      return new Promise(function () {});
-    }).then(function (A) {
-      return A.session();
-    }).then(function (s) {
-      if (s) return s;
-      global.location.href = back;
-      return new Promise(function () {});
-    });
-  }
-
-  function signOut() {
-    var s = load();
-    s.session = null;
-    save();
-  }
-
-  function session() { return load().session; }
-
-  // Pages behind the login gate call this on load.
-  // Kept for anything still calling it synchronously. Real gating is
-  // requireAuth() below, which waits for Supabase.
-  function requireSession(role) {
-    var s = session();
-    if (!s || (role && s.role !== role)) {
-      global.location.href = 'login.html?next=' + encodeURIComponent(
-        global.location.pathname.split('/').pop() + global.location.hash
-      );
-      return null;
-    }
-    return s;
   }
 
   // ── Project stages ───────────────────────────────────────────
@@ -622,12 +475,8 @@
   global.Sitehouse = {
     CATALOG: CATALOG, emptyDraft: emptyDraft,
     euro: euro, euroMonth: euroMonth, deposit: deposit, balance: balance, date: date,
-    load: load, save: save, reset: reset,
-    bindUser: bindUser, unbindUser: unbindUser, storeKey: storeKey,
+    load: load, save: save, reset: reset, storeKey: storeKey,
     onSave: onSave, replaceState: replaceState,
-    storedUserId: storedUserId,
-    signIn: signIn, signOut: signOut, session: session, requireSession: requireSession,
-    requireAuth: requireAuth,
     stages: stages, statusLabel: statusLabel, advance: advance,
     notify: notify, unreadCount: unreadCount, markAllRead: markAllRead,
     maintenanceActive: maintenanceActive, changesLeft: changesLeft,

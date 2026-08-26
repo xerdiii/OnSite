@@ -246,7 +246,7 @@ body.m-locked { overflow: hidden; }
   .hero .border-y .h-display { font-size: 1.75rem; }
 
   /* buttons: full width, stacked, comfortable */
-  .hero a[href="signup.html"],
+  .hero a[href="start.html"],
   .hero a[href="#industries"] { width: 100%; min-height: 52px; padding-top: 0.9rem; padding-bottom: 0.9rem; }
   .hero .mt-7.flex.flex-col { margin-top: 1.25rem; gap: 0.6rem; }
 
@@ -289,7 +289,7 @@ body.m-locked { overflow: hidden; }
   .hero .lede { font-size: 0.9375rem; margin-top: 0.75rem; }
   .hero .border-y { margin-top: 1rem; padding-top: 0.85rem; padding-bottom: 0.85rem; }
   .hero .border-y .h-display { font-size: 1.5rem; }
-  .hero a[href="signup.html"],
+  .hero a[href="start.html"],
   .hero a[href="#industries"] { min-height: 48px; font-size: 0.9375rem; }
   .hero .mt-7.flex.flex-col { margin-top: 1rem; }
 }
