@@ -682,6 +682,11 @@
     ready: client
   };
 
+  /* The same authenticated client the auth layer uses, so assets/db.js
+     queries the per-user tables on this session rather than opening a
+     second connection with its own token lifecycle. */
+  Auth.client = client;
+
   global.SitehouseAuth = Auth;
 
   /* This file is a module, so it runs after any classic inline script

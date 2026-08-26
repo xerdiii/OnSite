@@ -7,34 +7,28 @@
 
   var O = window.Sitehouse;
   /* ══ Staff only ═════════════════════════════════════════════════
-     The previous guard passed a filename where a role was expected and
-     read the answer out of localStorage, which the visitor controls.
-     This one waits for a real Supabase session and checks the address
-     on it against a list held in code.
+     The answer comes from public.profiles.role via the is_staff()
+     function, so it is the database that decides, not this file. Two
+     consequences worth stating: the staff list is no longer published
+     to every visitor who opens devtools, and forcing boot() from the
+     console now buys nothing — RLS returns a customer no rows on any
+     table this page reads, so the tables render empty.
 
-     TODO — move this to the database. Add a `role` column to
-     public.profiles (default 'customer'), have this read
-     profiles.role for auth.uid(), and add an RLS policy so only a row
-     with role='staff' may read other people's rows. A list in a
-     JavaScript file is visible to anyone who opens devtools: it tells
-     them who the staff are, and it is enforced only by this page
-     agreeing to enforce it. It is a lock on the door, not a wall —
-     which is still better than the handle that was here before.
+     profiles.role is guarded by a trigger: an account that updates its
+     own row to role='staff' has the change silently reverted.
      ═══════════════════════════════════════════════════════════════ */
-  var STAFF = [
-    // Add the email address of each staff account.
-    'erdiiithaci@gmail.com'
-  ];
-
-  O.requireAuth().then(function (session) {
-    var who = ((session && session.user && session.user.email) || '').toLowerCase();
-    if (STAFF.indexOf(who) < 0) {
+  O.requireAuth().then(function () {
+    return window.SitehouseDB.isStaff();
+  }).then(function (staff) {
+    if (!staff) {
       // Not "access denied" — that confirms the page exists and is worth
       // attacking. As far as a customer is concerned there is nothing here.
       window.location.replace('404.html');
       return;
     }
     boot();
+  })['catch'](function () {
+    window.location.replace('404.html');
   });
 
   function boot() {
