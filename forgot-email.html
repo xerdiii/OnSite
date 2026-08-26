@@ -153,7 +153,8 @@
     function find() {
       if (busy) return;
       var v = $('email').value.trim();
-      if (!EMAIL.test(v)) { say($('findErr'), 'Type the address you want to try.'); $('email').focus(); return; }
+      if (!v) { say($('findErr'), 'Type the address you want to try.'); $('email').focus(); return; }
+      if (!EMAIL.test(v)) { say($('findErr'), 'That does not look like an email address.'); $('email').focus(); return; }
       clear($('findErr'));
       target = v;
       var who = document.querySelectorAll('[data-who]');

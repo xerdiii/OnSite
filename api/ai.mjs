@@ -24,6 +24,26 @@
 const MAX_MESSAGES = 12;      // keep the context small; this is a helpdesk, not a novel
 const MAX_CHARS = 1500;       // per message, before we stop trusting the client
 const TIMEOUT_MS = 25000;
+const MAX_BODY = 40_000;      // a helpdesk question is not a 40KB payload
+
+/* The same best-effort throttle as api/signup.mjs. Serverless
+   instances are not shared, so this is a speed bump rather than a
+   wall — but this is the endpoint that spends money on every call,
+   and an unthrottled one is somebody else's free API quota. A real
+   limit needs shared state (Upstash, Vercel KV); noted, not pretended.
+   Tighter than signup's 3/min: a conversation is several turns, an
+   attack is several thousand. */
+const seen = new Map();
+const WINDOW = 60_000, MAX_CALLS = 12;
+
+function tooMany(ip) {
+  const now = Date.now();
+  for (const [k, v] of seen) if (now - v.first > WINDOW) seen.delete(k);
+  const hit = seen.get(ip);
+  if (!hit) { seen.set(ip, { first: now, n: 1 }); return false; }
+  hit.n += 1;
+  return hit.n > MAX_CALLS;
+}
 
 /* A short, blunt brief. Longer system prompts cost tokens on every
    single turn and mostly make the model chattier, which is the
@@ -64,8 +84,17 @@ export default async function handler(req, res) {
     return res.status(503).json({ error: 'not_configured' });
   }
 
+  const ip = String(req.headers['x-forwarded-for'] || '').split(',')[0].trim() || 'unknown';
+  if (tooMany(ip)) {
+    res.setHeader('Retry-After', '60');
+    return res.status(429).json({ error: 'rate_limited' });
+  }
+
   let body = req.body;
   if (typeof body === 'string') {
+    // Parsing an unbounded string is how one request eats the
+    // function's whole memory budget.
+    if (body.length > MAX_BODY) return res.status(413).json({ error: 'too_large' });
     try { body = JSON.parse(body); } catch { return res.status(400).json({ error: 'bad_json' }); }
   }
   body = body || {};

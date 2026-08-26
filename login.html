@@ -276,8 +276,14 @@
       if (busy) return;
       var el = $('email');
       var v = el.value.trim();
-      if (!EMAIL.test(v)) {
+      if (!v) {
         say($('emailErr'), 'Enter the email address on your account.');
+        el.setAttribute('aria-invalid', 'true');
+        el.focus();
+        return;
+      }
+      if (!EMAIL.test(v)) {
+        say($('emailErr'), 'That does not look like an email address.');
         el.setAttribute('aria-invalid', 'true');
         el.focus();
         return;
