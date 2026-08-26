@@ -40,7 +40,7 @@
        against the page rather than against assets/ — it needs the full
        path where the real stylesheets need only "brand/". */
     '.ft-dot{width:1.089rem;height:1.35rem;flex:none;display:block;' +
-      'background:url("assets/brand/sitehouse-mark.png") center/contain no-repeat}' +
+      'background:url("assets/brand/sitehouse-mark-v2.png") center/contain no-repeat}' +
     '.ft-base{margin-top:2.5rem;padding-top:1.5rem;border-top:1px solid rgba(255,255,255,0.2);' +
       'display:flex;flex-wrap:wrap;gap:1rem 1.5rem;align-items:center;justify-content:space-between}' +
     '.ft-base p{font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:0.6875rem;' +

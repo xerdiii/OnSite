@@ -243,9 +243,9 @@ h1.doc-title {
    is a real asset rather than an effect. */
 .brand-mark {
   width: 1.25em; height: 1.55em; flex: none; display: block;
-  background: url("brand/sitehouse-mark-ink.png") center / contain no-repeat;
+  background: url("brand/sitehouse-mark-ink-v2.png") center / contain no-repeat;
 }
 :root[data-theme="dark"] .brand-mark {
-  background-image: url("brand/sitehouse-mark.png");
+  background-image: url("brand/sitehouse-mark-v2.png");
 }
 .brand-mark--nav { width: 1.21em; height: 1.5em; }
