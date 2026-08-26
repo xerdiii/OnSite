@@ -35,135 +35,134 @@
 <link rel="dns-prefetch" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@200..800&display=swap">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@200..800&display=swap" media="print" onload="this.media='all'">
-<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@200..800&display=swap"></noscript>
-<script>/* Pre-paint: is a redirect coming? Only hides the form if so, so a
-   signed-out visitor waits for nothing. */
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400&family=Inter:wght@400;500;600;700&family=Outfit:wght@200..800&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400&family=Inter:wght@400;500;600;700&family=Outfit:wght@200..800&display=swap" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400&family=Inter:wght@400;500;600;700&family=Outfit:wght@200..800&display=swap"></noscript>
+<script>(function(){var t='light';try{t=localStorage.getItem('sitehouse.theme')==='dark'?'dark':'light';}catch(e){}document.documentElement.setAttribute('data-theme',t);})();</script>
+<script>/* Pre-paint: is a redirect coming? Only hides the form when a
+   Supabase token is already in storage, so a signed-out visitor waits
+   for nothing at all. */
 (function(){
   try{
     var ls = window.localStorage, hit = false;
     for (var i = 0; i < ls.length; i++) {
       var k = ls.key(i);
-      if (k && k.indexOf('sb-') === 0 && k.indexOf('-auth-token') > -1 && ls.getItem(k)) { hit = true; break; }
+      if (k && k.indexOf('sb-') === 0 && k.indexOf('-auth-token') > -1
+          && k.indexOf('code-verifier') < 0 && ls.getItem(k)) { hit = true; break; }
     }
     if (!hit) return;
     document.documentElement.classList.add('auth-checking');
-    /* A stale token that no longer verifies must not leave the page
-       blank for ever. */
     setTimeout(function(){ document.documentElement.classList.remove('auth-checking'); }, 4000);
   }catch(e){}
 })();</script>
-<script>/* Pre-paint entrance guard. With JS off the class is never added and
-   the finished page simply renders — that is the whole no-JS story. */
-document.documentElement.classList.add('entry-pending');
-window.__entryFallback=setTimeout(function(){
-  document.documentElement.classList.remove('entry-pending');
-},3500);</script>
-<link rel="stylesheet" href="assets/auth.css">
-<link rel="stylesheet" href="assets/dock.css">
-<link rel="stylesheet" href="assets/support.css">
+<link rel="stylesheet" href="assets/sitehouse.css">
+<link rel="stylesheet" href="assets/tailwind.css">
+<link rel="stylesheet" href="assets/theme.css">
+<link rel="stylesheet" href="assets/account.css">
 </head>
 
-<body class="auth">
+<body class="acct font-sans">
 
-<div class="stage">
+<header class="acct-top">
+  <a class="acct-brand" href="/">
+    <span class="brand-mark" role="img" aria-label="Sitehouse"></span>
+    <span>Sitehouse</span>
+  </a>
+  <a class="acct-top-link" href="signup.html">No account? <b>Sign up</b></a>
+</header>
 
-  <section class="photo">
-    <video class="photo-img photo-img--tall" muted loop playsinline preload="none"
-           poster="assets/media/falcon-poster.webp"
-           aria-label="A peregrine falcon in a high-speed dive, feathers rippling, eye locked forward">
-      <source src="assets/media/falcon.mp4" type="video/mp4">
-    </video>
-    <video class="photo-img photo-img--wide" aria-hidden="true" muted loop playsinline preload="none"
-           poster="assets/media/falcon-poster-wide.webp">
-      <source src="assets/media/falcon-wide.mp4" type="video/mp4">
-    </video>
-    <div class="scrim" aria-hidden="true"></div>
-    <a class="home-mark" href="./"><span class="brand-mark brand-mark--auth" role="img" aria-label="Sitehouse"></span>Sitehouse</a>
-    <div class="hero" id="hero">
-      <div class="hl-wrap">
-        <span class="hl" id="hl1">Follow your build</span>
-        <span class="hl" id="hl2">start to finish.</span>
+<main class="acct-main">
+  <div class="acct-card">
+
+    <!-- ── 1. Who are you ─────────────────────────────────────── -->
+    <section data-panel="email" class="is-on">
+      <h1 class="acct-h">Sign in to Sitehouse</h1>
+      <p class="acct-sub">Your build, your website, your invoices.</p>
+
+      <button type="button" class="acct-btn acct-btn--ghost" id="gBtn">
+        <svg viewBox="0 0 48 48" aria-hidden="true"><path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/><path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/><path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/><path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/></svg>
+        <span>Continue with Google</span>
+      </button>
+
+      <div class="acct-or">or</div>
+
+      <div class="acct-field">
+        <label for="email">Email</label>
+        <input class="acct-in" id="email" type="email" autocomplete="username"
+               inputmode="email" autocapitalize="off" spellcheck="false"
+               placeholder="you@yourbusiness.com">
       </div>
-    </div>
-  </section>
 
-  <section class="pane">
-    <div class="card" id="card">
-      <div class="card-in" id="cardIn">
+      <p class="acct-err" id="emailErr" role="alert" hidden></p>
 
-        <!-- STEP 1 — credentials -->
-        <div data-step="credentials" class="cred-step cred-step--nopw" id="stepCred">
-          <h1 class="col center" id="h1">Welcome back!</h1>
-          <p class="col center" id="sub"><b>Enter your email</b> and we&#8217;ll send you a 6-digit code.</p>
+      <button type="button" class="acct-btn" id="nextBtn"><span>Continue</span></button>
 
-          <div class="field" id="email">
-            <input type="email" autocomplete="email" aria-label="Email address" placeholder="Eg. jane@janeys-hair.co.uk">
-          </div>
+      <p class="acct-alt">New to Sitehouse? <a href="signup.html">Create an account</a></p>
+    </section>
 
-          <p class="auth-err" id="credErr" role="alert" hidden></p>
-
-          <button type="button" id="loginBtn">
-            <span>Send me a code</span>
-            <svg viewBox="0 0 22 22" aria-hidden="true" focusable="false"><path d="M3 11h15.4M11 3.3l7.7 7.7-7.7 7.7" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </button>
-
-          <div class="divider"><i></i><b>OR</b><i></i></div>
-
-          <button type="button" id="gBtn">
-            <svg viewBox="0 0 48 48" aria-hidden="true" focusable="false"><path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/><path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/><path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/><path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/></svg>
-            <span>Sign in with Google</span>
-          </button>
-
-          <div class="botcluster">
-          <p id="bottom">Don&#8217;t have an account? <a href="signup.html">Create one</a></p>
-
-          <div class="rowlinks">
-            <a href="forgot-email.html">Forgot which email you used?</a>
-            <a href="trouble.html">Trouble signing in?</a>
-          </div>
-
-          <p class="aux">
-            We email you a six-digit code instead of asking for a password. It is valid for one hour.
-          </p>
-          </div>
-        </div>
-
-        <!-- STEP 2 — verification code -->
-        <div data-step="code" class="code-step" id="stepCode" hidden>
-          <h2 class="col center step-h1">Check your inbox</h2>
-          <p class="col center step-sub">Enter the 6-digit code we sent to <b id="codeTarget"></b>.</p>
-
-          <div class="field" id="codeField">
-            <input id="code" type="text" inputmode="numeric" maxlength="6" autocomplete="one-time-code"
-                   aria-label="Six digit verification code" placeholder="000000">
-          </div>
-
-          <p class="auth-err" id="codeErr" role="alert" hidden></p>
-
-          <button type="button" id="verifyBtn" class="btn-primary-pill">
-            <span>Verify &amp; continue</span>
-            <svg viewBox="0 0 22 22" aria-hidden="true" focusable="false"><path d="M3 11h15.4M11 3.3l7.7 7.7-7.7 7.7" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </button>
-
-          <div class="botcluster">
-          <div class="rowlinks">
-            <button type="button" class="linkbtn" id="resendBtn">Send a new code</button>
-            <button type="button" class="linkbtn" id="backBtn">Back</button>
-          </div>
-
-          <p class="aux">
-            Nothing arrived? Check spam, then send a new code — only the newest one works.
-          </p>
-          </div>
-        </div>
-
+    <!-- ── 2. Prove it ────────────────────────────────────────── -->
+    <section data-panel="password">
+      <button type="button" class="acct-back" data-back>&larr; Back</button>
+      <h1 class="acct-h">Enter your password</h1>
+      <div class="acct-who">
+        <span data-who></span>
+        <button type="button" class="acct-link" data-back>Change</button>
       </div>
-    </div>
-  </section>
 
-</div>
+      <div class="acct-field">
+        <div class="acct-row">
+          <label for="password">Password</label>
+          <a class="acct-link" href="forgot-password.html">Forgot it?</a>
+        </div>
+        <div class="acct-pw">
+          <input class="acct-in" id="password" type="password" autocomplete="current-password"
+                 placeholder="Your password">
+          <button type="button" class="acct-peek" id="peek" aria-label="Show password">Show</button>
+        </div>
+      </div>
+
+      <p class="acct-err" id="pwErr" role="alert" hidden></p>
+
+      <button type="button" class="acct-btn" id="loginBtn"><span>Log in</span></button>
+
+      <p class="acct-note">
+        No password set, or would rather not use it?
+        <button type="button" class="acct-link" id="useCodeBtn">Email me a six-digit code instead</button>
+      </p>
+    </section>
+
+    <!-- ── 3. The code ────────────────────────────────────────── -->
+    <section data-panel="code">
+      <button type="button" class="acct-back" data-back>&larr; Back</button>
+      <h1 class="acct-h">Check your inbox</h1>
+      <p class="acct-sub">We sent a six-digit code to <b data-who></b>. It is good for one hour.</p>
+
+      <div class="acct-field">
+        <label for="code">Verification code</label>
+        <input class="acct-in acct-code" id="code" type="text" inputmode="numeric" maxlength="6"
+               autocomplete="one-time-code" placeholder="000000" aria-label="Six digit verification code">
+      </div>
+
+      <p class="acct-err" id="codeErr" role="alert" hidden></p>
+
+      <button type="button" class="acct-btn" id="verifyBtn"><span>Log in</span></button>
+
+      <div class="acct-links">
+        <button type="button" class="acct-link" id="resendBtn">Send a new code</button>
+        <a class="acct-link" href="trouble.html">Nothing arrived?</a>
+      </div>
+    </section>
+
+  </div>
+</main>
+
+<footer class="acct-foot">
+  <a href="/">Sitehouse</a>
+  <a href="forgot-email.html">Forgot your email?</a>
+  <a href="trouble.html">Trouble signing in</a>
+  <a href="terms.html">Terms</a>
+  <a href="privacy.html">Privacy</a>
+</footer>
 
 <script src="assets/demo.js"></script>
 <script src="assets/supabase-auth.js" type="module"></script>
@@ -171,178 +170,214 @@ window.__entryFallback=setTimeout(function(){
 (function () {
   'use strict';
 
-  // supabase-auth.js is a module and therefore deferred; this runs
-  // first. Wait for it instead of assuming it is there.
+  /* supabase-auth.js is a module and therefore deferred; this classic
+     script runs first. Wait for it rather than assuming it is there. */
   function whenAuth(go) {
     if (window.SitehouseAuth) { go(); return; }
     document.addEventListener('sitehouse:auth-ready', go, { once: true });
   }
 
   whenAuth(function () {
-  var params = new URLSearchParams(location.search);
+    var A = window.SitehouseAuth;
+    var $ = function (id) { return document.getElementById(id); };
 
-  // Only ever redirect to a local page. Without this, ?next=https://example.com
-  // would turn the login into an open redirect — a classic phishing lever.
-  function safeNext(value) {
-    if (!value) return 'dashboard.html';
-    // Optional .html: Vercel's cleanUrls serves /dashboard, so that is
-    // the form requireAuth() hands us. Still one segment, no slashes,
-    // no scheme — it cannot leave this site.
-    return /^[A-Za-z0-9_-]+(\.html)?(#[A-Za-z0-9/_-]*)?$/.test(value) ? value : 'dashboard.html';
-  }
-
-  var next = safeNext(params.get('next'));
-
-  var stepCred = document.getElementById('stepCred');
-  var stepCode = document.getElementById('stepCode');
-  var emailEl  = document.querySelector('#email input');
-  var codeEl   = document.getElementById('code');
-  var credErr  = document.getElementById('credErr');
-  var codeErr  = document.getElementById('codeErr');
-  var loginBtn = document.getElementById('loginBtn');
-  var verifyBtn= document.getElementById('verifyBtn');
-  var gBtn     = document.getElementById('gBtn');
-
-  var EMAIL = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
-  var busy = false;
-
-  function fail(box, msg) {
-    // Any message that is not explicitly good news is bad news, and must
-    // not wear the good-news styling left over from the last one.
-    box.classList.remove('is-info');
-    box.textContent = msg; box.hidden = false;
-  }
-  function info(box, msg) { fail(box, msg); box.classList.add('is-info'); }
-  function clearErr(box) { box.hidden = true; box.classList.remove('is-info'); }
-  function label(btn, text) { var s = btn.querySelector('span'); if (s) s.textContent = text; }
-
-  /* Already signed in? Nothing to do here. */
-  SitehouseAuth.session().then(function (session) {
-    if (session) { location.replace(next); return; }
-    // Only now is it honest to show the form. Until the session check
-    // comes back, the card is held blank by .auth-checking so nobody
-    // sees a login page they did not need.
-    document.documentElement.classList.remove('auth-checking');
-  });
-
-  /* Returning from the Google redirect lands here with tokens in the
-     URL; the client consumes them and this fires. */
-  // Redirecting after sign-in is handled centrally in
-  // supabase-auth.js, which also copes with Supabase dropping the
-  // OAuth return on a different page than we asked for.
-
-  function toCodeStep(email) {
-    credErr.hidden = true;
-    document.getElementById('codeTarget').textContent = email;
-    stepCred.hidden = true;
-    stepCode.hidden = false;
-    codeEl.value = '';
-    codeEl.focus();
-  }
-
-  loginBtn.addEventListener('click', function () {
-    if (busy) return;
-    var email = emailEl.value.trim();
-    if (!EMAIL.test(email)) { fail(credErr, 'Enter the email address on your account.'); emailEl.focus(); return; }
-
-    busy = true; loginBtn.disabled = true; label(loginBtn, 'Sending…');
-    // createUser:false — this is the LOGIN page. A mistyped address
-    // here used to register a brand-new empty account and mail a code
-    // to it, which is both a bad surprise and free account creation
-    // for addresses nobody owns.
-    SitehouseAuth.sendCode(email, { createUser: false }).then(function () {
-      toCodeStep(email);
-    }).catch(function (err) {
-      fail(credErr, SitehouseAuth.message(err));
-    }).then(function () {
-      busy = false; loginBtn.disabled = false; label(loginBtn, 'Send me a code');
-    });
-  });
-
-  emailEl.addEventListener('keydown', function (e) { if (e.key === 'Enter') loginBtn.click(); });
-
-  gBtn.addEventListener('click', function () {
-    if (busy) return;
-    busy = true; gBtn.disabled = true;
-    SitehouseAuth.google(next === 'dashboard.html' ? null : next).catch(function (err) {
-      fail(credErr, SitehouseAuth.message(err));
-      busy = false; gBtn.disabled = false;
-    });
-  });
-
-  verifyBtn.addEventListener('click', function () {
-    if (busy) return;
-    var token = codeEl.value.trim();
-    if (!/^\d{6}$/.test(token)) { fail(codeErr, 'The code is six digits.'); return; }
-
-    busy = true; verifyBtn.disabled = true; label(verifyBtn, 'Checking…');
-    SitehouseAuth.verifyCode(document.getElementById('codeTarget').textContent, token)
-      .then(function () { location.replace(next); })
-      .catch(function (err) {
-        fail(codeErr, SitehouseAuth.message(err));
-        busy = false; verifyBtn.disabled = false; label(verifyBtn, 'Verify & continue');
-      });
-  });
-
-  codeEl.addEventListener('input', function () {
-    clearErr(codeErr);
-    // Six digits and nothing else — paste from a mail app often brings
-    // spaces with it.
-    codeEl.value = codeEl.value.replace(/\D/g, '').slice(0, 6);
-    if (codeEl.value.length === 6) verifyBtn.click();
-  });
-
-  var resendBtn = document.getElementById('resendBtn');
-  var resendUntil = 0, resendTimer = null;
-
-  function tickResend() {
-    var left = Math.ceil((resendUntil - Date.now()) / 1000);
-    if (left <= 0) {
-      clearInterval(resendTimer); resendTimer = null;
-      resendBtn.disabled = false;
-      resendBtn.textContent = 'Send a new code';
-      return;
+    /* Only ever redirect to a page on this site. Without this,
+       ?next=https://example.com turns the login into an open redirect,
+       which is the oldest phishing lever there is. */
+    function safeNext(v) {
+      return v && /^[A-Za-z0-9_-]+(\.html)?(#[A-Za-z0-9/_-]*)?$/.test(v) ? v : 'dashboard.html';
     }
-    resendBtn.textContent = 'Send a new code (' + left + 's)';
-  }
+    var next = safeNext(new URLSearchParams(location.search).get('next'));
 
-  function holdResend(seconds) {
-    resendUntil = Date.now() + seconds * 1000;
-    resendBtn.disabled = true;
-    tickResend();
-    if (!resendTimer) resendTimer = setInterval(tickResend, 1000);
-  }
+    var EMAIL = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+    var busy = false;
+    var email = '';
 
-  resendBtn.addEventListener('click', function () {
-    if (resendBtn.disabled) return;
-    var email = document.getElementById('codeTarget').textContent;
-    codeErr.hidden = true;
-    codeErr.classList.remove('is-info');
-    // Supabase refuses a second code inside 60 seconds. Saying so before
-    // the request beats showing a rate-limit error after it.
-    holdResend(60);
-    SitehouseAuth.sendCode(email, { createUser: false }).then(function () {
-      info(codeErr, 'A new code is on its way.');
-    }).catch(function (err) { fail(codeErr, SitehouseAuth.message(err)); });
-    codeEl.value = ''; codeEl.focus();
-  });
+    function panel(name) {
+      var all = document.querySelectorAll('[data-panel]');
+      for (var i = 0; i < all.length; i++) {
+        all[i].classList.toggle('is-on', all[i].getAttribute('data-panel') === name);
+      }
+      var first = document.querySelector('[data-panel].is-on .acct-in');
+      if (first) first.focus();
+    }
 
-  document.getElementById('backBtn').addEventListener('click', function () {
-    stepCode.hidden = true;
-    stepCred.hidden = false;
-    clearErr(credErr);
-    busy = false;
-    loginBtn.disabled = false; label(loginBtn, 'Send me a code');
-    gBtn.disabled = false;
-    emailEl.focus();
-  });
+    function say(box, msg, good) {
+      box.textContent = msg;
+      box.classList.toggle('is-info', !!good);
+      box.hidden = false;
+    }
+    function clear(box) { box.hidden = true; box.classList.remove('is-info'); }
+
+    /* One helper owns the busy state, so no path can leave a button
+       spinning for ever, and no second click gets through while the
+       first is still in the air. */
+    function work(btn, promise, done) {
+      busy = true;
+      btn.classList.add('is-busy');
+      btn.disabled = true;
+      return promise.then(function (v) { return { ok: true, v: v }; },
+                          function (e) { return { ok: false, e: e }; })
+        .then(function (r) {
+          busy = false;
+          btn.classList.remove('is-busy');
+          btn.disabled = false;
+          done(r);
+        });
+    }
+
+    /* ── Already signed in? Then this page is not the one they want ── */
+    A.session().then(function (session) {
+      if (session) { location.replace(next); return; }
+      document.documentElement.classList.remove('auth-checking');
+    })['catch'](function () {
+      document.documentElement.classList.remove('auth-checking');
+    });
+
+    /* ── Google ──────────────────────────────────────────────── */
+    $('gBtn').addEventListener('click', function () {
+      if (busy) return;
+      var btn = $('gBtn');
+      busy = true; btn.classList.add('is-busy'); btn.disabled = true;
+      A.google(next === 'dashboard.html' ? null : next)['catch'](function (err) {
+        busy = false; btn.classList.remove('is-busy'); btn.disabled = false;
+        say($('emailErr'), A.message(err));
+      });
+    });
+
+    /* ── 1 → 2 ───────────────────────────────────────────────── */
+    function submitEmail() {
+      if (busy) return;
+      var el = $('email');
+      var v = el.value.trim();
+      if (!EMAIL.test(v)) {
+        say($('emailErr'), 'Enter the email address on your account.');
+        el.setAttribute('aria-invalid', 'true');
+        el.focus();
+        return;
+      }
+      el.removeAttribute('aria-invalid');
+      clear($('emailErr'));
+      email = v;
+      var who = document.querySelectorAll('[data-who]');
+      for (var i = 0; i < who.length; i++) who[i].textContent = email;
+      panel('password');
+    }
+    $('nextBtn').addEventListener('click', submitEmail);
+    $('email').addEventListener('keydown', function (e) {
+      if (e.key === 'Enter') { e.preventDefault(); submitEmail(); }
+    });
+    $('email').addEventListener('input', function () {
+      clear($('emailErr')); $('email').removeAttribute('aria-invalid');
+    });
+
+    /* ── Password ────────────────────────────────────────────── */
+    $('peek').addEventListener('click', function () {
+      var i = $('password');
+      var show = i.type === 'password';
+      i.type = show ? 'text' : 'password';
+      this.textContent = show ? 'Hide' : 'Show';
+      this.setAttribute('aria-label', show ? 'Hide password' : 'Show password');
+      i.focus();
+    });
+
+    function submitPassword() {
+      if (busy) return;
+      var pw = $('password').value;
+      if (!pw) { say($('pwErr'), 'Enter your password, or ask for a code instead.'); return; }
+      clear($('pwErr'));
+      work($('loginBtn'), A.signInWithPassword(email, pw), function (r) {
+        if (r.ok) { location.replace(next); return; }
+        say($('pwErr'), A.message(r.e));
+      });
+    }
+    $('loginBtn').addEventListener('click', submitPassword);
+    $('password').addEventListener('keydown', function (e) {
+      if (e.key === 'Enter') { e.preventDefault(); submitPassword(); }
+    });
+    $('password').addEventListener('input', function () { clear($('pwErr')); });
+
+    /* Supabase refuses a second code inside a minute. Saying so before
+       the request beats showing a rate-limit error after it. */
+    var until = 0, ticker = null;
+    function tick() {
+      var left = Math.ceil((until - Date.now()) / 1000);
+      if (left <= 0) {
+        clearInterval(ticker); ticker = null;
+        $('resendBtn').disabled = false;
+        $('resendBtn').textContent = 'Send a new code';
+        return;
+      }
+      $('resendBtn').textContent = 'Send a new code (' + left + 's)';
+    }
+    function hold(secs) {
+      until = Date.now() + secs * 1000;
+      $('resendBtn').disabled = true;
+      tick();
+      if (!ticker) ticker = setInterval(tick, 1000);
+    }
+
+    /* ── Code instead ────────────────────────────────────────── */
+    $('useCodeBtn').addEventListener('click', function () {
+      if (busy) return;
+      clear($('pwErr'));
+      /* createUser:false — this is the LOGIN page. A mistyped address
+         must not quietly register a new empty account and mail a code
+         to it. */
+      work($('loginBtn'), A.sendCode(email, { createUser: false }), function (r) {
+        if (!r.ok) { say($('pwErr'), A.message(r.e)); return; }
+        panel('code');
+        hold(60);
+        say($('codeErr'), 'Code sent. Check your inbox.', true);
+      });
+    });
+
+    $('resendBtn').addEventListener('click', function () {
+      if (busy || $('resendBtn').disabled) return;
+      $('code').value = '';
+      clear($('codeErr'));
+      hold(60);
+      A.sendCode(email, { createUser: false }).then(function () {
+        say($('codeErr'), 'A new code is on its way.', true);
+      })['catch'](function (err) { say($('codeErr'), A.message(err)); });
+      $('code').focus();
+    });
+
+    function submitCode() {
+      if (busy) return;
+      var token = $('code').value.trim();
+      if (!/^\d{6}$/.test(token)) { say($('codeErr'), 'The code is six digits.'); return; }
+      clear($('codeErr'));
+      work($('verifyBtn'), A.verifyCode(email, token), function (r) {
+        if (r.ok) { location.replace(next); return; }
+        say($('codeErr'), A.message(r.e));
+      });
+    }
+    $('verifyBtn').addEventListener('click', submitCode);
+    $('code').addEventListener('input', function () {
+      clear($('codeErr'));
+      // Pasting from a mail app usually brings spaces with it.
+      this.value = this.value.replace(/\D/g, '').slice(0, 6);
+      if (this.value.length === 6) submitCode();
+    });
+    $('code').addEventListener('keydown', function (e) {
+      if (e.key === 'Enter') { e.preventDefault(); submitCode(); }
+    });
+
+    /* ── Back ────────────────────────────────────────────────── */
+    var backs = document.querySelectorAll('[data-back]');
+    for (var b = 0; b < backs.length; b++) {
+      backs[b].addEventListener('click', function () {
+        if (busy) return;
+        clear($('pwErr')); clear($('codeErr'));
+        $('password').value = '';
+        panel('email');
+      });
+    }
   });
 })();
 </script>
-<script src="assets/auth.js" defer></script>
 <script src="assets/cookies.js"></script>
 <script src="assets/i18n.js"></script>
-<script src="assets/dock.js"></script>
-<script src="assets/support.js"></script>
 </body>
 </html>

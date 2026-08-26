@@ -3,138 +3,104 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Find the email on your account — Sitehouse</title>
-<meta name="description" content="Look up which address your Sitehouse account was opened with, using your business name or phone number.">
+<title>Find the email on your Sitehouse account</title>
+<meta name="description" content="Try the addresses you might have used. We will send a code to the one that works.">
 <link rel="canonical" href="https://sitehouse.eu/forgot-email">
-<meta name="robots" content="noindex, nofollow">
-
+<meta name="robots" content="index, follow">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Sitehouse">
-<meta property="og:locale" content="en_GB">
 <meta property="og:url" content="https://sitehouse.eu/forgot-email">
-<meta property="og:title" content="Find the email on your account — Sitehouse">
-<meta property="og:description" content="Look up which address your Sitehouse account was opened with, using your business name or phone number.">
+<meta property="og:title" content="Find the email on your Sitehouse account">
+<meta property="og:description" content="Try the addresses you might have used. We will send a code to the one that works.">
 <meta property="og:image" content="https://sitehouse.eu/assets/brand/sitehouse-card.png">
-<meta property="og:image:width" content="1200">
-<meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="Sitehouse — professional websites for small businesses">
-
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:url" content="https://sitehouse.eu/forgot-email">
-<meta name="twitter:title" content="Find the email on your account — Sitehouse">
-<meta name="twitter:description" content="Look up which address your Sitehouse account was opened with, using your business name or phone number.">
+<meta name="twitter:title" content="Find the email on your Sitehouse account">
+<meta name="twitter:description" content="Try the addresses you might have used. We will send a code to the one that works.">
 <meta name="twitter:image" content="https://sitehouse.eu/assets/brand/sitehouse-card.png">
-<meta name="twitter:image:alt" content="Sitehouse — professional websites for small businesses">
-
-<meta name="apple-mobile-web-app-title" content="Sitehouse">
-<meta name="application-name" content="Sitehouse">
 <meta name="theme-color" content="#14161A">
 <link rel="apple-touch-icon" href="/assets/brand/sitehouse-touch.png">
 <link rel="icon" href="/assets/brand/sitehouse-favicon.png" type="image/png">
-<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebPage","@id":"https://sitehouse.eu/forgot-email#webpage","url":"https://sitehouse.eu/forgot-email","name":"Find the email on your account — Sitehouse","description":"Look up which address your Sitehouse account was opened with, using your business name or phone number.","isPartOf":{"@id":"https://sitehouse.eu/#website"},"inLanguage":"en-GB"}]}</script>
-<link rel="dns-prefetch" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@200..800&display=swap">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@200..800&display=swap" media="print" onload="this.media='all'">
-<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@200..800&display=swap"></noscript>
-<script>/* Pre-paint entrance guard. With JS off the class is never added and
-   the finished page simply renders — that is the whole no-JS story. */
-document.documentElement.classList.add('entry-pending');
-window.__entryFallback=setTimeout(function(){
-  document.documentElement.classList.remove('entry-pending');
-},3500);</script>
-<link rel="stylesheet" href="assets/auth.css">
-<link rel="stylesheet" href="assets/dock.css">
-<link rel="stylesheet" href="assets/support.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400&family=Inter:wght@400;500;600;700&family=Outfit:wght@200..800&display=swap" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400&family=Inter:wght@400;500;600;700&family=Outfit:wght@200..800&display=swap"></noscript>
+<script>(function(){var t='light';try{t=localStorage.getItem('sitehouse.theme')==='dark'?'dark':'light';}catch(e){}document.documentElement.setAttribute('data-theme',t);})();</script>
+<link rel="stylesheet" href="assets/sitehouse.css">
+<link rel="stylesheet" href="assets/tailwind.css">
+<link rel="stylesheet" href="assets/theme.css">
+<link rel="stylesheet" href="assets/account.css">
 </head>
 
-<body class="auth">
+<body class="acct font-sans">
 
-<div class="stage">
+<header class="acct-top">
+  <a class="acct-brand" href="/">
+    <span class="brand-mark" role="img" aria-label="Sitehouse"></span>
+    <span>Sitehouse</span>
+  </a>
+  <a class="acct-top-link" href="login.html">Back to <b>sign in</b></a>
+</header>
 
-  <section class="photo">
-    <video class="photo-img photo-img--tall" muted loop playsinline preload="none"
-           poster="assets/media/falcon-poster.webp"
-           aria-label="A peregrine falcon in a high-speed dive, feathers rippling, eye locked forward">
-      <source src="assets/media/falcon.mp4" type="video/mp4">
-    </video>
-    <video class="photo-img photo-img--wide" aria-hidden="true" muted loop playsinline preload="none"
-           poster="assets/media/falcon-poster-wide.webp">
-      <source src="assets/media/falcon-wide.mp4" type="video/mp4">
-    </video>
-    <div class="scrim" aria-hidden="true"></div>
-    <a class="home-mark" href="./"><span class="brand-mark brand-mark--auth" role="img" aria-label="Sitehouse"></span>Sitehouse</a>
-    <div class="hero" id="hero">
-      <div class="hl-wrap">
-        <span class="hl" id="hl1">Lost the</span>
-        <span class="hl" id="hl2">email address?</span>
+<main class="acct-main">
+  <div class="acct-card">
+
+    <section data-panel="find" class="is-on">
+      <h1 class="acct-h">Which email did you use?</h1>
+      <p class="acct-sub">
+        Try one. If there is an account on it, a six-digit code arrives within a minute — that is
+        how you will know.
+      </p>
+
+      <div class="acct-field">
+        <label for="email">Email to try</label>
+        <input class="acct-in" id="email" type="email" autocomplete="email"
+               inputmode="email" autocapitalize="off" spellcheck="false"
+               placeholder="you@yourbusiness.com">
       </div>
-    </div>
-  </section>
 
-  <section class="pane">
-    <div class="card" id="card">
-      <div class="card-in" id="cardIn" data-flow>
+      <p class="acct-err" id="findErr" role="alert" hidden></p>
 
-        <div data-step="find" id="stepFind">
-          <h1 id="h1">Which email was it?</h1>
-          <p id="sub">Try the address you think you used. If there is an account on it, a code arrives.</p>
+      <button type="button" class="acct-btn" id="findBtn"><span>Send me a code</span></button>
 
-          <div class="field field--box" id="email">
-            <input type="email" autocomplete="email" aria-label="Email address"
-                   placeholder="The address you think you used">
-          </div>
+      <p class="acct-note">
+        We cannot tell you which addresses are registered — that would let anyone check whether
+        somebody has an account here. Trying them is the safe way round.
+      </p>
 
-          <p class="auth-err" id="findErr" role="alert" hidden></p>
+      <p class="acct-alt">Know it after all? <a href="login.html">Sign in</a></p>
+    </section>
 
-          <button type="button" id="findBtn" class="btn-primary-pill">
-            <span>Find my account</span>
-            <svg viewBox="0 0 22 22" aria-hidden="true" focusable="false"><path d="M3 11h15.4M11 3.3l7.7 7.7-7.7 7.7" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </button>
+    <section data-panel="sent">
+      <h1 class="acct-h">If that address has an account&hellip;</h1>
+      <p class="acct-sub">
+        &hellip;a six-digit code is on its way to <b data-who></b>. Nothing arriving in a couple of
+        minutes means there is no account on it — try another.
+      </p>
 
-          <div class="botcluster">
-            <p id="bottom">Remembered it? <a href="login.html">Log in</a></p>
-            <div class="rowlinks">
-              <a href="forgot-password.html">Forgot password?</a>
-              <a href="trouble.html">Trouble signing in?</a>
-            </div>
-            <p class="aux">
-              We never confirm whether an address has an account — that would let anyone go fishing.
-              Stuck? <a href="mailto:help@sitehouse.eu">help@sitehouse.eu</a> and a person will verify you properly.
-            </p>
-          </div>
-        </div>
-
-        <div data-step="result" id="stepResult" hidden>
-          <h2 class="step-h1" id="resultTitle">Check that inbox</h2>
-          <p class="step-sub" id="resultBody"></p>
-
-          <div class="field field--box" id="maskedBox">
-            <input id="maskedEmail" type="text" readonly aria-label="Masked email address on the account">
-          </div>
-
-          <p class="aux" id="resultHint">Only part of the address is shown. If it looks right, log in with it — or
-            <a href="forgot-password.html">reset the password</a>.</p>
-
-          <a href="login.html" class="btn-primary-pill" id="toLoginBtn" style="text-decoration:none">
-            <span>Go to log in</span>
-            <svg viewBox="0 0 22 22" aria-hidden="true" focusable="false"><path d="M3 11h15.4M11 3.3l7.7 7.7-7.7 7.7" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </a>
-
-          <div class="botcluster">
-            <div class="rowlinks">
-              <button type="button" class="linkbtn" id="againBtn">Search again</button>
-              <a href="contact.html">Ask us instead</a>
-            </div>
-          </div>
-        </div>
-
+      <div class="acct-field">
+        <label for="code">Verification code</label>
+        <input class="acct-in acct-code" id="code" type="text" inputmode="numeric" maxlength="6"
+               autocomplete="one-time-code" placeholder="000000" aria-label="Six digit verification code">
       </div>
-    </div>
-  </section>
 
-</div>
+      <p class="acct-err" id="codeErr" role="alert" hidden></p>
+
+      <button type="button" class="acct-btn" id="verifyBtn"><span>Log in</span></button>
+
+      <div class="acct-links">
+        <button type="button" class="acct-link" id="againBtn">Try a different address</button>
+        <a class="acct-link" href="trouble.html">Still stuck?</a>
+      </div>
+    </section>
+  </div>
+</main>
+
+<footer class="acct-foot">
+  <a href="/">Sitehouse</a>
+  <a href="trouble.html">Trouble signing in</a>
+  <a href="terms.html">Terms</a>
+  <a href="privacy.html">Privacy</a>
+</footer>
 
 <script src="assets/demo.js"></script>
 <script src="assets/supabase-auth.js" type="module"></script>
@@ -148,70 +114,78 @@ window.__entryFallback=setTimeout(function(){
   }
 
   whenAuth(function () {
+    var A = window.SitehouseAuth;
+    var $ = function (id) { return document.getElementById(id); };
     var EMAIL = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
-    var busy = false;
-    var stepFind = document.getElementById('stepFind');
-    var stepResult = document.getElementById('stepResult');
-    var findBtn = document.getElementById('findBtn');
-    var findErr = document.getElementById('findErr');
-    var emailEl = document.querySelector('#email input');
+    var busy = false, target = '';
 
-    function fail(box, msg) { box.textContent = msg; box.hidden = false; }
-    function label(btn, t) { var sp = btn.querySelector('span'); if (sp) sp.textContent = t; }
+    function panel(n) {
+      var all = document.querySelectorAll('[data-panel]');
+      for (var i = 0; i < all.length; i++) all[i].classList.toggle('is-on', all[i].getAttribute('data-panel') === n);
+      var first = document.querySelector('[data-panel].is-on .acct-in');
+      if (first) first.focus();
+    }
+    function say(box, msg) { box.textContent = msg; box.hidden = false; }
+    function clear(box) { box.hidden = true; box.classList.remove('is-info'); }
 
-    emailEl.addEventListener('keydown', function (e) {
-      if (e.key === 'Enter') { e.preventDefault(); findBtn.click(); }
-    });
-
-    findBtn.addEventListener('click', function () {
-      if (busy) return;
-      var email = emailEl.value.trim();
-      if (!EMAIL.test(email)) { fail(findErr, 'Type the address you want to try.'); emailEl.focus(); return; }
-      findErr.hidden = true;
-
-      busy = true; findBtn.disabled = true; label(findBtn, 'Sending…');
-
-      // createUser:false so a wrong guess cannot create an account.
-      SitehouseAuth.sendCode(email, { createUser: false }).then(function () {
-        show(email);
-      }).catch(function (err) {
-        var m = String(err && err.message || '').toLowerCase();
-        // "no such user" must look identical to success, or this page
-        // becomes a way to test which addresses are registered.
-        if (m.indexOf('not found') > -1 || m.indexOf('signups not allowed') > -1) { show(email); return; }
-        fail(findErr, SitehouseAuth.message(err));
-      }).then(function () {
-        busy = false; findBtn.disabled = false; label(findBtn, 'Send me a code');
-      });
-    });
-
-    function show(email) {
-      document.getElementById('resultBody').textContent =
-        'If ' + email + ' has an account, a six-digit code is on its way to it. ' +
-        'Enter the code to sign in. Nothing arrives if there is no account on that address.';
-      var box = document.getElementById('maskedBox');
-      if (box) box.hidden = true;
-      var hint = document.getElementById('resultHint');
-      if (hint) hint.hidden = true;
-      var toLogin = document.getElementById('toLoginBtn');
-      if (toLogin) { toLogin.hidden = false; }
-      stepFind.hidden = true;
-      stepResult.hidden = false;
+    function work(btn, promise, done) {
+      busy = true; btn.classList.add('is-busy'); btn.disabled = true;
+      return promise.then(function (v) { return { ok: true, v: v }; },
+                          function (e) { return { ok: false, e: e }; })
+        .then(function (r) {
+          busy = false; btn.classList.remove('is-busy'); btn.disabled = false;
+          done(r);
+        });
     }
 
-    var again = document.getElementById('againBtn');
-    if (again) again.addEventListener('click', function () {
-      stepResult.hidden = true;
-      stepFind.hidden = false;
-      emailEl.focus();
+    function find() {
+      if (busy) return;
+      var v = $('email').value.trim();
+      if (!EMAIL.test(v)) { say($('findErr'), 'Type the address you want to try.'); $('email').focus(); return; }
+      clear($('findErr'));
+      target = v;
+      var who = document.querySelectorAll('[data-who]');
+      for (var i = 0; i < who.length; i++) who[i].textContent = target;
+
+      // createUser:false, so a wrong guess cannot create an account.
+      work($('findBtn'), A.sendCode(target, { createUser: false }), function (r) {
+        if (r.ok) { panel('sent'); return; }
+        var m = String((r.e && r.e.message) || '').toLowerCase();
+        /* "No such user" must look identical to success, or this page
+           becomes a way to test which addresses are registered. */
+        if (m.indexOf('not found') > -1 || m.indexOf('signups not allowed') > -1) { panel('sent'); return; }
+        say($('findErr'), A.message(r.e));
+      });
+    }
+    $('findBtn').addEventListener('click', find);
+    $('email').addEventListener('keydown', function (e) { if (e.key === 'Enter') { e.preventDefault(); find(); } });
+    $('email').addEventListener('input', function () { clear($('findErr')); });
+
+    function verify() {
+      if (busy) return;
+      var token = $('code').value.trim();
+      if (!/^\d{6}$/.test(token)) { say($('codeErr'), 'The code is six digits.'); return; }
+      clear($('codeErr'));
+      work($('verifyBtn'), A.verifyCode(target, token), function (r) {
+        if (r.ok) { location.replace('dashboard.html'); return; }
+        say($('codeErr'), A.message(r.e));
+      });
+    }
+    $('verifyBtn').addEventListener('click', verify);
+    $('code').addEventListener('input', function () {
+      clear($('codeErr'));
+      this.value = this.value.replace(/\D/g, '').slice(0, 6);
+      if (this.value.length === 6) verify();
+    });
+    $('againBtn').addEventListener('click', function () {
+      if (busy) return;
+      $('code').value = ''; clear($('codeErr'));
+      panel('find');
+      $('email').select();
     });
   });
 })();
 </script>
-<script src="assets/auth.js" defer></script>
 <script src="assets/cookies.js"></script>
-<script src="assets/i18n.js"></script>
-<script src="assets/dock.js"></script>
-<script src="assets/support.js"></script>
 </body>
 </html>

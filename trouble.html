@@ -31,230 +31,220 @@
 <meta name="theme-color" content="#14161A">
 <link rel="apple-touch-icon" href="/assets/brand/sitehouse-touch.png">
 <link rel="icon" href="/assets/brand/sitehouse-favicon.png" type="image/png">
-<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebPage","@id":"https://sitehouse.eu/trouble#webpage","url":"https://sitehouse.eu/trouble","name":"Trouble signing in or signing up — Sitehouse","description":"Fixes for a password that will not work, a verification code that never arrived, an email you cannot remember, and an address that is already registered.","isPartOf":{"@id":"https://sitehouse.eu/#website"},"inLanguage":"en-GB"},{"@type":"BreadcrumbList","@id":"https://sitehouse.eu/trouble#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://sitehouse.eu/"},{"@type":"ListItem","position":2,"name":"Trouble signing in","item":"https://sitehouse.eu/trouble"}]}]}</script>
-<link rel="dns-prefetch" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@200..800&display=swap">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@200..800&display=swap" media="print" onload="this.media='all'">
-<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@200..800&display=swap"></noscript>
-<script>/* Pre-paint entrance guard. With JS off the class is never added and
-   the finished page simply renders — that is the whole no-JS story. */
-document.documentElement.classList.add('entry-pending');
-window.__entryFallback=setTimeout(function(){
-  document.documentElement.classList.remove('entry-pending');
-},3500);</script>
-<link rel="stylesheet" href="assets/auth.css">
-<link rel="stylesheet" href="assets/dock.css">
-<link rel="stylesheet" href="assets/support.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400&family=Inter:wght@400;500;600;700&family=Outfit:wght@200..800&display=swap" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400&family=Inter:wght@400;500;600;700&family=Outfit:wght@200..800&display=swap"></noscript>
+<script>(function(){var t='light';try{t=localStorage.getItem('sitehouse.theme')==='dark'?'dark':'light';}catch(e){}document.documentElement.setAttribute('data-theme',t);})();</script>
+<link rel="stylesheet" href="assets/sitehouse.css">
+<link rel="stylesheet" href="assets/tailwind.css">
+<link rel="stylesheet" href="assets/theme.css">
+<link rel="stylesheet" href="assets/account.css">
+<style>
+  /* Prose, so the card is wider than a form card and the answers are
+     collapsed by default — somebody arriving here has one problem, not
+     eleven, and a wall of text is its own obstacle. */
+  .tr-card { max-width: 38rem; }
+
+  .tr-actions { display: grid; gap: 0.6rem; margin-top: 1.5rem; }
+  @media (min-width: 520px) { .tr-actions { grid-template-columns: 1fr 1fr; } }
+  .tr-actions .acct-btn { margin-top: 0; }
+
+  .tr-group {
+    margin-top: 2.25rem;
+    font-family: 'IBM Plex Mono', ui-monospace, monospace;
+    font-size: 0.625rem; letter-spacing: 0.18em; text-transform: uppercase;
+    color: rgb(var(--c-ink-soft));
+  }
+
+  .tr-q {
+    border-bottom: 1px solid rgb(var(--c-line));
+  }
+  .tr-q summary {
+    display: flex; align-items: center; justify-content: space-between; gap: 1rem;
+    padding: 0.95rem 0; cursor: pointer;
+    font-size: 0.9375rem; font-weight: 600; color: rgb(var(--c-ink));
+    list-style: none;
+  }
+  .tr-q summary::-webkit-details-marker { display: none; }
+  .tr-q summary::after {
+    content: "+"; flex: none;
+    font-family: 'IBM Plex Mono', ui-monospace, monospace;
+    font-size: 1.1rem; font-weight: 400; color: rgb(var(--c-ink-soft));
+  }
+  .tr-q[open] summary::after { content: "\2212"; }
+  .tr-q summary:hover { color: rgb(var(--c-ink)); }
+  .tr-a {
+    padding: 0 0 1.1rem;
+    font-size: 0.875rem; line-height: 1.65; color: rgb(var(--c-ink-mid));
+  }
+  .tr-a p { margin: 0 0 0.7rem; }
+  .tr-a p:last-child { margin-bottom: 0; }
+  .tr-a a { color: rgb(var(--c-ink)); text-decoration: underline; text-underline-offset: 2px; }
+
+  .tr-end {
+    margin-top: 2.25rem; padding: 1.25rem;
+    border: 1px solid rgb(var(--c-line)); border-radius: 0.6rem;
+    background: rgb(var(--c-ink) / 0.03);
+  }
+  .tr-end h2 { margin: 0; font-size: 1rem; font-weight: 600; }
+  .tr-end p { margin: 0.5rem 0 0; font-size: 0.875rem; line-height: 1.6; color: rgb(var(--c-ink-mid)); }
+</style>
 </head>
 
-<body class="auth">
+<body class="acct font-sans">
 
-<div class="stage">
+<header class="acct-top">
+  <a class="acct-brand" href="/">
+    <span class="brand-mark" role="img" aria-label="Sitehouse"></span>
+    <span>Sitehouse</span>
+  </a>
+  <a class="acct-top-link" href="login.html">Back to <b>sign in</b></a>
+</header>
 
-  <section class="photo">
-    <video class="photo-img photo-img--tall" muted loop playsinline preload="none"
-           poster="assets/media/falcon-poster.webp"
-           aria-label="A peregrine falcon in a high-speed dive, feathers rippling, eye locked forward">
-      <source src="assets/media/falcon.mp4" type="video/mp4">
-    </video>
-    <video class="photo-img photo-img--wide" aria-hidden="true" muted loop playsinline preload="none"
-           poster="assets/media/falcon-poster-wide.webp">
-      <source src="assets/media/falcon-wide.mp4" type="video/mp4">
-    </video>
-    <div class="scrim" aria-hidden="true"></div>
-    <a class="home-mark" href="./"><span class="brand-mark brand-mark--auth" role="img" aria-label="Sitehouse"></span>Sitehouse</a>
-    <div class="hero" id="hero">
-      <div class="hl-wrap">
-        <span class="hl" id="hl1">Locked out?</span>
-        <span class="hl" id="hl2">Start here.</span>
-      </div>
+<main class="acct-main">
+  <div class="acct-card tr-card">
+
+    <h1 class="acct-h">Locked out? Start here.</h1>
+    <p class="acct-sub">
+      Almost every sign-in problem is one of the eleven below, and almost all of them are fixed in
+      under a minute.
+    </p>
+
+    <div class="tr-actions">
+      <a class="acct-btn" href="forgot-password.html" style="text-decoration:none"><span>Reset my password</span></a>
+      <a class="acct-btn acct-btn--ghost" href="forgot-email.html" style="text-decoration:none"><span>Find my email address</span></a>
     </div>
-  </section>
 
-  <section class="pane">
-    <div class="card" id="card">
-      <div class="card-in" id="cardIn" data-flow>
+    <p class="tr-group">Signing in</p>
 
-        <a class="card-back" href="login.html" aria-label="Back to log in">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg>
-        </a>
-
-        <div data-step="help" id="stepHelp">
-          <h1 id="h1" class="h1-ruled">Trouble signing in</h1>
-
-          <!-- The two fastest exits, before anything has to be read. -->
-          <div class="tr-fast">
-            <a class="tr-fast-a" href="forgot-password.html">
-              <span class="tr-fast-t">Reset my password</span>
-              <svg viewBox="0 0 22 22" aria-hidden="true"><path d="M3 11h15.4M11 3.3l7.7 7.7-7.7 7.7" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            </a>
-            <a class="tr-fast-a" href="forgot-email.html">
-              <span class="tr-fast-t">Find my email address</span>
-              <svg viewBox="0 0 22 22" aria-hidden="true"><path d="M3 11h15.4M11 3.3l7.7 7.7-7.7 7.7" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            </a>
-          </div>
-
-          <p class="tr-group">Signing in</p>
-          <div class="tr-list" data-tr>
-
-            <div class="tr-item">
-              <button type="button" class="tr-head" aria-expanded="false">
-                <span>My password is not accepted</span>
-                <i aria-hidden="true"></i>
-              </button>
-              <div class="tr-body">
-                <p>Passwords are case sensitive, so check Caps Lock first, then check for a space picked up from a paste. If it still fails, <a href="forgot-password.html">reset it</a> — the reset link works even when you cannot remember what the old one was.</p>
-              </div>
-            </div>
-
-            <div class="tr-item">
-              <button type="button" class="tr-head" aria-expanded="false">
-                <span>I do not know which email I used</span>
-                <i aria-hidden="true"></i>
-              </button>
-              <div class="tr-body">
-                <p>Your business name or the phone number you gave us is enough to find it. <a href="forgot-email.html">Look it up here</a> and we show you the address with most of it masked, so you can recognise it without it being readable by anyone standing behind you.</p>
-              </div>
-            </div>
-
-            <div class="tr-item">
-              <button type="button" class="tr-head" aria-expanded="false">
-                <span>The code never arrived</span>
-                <i aria-hidden="true"></i>
-              </button>
-              <div class="tr-body">
-                <p>Give it two minutes, then check the spam or promotions folder. If it is still missing, ask for a new code — the old one stops working the moment a new one is sent, so only the newest code in your inbox is the live one.</p>
-                <p>Codes also expire on their own after ten minutes. A code you found half an hour later will be refused even though it looks right.</p>
-              </div>
-            </div>
-
-            <div class="tr-item">
-              <button type="button" class="tr-head" aria-expanded="false">
-                <span>It says there is no account with that email</span>
-                <i aria-hidden="true"></i>
-              </button>
-              <div class="tr-body">
-                <p>Usually one of two things: the account is under a different address — a personal one rather than the business one, or the other way round — or the sign-up was never finished past the code step. <a href="forgot-email.html">Search by business name</a> to settle which.</p>
-              </div>
-            </div>
-
-          </div>
-
-          <p class="tr-group">Signing up</p>
-          <div class="tr-list" data-tr>
-
-            <div class="tr-item">
-              <button type="button" class="tr-head" aria-expanded="false">
-                <span>It says this email is already registered</span>
-                <i aria-hidden="true"></i>
-              </button>
-              <div class="tr-body">
-                <p>You already have an account, which is the good version of this problem. <a href="login.html">Log in</a> instead, and <a href="forgot-password.html">reset the password</a> if you do not have it. Nothing you paid for is lost.</p>
-              </div>
-            </div>
-
-            <div class="tr-item">
-              <button type="button" class="tr-head" aria-expanded="false">
-                <span>The two passwords will not match</span>
-                <i aria-hidden="true"></i>
-              </button>
-              <div class="tr-body">
-                <p>Almost always a trailing space from a paste, or Caps Lock on for one field and off for the other. Clear both boxes and type it twice by hand.</p>
-              </div>
-            </div>
-
-            <div class="tr-item">
-              <button type="button" class="tr-head" aria-expanded="false">
-                <span>The verification code is refused</span>
-                <i aria-hidden="true"></i>
-              </button>
-              <div class="tr-body">
-                <p>Six digits, no spaces. If you asked for more than one code, only the last one counts. Ask for a fresh one and use that.</p>
-              </div>
-            </div>
-
-            <div class="tr-item">
-              <button type="button" class="tr-head" aria-expanded="false">
-                <span>Which country code do I pick?</span>
-                <i aria-hidden="true"></i>
-              </button>
-              <div class="tr-body">
-                <p>The one your phone number belongs to, not the one you happen to be standing in. Type the country name or the dialling code into the search box and pick it from the list.</p>
-              </div>
-            </div>
-
-          </div>
-
-          <div class="tr-out">
-            <p class="tr-out-h">Still stuck?</p>
-            <p class="tr-out-p">Tell us the business name and roughly when you ordered. A person reads it and answers — usually the same day.</p>
-            <a class="btn-primary-pill" href="contact.html">
-              <span>Message us</span>
-              <svg viewBox="0 0 22 22" aria-hidden="true" focusable="false"><path d="M3 11h15.4M11 3.3l7.7 7.7-7.7 7.7" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            </a>
-          </div>
-
-          <div class="botcluster">
-            <p id="bottom">Remembered it? <a href="login.html">Log in</a> &middot; No account yet? <a href="signup.html">Create one</a></p>
-          </div>
-        </div>
-
+    <details class="tr-q">
+      <summary>My password is not accepted</summary>
+      <div class="tr-a">
+        <p>Passwords are case sensitive, so check Caps Lock first, then check for a space picked up
+          from a paste. If it still fails, <a href="forgot-password.html">reset it</a> — the reset
+          works even when you cannot remember what the old one was.</p>
       </div>
+    </details>
+
+    <details class="tr-q">
+      <summary>I never set a password</summary>
+      <div class="tr-a">
+        <p>Accounts opened before we added passwords do not have one, and accounts opened with
+          Google never needed one. On the sign-in screen, enter your email, then choose
+          <strong>Email me a six-digit code instead</strong> — or use the Google button if that is
+          how you signed up.</p>
+      </div>
+    </details>
+
+    <details class="tr-q">
+      <summary>I do not know which email I used</summary>
+      <div class="tr-a">
+        <p><a href="forgot-email.html">Try the addresses you might have used</a>. A code arriving is
+          how you know which one it is. We cannot list them for you — that would let anyone check
+          whether a particular person has an account here.</p>
+      </div>
+    </details>
+
+    <details class="tr-q">
+      <summary>The code never arrived</summary>
+      <div class="tr-a">
+        <p>Give it two minutes, then check spam or promotions. If it is still missing, ask for a new
+          one — the old code stops working the moment a new one is sent, so only the newest code in
+          your inbox is live.</p>
+        <p>Codes also expire on their own after an hour. One you find later will be refused even
+          though it looks right.</p>
+      </div>
+    </details>
+
+    <details class="tr-q">
+      <summary>It says the code is wrong or expired</summary>
+      <div class="tr-a">
+        <p>Those two cases look identical to us — the server does not tell us which it was, so the
+          message covers both rather than guessing. Check the digits against the newest email
+          first; if they match, send a new code and use that one.</p>
+      </div>
+    </details>
+
+    <p class="tr-group">Signing up</p>
+
+    <details class="tr-q">
+      <summary>It says this email is already registered</summary>
+      <div class="tr-a">
+        <p>You already have an account, which is the good version of this problem.
+          <a href="login.html">Sign in</a> instead, and
+          <a href="forgot-password.html">reset the password</a> if you do not have it. Nothing you
+          paid for is lost.</p>
+      </div>
+    </details>
+
+    <details class="tr-q">
+      <summary>The password is refused as too short</summary>
+      <div class="tr-a">
+        <p>Eight characters is the minimum. Length beats cleverness — three ordinary words in a row
+          is both stronger and easier to remember than one word with symbols in it.</p>
+      </div>
+    </details>
+
+    <details class="tr-q">
+      <summary>The verification code is refused</summary>
+      <div class="tr-a">
+        <p>Six digits, no spaces. If you asked for more than one code, only the last one counts. Ask
+          for a fresh one and use that.</p>
+      </div>
+    </details>
+
+    <details class="tr-q">
+      <summary>I closed the tab before entering the code</summary>
+      <div class="tr-a">
+        <p>The account exists but the address is not confirmed yet. Start
+          <a href="signup.html">signing up</a> again with the same email and password — you will go
+          straight to the code step, and entering it finishes the job.</p>
+      </div>
+    </details>
+
+    <p class="tr-group">Google</p>
+
+    <details class="tr-q">
+      <summary>Google says it is signing me in to a strange address</summary>
+      <div class="tr-a">
+        <p>That is our authentication provider's own domain, which is what Google shows when it
+          cannot show a friendlier name. It is the right place — nothing is being redirected
+          somewhere it should not be. We are getting it renamed.</p>
+      </div>
+    </details>
+
+    <details class="tr-q">
+      <summary>I signed up with Google but a password is being asked for</summary>
+      <div class="tr-a">
+        <p>Use the <strong>Continue with Google</strong> button rather than the email box. A Google
+          account has no password here, because Google holds it instead.</p>
+      </div>
+    </details>
+
+    <div class="tr-end">
+      <h2>Still stuck?</h2>
+      <p>Tell us the business name and roughly when you ordered. A person reads it and answers —
+        usually the same day.</p>
+      <a class="acct-btn" href="mailto:help@sitehouse.eu?subject=Trouble%20signing%20in"
+         style="text-decoration:none"><span>Message us</span></a>
     </div>
-  </section>
 
-</div>
+    <p class="acct-alt">
+      Remembered it? <a href="login.html">Sign in</a> &nbsp;&middot;&nbsp;
+      No account yet? <a href="signup.html">Create one</a>
+    </p>
 
-<script>
-(function () {
-  'use strict';
-  // One open at a time inside a group. Closed is the honest default —
-  // eight open answers is a wall of text, not a help page.
-  function shut(head) {
-    var body = head.parentNode.querySelector('.tr-body');
-    // From its measured height, not from auto — a transition needs two
-    // definite ends, and 'auto' is not one of them.
-    body.style.height = body.scrollHeight + 'px';
-    body.offsetHeight;
-    body.style.height = '0px';
-    head.setAttribute('aria-expanded', 'false');
-    head.parentNode.classList.remove('is-open');
-  }
+  </div>
+</main>
 
-  function open(head) {
-    var body = head.parentNode.querySelector('.tr-body');
-    body.style.height = body.scrollHeight + 'px';
-    head.setAttribute('aria-expanded', 'true');
-    head.parentNode.classList.add('is-open');
-    // Release to auto once it has arrived, so a reflow — a rotated phone,
-    // a resized window — cannot leave the panel clipped at a stale height.
-    body.addEventListener('transitionend', function done(e) {
-      if (e.propertyName !== 'height') return;
-      body.removeEventListener('transitionend', done);
-      if (head.getAttribute('aria-expanded') === 'true') body.style.height = 'auto';
-    });
-  }
+<footer class="acct-foot">
+  <a href="/">Sitehouse</a>
+  <a href="faq.html">FAQ</a>
+  <a href="terms.html">Terms</a>
+  <a href="privacy.html">Privacy</a>
+</footer>
 
-  [].forEach.call(document.querySelectorAll('[data-tr]'), function (list) {
-    [].forEach.call(list.querySelectorAll('.tr-head'), function (head) {
-      head.addEventListener('click', function () {
-        var wasOpen = head.getAttribute('aria-expanded') === 'true';
-        [].forEach.call(list.querySelectorAll('.tr-head'), function (h) {
-          if (h.getAttribute('aria-expanded') === 'true') shut(h);
-        });
-        if (!wasOpen) open(head);
-      });
-    });
-  });
-})();
-</script>
-<script src="assets/auth.js" defer></script>
 <script src="assets/cookies.js"></script>
-<script src="assets/i18n.js"></script>
-<script src="assets/demo.js"></script>
-<script src="assets/dock.js"></script>
-<script src="assets/support.js"></script>
 </body>
 </html>

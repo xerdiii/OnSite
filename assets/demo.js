@@ -21,6 +21,43 @@
   // first time they authenticate, and only if theirs is still empty:
   // a returning account's real data must never be overwritten by
   // whatever this browser happened to be holding.
+  /* The id inside the stored Supabase session, or '' if there is none.
+     Handles both storage shapes: plain JSON, and the "base64-" prefixed
+     form newer clients write. Falls back to the sub claim of the access
+     token, which is there in every version. */
+  function storedUserId() {
+    try {
+      var ls = global.localStorage;
+      for (var i = 0; i < ls.length; i++) {
+        var k = ls.key(i);
+        if (!k || k.indexOf('sb-') !== 0 || k.indexOf('-auth-token') < 0) continue;
+        if (k.indexOf('code-verifier') > -1) continue;   // a PKCE leftover, not a session
+
+        var raw = ls.getItem(k);
+        if (!raw) continue;
+        if (raw.indexOf('base64-') === 0) {
+          try { raw = global.atob(raw.slice(7)); } catch (e) { continue; }
+        }
+
+        var parsed;
+        try { parsed = JSON.parse(raw); } catch (e) { continue; }
+        if (!parsed || typeof parsed !== 'object') continue;
+
+        if (parsed.user && parsed.user.id) return parsed.user.id;
+
+        var jwt = parsed.access_token;
+        if (typeof jwt === 'string' && jwt.split('.').length === 3) {
+          try {
+            var body = jwt.split('.')[1].replace(/-/g, '+').replace(/_/g, '/');
+            var claims = JSON.parse(global.atob(body + '==='.slice((body.length + 3) % 4)));
+            if (claims && claims.sub) return claims.sub;
+          } catch (e) {}
+        }
+      }
+    } catch (e) {}
+    return '';
+  }
+
   function bindUser(uid) {
     var want = uid ? BASE + '.' + uid : ANON;
     if (want === KEY) return;
@@ -90,6 +127,10 @@
       tier: 'none',
       freePage: null,
       onboarded: false,
+
+      // When this copy was last written. Used to decide whether the
+      // account's copy or this browser's copy is the newer one.
+      savedAt: null,
 
       customer: {
         firstName: '',
@@ -346,8 +387,39 @@
     return state;
   }
 
+  var savers = [];
+
   function save() {
+    // The stamp is what lets syncProfile decide whether the copy on the
+    // account or the copy in this browser is the newer one.
+    state.savedAt = new Date().toISOString();
     try { global.localStorage.setItem(KEY, JSON.stringify(state)); } catch (e) { /* storage may be off */ }
+    for (var i = 0; i < savers.length; i++) {
+      try { savers[i](state); } catch (e) { /* a listener must not break a save */ }
+    }
+  }
+
+  /* supabase-auth.js listens here and pushes to the account. Kept as a
+     subscription rather than a direct call so demo.js never has to know
+     that a server exists. */
+  function onSave(fn) { if (typeof fn === 'function') savers.push(fn); }
+
+  /* Adopt a whole state that came from somewhere else — the account's
+     copy, on a device that has not seen it before. Merged over the seed
+     exactly like a stored one, so a state written by an older version
+     cannot leave a view reading properties off undefined. */
+  function replaceState(incoming) {
+    if (!incoming || typeof incoming !== 'object') return state;
+    var fresh = seed();
+    Object.keys(fresh).forEach(function (k) {
+      if (incoming[k] !== undefined && incoming[k] !== null) fresh[k] = incoming[k];
+    });
+    if (incoming.draft !== undefined) fresh.draft = incoming.draft;
+    fresh.savedAt = incoming.savedAt || null;
+    fresh.session = state ? state.session : null;   // the session is this device's
+    state = fresh;
+    try { global.localStorage.setItem(KEY, JSON.stringify(state)); } catch (e) {}
+    return state;
   }
 
   /* Which bucket is live. Useful for asserting isolation in tests and
@@ -359,6 +431,20 @@
     save();
     return state;
   }
+
+  /* Point at the right bucket before any page script gets a chance to
+     read the store. */
+  (function () {
+    var uid = storedUserId();
+    if (uid) bindUser(uid);
+
+    // Two keys from before the store was partitioned. They can only
+    // hold somebody's data on a shared machine, and nothing reads them.
+    try {
+      global.localStorage.removeItem('sitehouse.demo.v1');
+      global.localStorage.removeItem('sitehouse.store.v2');
+    } catch (e) {}
+  })();
 
   // ── Mock auth ────────────────────────────────────────────────
   // A code is generated in the browser and displayed on screen. There is
@@ -538,6 +624,8 @@
     euro: euro, euroMonth: euroMonth, deposit: deposit, balance: balance, date: date,
     load: load, save: save, reset: reset,
     bindUser: bindUser, unbindUser: unbindUser, storeKey: storeKey,
+    onSave: onSave, replaceState: replaceState,
+    storedUserId: storedUserId,
     signIn: signIn, signOut: signOut, session: session, requireSession: requireSession,
     requireAuth: requireAuth,
     stages: stages, statusLabel: statusLabel, advance: advance,

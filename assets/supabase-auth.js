@@ -123,25 +123,62 @@
   }
 
   var synced = Promise.resolve();       // the most recent profile sync
+  var currentUid = null;
+
+  /* Which copy of the dashboard is newer. Both carry a stamp, written
+     whenever the store is saved. Last write wins — with no server-side
+     merge there is no honest alternative, and the alternative people
+     reach for (always prefer the server) silently discards work done
+     offline. */
+  function stamp(state) {
+    var t = state && state.savedAt ? Date.parse(state.savedAt) : 0;
+    return isNaN(t) ? 0 : t;
+  }
+
+  /* Fields the browser must never be trusted to set. `tier` decides
+     what a customer is entitled to, so it is listed here as a reminder
+     that the server has to own it once there is a checkout — today
+     nothing is charged, so nothing is at stake yet. */
+  function shipState(state) {
+    var copy = {};
+    for (var k in state) {
+      if (!Object.prototype.hasOwnProperty.call(state, k)) continue;
+      if (k === 'session') continue;             // the session is Supabase's, not ours
+      copy[k] = state[k];
+    }
+    return copy;
+  }
 
   function syncProfile(sb, session) {
     if (!session) return Promise.resolve();
     var S = global.Sitehouse;
     if (!S) return Promise.resolve();
 
+    currentUid = session.user.id;
+
     synced = sb.from('profiles')
-      .select('business, phone')
+      .select('business, phone, tier, app_state, app_state_at')
       .eq('id', session.user.id)
       .maybeSingle()
       .then(function (r) {
         if (r.error) console.warn('profile read', r.error.message);
         var row = r.data || {};
         var st = S.load();
-        var c = st.customer;
 
+        /* The account's copy of the dashboard, if it is newer than this
+           browser's. A brand-new browser has a stamp of 0, so the
+           account always wins there — which is the whole point. */
+        var remote = row.app_state;
+        if (remote && typeof remote === 'object' && stamp(remote) > stamp(st)) {
+          S.replaceState(remote);
+          st = S.load();
+        }
+
+        var c = st.customer;
         // The account is the authority on anything it already knows.
         if (row.business && !c.business) c.business = row.business;
         if (row.phone && !c.phone) c.phone = row.phone;
+        if (row.tier && row.tier !== 'none' && st.tier === 'none') st.tier = row.tier;
         c.email = session.user.email || c.email;
 
         /* Somebody whose account already carries a business name has
@@ -155,7 +192,10 @@
           id: session.user.id,
           email: session.user.email,
           business: c.business || null,
-          phone: c.phone || null
+          phone: c.phone || null,
+          tier: st.tier || 'none',
+          app_state: shipState(st),
+          app_state_at: new Date().toISOString()
         }, { onConflict: 'id' });
       })
       .then(function (r) {
@@ -165,6 +205,54 @@
 
     return synced;
   }
+
+  /* ── Pushing changes back ──────────────────────────────────────
+     Every click in the builder writes to the store. Sending each one
+     would be a request per keystroke, so they are collected and sent
+     once things go quiet — and once more on the way out of the page,
+     because a customer who closes the tab after choosing a package
+     should not lose the package. */
+  var pushTimer = null;
+  var pushWanted = false;
+
+  function pushNow() {
+    pushWanted = false;
+    if (pushTimer) { clearTimeout(pushTimer); pushTimer = null; }
+
+    var S = global.Sitehouse;
+    if (!S || !currentUid) return Promise.resolve();
+    var st = S.load();
+
+    return client().then(function (sb) {
+      return sb.from('profiles').upsert({
+        id: currentUid,
+        business: (st.customer && st.customer.business) || null,
+        phone: (st.customer && st.customer.phone) || null,
+        tier: st.tier || 'none',
+        app_state: shipState(st),
+        app_state_at: new Date().toISOString()
+      }, { onConflict: 'id' });
+    }).then(function (r) {
+      if (r && r.error) console.warn('state push', r.error.message);
+    })['catch'](function (e) { console.warn('state push', e && e.message); });
+  }
+
+  function schedulePush() {
+    if (!currentUid) return;               // nothing to push to yet
+    pushWanted = true;
+    if (pushTimer) clearTimeout(pushTimer);
+    pushTimer = setTimeout(pushNow, 1200);
+  }
+
+  /* The store tells us when it changes; we decide when to send. */
+  if (global.Sitehouse && global.Sitehouse.onSave) global.Sitehouse.onSave(schedulePush);
+
+  /* pagehide fires when a tab is closed, navigated away from, or sent
+     to the background on iOS — where unload never runs at all. */
+  global.addEventListener('pagehide', function () { if (pushWanted) pushNow(); });
+  global.document.addEventListener('visibilitychange', function () {
+    if (global.document.visibilityState === 'hidden' && pushWanted) pushNow();
+  });
 
   /* Nothing that talks to a mail server is allowed to hang the button.
      Supabase's auth endpoint waits ~35s on a bad SMTP host and then
@@ -203,6 +291,61 @@
         if (r.error) throw r.error;
         return true;
       }), 20000, 'send');
+    },
+
+    /* Email + password → an account, plus the confirmation code.
+
+       Supabase deliberately does not error when the address is already
+       registered; it returns a user with an empty identities array
+       instead, so a signup form cannot be used to find out who has an
+       account. We pass that signal back as `existing` without ever
+       saying so outright, and the code they receive signs them into
+       the account that is already there. */
+    signUp: function (email, password) {
+      return withTimeout(client().then(function (sb) {
+        return sb.auth.signUp({
+          email: String(email || '').trim(),
+          password: String(password || ''),
+          options: { emailRedirectTo: global.location.origin + '/login' }
+        });
+      }).then(function (r) {
+        if (r.error) throw r.error;
+        var u = r.data && r.data.user;
+        var existing = !!(u && Array.isArray(u.identities) && u.identities.length === 0);
+        return { user: u, session: (r.data && r.data.session) || null, existing: existing };
+      }), 20000, 'signup');
+    },
+
+    /* The signup code is a different type from the sign-in code, and
+       verifying it with the wrong one fails for no visible reason. */
+    verifySignup: function (email, token) {
+      var addr = String(email || '').trim();
+      var code = String(token || '').trim();
+      return withTimeout(client().then(function (sb) {
+        return sb.auth.verifyOtp({ email: addr, token: code, type: 'signup' })
+          .then(function (r) {
+            /* An address that was already confirmed rejects type
+               'signup'. That is not a bad code — it is somebody signing
+               in through the signup form, so try the sign-in type
+               before telling them the digits are wrong. */
+            if (r.error) return sb.auth.verifyOtp({ email: addr, token: code, type: 'email' });
+            return r;
+          })
+          .then(function (r) {
+            if (r.error) throw r.error;
+            adopt(r.data.session);
+            return syncProfile(sb, r.data.session).then(function () { return r.data.session; });
+          });
+      }), 20000, 'verify');
+    },
+
+    resendSignup: function (email) {
+      return withTimeout(client().then(function (sb) {
+        return sb.auth.resend({ type: 'signup', email: String(email || '').trim() });
+      }).then(function (r) {
+        if (r.error) throw r.error;
+        return true;
+      }), 20000, 'resend');
     },
 
     /* Code → a real session, or a real rejection. */
@@ -285,6 +428,24 @@
       return !c.business || !String(c.business).trim() || st.tier === 'none';
     },
 
+    /* Save one or two named fields immediately rather than waiting for
+       the debounce — onboarding uses this so the answer is on the
+       account before the page navigates away. */
+    saveProfile: function (fields) {
+      var S = global.Sitehouse;
+      if (S) {
+        var st = S.load();
+        if (fields && fields.business) st.customer.business = fields.business;
+        if (fields && fields.phone) st.customer.phone = fields.phone;
+        if (fields && fields.tier) st.tier = fields.tier;
+        S.save();
+      }
+      return pushNow();
+    },
+
+    /* Force the working copy up to the account now. */
+    flush: pushNow,
+
     session: function () {
       return client()
         .then(function (sb) { return sb.auth.getSession(); })
@@ -292,6 +453,10 @@
     },
 
     signOut: function () {
+      currentUid = null;
+      pushWanted = false;
+      if (pushTimer) { clearTimeout(pushTimer); pushTimer = null; }
+
       /* scope:'global' revokes every refresh token on the account, so
          signing out here signs out the other tabs and the other
          devices too. That is what people mean by "log out". */
@@ -395,6 +560,19 @@
            it still has to tell somebody who mistyped what to do. */
         return 'We could not send a code to that address. Check the spelling — ' +
                'or create an account if you have not signed up yet.';
+      }
+      if (m.indexOf('already registered') > -1 || m.indexOf('already been registered') > -1) {
+        return 'There is already an account on that address. Sign in instead, or reset the password.';
+      }
+      if (m.indexOf('invalid login credentials') > -1) {
+        /* Supabase returns this for a wrong password AND for an address
+           with no account, and does not distinguish. Neither do we —
+           partly because we cannot, and partly because saying which
+           would turn the login form into an account-existence check. */
+        return 'That email and password do not match. Check both, or ask for a code instead.';
+      }
+      if (m.indexOf('email not confirmed') > -1) {
+        return 'This address has not been confirmed yet. Ask for a code and enter it to finish signing up.';
       }
       if (m.indexOf('should be different') > -1) return 'That is the password you already have. Pick a different one.';
       if (m.indexOf('at least') > -1 && m.indexOf('character') > -1) return 'Passwords need at least eight characters.';
