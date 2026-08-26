@@ -29,6 +29,7 @@
 <link rel="stylesheet" href="assets/tailwind.css">
 <link rel="stylesheet" href="assets/theme.css">
 <link rel="stylesheet" href="assets/account.css">
+<script src="assets/account.js"></script>
 </head>
 
 <body class="acct font-sans">
@@ -114,14 +115,25 @@
   }
 
   whenAuth(function () {
+    if (window.SitehouseAccountMotion) window.SitehouseAccountMotion.enter();
     var A = window.SitehouseAuth;
     var $ = function (id) { return document.getElementById(id); };
     var EMAIL = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
     var busy = false, target = '';
 
+    var ORDER = ['email', 'code', 'password', 'done', 'find', 'sent'];
+
     function panel(n) {
       var all = document.querySelectorAll('[data-panel]');
-      for (var i = 0; i < all.length; i++) all[i].classList.toggle('is-on', all[i].getAttribute('data-panel') === n);
+      var from = -1, to = ORDER.indexOf(n);
+      for (var i = 0; i < all.length; i++) {
+        if (all[i].classList.contains('is-on')) from = ORDER.indexOf(all[i].getAttribute('data-panel'));
+        all[i].classList.toggle('is-on', all[i].getAttribute('data-panel') === n);
+      }
+      var live = document.querySelector('[data-panel].is-on');
+      if (window.SitehouseAccountMotion) {
+        window.SitehouseAccountMotion.step(live, to > -1 && from > -1 && to < from);
+      }
       var first = document.querySelector('[data-panel].is-on .acct-in');
       if (first) first.focus();
     }

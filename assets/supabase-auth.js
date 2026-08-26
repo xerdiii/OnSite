@@ -273,6 +273,19 @@
     ]);
   }
 
+  /* Each rule is a label and a test. Order is the order they are
+     shown, easiest to satisfy first. */
+  var PASSWORD_RULES = [
+    { key: 'length',    label: 'At least 8 characters', ok: function (p) { return p.length >= 8; } },
+    { key: 'lowercase', label: 'A lowercase letter',    ok: function (p) { return /[a-z]/.test(p); } },
+    { key: 'uppercase', label: 'An uppercase letter',   ok: function (p) { return /[A-Z]/.test(p); } },
+    { key: 'digit',     label: 'A number',              ok: function (p) { return /\d/.test(p); } },
+    { key: 'symbol',    label: 'A symbol, like ! or ?', ok: function (p) {
+        // Anything that is not a letter, a digit or a space.
+        return /[^A-Za-z0-9\s]/.test(p);
+      } }
+  ];
+
   /* ── Public surface ────────────────────────────────────────── */
   var Auth = {
     /* Email → Supabase sends a 6-digit code. */
@@ -446,6 +459,56 @@
     /* Force the working copy up to the account now. */
     flush: pushNow,
 
+    /* What is still missing from a password, as a list the caller can
+       render. Empty means the server will accept it. */
+    passwordRules: PASSWORD_RULES,
+
+    passwordProblems: function (pw) {
+      var p = String(pw || '');
+      return PASSWORD_RULES.filter(function (r) { return !r.ok(p); });
+    },
+
+    /* Change the password of the account that is signed in.
+
+       Two of the project's settings shape this. "Require current
+       password" means the old one must come along for the ride.
+       "Secure password change" means a session older than 24 hours is
+       not trusted on its own — Supabase answers reauthentication_needed
+       and expects a nonce it emails to the account. Neither was handled
+       before, so changing a password simply failed. */
+    changePassword: function (currentPassword, newPassword) {
+      return withTimeout(client().then(function (sb) {
+        var fields = { password: String(newPassword || '') };
+        if (currentPassword) fields.current_password = String(currentPassword);
+        return sb.auth.updateUser(fields);
+      }).then(function (r) {
+        if (r.error) throw r.error;
+        return true;
+      }), 20000, 'password');
+    },
+
+    /* Ask Supabase to email a six-digit nonce, for the case above. */
+    reauthenticate: function () {
+      return withTimeout(client().then(function (sb) {
+        return sb.auth.reauthenticate();
+      }).then(function (r) {
+        if (r.error) throw r.error;
+        return true;
+      }), 20000, 'reauth');
+    },
+
+    /* The same change, with the emailed nonce attached. */
+    changePasswordWithNonce: function (nonce, newPassword, currentPassword) {
+      return withTimeout(client().then(function (sb) {
+        var fields = { password: String(newPassword || ''), nonce: String(nonce || '') };
+        if (currentPassword) fields.current_password = String(currentPassword);
+        return sb.auth.updateUser(fields);
+      }).then(function (r) {
+        if (r.error) throw r.error;
+        return true;
+      }), 20000, 'password');
+    },
+
     session: function () {
       return client()
         .then(function (sb) { return sb.auth.getSession(); })
@@ -532,6 +595,43 @@
        the person who mistyped a digit. */
     message: function (err) {
       var m = String((err && err.message) || err || '').toLowerCase();
+      var code = (err && (err.code || err.name)) || '';
+
+      /* supabase-js raises AuthWeakPasswordError with a `reasons`
+         array, which is the only place the server says WHICH rule was
+         missed. Turning that into the actual list beats "weak
+         password", which tells somebody nothing about what to type. */
+      if (code === 'weak_password' || m.indexOf('password should') > -1 || m.indexOf('weak') > -1) {
+        var reasons = (err && err.reasons) || [];
+        var need = PASSWORD_RULES.filter(function (r) {
+          return reasons.length ? reasons.indexOf(r.key) > -1 : false;
+        });
+        if (!need.length) {
+          return 'That password is not strong enough. It needs eight characters with a capital, ' +
+                 'a lowercase letter, a number and a symbol.';
+        }
+        return 'That password still needs: ' +
+               need.map(function (r) { return r.label.toLowerCase(); }).join(', ') + '.';
+      }
+
+      if (code === 'same_password' || m.indexOf('should be different') > -1) {
+        return 'That is the password you already have. Pick a different one.';
+      }
+      if (code === 'reauthentication_needed' || m.indexOf('reauthentication needed') > -1) {
+        return 'For your security, confirm it is you. We have emailed a six-digit code.';
+      }
+      if (code === 'reauthentication_not_valid') {
+        return 'That confirmation code does not match. Check the digits, or ask for a new one.';
+      }
+      if (m.indexOf('current password') > -1) {
+        return 'That is not your current password.';
+      }
+      if (code === 'over_email_send_rate_limit' || code === 'over_request_rate_limit') {
+        return 'Too many attempts. Wait a minute and try again.';
+      }
+      if (code === 'email_address_invalid') {
+        return 'That address will not work here — example.com and test domains are refused. Use a real one.';
+      }
       /* Order matters and the combined case comes first: Supabase says
          "Token has expired or is invalid" for a wrong code AND for a
          stale one, so neither single answer is honest. */

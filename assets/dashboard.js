@@ -940,9 +940,27 @@
 
           '<div class="card mt-6 p-6"><p class="mono-label text-ink-soft">Password</p>' +
             '<div class="mt-5 grid grid-cols-1 gap-5">' +
-              '<div class="field"><label for="ac-pw">New password</label><input id="ac-pw" type="password"></div>' +
-              '<div class="field"><label for="ac-pw2">Confirm password</label><input id="ac-pw2" type="password"></div>' +
+              '<div class="field"><label for="ac-pw0">Current password</label>' +
+                '<input id="ac-pw0" type="password" autocomplete="current-password">' +
+                '<p class="mt-1.5 text-[0.75rem] text-ink-soft">Signed up with Google, or never set one? ' +
+                  '<a href="forgot-password.html" class="underline underline-offset-2">Set one here instead</a>.</p></div>' +
+              '<div class="field"><label for="ac-pw">New password</label>' +
+                '<input id="ac-pw" type="password" autocomplete="new-password">' +
+                '<ul class="pw-rules mt-2" id="ac-rules"></ul></div>' +
+              '<div class="field"><label for="ac-pw2">Confirm new password</label>' +
+                '<input id="ac-pw2" type="password" autocomplete="new-password"></div>' +
             '</div>' +
+
+            /* Only shown when Supabase says the session is too old to be
+               trusted on its own and has emailed a code. */
+            '<div id="ac-reauth" class="mt-5 hidden">' +
+              '<div class="field"><label for="ac-nonce">Confirmation code</label>' +
+                '<input id="ac-nonce" type="text" inputmode="numeric" maxlength="6" ' +
+                  'autocomplete="one-time-code" placeholder="000000"></div>' +
+              '<p class="mt-1.5 text-[0.75rem] text-ink-soft">We emailed this because you have been ' +
+                'signed in a while. It confirms the change is really you.</p>' +
+            '</div>' +
+
             '<button class="btn btn-ghost mt-5" data-act="save-password">Update password</button>' +
             '<p id="pw-done" class="mt-3 hidden text-[0.8125rem] font-semibold text-accent"></p>' +
           '</div>' +
@@ -1255,23 +1273,64 @@
       paintWho();
     },
     'save-password': function (el) {
-      var a = document.getElementById('ac-pw').value, b = document.getElementById('ac-pw2').value;
+      var A = window.SitehouseAuth;
+      var cur = document.getElementById('ac-pw0');
+      var a = document.getElementById('ac-pw').value;
+      var b = document.getElementById('ac-pw2').value;
+      var nonceBox = document.getElementById('ac-reauth');
+      var nonce = document.getElementById('ac-nonce');
       var d = document.getElementById('pw-done');
       d.classList.remove('hidden');
 
+      if (!A) { d.textContent = 'Not connected. Reload the page and try again.'; return; }
       if (!a) { d.textContent = 'Enter a new password.'; return; }
-      if (a.length < 8) { d.textContent = 'Use at least eight characters.'; return; }
+
+      // The project's own rules, checked here so the answer is instant
+      // and says which part is missing.
+      var missing = A.passwordProblems ? A.passwordProblems(a) : [];
+      if (missing.length) {
+        d.textContent = 'Your new password still needs: ' +
+          missing.map(function (r) { return r.label.toLowerCase(); }).join(', ') + '.';
+        return;
+      }
       if (a !== b) { d.textContent = 'Those passwords do not match.'; return; }
-      if (!window.SitehouseAuth) { d.textContent = 'Not connected. Reload the page and try again.'; return; }
+      if (!cur.value) { d.textContent = 'Enter your current password to confirm it is you.'; return; }
+
+      var waiting = !nonceBox.classList.contains('hidden');
+      if (waiting && !/^\d{6}$/.test(nonce.value.trim())) {
+        d.textContent = 'Enter the six-digit code we emailed you.';
+        return;
+      }
 
       d.textContent = 'Saving…';
       if (el) el.disabled = true;
-      window.SitehouseAuth.setPassword(a).then(function () {
+
+      var go = waiting
+        ? A.changePasswordWithNonce(nonce.value.trim(), a, cur.value)
+        : A.changePassword(cur.value, a);
+
+      go.then(function () {
         d.textContent = 'Password changed.';
         document.getElementById('ac-pw').value = '';
         document.getElementById('ac-pw2').value = '';
+        cur.value = '';
+        nonce.value = '';
+        nonceBox.classList.add('hidden');
       })['catch'](function (err) {
-        d.textContent = window.SitehouseAuth.message(err);
+        var code = (err && err.code) || '';
+        /* A session older than a day is not trusted on its own. Supabase
+           emails a code; asking for it is the whole of the fix, so the
+           field appears rather than the change simply failing. */
+        if (code === 'reauthentication_needed') {
+          nonceBox.classList.remove('hidden');
+          d.textContent = 'Almost — check your email for a six-digit code and enter it above.';
+          A.reauthenticate()['catch'](function (e2) {
+            d.textContent = A.message(e2);
+          });
+          nonce.focus();
+          return;
+        }
+        d.textContent = A.message(err);
       }).then(function () { if (el) el.disabled = false; });
     },
     'send-support': function () {
@@ -1393,6 +1452,28 @@
     });
   }
 
+  /* The same live checklist the signup page shows, wired up after each
+     render because the markup is rebuilt every time. */
+  function paintPasswordRules() {
+    var host = document.getElementById('ac-rules');
+    var input = document.getElementById('ac-pw');
+    var A = window.SitehouseAuth;
+    if (!host || !input || !A || !A.passwordRules) return;
+
+    var els = A.passwordRules.map(function (r) {
+      var li = document.createElement('li');
+      li.textContent = r.label;
+      host.appendChild(li);
+      return { rule: r, el: li };
+    });
+    function paint() {
+      var v = input.value;
+      els.forEach(function (x) { x.el.classList.toggle('is-met', x.rule.ok(v)); });
+    }
+    input.addEventListener('input', paint);
+    paint();
+  }
+
   function render(keepPlace) {
     var y = keepPlace ? (window.scrollY || window.pageYOffset) : 0;
     var refocus = null;
@@ -1419,6 +1500,7 @@
     if (window.SitehouseMobile) { window.SitehouseMobile.labelTables(view); }
     gateNav();
     if (window.SitehouseApp) { window.SitehouseApp.paintRail(); window.SitehouseApp.bindPreviews(); }
+    paintPasswordRules();
     if (window.SitehouseSheet) window.SitehouseSheet.close();
     if (window.SitehouseI18n) { window.SitehouseI18n.mount(); }
 

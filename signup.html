@@ -58,6 +58,7 @@
 <link rel="stylesheet" href="assets/tailwind.css">
 <link rel="stylesheet" href="assets/theme.css">
 <link rel="stylesheet" href="assets/account.css">
+<script src="assets/account.js"></script>
 </head>
 
 <body class="acct font-sans">
@@ -115,6 +116,7 @@
                  placeholder="At least 8 characters">
           <button type="button" class="acct-peek" id="peek" aria-label="Show password">Show</button>
         </div>
+        <ul class="acct-rules" id="rules" aria-live="polite"></ul>
       </div>
 
       <label class="acct-check">
@@ -182,10 +184,20 @@
     var busy = false;
     var email = '';
 
+    var ORDER = ['email', 'password', 'code', 'find', 'sent', 'done'];
+
     function panel(name) {
       var all = document.querySelectorAll('[data-panel]');
+      var from = -1, to = ORDER.indexOf(name);
       for (var i = 0; i < all.length; i++) {
+        if (all[i].classList.contains('is-on')) from = ORDER.indexOf(all[i].getAttribute('data-panel'));
         all[i].classList.toggle('is-on', all[i].getAttribute('data-panel') === name);
+      }
+      var live = document.querySelector('[data-panel].is-on');
+      if (window.SitehouseAccountMotion) {
+        // Going backwards should slide the other way, or "Back" feels
+        // like another step forward.
+        window.SitehouseAccountMotion.step(live, to > -1 && from > -1 && to < from);
       }
       var first = document.querySelector('[data-panel].is-on .acct-in');
       if (first) first.focus();
@@ -215,8 +227,10 @@
     A.session().then(function (session) {
       if (session) { location.replace('dashboard.html'); return; }
       document.documentElement.classList.remove('auth-checking');
+      if (window.SitehouseAccountMotion) window.SitehouseAccountMotion.enter();
     })['catch'](function () {
       document.documentElement.classList.remove('auth-checking');
+      if (window.SitehouseAccountMotion) window.SitehouseAccountMotion.enter();
     });
 
     /* ── Google ──────────────────────────────────────────────── */
@@ -256,6 +270,24 @@
       clear($('emailErr')); $('email').removeAttribute('aria-invalid');
     });
 
+    /* ── The rules, live ─────────────────────────────────────── */
+    var rules = A.passwordRules || [];
+    var ruleEls = [];
+    (function () {
+      var host = $('rules');
+      if (!host) return;
+      rules.forEach(function (r) {
+        var li = document.createElement('li');
+        li.textContent = r.label;
+        host.appendChild(li);
+        ruleEls.push({ rule: r, el: li });
+      });
+    })();
+
+    function paintRules(pw) {
+      ruleEls.forEach(function (x) { x.el.classList.toggle('is-met', x.rule.ok(pw)); });
+    }
+
     /* ── 2 → 3 ───────────────────────────────────────────────── */
     $('peek').addEventListener('click', function () {
       var i = $('password');
@@ -289,7 +321,17 @@
     function submitPassword() {
       if (busy) return;
       var pw = $('password').value;
-      if (pw.length < 8) { say($('pwErr'), 'Use at least eight characters.'); $('password').focus(); return; }
+
+      /* The same rules the server will apply. Checking here means the
+         answer is instant and specific instead of a round trip that
+         comes back saying only "weak". */
+      var missing = A.passwordProblems(pw);
+      if (missing.length) {
+        say($('pwErr'), 'Your password still needs: ' +
+          missing.map(function (r) { return r.label.toLowerCase(); }).join(', ') + '.');
+        $('password').focus();
+        return;
+      }
       if (!$('agree').checked) { say($('pwErr'), 'Please agree to the Terms of Service to continue.'); return; }
       clear($('pwErr'));
 
@@ -314,7 +356,11 @@
     $('password').addEventListener('keydown', function (e) {
       if (e.key === 'Enter') { e.preventDefault(); submitPassword(); }
     });
-    $('password').addEventListener('input', function () { clear($('pwErr')); });
+    $('password').addEventListener('input', function () {
+      clear($('pwErr'));
+      paintRules(this.value);
+    });
+    paintRules('');
 
     $('resendBtn').addEventListener('click', function () {
       if (busy || $('resendBtn').disabled) return;

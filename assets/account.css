@@ -304,3 +304,69 @@ html.auth-checking .acct-main::after {
   .acct-row .acct-link { padding-top: 0; padding-bottom: 0; }
   .acct-foot a { padding: 0.5rem 0; }
 }
+
+
+/* ══ Entrance ═══════════════════════════════════════════════════
+   account.js adds .acct-motion to <html> the moment it loads, which
+   hides the pieces it is about to animate. It removes the hold by
+   adding .acct-shown once they have landed — and on a 4s failsafe,
+   and immediately when prefers-reduced-motion is set.
+
+   The hold is scoped to the class account.js itself adds, so a
+   browser with JavaScript off never sees it: nothing adds the class,
+   so nothing is hidden. */
+html.acct-motion:not(.acct-shown) .acct-top,
+html.acct-motion:not(.acct-shown) .acct-card,
+html.acct-motion:not(.acct-shown) .acct-foot { opacity: 0; }
+
+/* Once the animation has handed back, everything is plain CSS again. */
+html.acct-shown .acct-top,
+html.acct-shown .acct-card,
+html.acct-shown .acct-foot { opacity: 1; }
+
+@media (prefers-reduced-motion: reduce) {
+  /* Belt and braces: even if the class is added, nothing is hidden. */
+  html.acct-motion .acct-top,
+  html.acct-motion .acct-card,
+  html.acct-motion .acct-foot { opacity: 1 !important; }
+}
+
+/* ══ Card placement ═════════════════════════════════════════════
+   Centred on a tall screen, top-aligned as soon as the form is tall
+   enough that centring would push its head off the top. */
+@media (min-height: 700px) {
+  .acct-main { place-items: center; padding-bottom: 4rem; }
+}
+
+
+/* ══ Password requirements ══════════════════════════════════════
+   The project's Auth settings demand a capital, a lowercase letter,
+   a digit and a symbol. Without this list the browser accepted a
+   perfectly sensible password, the server refused it, and the only
+   feedback was the word "weak". Now the rules are visible before
+   the first keystroke and tick off as they are met. */
+.acct-rules {
+  display: grid; gap: 0.3rem;
+  margin: 0.7rem 0 0; padding: 0;
+  list-style: none;
+}
+.acct-rules li {
+  display: flex; align-items: center; gap: 0.5rem;
+  font-size: 0.8125rem; line-height: 1.4;
+  color: rgb(var(--c-ink-soft));
+  transition: color 140ms ease;
+}
+.acct-rules li::before {
+  content: ""; flex: none;
+  width: 14px; height: 14px; border-radius: 50%;
+  border: 1.5px solid rgb(var(--c-line-firm));
+  transition: background-color 140ms ease, border-color 140ms ease;
+}
+.acct-rules li.is-met { color: rgb(var(--c-ink-mid)); }
+.acct-rules li.is-met::before {
+  border-color: rgb(var(--c-ink));
+  background: rgb(var(--c-ink))
+    /* the tick, drawn rather than shipped as an icon font */
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none' stroke='%23fff' stroke-width='2.6' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M3.4 8.4l3 3 6.2-6.6'/%3E%3C/svg%3E")
+    center / 11px no-repeat;
+}

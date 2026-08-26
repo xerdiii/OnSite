@@ -19,6 +19,7 @@
 <link rel="stylesheet" href="assets/tailwind.css">
 <link rel="stylesheet" href="assets/theme.css">
 <link rel="stylesheet" href="assets/account.css">
+<script src="assets/account.js"></script>
 <style>
   /* The pack cards. Wider card than the sign-in forms, because four
      prices need room to be compared rather than squinted at. */
@@ -164,9 +165,12 @@
 
     function panel(name) {
       var all = document.querySelectorAll('[data-panel]');
+      var back = name === 'name';
       for (var i = 0; i < all.length; i++) {
         all[i].classList.toggle('is-on', all[i].getAttribute('data-panel') === name);
       }
+      var live = document.querySelector('[data-panel].is-on');
+      if (window.SitehouseAccountMotion) window.SitehouseAccountMotion.step(live, back);
       window.scrollTo(0, 0);
     }
     function say(box, msg) { box.textContent = msg; box.hidden = false; }
@@ -210,6 +214,8 @@
        send them to sign in rather than collecting data from a stranger. */
     A.session().then(function (session) {
       if (!session) { location.replace('login.html?next=dashboard.html'); return; }
+
+      if (window.SitehouseAccountMotion) window.SitehouseAccountMotion.enter();
 
       var st = Sitehouse.load();
       /* Signing in is not signing up. Once these two questions have been

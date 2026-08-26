@@ -40,6 +40,7 @@
 <link rel="stylesheet" href="assets/tailwind.css">
 <link rel="stylesheet" href="assets/theme.css">
 <link rel="stylesheet" href="assets/account.css">
+<script src="assets/account.js"></script>
 <style>
   /* Prose, so the card is wider than a form card and the answers are
      collapsed by default — somebody arriving here has one problem, not
@@ -245,6 +246,15 @@
   <a href="privacy.html">Privacy</a>
 </footer>
 
+<script>
+/* Nothing to check on a help page: play as soon as the document is
+   ready. */
+(function () {
+  function go() { if (window.SitehouseAccountMotion) window.SitehouseAccountMotion.enter(); }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', go);
+  else go();
+})();
+</script>
 <script src="assets/cookies.js"></script>
 </body>
 </html>

@@ -59,6 +59,7 @@
 <link rel="stylesheet" href="assets/tailwind.css">
 <link rel="stylesheet" href="assets/theme.css">
 <link rel="stylesheet" href="assets/account.css">
+<script src="assets/account.js"></script>
 </head>
 
 <body class="acct font-sans">
@@ -193,10 +194,20 @@
     var busy = false;
     var email = '';
 
+    var ORDER = ['email', 'password', 'code', 'find', 'sent', 'done'];
+
     function panel(name) {
       var all = document.querySelectorAll('[data-panel]');
+      var from = -1, to = ORDER.indexOf(name);
       for (var i = 0; i < all.length; i++) {
+        if (all[i].classList.contains('is-on')) from = ORDER.indexOf(all[i].getAttribute('data-panel'));
         all[i].classList.toggle('is-on', all[i].getAttribute('data-panel') === name);
+      }
+      var live = document.querySelector('[data-panel].is-on');
+      if (window.SitehouseAccountMotion) {
+        // Going backwards should slide the other way, or "Back" feels
+        // like another step forward.
+        window.SitehouseAccountMotion.step(live, to > -1 && from > -1 && to < from);
       }
       var first = document.querySelector('[data-panel].is-on .acct-in');
       if (first) first.focus();
@@ -230,8 +241,10 @@
     A.session().then(function (session) {
       if (session) { location.replace(next); return; }
       document.documentElement.classList.remove('auth-checking');
+      if (window.SitehouseAccountMotion) window.SitehouseAccountMotion.enter();
     })['catch'](function () {
       document.documentElement.classList.remove('auth-checking');
+      if (window.SitehouseAccountMotion) window.SitehouseAccountMotion.enter();
     });
 
     /* ── Google ──────────────────────────────────────────────── */
