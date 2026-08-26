@@ -24,7 +24,36 @@
    ─────────────────────────────────────────────────────────────── */
 
 const esc = (v) => String(v == null ? '' : v)
-  .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+  .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+  .replace(/"/g, '&quot;').replace(/'/g, '&#39;');
+
+// Only ever emit a link we are willing to click. Anything that is not
+// plain http(s) is shown as text instead of becoming an href.
+const safeUrl = (v) => {
+  const raw = String(v == null ? '' : v).trim();
+  try {
+    const u = new URL(raw);
+    return (u.protocol === 'http:' || u.protocol === 'https:') ? raw : null;
+  } catch { return null; }
+};
+
+const EMAIL = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+
+/* A best-effort throttle. Serverless instances are not shared, so this
+   is a speed bump rather than a wall — it stops a script hammering one
+   warm instance and burning the mail quota. A real limit needs shared
+   state (Upstash, Vercel KV); noted rather than pretended. */
+const seen = new Map();
+const WINDOW = 60_000, MAX = 3;
+
+function tooMany(ip) {
+  const now = Date.now();
+  for (const [k, v] of seen) if (now - v.first > WINDOW) seen.delete(k);
+  const hit = seen.get(ip);
+  if (!hit) { seen.set(ip, { first: now, n: 1 }); return false; }
+  hit.n += 1;
+  return hit.n > MAX;
+}
 
 export default async function handler(req, res) {
   if (req.method !== 'POST') {
@@ -39,8 +68,17 @@ export default async function handler(req, res) {
     return res.status(503).json({ error: 'mail not configured' });
   }
 
+  const ip = String(req.headers['x-forwarded-for'] || '').split(',')[0].trim() || 'unknown';
+  if (tooMany(ip)) {
+    res.setHeader('Retry-After', '60');
+    return res.status(429).json({ error: 'too many requests' });
+  }
+
   let body = req.body;
   if (typeof body === 'string') {
+    // A 100KB form is not a form. Parsing an unbounded string is how a
+    // single request eats the function's whole memory budget.
+    if (body.length > 20_000) return res.status(413).json({ error: 'too large' });
     try { body = JSON.parse(body); } catch { return res.status(400).json({ error: 'bad json' }); }
   }
   body = body || {};
@@ -52,20 +90,36 @@ export default async function handler(req, res) {
   const missing = need.filter((k) => !String(body[k] || '').trim());
   if (missing.length) return res.status(400).json({ error: 'missing', fields: missing });
 
-  const hours = Array.isArray(body.hours) ? body.hours : [];
+  // Every field is length-capped. Without this one request can compose
+  // a megabyte-long email, and Resend will happily send it.
+  const cap = (v, n) => String(v == null ? '' : v).trim().slice(0, n);
+  const name = cap(body.name, 120);
+  const phone = cap(body.phone, 40);
+  const email = cap(body.email, 200);
+  const social = cap(body.social, 300);
+  const mapsUrl = safeUrl(body.maps);
+  const mapsText = cap(body.maps, 500);
+
+  if (!EMAIL.test(email)) return res.status(400).json({ error: 'bad email' });
+
+  // Seven days, not seven hundred rows.
+  const hours = (Array.isArray(body.hours) ? body.hours : []).slice(0, 7);
   const hoursRows = hours
-    .map((h) => `<tr><td style="padding:2px 14px 2px 0;color:#666">${esc(h.day)}</td><td>${esc(h.open)}</td></tr>`)
+    .map((h) => `<tr><td style="padding:2px 14px 2px 0;color:#666">${esc(cap(h && h.day, 20))}</td><td>${esc(cap(h && h.open, 40))}</td></tr>`)
     .join('');
 
   const html = `
-    <h2 style="font:600 18px system-ui;margin:0 0 14px">Free landing page — ${esc(body.name)}</h2>
+      <h2 style="font:600 18px system-ui;margin:0 0 14px">Free landing page — ${esc(name)}</h2>
     <table style="font:14px system-ui;border-collapse:collapse">
-      <tr><td style="padding:3px 14px 3px 0;color:#666">Business</td><td><b>${esc(body.name)}</b></td></tr>
-      <tr><td style="padding:3px 14px 3px 0;color:#666">Phone</td><td>${esc(body.phone)}</td></tr>
-      <tr><td style="padding:3px 14px 3px 0;color:#666">Email</td><td>${esc(body.email)}</td></tr>
-      <tr><td style="padding:3px 14px 3px 0;color:#666">Maps</td><td><a href="${esc(body.maps)}">${esc(body.maps)}</a></td></tr>
-      <tr><td style="padding:3px 14px 3px 0;color:#666">Social</td><td>${esc(body.social)}</td></tr>
-      <tr><td style="padding:3px 14px 3px 0;color:#666">Files</td><td>${esc(body.images || 0)} photo(s), ${esc(body.video || 0)} video</td></tr>
+      <tr><td style="padding:3px 14px 3px 0;color:#666">Business</td><td><b>${esc(name)}</b></td></tr>
+      <tr><td style="padding:3px 14px 3px 0;color:#666">Phone</td><td>${esc(phone)}</td></tr>
+      <tr><td style="padding:3px 14px 3px 0;color:#666">Email</td><td>${esc(email)}</td></tr>
+      <tr><td style="padding:3px 14px 3px 0;color:#666">Maps</td><td>${
+        mapsUrl ? `<a href="${esc(mapsUrl)}">${esc(mapsUrl)}</a>` : esc(mapsText) + ' (not a link)'
+      }</td></tr>
+      <tr><td style="padding:3px 14px 3px 0;color:#666">Social</td><td>${esc(social)}</td></tr>
+      <tr><td style="padding:3px 14px 3px 0;color:#666">Files</td><td>${
+        Number(body.images) || 0} photo(s), ${Number(body.video) || 0} video</td></tr>
     </table>
     ${hoursRows ? `<h3 style="font:600 14px system-ui;margin:18px 0 6px">Opening hours</h3>
       <table style="font:14px system-ui;border-collapse:collapse">${hoursRows}</table>` : ''}
@@ -81,8 +135,10 @@ export default async function handler(req, res) {
         from,
         to: [to],
         // So hitting reply in Gmail goes to the customer, not to nobody.
-        reply_to: String(body.email).trim(),
-        subject: `Free landing page — ${String(body.name).trim()}`,
+        reply_to: email,
+        // A newline in a subject is a header injection in every mail
+        // system that builds headers by concatenation.
+        subject: `Free landing page — ${name.replace(/[\r\n]+/g, ' ')}`,
         html
       })
     });

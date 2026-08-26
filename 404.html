@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Page not found — Sitehouse</title>
+<meta name="description" content="That page does not exist. Here is the way back.">
+<meta name="robots" content="noindex, follow">
+<meta name="theme-color" content="#14161A">
+<link rel="apple-touch-icon" href="/assets/brand/sitehouse-touch.png">
+<link rel="icon" href="/assets/brand/sitehouse-favicon.png" type="image/png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400&family=Inter:wght@400;500;600&family=Outfit:wght@200..800&display=swap" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400&family=Inter:wght@400;500;600&family=Outfit:wght@200..800&display=swap"></noscript>
+<script>(function(){var t='light';try{t=localStorage.getItem('sitehouse.theme')==='dark'?'dark':'light';}catch(e){}document.documentElement.setAttribute('data-theme',t);})();</script>
+<link rel="stylesheet" href="/assets/sitehouse.css">
+<link rel="stylesheet" href="/assets/tailwind.css">
+<link rel="stylesheet" href="/assets/theme.css">
+<style>
+  /* One screen, one apology, and the three places people were most
+     likely trying to reach. No nav and no footer: a 404 that loads the
+     whole site chrome makes a wrong turn feel like a wall. */
+  .nf { min-height: 100svh; display: grid; place-items: center; padding: 1.5rem; }
+  .nf-in { width: min(34rem, 100%); text-align: center; }
+  .nf-mark { display: inline-flex; align-items: center; gap: 0.6rem; margin-bottom: 2.75rem; }
+  .nf-mark span:last-child { font-family: 'Outfit', sans-serif; font-size: 1.15rem; font-weight: 500; letter-spacing: -0.02em; }
+  .nf-code {
+    font-family: 'IBM Plex Mono', ui-monospace, monospace;
+    font-size: 0.625rem; letter-spacing: 0.2em; text-transform: uppercase;
+    color: rgb(var(--c-ink-soft));
+  }
+  .nf-h {
+    margin-top: 0.9rem;
+    font-family: 'Outfit', sans-serif; font-weight: 300;
+    font-size: clamp(2rem, 8vw, 3rem); letter-spacing: -0.04em; line-height: 1.05;
+    color: rgb(var(--c-ink));
+  }
+  .nf-p { margin: 1rem auto 0; max-width: 26rem; font-size: 1rem; line-height: 1.65; color: rgb(var(--c-ink-mid)); }
+  .nf-path {
+    display: inline-block; margin-top: 1rem; max-width: 100%;
+    padding: 0.35rem 0.7rem; border-radius: 0.4rem;
+    background: rgb(var(--c-ink) / 0.05);
+    font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 0.8125rem;
+    color: rgb(var(--c-ink-mid));
+    overflow-wrap: anywhere;
+  }
+  .nf-row { display: flex; flex-wrap: wrap; gap: 0.6rem; justify-content: center; margin-top: 2rem; }
+  .nf-btn {
+    display: inline-flex; align-items: center; min-height: 48px; padding: 0 1.4rem;
+    border-radius: 999px; font-size: 0.9375rem; font-weight: 600; text-decoration: none;
+    background: rgb(var(--c-accent)); color: #fff;
+  }
+  .nf-btn:hover { background: rgb(var(--c-accent-hi)); }
+  .nf-btn--ghost {
+    background: transparent; color: rgb(var(--c-ink));
+    border: 1.5px solid rgb(var(--c-line-firm));
+  }
+  .nf-btn--ghost:hover { border-color: rgb(var(--c-ink)); }
+  .nf-help { margin-top: 2rem; font-size: 0.8125rem; color: rgb(var(--c-ink-soft)); }
+  .nf-help a { color: rgb(var(--c-ink-mid)); text-decoration: underline; text-underline-offset: 3px; }
+</style>
+</head>
+
+<body class="bg-paper font-sans text-ink antialiased">
+
+<main class="nf">
+  <div class="nf-in">
+    <a class="nf-mark" href="/">
+      <span class="brand-mark" role="img" aria-label="Sitehouse"></span>
+      <span>Sitehouse</span>
+    </a>
+
+    <p class="nf-code">Error 404</p>
+    <h1 class="nf-h">This page does not exist.</h1>
+    <p class="nf-p">
+      The link may be out of date, or there may be a typo in the address. Nothing is broken on your side.
+    </p>
+    <p class="nf-path" id="nfPath" hidden></p>
+
+    <div class="nf-row">
+      <a class="nf-btn" href="/">Back to the homepage</a>
+      <a class="nf-btn nf-btn--ghost" href="/dashboard">My dashboard</a>
+    </div>
+
+    <p class="nf-help">
+      Looking for something specific? Try the <a href="/faq">FAQ</a>,
+      the <a href="/extras">list of add-ons</a>, or write to
+      <a href="mailto:help@sitehouse.eu">help@sitehouse.eu</a>.
+    </p>
+  </div>
+</main>
+
+<script>
+/* Show what was actually asked for. It helps somebody spot their own
+   typo, and it helps us when they paste it into an email. Written as
+   text content, never as markup — the path is whatever a stranger put
+   in the address bar. */
+(function () {
+  var p = location.pathname + location.search;
+  if (!p || p === '/') return;
+  var el = document.getElementById('nfPath');
+  el.textContent = p.length > 120 ? p.slice(0, 120) + '…' : p;
+  el.hidden = false;
+})();
+</script>
+</body>
+</html>

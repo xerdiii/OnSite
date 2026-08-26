@@ -62,10 +62,11 @@
     return '' +
       '<div class="ord">' +
         '<div class="ord-due' + (t.deposit ? '' : ' ord-due--clear') + '">' +
-          '<p class="ord-due-l">Pay today &mdash; 25%</p>' +
+          '<p class="ord-due-l">Deposit &mdash; 25%</p>' +
           '<p class="ord-due-v">' + money(t.deposit) + '</p>' +
           '<p class="ord-due-p">' + (t.base
-            ? 'The rest is due only once you have approved the finished site.'
+            ? 'We invoice the deposit once you place the order. The rest is due ' +
+              'only after you have approved the finished site.'
             : 'Choose a website to begin.') + '</p>' +
           (D2.blocked() ? '<p class="ord-due-p">' + esc(D2.blocked()) + '</p>' : '') +
           '<label class="ord-agree">' +
@@ -73,7 +74,7 @@
             '<span>I agree to the <a href="terms.html" target="_blank" rel="noopener">Terms of Service</a>.</span>' +
           '</label>' +
           '<button type="button" class="ord-btn" data-act="pay-deposit"' + (t.ready ? '' : ' disabled') + '>' +
-            (t.base && t.base.key === 'free' ? 'Request my free page' : 'Pay and start') +
+            (t.base && t.base.key === 'free' ? 'Request my free page' : 'Place my order') +
           '</button>' +
         '</div>' +
       '</div>' +
@@ -204,7 +205,7 @@
     if (onBuilder() && global.SitehouseDraft) {
       var dt = global.SitehouseDraft.totals();
       doc.querySelector('[data-sheet-l]').textContent =
-        dt.base ? 'Pay today — 25%' : 'Choose a website';
+        dt.base ? 'Deposit — 25%' : 'Choose a website';
       doc.querySelector('[data-sheet-v]').textContent = money(dt.deposit);
       return;
     }

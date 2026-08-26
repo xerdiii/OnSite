@@ -818,3 +818,19 @@ body.auth #stepHelp { justify-content:flex-start; }
   width: 2.52em; height: 1.5em; flex: none; display: block;
   background: url("brand/sitehouse-mark.png") center / contain no-repeat;
 }
+
+
+/* ── Held until we know whether this page is needed ────────────
+   Set by a pre-paint probe in login.html / signup.html when a
+   Supabase token is already in storage, meaning a redirect into the
+   dashboard is about to happen. Removing it is the job of the
+   session check — or of the 4s failsafe, so a stale token can never
+   leave somebody staring at nothing. */
+html.auth-checking .stage { visibility: hidden; }
+html.auth-checking body::after {
+  content: ""; position: fixed; left: 50%; top: 50%;
+  width: 26px; height: 26px; margin: -13px 0 0 -13px;
+  border: 2px solid rgb(0 0 0 / 0.18); border-top-color: rgb(0 0 0 / 0.55);
+  border-radius: 50%; animation: auth-spin 700ms linear infinite;
+}
+@keyframes auth-spin { to { transform: rotate(360deg); } }

@@ -53,8 +53,8 @@
 
 <!-- TOP BAR -->
 <header class="sticky top-0 z-20 border-b border-line bg-paper">
-  <div class="mx-auto flex max-w-shell items-center justify-between gap-4 px-6 py-3.5 md:px-10">
-    <div class="flex items-center gap-3">
+  <div class="mx-auto flex max-w-shell items-center justify-between gap-2 px-4 py-3.5 sm:gap-4 sm:px-6 md:px-10">
+    <div class="flex min-w-0 items-center gap-2 sm:gap-3">
       <button id="nav-toggle" type="button" class="btn btn-ghost px-2.5 py-1.5 lg:hidden" aria-label="Menu">☰</button>
       <!-- Absolute, not "./": the dashboard is reached at /dashboard and
            at /dashboard.html, and a relative href does not mean the same
@@ -66,10 +66,16 @@
       <span class="hidden text-[0.8125rem] text-ink-soft sm:inline">/ Client dashboard</span>
     </div>
 
-    <div class="flex items-center gap-3">
+    <div class="flex flex-none items-center gap-2 sm:gap-3">
       <div class="relative">
-        <button id="bell" type="button" class="btn btn-ghost px-3 py-1.5 text-[0.8125rem]">
-          Notifications <span id="bell-count" class="tag tag-month ml-1 hidden">0</span>
+        <button id="bell" type="button" class="btn btn-ghost bell-btn px-3 py-1.5 text-[0.8125rem]"
+                aria-label="Notifications">
+          <svg class="bell-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"
+               stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M18 8a6 6 0 1 0-12 0c0 6-2 7-2 7h16s-2-1-2-7"/><path d="M10.3 20a2 2 0 0 0 3.4 0"/>
+          </svg>
+          <span class="bell-word">Notifications</span>
+          <span id="bell-count" class="tag tag-month ml-1 hidden">0</span>
         </button>
         <div id="bell-panel" class="card absolute right-0 z-30 mt-2 hidden w-80 p-0 shadow-sm">
           <div class="flex items-center justify-between border-b border-line px-4 py-3">
@@ -196,13 +202,12 @@
 
 <footer class="border-t border-line bg-paper">
   <div class="mx-auto flex max-w-shell flex-col gap-3 px-6 py-8 sm:flex-row sm:items-center sm:justify-between md:px-10">
-    <p class="text-[0.8125rem] text-ink-soft">Sitehouse — client dashboard (demo)</p>
-    <div class="flex flex-wrap gap-x-6 gap-y-2">
+    <p class="text-[0.8125rem] text-ink-soft">Sitehouse — client dashboard</p>
+    <div class="app-foot flex flex-wrap gap-x-6 gap-y-2">
       <a href="/" class="mono-label text-ink-soft hover:text-ink">Website</a>
       <a href="terms.html" class="mono-label text-ink-soft hover:text-ink">Terms</a>
       <a href="cookies.html" class="mono-label text-ink-soft hover:text-ink">Cookies</a>
       <a href="#" data-cookie-settings class="mono-label text-ink-soft hover:text-ink">Cookie settings</a>
-      <a href="admin.html" class="mono-label text-ink-soft hover:text-ink">Admin (demo)</a>
     </div>
   </div>
 </footer>

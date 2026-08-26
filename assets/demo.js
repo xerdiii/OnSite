@@ -11,7 +11,47 @@
   // Bumped from .demo.v1: the old key holds the seeded example account,
   // and merging it into a real one would put a stranger's salon in
   // somebody's dashboard.
-  var KEY = 'sitehouse.store.v2';
+  var BASE = 'sitehouse.store.v2';
+  var ANON = BASE + '.anon';
+  var KEY = ANON;
+
+  // Everything written before sign-in — a business name typed on the
+  // signup form, a package chosen while browsing — lands in the
+  // anonymous bucket. It follows the person into their own bucket the
+  // first time they authenticate, and only if theirs is still empty:
+  // a returning account's real data must never be overwritten by
+  // whatever this browser happened to be holding.
+  function bindUser(uid) {
+    var want = uid ? BASE + '.' + uid : ANON;
+    if (want === KEY) return;
+
+    var carry = null;
+    if (uid && KEY === ANON) {
+      try {
+        var mine = global.localStorage.getItem(want);
+        if (!mine) carry = global.localStorage.getItem(ANON);
+      } catch (e) {}
+    }
+
+    KEY = want;
+    state = null;                        // force a read from the new bucket
+
+    if (carry) {
+      try {
+        global.localStorage.setItem(KEY, carry);
+        global.localStorage.removeItem(ANON);
+      } catch (e) {}
+    }
+  }
+
+  /* Signing out must leave nothing behind on a shared machine. The
+     account's own bucket stays — it is theirs and it is keyed to them
+     — but the anonymous one is wiped and becomes active again. */
+  function unbindUser() {
+    KEY = ANON;
+    state = null;
+    try { global.localStorage.removeItem(ANON); } catch (e) {}
+  }
 
   // ── Money ────────────────────────────────────────────────────
   // Held in whole euro cents everywhere, formatted only at the edge.
@@ -307,8 +347,12 @@
   }
 
   function save() {
-    try { global.localStorage.setItem(KEY, JSON.stringify(state)); } catch (e) { /* demo only */ }
+    try { global.localStorage.setItem(KEY, JSON.stringify(state)); } catch (e) { /* storage may be off */ }
   }
+
+  /* Which bucket is live. Useful for asserting isolation in tests and
+     for the account page to show whose data is on screen. */
+  function storeKey() { return KEY; }
 
   function reset() {
     state = seed();
@@ -385,11 +429,11 @@
 
   // ── Project stages ───────────────────────────────────────────
   var STAGES = [
-    { key: 'deposit', label: '25% deposit',    doneNote: 'Paid',     waitNote: 'Waiting' },
+    { key: 'deposit', label: '25% deposit',    doneNote: 'Paid',     waitNote: 'Waiting', activeNote: 'Awaiting payment' },
     { key: 'content', label: 'Content',        doneNote: 'Received', waitNote: 'Waiting' },
     { key: 'build',   label: 'Website build',  doneNote: 'Complete', waitNote: 'Waiting' },
     { key: 'review',  label: 'Customer review',doneNote: 'Approved', waitNote: 'Waiting' },
-    { key: 'final',   label: '75% final payment', doneNote: 'Paid',  waitNote: 'Waiting' },
+    { key: 'final',   label: '75% final payment', doneNote: 'Paid',  waitNote: 'Waiting', activeNote: 'Awaiting payment' },
     { key: 'live',    label: 'Website live',   doneNote: 'Live',     waitNote: 'Waiting' }
   ];
 
@@ -402,7 +446,7 @@
         key: s.key,
         label: s.label,
         state: i < idx ? 'done' : (i === idx ? 'active' : 'wait'),
-        note: i < idx ? s.doneNote : (i === idx ? 'In progress' : s.waitNote)
+        note: i < idx ? s.doneNote : (i === idx ? (s.activeNote || 'In progress') : s.waitNote)
       };
     });
   }
@@ -410,7 +454,10 @@
   function statusLabel() {
     var map = {
       none:    'Not started',
-      deposit: 'Deposit received',
+      // 'deposit' is the stage where the deposit is OUTSTANDING. It used
+      // to read 'Deposit received', so the overview announced a payment
+      // on the same screen as the invoice marked Due.
+      deposit: 'Deposit due',
       content: 'Awaiting your content',
       build:   'Website in progress',
       review:  'Ready for review',
@@ -458,6 +505,28 @@
     return Math.max(0, m.included - m.used);
   }
 
+  /* A URL that a person typed, made safe to put in an href.
+
+     Escaping stops a value breaking OUT of the attribute. It does
+     nothing about the attribute itself being an instruction —
+     "javascript:alert(1)" contains no quotes and survives escaping
+     intact, and a link is one of the few places a browser will run
+     what it finds. Only plain http(s) is allowed through; anything
+     else comes back empty and the caller shows text instead. */
+  function safeUrl(v) {
+    var raw = String(v == null ? '' : v).trim();
+    if (!raw) return '';
+    if (!/^https?:\/\//i.test(raw)) {
+      // A bare domain is the common case and is meant kindly.
+      if (/^[\w.-]+\.[a-z]{2,}(\/|$)/i.test(raw)) raw = 'https://' + raw;
+      else return '';
+    }
+    try {
+      var u = new URL(raw);
+      return (u.protocol === 'http:' || u.protocol === 'https:') ? raw : '';
+    } catch (e) { return ''; }
+  }
+
   function escapeHtml(str) {
     return String(str == null ? '' : str)
       .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
@@ -468,11 +537,12 @@
     CATALOG: CATALOG, emptyDraft: emptyDraft,
     euro: euro, euroMonth: euroMonth, deposit: deposit, balance: balance, date: date,
     load: load, save: save, reset: reset,
+    bindUser: bindUser, unbindUser: unbindUser, storeKey: storeKey,
     signIn: signIn, signOut: signOut, session: session, requireSession: requireSession,
     requireAuth: requireAuth,
     stages: stages, statusLabel: statusLabel, advance: advance,
     notify: notify, unreadCount: unreadCount, markAllRead: markAllRead,
     maintenanceActive: maintenanceActive, changesLeft: changesLeft,
-    esc: escapeHtml
+    esc: escapeHtml, safeUrl: safeUrl
   };
 })(window);

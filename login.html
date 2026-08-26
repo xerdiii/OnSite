@@ -38,6 +38,22 @@
 <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@200..800&display=swap">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@200..800&display=swap" media="print" onload="this.media='all'">
 <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@200..800&display=swap"></noscript>
+<script>/* Pre-paint: is a redirect coming? Only hides the form if so, so a
+   signed-out visitor waits for nothing. */
+(function(){
+  try{
+    var ls = window.localStorage, hit = false;
+    for (var i = 0; i < ls.length; i++) {
+      var k = ls.key(i);
+      if (k && k.indexOf('sb-') === 0 && k.indexOf('-auth-token') > -1 && ls.getItem(k)) { hit = true; break; }
+    }
+    if (!hit) return;
+    document.documentElement.classList.add('auth-checking');
+    /* A stale token that no longer verifies must not leave the page
+       blank for ever. */
+    setTimeout(function(){ document.documentElement.classList.remove('auth-checking'); }, 4000);
+  }catch(e){}
+})();</script>
 <script>/* Pre-paint entrance guard. With JS off the class is never added and
    the finished page simply renders — that is the whole no-JS story. */
 document.documentElement.classList.add('entry-pending');
@@ -169,7 +185,10 @@ window.__entryFallback=setTimeout(function(){
   // would turn the login into an open redirect — a classic phishing lever.
   function safeNext(value) {
     if (!value) return 'dashboard.html';
-    return /^[A-Za-z0-9_-]+\.html(#[A-Za-z0-9/_-]*)?$/.test(value) ? value : 'dashboard.html';
+    // Optional .html: Vercel's cleanUrls serves /dashboard, so that is
+    // the form requireAuth() hands us. Still one segment, no slashes,
+    // no scheme — it cannot leave this site.
+    return /^[A-Za-z0-9_-]+(\.html)?(#[A-Za-z0-9/_-]*)?$/.test(value) ? value : 'dashboard.html';
   }
 
   var next = safeNext(params.get('next'));
@@ -187,12 +206,23 @@ window.__entryFallback=setTimeout(function(){
   var EMAIL = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
   var busy = false;
 
-  function fail(box, msg) { box.textContent = msg; box.hidden = false; }
+  function fail(box, msg) {
+    // Any message that is not explicitly good news is bad news, and must
+    // not wear the good-news styling left over from the last one.
+    box.classList.remove('is-info');
+    box.textContent = msg; box.hidden = false;
+  }
+  function info(box, msg) { fail(box, msg); box.classList.add('is-info'); }
+  function clearErr(box) { box.hidden = true; box.classList.remove('is-info'); }
   function label(btn, text) { var s = btn.querySelector('span'); if (s) s.textContent = text; }
 
   /* Already signed in? Nothing to do here. */
   SitehouseAuth.session().then(function (session) {
-    if (session) location.replace(next);
+    if (session) { location.replace(next); return; }
+    // Only now is it honest to show the form. Until the session check
+    // comes back, the card is held blank by .auth-checking so nobody
+    // sees a login page they did not need.
+    document.documentElement.classList.remove('auth-checking');
   });
 
   /* Returning from the Google redirect lands here with tokens in the
@@ -216,7 +246,11 @@ window.__entryFallback=setTimeout(function(){
     if (!EMAIL.test(email)) { fail(credErr, 'Enter the email address on your account.'); emailEl.focus(); return; }
 
     busy = true; loginBtn.disabled = true; label(loginBtn, 'Sending…');
-    SitehouseAuth.sendCode(email).then(function () {
+    // createUser:false — this is the LOGIN page. A mistyped address
+    // here used to register a brand-new empty account and mail a code
+    // to it, which is both a bad surprise and free account creation
+    // for addresses nobody owns.
+    SitehouseAuth.sendCode(email, { createUser: false }).then(function () {
       toCodeStep(email);
     }).catch(function (err) {
       fail(credErr, SitehouseAuth.message(err));
@@ -251,19 +285,44 @@ window.__entryFallback=setTimeout(function(){
   });
 
   codeEl.addEventListener('input', function () {
-    codeErr.hidden = true;
+    clearErr(codeErr);
     // Six digits and nothing else — paste from a mail app often brings
     // spaces with it.
     codeEl.value = codeEl.value.replace(/\D/g, '').slice(0, 6);
     if (codeEl.value.length === 6) verifyBtn.click();
   });
 
-  document.getElementById('resendBtn').addEventListener('click', function () {
+  var resendBtn = document.getElementById('resendBtn');
+  var resendUntil = 0, resendTimer = null;
+
+  function tickResend() {
+    var left = Math.ceil((resendUntil - Date.now()) / 1000);
+    if (left <= 0) {
+      clearInterval(resendTimer); resendTimer = null;
+      resendBtn.disabled = false;
+      resendBtn.textContent = 'Send a new code';
+      return;
+    }
+    resendBtn.textContent = 'Send a new code (' + left + 's)';
+  }
+
+  function holdResend(seconds) {
+    resendUntil = Date.now() + seconds * 1000;
+    resendBtn.disabled = true;
+    tickResend();
+    if (!resendTimer) resendTimer = setInterval(tickResend, 1000);
+  }
+
+  resendBtn.addEventListener('click', function () {
+    if (resendBtn.disabled) return;
     var email = document.getElementById('codeTarget').textContent;
     codeErr.hidden = true;
-    SitehouseAuth.sendCode(email).then(function () {
-      fail(codeErr, 'A new code is on its way.');
-      codeErr.classList.add('is-info');
+    codeErr.classList.remove('is-info');
+    // Supabase refuses a second code inside 60 seconds. Saying so before
+    // the request beats showing a rate-limit error after it.
+    holdResend(60);
+    SitehouseAuth.sendCode(email, { createUser: false }).then(function () {
+      info(codeErr, 'A new code is on its way.');
     }).catch(function (err) { fail(codeErr, SitehouseAuth.message(err)); });
     codeEl.value = ''; codeEl.focus();
   });
@@ -271,7 +330,11 @@ window.__entryFallback=setTimeout(function(){
   document.getElementById('backBtn').addEventListener('click', function () {
     stepCode.hidden = true;
     stepCred.hidden = false;
-    credErr.hidden = true;
+    clearErr(credErr);
+    busy = false;
+    loginBtn.disabled = false; label(loginBtn, 'Send me a code');
+    gBtn.disabled = false;
+    emailEl.focus();
   });
   });
 })();

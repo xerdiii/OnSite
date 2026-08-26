@@ -7201,7 +7201,11 @@
   function format(eur) {
     var c = curInfo();
     var value = eur * c.rate;
-    var digits = c.whole ? 0 : (value % 1 === 0 ? 0 : 2);
+    /* Money keeps its minor unit. Dropping it on round numbers put
+       '€900' next to '€79.99' in the same price list, and printed
+       invoice totals without cents. Currencies that genuinely have no
+       minor unit — yen, won — still get none. */
+    var digits = c.whole ? 0 : 2;
     try {
       return new Intl.NumberFormat(langInfo().locale, {
         style: 'currency', currency: c.code,

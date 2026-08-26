@@ -634,6 +634,8 @@
         ' <a class="btn btn-ghost" href="extras.html">See what each one does</a></div>';
   };
 
+  var placing = false;              // one order per click, not per pixel
+
   // ── Build your package ───────────────────────────────────
   function draft() {
     var s = O.load();
@@ -1051,8 +1053,12 @@
 
     'clear-draft':    function () { var s = O.load(); s.draft = O.emptyDraft(); O.save(); render(true); },
 
-    'pay-deposit': function () {
-      if (!draftReady()) return;
+    'pay-deposit': function (el) {
+      // A double click used to place the order twice before the first
+      // render had removed the button.
+      if (placing || !draftReady()) return;
+      placing = true;
+      if (el) el.disabled = true;
       var s = O.load(), d = draft(), t = draftTotals(), C = O.CATALOG;
 
       var onceItems = [{ name: t.base.name, cents: t.base.cents }];
@@ -1073,13 +1079,38 @@
 
       s.project.features = (d.base === 'full' || d.base === 'complete') ? C.features.slice() : d.features.slice();
       s.tier = d.base;
-      s.project.stage = 'content';
+      // 'deposit' means the deposit is outstanding, which it is. It
+      // becomes 'content' when a verified payment says so.
+      s.project.stage = t.deposit > 0 ? 'deposit' : 'content';
 
       var today = new Date().toISOString().slice(0, 10);
+
+      /* ══ TODO — CONNECT THE PAYMENT PROVIDER HERE ═══════════════════
+         Nothing above this line has taken any money. Until a provider
+         is wired up, the deposit is 'due' and the project waits.
+
+         When Stripe (or similar) goes in:
+           1. This handler creates a Checkout Session server-side, in a
+              new /api/checkout.mjs, and redirects to it. It must price
+              the order from the catalogue on the SERVER using the
+              selected keys — never from a total the browser sends,
+              which anyone can edit in devtools before it is posted.
+           2. Nothing is marked paid on the browser's return from the
+              provider. A success URL is a redirect, not a receipt.
+           3. A webhook endpoint verifies the provider's signature and
+              is the only thing allowed to set status:'paid', advance
+              the stage, and write the order. It must be idempotent on
+              the provider's event id, or a retried webhook bills or
+              records the same order twice.
+         ════════════════════════════════════════════════════════════ */
+
+      /* Invoice numbers are derived, not rolled. Math.random() could
+         hand two orders the same number. */
+      var ref = today.replace(/-/g, '').slice(2);
       s.payments = [
-        { id: 'INV-' + (1050 + Math.floor(Math.random() * 40)), date: today,
-          description: '25% deposit — ' + t.base.name, cents: t.deposit, kind: 'one-time', status: 'paid' },
-        { id: 'INV-' + (1090 + Math.floor(Math.random() * 40)), date: null,
+        { id: 'INV-' + ref + '-1', date: null,
+          description: '25% deposit — ' + t.base.name, cents: t.deposit, kind: 'one-time', status: 'due' },
+        { id: 'INV-' + ref + '-2', date: null,
           description: 'Remaining 75% — due after you approve the website', cents: t.balance, kind: 'one-time', status: 'due-after-approval' }
       ];
 
@@ -1093,7 +1124,11 @@
 
       s.draft = O.emptyDraft();
       O.save();
-      O.notify('Deposit of ' + money(t.deposit) + ' received — your project has started. Send us your content next.');
+      placing = false;
+      O.notify(t.deposit > 0
+        ? 'Your order is in. We will send an invoice for the ' + money(t.deposit) +
+          ' deposit — your project starts the moment it clears.'
+        : 'Your free landing page is requested. We will be in touch within 48 hours.');
       location.hash = '#/overview';
       render();
     },
@@ -1256,10 +1291,11 @@
       O.notify('Message sent to Sitehouse. We usually reply the same working day.');
       render();
     },
-    logout: function () {
-      O.signOut();
-      if (window.SitehouseAuth) window.SitehouseAuth.signOut();
-      location.href = 'login.html';
+    logout: function (el) {
+      if (el) el.disabled = true;
+      if (!window.SitehouseAuth) { O.signOut(); location.replace('login.html'); return; }
+      // Wait for it. replace() so Back cannot return to the dashboard.
+      window.SitehouseAuth.signOutAndLeave('login.html');
     }
   };
 
@@ -1427,7 +1463,13 @@
   document.addEventListener('sitehouse:i18n', function () { render(true); });
 
   // Nothing renders until there is a real session behind it.
-  O.requireAuth().then(function () { render(false); });
+  O.requireAuth().then(function () {
+    render(false);
+    // And it must keep being true afterwards: another tab signing out,
+    // a refresh token expiring, or the back button restoring this page
+    // from the bfcache all leave a rendered dashboard with no session.
+    if (window.SitehouseAuth && window.SitehouseAuth.guard) window.SitehouseAuth.guard('login.html');
+  });
 
   // app.js posts ratings and needs the view redrawn afterwards.
   window.SitehouseDash = { render: render };

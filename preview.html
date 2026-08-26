@@ -153,7 +153,10 @@ img { max-width: 100%; display: block; }
   var wa = (c.whatsapp || c.phone || '').replace(/[^\d]/g, '');
   var maps = free.maps || '';
   var social = free.social || (c.socials && c.socials.instagram) || '';
-  var socialHref = social && !/^https?:/i.test(social) ? 'https://' + social : social;
+  // Sitehouse.safeUrl also handles the bare-domain case this used to,
+  // and refuses anything that is not http(s).
+  var socialHref = Sitehouse.safeUrl(social);
+  var mapsHref = Sitehouse.safeUrl(maps);
 
   var ICON = {
     phone: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M6.5 3h3l1.5 4-2 1.4a12 12 0 0 0 5.6 5.6l1.4-2 4 1.5v3a2 2 0 0 1-2.2 2A17 17 0 0 1 4.5 5.2 2 2 0 0 1 6.5 3z"/></svg>',
@@ -176,7 +179,7 @@ img { max-width: 100%; display: block; }
       '<div class="p-cta">' +
         (tel ? '<a class="p-btn p-btn--call" href="tel:' + esc(tel) + '">' + ICON.phone + 'Call us</a>' : '') +
         (wa ? '<a class="p-btn p-btn--wa" href="https://wa.me/' + esc(wa) + '">' + ICON.wa + 'WhatsApp</a>' : '') +
-        (maps ? '<a class="p-btn p-btn--map" href="' + esc(maps) + '">' + ICON.map + 'Directions</a>' : '') +
+        (mapsHref ? '<a class="p-btn p-btn--map" href="' + esc(mapsHref) + '">' + ICON.map + 'Directions</a>' : '') +
       '</div>' +
     '</div></header>' +
 
@@ -198,7 +201,7 @@ img { max-width: 100%; display: block; }
     '<section class="p-sec"><div class="wrap">' +
       '<h2 class="p-h">Find us</h2>' +
       '<div class="p-find">' +
-        (maps ? '<a class="p-map" href="' + esc(maps) + '">' + ICON.map + 'Open in Google Maps</a>'
+        (mapsHref ? '<a class="p-map" href="' + esc(mapsHref) + '">' + ICON.map + 'Open in Google Maps</a>'
               : '<div class="p-map">Map link not added yet</div>') +
         '<ul class="p-contact">' +
           (c.phone ? '<li><span>Phone</span><a href="tel:' + esc(tel) + '">' + esc(c.phone) + '</a></li>' : '') +

@@ -159,6 +159,10 @@ window.__entryFallback=setTimeout(function(){
     function fail(box, msg) { box.textContent = msg; box.hidden = false; }
     function label(btn, t) { var sp = btn.querySelector('span'); if (sp) sp.textContent = t; }
 
+    emailEl.addEventListener('keydown', function (e) {
+      if (e.key === 'Enter') { e.preventDefault(); findBtn.click(); }
+    });
+
     findBtn.addEventListener('click', function () {
       if (busy) return;
       var email = emailEl.value.trim();

@@ -65,6 +65,15 @@ http.createServer((req, res) => {
   const file = resolve(rel);
 
   if (!file) {
+    // Serve the real 404 page, the way Vercel does, so the thing we
+    // test locally is the thing visitors get.
+    const page = path.join(root, '404.html');
+    if (fs.existsSync(page)) {
+      const body = fs.readFileSync(page);
+      res.writeHead(404, { 'Content-Type': 'text/html; charset=utf-8', 'Cache-Control': 'no-store' });
+      res.end(body);
+      return;
+    }
     res.writeHead(404, { 'Content-Type': 'text/plain; charset=utf-8' });
     res.end('404 — nothing at ' + rel);
     return;

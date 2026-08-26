@@ -414,3 +414,32 @@
   .sheet-panel, .sheet-scrim, .prev-frame, .star, .ord-btn { transition: none; }
   .star:hover, .ord-btn:hover { transform: none; }
 }
+
+
+/* ── Top bar, narrow ───────────────────────────────────────────
+   The bell used to carry the word "Notifications" at every width. At
+   375px that one label pushed the header 45px past the viewport and
+   gave the entire dashboard a horizontal scrollbar. Icon on phones,
+   word from 640px up, where it fits. */
+.bell-btn { display: inline-flex; align-items: center; gap: 0.4rem; }
+.bell-ico { width: 18px; height: 18px; flex: none; }
+.bell-word { display: none; }
+@media (min-width: 640px) {
+  .bell-ico { display: none; }
+  .bell-word { display: inline; }
+}
+
+/* The brand may shrink; it must not be the thing that overflows. */
+.app-brand-name { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+
+/* ── Thumbs ────────────────────────────────────────────────────
+   Footer and utility links were 17px tall. The text stays the size it
+   is — the tappable box around it grows, which is the part a thumb
+   actually has to find. */
+@media (max-width: 900px) {
+  .ft-base a, .ft-links a, .rowlinks a, .rowlinks .linkbtn,
+  .app-foot a {
+    display: inline-block;
+    padding-top: 0.55rem; padding-bottom: 0.55rem;
+  }
+}

@@ -43,12 +43,17 @@
   })();
 
   /* Where they were trying to go before being asked to sign in. */
+  var LOCAL_PAGE = /^[A-Za-z0-9_-]+(\.html)?(#[A-Za-z0-9/_-]*)?$/;
+
   function intended() {
     try {
       var q = new URLSearchParams(global.location.search).get('next');
-      if (q && /^[A-Za-z0-9_-]+\.html(#[A-Za-z0-9/_-]*)?$/.test(q)) return q;
+      if (q && LOCAL_PAGE.test(q)) return q;
+      // Same test on the remembered value. A destination is a
+      // destination whichever way it arrived, and an unchecked one is
+      // an open redirect waiting for somebody to find it.
       var kept = global.sessionStorage.getItem('sitehouse.next');
-      if (kept) return kept;
+      if (kept && LOCAL_PAGE.test(kept)) return kept;
     } catch (e) {}
     return null;
   }
@@ -77,15 +82,23 @@
   function adopt(session) {
     var S = global.Sitehouse;
     if (!S) return;
-    var s = S.load();
 
     if (!session) {
-      s.session = null;
+      // Back to the anonymous bucket, and wipe it. Nothing from this
+      // session may be readable by the next person at this computer.
+      if (S.unbindUser) S.unbindUser();
+      var blank = S.load();
+      blank.session = null;
       S.save();
       return;
     }
 
     var u = session.user || {};
+
+    // Before any read: this account's own bucket, not whatever the
+    // browser was last holding.
+    if (S.bindUser) S.bindUser(u.id);
+    var s = S.load();
     var meta = u.user_metadata || {};
 
     s.session = {
@@ -279,8 +292,33 @@
     },
 
     signOut: function () {
-      return client().then(function (sb) { return sb.auth.signOut(); })
-        .then(function () { adopt(null); });
+      /* scope:'global' revokes every refresh token on the account, so
+         signing out here signs out the other tabs and the other
+         devices too. That is what people mean by "log out". */
+      return client()
+        .then(function (sb) { return sb.auth.signOut({ scope: 'global' }); })
+        .then(function (r) { if (r && r.error) console.warn('sign out', r.error.message); })
+        ['catch'](function (e) { console.warn('sign out', e && e.message); })
+        .then(function () {
+          adopt(null);
+          // Belt and braces: if the network call failed, the tokens are
+          // still gone from this browser.
+          try {
+            var ls = global.localStorage;
+            for (var i = ls.length - 1; i >= 0; i--) {
+              var k = ls.key(i);
+              if (k && k.indexOf('sb-') === 0 && k.indexOf('-auth-token') > -1) ls.removeItem(k);
+            }
+          } catch (e2) {}
+        });
+    },
+
+    /* One place that knows how to leave. replace() rather than href, so
+       the Back button cannot walk into the page they just left. */
+    signOutAndLeave: function (where) {
+      return Auth.signOut().then(function () {
+        global.location.replace(where || 'login.html');
+      });
     },
 
     /* Fires on sign-in, sign-out, token refresh and on returning from
@@ -296,11 +334,46 @@
       });
     },
 
+    /* Call from any page that must not be readable without a session.
+       Covers three things one guard cannot:
+         · signing out in another tab
+         · a refresh token that has expired or been revoked
+         · the back button restoring the page from the bfcache, which
+           replays no scripts at all, so nothing else would notice */
+    guard: function (where) {
+      var back = where || ('login.html?next=' + encodeURIComponent(
+        global.location.pathname.split('/').pop() + global.location.hash));
+
+      function out() { global.location.replace(back); }
+
+      Auth.onChange(function (event, session) {
+        if (event === 'SIGNED_OUT' || (!session && event !== 'INITIAL_SESSION')) out();
+      });
+
+      global.addEventListener('pageshow', function (e) {
+        if (!e.persisted) return;         // a normal load already checked
+        Auth.session().then(function (session) { if (!session) out(); });
+      });
+
+      // Coming back to a tab left open for hours: the refresh may have
+      // failed while it was hidden.
+      global.document.addEventListener('visibilitychange', function () {
+        if (global.document.visibilityState !== 'visible') return;
+        Auth.session().then(function (session) { if (!session) out(); });
+      });
+    },
+
     /* Supabase's messages are written for developers. These are for
        the person who mistyped a digit. */
     message: function (err) {
       var m = String((err && err.message) || err || '').toLowerCase();
-      if (m.indexOf('expired') > -1) return 'That code has expired. Ask for a new one.';
+      /* Order matters and the combined case comes first: Supabase says
+         "Token has expired or is invalid" for a wrong code AND for a
+         stale one, so neither single answer is honest. */
+      if (m.indexOf('expired') > -1 && m.indexOf('invalid') > -1) {
+        return 'That code is wrong or has expired. Check the digits, or send a new one.';
+      }
+      if (m.indexOf('expired') > -1) return 'That code has expired. Send a new one.';
       if (m.indexOf('invalid') > -1 || m.indexOf('token') > -1) return 'That code does not match. Check the digits and try again.';
       if (m.indexOf('rate') > -1 || m.indexOf('security purposes') > -1) return 'Too many attempts. Wait a minute and try again.';
       if (m.indexOf('provider is not enabled') > -1) return 'Google sign-in is not switched on for this site yet.';
@@ -317,7 +390,11 @@
         return 'The email server is not responding. Use Google above, or write to help@sitehouse.eu.';
       }
       if (m.indexOf('user not found') > -1 || m.indexOf('signups not allowed') > -1) {
-        return 'We have no account with that address. Check the spelling, or create one.';
+        /* Deliberately not "no account exists". This page should not be
+           usable as a way to test which addresses are registered, but
+           it still has to tell somebody who mistyped what to do. */
+        return 'We could not send a code to that address. Check the spelling — ' +
+               'or create an account if you have not signed up yet.';
       }
       if (m.indexOf('should be different') > -1) return 'That is the password you already have. Pick a different one.';
       if (m.indexOf('at least') > -1 && m.indexOf('character') > -1) return 'Passwords need at least eight characters.';
