@@ -185,11 +185,59 @@
     }, { once: true });
   }
 
-  /* Pages call this once the session check has cleared them to show
-     the form. Doing it on DOMContentLoaded instead would play the
-     entrance behind the "checking" spinner, and somebody being sent to
-     their dashboard would catch a half-second of a form they never
-     needed to see. */
+  /* ── The falcon ──────────────────────────────────────────────
+     Decorative, and 2MB of it, so: only started when the panel is
+     actually on screen (it is display:none below 1024px, and a
+     display:none video still downloads if you ask it to play), only
+     faded in once there are frames to show, and never allowed to
+     throw — autoplay is refused often enough that an unhandled
+     rejection here would be a console error on a login page. */
+  function falcon() {
+    var v = doc.querySelector('.acct-photo-v');
+    if (!v) return;
+    if (reduced) return;
+
+    var panel = v.closest('.acct-photo');
+    if (!panel || global.getComputedStyle(panel).display === 'none') return;
+
+    v.addEventListener('canplay', function () { v.classList.add('is-ready'); }, { once: true });
+    if (v.readyState >= 2) v.classList.add('is-ready');
+
+    v.preload = 'auto';
+    var p = v.play();
+    if (p && p['catch']) p['catch'](function () {
+      /* Autoplay refused. The poster is already there and is a
+         perfectly good still, so there is nothing to recover from. */
+      v.classList.add('is-ready');
+    });
+  }
+
+  /* ── Start, without waiting for anything ─────────────────────
+     This used to be called by each page once its session check came
+     back. That check goes over the network, so the page stayed
+     invisible for as long as the CDN took to answer — which on a bad
+     connection is for ever. Motion belongs to the document, not to
+     the auth service.
+
+     Somebody who IS signed in still does not see the form: the
+     pre-paint probe in each page's head hides the whole main when a
+     token is present, and that is a synchronous localStorage read. */
+  function begin() { entrance(); falcon(); }
+
+  if (doc.readyState === 'loading') {
+    doc.addEventListener('DOMContentLoaded', begin, { once: true });
+  } else {
+    begin();
+  }
+
+  /* The panel appears when a window is widened past 1024px. */
+  if (global.matchMedia) {
+    var wide = global.matchMedia('(min-width: 1024px)');
+    var onWide = function (e) { if (e.matches) falcon(); };
+    if (wide.addEventListener) wide.addEventListener('change', onWide);
+    else if (wide.addListener) wide.addListener(onWide);
+  }
+
   global.SitehouseAccountMotion = {
     enter: entrance,
     step: step,
@@ -197,7 +245,7 @@
     reduced: reduced
   };
 
-  /* A page with no JavaScript path to enter() — or one where the auth
-     module never loads — must not stay hidden. */
-  global.setTimeout(reveal, 4000);
+  /* Belt and braces. Nothing should reach this now that entrance()
+     runs on DOM ready, but a page must never be able to stay hidden. */
+  global.setTimeout(reveal, 1500);
 })(window);

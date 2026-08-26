@@ -3,6 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<script src="/assets/oauth-catch.js"></script>
 <title>Find the email on your Sitehouse account</title>
 <meta name="description" content="Try the addresses you might have used. We will send a code to the one that works.">
 <link rel="canonical" href="https://sitehouse.eu/forgot-email">
@@ -115,7 +116,6 @@
   }
 
   whenAuth(function () {
-    if (window.SitehouseAccountMotion) window.SitehouseAccountMotion.enter();
     var A = window.SitehouseAuth;
     var $ = function (id) { return document.getElementById(id); };
     var EMAIL = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;

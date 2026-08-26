@@ -215,8 +215,6 @@
     A.session().then(function (session) {
       if (!session) { location.replace('login.html?next=dashboard.html'); return; }
 
-      if (window.SitehouseAccountMotion) window.SitehouseAccountMotion.enter();
-
       var st = Sitehouse.load();
       /* Signing in is not signing up. Once these two questions have been
          answered they are never asked again. */

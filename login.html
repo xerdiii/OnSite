@@ -52,7 +52,7 @@
     }
     if (!hit) return;
     document.documentElement.classList.add('auth-checking');
-    setTimeout(function(){ document.documentElement.classList.remove('auth-checking'); }, 4000);
+    setTimeout(function(){ document.documentElement.classList.remove('auth-checking'); }, 2000);
   }catch(e){}
 })();</script>
 <link rel="stylesheet" href="assets/sitehouse.css">
@@ -62,7 +62,22 @@
 <script src="assets/account.js"></script>
 </head>
 
-<body class="acct font-sans">
+<body class="acct acct--split font-sans">
+
+<section class="acct-photo" aria-hidden="true">
+  <video class="acct-photo-v" muted loop playsinline preload="none"
+         poster="/assets/media/falcon-poster-wide.webp">
+    <source src="/assets/media/falcon-wide.mp4" type="video/mp4">
+  </video>
+  <a class="acct-photo-brand" href="/">
+    <span class="brand-mark" role="img" aria-label="Sitehouse"></span>
+    <span>Sitehouse</span>
+  </a>
+  <div class="acct-photo-in">
+    <p class="acct-hl">Follow your build,<br><b>start to finish.</b></p>
+    <p class="acct-hl-sub">Every stage, every invoice, every change you have asked for — on one screen, whenever you want to look.</p>
+  </div>
+</section>
 
 <header class="acct-top">
   <a class="acct-brand" href="/">
@@ -241,10 +256,8 @@
     A.session().then(function (session) {
       if (session) { location.replace(next); return; }
       document.documentElement.classList.remove('auth-checking');
-      if (window.SitehouseAccountMotion) window.SitehouseAccountMotion.enter();
     })['catch'](function () {
       document.documentElement.classList.remove('auth-checking');
-      if (window.SitehouseAccountMotion) window.SitehouseAccountMotion.enter();
     });
 
     /* ── Google ──────────────────────────────────────────────── */

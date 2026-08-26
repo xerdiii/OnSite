@@ -370,3 +370,93 @@ html.acct-shown .acct-foot { opacity: 1; }
     url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none' stroke='%23fff' stroke-width='2.6' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M3.4 8.4l3 3 6.2-6.6'/%3E%3C/svg%3E")
     center / 11px no-repeat;
 }
+
+
+/* ══ The falcon panel ═══════════════════════════════════════════ */
+@media (min-width: 1024px) {
+  body.acct--split {
+    grid-template-rows: 1fr;
+    grid-template-columns: minmax(0, 1.05fr) minmax(30rem, 0.95fr);
+    min-height: 100svh;
+  }
+  /* The header and footer belong to the form column, not the page. */
+  body.acct--split .acct-top { grid-column: 2; grid-row: 1; align-self: start; z-index: 2; }
+  body.acct--split .acct-main { grid-column: 2; grid-row: 1; padding-top: 5.5rem; }
+  body.acct--split .acct-foot { grid-column: 2; grid-row: 1; align-self: end; z-index: 2; }
+  body.acct--split .acct-photo { grid-column: 1; grid-row: 1; display: block; }
+}
+
+.acct-photo {
+  display: none;                       /* phones and tablets: not shown at all */
+  position: relative;
+  overflow: hidden;
+  background: #0d0f12;
+}
+.acct-photo video {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  object-fit: cover;
+  /* A held first frame is better than a flash of black while the
+     video decodes; the poster covers it. */
+  opacity: 0;
+  transition: opacity 600ms ease;
+}
+.acct-photo video.is-ready { opacity: 1; }
+.acct-photo::after {
+  /* Legibility for the words on top, weighted to the bottom where
+     they are. A flat wash over the whole thing just makes the
+     footage look grey. */
+  content: "";
+  position: absolute; inset: 0;
+  background: linear-gradient(to top,
+    rgb(8 6 7 / 0.78) 0%,
+    rgb(8 6 7 / 0.42) 34%,
+    rgb(8 6 7 / 0.10) 62%,
+    rgb(8 6 7 / 0.18) 100%);
+}
+
+.acct-photo-in {
+  position: absolute; inset: auto 0 0 0;
+  z-index: 1;
+  padding: 0 clamp(2rem, 4vw, 3.5rem) clamp(2.25rem, 4vh, 3.25rem);
+  color: #fff;
+}
+.acct-photo-brand {
+  display: inline-flex; align-items: center; gap: 0.6rem;
+  position: absolute; top: clamp(1.6rem, 3vh, 2.4rem); left: clamp(2rem, 4vw, 3.5rem);
+  bottom: auto;
+  color: #fff; text-decoration: none;
+  font-family: 'Outfit', system-ui, sans-serif;
+  font-size: 1.05rem; font-weight: 500; letter-spacing: -0.02em;
+}
+.acct-photo-brand .brand-mark { filter: brightness(0) invert(1); }
+
+.acct-hl {
+  margin: 0;
+  font-family: 'Outfit', system-ui, sans-serif;
+  font-weight: 300;
+  font-size: clamp(2.25rem, 3.4vw, 3.4rem);
+  line-height: 1.04;
+  letter-spacing: -0.045em;
+  text-wrap: balance;
+}
+.acct-hl b { font-weight: 600; }
+.acct-hl-sub {
+  margin: 1rem 0 0; max-width: 26rem;
+  font-size: 0.9375rem; line-height: 1.6;
+  color: rgb(255 255 255 / 0.72);
+}
+
+/* On the split layout the brand in the form column would be the
+   second Sitehouse wordmark on one screen. */
+@media (min-width: 1024px) {
+  body.acct--split .acct-top .acct-brand { display: none; }
+  body.acct--split .acct-top { justify-content: flex-end; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  /* The poster carries it. A looping dive is a lot of movement to
+     put beside a form somebody is trying to read. */
+  .acct-photo video { display: none; }
+  .acct-photo { background: #0d0f12 center / cover no-repeat; }
+}
