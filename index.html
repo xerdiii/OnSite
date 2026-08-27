@@ -31,7 +31,7 @@
 <meta name="theme-color" content="#14161A">
 <link rel="apple-touch-icon" href="/assets/brand/sitehouse-touch-v2.png">
 <link rel="icon" href="/assets/brand/sitehouse-favicon-v2.png" type="image/png">
-<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://sitehouse.eu/#organization","name":"Sitehouse","url":"https://sitehouse.eu","logo":{"@type":"ImageObject","url":"https://sitehouse.eu/assets/brand/sitehouse-logo-ink-v2.png","width":473,"height":340},"image":"https://sitehouse.eu/assets/brand/sitehouse-card-v2.png","email":"hello@sitehouse.eu","description":"Sitehouse builds professional one-page websites and landing pages for small and local businesses.","contactPoint":[{"@type":"ContactPoint","contactType":"sales","email":"hello@sitehouse.eu","availableLanguage":["en","sq","de"]},{"@type":"ContactPoint","contactType":"customer support","email":"help@sitehouse.eu","availableLanguage":["en","sq","de"]}]},{"@type":"WebSite","@id":"https://sitehouse.eu/#website","url":"https://sitehouse.eu","name":"Sitehouse","description":"Professional websites for small businesses.","publisher":{"@id":"https://sitehouse.eu/#organization"},"inLanguage":"en-GB"},{"@type":"ProfessionalService","@id":"https://sitehouse.eu/#service","name":"Sitehouse","url":"https://sitehouse.eu","image":"https://sitehouse.eu/assets/brand/sitehouse-card-v2.png","email":"hello@sitehouse.eu","parentOrganization":{"@id":"https://sitehouse.eu/#organization"},"areaServed":[{"@type":"Country","name":"Kosovo"},{"@type":"Place","name":"Europe"}],"serviceType":["Website design","Landing page design","Web development","Local SEO"],"priceRange":"€79.99–€900"}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://sitehouse.eu/#organization","name":"Sitehouse","url":"https://sitehouse.eu","logo":{"@type":"ImageObject","url":"https://sitehouse.eu/assets/brand/sitehouse-logo-ink-v2.png","width":473,"height":340},"image":"https://sitehouse.eu/assets/brand/sitehouse-card-v2.png","email":"hello@sitehouse.eu","description":"Sitehouse builds professional one-page websites and landing pages for small and local businesses.","contactPoint":[{"@type":"ContactPoint","contactType":"sales","email":"hello@sitehouse.eu","availableLanguage":["en","sq","de"]},{"@type":"ContactPoint","contactType":"customer support","email":"help@sitehouse.eu","availableLanguage":["en","sq","de"]}]},{"@type":"WebSite","@id":"https://sitehouse.eu/#website","url":"https://sitehouse.eu","name":"Sitehouse","description":"Professional websites for small businesses.","publisher":{"@id":"https://sitehouse.eu/#organization"},"inLanguage":"en-GB"},{"@type":"ProfessionalService","@id":"https://sitehouse.eu/#service","name":"Sitehouse","url":"https://sitehouse.eu","image":"https://sitehouse.eu/assets/brand/sitehouse-card-v2.png","email":"hello@sitehouse.eu","parentOrganization":{"@id":"https://sitehouse.eu/#organization"},"areaServed":[{"@type":"Country","name":"Kosovo"},{"@type":"Place","name":"Europe"}],"serviceType":["Website design","Landing page design","Web development","Local SEO"],"priceRange":"€50–€500"}]}</script>
 <link rel="dns-prefetch" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -69,19 +69,19 @@
     display:flex; flex-direction:column; height:100%;
     background:rgb(var(--c-paper));
     border:1px solid rgb(var(--c-line));
-    border-radius:0.75rem;
-    padding:1.5rem;
-    box-shadow:0 1px 2px rgb(var(--c-shadow) / 0.05);
+    border-radius:1.5rem;
+    padding:1.6rem;
+    box-shadow:0 1px 2px rgb(var(--c-shadow) / 0.04), 0 12px 28px -18px rgb(var(--c-shadow) / 0.20);
     transition: border-color 220ms ease, box-shadow 220ms ease, transform 220ms cubic-bezier(0.22,1,0.36,1);
   }
-  @media (min-width:768px){ .price-card { padding:1.75rem; } }
-  .price-card:hover { border-color:rgb(var(--c-line-firm)); box-shadow:0 6px 24px rgb(var(--c-shadow) / 0.08); transform:translateY(-2px); }
+  @media (min-width:768px){ .price-card { padding:2rem; } }
+  .price-card:hover { border-color:rgb(var(--c-line-firm)); box-shadow:0 2px 4px rgb(var(--c-shadow) / 0.05), 0 22px 44px -22px rgb(var(--c-shadow) / 0.28); transform:translateY(-3px); }
 
   .price-card--lead {
     border-color:rgb(var(--c-accent));
     box-shadow:0 2px 4px rgb(var(--c-shadow) / 0.06), 0 0 0 3px rgb(var(--c-accent) / 0.10);
   }
-  @media (min-width:768px){ .price-card--lead { padding:2rem; } }
+  @media (min-width:768px){ .price-card--lead { padding:2.25rem; } }
   .price-card--lead:hover {
     border-color:rgb(var(--c-accent));
     box-shadow:0 12px 36px rgb(var(--c-shadow) / 0.12), 0 0 0 4px rgb(var(--c-accent) / 0.14);
@@ -89,9 +89,31 @@
 
   .price-card-head { display:flex; flex-wrap:wrap; align-items:baseline; justify-content:space-between; gap:0.5rem 1.25rem; }
   .price-card-figure { display:flex; align-items:baseline; gap:0.6rem; margin-top:0.9rem; }
-  .price-card-list { margin-top:1rem; display:grid; gap:0.5rem; font-size:0.875rem; line-height:1.55; color:rgb(var(--c-ink-mid)); }
-  .price-card-note { margin-top:1.25rem; border-top:1px solid rgb(var(--c-line)); padding-top:1.25rem; font-size:0.9375rem; line-height:1.6; color:rgb(var(--c-ink-mid)); }
-  .price-card-foot { margin-top:auto; padding-top:1.5rem; }
+  .price-card-list { margin-top:1.15rem; display:grid; gap:0.7rem; font-size:0.9375rem; line-height:1.55; color:rgb(var(--c-ink-mid)); }
+  .price-card-list li { display:grid; grid-template-columns:1.05rem 1fr; gap:0.5rem; align-items:start; }
+  .price-card-list .arrow { color:rgb(var(--c-accent-text)); font-weight:700; }
+  .price-card-note { margin-top:1.35rem; border-top:1px solid rgb(var(--c-line)); padding-top:1.35rem; font-size:0.9375rem; line-height:1.65; color:rgb(var(--c-ink-mid)); }
+  .price-card-foot { margin-top:auto; padding-top:1.6rem; }
+
+  /* Pill CTAs. These were long utility strings ending in rounded-md,
+     which is what made the buttons look square against the cards. */
+  .price-cta {
+    display:inline-flex; align-items:center; justify-content:center; gap:0.4rem;
+    width:100%; min-height:54px; padding:0.9rem 1.5rem;
+    border-radius:999px;
+    border:1px solid rgb(var(--c-line-firm));
+    background:rgb(var(--c-surface));
+    font-size:0.9375rem; font-weight:600; color:rgb(var(--c-ink));
+    transition: background-color 180ms ease, border-color 180ms ease, color 180ms ease, transform 180ms cubic-bezier(0.22,1,0.36,1);
+  }
+  .price-cta:hover { border-color:rgb(var(--c-accent)); color:rgb(var(--c-accent-text)); }
+  .price-cta:active { transform:translateY(1px); }
+  .price-cta--solid {
+    background:rgb(var(--c-accent)); border-color:rgb(var(--c-accent)); color:rgb(var(--c-on-accent));
+  }
+  .price-cta--solid:hover {
+    background:rgb(var(--c-accent-hi)); border-color:rgb(var(--c-accent-hi)); color:rgb(var(--c-on-accent));
+  }
 
   .price-badge {
     font-family:'IBM Plex Mono',ui-monospace,monospace;
@@ -294,11 +316,11 @@
 
         <p class="fp-hero-p">
           Sitehouse builds modern websites and landing pages for small and local businesses.<br>
-          Paid once — &euro;79.99, &euro;249.99 or &euro;900 — with hosting and your domain included.
+          Paid once — &euro;50, &euro;200 or &euro;500 — with hosting and your domain included.
         </p>
 
         <div class="fp-hero-cta">
-          <a class="fp-btn fp-btn--solid" href="start.html"><span class="swap"><span>Build my website &mdash; <span class="cur" data-eur="79.99">€79.99</span></span><span aria-hidden="true">Build my website &mdash; <span class="cur" data-eur="79.99">€79.99</span></span></span></a>
+          <a class="fp-btn fp-btn--solid" href="start.html"><span class="swap"><span>Get your website for <span class="cur" data-eur="50">€50</span></span><span aria-hidden="true">Get your website for <span class="cur" data-eur="50">€50</span></span></span></a>
           <a class="fp-btn fp-btn--glass" href="#pricing"><span class="swap"><span>See the pricing</span><span aria-hidden="true">See the pricing</span></span></a>
         </div>
       </div>
@@ -399,7 +421,7 @@
               <h3 class="h-section text-lg">Custom Website</h3>
             </div>
             <p class="price-card-figure">
-              <span class="h-display text-[2.25rem] leading-none text-ink"><span class="cur" data-eur="79.99">€79.99</span></span>
+              <span class="h-display text-[2.25rem] leading-none text-ink"><span class="cur" data-eur="50">€50</span></span>
               <span class="tag tag-once">One-time</span>
             </p>
             <p class="price-card-note">
@@ -411,8 +433,8 @@
               <li><span class="arrow">&rarr;</span> Domain, hosting and padlock &mdash; first year included.</li>
             </ul>
             <div class="price-card-foot">
-              <a href="start.html" class="inline-flex min-h-[52px] w-full items-center justify-center rounded-md border border-line-firm px-6 py-3.5 text-[0.9375rem] font-semibold text-ink hover:border-accent hover:text-accent">
-                Start with <span class="cur" data-eur="79.99">€79.99</span>
+              <a href="start.html" class="price-cta">
+                Start with <span class="cur" data-eur="50">€50</span>
               </a>
             </div>
           </div>
@@ -424,7 +446,7 @@
               <h3 class="h-section text-lg">Full Website</h3>
             </div>
             <p class="price-card-figure">
-              <span class="h-display text-[2.5rem] leading-none text-ink"><span class="cur" data-eur="249.99">€249.99</span></span>
+              <span class="h-display text-[2.5rem] leading-none text-ink"><span class="cur" data-eur="200">€200</span></span>
               <span class="tag tag-once">One-time</span>
             </p>
             <p class="price-card-note">
@@ -440,8 +462,8 @@
               <li><span class="arrow">&rarr;</span> Domain, hosting and padlock &mdash; first year included.</li>
             </ul>
             <div class="price-card-foot">
-              <a href="start.html" class="inline-flex min-h-[52px] w-full items-center justify-center rounded-md border border-line-firm px-6 py-3.5 text-[0.9375rem] font-semibold text-ink hover:border-accent hover:text-accent">
-                Build my website — <span class="cur" data-eur="249.99">€249.99</span>
+              <a href="start.html" class="price-cta">
+                Build my website — <span class="cur" data-eur="200">€200</span>
               </a>
             </div>
           </div>
@@ -453,7 +475,7 @@
               <h3 class="h-section text-xl">Complete Package</h3>
             </div>
             <p class="price-card-figure">
-              <span class="h-display text-[3.25rem] leading-none text-ink"><span class="cur" data-eur="900">€900</span></span>
+              <span class="h-display text-[3.25rem] leading-none text-ink"><span class="cur" data-eur="500">€500</span></span>
               <span class="tag tag-once">One-time</span>
             </p>
             <p class="price-card-note">
@@ -472,8 +494,8 @@
               <li><span class="arrow">&rarr;</span> Domain, hosting and padlock &mdash; first three years included.</li>
             </ul>
             <div class="price-card-foot">
-              <a href="start.html" class="inline-flex min-h-[52px] w-full items-center justify-center rounded-md bg-accent px-6 py-3.5 text-[0.9375rem] font-semibold text-white hover:bg-accent-hi">
-                Build my website — <span class="cur" data-eur="900">€900</span>
+              <a href="start.html" class="price-cta price-cta--solid">
+                Build my website — <span class="cur" data-eur="500">€500</span>
               </a>
             </div>
           </div>
@@ -542,7 +564,7 @@
           <div class="border-t-2 border-accent pt-6">
             <div class="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-1">
               <h3 class="h-section text-xl">The website</h3>
-              <p class="text-[0.9375rem] font-semibold text-ink"><span class="cur" data-eur="79.99">€79.99</span> or <span class="cur" data-eur="249.99">€249.99</span> <span class="font-normal text-ink-soft">· once</span></p>
+              <p class="text-[0.9375rem] font-semibold text-ink"><span class="cur" data-eur="50">€50</span> or <span class="cur" data-eur="200">€200</span> <span class="font-normal text-ink-soft">· once</span></p>
             </div>
             <p class="mt-3 max-w-prose text-[0.9375rem] leading-relaxed text-ink-mid">
               Built around what you actually do, and made to work on a phone — because that is where
@@ -644,7 +666,7 @@
             total before you talk to anyone.
           </p>
           <div class="mt-8 flex flex-wrap items-center gap-x-6 gap-y-4">
-            <a href="extras.html" class="inline-flex min-h-[52px] items-center justify-center rounded-md bg-accent px-7 py-3.5 text-[0.9375rem] font-semibold text-white hover:bg-accent-hi">
+            <a href="extras.html" class="inline-flex min-h-[52px] items-center justify-center rounded-full bg-accent px-7 py-3.5 text-[0.9375rem] font-semibold text-white hover:bg-accent-hi">
               See the extras and build a total
             </a>
             <p class="text-[0.8125rem] text-ink-soft">From <span class="cur" data-eur="5">€5</span>, paid once.</p>
@@ -679,12 +701,12 @@
 
       <dl data-accordion class="mt-12 grid grid-cols-1 gap-x-16 border-t border-line lg:grid-cols-2">
         <div data-acc-item class="border-b border-line">
-          <dt data-acc-head class="h-section text-base">What does the <span class="cur" data-eur="79.99">€79.99</span> cover?</dt>
+          <dt data-acc-head class="h-section text-base">What does the <span class="cur" data-eur="50">€50</span> cover?</dt>
           <dd data-acc-body class="max-w-prose pb-6 text-[0.9375rem] leading-relaxed text-ink-mid">The custom website itself, built with the sections you select from the 34 — that is the base website price, paid one time. Choosing more of them does not increase it.</dd>
         </div>
         <div data-acc-item class="border-b border-line">
           <dt data-acc-head class="h-section text-base">What is the difference between the three?</dt>
-          <dd data-acc-body class="max-w-prose pb-6 text-[0.9375rem] leading-relaxed text-ink-mid">The <span class="cur" data-eur="79.99">€79.99</span> Custom Website builds any twenty of the 34, your choice, with three as the minimum. The <span class="cur" data-eur="249.99">€249.99</span> Full Website builds all thirty-four with no cap, and does the setup work every site needs anyway — search indexing, analytics, the cookie banner and legal pages, spam protection. The <span class="cur" data-eur="900">€900</span> Complete Package is the Full Website plus the work around it: maintenance, Local SEO, a logo and menu design, WhatsApp Business and business email, and three years of hosting instead of one. All three are paid one time.</dd>
+          <dd data-acc-body class="max-w-prose pb-6 text-[0.9375rem] leading-relaxed text-ink-mid">The <span class="cur" data-eur="50">€50</span> Custom Website builds any twenty of the 34, your choice, with three as the minimum. The <span class="cur" data-eur="200">€200</span> Full Website builds all thirty-four with no cap, and does the setup work every site needs anyway — search indexing, analytics, the cookie banner and legal pages, spam protection. The <span class="cur" data-eur="500">€500</span> Complete Package is the Full Website plus the work around it: maintenance, Local SEO, a logo and menu design, WhatsApp Business and business email, and three years of hosting instead of one. All three are paid one time.</dd>
         </div>
         <div data-acc-item class="border-b border-line">
           <dt data-acc-head class="h-section text-base">What happens to my domain and hosting?</dt>
@@ -831,14 +853,14 @@
           <p class="closer-eyebrow">Get started</p>
           <h2 class="closer-h">Ready when you are.</h2>
           <p data-mobile-cta class="closer-price sm:hidden">
-            From <strong><span class="cur" data-eur="79.99">€79.99</span></strong>. Pay 25% to start.
+            From <strong><span class="cur" data-eur="50">€50</span></strong>. Pay 25% to start.
           </p>
           <p class="closer-p">
             Pick your features, see your total, know exactly what you pay today.
           </p>
         </div>
         <div class="lg:col-span-4 lg:col-start-9">
-          <a href="start.html" class="closer-cta">Build my website — <span class="cur" data-eur="79.99">€79.99</span></a>
+          <a href="start.html" class="closer-cta">Get your website for <span class="cur" data-eur="50">€50</span></a>
           <p class="closer-note">
             Or <a href="contact.html">ask us something first</a>. A person answers.
           </p>

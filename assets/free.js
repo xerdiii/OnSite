@@ -69,11 +69,6 @@
       if (!v.trim()) return 'We send the finished page here.';
       if (!EMAIL.test(v.trim())) return 'Check that address — it is missing something.';
       return '';
-    },
-    'ff-pw': function (v) {
-      if (!v) return 'Pick a password so you can get back in.';
-      if (v.length < 8) return 'Eight characters or more.';
-      return '';
     }
   };
 
@@ -139,15 +134,14 @@
   function hoursRows() { return [].slice.call(doc.querySelectorAll('[data-hrow]')); }
 
   hoursRows().forEach(function (row) {
-    var input = row.querySelector('[data-hours]');
     var shut = row.querySelector('[data-shut]');
+    if (!shut) return;
     shut.addEventListener('click', function () {
       var closed = row.classList.toggle('is-shut');
       shut.setAttribute('aria-pressed', closed ? 'true' : 'false');
-      // Remember what they had typed, so un-closing a day gives it back
-      // instead of making them type the times again.
-      if (closed) { input.dataset.was = input.value; input.value = 'Closed'; input.readOnly = true; }
-      else { input.value = input.dataset.was || '09:00 – 17:00'; input.readOnly = false; }
+      // Disabled rather than hidden: the times they picked are still
+      // there if they change their mind and re-open the day.
+      row.querySelectorAll('select').forEach(function (sel) { sel.disabled = closed; });
     });
   });
 
@@ -156,15 +150,17 @@
     applyAll.addEventListener('click', function () {
       var rows = hoursRows();
       var first = rows[0];
-      var value = first.querySelector('[data-hours]').value;
-      var closed = first.classList.contains('is-shut');
+      var openV = first.querySelector('[data-open]').value;
+      var closeV = first.querySelector('[data-close]').value;
+      var shutV = first.classList.contains('is-shut');
+
       rows.slice(1).forEach(function (row) {
-        var input = row.querySelector('[data-hours]');
+        row.querySelector('[data-open]').value = openV;
+        row.querySelector('[data-close]').value = closeV;
+        row.classList.toggle('is-shut', shutV);
         var shut = row.querySelector('[data-shut]');
-        input.value = value;
-        input.readOnly = closed;
-        row.classList.toggle('is-shut', closed);
-        shut.setAttribute('aria-pressed', closed ? 'true' : 'false');
+        if (shut) shut.setAttribute('aria-pressed', shutV ? 'true' : 'false');
+        row.querySelectorAll('select').forEach(function (sel) { sel.disabled = shutV; });
       });
       applyAll.textContent = 'Copied to every day';
       global.setTimeout(function () { applyAll.textContent = 'Use Monday for every day'; }, 1800);
@@ -173,8 +169,13 @@
 
   function readHours() {
     return hoursRows().map(function (row) {
+      var closed = row.classList.contains('is-shut');
+      var openV = row.querySelector('[data-open]');
+      var closeV = row.querySelector('[data-close]');
       return { day: row.querySelector('.hours-day').textContent,
-               open: row.querySelector('[data-hours]').value.trim() || 'Closed' };
+               open: closed || !openV || !closeV
+                 ? 'Closed'
+                 : openV.value + ' – ' + closeV.value };
     });
   }
 

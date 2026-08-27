@@ -272,3 +272,4 @@ main > section:nth-of-type(n + 4):not(.fp-hero):not(.closer) {
 /* Media never reflows the page while it loads. */
 img, video { max-width: 100%; height: auto; }
 .prev-frame, .rail-vid, .photo-img, .closer-media video { height: 100%; }
+

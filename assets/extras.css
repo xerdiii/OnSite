@@ -122,3 +122,31 @@
 /* On its own page the total has room to sit at the bottom of the
    viewport rather than at the end of the column. */
 .pick-total { bottom: 1.25rem; }
+
+
+/* ── Coming soon ──────────────────────────────────────────────
+   Monthly services are listed but not yet sold. No checkbox and no
+   price, so there is nothing to click and nothing to add to a total. */
+.pick--soon {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.6rem 0.25rem;
+  border-bottom: 1px solid rgb(var(--c-line));
+  cursor: default;
+}
+.pick--soon .pick-name { color: rgb(var(--c-ink-soft)); }
+.pick-soon-tag {
+  margin-left: auto;
+  flex: none;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgb(var(--c-ink-soft));
+  background: rgb(var(--c-surface-2, var(--c-line)) / 0.55);
+  border: 1px solid rgb(var(--c-line-firm));
+  border-radius: 999px;
+  padding: 0.28rem 0.7rem;
+  white-space: nowrap;
+}

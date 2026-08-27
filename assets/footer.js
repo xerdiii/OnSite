@@ -87,11 +87,10 @@
           '<div class="ft-contact">' +
             '<a href="contact.html">Contact us</a>' +
             '<a href="support.html">Help &amp; support</a>' +
-            '<span class="ft-ph">[LEGAL BUSINESS NAME]</span>' +
-            '<span class="ft-ph">[REGISTERED BUSINESS ADDRESS]</span>' +
+            '<span>Sitehouse</span>' +
             '<a href="mailto:hello@sitehouse.eu">hello@sitehouse.eu</a>' +
             '<a href="mailto:help@sitehouse.eu">help@sitehouse.eu</a>' +
-            '<span class="ft-ph">[PHONE NUMBER]</span>' +
+            '<a href="https://wa.me/38345403334" target="_blank" rel="noopener">+383 45 403 334</a>' +
           '</div>' +
         '</div>' +
 
