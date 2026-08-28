@@ -64,5 +64,18 @@
         }
       ]
     }
+  ],
+  "redirects": [
+    {
+      "source": "/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.sitehouse.eu"
+        }
+      ],
+      "destination": "https://sitehouse.eu/:path*",
+      "permanent": true
+    }
   ]
 }
