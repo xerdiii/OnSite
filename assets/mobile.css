@@ -301,9 +301,62 @@ body.m-locked { overflow: hidden; }
    desktop, where the side rails already carry the moving picture. */
 .m-slot { display: none; }
 @media (max-width: 767px) {
-  .m-slot { display: block; height: 15rem; }
-  .m-slot--tall { height: 20rem; }
-  .m-slot--short { height: 10rem; }
+  /* These were reserved empty. Now that they carry content the fixed
+     heights become minimums, so nothing is clipped on a small phone. */
+  .m-slot { display: block; min-height: 15rem; }
+  .m-slot--tall { min-height: 20rem; }
+  .m-slot--short { min-height: 10rem; }
+
+  /* Three facts, not a testimonial. Everything here is checkable. */
+  .m-trust {
+    display: grid; gap: 0.9rem;
+    padding: 2.25rem 1.5rem;
+    border-bottom: 1px solid rgb(var(--c-line));
+  }
+  .m-trust li { display: flex; align-items: baseline; gap: 0.7rem; }
+  .m-trust b {
+    flex: none; min-width: 3.6rem;
+    font-size: 1.05rem; letter-spacing: -0.02em;
+    color: rgb(var(--c-accent-text));
+  }
+  .m-trust span { font-size: 0.875rem; line-height: 1.45; color: rgb(var(--c-ink-mid)); }
+
+  .m-band { padding: 2.5rem 1.5rem; border-bottom: 1px solid rgb(var(--c-line)); }
+  .m-band--quiet { background: rgb(var(--c-paper)); }
+  .m-band-k {
+    font-family: 'IBM Plex Mono', ui-monospace, monospace;
+    font-size: 0.6875rem; letter-spacing: 0.14em; text-transform: uppercase;
+    color: rgb(var(--c-ink-soft));
+  }
+  .m-band-h {
+    margin-top: 0.7rem;
+    font-size: 1.35rem; line-height: 1.25; letter-spacing: -0.03em;
+    color: rgb(var(--c-ink));
+  }
+  .m-band-cta {
+    margin-top: 1.35rem;
+    display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem;
+    min-height: 52px; padding: 0.85rem 1.5rem;
+    border-radius: 999px;
+    background: rgb(var(--c-accent)); color: rgb(var(--c-on-accent));
+    font-size: 0.9375rem; font-weight: 600;
+  }
+  .m-band-cta svg { width: 15px; height: 15px; }
+  .m-band-s { margin-top: 0.85rem; font-size: 0.8125rem; color: rgb(var(--c-ink-soft)); }
+
+  .m-split { margin-top: 1.35rem; display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; }
+  .m-split > div {
+    padding: 0.9rem 1rem;
+    border: 1px solid rgb(var(--c-line-firm));
+    border-radius: 0.9rem;
+    background: rgb(var(--c-surface));
+  }
+  .m-split dt { font-size: 0.75rem; color: rgb(var(--c-ink-soft)); }
+  .m-split dd {
+    margin-top: 0.2rem;
+    font-size: 1.25rem; font-weight: 600; letter-spacing: -0.025em;
+    color: rgb(var(--c-ink));
+  }
 }
 
 /* ── Pull to refresh ────────────────────────────────────────

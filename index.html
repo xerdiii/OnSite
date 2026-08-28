@@ -95,6 +95,38 @@
   .price-card-note { margin-top:1.35rem; border-top:1px solid rgb(var(--c-line)); padding-top:1.35rem; font-size:0.9375rem; line-height:1.65; color:rgb(var(--c-ink-mid)); }
   .price-card-foot { margin-top:auto; padding-top:1.6rem; }
 
+  /* On a phone the three cards stack to 3105px — nearly four screens,
+     with no way to see two side by side. A scroll-snapped rail puts
+     them back on one screen and makes comparing a swipe. */
+  .price-swipe { display:none; }
+  @media (max-width: 767px) {
+    .price-swipe {
+      display:block; margin-top:2rem;
+      font-family:'IBM Plex Mono',ui-monospace,monospace;
+      font-size:0.6875rem; letter-spacing:0.12em; text-transform:uppercase;
+      color:rgb(var(--c-ink-soft));
+    }
+    #pricing .price-rail {
+      display:flex; gap:0.85rem;
+      /* No negative margin. The section's own padding is not a fixed
+         value at every width, so bleeding by a guessed amount put 4px
+         of the page off-screen sideways. Staying inside it cannot. */
+      margin:0.85rem 0 0;
+      padding:0.25rem 0 0.75rem;
+      overflow-x:auto;
+      scroll-snap-type:x mandatory;
+      -webkit-overflow-scrolling:touch;
+      scrollbar-width:none;
+    }
+    #pricing .price-rail::-webkit-scrollbar { display:none; }
+    /* 84% leaves the next card peeking, which is what tells you to swipe.
+       min-width:0 is required: flex items default to min-width:auto and
+       refuse to shrink below their content, so the longest card ignored
+       the basis and came out wider than the other two. */
+    #pricing .price-rail > * { flex:0 0 84%; min-width:0; scroll-snap-align:center; }
+    #pricing .price-rail .price-card { height:100%; }
+  }
+
   /* Pill CTAs. These were long utility strings ending in rounded-md,
      which is what made the buttons look square against the cards. */
   .price-cta {
@@ -401,7 +433,13 @@
   <div data-rails-region>
 
   <!-- Held open for a phone. Empty on purpose; nothing shows on desktop. -->
-  <div class="m-slot m-slot--short" data-slot="after-hero" aria-hidden="true"></div>
+  <div class="m-slot m-slot--short" data-slot="after-hero">
+    <ul class="m-trust" data-reveal-group>
+      <li><b>7 days</b><span>from your content to live</span></li>
+      <li><b>Yours</b><span>the domain and the site, in your name</span></li>
+      <li><b>25%</b><span>to start &mdash; the rest on approval</span></li>
+    </ul>
+  </div>
 
   <!-- 3 — PRICING -->
   <section id="pricing" class="scroll-mt-16 border-b border-line bg-surface">
@@ -412,7 +450,8 @@
         All paid once. The domain, the hosting and the padlock come with every one of them.
       </p>
 
-      <div class="mt-12 grid grid-cols-1 gap-8 lg:grid-cols-12 lg:gap-8" data-reveal-group>
+      <p class="price-swipe" aria-hidden="true">Swipe to compare &rarr;</p>
+        <div class="price-rail mt-12 grid grid-cols-1 gap-8 lg:grid-cols-12 lg:gap-8" data-reveal-group>
 
         <!-- The smaller option gets the smaller column. The hierarchy is the layout. -->
         <div class="lg:col-span-3">
@@ -650,7 +689,17 @@
     </div>
   </section>
 
-  <div class="m-slot" data-slot="after-steps" aria-hidden="true"></div>
+  <div class="m-slot" data-slot="after-steps">
+    <div class="m-band" data-reveal>
+      <p class="m-band-k">Not sure what you need?</p>
+      <p class="m-band-h">Pick the parts, watch the price add itself up.</p>
+      <a href="build.html" class="m-band-cta">
+        Build your package
+        <svg viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 11h15.4M11 3.3l7.7 7.7-7.7 7.7"/></svg>
+      </a>
+      <p class="m-band-s">No account, nothing sent. About a minute.</p>
+    </div>
+  </div>
 
   <!-- 8 — EXTRAS, POINTED AT -->
   <section id="extras" class="scroll-mt-16 border-b border-line bg-surface">
@@ -832,7 +881,17 @@
     </div>
   </section>
 
-  <div class="m-slot" data-slot="before-closer" aria-hidden="true"></div>
+  <div class="m-slot" data-slot="before-closer">
+    <div class="m-band m-band--quiet" data-reveal>
+      <p class="m-band-k">Paying</p>
+      <p class="m-band-h">You pay a quarter to start. Nothing else until you have seen it.</p>
+      <dl class="m-split">
+        <div><dt>Today</dt><dd><span class="cur" data-eur="50">&euro;50</span></dd></div>
+        <div><dt>On approval</dt><dd><span class="cur" data-eur="150">&euro;150</span></dd></div>
+      </dl>
+      <p class="m-band-s">Example: the &euro;200 Full Website. Card or PayPal, handled by Paddle.</p>
+    </div>
+  </div>
 
   </div><!-- /rails region -->
 
