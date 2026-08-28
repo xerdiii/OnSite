@@ -208,8 +208,15 @@ body.m-locked { overflow: hidden; }
 }
 
 /* ── Motion ────────────────────────────────────────────────── */
-.m-reveal { opacity: 0; transform: translateY(10px); }
-.m-reveal.is-in { opacity: 1; transform: translateY(0); transition: opacity 420ms ease, transform 420ms cubic-bezier(0.22,1,0.36,1); }
+/* Subtle tier: 300-400ms, 8-16px of travel. Small enough that it reads
+   as a fade rather than a slide, which is what stops a page of these
+   feeling like a slideshow. */
+.m-reveal { opacity: 0; transform: translateY(12px); }
+.m-reveal.is-in {
+  opacity: 1; transform: translateY(0);
+  transition: opacity 380ms cubic-bezier(0.22, 1, 0.36, 1),
+              transform 380ms cubic-bezier(0.22, 1, 0.36, 1);
+}
 
 .m-flash { animation: m-flash 420ms ease; }
 @keyframes m-flash { 0% { color: rgb(var(--c-accent)); } 40% { color: rgb(var(--c-ink-soft)); } 100% { color: inherit; } }
@@ -398,4 +405,57 @@ body.m-locked { overflow: hidden; }
 @media (prefers-reduced-motion: reduce) {
   .ptr.is-loading svg { animation: none; }
   .ptr.is-settling { transition: opacity 160ms ease; }
+}
+
+
+/* ── Touch feedback ────────────────────────────────────────────
+   Tailwind's preflight sets -webkit-tap-highlight-color:transparent,
+   which removes the browser's own tap flash. Without a replacement a
+   tap produces nothing at all, and the whole site feels unresponsive
+   on a phone — hover states never fire on a finger.
+
+   Scoped to (hover: none) so a mouse keeps the hover styling and never
+   sees these. ~90ms in, slightly slower out: fast enough to feel like
+   the press caused it, slow enough to be seen. */
+@media (hover: none) {
+  .fp-btn, .price-cta, .m-band-cta, .bd-cta, .closer-cta,
+  .btn, .free-submit, .pick, .bd-item, .bd-group-btn, .bd-tier,
+  .fp-nav-brand, .fp-nav-link, .site-menu-panel a, .ft-contact a {
+    -webkit-tap-highlight-color: transparent;
+    transition: transform 140ms cubic-bezier(0.22, 1, 0.36, 1),
+                opacity 140ms ease,
+                background-color 140ms ease;
+  }
+
+  /* Buttons take a real press. */
+  .fp-btn:active, .price-cta:active, .m-band-cta:active,
+  .bd-cta:active, .closer-cta:active, .btn:active, .free-submit:active {
+    transform: scale(0.972);
+    transition-duration: 90ms;
+  }
+
+  /* Rows and cards dim instead of shrinking — scaling a full-width row
+     looks like the layout broke rather than like a press. */
+  .pick:active, .bd-item:active, .bd-group-btn:active {
+    background-color: rgb(var(--c-accent-tint));
+    transition-duration: 90ms;
+  }
+
+  .bd-tier:active .bd-tier-box {
+    transform: scale(0.988);
+    transition-duration: 90ms;
+  }
+
+  /* Links have no box to press, so they fade. */
+  .fp-nav-brand:active, .fp-nav-link:active,
+  .site-menu-panel a:active, .ft-contact a:active {
+    opacity: 0.55;
+    transition-duration: 90ms;
+  }
+}
+
+@media (hover: none) and (prefers-reduced-motion: reduce) {
+  .fp-btn:active, .price-cta:active, .m-band-cta:active,
+  .bd-cta:active, .closer-cta:active, .btn:active,
+  .free-submit:active, .bd-tier:active .bd-tier-box { transform: none; }
 }
