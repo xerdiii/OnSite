@@ -166,18 +166,45 @@
   }
 
   // ── Scroll reveal ────────────────────────────────────────────
+  /* [data-reveal] rises once as it comes into view.
+     [data-reveal-group] does the same for its children, 70ms apart, so
+     a row of cards arrives as a sequence rather than a slab. The
+     stagger is capped: past eight the last item waits long enough to
+     read as broken rather than choreographed. */
+  var STAGGER = 70, MAX_STAGGER = 8;
+
+  function revealNow(el) {
+    if (el.hasAttribute('data-reveal-group')) {
+      [].forEach.call(el.children, function (kid, i) {
+        kid.style.transitionDelay = (Math.min(i, MAX_STAGGER) * STAGGER) + 'ms';
+        kid.classList.add('is-in');
+      });
+    } else {
+      el.classList.add('is-in');
+    }
+  }
+
   function reveal() {
-    var targets = doc.querySelectorAll('[data-reveal]');
+    var targets = doc.querySelectorAll('[data-reveal], [data-reveal-group]');
     if (!targets.length) return;
+
     if (reduced || !('IntersectionObserver' in global)) {
-      [].forEach.call(targets, function (t) { t.classList.add('is-in'); });
+      [].forEach.call(targets, revealNow);
       return;
     }
-    [].forEach.call(targets, function (t) { t.classList.add('m-reveal'); });
+
+    [].forEach.call(targets, function (t) {
+      if (t.hasAttribute('data-reveal-group')) {
+        [].forEach.call(t.children, function (kid) { kid.classList.add('m-reveal'); });
+      } else {
+        t.classList.add('m-reveal');
+      }
+    });
+
     var io = new IntersectionObserver(function (entries) {
       entries.forEach(function (e) {
         if (!e.isIntersecting) return;
-        e.target.classList.add('is-in');
+        revealNow(e.target);
         io.unobserve(e.target);
       });
     }, { rootMargin: '0px 0px -12% 0px', threshold: 0.1 });

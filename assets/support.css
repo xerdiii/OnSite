@@ -297,3 +297,15 @@ body[data-cookiebar="up"] .sup-fab { bottom: calc(clamp(0.85rem, 2.2vw, 1.6rem) 
   .sup-fab:hover, .sup-new:active { transform: none; }
   .sup-wait-p i { animation: none; opacity: 0.5; }
 }
+
+
+/* ── Honeypot ─────────────────────────────────────────────────
+   Off-screen rather than display:none — bots that skip hidden fields
+   still fill this one, which is the whole point of it. */
+.hp {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}

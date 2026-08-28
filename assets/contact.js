@@ -6,20 +6,16 @@
    form says so rather than showing a green tick it has not earned.
 
    To connect it:
-     1. Create /api/contact.mjs — copy /api/signup.mjs, which already
-        has the Resend call, the honeypot and the HTML escaping.
-     2. Set in Vercel: RESEND_API_KEY, NOTIFY_EMAIL=hello@sitehouse.eu,
-        FROM_EMAIL=hello@sitehouse.eu on a domain verified in Resend.
-     3. Change the line below to:  var ENDPOINT = '/api/contact';
-
-   Everything else — validation, the disabled state, the success and
-   failure messages — is already written and will start working the
-   moment ENDPOINT is a string.
+     Live. The form posts to /api/contact.mjs, which sends through
+   Resend server-side. Set RESEND_API_KEY and FROM_EMAIL in Vercel to
+   turn it on; NOTIFY_EMAIL chooses the destination and defaults to the
+   owner's Gmail. Unset, the endpoint replies 503 and the form says
+   plainly that nothing was delivered.
    ════════════════════════════════════════════════════════════════ */
 (function (global) {
   'use strict';
 
-  var ENDPOINT = null;          // ← set to '/api/contact' when Resend is live
+  var ENDPOINT = '/api/contact';
 
   var doc = global.document;
   var form = doc.getElementById('contactForm');

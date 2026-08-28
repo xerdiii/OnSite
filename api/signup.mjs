@@ -23,6 +23,10 @@
    the account up.
    ─────────────────────────────────────────────────────────────── */
 
+// Where requests go when NOTIFY_EMAIL is not set. Overridable, so
+// production can point somewhere else without touching this file.
+const DEFAULT_TO = 'erdiiithaci@gmail.com';
+
 const esc = (v) => String(v == null ? '' : v)
   .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
   .replace(/"/g, '&quot;').replace(/'/g, '&#39;');
@@ -62,9 +66,9 @@ export default async function handler(req, res) {
   }
 
   const key = process.env.RESEND_API_KEY;
-  const to = process.env.NOTIFY_EMAIL;
+  const to = process.env.NOTIFY_EMAIL || DEFAULT_TO;
   const from = process.env.FROM_EMAIL;
-  if (!key || !to || !from) {
+  if (!key || !from) {
     return res.status(503).json({ error: 'mail not configured' });
   }
 
