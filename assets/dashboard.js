@@ -943,7 +943,7 @@
               '<div class="field"><label for="ac-pw0">Current password</label>' +
                 '<input id="ac-pw0" type="password" autocomplete="current-password">' +
                 '<p class="mt-1.5 text-[0.75rem] text-ink-soft">Signed up with Google, or never set one? ' +
-                  '<a href="forgot-password.html" class="underline underline-offset-2">Set one here instead</a>.</p></div>' +
+                  '<a href="login.html" class="underline underline-offset-2">Set one here instead</a>.</p></div>' +
               '<div class="field"><label for="ac-pw">New password</label>' +
                 '<input id="ac-pw" type="password" autocomplete="new-password">' +
                 '<ul class="pw-rules mt-2" id="ac-rules"></ul></div>' +

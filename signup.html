@@ -3,8 +3,9 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<script src="/assets/oauth-catch.js"></script>
 <title>Create your Sitehouse account</title>
-<meta name="description" content="Start with your email. Choose a password, confirm the address, and your dashboard is ready — nothing is charged to open an account.">
+<meta name="description" content="Start with your email. We send a six-digit code, and your dashboard is ready — nothing is charged to open an account.">
 <link rel="canonical" href="https://sitehouse.eu/signup">
 <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
 
@@ -13,7 +14,7 @@
 <meta property="og:locale" content="en_GB">
 <meta property="og:url" content="https://sitehouse.eu/signup">
 <meta property="og:title" content="Create your Sitehouse account">
-<meta property="og:description" content="Start with your email. Choose a password, confirm the address, and your dashboard is ready — nothing is charged to open an account.">
+<meta property="og:description" content="Start with your email. We send a six-digit code, and your dashboard is ready — nothing is charged to open an account.">
 <meta property="og:image" content="https://sitehouse.eu/assets/brand/sitehouse-card-v2.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -22,7 +23,7 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:url" content="https://sitehouse.eu/signup">
 <meta name="twitter:title" content="Create your Sitehouse account">
-<meta name="twitter:description" content="Start with your email. Choose a password, confirm the address, and your dashboard is ready.">
+<meta name="twitter:description" content="Start with your email. We send a six-digit code, and your dashboard is ready.">
 <meta name="twitter:image" content="https://sitehouse.eu/assets/brand/sitehouse-card-v2.png">
 <meta name="twitter:image:alt" content="Sitehouse — professional websites for small businesses">
 
@@ -31,7 +32,7 @@
 <meta name="theme-color" content="#14161A">
 <link rel="apple-touch-icon" href="/assets/brand/sitehouse-touch-v2.png">
 <link rel="icon" href="/assets/brand/sitehouse-favicon-v2.png" type="image/png">
-<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebPage","@id":"https://sitehouse.eu/signup#webpage","url":"https://sitehouse.eu/signup","name":"Create your Sitehouse account","description":"Start with your email. Choose a password, confirm the address, and your dashboard is ready.","isPartOf":{"@id":"https://sitehouse.eu/#website"},"inLanguage":"en-GB"},{"@type":"BreadcrumbList","@id":"https://sitehouse.eu/signup#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://sitehouse.eu/"},{"@type":"ListItem","position":2,"name":"Sign up","item":"https://sitehouse.eu/signup"}]}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebPage","@id":"https://sitehouse.eu/signup#webpage","url":"https://sitehouse.eu/signup","name":"Create your Sitehouse account","description":"Start with your email. We send a six-digit code, and your dashboard is ready.","isPartOf":{"@id":"https://sitehouse.eu/#website"},"inLanguage":"en-GB"},{"@type":"BreadcrumbList","@id":"https://sitehouse.eu/signup#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://sitehouse.eu/"},{"@type":"ListItem","position":2,"name":"Sign up","item":"https://sitehouse.eu/signup"}]}]}</script>
 <link rel="dns-prefetch" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -110,29 +111,7 @@
 
       <p class="acct-err" id="emailErr" role="alert" hidden></p>
 
-      <button type="button" class="acct-btn" id="nextBtn"><span>Continue</span></button>
 
-      <p class="acct-alt">Already with us? <a href="login.html">Sign in</a></p>
-    </section>
-
-    <!-- ── 2. Password ────────────────────────────────────────── -->
-    <section data-panel="password">
-      <button type="button" class="acct-back" data-back>&larr; Back</button>
-      <h1 class="acct-h">Choose a password</h1>
-      <div class="acct-who">
-        <span data-who></span>
-        <button type="button" class="acct-link" data-back>Change</button>
-      </div>
-
-      <div class="acct-field">
-        <label for="password">Password</label>
-        <div class="acct-pw">
-          <input class="acct-in" id="password" type="password" autocomplete="new-password"
-                 placeholder="At least 8 characters">
-          <button type="button" class="acct-peek" id="peek" aria-label="Show password">Show</button>
-        </div>
-        <ul class="acct-rules" id="rules" aria-live="polite"></ul>
-      </div>
 
       <label class="acct-check">
         <input id="agree" type="checkbox">
@@ -140,16 +119,12 @@
           <a href="privacy.html">Privacy Policy</a>.</span>
       </label>
 
-      <p class="acct-err" id="pwErr" role="alert" hidden></p>
+        <button type="button" class="acct-btn" id="nextBtn"><span>Continue</span></button>
 
-      <button type="button" class="acct-btn" id="createBtn"><span>Create account</span></button>
-
-      <p class="acct-note">
-        We will email a six-digit code to confirm the address is yours.
-      </p>
+      <p class="acct-alt">Already with us? <a href="login.html">Sign in</a></p>
     </section>
 
-    <!-- ── 3. Confirm the address ─────────────────────────────── -->
+    <!-- ── 2. Password ────────────────────────────────────────── -->
     <section data-panel="code">
       <h1 class="acct-h">Confirm your email</h1>
       <p class="acct-sub">We sent a six-digit code to <b data-who></b>. It is good for one hour.</p>
@@ -199,7 +174,7 @@
     var busy = false;
     var email = '';
 
-    var ORDER = ['email', 'password', 'code', 'find', 'sent', 'done'];
+    var ORDER = ['email', 'code', 'find', 'sent', 'done'];
 
     function panel(name) {
       var all = document.querySelectorAll('[data-panel]');
@@ -279,7 +254,21 @@
       email = v;
       var who = document.querySelectorAll('[data-who]');
       for (var i = 0; i < who.length; i++) who[i].textContent = email;
-      panel('password');
+      if (!$('agree').checked) {
+        say($('emailErr'), 'Please agree to the Terms of Service to continue.');
+        return;
+      }
+
+      /* createUser:true — this is the SIGNUP page, so an address with
+         no account is meant to get one. Supabase creates the user and
+         mails the code in the same call; no password is ever set, so
+         there is none to store, leak or reset. */
+      work($('nextBtn'), A.sendCode(email, { createUser: true }), function (r) {
+        if (!r.ok) { say($('emailErr'), A.message(r.e)); return; }
+        panel('code');
+        hold(60);
+        say($('codeErr'), 'Code sent. Check your inbox.', true);
+      });
     }
     $('nextBtn').addEventListener('click', submitEmail);
     $('email').addEventListener('keydown', function (e) {
@@ -287,34 +276,6 @@
     });
     $('email').addEventListener('input', function () {
       clear($('emailErr')); $('email').removeAttribute('aria-invalid');
-    });
-
-    /* ── The rules, live ─────────────────────────────────────── */
-    var rules = A.passwordRules || [];
-    var ruleEls = [];
-    (function () {
-      var host = $('rules');
-      if (!host) return;
-      rules.forEach(function (r) {
-        var li = document.createElement('li');
-        li.textContent = r.label;
-        host.appendChild(li);
-        ruleEls.push({ rule: r, el: li });
-      });
-    })();
-
-    function paintRules(pw) {
-      ruleEls.forEach(function (x) { x.el.classList.toggle('is-met', x.rule.ok(pw)); });
-    }
-
-    /* ── 2 → 3 ───────────────────────────────────────────────── */
-    $('peek').addEventListener('click', function () {
-      var i = $('password');
-      var show = i.type === 'password';
-      i.type = show ? 'text' : 'password';
-      this.textContent = show ? 'Hide' : 'Show';
-      this.setAttribute('aria-label', show ? 'Hide password' : 'Show password');
-      i.focus();
     });
 
     /* Supabase refuses a second code inside a minute. Saying so before
@@ -337,56 +298,12 @@
       if (!ticker) ticker = setInterval(tick, 1000);
     }
 
-    function submitPassword() {
-      if (busy) return;
-      var pw = $('password').value;
-
-      /* The same rules the server will apply. Checking here means the
-         answer is instant and specific instead of a round trip that
-         comes back saying only "weak". */
-      var missing = A.passwordProblems(pw);
-      if (missing.length) {
-        say($('pwErr'), 'Your password still needs: ' +
-          missing.map(function (r) { return r.label.toLowerCase(); }).join(', ') + '.');
-        $('password').focus();
-        return;
-      }
-      if (!$('agree').checked) { say($('pwErr'), 'Please agree to the Terms of Service to continue.'); return; }
-      clear($('pwErr'));
-
-      /* signUp creates the account with the password already on it and
-         emails the confirmation code. The old flow set no password at
-         all — the boxes were collected and then thrown away. */
-      work($('createBtn'), A.signUp(email, pw), function (r) {
-        if (!r.ok) { say($('pwErr'), A.message(r.e)); return; }
-        panel('code');
-        hold(60);
-        if (r.v && r.v.existing) {
-          /* Supabase does not say outright that the address is taken,
-             and neither should we — otherwise this form becomes a way
-             to test which addresses are registered. Either way a code
-             is on its way, and it signs them into the right account. */
-          say($('codeErr'), 'Check your inbox. If you already had an account, ' +
-                            'this code signs you into it.', true);
-        }
-      });
-    }
-    $('createBtn').addEventListener('click', submitPassword);
-    $('password').addEventListener('keydown', function (e) {
-      if (e.key === 'Enter') { e.preventDefault(); submitPassword(); }
-    });
-    $('password').addEventListener('input', function () {
-      clear($('pwErr'));
-      paintRules(this.value);
-    });
-    paintRules('');
-
     $('resendBtn').addEventListener('click', function () {
       if (busy || $('resendBtn').disabled) return;
       $('code').value = '';
       clear($('codeErr'));
       hold(60);
-      A.resendSignup(email).then(function () {
+      A.sendCode(email, { createUser: true }).then(function () {
         say($('codeErr'), 'A new code is on its way.', true);
       })['catch'](function (err) { say($('codeErr'), A.message(err)); });
       $('code').focus();
@@ -398,7 +315,7 @@
       var token = $('code').value.trim();
       if (!/^\d{6}$/.test(token)) { say($('codeErr'), 'The code is six digits.'); return; }
       clear($('codeErr'));
-      work($('verifyBtn'), A.verifySignup(email, token), function (r) {
+      work($('verifyBtn'), A.verifyCode(email, token), function (r) {
         if (!r.ok) { say($('codeErr'), A.message(r.e)); return; }
         /* Where to go next is the router's call in supabase-auth.js: it
            knows whether the business-name question is still owed.
@@ -421,7 +338,6 @@
     for (var b = 0; b < backs.length; b++) {
       backs[b].addEventListener('click', function () {
         if (busy) return;
-        clear($('pwErr'));
         panel('email');
       });
     }

@@ -10,7 +10,6 @@ Disallow: /admin
 Disallow: /onboarding
 Disallow: /login
 Disallow: /signup
-Disallow: /forgot-password
 Disallow: /forgot-email
 Disallow: /trouble
 Disallow: /emails

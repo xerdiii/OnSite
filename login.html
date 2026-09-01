@@ -3,6 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<script src="/assets/oauth-catch.js"></script>
 <title>Log in to your Sitehouse dashboard</title>
 <meta name="description" content="Sign in to follow your build, review your website, see your payments and send a change request.">
 <link rel="canonical" href="https://sitehouse.eu/login">
@@ -117,37 +118,6 @@
     </section>
 
     <!-- ── 2. Prove it ────────────────────────────────────────── -->
-    <section data-panel="password">
-      <button type="button" class="acct-back" data-back>&larr; Back</button>
-      <h1 class="acct-h">Enter your password</h1>
-      <div class="acct-who">
-        <span data-who></span>
-        <button type="button" class="acct-link" data-back>Change</button>
-      </div>
-
-      <div class="acct-field">
-        <div class="acct-row">
-          <label for="password">Password</label>
-          <a class="acct-link" href="forgot-password.html">Forgot it?</a>
-        </div>
-        <div class="acct-pw">
-          <input class="acct-in" id="password" type="password" autocomplete="current-password"
-                 placeholder="Your password">
-          <button type="button" class="acct-peek" id="peek" aria-label="Show password">Show</button>
-        </div>
-      </div>
-
-      <p class="acct-err" id="pwErr" role="alert" hidden></p>
-
-      <button type="button" class="acct-btn" id="loginBtn"><span>Log in</span></button>
-
-      <p class="acct-note">
-        No password set, or would rather not use it?
-        <button type="button" class="acct-link" id="useCodeBtn">Email me a six-digit code instead</button>
-      </p>
-    </section>
-
-    <!-- ── 3. The code ────────────────────────────────────────── -->
     <section data-panel="code">
       <button type="button" class="acct-back" data-back>&larr; Back</button>
       <h1 class="acct-h">Check your inbox</h1>
@@ -209,7 +179,7 @@
     var busy = false;
     var email = '';
 
-    var ORDER = ['email', 'password', 'code', 'find', 'sent', 'done'];
+    var ORDER = ['email', 'code', 'find', 'sent', 'done'];
 
     function panel(name) {
       var all = document.querySelectorAll('[data-panel]');
@@ -293,7 +263,16 @@
       email = v;
       var who = document.querySelectorAll('[data-who]');
       for (var i = 0; i < who.length; i++) who[i].textContent = email;
-      panel('password');
+
+      /* createUser:false — this is the LOGIN page. A mistyped address
+         must not quietly register an empty account and mail a code to
+         it. Someone with no account is told to sign up instead. */
+      work($('nextBtn'), A.sendCode(email, { createUser: false }), function (r) {
+        if (!r.ok) { say($('emailErr'), A.message(r.e)); return; }
+        panel('code');
+        hold(60);
+        say($('codeErr'), 'Code sent. Check your inbox.', true);
+      });
     }
     $('nextBtn').addEventListener('click', submitEmail);
     $('email').addEventListener('keydown', function (e) {
@@ -304,31 +283,6 @@
     });
 
     /* ── Password ────────────────────────────────────────────── */
-    $('peek').addEventListener('click', function () {
-      var i = $('password');
-      var show = i.type === 'password';
-      i.type = show ? 'text' : 'password';
-      this.textContent = show ? 'Hide' : 'Show';
-      this.setAttribute('aria-label', show ? 'Hide password' : 'Show password');
-      i.focus();
-    });
-
-    function submitPassword() {
-      if (busy) return;
-      var pw = $('password').value;
-      if (!pw) { say($('pwErr'), 'Enter your password, or ask for a code instead.'); return; }
-      clear($('pwErr'));
-      work($('loginBtn'), A.signInWithPassword(email, pw), function (r) {
-        if (r.ok) { location.replace(next); return; }
-        say($('pwErr'), A.message(r.e));
-      });
-    }
-    $('loginBtn').addEventListener('click', submitPassword);
-    $('password').addEventListener('keydown', function (e) {
-      if (e.key === 'Enter') { e.preventDefault(); submitPassword(); }
-    });
-    $('password').addEventListener('input', function () { clear($('pwErr')); });
-
     /* Supabase refuses a second code inside a minute. Saying so before
        the request beats showing a rate-limit error after it. */
     var until = 0, ticker = null;
@@ -350,19 +304,7 @@
     }
 
     /* ── Code instead ────────────────────────────────────────── */
-    $('useCodeBtn').addEventListener('click', function () {
-      if (busy) return;
-      clear($('pwErr'));
-      /* createUser:false — this is the LOGIN page. A mistyped address
-         must not quietly register a new empty account and mail a code
-         to it. */
-      work($('loginBtn'), A.sendCode(email, { createUser: false }), function (r) {
-        if (!r.ok) { say($('pwErr'), A.message(r.e)); return; }
-        panel('code');
-        hold(60);
-        say($('codeErr'), 'Code sent. Check your inbox.', true);
-      });
-    });
+
 
     $('resendBtn').addEventListener('click', function () {
       if (busy || $('resendBtn').disabled) return;
@@ -401,8 +343,8 @@
     for (var b = 0; b < backs.length; b++) {
       backs[b].addEventListener('click', function () {
         if (busy) return;
-        clear($('pwErr')); clear($('codeErr'));
-        $('password').value = '';
+        clear($('codeErr'));
+        $('code').value = '';
         panel('email');
       });
     }

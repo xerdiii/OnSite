@@ -11,7 +11,7 @@
   var doc = global.document;
 
   var SKIP = ['free', 'extras', 'signup', 'login', 'forgot-email',
-              'forgot-password', 'trouble', 'dashboard', 'admin', 'emails'];
+              'trouble', 'dashboard', 'admin', 'emails'];
 
   var ICON_SPARK = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" ' +
     'stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' +
