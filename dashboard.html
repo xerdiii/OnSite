@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="/assets/oauth-catch.js"></script>
+<title>Your dashboard — Sitehouse</title>
+<meta name="description" content="Your website, your order and your payments.">
+<link rel="canonical" href="https://sitehouse.eu/dashboard">
+<meta name="robots" content="noindex, nofollow">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Sitehouse">
+<meta property="og:locale" content="en_GB">
+<meta property="og:url" content="https://sitehouse.eu/dashboard">
+<meta property="og:title" content="Your dashboard — Sitehouse">
+<meta property="og:description" content="Your website, your order and your payments.">
+<meta property="og:image" content="https://sitehouse.eu/assets/brand/sitehouse-card-v2.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Sitehouse — professional websites for small businesses">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:url" content="https://sitehouse.eu/dashboard">
+<meta name="twitter:title" content="Your dashboard — Sitehouse">
+<meta name="twitter:description" content="Your website, your order and your payments.">
+<meta name="twitter:image" content="https://sitehouse.eu/assets/brand/sitehouse-card-v2.png">
+<meta name="twitter:image:alt" content="Sitehouse — professional websites for small businesses">
+
+<meta name="apple-mobile-web-app-title" content="Sitehouse">
+<meta name="application-name" content="Sitehouse">
+<meta name="theme-color" content="#14161A">
+<link rel="apple-touch-icon" href="/assets/brand/sitehouse-touch-v2.png">
+<link rel="icon" href="/assets/brand/sitehouse-favicon-v2.png" type="image/png">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebPage","@id":"https://sitehouse.eu/dashboard#webpage","url":"https://sitehouse.eu/dashboard","name":"Your dashboard — Sitehouse","description":"Your website, your order and your payments.","isPartOf":{"@id":"https://sitehouse.eu/#website"},"inLanguage":"en-GB"}]}</script>
+<link rel="dns-prefetch" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400&family=Instrument+Serif&family=Inter:wght@400;500;600&family=Outfit:wght@200..800&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400&family=Instrument+Serif&family=Inter:wght@400;500;600&family=Outfit:wght@200..800&display=swap" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400&family=Instrument+Serif&family=Inter:wght@400;500;600&family=Outfit:wght@200..800&display=swap"></noscript>
+<script>/* Theme before paint. Light is the site, dark is a choice you make — the attribute is always stamped so the system setting never decides for you. */(function(){var t='light';try{t=localStorage.getItem('sitehouse.theme')==='dark'?'dark':'light';}catch(e){}document.documentElement.setAttribute('data-theme',t);})();</script>
+<link rel="stylesheet" href="assets/sitehouse.css">
+<link rel="stylesheet" href="assets/mobile.css">
+<link rel="stylesheet" href="assets/tailwind.css">
+<link rel="stylesheet" href="assets/app.css">
+<link rel="stylesheet" href="assets/agent.css">
+<link rel="stylesheet" href="assets/theme.css">
+<link rel="stylesheet" href="assets/dock.css">
+</head>
+
+<body data-app class="bg-paper font-sans text-ink antialiased has-tabbar">
+<a href="#view" class="skip absolute left-4 top-4 z-30 bg-ink px-4 py-2 text-sm text-white">Skip to content</a>
+
+<!-- TOP BAR -->
+<header class="sticky top-0 z-20 border-b border-line bg-paper">
+  <div class="mx-auto flex max-w-shell items-center justify-between gap-2 px-4 py-3.5 sm:gap-4 sm:px-6 md:px-10">
+    <div class="flex min-w-0 items-center gap-2 sm:gap-3">
+      <button id="nav-toggle" type="button" class="btn btn-ghost px-2.5 py-1.5 lg:hidden" aria-label="Menu">☰</button>
+      <!-- Absolute, not "./": the dashboard is reached at /dashboard and
+           at /dashboard.html, and a relative href does not mean the same
+           thing at both. This one always lands on the landing page. -->
+      <a href="/" class="flex items-center gap-2.5" title="Back to sitehouse.eu">
+        <span class="brand-mark" role="img" aria-label="Sitehouse"></span>
+        <span class="h-section text-lg tracking-tight">Sitehouse</span>
+      </a>
+      <span class="hidden text-[0.8125rem] text-ink-soft sm:inline">/ Client dashboard</span>
+    </div>
+
+    <div class="flex flex-none items-center gap-2 sm:gap-3">
+      <div class="relative">
+        <button id="bell" type="button" class="btn btn-ghost bell-btn px-3 py-1.5 text-[0.8125rem]"
+                aria-label="Notifications">
+          <svg class="bell-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"
+               stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M18 8a6 6 0 1 0-12 0c0 6-2 7-2 7h16s-2-1-2-7"/><path d="M10.3 20a2 2 0 0 0 3.4 0"/>
+          </svg>
+          <span class="bell-word">Notifications</span>
+          <span id="bell-count" class="tag tag-month ml-1 hidden">0</span>
+        </button>
+        <div id="bell-panel" class="card absolute right-0 z-30 mt-2 hidden w-80 p-0 shadow-sm">
+          <div class="flex items-center justify-between border-b border-line px-4 py-3">
+            <p class="mono-label text-ink-soft">Notifications</p>
+            <button id="mark-read" type="button" class="text-[0.75rem] font-semibold text-ink-mid hover:text-ink">Mark all read</button>
+          </div>
+          <ul id="bell-list" class="max-h-80 overflow-y-auto"></ul>
+        </div>
+      </div>
+      <span id="who" class="hidden text-[0.8125rem] text-ink-mid sm:inline"></span>
+    </div>
+  </div>
+</header>
+
+<div class="app">
+
+  <!-- LEFT — navigation -->
+  <aside class="app-side" id="sidebar">
+    <div class="app-side-in">
+      <nav class="app-nav" aria-label="Dashboard">
+        <p class="nav-group" data-group>Your website</p>
+        <a class="nav-a" href="#/overview" data-nav="/overview"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 10.5 12 4l9 6.5V20a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/></svg><span>Overview</span></a>
+        <a class="nav-a" href="#/website" data-nav="/website"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18"/></svg><span>My website</span></a>
+        <a class="nav-a" href="#/reviews" data-nav="/reviews"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m12 3.6 2.6 5.3 5.9.9-4.3 4.1 1 5.8-5.2-2.7-5.2 2.7 1-5.8L3.5 9.8l5.9-.9z"/></svg><span>Ratings</span></a>
+        <p class="nav-group" data-group>Money</p>
+        <a class="nav-a" href="#/payments" data-nav="/payments"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="5.5" width="19" height="13" rx="2"/><path d="M2.5 10h19"/></svg><span>Payments</span></a>
+        <a class="nav-a" href="#/subscriptions" data-nav="/subscriptions"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12a8 8 0 0 1 13.7-5.7L20 8M20 12a8 8 0 0 1-13.7 5.7L4 16"/><path d="M20 4v4h-4M4 20v-4h4"/></svg><span>Subscriptions</span></a>
+        <a class="nav-a" href="#/build" data-nav="/build"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg><span>Build a package</span></a>
+        <p class="nav-group" data-group>Your content</p>
+        <a class="nav-a" href="#/business" data-nav="/business"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8h.01"/></svg><span>Business info</span></a>
+        <a class="nav-a" href="#/request" data-nav="/request"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5h16M4 12h10M4 19h7"/></svg><span>Request a change</span></a>
+        <a class="nav-a" href="#/maintenance" data-nav="/maintenance"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.5 6a4 4 0 0 0 5 5l-8 8a2.8 2.8 0 0 1-4-4z"/></svg><span>Maintenance</span></a>
+        <p class="nav-group" data-group>Sitehouse</p>
+        <a class="nav-a" href="#/work" data-nav="/work"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="4.5" width="19" height="15" rx="2"/><path d="M2.5 9h19"/></svg><span>Our work</span></a>
+        <a class="nav-a" href="#/services" data-nav="/services"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg><span>My services</span></a>
+        <a class="nav-a" href="#/account" data-nav="/account"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="3.5"/><path d="M4.5 20c1.6-3.6 4.3-5.4 7.5-5.4S18 16.4 19.5 20"/></svg><span>Account</span></a>
+        <a class="nav-a" href="#/support" data-nav="/support"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M9.6 9.5a2.4 2.4 0 1 1 3.2 2.3c-.6.3-.8.7-.8 1.4M12 16.5h.01"/></svg><span>Support</span></a>
+        <div class="mt-6 border-t border-line pt-4">
+          <button id="logout" type="button" class="btn btn-ghost btn-block text-[0.8125rem]">Log out</button>
+        </div>
+      </nav>
+    </div>
+  </aside>
+
+  <!-- MIDDLE — the view -->
+  <main id="view" class="app-view"></main>
+
+  <!-- RIGHT — the order rail. Never scrolls away, because it is the
+       thing people open the dashboard to check. -->
+  <aside class="rail-order" aria-label="Your order">
+    <div class="rail-order-in" data-order-rail></div>
+  </aside>
+
+</div>
+
+<!-- The rail again, as a pull-up sheet, for anything under 1440px -->
+<div class="sheet-bar" data-sheet-bar hidden>
+  <div class="sheet-bar-fig">
+    <p data-sheet-l>Your order</p>
+    <p data-sheet-v>&mdash;</p>
+  </div>
+  <button type="button" class="sheet-open" data-sheet-open>View order</button>
+</div>
+
+<div class="sheet" id="orderSheet" hidden>
+  <button type="button" class="sheet-scrim" data-sheet-close aria-label="Close"></button>
+  <div class="sheet-panel" role="dialog" aria-modal="true" aria-label="Your order">
+    <div class="sheet-grab" aria-hidden="true"></div>
+    <div data-order-sheet></div>
+  </div>
+</div>
+
+<!-- Rate us -->
+<div class="mdl" id="rateModal" hidden>
+  <button type="button" class="mdl-scrim" data-rate-close aria-label="Close"></button>
+  <div class="mdl-box" role="dialog" aria-modal="true" aria-labelledby="rateH">
+    <button type="button" class="mdl-x" data-rate-close aria-label="Close">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg>
+    </button>
+    <h2 class="mdl-h" id="rateH">How did we do?</h2>
+    <p class="mdl-p">Your rating shows on our site next to your business name. Nothing else from your account is shared.</p>
+
+    <div class="mdl-field">
+      <label id="rateStarsL">Your rating</label>
+      <div class="stars" role="radiogroup" aria-labelledby="rateStarsL" data-rate-stars></div>
+    </div>
+
+    <div class="mdl-field">
+      <label for="rateBody">What happened?</label>
+      <textarea id="rateBody" placeholder="What was good, what was not. A sentence is plenty."></textarea>
+    </div>
+
+    <p class="ff-form-err" data-rate-err hidden></p>
+
+    <div class="mdl-row">
+      <button type="button" class="btn btn-primary" data-rate-save>Post my rating</button>
+      <button type="button" class="btn btn-ghost" data-rate-close>Cancel</button>
+    </div>
+  </div>
+</div>
+
+<!-- Sticky package total (mobile, builder only) -->
+<div id="m-build-bar" class="m-sticky" aria-live="polite">
+  <div class="m-sticky-row">
+    <div class="m-sticky-figures">
+      <p class="one" data-bar-figure><span class="cur" data-eur="0.00">€0.00</span> one-time</p>
+      <p class="sub" data-bar-sub>Choose a website to begin</p>
+    </div>
+    <button class="btn btn-primary" data-bar-cta data-act="pay-deposit" type="button">Continue</button>
+  </div>
+</div>
+
+<!-- Mobile bottom navigation -->
+<nav class="m-tabs" aria-label="Sections">
+  <a class="m-tab" href="#/overview" data-tab="/overview"><svg viewBox="0 0 24 24" fill="none" stroke="rgb(var(--c-ink-soft))" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10.5 12 4l9 6.5V20a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/></svg>Home</a>
+  <a class="m-tab" href="#/website" data-tab="/website"><svg viewBox="0 0 24 24" fill="none" stroke="rgb(var(--c-ink-soft))" stroke-width="1.8" stroke-linecap="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18"/></svg>Website</a>
+  <a class="m-tab" href="#/payments" data-tab="/payments"><svg viewBox="0 0 24 24" fill="none" stroke="rgb(var(--c-ink-soft))" stroke-width="1.8" stroke-linecap="round"><rect x="2.5" y="5.5" width="19" height="13" rx="2"/><path d="M2.5 10h19"/></svg>Payments</a>
+  <a class="m-tab" href="#/request" data-tab="/request"><svg viewBox="0 0 24 24" fill="none" stroke="rgb(var(--c-ink-soft))" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h16M4 12h10M4 19h7"/></svg>Requests</a>
+  <a class="m-tab" href="#/build" data-tab="/build"><svg viewBox="0 0 24 24" fill="none" stroke="rgb(var(--c-ink-soft))" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg>Build</a>
+  <a class="m-tab" href="#/reviews" data-tab="/reviews"><svg viewBox="0 0 24 24" fill="none" stroke="rgb(var(--c-ink-soft))" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3.6 2.6 5.3 5.9.9-4.3 4.1 1 5.8-5.2-2.7-5.2 2.7 1-5.8L3.5 9.8l5.9-.9z"/></svg>Ratings</a>
+  <a class="m-tab" href="#/work" data-tab="/work"><svg viewBox="0 0 24 24" fill="none" stroke="rgb(var(--c-ink-soft))" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="4.5" width="19" height="15" rx="2"/><path d="M2.5 9h19"/></svg>Our work</a>
+  <a class="m-tab" href="#/account" data-tab="/account"><svg viewBox="0 0 24 24" fill="none" stroke="rgb(var(--c-ink-soft))" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="8" r="3.5"/><path d="M4.5 20c1.6-3.6 4.3-5.4 7.5-5.4S18 16.4 19.5 20"/></svg>Account</a>
+</nav>
+
+<footer class="border-t border-line bg-paper">
+  <div class="mx-auto flex max-w-shell flex-col gap-3 px-6 py-8 sm:flex-row sm:items-center sm:justify-between md:px-10">
+    <p class="text-[0.8125rem] text-ink-soft">Sitehouse — client dashboard</p>
+    <div class="app-foot flex flex-wrap gap-x-6 gap-y-2">
+      <a href="/" class="mono-label text-ink-soft hover:text-ink">Website</a>
+      <a href="terms.html" class="mono-label text-ink-soft hover:text-ink">Terms</a>
+      <a href="cookies.html" class="mono-label text-ink-soft hover:text-ink">Cookies</a>
+      <a href="#" data-cookie-settings class="mono-label text-ink-soft hover:text-ink">Cookie settings</a>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/demo.js"></script>
+<script src="assets/supabase-auth.js" type="module"></script>
+<script src="assets/db.js"></script>
+<script src="assets/mobile.js"></script>
+<script src="assets/app.js"></script>
+<script src="assets/dashboard.js"></script>
+<script src="assets/cookies.js"></script>
+<script src="assets/theme.js"></script>
+<script src="assets/i18n.js"></script>
+<script src="assets/dock.js"></script>
+<script src="assets/agent.js"></script>
+</body>
+</html>

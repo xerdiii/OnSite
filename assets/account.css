@@ -1,0 +1,462 @@
+/* ───────────────────────────────────────────────────────────────
+   Sitehouse — account pages (log in, sign up, recovery)
+
+   The previous version scaled a fixed 613×922 composition to the
+   viewport with JavaScript, which meant every pixel value was a
+   guess that only held at one size, and the layout could latch in a
+   half-changed state when the mode switched. This is ordinary
+   document flow: one centred column, real margins, no measuring.
+   It cannot get stuck, and it works with JavaScript off.
+
+   The reference is Stripe's own sign-in — a small card on a quiet
+   ground, one thing to do per screen, and no decoration competing
+   with the form.
+   ─────────────────────────────────────────────────────────────── */
+
+/* ══ Ground ═════════════════════════════════════════════════════ */
+body.acct {
+  min-height: 100svh;
+  margin: 0;
+  background: rgb(var(--c-paper));
+  color: rgb(var(--c-ink));
+  -webkit-font-smoothing: antialiased;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+}
+
+.acct-top {
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 1rem;
+  padding: 1.35rem clamp(1.15rem, 4vw, 2.5rem);
+}
+.acct-brand {
+  display: inline-flex; align-items: center; gap: 0.55rem;
+  text-decoration: none; color: inherit;
+}
+.acct-brand span:last-child {
+  font-family: 'Outfit', system-ui, sans-serif;
+  font-size: 1.05rem; font-weight: 500; letter-spacing: -0.02em;
+}
+.acct-top-link {
+  font-size: 0.875rem; color: rgb(var(--c-ink-soft)); text-decoration: none;
+}
+.acct-top-link:hover { color: rgb(var(--c-ink)); }
+.acct-top-link b { color: rgb(var(--c-ink)); font-weight: 600; }
+
+/* ══ The card ═══════════════════════════════════════════════════ */
+.acct-main {
+  display: grid; place-items: start center;
+  padding: clamp(0.5rem, 3vh, 2.5rem) 1.15rem 3rem;
+}
+.acct-card {
+  width: 100%; max-width: 25.5rem;
+}
+
+/* On a phone the card is the page: no border, no shadow, nothing to
+   box in a screen that is already only as wide as the content. */
+@media (min-width: 480px) {
+  .acct-card {
+    background: rgb(var(--c-surface));
+    border: 1px solid rgb(var(--c-line));
+    border-radius: 0.9rem;
+    padding: 2.25rem 2rem 2rem;
+    box-shadow: 0 1px 2px rgb(var(--c-shadow) / 0.04),
+                0 8px 28px -12px rgb(var(--c-shadow) / 0.10);
+  }
+}
+
+.acct-h {
+  margin: 0;
+  font-family: 'Outfit', system-ui, sans-serif;
+  font-weight: 500;
+  font-size: clamp(1.5rem, 5vw, 1.75rem);
+  letter-spacing: -0.03em;
+  line-height: 1.15;
+}
+.acct-sub {
+  margin: 0.6rem 0 0;
+  font-size: 0.9375rem; line-height: 1.6;
+  color: rgb(var(--c-ink-mid));
+}
+.acct-sub b { color: rgb(var(--c-ink)); font-weight: 600; }
+
+/* ══ Fields ═════════════════════════════════════════════════════ */
+.acct-field { margin-top: 1.35rem; }
+.acct-field > label {
+  display: block; margin-bottom: 0.4rem;
+  font-size: 0.8125rem; font-weight: 600; color: rgb(var(--c-ink));
+}
+.acct-in {
+  width: 100%; min-height: 46px;
+  padding: 0 0.85rem;
+  border: 1px solid rgb(var(--c-line-firm));
+  border-radius: 0.5rem;
+  background: rgb(var(--c-surface));
+  color: rgb(var(--c-ink));
+  font-family: inherit;
+  /* 16px minimum: anything smaller and iOS zooms the page on focus,
+     which reads as the layout breaking. */
+  font-size: 16px;
+  transition: border-color 120ms ease, box-shadow 120ms ease;
+}
+.acct-in::placeholder { color: rgb(var(--c-ink-soft)); }
+.acct-in:focus {
+  outline: none;
+  border-color: rgb(var(--c-ink) / 0.55);
+  box-shadow: 0 0 0 3px rgb(var(--c-ink) / 0.08);
+}
+.acct-in[aria-invalid="true"] {
+  border-color: rgb(var(--c-accent));
+  box-shadow: 0 0 0 3px rgb(var(--c-accent) / 0.12);
+}
+.acct-in:disabled { opacity: 0.55; }
+
+/* A password box with the reveal control inside it. */
+.acct-pw { position: relative; }
+.acct-pw .acct-in { padding-right: 3.4rem; }
+.acct-peek {
+  position: absolute; right: 0.35rem; top: 50%; transform: translateY(-50%);
+  min-height: 38px; min-width: 44px; padding: 0 0.5rem;
+  border: 0; border-radius: 0.4rem; background: none; cursor: pointer;
+  font: inherit; font-size: 0.75rem; font-weight: 600;
+  color: rgb(var(--c-ink-soft));
+}
+.acct-peek:hover { color: rgb(var(--c-ink)); background: rgb(var(--c-ink) / 0.05); }
+
+/* The six-digit box. Wide tracking so the digits are countable. */
+.acct-code {
+  text-align: center;
+  font-family: 'IBM Plex Mono', ui-monospace, monospace;
+  font-size: 1.5rem; letter-spacing: 0.42em; text-indent: 0.42em;
+  min-height: 58px;
+}
+
+.acct-row {
+  display: flex; align-items: baseline; justify-content: space-between; gap: 1rem;
+  margin-bottom: 0.4rem;
+}
+.acct-row label { margin-bottom: 0; }
+
+/* ══ Messages ═══════════════════════════════════════════════════ */
+.acct-err {
+  display: flex; gap: 0.5rem; align-items: flex-start;
+  margin-top: 0.9rem; padding: 0.65rem 0.8rem;
+  border: 1px solid rgb(var(--c-accent) / 0.35);
+  border-radius: 0.5rem;
+  background: rgb(var(--c-accent-tint));
+  font-size: 0.8125rem; line-height: 1.5;
+  color: rgb(var(--c-accent-text));
+}
+.acct-err[hidden] { display: none; }
+.acct-err.is-info {
+  border-color: rgb(var(--c-line-firm));
+  background: rgb(var(--c-ink) / 0.04);
+  color: rgb(var(--c-ink-mid));
+}
+.acct-err::before { content: "!"; font-weight: 700; flex: none; }
+.acct-err.is-info::before { content: "✓"; }
+
+/* ══ Buttons ════════════════════════════════════════════════════ */
+.acct-btn {
+  display: flex; align-items: center; justify-content: center; gap: 0.5rem;
+  width: 100%; min-height: 46px; margin-top: 1.35rem;
+  border: 1px solid transparent; border-radius: 0.5rem; cursor: pointer;
+  background: rgb(var(--c-ink)); color: rgb(var(--c-paper));
+  font-family: inherit; font-size: 0.9375rem; font-weight: 600;
+  transition: background-color 120ms ease, opacity 120ms ease;
+}
+.acct-btn:hover { background: rgb(var(--c-ink) / 0.86); }
+.acct-btn:active { background: rgb(var(--c-ink) / 0.94); }
+.acct-btn:disabled { opacity: 0.5; cursor: default; }
+.acct-btn:focus-visible { outline: 2px solid rgb(var(--c-ink)); outline-offset: 2px; }
+
+.acct-btn--ghost {
+  background: rgb(var(--c-surface));
+  color: rgb(var(--c-ink));
+  border-color: rgb(var(--c-line-firm));
+}
+.acct-btn--ghost:hover { background: rgb(var(--c-ink) / 0.04); border-color: rgb(var(--c-ink) / 0.35); }
+.acct-btn--ghost:active { background: rgb(var(--c-ink) / 0.07); }
+.acct-btn svg { width: 18px; height: 18px; flex: none; }
+
+/* The spinner replaces the label, so the button never changes width
+   mid-click and shove the layout around. */
+.acct-btn.is-busy { pointer-events: none; }
+.acct-btn.is-busy > * { visibility: hidden; }
+.acct-btn.is-busy::after {
+  content: ""; position: absolute;
+  width: 16px; height: 16px; border-radius: 50%;
+  border: 2px solid currentColor; border-top-color: transparent;
+  animation: acct-spin 620ms linear infinite;
+}
+.acct-btn { position: relative; }
+@keyframes acct-spin { to { transform: rotate(360deg); } }
+
+/* ══ Divider ════════════════════════════════════════════════════ */
+.acct-or {
+  display: flex; align-items: center; gap: 0.85rem;
+  margin: 1.35rem 0 0;
+  font-size: 0.75rem; letter-spacing: 0.08em; text-transform: uppercase;
+  color: rgb(var(--c-ink-soft));
+}
+.acct-or::before, .acct-or::after {
+  content: ""; flex: 1; height: 1px; background: rgb(var(--c-line));
+}
+
+/* ══ Small print ════════════════════════════════════════════════ */
+.acct-note {
+  margin: 1.15rem 0 0;
+  font-size: 0.8125rem; line-height: 1.6; color: rgb(var(--c-ink-soft));
+}
+.acct-note a { color: rgb(var(--c-ink-mid)); text-decoration: underline; text-underline-offset: 2px; }
+.acct-note a:hover { color: rgb(var(--c-ink)); }
+
+.acct-alt {
+  margin: 1.5rem 0 0; padding-top: 1.25rem;
+  border-top: 1px solid rgb(var(--c-line));
+  text-align: center; font-size: 0.875rem; color: rgb(var(--c-ink-mid));
+}
+.acct-alt a { color: rgb(var(--c-ink)); font-weight: 600; text-decoration: none; }
+.acct-alt a:hover { text-decoration: underline; text-underline-offset: 2px; }
+
+.acct-link {
+  border: 0; background: none; padding: 0; cursor: pointer;
+  font: inherit; font-size: 0.8125rem;
+  color: rgb(var(--c-ink-mid));
+  text-decoration: underline; text-underline-offset: 2px;
+}
+.acct-link:hover { color: rgb(var(--c-ink)); }
+.acct-link:disabled { color: rgb(var(--c-ink-soft)); text-decoration: none; cursor: default; }
+
+.acct-links {
+  display: flex; flex-wrap: wrap; gap: 0.4rem 1.1rem;
+  margin-top: 1.15rem;
+}
+
+/* A tick box that is actually tickable with a thumb. */
+.acct-check {
+  display: flex; gap: 0.6rem; align-items: flex-start;
+  margin-top: 1.15rem;
+  font-size: 0.8125rem; line-height: 1.55; color: rgb(var(--c-ink-mid));
+  cursor: pointer;
+}
+.acct-check input {
+  flex: none; width: 18px; height: 18px; margin: 0.05rem 0 0;
+  accent-color: rgb(var(--c-ink)); cursor: pointer;
+}
+.acct-check a { color: rgb(var(--c-ink)); text-decoration: underline; text-underline-offset: 2px; }
+
+/* ══ Steps ══════════════════════════════════════════════════════ */
+[data-panel] { display: none; }
+[data-panel].is-on { display: block; }
+
+.acct-back {
+  display: inline-flex; align-items: center; gap: 0.35rem;
+  margin-bottom: 1.1rem;
+  border: 0; background: none; padding: 0.25rem 0 0.25rem 0; cursor: pointer;
+  font: inherit; font-size: 0.8125rem; color: rgb(var(--c-ink-soft));
+}
+.acct-back:hover { color: rgb(var(--c-ink)); }
+
+.acct-who {
+  display: flex; align-items: center; justify-content: space-between; gap: 0.75rem;
+  margin-top: 1.1rem; padding: 0.6rem 0.8rem;
+  border: 1px solid rgb(var(--c-line)); border-radius: 0.5rem;
+  background: rgb(var(--c-ink) / 0.03);
+  font-size: 0.875rem;
+}
+.acct-who span { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+
+/* ══ Foot ═══════════════════════════════════════════════════════ */
+.acct-foot {
+  display: flex; flex-wrap: wrap; justify-content: center; gap: 0.5rem 1.4rem;
+  padding: 1.5rem 1.15rem 2rem;
+  font-size: 0.75rem; color: rgb(var(--c-ink-soft));
+}
+.acct-foot a { color: inherit; text-decoration: none; padding: 0.35rem 0; }
+.acct-foot a:hover { color: rgb(var(--c-ink)); text-decoration: underline; text-underline-offset: 2px; }
+
+/* ══ Held while we work out whether this page is needed ═════════
+   Set pre-paint when a Supabase token is already in storage, so
+   somebody who is signed in never sees a login form flash past on
+   the way to their dashboard. The 4s failsafe means a stale token
+   cannot leave the page blank. */
+html.auth-checking .acct-main,
+html.auth-checking .acct-top-link { visibility: hidden; }
+html.auth-checking .acct-main::after {
+  content: ""; width: 24px; height: 24px; margin-top: 4rem;
+  visibility: visible;
+  border: 2px solid rgb(var(--c-ink) / 0.18);
+  border-top-color: rgb(var(--c-ink) / 0.55);
+  border-radius: 50%;
+  animation: acct-spin 700ms linear infinite;
+}
+
+
+/* ── Thumbs ────────────────────────────────────────────────────
+   The text stays the size it is; the box around it grows, because
+   that is the part a thumb has to find. 17px of link is a miss. */
+@media (max-width: 900px) {
+  .acct-top-link, .acct-alt a, .acct-link, .acct-note a {
+    display: inline-block;
+    padding-top: 0.5rem; padding-bottom: 0.5rem;
+  }
+  .acct-row .acct-link { padding-top: 0; padding-bottom: 0; }
+  .acct-foot a { padding: 0.5rem 0; }
+}
+
+
+/* ══ Entrance ═══════════════════════════════════════════════════
+   account.js adds .acct-motion to <html> the moment it loads, which
+   hides the pieces it is about to animate. It removes the hold by
+   adding .acct-shown once they have landed — and on a 4s failsafe,
+   and immediately when prefers-reduced-motion is set.
+
+   The hold is scoped to the class account.js itself adds, so a
+   browser with JavaScript off never sees it: nothing adds the class,
+   so nothing is hidden. */
+html.acct-motion:not(.acct-shown) .acct-top,
+html.acct-motion:not(.acct-shown) .acct-card,
+html.acct-motion:not(.acct-shown) .acct-foot { opacity: 0; }
+
+/* Once the animation has handed back, everything is plain CSS again. */
+html.acct-shown .acct-top,
+html.acct-shown .acct-card,
+html.acct-shown .acct-foot { opacity: 1; }
+
+@media (prefers-reduced-motion: reduce) {
+  /* Belt and braces: even if the class is added, nothing is hidden. */
+  html.acct-motion .acct-top,
+  html.acct-motion .acct-card,
+  html.acct-motion .acct-foot { opacity: 1 !important; }
+}
+
+/* ══ Card placement ═════════════════════════════════════════════
+   Centred on a tall screen, top-aligned as soon as the form is tall
+   enough that centring would push its head off the top. */
+@media (min-height: 700px) {
+  .acct-main { place-items: center; padding-bottom: 4rem; }
+}
+
+
+/* ══ Password requirements ══════════════════════════════════════
+   The project's Auth settings demand a capital, a lowercase letter,
+   a digit and a symbol. Without this list the browser accepted a
+   perfectly sensible password, the server refused it, and the only
+   feedback was the word "weak". Now the rules are visible before
+   the first keystroke and tick off as they are met. */
+.acct-rules {
+  display: grid; gap: 0.3rem;
+  margin: 0.7rem 0 0; padding: 0;
+  list-style: none;
+}
+.acct-rules li {
+  display: flex; align-items: center; gap: 0.5rem;
+  font-size: 0.8125rem; line-height: 1.4;
+  color: rgb(var(--c-ink-soft));
+  transition: color 140ms ease;
+}
+.acct-rules li::before {
+  content: ""; flex: none;
+  width: 14px; height: 14px; border-radius: 50%;
+  border: 1.5px solid rgb(var(--c-line-firm));
+  transition: background-color 140ms ease, border-color 140ms ease;
+}
+.acct-rules li.is-met { color: rgb(var(--c-ink-mid)); }
+.acct-rules li.is-met::before {
+  border-color: rgb(var(--c-ink));
+  background: rgb(var(--c-ink))
+    /* the tick, drawn rather than shipped as an icon font */
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none' stroke='%23fff' stroke-width='2.6' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M3.4 8.4l3 3 6.2-6.6'/%3E%3C/svg%3E")
+    center / 11px no-repeat;
+}
+
+
+/* ══ The falcon panel ═══════════════════════════════════════════ */
+@media (min-width: 1024px) {
+  body.acct--split {
+    grid-template-rows: 1fr;
+    grid-template-columns: minmax(0, 1.05fr) minmax(30rem, 0.95fr);
+    min-height: 100svh;
+  }
+  /* The header and footer belong to the form column, not the page. */
+  body.acct--split .acct-top { grid-column: 2; grid-row: 1; align-self: start; z-index: 2; }
+  body.acct--split .acct-main { grid-column: 2; grid-row: 1; padding-top: 5.5rem; }
+  body.acct--split .acct-foot { grid-column: 2; grid-row: 1; align-self: end; z-index: 2; }
+  body.acct--split .acct-photo { grid-column: 1; grid-row: 1; display: block; }
+}
+
+.acct-photo {
+  display: none;                       /* phones and tablets: not shown at all */
+  position: relative;
+  overflow: hidden;
+  background: #0d0f12;
+}
+.acct-photo video {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  object-fit: cover;
+  /* A held first frame is better than a flash of black while the
+     video decodes; the poster covers it. */
+  opacity: 0;
+  transition: opacity 600ms ease;
+}
+.acct-photo video.is-ready { opacity: 1; }
+.acct-photo::after {
+  /* Legibility for the words on top, weighted to the bottom where
+     they are. A flat wash over the whole thing just makes the
+     footage look grey. */
+  content: "";
+  position: absolute; inset: 0;
+  background: linear-gradient(to top,
+    rgb(8 6 7 / 0.78) 0%,
+    rgb(8 6 7 / 0.42) 34%,
+    rgb(8 6 7 / 0.10) 62%,
+    rgb(8 6 7 / 0.18) 100%);
+}
+
+.acct-photo-in {
+  position: absolute; inset: auto 0 0 0;
+  z-index: 1;
+  padding: 0 clamp(2rem, 4vw, 3.5rem) clamp(2.25rem, 4vh, 3.25rem);
+  color: #fff;
+}
+.acct-photo-brand {
+  display: inline-flex; align-items: center; gap: 0.6rem;
+  position: absolute; top: clamp(1.6rem, 3vh, 2.4rem); left: clamp(2rem, 4vw, 3.5rem);
+  bottom: auto;
+  color: #fff; text-decoration: none;
+  font-family: 'Outfit', system-ui, sans-serif;
+  font-size: 1.05rem; font-weight: 500; letter-spacing: -0.02em;
+}
+.acct-photo-brand .brand-mark { filter: brightness(0) invert(1); }
+
+.acct-hl {
+  margin: 0;
+  font-family: 'Outfit', system-ui, sans-serif;
+  font-weight: 300;
+  font-size: clamp(2.25rem, 3.4vw, 3.4rem);
+  line-height: 1.04;
+  letter-spacing: -0.045em;
+  text-wrap: balance;
+}
+.acct-hl b { font-weight: 600; }
+.acct-hl-sub {
+  margin: 1rem 0 0; max-width: 26rem;
+  font-size: 0.9375rem; line-height: 1.6;
+  color: rgb(255 255 255 / 0.72);
+}
+
+/* On the split layout the brand in the form column would be the
+   second Sitehouse wordmark on one screen. */
+@media (min-width: 1024px) {
+  body.acct--split .acct-top .acct-brand { display: none; }
+  body.acct--split .acct-top { justify-content: flex-end; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  /* The poster carries it. A looping dive is a lot of movement to
+     put beside a form somebody is trying to read. */
+  .acct-photo video { display: none; }
+  .acct-photo { background: #0d0f12 center / cover no-repeat; }
+}
