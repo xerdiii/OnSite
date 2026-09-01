@@ -1,5 +1,5 @@
 /* ───────────────────────────────────────────────────────────────
-   Sitehouse — the free landing page form
+   Xovah — the free landing page form
 
    Validation happens on the field, next to the field, and only after
    someone has actually left it — telling people they are wrong while

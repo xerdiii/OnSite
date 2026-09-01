@@ -10,8 +10,8 @@
    Set these in Vercel → Settings → Environment Variables:
 
      RESEND_API_KEY   re_xxx        from resend.com, free tier is 3k/month
-     NOTIFY_EMAIL     you@sitehouse…   where the requests should arrive
-     FROM_EMAIL       sitehouse@your-verified-domain
+     NOTIFY_EMAIL     you@xovah…   where the requests should arrive
+     FROM_EMAIL       xovah@your-verified-domain
 
    FROM_EMAIL has to be on a domain you verified with Resend. You cannot
    send "from" a Gmail address you do not control the DNS for — that is

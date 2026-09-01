@@ -1,5 +1,5 @@
 /* ───────────────────────────────────────────────────────────────
-   Sitehouse — country dialling picker
+   Xovah — country dialling picker
    A quarter-width control that shows the dialling code, opens a
    searchable list, and writes the code back. The search matches on
    the country name, the dialling code and the ISO letters, so

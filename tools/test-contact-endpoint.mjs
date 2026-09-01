@@ -33,20 +33,20 @@ ok('503 when Resend is not configured', (await call(h, good)).code === 503);
 
 // ── configured ───────────────────────────────────────────────────
 process.env.RESEND_API_KEY = 're_test';
-process.env.FROM_EMAIL = 'hello@sitehouse.eu';
+process.env.FROM_EMAIL = 'info@xovahweb.com';
 ({ default: h } = await import('file:///C:/projects/OnSite/api/contact.mjs?b=2'));
 
 let r = await call(h, good, '2.2.2.2');
 ok('valid message is accepted', r.code === 200, JSON.stringify(r.payload));
 ok('defaults to the owner Gmail', Array.isArray(sentTo) && sentTo[0] === 'erdiiithaci@gmail.com', String(sentTo));
-ok('sends from the verified domain', sentFrom === 'hello@sitehouse.eu', String(sentFrom));
+ok('sends from the verified domain', sentFrom === 'info@xovahweb.com', String(sentFrom));
 ok('reply-to is the sender, so Reply works', sentReplyTo === 'jane@example.com', String(sentReplyTo));
 
 // ── NOTIFY_EMAIL still wins ──────────────────────────────────────
-process.env.NOTIFY_EMAIL = 'ops@sitehouse.eu';
+process.env.NOTIFY_EMAIL = 'info@xovahweb.com';
 ({ default: h } = await import('file:///C:/projects/OnSite/api/contact.mjs?c=3'));
 await call(h, good, '3.3.3.3');
-ok('NOTIFY_EMAIL overrides the default', sentTo[0] === 'ops@sitehouse.eu', String(sentTo));
+ok('NOTIFY_EMAIL overrides the default', sentTo[0] === 'info@xovahweb.com', String(sentTo));
 delete process.env.NOTIFY_EMAIL;
 
 ({ default: h } = await import('file:///C:/projects/OnSite/api/contact.mjs?d=4'));

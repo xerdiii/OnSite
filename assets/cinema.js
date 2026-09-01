@@ -1,5 +1,5 @@
 /* ───────────────────────────────────────────────────────────────
-   Sitehouse — the editorial layer's behaviour
+   Xovah — the editorial layer's behaviour
 
    Two jobs: reveal things as they arrive, and count the key figures
    up once when you reach them.

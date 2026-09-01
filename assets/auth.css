@@ -1,5 +1,5 @@
 /* ───────────────────────────────────────────────────────────────
-   Sitehouse — authentication pages
+   Xovah — authentication pages
    A pixel-locked composition reconstructed from a 1464×949 reference
    frame: falcon footage on the left, a glass card on the right.
 
@@ -815,8 +815,8 @@ body.auth #stepHelp { justify-content:flex-start; }
 /* The auth pages set the mark on the photograph, so it takes the white
    cut in both themes. */
 .home-mark .brand-mark--auth {
-  width: 1.21em; height: 1.5em; flex: none; display: block;
-  background: url("brand/sitehouse-mark-v2.png") center / contain no-repeat;
+  width: 1.644em; height: 1.5em; flex: none; display: block;
+  background: url("brand/xovah-mark.png") center / contain no-repeat;
 }
 
 

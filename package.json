@@ -1,7 +1,7 @@
 {
-  "name": "sitehouse",
+  "name": "xovah",
   "version": "1.0.0",
-  "description": "Sitehouse — professional websites for small businesses.",
+  "description": "Xovah — professional websites for small businesses.",
   "scripts": {
     "css": "tailwindcss -c tailwind.config.js -i src/tailwind.css -o assets/tailwind.css --minify",
     "css:watch": "tailwindcss -c tailwind.config.js -i src/tailwind.css -o assets/tailwind.css --watch",
@@ -13,9 +13,9 @@
   },
   "type": "commonjs",
   "bugs": {
-    "url": "https://github.com/xerdiii/Sitehouse/issues"
+    "url": "https://github.com/xerdiii/Xovah/issues"
   },
-  "homepage": "https://sitehouse.eu",
+  "homepage": "https://xovahweb.com",
   "devDependencies": {
     "tailwindcss": "^3.4.17"
   },

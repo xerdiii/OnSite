@@ -50,8 +50,8 @@ function tooMany(ip) {
    opposite of what someone checking their invoice wants. */
 function brief(ctx) {
   return [
-    'You are the assistant inside the Sitehouse client dashboard.',
-    'Sitehouse builds one-page websites for small businesses.',
+    'You are the assistant inside the Xovah client dashboard.',
+    'Xovah builds one-page websites for small businesses.',
     '',
     'Rules:',
     '- Be brief. Two or three sentences unless asked for more.',

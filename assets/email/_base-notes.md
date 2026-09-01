@@ -1,4 +1,4 @@
-# Sitehouse — email templates
+# Xovah — email templates
 
 ## Why these look the way they do
 
@@ -32,7 +32,7 @@ in Gmail, Outlook, Apple Mail and the rest:
 | `{{ .Token }}` | the 6-digit code — **this is the one that matters** |
 | `{{ .ConfirmationURL }}` | one-click link, kept as a fallback |
 | `{{ .Email }}` | the address being confirmed |
-| `{{ .SiteURL }}` | https://sitehouse.eu |
+| `{{ .SiteURL }}` | https://xovahweb.com |
 
 Without `{{ .Token }}` in the template, Supabase only ever sends a link
 and the six-digit box on the site can never be filled in.

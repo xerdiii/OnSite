@@ -1,5 +1,5 @@
 /* ───────────────────────────────────────────────────────────────
-   Sitehouse — theme switch
+   Xovah — theme switch
    The stored choice is applied by a tiny inline snippet in <head>
    before paint; this file only builds the control and handles the
    click. No choice stored means "follow the system".

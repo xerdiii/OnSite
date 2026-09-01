@@ -1,5 +1,5 @@
 /* ───────────────────────────────────────────────────────────────
-   Sitehouse — account pages (log in, sign up, recovery)
+   Xovah — account pages (log in, sign up, recovery)
 
    The previous version scaled a fixed 613×922 composition to the
    viewport with JavaScript, which meant every pixel value was a
@@ -448,7 +448,7 @@ html.acct-shown .acct-foot { opacity: 1; }
 }
 
 /* On the split layout the brand in the form column would be the
-   second Sitehouse wordmark on one screen. */
+   second Xovah wordmark on one screen. */
 @media (min-width: 1024px) {
   body.acct--split .acct-top .acct-brand { display: none; }
   body.acct--split .acct-top { justify-content: flex-end; }

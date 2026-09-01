@@ -1,5 +1,5 @@
 /* ───────────────────────────────────────────────────────────────
-   Sitehouse — package builder
+   Xovah — package builder
 
    Renders the add-ons from Sitehouse.CATALOG rather than duplicating
    sixty-six names and prices in the markup. One source of truth: change
@@ -270,7 +270,7 @@
   }
 
   // Re-format every figure when the currency changes.
-  doc.addEventListener('sitehouse:i18n', paint);
+  doc.addEventListener('xovah:i18n', paint);
 
   if (doc.readyState === 'loading') doc.addEventListener('DOMContentLoaded', init);
   else init();

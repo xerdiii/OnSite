@@ -1,5 +1,5 @@
 /* ───────────────────────────────────────────────────────────────
-   Sitehouse — project store
+   Xovah — project store
    The browser-side store: the catalogue, prices, and a per-account
    cache of the dashboard.
 
@@ -163,7 +163,7 @@
         stage: 'none',
         deliveryDate: null,
         lastUpdate: null,
-        previewUrl: 'preview.sitehouse.eu',
+        previewUrl: 'preview.xovahweb.com',
         features: []
       },
 
@@ -475,7 +475,7 @@
       if (global.SitehouseAuth) return Promise.resolve(global.SitehouseAuth);
       return new Promise(function (resolve, reject) {
         var done = false;
-        global.document.addEventListener('sitehouse:auth-ready', function () {
+        global.document.addEventListener('xovah:auth-ready', function () {
           done = true; resolve(global.SitehouseAuth);
         }, { once: true });
         setTimeout(function () { if (!done) reject(new Error('auth script never loaded')); }, 8000);

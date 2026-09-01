@@ -1,5 +1,5 @@
 /* ───────────────────────────────────────────────────────────────
-   Sitehouse — add-on picker
+   Xovah — add-on picker
    Ticking a box adds a number. That is the whole feature: no form
    submit, no navigation, no reload, nothing sent anywhere. The choice
    is kept in this browser so it survives a refresh and can be handed

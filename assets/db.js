@@ -1,5 +1,5 @@
 /* ───────────────────────────────────────────────────────────────
-   Sitehouse — per-user data layer
+   Xovah — per-user data layer
 
    Every table behind this module carries a user_id and is fenced by
    RLS (auth.uid() = user_id). That is the actual boundary: it holds

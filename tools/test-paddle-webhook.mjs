@@ -11,7 +11,7 @@ import { Readable } from 'node:stream';
 const SECRET = 'pdl_ntfset_test_secret';
 process.env.PADDLE_WEBHOOK_SECRET = SECRET;
 process.env.RESEND_API_KEY = 're_test';
-process.env.FROM_EMAIL = 'hello@sitehouse.eu';
+process.env.FROM_EMAIL = 'info@xovahweb.com';
 
 let mails = [];
 globalThis.fetch = async (_u, opts) => {

@@ -1,5 +1,5 @@
 /* ───────────────────────────────────────────────────────────────
-   Sitehouse — the dashboard assistant
+   Xovah — the dashboard assistant
 
    Deliberately a hybrid, and the split matters.
 

@@ -1,5 +1,5 @@
 /* ───────────────────────────────────────────────────────────────
-   Sitehouse — local dev server
+   Xovah — local dev server
 
      npm run dev        →  http://localhost:5174
 
@@ -105,5 +105,5 @@ http.createServer((req, res) => {
   if (req.method === 'HEAD') { res.end(); return; }
   fs.createReadStream(file).pipe(res);
 }).listen(port, function () {
-  console.log('Sitehouse — serving ' + root + ' on http://localhost:' + port);
+  console.log('Xovah — serving ' + root + ' on http://localhost:' + port);
 });

@@ -1,7 +1,7 @@
 /* ───────────────────────────────────────────────────────────────
-   Sitehouse — cookie consent
+   Xovah — cookie consent
    Self-contained: injects its own styles so it works on the landing
-   page (inline CSS) and the app pages (sitehouse.css) alike.
+   page (inline CSS) and the app pages (xovah.css) alike.
 
    Behaviour: nothing beyond the strictly necessary consent cookie is
    set until the visitor chooses. "Essential only" is exactly as easy
@@ -14,7 +14,7 @@
 (function (global) {
   'use strict';
 
-  var COOKIE = 'sitehouse_consent';
+  var COOKIE = 'xovah_consent';
   var MAX_AGE = 60 * 60 * 24 * 180;          // 180 days, then ask again
   var doc = global.document;
 
@@ -100,7 +100,7 @@
         '<div class="ck-copy">' +
           '<p class="ck-eyebrow">Cookies</p>' +
           '<p class="ck-title">We only set what you agree to.</p>' +
-          '<p class="ck-text">Sitehouse needs a couple of strictly necessary cookies to keep you ' +
+          '<p class="ck-text">Xovah needs a couple of strictly necessary cookies to keep you ' +
             'signed in and to remember this choice. Anything beyond that is optional and stays ' +
             'off until you say otherwise. Read the ' +
             '<a href="' + policyHref() + '">cookie policy</a>.</p>' +

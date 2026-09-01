@@ -1,5 +1,5 @@
 /* ───────────────────────────────────────────────────────────────
-   Sitehouse — help & support
+   Xovah — help & support
 
    A thread stays in the list from the moment it is posted until it is
    answered, and the waiting state is drawn on the conversation itself.
@@ -117,7 +117,7 @@
       var mine = m.from === 'you';
       return '<div class="sup-msg sup-msg--' + (mine ? 'me' : 'them') + '">' + esc(m.body) + '</div>' +
              '<p class="sup-meta sup-meta--' + (mine ? 'me' : 'them') + '">' +
-               (mine ? 'You' : 'Sitehouse') + ' · ' + clock(m.at) + '</p>';
+               (mine ? 'You' : 'Xovah') + ' · ' + clock(m.at) + '</p>';
     }).join('');
 
     var waiting = th.status === 'waiting'

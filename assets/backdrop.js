@@ -1,5 +1,5 @@
 /* ───────────────────────────────────────────────────────────────
-   Sitehouse — section backdrops
+   Xovah — section backdrops
    Any element carrying [data-backdrop] with a <video> inside gets a
    looping film behind it. The film is not part of the page's meaning,
    so it is treated as a luxury throughout:

@@ -1,4 +1,4 @@
-# Sitehouse — https://sitehouse.eu
+# Xovah — https://xovahweb.com
 
 User-agent: *
 Allow: /
@@ -16,4 +16,4 @@ Disallow: /emails
 Disallow: /preview
 Disallow: /api/
 
-Sitemap: https://sitehouse.eu/sitemap.xml
+Sitemap: https://xovahweb.com/sitemap.xml

@@ -1,5 +1,5 @@
 /* ───────────────────────────────────────────────────────────────
-   Sitehouse — the industry reel
+   Xovah — the industry reel
    Five films, one sticky stage, one scroll. Two behaviours behind one
    bit of markup, chosen by gsap.matchMedia so the switch between them
    cleans up after itself:

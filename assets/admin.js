@@ -1,5 +1,5 @@
 /* ───────────────────────────────────────────────────────────────
-   Sitehouse — internal admin
+   Xovah — internal admin
    Read-mostly views over the same mock store the dashboard uses.
    ─────────────────────────────────────────────────────────────── */
 (function () {
@@ -378,7 +378,7 @@
           'These pages are a product/UX implementation and are not a substitute for legal advice. ' +
           'Before accepting real customers, review the Terms of Service, Privacy Policy, Cookie Policy, ' +
           'cancellation/refund terms, withdrawal/consumer-rights wording, tax information, and ' +
-          'data-processing arrangements for the jurisdictions in which Sitehouse operates.' +
+          'data-processing arrangements for the jurisdictions in which Xovah operates.' +
         '</p>' +
         '<p class="mt-3 max-w-prose text-[0.8125rem] leading-relaxed text-ink-mid">' +
           'Still to connect before launch: a real payment provider, real authentication with hashed ' +

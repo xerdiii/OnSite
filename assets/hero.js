@@ -1,5 +1,5 @@
 /* ───────────────────────────────────────────────────────────────
-   Sitehouse — the site menu
+   Xovah — the site menu
    The bar carries the mark and one control. Everything else lives in a
    panel behind it: the sections, the account link, the theme switch and
    the language and currency pickers.

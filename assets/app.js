@@ -1,5 +1,5 @@
 /* ───────────────────────────────────────────────────────────────
-   Sitehouse — dashboard: order rail, website preview, ratings
+   Xovah — dashboard: order rail, website preview, ratings
 
    Three pieces the old dashboard did not have, kept out of
    dashboard.js so that file stays about routing and the package

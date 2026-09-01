@@ -1,5 +1,5 @@
 /* ───────────────────────────────────────────────────────────────
-   Sitehouse — account page motion
+   Xovah — account page motion
 
    Two jobs, and nothing else:
 

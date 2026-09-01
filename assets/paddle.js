@@ -1,5 +1,5 @@
 /* ───────────────────────────────────────────────────────────────
-   Sitehouse — Paddle checkout
+   Xovah — Paddle checkout
 
    Opens Paddle's hosted overlay for the 25% deposit. The amount is
    never sent from here: the browser passes a price id, and Paddle

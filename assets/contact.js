@@ -1,5 +1,5 @@
 /* ───────────────────────────────────────────────────────────────
-   Sitehouse — the contact form
+   Xovah — the contact form
 
    ══ TODO: CONNECT RESEND HERE ═══════════════════════════════════
    ENDPOINT is null on purpose. Nothing is being sent yet, and the
@@ -78,7 +78,7 @@
          not claim to have — it hands over the address instead. */
       say('info',
         'Sending is not switched on yet, so this has <strong>not</strong> been delivered. ' +
-        'Email <a href="mailto:hello@sitehouse.eu">hello@sitehouse.eu</a> and we will pick it up — ' +
+        'Email <a href="mailto:info@xovahweb.com">info@xovahweb.com</a> and we will pick it up — ' +
         'or open a thread in <a href="support.html">Help &amp; support</a>.');
       return;
     }
@@ -101,12 +101,12 @@
         say('good', 'Sent. A person reads every message — you will hear back, usually the same day.');
       } else {
         say('bad',
-          'That did not send. Email <a href="mailto:hello@sitehouse.eu">hello@sitehouse.eu</a> ' +
+          'That did not send. Email <a href="mailto:info@xovahweb.com">info@xovahweb.com</a> ' +
           'instead and it will reach the same place.');
       }
     }).catch(function () {
       say('bad',
-        'No connection. Email <a href="mailto:hello@sitehouse.eu">hello@sitehouse.eu</a> instead.');
+        'No connection. Email <a href="mailto:info@xovahweb.com">info@xovahweb.com</a> instead.');
     }).then(function () {
       btn.disabled = false;
     });

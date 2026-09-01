@@ -1,5 +1,5 @@
 /* ───────────────────────────────────────────────────────────────
-   Sitehouse — customer ratings on the public page
+   Xovah — customer ratings on the public page
 
    Reads the same store the dashboard writes to. In the demo that is
    localStorage; behind a real backend this becomes one fetch and

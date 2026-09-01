@@ -1,5 +1,5 @@
 /* ───────────────────────────────────────────────────────────────
-   Sitehouse — catch a sign-in that landed on the wrong page
+   Xovah — catch a sign-in that landed on the wrong page
 
    Supabase only honours the `redirectTo` we ask for if that exact
    URL is in the project's redirect allow-list. When it is not, it

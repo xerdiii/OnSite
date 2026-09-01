@@ -8,7 +8,7 @@
 
      RESEND_API_KEY   re_xxx      from resend.com
      NOTIFY_EMAIL     where messages should arrive (defaults below)
-     FROM_EMAIL       sitehouse@your-verified-domain
+     FROM_EMAIL       xovah@your-verified-domain
 
    FROM_EMAIL must be on a domain verified with Resend. You cannot send
    "from" a Gmail address whose DNS you do not control — that rule is

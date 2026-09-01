@@ -1,5 +1,5 @@
 /* ───────────────────────────────────────────────────────────────
-   Sitehouse — colour tokens
+   Xovah — colour tokens
    Every palette value in the product resolves through these. Light is
    the default; dark applies when the visitor picks it, or when their
    system asks for it and they have not chosen otherwise.
@@ -235,17 +235,17 @@ h1.doc-title {
 
 
 /* ── The mark ──────────────────────────────────────────────────
-   Cut from the SITEHOUSE lockup at its own proportions — the glyph
+   Cut from the XOVAH lockup at its own proportions — the glyph
    alone, 175 × 217, so 0.807 : 1. It is portrait where the old ON mark
    was landscape, so every box below is width-derived from its height.
    Two files rather than one recoloured by filter: the artwork is
    white, and a white mark is invisible on a light page, so the ink cut
    is a real asset rather than an effect. */
 .brand-mark {
-  width: 1.25em; height: 1.55em; flex: none; display: block;
-  background: url("brand/sitehouse-mark-ink-v2.png") center / contain no-repeat;
+  width: 1.699em; height: 1.55em; flex: none; display: block;
+  background: url("brand/xovah-mark-ink.png") center / contain no-repeat;
 }
 :root[data-theme="dark"] .brand-mark {
-  background-image: url("brand/sitehouse-mark-v2.png");
+  background-image: url("brand/xovah-mark.png");
 }
-.brand-mark--nav { width: 1.21em; height: 1.5em; }
+.brand-mark--nav { width: 1.644em; height: 1.5em; }

@@ -1,5 +1,5 @@
 /* ───────────────────────────────────────────────────────────────
-   Sitehouse — client dashboard
+   Xovah — client dashboard
    Hash-routed sections rendered into #view. All state is the mock
    store in demo.js; no network calls, no real payments.
    ─────────────────────────────────────────────────────────────── */
@@ -59,7 +59,7 @@
   // which renders from the same store this dashboard writes to, so it
   // can never drift from what the customer actually told us.
   function previewCard(s) {
-    var url = (s.project && s.project.previewUrl) || 'preview.sitehouse.eu';
+    var url = (s.project && s.project.previewUrl) || 'preview.xovahweb.com';
     var live = s.project && s.project.stage === 'live';
     return '' +
     '<div class="prev">' +
@@ -291,8 +291,8 @@
           '<p class="mono-label mt-6 text-ink-soft">Domain &amp; hosting</p>' +
           '<table class="tbl m-cards mt-3"><tbody>' +
             '<tr><td class="name">Domain</td><td>' + esc(s.customer.websiteUrl) + '</td></tr>' +
-            '<tr><td class="name">Managed by</td><td>Sitehouse</td></tr>' +
-            '<tr><td class="name">Hosting</td><td>' + (p.stage === 'live' ? 'Live — served by Sitehouse' : 'Staged, not yet published') + '</td></tr>' +
+            '<tr><td class="name">Managed by</td><td>Xovah</td></tr>' +
+            '<tr><td class="name">Hosting</td><td>' + (p.stage === 'live' ? 'Live — served by Xovah' : 'Staged, not yet published') + '</td></tr>' +
             '<tr><td class="name">SSL / HTTPS</td><td>' + (p.stage === 'live' ? 'Active' : 'Issued at launch') + '</td></tr>' +
           '</tbody></table>' +
           '<p class="mono-label mt-6 text-ink-soft">Selected features</p>' +
@@ -414,7 +414,7 @@
       '</div>' +
 
       '<div class="mt-6 flex flex-wrap items-center gap-4">' +
-        '<button class="btn btn-primary" data-act="submit-business">Send changes to Sitehouse</button>' +
+        '<button class="btn btn-primary" data-act="submit-business">Send changes to Xovah</button>' +
         '<p class="text-[0.8125rem] text-ink-soft">Creates a change request. Nothing goes live until we action it.</p>' +
       '</div>' +
       '<p id="business-done" class="mt-4 hidden text-[0.8125rem] font-semibold text-accent"></p>';
@@ -1542,7 +1542,7 @@
 
   // Every figure on this screen is formatted at render time by O.euro(),
   // so a currency change means re-rendering — in place, without moving you.
-  document.addEventListener('sitehouse:i18n', function () { render(true); });
+  document.addEventListener('xovah:i18n', function () { render(true); });
 
   // Nothing renders until there is a real session behind it.
   O.requireAuth().then(function () {

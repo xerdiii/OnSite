@@ -1,5 +1,5 @@
 /* ───────────────────────────────────────────────────────────────
-   Sitehouse — real authentication
+   Xovah — real authentication
 
    Replaces the simulated sign-in. Two ways in, both genuine:
 
@@ -647,12 +647,12 @@
       // must not read like a rejected code.
       if (m.indexOf('sending confirmation email') > -1 || m.indexOf('error sending') > -1) {
         return 'We could not send the code — email is not switched on for this site yet. ' +
-               'Use Google above, or write to help@sitehouse.eu.';
+               'Use Google above, or write to info@xovahweb.com.';
       }
       if (m.indexOf('failed to fetch') > -1) return 'No connection. Check your internet and try again.';
       // Our own ceiling, or Supabase's 504 when SMTP does not answer.
       if (m.indexOf('timeout') > -1 || m.indexOf('504') > -1 || m.indexOf('upstream') > -1) {
-        return 'The email server is not responding. Use Google above, or write to help@sitehouse.eu.';
+        return 'The email server is not responding. Use Google above, or write to info@xovahweb.com.';
       }
       if (m.indexOf('user not found') > -1 || m.indexOf('signups not allowed') > -1) {
         /* Deliberately not "no account exists". This page should not be
@@ -692,7 +692,7 @@
   /* This file is a module, so it runs after any classic inline script
      on the page. Pages that need it wait for this event rather than
      assuming the global already exists. */
-  try { doc.dispatchEvent(new CustomEvent('sitehouse:auth-ready')); } catch (e) {}
+  try { doc.dispatchEvent(new CustomEvent('xovah:auth-ready')); } catch (e) {}
 
   /* ── Finish the journey ────────────────────────────────────────
      A signed-in person who has just come back from Google must end up
