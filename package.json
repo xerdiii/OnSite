@@ -15,7 +15,7 @@
   "bugs": {
     "url": "https://github.com/xerdiii/Xovah/issues"
   },
-  "homepage": "https://xovahweb.com",
+  "homepage": "https://www.xovahweb.com",
   "devDependencies": {
     "tailwindcss": "^3.4.17"
   },

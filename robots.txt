@@ -1,4 +1,4 @@
-# Xovah — https://xovahweb.com
+# Xovah — https://www.xovahweb.com
 
 User-agent: *
 Allow: /
@@ -16,4 +16,4 @@ Disallow: /emails
 Disallow: /preview
 Disallow: /api/
 
-Sitemap: https://xovahweb.com/sitemap.xml
+Sitemap: https://www.xovahweb.com/sitemap.xml
