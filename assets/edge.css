@@ -1,0 +1,234 @@
+/* ───────────────────────────────────────────────────────────────
+   Xovah — Edge
+
+   One rule with teeth: nothing on this site is round. Loaded last on
+   every page so it wins on cascade order, and written with !important
+   on the reset itself because Tailwind's utilities (rounded-md,
+   rounded-full) are generated and would otherwise have to be hunted
+   out of the markup one at a time.
+
+   The palette moves with it. These are the same custom properties the
+   whole site already reads, so changing five values here repaints
+   every component rather than each one being edited by hand.
+   ─────────────────────────────────────────────────────────────── */
+
+/* ── Palette ───────────────────────────────────────────────────
+   Values are space-separated RGB triples because the tokens are
+   consumed as rgb(var(--token) / alpha) throughout. */
+:root {
+  --c-paper:       251 251 251;   /* #FBFBFB  off-white ground        */
+  --c-surface:     255 255 255;   /* #FFFFFF  cards sit above paper   */
+  --c-ink:          26  26  26;   /* #1A1A1A  charcoal                */
+  --c-ink-mid:      64  64  64;   /* #404040                          */
+  --c-ink-soft:    115 115 115;   /* #737373  cool slate              */
+  --c-line:        229 229 229;   /* #E5E5E5  muted rule              */
+  --c-line-firm:   199 199 199;   /* #C7C7C7                          */
+  --c-accent:      217  35  46;   /* #D9232E  crimson                 */
+  --c-accent-hi:   176  24  33;   /* #B01821  hover, darker not lighter*/
+  --c-accent-tint: 253 236 237;   /* #FDECED  crimson at 8%           */
+  --c-accent-text: 176  24  33;   /* clears 4.5:1 on paper            */
+  --c-shadow:       26  26  26;
+  --c-on-accent:   255 255 255;
+}
+
+/* Dark keeps the same geometry and the same crimson, lifted so it
+   still reads against a near-black ground. */
+:root[data-theme="dark"] {
+  --c-paper:        18  18  18;
+  --c-surface:      26  26  26;
+  --c-ink:         250 250 250;
+  --c-ink-mid:     190 190 190;
+  --c-ink-soft:    143 143 143;
+  --c-line:         42  42  42;
+  --c-line-firm:    64  64  64;
+  --c-accent:      232  58  68;
+  --c-accent-hi:   244  86  95;
+  --c-accent-tint:  48  20  22;
+  --c-accent-text: 244  110 117;
+  --c-on-accent:   255 255 255;
+}
+
+/* ── The reset ─────────────────────────────────────────────────
+   Everything, including generated boxes and form controls, which
+   carry a UA radius of their own on iOS. */
+*,
+*::before,
+*::after,
+input,
+select,
+textarea,
+button,
+img,
+video,
+canvas,
+dialog { border-radius: 0 !important; }
+
+/* Safari puts its own radius on search and date inputs via
+   -webkit-appearance; this is the only way to reach it. */
+input[type="search"],
+input[type="date"],
+input[type="time"] { -webkit-appearance: none; appearance: none; }
+
+/* ── Header ────────────────────────────────────────────────────
+   Square bordered action boxes rather than pills and circles. */
+.fp-nav-btn,
+.fp-nav-btn--icon,
+[data-theme-slot] button,
+.theme-btn {
+  border: 1px solid rgb(var(--c-line-firm));
+  background: rgb(var(--c-surface));
+  transition: border-color 140ms ease, background-color 140ms ease, color 140ms ease;
+}
+.fp-nav-btn:hover,
+.theme-btn:hover { border-color: rgb(var(--c-accent)); color: rgb(var(--c-accent)); }
+
+/* ── Ticker ────────────────────────────────────────────────────
+   The separator was a circle. A 3px square reads as deliberate at
+   this size where a squashed circle just reads as a rendering fault. */
+.marquee-dot {
+  width: 3px !important;
+  height: 3px !important;
+  background: rgb(var(--c-accent)) !important;
+  opacity: 1 !important;
+  transform: none !important;
+}
+
+/* ── Tags and badges ───────────────────────────────────────────
+   "One-time" was a pill. Now a micro-tag: crisp border, tight
+   tracking, no curve. */
+.tag,
+.tag-once,
+.tag-month,
+.tag-soon,
+.tag-ok,
+.tag-wait,
+.tag-due,
+.tag-off,
+.bd-tier-flag,
+.bd-group-count,
+.pick-price,
+.price-badge {
+  border-radius: 0 !important;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+.tag-once {
+  background: transparent;
+  color: rgb(var(--c-accent-text));
+  border: 1px solid rgb(var(--c-accent));
+}
+
+/* ── Pricing cards ─────────────────────────────────────────────
+   Square, and the featured one carries a 2px crimson edge plus a
+   hard offset shadow — offset rather than blurred, because a soft
+   glow is the thing that would put the roundness back in spirit. */
+.price-card {
+  border: 1px solid rgb(var(--c-line-firm));
+  box-shadow: none;
+}
+.price-card:hover {
+  border-color: rgb(var(--c-ink));
+  transform: none;
+  box-shadow: 6px 6px 0 0 rgb(var(--c-ink) / 0.06);
+}
+.price-card--lead {
+  border: 2px solid rgb(var(--c-accent)) !important;
+  box-shadow: 8px 8px 0 0 rgb(var(--c-accent) / 0.14) !important;
+}
+.price-card--lead:hover {
+  box-shadow: 10px 10px 0 0 rgb(var(--c-accent) / 0.20) !important;
+}
+
+/* Solid square bullets. The arrow glyph in the markup is replaced
+   rather than restyled, so the list reads as one system. */
+.price-card-list li { grid-template-columns: 0.75rem 1fr; align-items: start; }
+.price-card-list .arrow { font-size: 0; line-height: 1; }
+.price-card-list .arrow::before {
+  content: "";
+  display: block;
+  width: 7px;
+  height: 7px;
+  margin-top: 0.5em;
+  background: rgb(var(--c-accent));
+}
+
+/* ── Buttons ───────────────────────────────────────────────────
+   Pills become rectangles. Hover fills crimson rather than tinting,
+   so the state change is unmistakable on a page with no curves. */
+.price-cta,
+.bd-cta,
+.m-band-cta,
+.fp-btn,
+.btn,
+.free-submit,
+.closer-cta,
+.ck-btn {
+  border-radius: 0 !important;
+}
+.price-cta {
+  border: 1px solid rgb(var(--c-ink));
+  background: transparent;
+  color: rgb(var(--c-ink));
+}
+.price-cta:hover {
+  background: rgb(var(--c-accent));
+  border-color: rgb(var(--c-accent));
+  color: rgb(var(--c-on-accent));
+}
+.price-cta--solid {
+  background: rgb(var(--c-accent));
+  border-color: rgb(var(--c-accent));
+  color: rgb(var(--c-on-accent));
+}
+.price-cta--solid:hover { background: rgb(var(--c-accent-hi)); border-color: rgb(var(--c-accent-hi)); }
+
+/* ── Cookie banner ─────────────────────────────────────────────
+   A bottom panel with a crimson top edge, and two rectangular
+   buttons that fill on hover. */
+.ck-bar {
+  border-radius: 0 !important;
+  border-top: 2px solid rgb(var(--c-accent)) !important;
+  background: rgb(var(--c-surface));
+}
+.ck-btn {
+  border: 1px solid rgb(var(--c-line-firm));
+  background: transparent;
+  color: rgb(var(--c-ink));
+  transition: background-color 140ms ease, border-color 140ms ease, color 140ms ease;
+}
+.ck-btn:hover {
+  background: rgb(var(--c-ink));
+  border-color: rgb(var(--c-ink));
+  color: rgb(var(--c-paper));
+}
+.ck-accept {
+  background: rgb(var(--c-accent));
+  border-color: rgb(var(--c-accent));
+  color: rgb(var(--c-on-accent));
+}
+.ck-accept:hover { background: rgb(var(--c-accent-hi)); border-color: rgb(var(--c-accent-hi)); }
+
+/* ── Forms ─────────────────────────────────────────────────────
+   A square field needs a visible focus edge; the default glow was
+   doing that job with a radius. */
+.acct-in,
+.field,
+.ff input,
+.ff textarea,
+input,
+textarea,
+select { border-radius: 0 !important; }
+
+.acct-in:focus,
+.ff input:focus,
+.ff textarea:focus,
+input:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid rgb(var(--c-accent));
+  outline-offset: 0;
+  border-color: rgb(var(--c-accent));
+}
+
+/* The brand mark is artwork, not a box — no reset applies to it, but
+   any wrapper that clipped it with a radius is now square too. */
+.brand-mark { border-radius: 0 !important; }
