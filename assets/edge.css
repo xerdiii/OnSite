@@ -232,3 +232,62 @@ textarea:focus-visible {
 /* The brand mark is artwork, not a box — no reset applies to it, but
    any wrapper that clipped it with a radius is now square too. */
 .brand-mark { border-radius: 0 !important; }
+
+/* ── Pricing card feet ─────────────────────────────────────────
+   The cards already stretch to equal height and margin-top:auto pins
+   the foot, so the buttons should have lined up. Three things stopped
+   them, and the third is why the first two fixes only half-worked.
+
+   1. The featured card carries a 2px border where the others carry
+      1px. With box-sizing:border-box that eats a pixel more off the
+      bottom of its content box, landing its foot a pixel high.
+
+   2. Its padding was larger too, costing another few pixels. The 2px
+      crimson edge and the offset shadow already mark it as the one to
+      take; the extra padding was only buying misalignment.
+
+   3. These labels do not fit the narrowest column at every width.
+      Forcing nowrap turned that into 5-15px of overflow, and chasing
+      it with smaller type and thinner padding at each breakpoint was
+      shaving pixels rather than fixing the cause.
+
+   So the label is allowed to wrap, and every button gets the same
+   floor height whether it wraps or not. One line or two, the boxes
+   match and the feet align — which is what was actually asked for. */
+.price-card,
+.price-card--lead { padding: 1.6rem; }
+@media (min-width: 768px) {
+  .price-card,
+  .price-card--lead { padding: 2rem; }
+}
+
+/* Give back the pixel the thicker border takes. */
+.price-card--lead { padding-bottom: calc(1.6rem - 1px); }
+@media (min-width: 768px) {
+  .price-card--lead { padding-bottom: calc(2rem - 1px); }
+}
+
+.price-cta {
+  min-height: 3.75rem;          /* fits two lines; one line just sits centred */
+  padding: 0.75rem 1rem;
+  text-align: center;
+  text-wrap: balance;           /* split evenly rather than one orphan word */
+  line-height: 1.25;
+  gap: 0.35rem;
+}
+
+/* At 1024-1279 the first column is at its tightest and its label
+   wrapped while its neighbours did not, leaving the row ragged even
+   though the feet lined up. A small step down puts all three back on
+   one line at EVERY desktop width — the column is 3/12 whether the
+   window is 1024 or 1920, so capping the step at 1279 left it wrapping
+   again on a large screen. Below 1024 the cards are a swipe rail seen
+   one at a time, so raggedness cannot appear and the type stays full
+   size for touch. */
+@media (min-width: 1024px) {
+  .price-cta { font-size: 0.8125rem; padding-inline: 0.5rem; }
+}
+
+/* Nothing may spill past a card edge at any width. */
+.price-card-list,
+.price-card-note { min-width: 0; overflow-wrap: anywhere; }
