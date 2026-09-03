@@ -242,10 +242,10 @@ h1.doc-title {
    white, and a white mark is invisible on a light page, so the ink cut
    is a real asset rather than an effect. */
 .brand-mark {
-  width: 1.699em; height: 1.55em; flex: none; display: block;
-  background: url("brand/xovah-mark-ink.png") center / contain no-repeat;
+  width: 2.058em; height: 1.55em; flex: none; display: block;
+  background: url("brand/xovah-mark-ink-v2.png") center / contain no-repeat;
 }
 :root[data-theme="dark"] .brand-mark {
-  background-image: url("brand/xovah-mark.png");
+  background-image: url("brand/xovah-mark-v2.png");
 }
-.brand-mark--nav { width: 1.644em; height: 1.5em; }
+.brand-mark--nav { width: 1.991em; height: 1.5em; }

@@ -815,8 +815,8 @@ body.auth #stepHelp { justify-content:flex-start; }
 /* The auth pages set the mark on the photograph, so it takes the white
    cut in both themes. */
 .home-mark .brand-mark--auth {
-  width: 1.644em; height: 1.5em; flex: none; display: block;
-  background: url("brand/xovah-mark.png") center / contain no-repeat;
+  width: 1.991em; height: 1.5em; flex: none; display: block;
+  background: url("brand/xovah-mark-v2.png") center / contain no-repeat;
 }
 
 
