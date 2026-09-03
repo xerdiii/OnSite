@@ -1,11 +1,14 @@
 /* ───────────────────────────────────────────────────────────────
    Xovah — Edge
 
-   One rule with teeth: nothing on this site is round. Loaded last on
-   every page so it wins on cascade order, and written with !important
-   on the reset itself because Tailwind's utilities (rounded-md,
-   rounded-full) are generated and would otherwise have to be hunted
-   out of the markup one at a time.
+   One rule with teeth: every corner on this site takes the same radius,
+   set once in --radius. Loaded last on every page so it wins on cascade
+   order, and written with !important on the reset itself because
+   Tailwind's utilities (rounded-md, rounded-full) are generated and
+   would otherwise have to be hunted out of the markup one at a time.
+
+   Changing the whole site's roundness is the one value below. It is a
+   length, not a bare number — CSS rejects a unitless radius.
 
    The palette moves with it. These are the same custom properties the
    whole site already reads, so changing five values here repaints
@@ -29,6 +32,9 @@
   --c-accent-text: 176  24  33;   /* clears 4.5:1 on paper            */
   --c-shadow:       26  26  26;
   --c-on-accent:   255 255 255;
+
+  /* Every corner, everywhere. 0.5rem = 8px at the default root size. */
+  --radius: 0.5rem;
 }
 
 /* Dark keeps the same geometry and the same crimson, lifted so it
@@ -50,7 +56,12 @@
 
 /* ── The reset ─────────────────────────────────────────────────
    Everything, including generated boxes and form controls, which
-   carry a UA radius of their own on iOS. */
+   carry a UA radius of their own on iOS.
+
+   A radius only paints where an element has a background, a border or
+   clips its overflow, so the transparent wrappers that make up most of
+   the markup are unaffected — this lands on cards, buttons, inputs,
+   badges, images and video, which is where it was wanted. */
 *,
 *::before,
 *::after,
@@ -61,7 +72,12 @@ button,
 img,
 video,
 canvas,
-dialog { border-radius: 0 !important; }
+dialog { border-radius: var(--radius) !important; }
+
+/* The page is the one exception: a rounded <body> only shows as a
+   notch of backdrop at the corners of the viewport. */
+html,
+body { border-radius: 0 !important; }
 
 /* Safari puts its own radius on search and date inputs via
    -webkit-appearance; this is the only way to reach it. */
@@ -108,7 +124,7 @@ input[type="time"] { -webkit-appearance: none; appearance: none; }
 .bd-group-count,
 .pick-price,
 .price-badge {
-  border-radius: 0 !important;
+  border-radius: var(--radius) !important;
   letter-spacing: 0.1em;
   text-transform: uppercase;
 }
@@ -163,7 +179,7 @@ input[type="time"] { -webkit-appearance: none; appearance: none; }
 .free-submit,
 .closer-cta,
 .ck-btn {
-  border-radius: 0 !important;
+  border-radius: var(--radius) !important;
 }
 .price-cta {
   border: 1px solid rgb(var(--c-ink));
@@ -186,7 +202,7 @@ input[type="time"] { -webkit-appearance: none; appearance: none; }
    A bottom panel with a crimson top edge, and two rectangular
    buttons that fill on hover. */
 .ck-bar {
-  border-radius: 0 !important;
+  border-radius: var(--radius) !important;
   border-top: 2px solid rgb(var(--c-accent)) !important;
   background: rgb(var(--c-surface));
 }
@@ -217,7 +233,7 @@ input[type="time"] { -webkit-appearance: none; appearance: none; }
 .ff textarea,
 input,
 textarea,
-select { border-radius: 0 !important; }
+select { border-radius: var(--radius) !important; }
 
 .acct-in:focus,
 .ff input:focus,
@@ -231,7 +247,7 @@ textarea:focus-visible {
 
 /* The brand mark is artwork, not a box — no reset applies to it, but
    any wrapper that clipped it with a radius is now square too. */
-.brand-mark { border-radius: 0 !important; }
+.brand-mark { border-radius: var(--radius) !important; }
 
 /* ── Pricing card feet ─────────────────────────────────────────
    The cards already stretch to equal height and margin-top:auto pins
