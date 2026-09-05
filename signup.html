@@ -59,22 +59,28 @@
 <link rel="stylesheet" href="assets/tailwind.css?v=2">
 <link rel="stylesheet" href="assets/theme.css?v=2">
 <link rel="stylesheet" href="assets/account.css?v=2">
+<link rel="stylesheet" href="assets/login-signal.css?v=2">
 <link rel="stylesheet" href="/assets/edge.css?v=2">
 <script src="assets/account.js?v=2"></script>
 </head>
 
-<body class="acct acct--split font-sans">
+<body class="acct acct--split acct--signal font-sans">
 
-<section class="acct-photo" aria-hidden="true">
+<section class="acct-photo">
   <video class="acct-photo-v" muted loop playsinline preload="none"
+         aria-label="A peregrine falcon in a high-speed dive, feathers rippling, the background streaked with motion blur"
+         poster="/assets/media/falcon-poster.webp">
+    <source src="/assets/media/falcon.mp4" type="video/mp4">
+  </video>
+  <video class="acct-photo-v acct-photo-v--wide" aria-hidden="true" muted loop playsinline preload="none"
          poster="/assets/media/falcon-poster-wide.webp">
     <source src="/assets/media/falcon-wide.mp4" type="video/mp4">
   </video>
-  <a class="acct-photo-brand" href="/">
-    <span class="brand-mark" role="img" aria-label="Xovah"></span>
-    <span>Xovah</span>
-  </a>
   <div class="acct-photo-in">
+    <a class="acct-photo-brand" href="/">
+      <span class="brand-mark" role="img" aria-label="Xovah"></span>
+      <span>Xovah</span>
+    </a>
     <p class="acct-hl">Your website,<br><b>handled.</b></p>
     <p class="acct-hl-sub">Pick what you need, we build it, and you watch it happen. Nothing is charged to open an account.</p>
   </div>

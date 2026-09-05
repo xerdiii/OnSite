@@ -89,7 +89,6 @@ body.acct--signal {
     max-width: none;
     width: auto;
     margin: calc(14px * var(--cs)) calc(14px * var(--cs)) calc(13px * var(--cs)) calc(1px * var(--cs));
-    padding: 0;
     display: flex;
     flex-direction: column;
     border-radius: calc(26px * var(--cs)) !important;
@@ -100,10 +99,27 @@ body.acct--signal {
     box-shadow: 1px 10px 14px rgb(var(--c-shadow) / 0.14),
                 0 1px 3px rgb(var(--c-shadow) / 0.05);
   }
-  body.acct--signal [data-panel] {
+  /* Padding belongs to the card, not to the panels. trouble.html has no
+     [data-panel] wrapper at all - its content sits straight in the card -
+     so panel-scoped padding left its heading tucked under the header. */
+  body.acct--signal .acct-card {
     padding: calc(62px * var(--cs));
-    /* clears the header that rides over the card */
+    /* Header and footer both ride over the card in the split layout, so
+       the card has to reserve room for them. It only shows on a page
+       long enough to reach the bottom - trouble.html - but without it
+       the footer links sit on top of the last row there. */
     padding-top: calc(88px * var(--cs));
+    padding-bottom: calc(110px * var(--cs));
+  }
+
+  /* Long pages: pin the artwork instead of stretching one frame of video
+     down a 2000px column. Short pages are unaffected - they were never
+     taller than the viewport. */
+  body.acct--signal .acct-photo {
+    position: sticky;
+    top: 0;
+    align-self: start;
+    height: 100svh;
   }
   body.acct--signal .acct-top { padding-right: calc(30px * var(--cs)); }
   body.acct--signal .acct-foot { padding-bottom: calc(28px * var(--cs)); }
@@ -386,6 +402,7 @@ body.acct--signal :focus-visible { outline: 2px solid #2b6cb0; outline-offset: 2
   body.acct--signal .acct-main { padding: 0 5.25vw 1rem; }
   body.acct--signal .acct-card {
     max-width: 44rem;
+    width: 100%;
     margin: 1.75rem auto 0;
     padding: 2.5rem clamp(2rem, 5vw, 3.5rem) 2.75rem;
     border-radius: 26px !important;
@@ -466,19 +483,25 @@ body.acct--signal :focus-visible { outline: 2px solid #2b6cb0; outline-offset: 2
     max-width: none;
     width: 100%;
     margin: 0;
-    padding: 0;
+    /* On the card, not on [data-panel] - trouble.html has no panels. */
+    padding: 36px clamp(24px, 7vw, 38px) max(30px, env(safe-area-inset-bottom));
     background: rgb(var(--c-surface));
     border: 0;
     border-radius: 28px 28px 0 0 !important;
     box-shadow: 0 -10px 28px rgb(20 28 36 / 0.10);
-    min-height: calc(100svh - var(--mobile-hero-h) + 28px);
     -webkit-backdrop-filter: none;
     backdrop-filter: none;
   }
+  /* No min-height here. A calc against 100svh cannot know how tall the
+     footer is, so the card overshot by exactly that much and pushed the
+     links off the bottom of the screen. The body grid is already
+     "auto 1fr auto" with a 100svh floor, so letting main take the free
+     space fills the screen and leaves the footer sitting directly under
+     the card. */
   body.acct--signal [data-panel] {
     max-width: 500px;
     margin: 0 auto;
-    padding: 36px clamp(24px, 7vw, 38px) max(30px, env(safe-area-inset-bottom));
+    width: 100%;
   }
 
   body.acct--signal .acct-h { font-size: clamp(31px, 8.8vw, 38px); letter-spacing: -0.045em; word-spacing: normal; }
@@ -506,7 +529,7 @@ body.acct--signal :focus-visible { outline: 2px solid #2b6cb0; outline-offset: 2
   body.acct--signal { --mobile-hero-h: 232px; }
   body.acct--signal .acct-photo-in { padding: 0 16px 44px; }
   body.acct--signal .acct-hl { font-size: 30px; }
-  body.acct--signal [data-panel] { padding: 30px 20px max(26px, env(safe-area-inset-bottom)); }
+  body.acct--signal .acct-card { padding: 30px 20px max(26px, env(safe-area-inset-bottom)); }
 }
 
 @media (max-width: 699px) and (max-height: 520px) and (orientation: landscape) {
