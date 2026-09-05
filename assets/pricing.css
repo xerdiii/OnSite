@@ -15,6 +15,72 @@
    universal selector). Nothing here tries to round anything itself.
    --------------------------------------------------------------- */
 
+/* == Page ground ================================================
+   The marble X sits behind the whole pricing page, pinned so it does
+   not slide under the cards as you scroll. A veil in the paper colour
+   goes over it: without one the marble veining runs straight through
+   the body copy and the red glow fights the crimson buttons.
+
+   The source art is 1022x571. It is served at 2x for high-DPI screens,
+   but that is a resample, not extra detail - so the image is never
+   asked to carry sharpness. It is a ground, held soft on purpose,
+   behind a veil.
+
+   Scoped to body.pr-page, which only pricing.html sets. */
+body.pr-page {
+  background-image:
+    linear-gradient(180deg,
+      rgb(var(--c-paper) / 0.55) 0%,
+      rgb(var(--c-paper) / 0.72) 42%,
+      rgb(var(--c-paper) / 0.88) 100%),
+    url("media/pricing-bg.webp");
+  background-repeat: no-repeat, no-repeat;
+  background-position: center, center center;
+  background-size: cover, cover;
+  background-attachment: fixed, fixed;
+}
+
+/* A phone cannot afford a fixed, cover-scaled background - iOS repaints
+   it on every scroll frame - and at that width the X is cropped to a
+   meaningless sliver anyway. It rides with the page instead. */
+@media (max-width: 899px) {
+  body.pr-page {
+    background-attachment: scroll, scroll;
+    background-size: cover, 200% auto;
+    background-position: center, center top;
+    /* The X is far larger relative to the text here, and the intro
+       paragraph sits right across its busiest part, so the veil carries
+       a little more weight than on desktop. */
+    background-image:
+      linear-gradient(180deg,
+        rgb(var(--c-paper) / 0.62) 0%,
+        rgb(var(--c-paper) / 0.78) 42%,
+        rgb(var(--c-paper) / 0.92) 100%),
+      url("media/pricing-bg.webp");
+  }
+}
+
+/* The sections above the cards are transparent so the ground shows.
+   The cards' own section keeps a surface, but a translucent one, so
+   the X reads faintly behind the grid rather than being walled off. */
+body.pr-page .pr-stage {
+  background: rgb(var(--c-surface) / 0.38);
+  -webkit-backdrop-filter: blur(2px);
+  backdrop-filter: blur(2px);
+}
+
+/* Dark theme: the art is white marble, which would be a slab of light
+   in the middle of a dark page. Dropped right back and desaturated. */
+:root[data-theme="dark"] body.pr-page {
+  background-image:
+    linear-gradient(rgb(var(--c-paper) / 0.90), rgb(var(--c-paper) / 0.90)),
+    url("media/pricing-bg.webp");
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body.pr-page { background-attachment: scroll, scroll; }
+}
+
 .pr-rail {
   display: grid;
   grid-template-columns: 1fr;
