@@ -61,10 +61,11 @@
 <link rel="stylesheet" href="assets/theme.css?v=2">
 <link rel="stylesheet" href="assets/account.css?v=2">
 <link rel="stylesheet" href="/assets/edge.css?v=2">
+<link rel="stylesheet" href="assets/login-signal.css?v=2">
 <script src="assets/account.js?v=2"></script>
 </head>
 
-<body class="acct acct--split font-sans">
+<body class="acct acct--split acct--signal font-sans">
 
 <section class="acct-photo" aria-hidden="true">
   <video class="acct-photo-v" muted loop playsinline preload="none"
@@ -113,7 +114,7 @@
 
       <p class="acct-err" id="emailErr" role="alert" hidden></p>
 
-      <button type="button" class="acct-btn" id="nextBtn"><span>Continue</span></button>
+      <button type="button" class="acct-btn" id="nextBtn"><span>Continue</span><svg class="acct-arrow" viewBox="0 0 22 22" aria-hidden="true" focusable="false"><path d="M3 11h15.4M11 3.3l7.7 7.7-7.7 7.7" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
 
       <p class="acct-alt">New to Xovah? <a href="signup.html">Create an account</a></p>
     </section>
@@ -132,7 +133,7 @@
 
       <p class="acct-err" id="codeErr" role="alert" hidden></p>
 
-      <button type="button" class="acct-btn" id="verifyBtn"><span>Log in</span></button>
+      <button type="button" class="acct-btn" id="verifyBtn"><span>Log in</span><svg class="acct-arrow" viewBox="0 0 22 22" aria-hidden="true" focusable="false"><path d="M3 11h15.4M11 3.3l7.7 7.7-7.7 7.7" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
 
       <div class="acct-links">
         <button type="button" class="acct-link" id="resendBtn">Send a new code</button>

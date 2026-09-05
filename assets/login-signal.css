@@ -1,0 +1,198 @@
+/* ───────────────────────────────────────────────────────────────
+   Xovah — login, "Signal" visual pass
+
+   This is a skin, not a layout engine. The design it comes from was
+   authored as a fixed 613×922 composition scaled to the viewport by
+   JavaScript; account.css already says why that was taken out (pixel
+   values that only hold at one size, and a layout that could latch
+   half-changed on a mode switch). None of that comes back here.
+   Everything below is ordinary document flow on top of account.css:
+   type scale, weight, radii, fills and the pill buttons. No measuring,
+   no inline styles, nothing to get stuck, and it degrades with
+   JavaScript off exactly as account.css already does.
+
+   Scoped to body.acct--signal, which only login.html sets, so signup
+   and the recovery pages are untouched. To take the same pass to
+   signup.html, add the class and this stylesheet there too.
+
+   Colours are theme tokens, never the literals from the source design
+   (#283139, #fafafa, #acacae …), so light and dark both hold.
+
+   ONE THING DELIBERATELY NOT PORTED: roundness. The source design has
+   999px pill buttons and a 26px card. edge.css sets
+
+     *, *::before, *::after, input, select, textarea, button, img,
+     video, canvas, dialog { border-radius: var(--radius) !important; }
+
+   which is that file's stated "one rule with teeth" — every corner on
+   the site takes one radius, and !important on a universal selector
+   beats any author rule at any specificity. Setting a radius here would
+   need !important of its own, which is exactly the per-component drift
+   that rule exists to stop. So corners stay at --radius, and the pass
+   carries through height, weight, fill, gradient and lift instead. To
+   get the pill corners, change --radius in edge.css — but that is one
+   value repainting every page on the site, not a login decision.
+   ─────────────────────────────────────────────────────────────── */
+
+/* ══ Display type ═══════════════════════════════════════════════
+   Outfit is already loaded as a 200..800 variable face, so the
+   weight comes off the axis rather than a named step — that is what
+   the source design does, and 560 is between Medium and Semibold
+   where no static instance sits. */
+body.acct--signal .acct-hl {
+  font-weight: 500;
+  font-variation-settings: 'wght' 560;
+  font-size: clamp(2.5rem, 3.9vw, 3.75rem);
+  line-height: 1.0;
+  letter-spacing: -0.032em;
+}
+body.acct--signal .acct-hl b {
+  font-weight: 700;
+  font-variation-settings: 'wght' 730;
+}
+body.acct--signal .acct-hl-sub {
+  margin-top: 1.15rem;
+  font-size: 0.975rem;
+  color: rgb(255 255 255 / 0.76);
+}
+
+/* ══ Brand badge ════════════════════════════════════════════════
+   The source design carries a pill on the artwork. Here that pill
+   treatment goes onto the wordmark that is already there, rather
+   than relocating it or inventing tagline copy for it. The photo
+   panel is dark in both themes, so these values are literal on
+   purpose — they are not theme colours. */
+body.acct--signal .acct-photo-brand {
+  gap: 0.55rem;
+  padding: 0.5rem 0.95rem 0.5rem 0.85rem;
+  background: rgb(24 27 30 / 0.82);
+  -webkit-backdrop-filter: blur(7px) saturate(120%);
+  backdrop-filter: blur(7px) saturate(120%);
+  box-shadow: 0 1px 2px rgb(0 0 0 / 0.18), 0 6px 18px rgb(0 0 0 / 0.14);
+  font-size: 0.925rem;
+}
+
+/* ══ Card ═══════════════════════════════════════════════════════ */
+@media (min-width: 480px) {
+  body.acct--signal .acct-card {
+    padding: 2.75rem 2.35rem 2.4rem;
+    box-shadow: 1px 10px 14px rgb(var(--c-shadow) / 0.09),
+                0 1px 3px rgb(var(--c-shadow) / 0.05);
+  }
+}
+body.acct--signal .acct-h {
+  font-variation-settings: 'wght' 584;
+  font-size: clamp(1.75rem, 5vw, 2.15rem);
+  letter-spacing: -0.038em;
+}
+body.acct--signal .acct-sub {
+  margin-top: 0.7rem;
+  font-size: 0.975rem;
+}
+
+/* ══ Fields ═════════════════════════════════════════════════════
+   The source design gives the two fields deliberately different
+   treatments — the first bordered on a near-white fill, the second
+   a fill with no border. Expressed as tints of ink so it survives
+   the dark theme, where a literal #fafafa would be a white slab. */
+body.acct--signal .acct-in {
+  min-height: 56px;
+  padding: 0 1.05rem;
+  border-color: rgb(var(--c-line-firm));
+  background: rgb(var(--c-ink) / 0.022);
+}
+body.acct--signal .acct-in:focus {
+  border-color: rgb(var(--c-ink) / 0.55);
+  box-shadow: 0 0 0 3px rgb(var(--c-ink) / 0.08);
+}
+/* The code box keeps its mono tracking; only the shell changes. */
+body.acct--signal .acct-code {
+  min-height: 64px;
+  background: rgb(var(--c-ink) / 0.035);
+  border-color: transparent;
+}
+body.acct--signal .acct-code:focus {
+  border-color: rgb(var(--c-ink) / 0.55);
+  background: rgb(var(--c-surface));
+}
+body.acct--signal .acct-field > label {
+  font-size: 0.8375rem;
+  letter-spacing: -0.006em;
+}
+
+/* ══ Buttons ════════════════════════════════════════════════════
+   Fully rounded, taller, and the primary carries the gradient and
+   lift from the source design. Built from --c-ink so the dark theme
+   inverts to a light pill on its own, as .acct-btn already did. */
+body.acct--signal .acct-btn {
+  min-height: 58px;
+  margin-top: 1.5rem;
+  font-size: 1rem;
+  letter-spacing: 0.012em;
+  gap: 0.6rem;
+  background: linear-gradient(180deg,
+              rgb(var(--c-ink)) 0%,
+              rgb(var(--c-ink) / 0.90) 100%);
+  box-shadow: 0 8px 20px rgb(var(--c-shadow) / 0.16),
+              0 2px 5px rgb(var(--c-shadow) / 0.10);
+  transition: filter 180ms cubic-bezier(.2,.7,.3,1),
+              transform 180ms cubic-bezier(.2,.7,.3,1),
+              box-shadow 180ms ease;
+}
+body.acct--signal .acct-btn:hover { filter: brightness(1.12); background: linear-gradient(180deg, rgb(var(--c-ink)) 0%, rgb(var(--c-ink) / 0.90) 100%); }
+body.acct--signal .acct-btn:active { transform: translateY(1px); }
+
+/* The trailing arrow. It is decorative — the label already says what
+   the button does — so it is aria-hidden in the markup, and it
+   inherits the busy-state hide from account.css like any other child. */
+body.acct--signal .acct-btn .acct-arrow {
+  width: 14px; height: 14px; flex: none;
+  /* nudges the label+arrow pair back to optical centre */
+  margin-right: -0.55rem;
+}
+
+body.acct--signal .acct-btn--ghost {
+  min-height: 56px;
+  gap: 0.95rem;
+  background: rgb(var(--c-surface));
+  border-color: rgb(var(--c-line-firm));
+  border-width: 1.5px;
+  box-shadow: 0 1px 2px rgb(var(--c-shadow) / 0.03);
+}
+body.acct--signal .acct-btn--ghost:hover {
+  background: rgb(var(--c-ink) / 0.04);
+  border-color: rgb(var(--c-ink) / 0.35);
+  filter: none;
+  box-shadow: 0 3px 10px rgb(var(--c-shadow) / 0.07);
+}
+body.acct--signal .acct-btn--ghost svg { width: 18.5px; height: 18.5px; }
+
+/* ══ Divider ════════════════════════════════════════════════════ */
+body.acct--signal .acct-or {
+  margin-top: 1.5rem;
+  font-weight: 700;
+  font-size: 0.72rem;
+  letter-spacing: 0.075em;
+  color: rgb(var(--c-ink-soft));
+}
+body.acct--signal .acct-or::before,
+body.acct--signal .acct-or::after {
+  height: 1.5px;
+  background: rgb(var(--c-line-firm));
+}
+
+/* ══ Small print ════════════════════════════════════════════════ */
+body.acct--signal .acct-alt a {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-thickness: 2px;
+  font-weight: 700;
+}
+
+/* ══ Motion ═════════════════════════════════════════════════════
+   account.js owns the entrance. Nothing here should animate on its
+   own, and the hover/active transitions above go quiet on request. */
+@media (prefers-reduced-motion: reduce) {
+  body.acct--signal .acct-btn { transition: none; }
+  body.acct--signal .acct-btn:active { transform: none; }
+}
