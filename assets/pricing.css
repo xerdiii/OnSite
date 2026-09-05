@@ -1,0 +1,239 @@
+/* ---------------------------------------------------------------
+   Xovah - pricing cards
+
+   Shared by the pricing section on the landing page and by
+   pricing.html, so it lives in a file rather than in a page's inline
+   style block.
+
+   Everything is a theme token. The only literal colours are inside
+   the spotlight gradients, where an alpha ramp is the whole point.
+   That means the dark theme inverts on its own: the lead card is
+   ink-on-paper in light and paper-on-ink in dark, without a second
+   set of rules.
+
+   Corners come from edge.css (--radius, set with !important on a
+   universal selector). Nothing here tries to round anything itself.
+   --------------------------------------------------------------- */
+
+.pr-rail {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  align-items: stretch;
+}
+@media (min-width: 900px) {
+  .pr-rail { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.25rem; }
+}
+
+/* == Spotlight ring =============================================
+   A 1px ring that follows the pointer. Two stacked layers, each
+   masked so only the 1px padding box paints: the first is the resting
+   border, the second is the crimson glow, faded in on hover. */
+.pr-spot {
+  --spot-x: -9999px;
+  --spot-y: -9999px;
+  --spot-size: 460px;
+  --spot-intensity: 0.55;
+  position: relative;
+  padding: 6px;
+  height: 100%;
+}
+.pr-spot::before,
+.pr-spot::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  padding: 1px;
+  pointer-events: none;
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+}
+.pr-spot::before { background: rgb(var(--c-line)); }
+.pr-spot::after {
+  background: radial-gradient(circle var(--spot-size) at var(--spot-x) var(--spot-y),
+    rgb(var(--c-accent) / var(--spot-intensity)), transparent 60%);
+  opacity: 0;
+  transition: opacity 220ms ease;
+}
+.pr-spot:hover::after { opacity: 1; }
+
+/* The lead card keeps a crimson edge whether or not the pointer is
+   anywhere near it - that is the part that reads as "this one". */
+.pr-spot--lead::before { background: rgb(var(--c-accent) / 0.55); }
+.pr-spot--lead { --spot-intensity: 0.9; }
+.pr-spot--lead::after { opacity: 0.35; }
+.pr-spot--lead:hover::after { opacity: 1; }
+
+/* == Card ======================================================= */
+.pr-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: 1.75rem;
+  background: rgb(var(--c-surface));
+  border: 1px solid rgb(var(--c-line));
+}
+@media (min-width: 768px) { .pr-card { padding: 2rem; } }
+
+.pr-card--lead {
+  background: rgb(var(--c-ink));
+  border-color: rgb(var(--c-ink));
+  color: rgb(var(--c-paper));
+  box-shadow: 0 18px 40px -22px rgb(var(--c-shadow) / 0.55);
+}
+
+.pr-badge {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 0.3rem 0.75rem;
+  background: rgb(var(--c-accent));
+  color: rgb(var(--c-on-accent));
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+/* == Head ======================================================= */
+.pr-eyebrow {
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgb(var(--c-ink-soft));
+}
+.pr-card--lead .pr-eyebrow { color: rgb(var(--c-paper) / 0.62); }
+
+.pr-rule {
+  margin-top: 0.9rem;
+  border-top: 1px solid rgb(var(--c-line));
+}
+.pr-card--lead .pr-rule { border-top-color: rgb(var(--c-paper) / 0.16); }
+
+/* The tag sits under the number rather than beside it. Beside it, the
+   three columns are equal but the prices are not, so a 50 keeps its
+   tag inline while a 500 pushes its own to a second line and the row
+   stops lining up across the cards. Stacked, they always agree. */
+.pr-figure {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.6rem;
+  margin-top: 2rem;
+}
+.pr-amount {
+  font-size: 2.75rem;
+  line-height: 1;
+  letter-spacing: -0.02em;
+  color: rgb(var(--c-ink));
+}
+.pr-card--lead .pr-amount { color: rgb(var(--c-paper)); }
+
+.pr-note {
+  margin-top: 1rem;
+  font-size: 0.9375rem;
+  line-height: 1.6;
+  color: rgb(var(--c-ink-mid));
+}
+.pr-card--lead .pr-note { color: rgb(var(--c-paper) / 0.72); }
+
+/* == Call to action ============================================= */
+.pr-foot { margin-top: 1.6rem; }
+.pr-cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 48px;
+  padding: 0 1.25rem;
+  border: 1px solid rgb(var(--c-line-firm));
+  background: rgb(var(--c-surface));
+  color: rgb(var(--c-ink));
+  font-size: 0.9375rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: border-color 160ms ease, color 160ms ease, background-color 160ms ease;
+}
+.pr-cta:hover { border-color: rgb(var(--c-accent)); color: rgb(var(--c-accent-text)); }
+.pr-cta:active { transform: translateY(1px); }
+
+.pr-cta--solid {
+  border-color: rgb(var(--c-accent));
+  background: rgb(var(--c-accent));
+  color: rgb(var(--c-on-accent));
+}
+.pr-cta--solid:hover {
+  border-color: rgb(var(--c-accent-hi));
+  background: rgb(var(--c-accent-hi));
+  color: rgb(var(--c-on-accent));
+}
+
+/* == Feature list ===============================================
+   One shared list of seven, so a tick and a cross line up across the
+   three cards and the difference can be read across rather than
+   guessed at from three different lists. */
+.pr-list {
+  margin: 1.6rem 0 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
+}
+.pr-list li {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.85rem 0;
+  font-size: 0.9375rem;
+  line-height: 1.45;
+  color: rgb(var(--c-ink-mid));
+}
+.pr-list li + li { border-top: 1px solid rgb(var(--c-line)); }
+.pr-list li.is-off { color: rgb(var(--c-ink-soft)); }
+
+.pr-card--lead .pr-list li { color: rgb(var(--c-paper) / 0.88); }
+.pr-card--lead .pr-list li + li { border-top-color: rgb(var(--c-paper) / 0.16); }
+.pr-card--lead .pr-list li.is-off { color: rgb(var(--c-paper) / 0.42); }
+
+.pr-mark {
+  flex: none;
+  width: 1.25rem;
+  height: 1.25rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgb(var(--c-line));
+}
+.pr-mark svg { width: 12px; height: 12px; display: block; }
+.pr-mark--yes {
+  border-color: rgb(var(--c-accent) / 0.55);
+  background: rgb(var(--c-accent) / 0.10);
+  color: rgb(var(--c-accent-text));
+}
+.pr-mark--no {
+  border-color: rgb(var(--c-line));
+  background: transparent;
+  color: rgb(var(--c-ink-soft));
+}
+.pr-card--lead .pr-mark--yes {
+  border-color: rgb(var(--c-accent));
+  background: rgb(var(--c-accent));
+  color: rgb(var(--c-on-accent));
+}
+.pr-card--lead .pr-mark--no {
+  border-color: rgb(var(--c-paper) / 0.20);
+  color: rgb(var(--c-paper) / 0.45);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pr-spot::after { transition: none; }
+  .pr-cta { transition: none; }
+  .pr-cta:active { transform: none; }
+}

@@ -253,6 +253,7 @@
 <link rel="stylesheet" href="assets/dock.css?v=2">
 <link rel="stylesheet" href="assets/support.css?v=2">
 <link rel="stylesheet" href="assets/hero.css?v=2">
+<link rel="stylesheet" href="assets/pricing.css?v=2">
 <link rel="stylesheet" href="/assets/edge.css?v=2">
 <noscript><style>
   .closer-media {
@@ -271,6 +272,7 @@
   </a>
 
   <div class="fp-nav-right">
+    <a class="fp-nav-link" href="pricing.html">Pricing</a>
     <a class="fp-nav-link" href="extras.html">Extras</a>
     <a class="fp-nav-link" href="faq.html">FAQ</a>
     <a class="fp-nav-link fp-nav-link--free" href="free.html">Free page</a>
@@ -292,7 +294,7 @@
     </div>
 
     <nav class="site-menu-links" aria-label="Main">
-      <a href="#pricing">Pricing</a>
+      <a href="pricing.html">Pricing</a>
       <a href="#features">Features</a>
       <a href="#services">Monthly</a>
       <a href="extras.html">Extras</a>
@@ -454,97 +456,98 @@
         All paid once. The domain, the hosting and the padlock come with every one of them.
       </p>
 
-      <p class="price-swipe" aria-hidden="true">Swipe to compare &rarr;</p>
-        <div class="price-rail mt-12 grid grid-cols-1 gap-8 lg:grid-cols-12 lg:gap-8" data-reveal-group>
+      <div class="pr-rail mt-12" data-reveal-group>
 
-        <!-- The smaller option gets the smaller column. The hierarchy is the layout. -->
-        <div class="lg:col-span-3">
-          <div class="price-card">
-            <div class="price-card-head">
-              <h3 class="h-section text-lg">Custom Website</h3>
-            </div>
-            <p class="price-card-figure">
-              <span class="h-display text-[2.25rem] leading-none text-ink"><span class="cur" data-eur="50">€50</span></span>
+        <!-- Custom -->
+        <div class="pr-spot">
+          <div class="pr-card">
+            <p class="pr-eyebrow">Custom Website</p>
+            <div class="pr-rule"></div>
+            <p class="pr-figure">
+              <span class="h-display pr-amount"><span class="cur" data-eur="50">&euro;50</span></span>
               <span class="tag tag-once">One-time</span>
             </p>
-            <p class="price-card-note">
-              A single-page site built with up to 20 sections customized specifically
-              for your business needs.
+            <p class="pr-note">
+              A single-page site with up to 20 sections from our 34, built around your business.
             </p>
-            <ul class="price-card-list">
-              <li><span class="arrow">&rarr;</span> Pick any 20 sections from 34</li>
-              <li><span class="arrow">&rarr;</span> Standard custom layout</li>
-              <li><span class="arrow">&rarr;</span> Domain, hosting &amp; SSL &mdash; 1st year included</li>
-              <li><span class="arrow">&rarr;</span> Mobile-responsive design</li>
-            </ul>
-            <div class="price-card-foot">
-              <a href="start.html" class="price-cta" data-checkout="custom">
-                Start Custom &mdash; <span class="cur" data-eur="50">€50</span>
+            <div class="pr-foot">
+              <a href="start.html" class="pr-cta" data-checkout="custom">
+                Start Custom &mdash; <span class="cur" data-eur="50">&euro;50</span>
               </a>
             </div>
+            <ul class="pr-list">
+              <li class="is-off"><span class="pr-mark pr-mark--no"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M4 4l8 8M12 4l-8 8"/></svg></span> All 34 sections, no limit</li>
+              <li><span class="pr-mark pr-mark--yes"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.4 8.4l3 3 6.2-6.6"/></svg></span> Domain, hosting &amp; SSL included</li>
+              <li><span class="pr-mark pr-mark--yes"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.4 8.4l3 3 6.2-6.6"/></svg></span> Mobile-responsive design</li>
+              <li class="is-off"><span class="pr-mark pr-mark--no"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M4 4l8 8M12 4l-8 8"/></svg></span> SEO, analytics &amp; legal pages</li>
+              <li class="is-off"><span class="pr-mark pr-mark--no"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M4 4l8 8M12 4l-8 8"/></svg></span> Anti-spam protection on forms</li>
+              <li class="is-off"><span class="pr-mark pr-mark--no"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M4 4l8 8M12 4l-8 8"/></svg></span> Custom logo &amp; menu design</li>
+              <li class="is-off"><span class="pr-mark pr-mark--no"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M4 4l8 8M12 4l-8 8"/></svg></span> Maintenance &amp; local SEO</li>
+            </ul>
           </div>
         </div>
 
-        <div class="lg:col-span-4">
-          <div class="price-card">
-            <div class="price-card-head">
-              <h3 class="h-section text-lg">Full Website</h3>
-            </div>
-            <p class="price-card-figure">
-              <span class="h-display text-[2.5rem] leading-none text-ink"><span class="cur" data-eur="200">€200</span></span>
+        <!-- Full - the middle one, and the one we point at -->
+        <div class="pr-spot pr-spot--lead">
+          <div class="pr-card pr-card--lead">
+            <span class="pr-badge">Most popular</span>
+            <p class="pr-eyebrow">Full Website</p>
+            <div class="pr-rule"></div>
+            <p class="pr-figure">
+              <span class="h-display pr-amount"><span class="cur" data-eur="200">&euro;200</span></span>
               <span class="tag tag-once">One-time</span>
             </p>
-            <p class="price-card-note">
-              Get all 34 available sections with no limits. Includes complete essential setup:
-              search engine indexing, analytics, and standard legal pages built right in.
+            <p class="pr-note">
+              Every one of the 34 sections, plus the search, analytics and legal setup a real site needs.
             </p>
-            <ul class="price-card-list">
-              <li><span class="arrow">&rarr;</span> All 34 sections included (no limit)</li>
-              <li><span class="arrow">&rarr;</span> Domain, hosting &amp; SSL &mdash; 1st year included</li>
-              <li><span class="arrow">&rarr;</span> Basic SEO &amp; Google Search Console indexing</li>
-              <li><span class="arrow">&rarr;</span> Analytics &amp; conversion tracking setup</li>
-              <li><span class="arrow">&rarr;</span> Cookie banner, Privacy Policy &amp; Terms pages</li>
-              <li><span class="arrow">&rarr;</span> Anti-spam protection on all forms</li>
-            </ul>
-            <div class="price-card-foot">
-              <a href="start.html" class="price-cta" data-checkout="full">
-                Get Full Website &mdash; <span class="cur" data-eur="200">€200</span>
+            <div class="pr-foot">
+              <a href="start.html" class="pr-cta pr-cta--solid" data-checkout="full">
+                Get Full Website &mdash; <span class="cur" data-eur="200">&euro;200</span>
               </a>
             </div>
+            <ul class="pr-list">
+              <li><span class="pr-mark pr-mark--yes"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.4 8.4l3 3 6.2-6.6"/></svg></span> All 34 sections, no limit</li>
+              <li><span class="pr-mark pr-mark--yes"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.4 8.4l3 3 6.2-6.6"/></svg></span> Domain, hosting &amp; SSL included</li>
+              <li><span class="pr-mark pr-mark--yes"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.4 8.4l3 3 6.2-6.6"/></svg></span> Mobile-responsive design</li>
+              <li><span class="pr-mark pr-mark--yes"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.4 8.4l3 3 6.2-6.6"/></svg></span> SEO, analytics &amp; legal pages</li>
+              <li><span class="pr-mark pr-mark--yes"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.4 8.4l3 3 6.2-6.6"/></svg></span> Anti-spam protection on forms</li>
+              <li class="is-off"><span class="pr-mark pr-mark--no"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M4 4l8 8M12 4l-8 8"/></svg></span> Custom logo &amp; menu design</li>
+              <li class="is-off"><span class="pr-mark pr-mark--no"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M4 4l8 8M12 4l-8 8"/></svg></span> Maintenance &amp; local SEO</li>
+            </ul>
           </div>
         </div>
 
-        <div class="lg:col-span-5">
-          <div class="price-card price-card--lead">
-            <div class="price-card-head">
-              <h3 class="h-section text-xl">Complete Package</h3>
-            </div>
-            <p class="price-card-figure">
-              <span class="h-display text-[3.25rem] leading-none text-ink"><span class="cur" data-eur="500">€500</span></span>
+        <!-- Complete -->
+        <div class="pr-spot">
+          <div class="pr-card">
+            <p class="pr-eyebrow">Complete Package</p>
+            <div class="pr-rule"></div>
+            <p class="pr-figure">
+              <span class="h-display pr-amount"><span class="cur" data-eur="500">&euro;500</span></span>
               <span class="tag tag-once">One-time</span>
             </p>
-            <p class="price-card-note">
-              The ultimate end-to-end setup. Includes all 34 sections, custom branding assets,
-              business setup, and 3 full years of hosting with zero hidden fees.
+            <p class="pr-note">
+              The end-to-end setup: branding, local SEO, three years of hosting and ongoing maintenance.
             </p>
-            <ul class="price-card-list">
-              <li><span class="arrow">&rarr;</span> Everything in Full Website</li>
-              <li><span class="arrow">&rarr;</span> Domain, hosting &amp; SSL &mdash; First 3 years included</li>
-              <li><span class="arrow">&rarr;</span> Ongoing website maintenance included</li>
-              <li><span class="arrow">&rarr;</span> Custom Logo &amp; Menu design included</li>
-              <li><span class="arrow">&rarr;</span> Online menu with QR code setup</li>
-              <li><span class="arrow">&rarr;</span> Local SEO optimization included</li>
-              <li><span class="arrow">&rarr;</span> WhatsApp Business &amp; Email setup</li>
-            </ul>
-            <div class="price-card-foot">
-              <a href="start.html" class="price-cta price-cta--solid" data-checkout="complete">
-                Get Complete Package &mdash; <span class="cur" data-eur="500">€500</span>
+            <div class="pr-foot">
+              <a href="start.html" class="pr-cta" data-checkout="complete">
+                Get Complete &mdash; <span class="cur" data-eur="500">&euro;500</span>
               </a>
             </div>
+            <ul class="pr-list">
+              <li><span class="pr-mark pr-mark--yes"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.4 8.4l3 3 6.2-6.6"/></svg></span> All 34 sections, no limit</li>
+              <li><span class="pr-mark pr-mark--yes"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.4 8.4l3 3 6.2-6.6"/></svg></span> Domain, hosting &amp; SSL &mdash; 3 years</li>
+              <li><span class="pr-mark pr-mark--yes"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.4 8.4l3 3 6.2-6.6"/></svg></span> Mobile-responsive design</li>
+              <li><span class="pr-mark pr-mark--yes"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.4 8.4l3 3 6.2-6.6"/></svg></span> SEO, analytics &amp; legal pages</li>
+              <li><span class="pr-mark pr-mark--yes"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.4 8.4l3 3 6.2-6.6"/></svg></span> Anti-spam protection on forms</li>
+              <li><span class="pr-mark pr-mark--yes"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.4 8.4l3 3 6.2-6.6"/></svg></span> Custom logo &amp; menu design</li>
+              <li><span class="pr-mark pr-mark--yes"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.4 8.4l3 3 6.2-6.6"/></svg></span> Maintenance &amp; local SEO</li>
+            </ul>
           </div>
         </div>
 
       </div>
+
 
       <!-- Domain and hosting. Said once, here, so no card has to repeat it. -->
       <div class="mt-8 border border-line bg-surface px-6 py-5">
@@ -945,6 +948,7 @@
 <script src="assets/ratings.js?v=2" defer></script>
 <script src="assets/cinema.js?v=2" defer></script>
 <script src="assets/picker.js?v=2" defer></script>
+<script src="assets/pricing.js?v=2" defer></script>
 <script src="assets/mobile.js?v=2"></script>
 <script src="assets/paddle-config.js?v=2"></script>
 <script src="assets/paddle.js?v=2"></script>
