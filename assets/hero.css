@@ -215,6 +215,12 @@ html[data-hero-visible] .fp-header {
 .fp-hero-p {
   margin: 1.5rem 0 0; max-width: 34rem;
   font-size: clamp(0.9375rem, 1.4vw, 1.0625rem); line-height: 1.6;
+  /* Two sentences, one <br>, two lines. On a narrow phone the second
+     sentence can still run over, and the default wrap drops a single
+     word onto a line of its own. Balancing spreads it across both
+     instead. Ignored by browsers that do not support it, which just
+     get the ordinary wrap. */
+  text-wrap: balance;
 }
 
 .fp-hero-cta { display: flex; flex-wrap: wrap; gap: 0.75rem; justify-content: center; margin-top: 2.2rem; }
