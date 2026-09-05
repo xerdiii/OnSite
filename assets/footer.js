@@ -89,7 +89,6 @@
             '<a href="support.html">Help &amp; support</a>' +
             '<span>Xovah</span>' +
             '<a href="mailto:info@xovahweb.com">info@xovahweb.com</a>' +
-            '<a href="mailto:info@xovahweb.com">info@xovahweb.com</a>' +
             '<a href="https://wa.me/38345403334" target="_blank" rel="noopener">+383 45 403 334</a>' +
           '</div>' +
         '</div>' +
@@ -97,8 +96,7 @@
       '</div>' +
 
       '<div class="ft-base">' +
-        '<p>[REGISTRATION NUMBER IF APPLICABLE] · [TAX/VAT INFORMATION IF APPLICABLE]</p>' +
-        '<p>Card payments are not switched on yet — nothing is charged online.</p>' +
+                '<p>Payments are processed by Paddle.</p>' +
       '</div>' +
     '</div>';
   }
