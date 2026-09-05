@@ -257,7 +257,7 @@
 <link rel="stylesheet" href="/assets/edge.css?v=2">
 <noscript><style>
   .closer-media {
-    background: url("assets/media/rose-poster.jpg") center / cover no-repeat;
+    background: url("assets/media/rose-poster.jpg?v=3") center / cover no-repeat;
   }
 </style></noscript>
 </head>
@@ -906,10 +906,10 @@
   <section class="closer grain" data-backdrop>
     <div class="closer-media">
       <video muted loop playsinline preload="none"
-             data-poster="assets/media/rose-poster.jpg"
-             data-poster-tall="assets/media/rose-poster-tall.jpg"
-             data-src="assets/media/rose.mp4"
-             data-src-tall="assets/media/rose-tall.mp4"
+             data-poster="assets/media/rose-poster.jpg?v=3"
+             data-poster-tall="assets/media/rose-poster-tall.jpg?v=3"
+             data-src="assets/media/rose.mp4?v=3"
+             data-src-tall="assets/media/rose-tall.mp4?v=3"
              aria-hidden="true"></video>
     </div>
     <div class="closer-wash" aria-hidden="true"></div>
@@ -932,6 +932,24 @@
           </p>
         </div>
       </div>
+
+      <!-- The three things people actually ask before they click. They sit
+           under the button because that is where the hesitation is, and
+           they give the panel something to hold besides one heading. -->
+      <dl class="closer-facts">
+        <div class="closer-fact">
+          <dt>Live in</dt>
+          <dd>About a week<span>From the day your content arrives.</span></dd>
+        </div>
+        <div class="closer-fact">
+          <dt>Included</dt>
+          <dd>Domain, hosting &amp; SSL<span>With every package, nothing extra.</span></dd>
+        </div>
+        <div class="closer-fact">
+          <dt>To start</dt>
+          <dd>25% today<span>The rest once you approve the site.</span></dd>
+        </div>
+      </dl>
     </div>
   </section>
 
