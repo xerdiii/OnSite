@@ -193,12 +193,25 @@
      throw — autoplay is refused often enough that an unhandled
      rejection here would be a console error on a login page. */
   function falcon() {
-    var v = doc.querySelector('.acct-photo-v');
-    if (!v) return;
     if (reduced) return;
 
-    var panel = v.closest('.acct-photo');
-    if (!panel || global.getComputedStyle(panel).display === 'none') return;
+    /* There may be more than one crop — login carries a tall and a
+       wide cut, and CSS shows whichever suits the frame. Only the
+       visible one is started: a display:none video still downloads if
+       you ask it to play, which on a phone is megabytes for nothing. */
+    var all = doc.querySelectorAll('.acct-photo-v');
+    for (var i = 0; i < all.length; i++) {
+      var v = all[i];
+      var panel = v.closest('.acct-photo');
+      if (!panel || global.getComputedStyle(panel).display === 'none') continue;
+      if (global.getComputedStyle(v).display === 'none') continue;
+      start(v);
+    }
+  }
+
+  function start(v) {
+    if (v.dataset.falconOn) return;
+    v.dataset.falconOn = '1';
 
     v.addEventListener('canplay', function () { v.classList.add('is-ready'); }, { once: true });
     if (v.readyState >= 2) v.classList.add('is-ready');
@@ -230,12 +243,16 @@
     begin();
   }
 
-  /* The panel appears when a window is widened past 1024px. */
+  /* A different crop becomes visible at each breakpoint, so start
+     whatever is on screen after a cross. falcon() ignores anything it
+     has already started, so this is safe to fire on every change. */
   if (global.matchMedia) {
-    var wide = global.matchMedia('(min-width: 1024px)');
-    var onWide = function (e) { if (e.matches) falcon(); };
-    if (wide.addEventListener) wide.addEventListener('change', onWide);
-    else if (wide.addListener) wide.addListener(onWide);
+    ['(min-width: 1024px)', '(min-width: 700px)'].forEach(function (q) {
+      var mq = global.matchMedia(q);
+      var on = function () { falcon(); };
+      if (mq.addEventListener) mq.addEventListener('change', on);
+      else if (mq.addListener) mq.addListener(on);
+    });
   }
 
   global.SitehouseAccountMotion = {

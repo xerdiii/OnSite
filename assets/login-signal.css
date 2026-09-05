@@ -1,198 +1,521 @@
-/* ───────────────────────────────────────────────────────────────
-   Xovah — login, "Signal" visual pass
+/* ---------------------------------------------------------------
+   Xovah - login, "Signal" composition
 
-   This is a skin, not a layout engine. The design it comes from was
-   authored as a fixed 613×922 composition scaled to the viewport by
-   JavaScript; account.css already says why that was taken out (pixel
-   values that only hold at one size, and a layout that could latch
-   half-changed on a mode switch). None of that comes back here.
-   Everything below is ordinary document flow on top of account.css:
-   type scale, weight, radii, fills and the pill buttons. No measuring,
-   no inline styles, nothing to get stuck, and it degrades with
-   JavaScript off exactly as account.css already does.
+   The reference design applied to the real login page. Scoped to
+   body.acct--signal, which only login.html sets, so signup and the
+   recovery pages keep the plain account.css treatment.
 
-   Scoped to body.acct--signal, which only login.html sets, so signup
-   and the recovery pages are untouched. To take the same pass to
-   signup.html, add the class and this stylesheet there too.
+   Three things worth knowing:
 
-   Colours are theme tokens, never the literals from the source design
-   (#283139, #fafafa, #acacae …), so light and dark both hold.
+   * Radius carries !important. edge.css sets border-radius on a
+     universal selector with !important, so a pill is unreachable
+     without matching it. Every radius here is explicit and scoped to
+     this page - the site rule still governs everywhere else.
 
-   ONE THING DELIBERATELY NOT PORTED: roundness. The source design has
-   999px pill buttons and a 26px card. edge.css sets
+   * The card interior is flow, not a scaled 613x922 block. The form
+     has two panels of different heights and error rows that appear
+     and disappear, so absolute tops cannot hold it. The reference
+     spacing is reproduced as margins multiplied by --cs, which
+     login-signal.js sets, so the proportions track the frame without
+     anything being able to latch half-changed.
 
-     *, *::before, *::after, input, select, textarea, button, img,
-     video, canvas, dialog { border-radius: var(--radius) !important; }
+   * The reference palette is a light-theme palette. It is remapped
+     for the dark theme below, or it would be a dark button on a dark
+     card and black small print on near-black.
+   --------------------------------------------------------------- */
 
-   which is that file's stated "one rule with teeth" — every corner on
-   the site takes one radius, and !important on a universal selector
-   beats any author rule at any specificity. Setting a radius here would
-   need !important of its own, which is exactly the per-component drift
-   that rule exists to stop. So corners stay at --radius, and the pass
-   carries through height, weight, fill, gradient and lift instead. To
-   get the pill corners, change --radius in edge.css — but that is one
-   value repainting every page on the site, not a login decision.
-   ─────────────────────────────────────────────────────────────── */
+body.acct--signal {
+  --cs: 1;
+  --mobile-hero-h: clamp(244px, 34svh, 304px);
 
-/* ══ Display type ═══════════════════════════════════════════════
-   Outfit is already loaded as a 200..800 variable face, so the
-   weight comes off the axis rather than a named step — that is what
-   the source design does, and 560 is between Medium and Semibold
-   where no static instance sits. */
-body.acct--signal .acct-hl {
-  font-weight: 500;
-  font-variation-settings: 'wght' 560;
-  font-size: clamp(2.5rem, 3.9vw, 3.75rem);
-  line-height: 1.0;
-  letter-spacing: -0.032em;
-}
-body.acct--signal .acct-hl b {
-  font-weight: 700;
-  font-variation-settings: 'wght' 730;
-}
-body.acct--signal .acct-hl-sub {
-  margin-top: 1.15rem;
-  font-size: 0.975rem;
-  color: rgb(255 255 255 / 0.76);
+  --ink: #000;
+  --h1-color: #2c3343;
+  --sub-grey: #797979;
+  --badge-bg: #2f2a27;
+  --ph: #606060;
+  --or: #5a5a5b;
+  --gtext: #232424;
+  --bottom: #0a0a0a;
+  --btn1: #283139;
+  --btn2: #293340;
+  --inputFill: #fafafa;
+  --inputBorder: #acacae;
+  --pwFill: #f9f9f9;
+  --gBorder: #c8c8ca;
+  --divider: #b1b1b2;
+
+  --field-ink: #101215;
+  --btn-ink: #fff;
+  --ghost-bg: rgb(255 255 255 / 0.92);
+  --link-ink: #000;
 }
 
-/* ══ Brand badge ════════════════════════════════════════════════
-   The source design carries a pill on the artwork. Here that pill
-   treatment goes onto the wordmark that is already there, rather
-   than relocating it or inventing tagline copy for it. The photo
-   panel is dark in both themes, so these values are literal on
-   purpose — they are not theme colours. */
+/* Only the card interior is remapped. The artwork is the same
+   photograph in both themes, so the headline over it stays black. */
+:root[data-theme="dark"] body.acct--signal {
+  --h1-color: #f2f1ee;
+  --sub-grey: #b3b8bf;
+  --ph: #8e949d;
+  --or: #9aa0a8;
+  --gtext: #f2f1ee;
+  --bottom: #f2f1ee;
+  --btn1: #f4f3f0;
+  --btn2: #e2e1dd;
+  --btn-ink: #14161a;
+  --inputFill: rgb(255 255 255 / 0.045);
+  --inputBorder: #454b55;
+  --pwFill: rgb(255 255 255 / 0.06);
+  --gBorder: #454b55;
+  --ghost-bg: rgb(255 255 255 / 0.05);
+  --divider: #3a4048;
+  --field-ink: #f2f1ee;
+  --link-ink: #fff;
+}
+
+/* == Frame ======================================================
+   836/1464 of the width to the artwork. login-signal.js eases that
+   back as the frame narrows, so the form is never squeezed. */
+@media (min-width: 1024px) {
+  body.acct--signal.acct--split {
+    grid-template-columns: var(--photo-w, 57.1038%) 1fr;
+  }
+  body.acct--signal .acct-main {
+    padding: 0;
+    place-items: stretch;
+  }
+  /* The card is the pane: 14px of margin and it fills the rest, as in
+     the reference frame. The header and footer ride over it. */
+  body.acct--signal .acct-card {
+    max-width: none;
+    width: auto;
+    margin: calc(14px * var(--cs)) calc(14px * var(--cs)) calc(13px * var(--cs)) calc(1px * var(--cs));
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    border-radius: calc(26px * var(--cs)) !important;
+    background: rgb(var(--c-surface) / 0.90);
+    -webkit-backdrop-filter: blur(28px) saturate(160%);
+    backdrop-filter: blur(28px) saturate(160%);
+    border: 1px solid rgb(var(--c-shadow) / 0.036);
+    box-shadow: 1px 10px 14px rgb(var(--c-shadow) / 0.14),
+                0 1px 3px rgb(var(--c-shadow) / 0.05);
+  }
+  body.acct--signal [data-panel] {
+    padding: calc(62px * var(--cs));
+    /* clears the header that rides over the card */
+    padding-top: calc(88px * var(--cs));
+  }
+  body.acct--signal .acct-top { padding-right: calc(30px * var(--cs)); }
+  body.acct--signal .acct-foot { padding-bottom: calc(28px * var(--cs)); }
+}
+
+/* == The artwork ================================================
+   account.css holds each video at opacity 0 until it can play, which
+   hides its poster along with it and leaves the panel flat until the
+   first frame decodes. Painting the still as the panel's own
+   background means there is an image from the first paint and the
+   video fades in over the top of it - which is what makes the
+   masthead arrive smoothly on a phone rather than as a dark slab. */
+body.acct--signal .acct-photo {
+  background: #0e1216 url("media/falcon-poster.webp") right center / cover no-repeat;
+}
+body.acct--signal .acct-photo-v { object-position: 100% 50%; }
+body.acct--signal .acct-photo-v--wide { display: none; }
+
+/* Desktop takes the scrim off: the reference sets the headline in
+   black on the bright, motion-blurred side of the frame. */
+@media (min-width: 1024px) {
+  body.acct--signal .acct-photo::after {
+    background: linear-gradient(to top,
+      rgb(255 255 255 / 0.34) 0%,
+      rgb(255 255 255 / 0.10) 30%,
+      rgb(8 6 7 / 0.00) 58%,
+      rgb(8 6 7 / 0.12) 100%);
+  }
+  body.acct--signal .acct-hl { color: var(--ink); text-shadow: none; }
+  body.acct--signal .acct-hl-sub { color: rgb(20 22 26 / 0.68); text-shadow: none; }
+}
+
+/* == Hero: badge + headline, seated at the foot of the artwork == */
+body.acct--signal .acct-photo-in {
+  padding: 0 calc(34px * var(--hs, 1)) calc(46px * var(--hs, 1));
+}
 body.acct--signal .acct-photo-brand {
-  gap: 0.55rem;
-  padding: 0.5rem 0.95rem 0.5rem 0.85rem;
-  background: rgb(24 27 30 / 0.82);
+  position: static;
+  top: auto; left: auto;
+  display: inline-flex;
+  width: -moz-fit-content;
+  width: fit-content;
+  align-items: center;
+  gap: calc(10px * var(--hs, 1));
+  height: calc(37px * var(--hs, 1));
+  padding: 0 calc(16px * var(--hs, 1)) 0 calc(19px * var(--hs, 1));
+  margin: 0 0 calc(29px * var(--hs, 1));
+  border-radius: 999px !important;
+  background: var(--badge-bg);
   -webkit-backdrop-filter: blur(7px) saturate(120%);
   backdrop-filter: blur(7px) saturate(120%);
   box-shadow: 0 1px 2px rgb(0 0 0 / 0.18), 0 6px 18px rgb(0 0 0 / 0.14);
-  font-size: 0.925rem;
+  color: #fff;
+  white-space: nowrap;
+  font-size: calc(13.6px * var(--hs, 1));
+  font-weight: 400;
+  letter-spacing: -0.163px;
+}
+body.acct--signal .acct-photo-brand .brand-mark {
+  width: calc(17px * var(--hs, 1));
+  height: calc(16.27px * var(--hs, 1));
+  position: relative;
+  top: -1px;
+  border-radius: 0 !important;
+}
+body.acct--signal .acct-hl {
+  font-family: 'Outfit', system-ui, sans-serif;
+  font-weight: 500;
+  font-variation-settings: 'wght' 578;
+  font-size: calc(69.14px * var(--hs, 1));
+  line-height: 1;
+  letter-spacing: -0.028em;
+  text-wrap: nowrap;
+}
+body.acct--signal .acct-hl b {
+  font-weight: 500;
+  font-variation-settings: 'wght' 578;
+}
+body.acct--signal .acct-hl-sub {
+  margin-top: calc(22px * var(--hs, 1));
+  max-width: calc(30rem * var(--hs, 1));
+  font-size: calc(17px * var(--hs, 1));
+  line-height: 1.55;
 }
 
-/* ══ Card ═══════════════════════════════════════════════════════ */
-@media (min-width: 480px) {
-  body.acct--signal .acct-card {
-    padding: 2.75rem 2.35rem 2.4rem;
-    box-shadow: 1px 10px 14px rgb(var(--c-shadow) / 0.09),
-                0 1px 3px rgb(var(--c-shadow) / 0.05);
-  }
-}
+/* == Card interior ============================================== */
 body.acct--signal .acct-h {
+  font-family: 'Outfit', system-ui, sans-serif;
+  font-weight: 500;
   font-variation-settings: 'wght' 584;
-  font-size: clamp(1.75rem, 5vw, 2.15rem);
-  letter-spacing: -0.038em;
+  font-size: calc(42.55px * var(--cs));
+  letter-spacing: -0.06em;
+  word-spacing: calc(1.3px * var(--cs));
+  line-height: 1.05;
+  color: var(--h1-color);
+  text-align: center;
 }
 body.acct--signal .acct-sub {
-  margin-top: 0.7rem;
-  font-size: 0.975rem;
+  margin-top: calc(10px * var(--cs));
+  font-size: calc(20.41px * var(--cs));
+  letter-spacing: calc(-0.245px * var(--cs));
+  word-spacing: calc(-2px * var(--cs));
+  line-height: 1.35;
+  color: var(--sub-grey);
+  text-align: center;
 }
+body.acct--signal .acct-sub b { color: var(--sub-grey); font-weight: 700; }
 
-/* ══ Fields ═════════════════════════════════════════════════════
-   The source design gives the two fields deliberately different
-   treatments — the first bordered on a near-white fill, the second
-   a fill with no border. Expressed as tints of ink so it survives
-   the dark theme, where a literal #fafafa would be a white slab. */
-body.acct--signal .acct-in {
-  min-height: 56px;
-  padding: 0 1.05rem;
-  border-color: rgb(var(--c-line-firm));
-  background: rgb(var(--c-ink) / 0.022);
+body.acct--signal .acct-field { margin-top: calc(55px * var(--cs)); }
+body.acct--signal .acct-field + .acct-field { margin-top: calc(9.5px * var(--cs)); }
+/* The reference labels the fields by placeholder alone. The label is
+   hidden from view, not deleted, so it stays in the a11y tree. */
+body.acct--signal .acct-field > label {
+  position: absolute;
+  width: 1px; height: 1px;
+  overflow: hidden; clip: rect(0 0 0 0); clip-path: inset(50%);
+  white-space: nowrap;
 }
+body.acct--signal .acct-in {
+  min-height: calc(61px * var(--cs));
+  padding: 0 calc(19px * var(--cs)) 0 calc(17px * var(--cs));
+  border: 1.5px solid var(--inputBorder);
+  border-radius: calc(12px * var(--cs)) !important;
+  background: var(--inputFill);
+  color: var(--field-ink);
+  font-size: calc(15.68px * var(--cs));
+  letter-spacing: calc(-0.188px * var(--cs));
+}
+body.acct--signal .acct-in::placeholder { color: var(--ph); opacity: 1; }
 body.acct--signal .acct-in:focus {
   border-color: rgb(var(--c-ink) / 0.55);
   box-shadow: 0 0 0 3px rgb(var(--c-ink) / 0.08);
 }
-/* The code box keeps its mono tracking; only the shell changes. */
+/* The second field in the reference is a fill with no border. */
 body.acct--signal .acct-code {
-  min-height: 64px;
-  background: rgb(var(--c-ink) / 0.035);
-  border-color: transparent;
-}
-body.acct--signal .acct-code:focus {
-  border-color: rgb(var(--c-ink) / 0.55);
-  background: rgb(var(--c-surface));
-}
-body.acct--signal .acct-field > label {
-  font-size: 0.8375rem;
-  letter-spacing: -0.006em;
+  min-height: calc(59px * var(--cs));
+  border: 0;
+  background: var(--pwFill);
+  font-size: calc(1.5rem * var(--cs));
 }
 
-/* ══ Buttons ════════════════════════════════════════════════════
-   Fully rounded, taller, and the primary carries the gradient and
-   lift from the source design. Built from --c-ink so the dark theme
-   inverts to a light pill on its own, as .acct-btn already did. */
+/* == Buttons ==================================================== */
 body.acct--signal .acct-btn {
-  min-height: 58px;
-  margin-top: 1.5rem;
-  font-size: 1rem;
-  letter-spacing: 0.012em;
-  gap: 0.6rem;
-  background: linear-gradient(180deg,
-              rgb(var(--c-ink)) 0%,
-              rgb(var(--c-ink) / 0.90) 100%);
-  box-shadow: 0 8px 20px rgb(var(--c-shadow) / 0.16),
-              0 2px 5px rgb(var(--c-shadow) / 0.10);
-  transition: filter 180ms cubic-bezier(.2,.7,.3,1),
-              transform 180ms cubic-bezier(.2,.7,.3,1),
-              box-shadow 180ms ease;
+  min-height: calc(65.5px * var(--cs));
+  margin-top: calc(33.5px * var(--cs));
+  gap: calc(10px * var(--cs));
+  padding-right: calc(4px * var(--cs));
+  border: 0;
+  border-radius: 999px !important;
+  background: linear-gradient(180deg, var(--btn1) 0%, var(--btn2) 100%);
+  color: var(--btn-ink);
+  font-size: calc(16.38px * var(--cs));
+  font-weight: 400;
+  letter-spacing: calc(0.2px * var(--cs));
+  box-shadow: 0 8px 20px rgb(18 26 34 / 0.16), 0 2px 5px rgb(18 26 34 / 0.10);
+  transition: transform .18s cubic-bezier(.2,.7,.3,1), box-shadow .18s ease, filter .18s ease;
 }
-body.acct--signal .acct-btn:hover { filter: brightness(1.12); background: linear-gradient(180deg, rgb(var(--c-ink)) 0%, rgb(var(--c-ink) / 0.90) 100%); }
+body.acct--signal .acct-btn:hover {
+  filter: brightness(1.12);
+  background: linear-gradient(180deg, var(--btn1) 0%, var(--btn2) 100%);
+}
 body.acct--signal .acct-btn:active { transform: translateY(1px); }
-
-/* The trailing arrow. It is decorative — the label already says what
-   the button does — so it is aria-hidden in the markup, and it
-   inherits the busy-state hide from account.css like any other child. */
 body.acct--signal .acct-btn .acct-arrow {
-  width: 14px; height: 14px; flex: none;
-  /* nudges the label+arrow pair back to optical centre */
-  margin-right: -0.55rem;
+  width: calc(13.2px * var(--cs));
+  height: calc(13.2px * var(--cs));
+  flex: none;
 }
+/* --login-padl is negative, and padding cannot carry a negative
+   value, so the pull sits on the label - which shifts the label and
+   its trailing arrow together to optical centre. */
+body.acct--signal .acct-btn > span { margin-left: calc(-12px * var(--cs)); }
 
 body.acct--signal .acct-btn--ghost {
-  min-height: 56px;
-  gap: 0.95rem;
-  background: rgb(var(--c-surface));
-  border-color: rgb(var(--c-line-firm));
-  border-width: 1.5px;
-  box-shadow: 0 1px 2px rgb(var(--c-shadow) / 0.03);
+  min-height: calc(59.5px * var(--cs));
+  margin-top: calc(46px * var(--cs));
+  gap: calc(17px * var(--cs));
+  padding-right: 0;
+  border: 1.5px solid var(--gBorder);
+  background: var(--ghost-bg);
+  color: var(--gtext);
+  font-size: calc(18.1px * var(--cs));
+  font-weight: 400;
+  letter-spacing: calc(-0.217px * var(--cs));
+  word-spacing: calc(-1px * var(--cs));
+  box-shadow: 0 1px 2px rgb(0 0 0 / 0.03);
+  transition: background .18s ease, box-shadow .18s ease, transform .18s cubic-bezier(.2,.7,.3,1);
 }
 body.acct--signal .acct-btn--ghost:hover {
-  background: rgb(var(--c-ink) / 0.04);
-  border-color: rgb(var(--c-ink) / 0.35);
+  background: rgb(var(--c-surface));
   filter: none;
-  box-shadow: 0 3px 10px rgb(var(--c-shadow) / 0.07);
+  box-shadow: 0 3px 10px rgb(0 0 0 / 0.07);
 }
-body.acct--signal .acct-btn--ghost svg { width: 18.5px; height: 18.5px; }
+body.acct--signal .acct-btn--ghost svg {
+  width: calc(18.5px * var(--cs));
+  height: calc(18.5px * var(--cs));
+}
 
-/* ══ Divider ════════════════════════════════════════════════════ */
+/* == Divider ==================================================== */
 body.acct--signal .acct-or {
-  margin-top: 1.5rem;
+  margin-top: calc(45.5px * var(--cs));
+  gap: 0;
+  font-size: calc(11.5px * var(--cs));
   font-weight: 700;
-  font-size: 0.72rem;
-  letter-spacing: 0.075em;
-  color: rgb(var(--c-ink-soft));
+  letter-spacing: calc(0.8px * var(--cs));
+  color: var(--or);
+}
+body.acct--signal .acct-or b {
+  flex: 1 1 auto;
+  text-align: center;
+  font-weight: 700;
 }
 body.acct--signal .acct-or::before,
 body.acct--signal .acct-or::after {
   height: 1.5px;
-  background: rgb(var(--c-line-firm));
+  background: var(--divider);
+  border-radius: 0 !important;
 }
+/* The reference rules differ by a pixel; that is in the design. */
+body.acct--signal .acct-or::before { flex: 0 0 calc(205px * var(--cs)); }
+body.acct--signal .acct-or::after  { flex: 0 0 calc(204px * var(--cs)); }
 
-/* ══ Small print ════════════════════════════════════════════════ */
+/* == Small print ================================================ */
+body.acct--signal .acct-alt {
+  margin-top: calc(16.5px * var(--cs));
+  padding-top: 0;
+  border-top: 0;
+  font-size: calc(16.37px * var(--cs));
+  letter-spacing: calc(-0.196px * var(--cs));
+  word-spacing: calc(-2.06px * var(--cs));
+  color: var(--bottom);
+}
 body.acct--signal .acct-alt a {
+  color: var(--link-ink);
+  font-weight: 700;
   text-decoration: underline;
   text-underline-offset: 3px;
   text-decoration-thickness: 2px;
-  font-weight: 700;
+}
+body.acct--signal .acct-links { margin-top: calc(20px * var(--cs)); }
+body.acct--signal .acct-err { margin-top: calc(14px * var(--cs)); }
+body.acct--signal .acct-back { margin-bottom: calc(14px * var(--cs)); }
+
+body.acct--signal :focus-visible { outline: 2px solid #2b6cb0; outline-offset: 2px; }
+
+/* == Tablet portrait ============================================
+   The split has nowhere to go, so the artwork becomes a masthead band
+   and the card takes the full measure underneath. */
+@media (min-width: 700px) and (max-width: 1023px) {
+  body.acct--signal { grid-template-rows: auto 1fr auto; }
+  body.acct--signal .acct-photo {
+    display: block;
+    height: var(--band-h, 42.5svh);
+    background: #0e1216 url("media/falcon-poster-wide.webp") center / cover no-repeat;
+  }
+  body.acct--signal .acct-photo-v { display: none; }
+  body.acct--signal .acct-photo-v--wide { display: block; object-position: 50% 50%; }
+  body.acct--signal .acct-top {
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    z-index: 3;
+    justify-content: flex-end;
+  }
+  body.acct--signal .acct-top,
+  body.acct--signal .acct-top a,
+  body.acct--signal .acct-top-link,
+  body.acct--signal .acct-top-link b { color: #fff; }
+  body.acct--signal .acct-top .acct-brand { display: none; }
+  body.acct--signal .acct-photo-in { padding-bottom: calc(46px * var(--hs, 1)); }
+  /* --hs is set from the headline, and the badge does not scale on the
+     same curve; below the desktop frame it drops to a size nobody can
+     read. Pinned here instead. */
+  body.acct--signal .acct-photo-brand {
+    height: 34px;
+    padding: 0 14px 0 12px;
+    gap: 9px;
+    margin-bottom: 18px;
+    font-size: 12.5px;
+  }
+  body.acct--signal .acct-photo-brand .brand-mark { width: 15px; height: 14.36px; top: 0; }
+  body.acct--signal .acct-main { padding: 0 5.25vw 1rem; }
+  body.acct--signal .acct-card {
+    max-width: 44rem;
+    margin: 1.75rem auto 0;
+    padding: 2.5rem clamp(2rem, 5vw, 3.5rem) 2.75rem;
+    border-radius: 26px !important;
+  }
 }
 
-/* ══ Motion ═════════════════════════════════════════════════════
-   account.js owns the entrance. Nothing here should animate on its
-   own, and the hover/active transitions above go quiet on request. */
+/* == Phone ======================================================
+   The falcon stays. It becomes a masthead the card slides under. */
+@media (max-width: 699px) {
+  body.acct--signal { grid-template-rows: auto 1fr auto; position: relative; }
+
+  body.acct--signal .acct-photo {
+    display: block;
+    height: var(--mobile-hero-h);
+    grid-row: 1;
+    background: #0e1216 url("media/falcon-poster-wide.webp") 64% 48% / cover no-repeat;
+  }
+  body.acct--signal .acct-photo-v { display: none; }
+  body.acct--signal .acct-photo-v--wide {
+    display: block;
+    object-position: 64% 48%;
+    transform: scale(1.015);
+  }
+  body.acct--signal .acct-photo::after {
+    background: linear-gradient(180deg,
+      rgb(7 10 13 / 0.02) 18%,
+      rgb(7 10 13 / 0.12) 48%,
+      rgb(7 10 13 / 0.78) 100%);
+  }
+
+  body.acct--signal .acct-top {
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    z-index: 3;
+    padding: 1rem 1.15rem;
+    justify-content: flex-end;
+  }
+  body.acct--signal .acct-top,
+  body.acct--signal .acct-top a,
+  body.acct--signal .acct-top-link,
+  body.acct--signal .acct-top-link b { color: #fff; }
+  /* The badge on the artwork is the wordmark now; two of them on one
+     screen is one too many. */
+  body.acct--signal .acct-top .acct-brand { display: none; }
+
+  /* The card slides 28px up over the band, so the hero has to clear
+     that much before its own breathing room or the last headline line
+     is tucked under the card's rounded top edge. */
+  body.acct--signal .acct-photo-in { padding: 0 20px 46px; }
+  body.acct--signal .acct-photo-brand {
+    height: 31px;
+    padding: 0 12px;
+    gap: 8px;
+    margin-bottom: 10px;
+    background: rgb(24 27 30 / 0.82);
+    box-shadow: 0 4px 16px rgb(0 0 0 / 0.18);
+    font-size: 11px;
+  }
+  body.acct--signal .acct-photo-brand .brand-mark { width: 13px; height: 12.44px; top: 0; }
+  body.acct--signal .acct-hl {
+    color: #fff;
+    font-size: clamp(30px, 8.8vw, 38px);
+    letter-spacing: -0.035em;
+    line-height: 0.96;
+    text-shadow: 0 2px 18px rgb(0 0 0 / 0.32);
+    text-wrap: wrap;
+  }
+  body.acct--signal .acct-hl-sub { display: none; }
+
+  body.acct--signal .acct-main {
+    grid-row: 2;
+    margin-top: -28px;
+    z-index: 2;
+    padding: 0;
+    place-items: stretch;
+  }
+  body.acct--signal .acct-card {
+    max-width: none;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    background: rgb(var(--c-surface));
+    border: 0;
+    border-radius: 28px 28px 0 0 !important;
+    box-shadow: 0 -10px 28px rgb(20 28 36 / 0.10);
+    min-height: calc(100svh - var(--mobile-hero-h) + 28px);
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+  }
+  body.acct--signal [data-panel] {
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 36px clamp(24px, 7vw, 38px) max(30px, env(safe-area-inset-bottom));
+  }
+
+  body.acct--signal .acct-h { font-size: clamp(31px, 8.8vw, 38px); letter-spacing: -0.045em; word-spacing: normal; }
+  body.acct--signal .acct-sub { font-size: 15px; word-spacing: normal; margin-top: 8px; }
+  body.acct--signal .acct-field { margin-top: 26px; }
+  body.acct--signal .acct-field + .acct-field { margin-top: 12px; }
+  /* 16px minimum or iOS zooms the page on focus. */
+  body.acct--signal .acct-in { min-height: 56px; font-size: 16px; padding: 0 16px; }
+  body.acct--signal .acct-code { min-height: 60px; font-size: 1.4rem; }
+  body.acct--signal .acct-btn { min-height: 58px; margin-top: 18px; font-size: 16px; }
+  body.acct--signal .acct-btn > span { margin-left: -6px; }
+  body.acct--signal .acct-btn .acct-arrow { width: 14px; height: 14px; }
+  body.acct--signal .acct-btn--ghost { min-height: 56px; margin-top: 20px; font-size: 16px; gap: 12px; }
+  body.acct--signal .acct-btn--ghost svg { width: 18px; height: 18px; }
+  body.acct--signal .acct-or { margin-top: 20px; font-size: 11px; }
+  body.acct--signal .acct-or::before,
+  body.acct--signal .acct-or::after { flex: 1 1 auto; }
+  body.acct--signal .acct-or::before { margin-right: 14px; }
+  body.acct--signal .acct-or::after { margin-left: 14px; }
+  body.acct--signal .acct-alt { margin-top: 22px; font-size: 14px; word-spacing: normal; }
+  body.acct--signal .acct-foot { grid-row: 3; }
+}
+
+@media (max-width: 370px) {
+  body.acct--signal { --mobile-hero-h: 232px; }
+  body.acct--signal .acct-photo-in { padding: 0 16px 44px; }
+  body.acct--signal .acct-hl { font-size: 30px; }
+  body.acct--signal [data-panel] { padding: 30px 20px max(26px, env(safe-area-inset-bottom)); }
+}
+
+@media (max-width: 699px) and (max-height: 520px) and (orientation: landscape) {
+  body.acct--signal { --mobile-hero-h: 208px; }
+}
+
 @media (prefers-reduced-motion: reduce) {
-  body.acct--signal .acct-btn { transition: none; }
-  body.acct--signal .acct-btn:active { transform: none; }
+  body.acct--signal .acct-btn,
+  body.acct--signal .acct-btn--ghost { transition: none; }
+  body.acct--signal .acct-btn:active,
+  body.acct--signal .acct-btn--ghost:active { transform: none; }
 }
