@@ -385,7 +385,18 @@
 
 </main>
 
-<div data-site-footer></div>
+<div data-site-footer>
+  <!-- Replaced by footer.js. Present in the served HTML so the legal
+       links survive without JavaScript, for crawlers and for payment
+       provider domain review. -->
+  <nav class="mx-auto flex max-w-shell flex-wrap items-center gap-x-5 gap-y-2 px-6 py-8 text-[0.8125rem] text-ink-soft md:px-10" aria-label="Legal">
+    <a class="hover:text-ink" href="terms.html">Terms of Service</a>
+    <a class="hover:text-ink" href="privacy.html">Privacy Policy</a>
+    <a class="hover:text-ink" href="refunds.html">Cancellation &amp; Refund Policy</a>
+    <a class="hover:text-ink" href="cookies.html">Cookie Policy</a>
+    <a class="hover:text-ink" href="contact.html">Contact</a>
+  </nav>
+</div>
 
 <script src="assets/footer.js?v=2"></script>
 <script src="assets/cookies.js?v=2"></script>
