@@ -19,7 +19,7 @@
 window.XOVAH_CONTACT = {
   WHATSAPP: '38345403334',
   WHATSAPP_DISPLAY: '+383 45 403 334',
-  INSTAGRAM: '',
+  INSTAGRAM: 'https://instagram.com/xovahweb',
   EMAIL: 'info@xovahweb.com'
 };
 

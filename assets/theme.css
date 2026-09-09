@@ -252,65 +252,47 @@ h1.doc-title {
 
 
 /* ── Contact channels ───────────────────────────────────────────
-   WhatsApp, Instagram and email presented as three deliberate ways
-   in, not as social icons in a footer. Lives here because theme.css
-   is the one stylesheet every page loads — index.html in particular
-   does not link xovah.css.
+   A compact row of buttons, not a wall of cards. These sit on the
+   contact page only; the pricing pages just link to it, because
+   repeating the same three channels on the same screen as the
+   "Get Started" buttons was saying it twice.
 
-   Square corners throughout: assets/edge.css resets every radius on
-   the site with !important, so anything rounded here would be
-   overridden anyway and only read as a mistake. */
+   Lives here because theme.css is the one stylesheet every page
+   loads — index.html in particular does not link xovah.css. */
 
-.chan-grid {
-  display: grid;
-  gap: 0.85rem;
-  grid-template-columns: 1fr;
-}
-/* auto-fit, not repeat(3): Instagram removes itself when no handle is
-   configured, and a hard three-column track left an empty column with
-   the two remaining cards stranded to one side. */
-@media (min-width: 640px) {
-  .chan-grid { grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr)); }
-}
+.chan-row { display: flex; flex-wrap: wrap; gap: 0.6rem; }
 
-.chan {
-  display: flex;
-  align-items: flex-start;
-  gap: 0.85rem;
-  padding: 1.15rem 1.2rem;
+.chan-btn {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  padding: 0.6rem 0.95rem;
   border: 1px solid rgb(var(--c-line-firm));
   background: rgb(var(--c-surface));
   color: rgb(var(--c-ink));
+  font-size: 0.875rem; font-weight: 600;
   text-decoration: none;
-  transition: border-color 160ms ease, box-shadow 160ms ease, transform 160ms ease;
+  white-space: nowrap;
+  transition: border-color 160ms ease, color 160ms ease, background-color 160ms ease;
 }
-.chan:hover {
-  border-color: rgb(var(--c-ink));
-  box-shadow: 6px 6px 0 0 rgb(var(--c-ink) / 0.07);
-  transform: translateY(-2px);
-}
-.chan:focus-visible { outline: 2px solid rgb(var(--c-accent)); outline-offset: 2px; }
+.chan-btn svg { width: 1.05rem; height: 1.05rem; flex: 0 0 auto; color: rgb(var(--c-accent)); }
+.chan-btn:hover { border-color: rgb(var(--c-ink)); }
+.chan-btn:focus-visible { outline: 2px solid rgb(var(--c-accent)); outline-offset: 2px; }
 
-.chan-ico {
-  flex: 0 0 auto;
-  width: 2.2rem; height: 2.2rem;
-  display: grid; place-items: center;
-  border: 1px solid rgb(var(--c-line-firm));
-  color: rgb(var(--c-accent));
+/* The channel that answers fastest carries the accent. */
+.chan-btn--wa {
+  border-color: rgb(var(--c-accent));
+  color: rgb(var(--c-accent-text));
 }
-.chan-ico svg { width: 1.15rem; height: 1.15rem; }
-.chan-b { min-width: 0; }
-.chan-t { display: block; font-weight: 600; font-size: 0.9375rem; line-height: 1.25; }
-.chan-s {
-  display: block; margin-top: 0.2rem;
-  font-size: 0.8125rem; line-height: 1.4;
-  color: rgb(var(--c-ink-soft));
-  overflow-wrap: anywhere;
-}
+.chan-btn--wa:hover { background: rgb(var(--c-accent-tint)); border-color: rgb(var(--c-accent)); }
 
-/* The one channel that answers fastest gets the weight. */
-.chan--wa { border-color: rgb(var(--c-accent) / 0.55); }
-.chan--wa .chan-ico { border-color: rgb(var(--c-accent) / 0.55); background: rgb(var(--c-accent-tint)); }
+/* One quiet line under the pricing grid, in place of the block that
+   used to restate every channel there. */
+.price-next-line {
+  margin-top: 2rem; padding-top: 1.5rem;
+  border-top: 1px solid rgb(var(--c-line));
+  text-align: center;
+  font-size: 0.875rem; color: rgb(var(--c-ink-soft));
+}
+.price-next-line a { color: rgb(var(--c-accent-text)); font-weight: 600; text-decoration: underline; text-underline-offset: 2px; }
 
 /* ── Nav: start a project ───────────────────────────────────────
    The landing page's own nav (fp-nav) had no CTA style of its own;
