@@ -5,6 +5,98 @@
    of the landing page when the catalogue got its own page.
    ─────────────────────────────────────────────────────────────── */
 
+/* ── Hero — "the things a website does not cover" ───────────────
+   Two columns: the pitch and the real numbers on the left, a small
+   illustration of what those numbers buy on the right. The device
+   screens carry a gradient, not a photo — everything here is built
+   with CSS, not sourced as a stock image. */
+.ex-hero-grid { display: grid; gap: 3rem; }
+@media (min-width: 768px) {
+  .ex-hero-grid { grid-template-columns: 1fr 1fr; align-items: center; gap: 2.5rem; }
+}
+
+.ex-stat-n {
+  font-family: 'Outfit', sans-serif; font-weight: 700; line-height: 1;
+  font-size: 1.5rem; margin-top: 0.4rem; color: rgb(var(--c-ink));
+}
+
+.ex-callout {
+  border: 1px solid rgb(var(--c-line-firm));
+  background: rgb(var(--c-accent-tint));
+  padding: 1.1rem 1.25rem;
+  max-width: 30rem;
+}
+.ex-callout-lead { font-weight: 600; font-size: 0.9375rem; color: rgb(var(--c-ink)); }
+.ex-callout-steps { margin-top: 0.6rem; display: grid; gap: 0.35rem; font-size: 0.8125rem; color: rgb(var(--c-ink-mid)); }
+.ex-callout-steps b { font-family: 'IBM Plex Mono', monospace; color: rgb(var(--c-accent-text)); margin-right: 0.4em; }
+
+/* The illustration. A fixed-aspect box keeps every bubble at the same
+   relative spot at every width, rather than reflowing like text. */
+.ex-hero-art { position: relative; aspect-ratio: 6 / 5; max-width: 34rem; margin-inline: auto; }
+
+.ex-device { position: absolute; left: 50%; top: 46%; width: 72%; transform: translate(-50%, -50%); }
+.ex-laptop-screen {
+  position: relative; overflow: hidden;
+  aspect-ratio: 16 / 10;
+  border: 6px solid rgb(var(--c-ink));
+  border-bottom-width: 10px;
+  background:
+    radial-gradient(120% 140% at 20% 15%, rgb(var(--c-accent) / 0.55), transparent 55%),
+    radial-gradient(90% 120% at 85% 80%, rgb(var(--c-accent) / 0.35), transparent 60%),
+    rgb(var(--c-ink));
+}
+.ex-laptop-screen::before,
+.ex-laptop-screen::after { content: ''; position: absolute; left: 12%; background: rgb(255 255 255 / 0.85); }
+.ex-laptop-screen::before { top: 22%; width: 45%; height: 8%; }
+.ex-laptop-screen::after  { top: 38%; width: 30%; height: 8%; background: rgb(255 255 255 / 0.5); }
+.ex-laptop-base { height: 0.55rem; background: rgb(var(--c-ink-mid)); }
+
+.ex-phone {
+  position: absolute; right: -6%; bottom: -14%;
+  width: 30%; aspect-ratio: 9 / 18.5;
+  border: 5px solid rgb(var(--c-ink));
+  background: radial-gradient(140% 100% at 30% 90%, rgb(var(--c-accent) / 0.5), transparent 60%), rgb(var(--c-ink));
+  box-shadow: -10px 10px 0 0 rgb(var(--c-paper));
+}
+
+.ex-bubble,
+.ex-email-card {
+  position: absolute; display: flex; align-items: center; gap: 0.55rem;
+  border: 1px solid rgb(var(--c-line-firm));
+  background: rgb(var(--c-surface));
+  padding: 0.6rem 0.85rem;
+  box-shadow: 4px 4px 0 0 rgb(var(--c-ink) / 0.05);
+}
+.ex-bubble { width: 8.5rem; }
+.ex-bubble svg,
+.ex-email-card svg { flex-shrink: 0; width: 1.1rem; height: 1.1rem; color: rgb(var(--c-accent)); }
+.ex-bubble-name { display: block; font-size: 0.75rem; font-weight: 600; line-height: 1.2; color: rgb(var(--c-ink)); }
+.ex-bubble-sub { display: block; font-size: 0.6875rem; color: rgb(var(--c-ink-soft)); line-height: 1.25; }
+
+.ex-bubble--seo        { left: -4%; top: 6%; }
+.ex-bubble--analytics  { left: -4%; top: 42%; }
+.ex-bubble--automation { right: 2%; top: 4%; }
+.ex-bubble--brand      { right: 2%; top: 36%; }
+.ex-email-card         { left: 6%; bottom: -8%; }
+
+.ex-badge-row { display: flex; justify-content: flex-end; max-width: 34rem; margin-inline: auto; }
+.ex-badge {
+  border: 1px solid rgb(var(--c-line-firm));
+  background: rgb(var(--c-surface));
+  padding: 0.5rem 0.85rem;
+  text-align: right;
+  box-shadow: 4px 4px 0 0 rgb(var(--c-ink) / 0.05);
+}
+.ex-badge-label { font-size: 0.625rem; color: rgb(var(--c-ink-soft)); }
+.ex-badge-price { display: block; font-family: 'Outfit', sans-serif; font-weight: 700; font-size: 1.05rem; color: rgb(var(--c-ink)); }
+
+@media (max-width: 767px) {
+  .ex-hero-art { max-width: 22rem; margin-top: 1rem; }
+  .ex-bubble { width: 6.6rem; padding: 0.45rem 0.6rem; }
+  .ex-bubble-sub { display: none; }
+}
+
+
 /* The 34 that come with every build. A rule, not a price list — so the
    row carries a tick and nothing else. */
 .inc-row {
