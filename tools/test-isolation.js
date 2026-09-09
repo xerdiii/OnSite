@@ -1,3 +1,10 @@
+const path = require('node:path');
+
+/* Resolved from this file, never hardcoded — the project folder has
+   been renamed once already and took every harness down with it. */
+const ROOT = path.join(__dirname, '..');
+const asset = (f) => path.join(ROOT, 'assets', f);
+
 /* Does each account really get its own dashboard?
    Loads assets/demo.js against a stub localStorage and drives the same
    bind/unbind calls supabase-auth.js makes on sign-in and sign-out. */
@@ -29,7 +36,7 @@ function freshWindow(storage) {
   };
   win.window = win;
   const ctx = vm.createContext(win);
-  vm.runInContext(fs.readFileSync('C:/projects/OnSite/assets/demo.js', 'utf8'), ctx, { filename: 'demo.js' });
+  vm.runInContext(fs.readFileSync(asset('demo.js'), 'utf8'), ctx, { filename: 'demo.js' });
   return win;
 }
 

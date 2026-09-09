@@ -1,3 +1,10 @@
+const path = require('node:path');
+
+/* Resolved from this file, never hardcoded — the project folder has
+   been renamed once already and took every harness down with it. */
+const ROOT = path.join(__dirname, '..');
+const asset = (f) => path.join(ROOT, 'assets', f);
+
 /* Proves assets/oauth-catch.js forwards an OAuth return to /login from
    whatever page Supabase happened to drop it on, and stays out of the
    way otherwise.
@@ -12,7 +19,7 @@
 const fs = require('fs');
 const vm = require('vm');
 
-const SRC = fs.readFileSync('C:/projects/OnSite/assets/oauth-catch.js', 'utf8');
+const SRC = fs.readFileSync(asset('oauth-catch.js'), 'utf8');
 
 function run(pathname, search, hash) {
   let replaced = null;

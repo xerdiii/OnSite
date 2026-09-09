@@ -79,8 +79,14 @@ export default async function handler(req, res) {
   const cap = (v, n) => String(v == null ? '' : v).trim().slice(0, n);
   const name = cap(body.name, 120);
   const email = cap(body.email, 200);
-  const subject = cap(body.subject, 200);
+  const business = cap(body.business, 200);
+  const service = cap(body.service, 120);
+  const budget = cap(body.budget, 60);
   const message = cap(body.message, 5000);
+
+  /* Built here rather than accepted from the form, so the subject line
+     always says something useful and can never be steered by input. */
+  const subject = service ? service + ' - ' + (business || name) : (business || name);
 
   const missing = [];
   if (!name) missing.push('name');
@@ -95,7 +101,9 @@ export default async function handler(req, res) {
     <table style="font:14px system-ui;border-collapse:collapse">
       <tr><td style="padding:3px 14px 3px 0;color:#666">Name</td><td><b>${esc(name)}</b></td></tr>
       <tr><td style="padding:3px 14px 3px 0;color:#666">Email</td><td>${esc(email)}</td></tr>
-      <tr><td style="padding:3px 14px 3px 0;color:#666">Subject</td><td>${esc(subject) || '—'}</td></tr>
+      <tr><td style="padding:3px 14px 3px 0;color:#666">Business</td><td>${esc(business) || '—'}</td></tr>
+      <tr><td style="padding:3px 14px 3px 0;color:#666">Service</td><td>${esc(service) || 'Not sure yet'}</td></tr>
+      <tr><td style="padding:3px 14px 3px 0;color:#666">Budget</td><td>${esc(budget) || 'Not sure yet'}</td></tr>
     </table>
     <h3 style="font:600 14px system-ui;margin:18px 0 6px">Message</h3>
     <p style="font:14px/1.6 system-ui;white-space:pre-wrap;margin:0">${esc(message)}</p>`;

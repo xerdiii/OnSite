@@ -88,15 +88,16 @@
             '<a href="contact.html">Contact us</a>' +
             '<a href="support.html">Help &amp; support</a>' +
             '<span>Xovah</span>' +
-            '<a href="mailto:info@xovahweb.com">info@xovahweb.com</a>' +
-            '<a href="https://wa.me/38345403334" target="_blank" rel="noopener">+383 45 403 334</a>' +
+            '<a data-mail href="mailto:info@xovahweb.com"><span data-mail-display>info@xovahweb.com</span></a>' +
+            '<a data-wa href="#"><span data-wa-display>WhatsApp</span></a>' +
+            '<a data-ig href="#">Instagram</a>' +
           '</div>' +
         '</div>' +
 
       '</div>' +
 
       '<div class="ft-base">' +
-                '<p>Payments are processed by Paddle.</p>' +
+                '<p>We agree every price with you before any payment.</p>' +
       '</div>' +
     '</div>';
   }
@@ -116,6 +117,8 @@
     footer.className = 'ft';
     footer.innerHTML = html();
     slot.parentNode.replaceChild(footer, slot);
+
+    if (global.XovahContact) global.XovahContact.apply(footer);
   }
 
   if (doc.readyState === 'loading') {

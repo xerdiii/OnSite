@@ -55,7 +55,7 @@
 
 <header class="sticky top-0 z-10 border-b border-line bg-paper">
   <nav class="mx-auto flex max-w-shell items-center justify-between px-6 py-4 md:px-10">
-    <a href="./" class="flex items-center gap-2.5">
+    <a href="./" class="flex shrink-0 items-center gap-2.5">
       <span class="brand-mark" role="img" aria-label="Xovah"></span>
       <span class="h-section text-lg tracking-tight">Xovah</span>
     </a>
@@ -63,12 +63,11 @@
     <div class="flex items-center gap-5 md:gap-7">
       <a href="pricing.html" class="text-sm font-medium text-ink-mid hover:text-ink">Pricing</a>
       <a href="free.html" class="hidden text-sm font-semibold text-accent hover:text-accent-hi sm:inline">Free page</a>
-      <a href="build.html" class="hidden text-sm font-medium text-ink-mid hover:text-ink sm:inline">Build a package</a>
+      <a href="build.html" class="hidden text-sm font-medium text-ink-mid hover:text-ink lg:inline">Build a package</a>
       <a href="extras.html" class="hidden text-sm font-medium text-ink-mid hover:text-ink md:inline">Extras</a>
-      <a href="faq.html" class="hidden text-sm font-medium text-ink-mid hover:text-ink sm:inline">FAQ</a>
-      <a href="contact.html" class="hidden text-sm font-medium text-ink-mid hover:text-ink sm:inline">Contact</a>
-      <a href="login.html" class="text-sm font-medium text-ink-mid hover:text-ink" data-nav-auth>Log in</a>
-      <a href="start.html" class="rounded-md bg-accent px-4 py-2.5 text-sm font-semibold text-white hover:bg-accent-hi">Get started</a>
+      <a href="faq.html" class="hidden text-sm font-medium text-ink-mid hover:text-ink md:inline">FAQ</a>
+      <a href="contact.html" class="hidden text-sm font-medium text-ink-mid hover:text-ink lg:inline">Contact</a>
+      <a href="contact.html" class="rounded-md bg-accent px-4 py-2.5 text-sm font-semibold text-white hover:bg-accent-hi">Start a Project</a>
     </div>
   
   </nav>
@@ -199,12 +198,13 @@
 
           <div class="bd-sum-today">
             <dl class="bd-sum-today-row">
-              <dt>Pay today</dt>
+              <dt>Deposit</dt>
               <dd data-bd-today>&euro;0</dd>
             </dl>
             <p>
-              A 25% deposit. The remaining <span data-bd-balance>&euro;0</span> is invoiced
-              only after you have seen the finished website and approved it.
+              A 25% deposit, agreed with you before anything is paid. The remaining
+              <span data-bd-balance>&euro;0</span> is settled only after you have seen the
+              finished website and approved it.
             </p>
           </div>
 
@@ -213,7 +213,7 @@
             <svg viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 11h15.4M11 3.3l7.7 7.7-7.7 7.7"/></svg>
           </button>
 
-          <p class="bd-sum-foot">Secure checkout by Paddle. Cards and PayPal accepted.</p>
+          <p class="bd-sum-foot">Send us your list and we confirm the total before anything is paid.</p>
 
           <button type="button" class="bd-sum-clear" data-bd-clear hidden>Clear everything and start again</button>
         </div>
@@ -253,8 +253,7 @@
 <script src="assets/theme.js?v=2"></script>
 <script src="assets/i18n.js?v=2"></script>
 <script src="assets/demo.js?v=2"></script>
-<script src="assets/paddle-config.js?v=2"></script>
-<script src="assets/paddle.js?v=2"></script>
+<script src="assets/contact-config.js?v=2"></script>
 <script src="assets/build.js?v=2" defer></script>
 <script src="assets/dock.js?v=2"></script>
 <script src="assets/support.js?v=2"></script>

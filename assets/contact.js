@@ -1,17 +1,14 @@
 /* ───────────────────────────────────────────────────────────────
    Xovah — the contact form
 
-   ══ TODO: CONNECT RESEND HERE ═══════════════════════════════════
-   ENDPOINT is null on purpose. Nothing is being sent yet, and the
-   form says so rather than showing a green tick it has not earned.
+   Posts to /api/contact, which sends through Resend server-side so the
+   API key never reaches the browser. RESEND_API_KEY and FROM_EMAIL must
+   be set in Vercel; NOTIFY_EMAIL picks the destination.
 
-   To connect it:
-     Live. The form posts to /api/contact.mjs, which sends through
-   Resend server-side. Set RESEND_API_KEY and FROM_EMAIL in Vercel to
-   turn it on; NOTIFY_EMAIL chooses the destination and defaults to the
-   owner's Gmail. Unset, the endpoint replies 503 and the form says
-   plainly that nothing was delivered.
-   ════════════════════════════════════════════════════════════════ */
+   With those unset the endpoint replies 503 and the form says plainly
+   that nothing was delivered, and hands over the address instead. It
+   never shows a tick it has not earned.
+   ─────────────────────────────────────────────────────────────── */
 (function (global) {
   'use strict';
 
@@ -73,16 +70,6 @@
       return;
     }
 
-    if (!ENDPOINT) {
-      /* Honest, not fake. The message has not gone anywhere, so it does
-         not claim to have — it hands over the address instead. */
-      say('info',
-        'Sending is not switched on yet, so this has <strong>not</strong> been delivered. ' +
-        'Email <a href="mailto:info@xovahweb.com">info@xovahweb.com</a> and we will pick it up — ' +
-        'or open a thread in <a href="support.html">Help &amp; support</a>.');
-      return;
-    }
-
     btn.disabled = true;
     say('info', 'Sending…');
 
@@ -98,15 +85,27 @@
     }).then(function (r) {
       if (r.ok) {
         form.reset();
-        say('good', 'Sent. A person reads every message — you will hear back, usually the same day.');
-      } else {
-        say('bad',
-          'That did not send. Email <a href="mailto:info@xovahweb.com">info@xovahweb.com</a> ' +
-          'instead and it will reach the same place.');
+        say('good',
+          '<strong>Thank you — your message is with us.</strong><br>' +
+          'A person reads every enquiry and replies to the address you gave, ' +
+          'usually the same working day.');
+        return;
       }
+      /* 503 means the mail service is not configured; anything else is
+         a genuine failure. Either way the message did not arrive, so
+         say so and give a route that does work. */
+      var alt = 'Please reach us on <a data-wa href="#">WhatsApp</a> or at ' +
+                '<a data-mail href="mailto:info@xovahweb.com">info@xovahweb.com</a> instead.';
+      say('bad', r.status === 503
+        ? '<strong>Sending is temporarily unavailable.</strong><br>Your message was not delivered. ' + alt
+        : '<strong>That did not send.</strong><br>Your message was not delivered. ' + alt);
+      if (global.XovahContact) global.XovahContact.apply(note);
     }).catch(function () {
       say('bad',
-        'No connection. Email <a href="mailto:info@xovahweb.com">info@xovahweb.com</a> instead.');
+        '<strong>No connection.</strong><br>Your message was not delivered. ' +
+        'Please reach us on <a data-wa href="#">WhatsApp</a> or at ' +
+        '<a data-mail href="mailto:info@xovahweb.com">info@xovahweb.com</a>.');
+      if (global.XovahContact) global.XovahContact.apply(note);
     }).then(function () {
       btn.disabled = false;
     });

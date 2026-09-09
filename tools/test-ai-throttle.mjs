@@ -1,3 +1,13 @@
+import { fileURLToPath, pathToFileURL } from 'node:url';
+import { dirname, join } from 'node:path';
+
+/* Resolved from this file, never hardcoded — the project folder has
+   been renamed once already and took every harness down with it.
+   pathToFileURL handles Windows separators; hand-rolling that escaping
+   is what broke the first attempt. */
+const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
+const api = (f, bust) => pathToFileURL(join(ROOT, 'api', f)).href + (bust ? '?' + bust : '');
+
 /* Drive api/ai.mjs directly with a stub req/res and a stubbed fetch,
    to prove the throttle actually returns 429 and stops calling
    upstream — rather than assuming it does because the code reads right. */
@@ -15,7 +25,7 @@ globalThis.fetch = async () => {
   };
 };
 
-const { default: handler } = await import('file:///C:/projects/OnSite/api/ai.mjs');
+const { default: handler } = await import(api("ai.mjs"));
 
 function call(ip, body) {
   const req = {

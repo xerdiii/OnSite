@@ -6,15 +6,14 @@
    a price in demo.js and this page changes with it.
 
    ── What is actually charged ──────────────────────────────────
-   Paddle holds catalogue prices for the three websites only. A browser
-   cannot invent an amount at checkout — that is the whole security
-   model — so the card is charged 25% of the WEBSITE, never 25% of the
-   basket. Extras are carried in customData, listed in the order email
-   and invoiced with the balance.
+   Prices for the three websites are fixed; extras are quoted. A browser
+   The deposit is 25% of the WEBSITE, never 25% of the basket. Extras
+   are quoted with the balance rather than up front, because their
+   scope is agreed in the conversation.
 
-   The summary therefore separates "total" from "pay today" and says
-   which is which. Quoting a today-figure that includes extras would be
-   a number Paddle then refuses to take.
+   The summary therefore separates "total" from "deposit" and says
+   which is which. Nothing here charges anything — the figures exist so
+   the customer knows where they stand before they get in touch.
    ─────────────────────────────────────────────────────────────── */
 (function (global) {
   'use strict';
@@ -61,8 +60,7 @@
       if (!state.extras[k] || !byKey[k]) return;
       extras += byKey[k].cents; n += 1;
     });
-    // 25% of the website, floored — the same rule as everywhere else,
-    // and the only figure Paddle will actually charge.
+    // 25% of the website, floored — the same rule as everywhere else.
     var deposit = Math.floor(website * 0.25);
     return {
       website: website, extras: extras, count: n,
@@ -172,7 +170,7 @@
       btn.disabled = !ready;
     });
     [].forEach.call(doc.querySelectorAll('[data-bd-cta-text]'), function (el) {
-      el.textContent = ready ? 'Pay ' + money(t.deposit) + ' and start' : 'Choose a website first';
+      el.textContent = ready ? 'Send this to us' : 'Choose a website first';
     });
 
     var clear = doc.querySelector('[data-bd-clear]');
@@ -193,28 +191,12 @@
     }
   }
 
-  /* ── Checkout ───────────────────────────────────────────────── */
+  /* ── Hand over to a person ──────────────────────────────────── */
   function checkout() {
     if (!state.tier) return;
-    var t = totals();
-    var picked = Object.keys(state.extras).filter(function (k) { return state.extras[k] && byKey[k]; });
-
-    var P = global.SitehousePaddle;
-    if (P && P.configured && P.configured()) {
-      // Extras ride along as data. Paddle charges the catalogue price
-      // for the website deposit and nothing this page could alter.
-      P.openWith(state.tier, {
-        extras: picked.map(function (k) { return byKey[k].name; }).join(', '),
-        extras_count: picked.length,
-        extras_cents: t.extras,
-        basket_total_cents: t.total
-      });
-      return;
-    }
-
-    // Checkout not live yet — hand them to the page that starts a
-    // conversation rather than a dead button.
-    global.location.href = 'start.html';
+    /* Nothing is charged on this site. The picks stay in localStorage
+       under sitehouse.build, so the conversation can pick them up. */
+    global.location.href = 'contact.html';
   }
 
   function wire() {

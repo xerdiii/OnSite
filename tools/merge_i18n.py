@@ -3,7 +3,11 @@ Hand-written entries already in i18n.js win over JSON values.
 Usage: python tools/merge_i18n.py"""
 import json, re, io, os
 
-ROOT = 'C:/projects/OnSite'
+import os
+
+# Resolved from this file, never hardcoded - the project folder has
+# been renamed once already and took every tool down with it.
+ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 I18N = os.path.join(ROOT, 'assets', 'i18n.js')
 LANGS = ['sq', 'de', 'fr', 'it', 'es', 'pt', 'nl', 'sv', 'tr']
 
