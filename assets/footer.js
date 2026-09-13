@@ -89,7 +89,6 @@
             '<a href="support.html">Help &amp; support</a>' +
             '<span>Xovah</span>' +
             '<a data-mail href="mailto:info@xovahweb.com"><span data-mail-display>info@xovahweb.com</span></a>' +
-            '<a data-wa href="#"><span data-wa-display>WhatsApp</span></a>' +
             '<a data-ig href="#">Instagram</a>' +
           '</div>' +
         '</div>' +

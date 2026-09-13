@@ -94,8 +94,8 @@
       /* 503 means the mail service is not configured; anything else is
          a genuine failure. Either way the message did not arrive, so
          say so and give a route that does work. */
-      var alt = 'Please reach us on <a data-wa href="#">WhatsApp</a> or at ' +
-                '<a data-mail href="mailto:info@xovahweb.com">info@xovahweb.com</a> instead.';
+      var alt = 'Please reach us at <a data-mail href="mailto:info@xovahweb.com">info@xovahweb.com</a> ' +
+                'or on <a data-ig href="#">Instagram</a> instead.';
       say('bad', r.status === 503
         ? '<strong>Sending is temporarily unavailable.</strong><br>Your message was not delivered. ' + alt
         : '<strong>That did not send.</strong><br>Your message was not delivered. ' + alt);
@@ -103,8 +103,8 @@
     }).catch(function () {
       say('bad',
         '<strong>No connection.</strong><br>Your message was not delivered. ' +
-        'Please reach us on <a data-wa href="#">WhatsApp</a> or at ' +
-        '<a data-mail href="mailto:info@xovahweb.com">info@xovahweb.com</a>.');
+        'Please reach us at <a data-mail href="mailto:info@xovahweb.com">info@xovahweb.com</a> ' +
+        'or on <a data-ig href="#">Instagram</a>.');
       if (global.XovahContact) global.XovahContact.apply(note);
     }).then(function () {
       btn.disabled = false;

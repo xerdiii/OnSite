@@ -277,13 +277,6 @@ h1.doc-title {
 .chan-btn:hover { border-color: rgb(var(--c-ink)); }
 .chan-btn:focus-visible { outline: 2px solid rgb(var(--c-accent)); outline-offset: 2px; }
 
-/* The channel that answers fastest carries the accent. */
-.chan-btn--wa {
-  border-color: rgb(var(--c-accent));
-  color: rgb(var(--c-accent-text));
-}
-.chan-btn--wa:hover { background: rgb(var(--c-accent-tint)); border-color: rgb(var(--c-accent)); }
-
 /* One quiet line under the pricing grid, in place of the block that
    used to restate every channel there. */
 .price-next-line {
@@ -317,7 +310,6 @@ h1.doc-title {
   color: rgb(var(--c-ink)); text-decoration: none;
 }
 .site-menu-chan svg { width: 1.05rem; height: 1.05rem; flex: 0 0 auto; }
-.site-menu-chan--wa { color: rgb(var(--c-accent-text)); border-color: rgb(var(--c-accent) / 0.5); }
 
 /* ── Pricing CTA row ────────────────────────────────────────────
    Under the three cards: one line that says what happens next, so a
