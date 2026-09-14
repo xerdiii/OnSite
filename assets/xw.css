@@ -1,0 +1,1137 @@
+/* ───────────────────────────────────────────────────────────────
+   XOVAHWEB — the design system
+
+   Dark, editorial, technical. One accent, used only where something
+   is live, selected, or being pointed at. Everything else is ink,
+   line and space — colour spent on decoration is what makes a page
+   look cheap, and this page is selling the opposite.
+
+   Principles the rest of the file obeys:
+
+   · One scale. Type, space and radius all come from tokens below.
+     No page invents a size.
+   · Borders do the structural work. 1px hairlines, never shadows,
+     because shadows on near-black read as smudges.
+   · Motion is small and it means something: a row lifting under the
+     cursor, an arrow moving the way it points. Nothing floats,
+     pulses or glows.
+   · Every interactive thing is at least 44px on a touch screen.
+   ─────────────────────────────────────────────────────────────── */
+
+/* ══ Tokens ═════════════════════════════════════════════════════ */
+:root {
+  /* Near-black, not black: #08090B. True black kills the hairlines
+     and makes photographs look like holes cut in the page. */
+  --xw-bg:        8   9  11;
+  --xw-bg-2:     13  15  18;   /* raised panels */
+  --xw-bg-3:     18  21  25;   /* cards on panels */
+
+  --xw-ink:     244 245 247;
+  --xw-ink-2:   158 165 175;   /* body copy */
+  --xw-ink-3:   107 114 124;   /* labels, meta */
+
+  --xw-line:     31  35  41;   /* hairline */
+  --xw-line-2:   47  53  61;   /* hairline, emphasised */
+
+  /* Electric blue. Restrained: it appears on roughly six things per
+     screen and never as a fill behind long text. */
+  --xw-blue:     58 130 255;
+  --xw-blue-hi:  96 158 255;
+  --xw-blue-dim: 30  62 122;
+
+  --xw-shell: 78rem;
+  --xw-gut: clamp(1.25rem, 5vw, 3rem);
+
+  --xw-r: 4px;                 /* the whole site's corner radius */
+  --xw-r-lg: 8px;
+
+  --xw-ease: cubic-bezier(.22, 1, .36, 1);
+  --xw-quick: 180ms var(--xw-ease);
+  --xw-slow: 620ms var(--xw-ease);
+}
+
+/* ══ Reset, scoped ══════════════════════════════════════════════
+   Only what the redesign needs. The page opts in with .xw so the
+   builder and the legal pages are untouched until they are moved
+   over too. */
+.xw {
+  background: rgb(var(--xw-bg));
+  color: rgb(var(--xw-ink));
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 0;
+  /* One horizontal rule for the whole document: nothing may spill. */
+  overflow-x: hidden;
+}
+.xw *, .xw *::before, .xw *::after { box-sizing: border-box; }
+.xw img, .xw video { display: block; max-width: 100%; }
+.xw a { color: inherit; text-decoration: none; }
+.xw h1, .xw h2, .xw h3, .xw h4, .xw p, .xw figure, .xw ul, .xw ol { margin: 0; }
+.xw ul, .xw ol { list-style: none; padding: 0; }
+.xw button { font: inherit; color: inherit; background: none; border: 0; cursor: pointer; }
+.xw ::selection { background: rgb(var(--xw-blue) / 0.3); color: #fff; }
+
+.xw :focus-visible {
+  outline: 2px solid rgb(var(--xw-blue));
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+/* ══ Layout ═════════════════════════════════════════════════════ */
+.xw-shell {
+  width: 100%;
+  max-width: var(--xw-shell);
+  margin: 0 auto;
+  padding-left: var(--xw-gut);
+  padding-right: var(--xw-gut);
+}
+
+/* Sections are separated by hairlines, not by whitespace alone —
+   that is what gives an editorial page its grid. */
+.xw-band { border-top: 1px solid rgb(var(--xw-line)); }
+.xw-band--flush { border-top: 0; }
+.xw-pad { padding-block: clamp(4.5rem, 11vw, 9rem); }
+.xw-pad-sm { padding-block: clamp(3rem, 7vw, 5rem); }
+
+/* ══ Type ═══════════════════════════════════════════════════════ */
+.xw-eyebrow {
+  font-family: 'IBM Plex Mono', ui-monospace, monospace;
+  font-size: 0.6875rem;
+  font-weight: 400;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgb(var(--xw-ink-3));
+}
+.xw-eyebrow--blue { color: rgb(var(--xw-blue-hi)); }
+
+/* The display face. Outfit at a light weight, tightened hard — the
+   tracking is what separates this from a default Tailwind page. */
+.xw-display {
+  font-family: 'Outfit', sans-serif;
+  font-weight: 300;
+  letter-spacing: -0.045em;
+  line-height: 0.98;
+  color: rgb(var(--xw-ink));
+  text-wrap: balance;
+}
+.xw-h1 { font-size: clamp(2.35rem, 5vw, 4.15rem); }
+.xw-h2 { font-size: clamp(2.1rem, 4.6vw, 3.5rem); }
+.xw-h3 { font-size: clamp(1.4rem, 2.4vw, 1.9rem); letter-spacing: -0.03em; line-height: 1.1; }
+
+.xw-display em { font-style: normal; color: rgb(var(--xw-blue-hi)); }
+
+.xw-lede {
+  font-size: clamp(0.9375rem, 1.5vw, 1.0625rem);
+  line-height: 1.7;
+  color: rgb(var(--xw-ink-2));
+  max-width: 46ch;
+}
+.xw-sub { font-size: 0.9375rem; line-height: 1.65; color: rgb(var(--xw-ink-2)); }
+.xw-meta { font-size: 0.8125rem; color: rgb(var(--xw-ink-3)); }
+.xw-mono {
+  font-family: 'IBM Plex Mono', ui-monospace, monospace;
+  font-variant-numeric: tabular-nums;
+}
+
+/* ══ Buttons ════════════════════════════════════════════════════ */
+.xw-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  min-height: 46px;
+  padding: 0 1.3rem;
+  border: 1px solid transparent;
+  border-radius: var(--xw-r);
+  font-size: 0.875rem;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  white-space: nowrap;
+  transition: background-color var(--xw-quick), border-color var(--xw-quick), color var(--xw-quick);
+}
+.xw-btn__arrow {
+  width: 14px; height: 14px; flex: none;
+  transition: transform var(--xw-quick);
+}
+.xw-btn:hover .xw-btn__arrow { transform: translateX(3px); }
+
+.xw-btn--blue { background: rgb(var(--xw-blue)); color: #fff; }
+.xw-btn--blue:hover { background: rgb(var(--xw-blue-hi)); }
+
+.xw-btn--ghost {
+  border-color: rgb(var(--xw-line-2));
+  color: rgb(var(--xw-ink));
+}
+.xw-btn--ghost:hover { border-color: rgb(var(--xw-ink-3)); background: rgb(var(--xw-ink) / 0.03); }
+
+.xw-btn--light { background: rgb(var(--xw-ink)); color: rgb(var(--xw-bg)); }
+.xw-btn--light:hover { background: #fff; }
+
+.xw-btn--lg { min-height: 54px; padding: 0 1.7rem; font-size: 0.9375rem; }
+
+/* A text link that behaves like a button without looking like one. */
+.xw-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: rgb(var(--xw-blue-hi));
+}
+.xw-link svg { width: 13px; height: 13px; transition: transform var(--xw-quick); }
+.xw-link:hover svg { transform: translateX(3px); }
+
+/* ══ Navigation ═════════════════════════════════════════════════ */
+.xw-nav {
+  position: fixed;
+  inset: 0 0 auto 0;
+  z-index: 60;
+  border-bottom: 1px solid transparent;
+  transition: background-color 300ms ease, border-color 300ms ease, backdrop-filter 300ms ease;
+}
+/* Compacts and frosts once the hero is behind it, so the wordmark
+   never has to fight the device mockup for contrast. */
+.xw-nav.is-stuck {
+  background: rgb(var(--xw-bg) / 0.72);
+  backdrop-filter: blur(14px) saturate(1.4);
+  -webkit-backdrop-filter: blur(14px) saturate(1.4);
+  border-bottom-color: rgb(var(--xw-line));
+}
+.xw-nav__in {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  height: 76px;
+  transition: height 300ms var(--xw-ease);
+}
+.xw-nav.is-stuck .xw-nav__in { height: 62px; }
+
+.xw-brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  flex: none;
+}
+.xw-brand__mark { width: 22px; height: 22px; flex: none; color: rgb(var(--xw-ink)); }
+.xw-brand__word {
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.9375rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.xw-nav__links {
+  display: none;
+  align-items: center;
+  gap: 2.25rem;
+}
+@media (min-width: 900px) { .xw-nav__links { display: flex; } }
+
+.xw-nav__link {
+  position: relative;
+  font-size: 0.8125rem;
+  font-weight: 450;
+  letter-spacing: 0.01em;
+  color: rgb(var(--xw-ink-2));
+  padding: 0.4rem 0;
+  transition: color var(--xw-quick);
+}
+.xw-nav__link:hover { color: rgb(var(--xw-ink)); }
+/* The underline grows from the left rather than fading in, which
+   reads as deliberate instead of as a hover state nobody styled. */
+.xw-nav__link::after {
+  content: "";
+  position: absolute;
+  left: 0; bottom: 0;
+  height: 1px; width: 100%;
+  background: rgb(var(--xw-blue));
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 280ms var(--xw-ease);
+}
+.xw-nav__link:hover::after,
+.xw-nav__link.is-on::after { transform: scaleX(1); }
+.xw-nav__link.is-on { color: rgb(var(--xw-ink)); }
+
+.xw-nav__right { display: flex; align-items: center; gap: 0.75rem; flex: none; }
+.xw-nav__cta { display: none; }
+@media (min-width: 560px) { .xw-nav__cta { display: inline-flex; } }
+
+/* ── Burger ──────────────────────────────────────────────────── */
+.xw-burger {
+  display: grid;
+  place-items: center;
+  width: 44px; height: 44px;
+  margin-right: -0.6rem;
+  border-radius: var(--xw-r);
+}
+@media (min-width: 900px) { .xw-burger { display: none; } }
+.xw-burger span {
+  display: block;
+  width: 18px; height: 1.5px;
+  background: rgb(var(--xw-ink));
+  transition: transform 300ms var(--xw-ease), opacity 160ms ease;
+}
+.xw-burger span + span { margin-top: 5px; }
+.xw-burger[aria-expanded="true"] span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+.xw-burger[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
+.xw-burger[aria-expanded="true"] span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+/* ── The phone menu ──────────────────────────────────────────── */
+.xw-menu {
+  position: fixed;
+  inset: 0;
+  z-index: 55;
+  display: flex;
+  flex-direction: column;
+  padding: 100px var(--xw-gut) calc(2rem + env(safe-area-inset-bottom, 0px));
+  background: rgb(var(--xw-bg));
+  /* Not display:none — the links animate in, and a display switch
+     cancels an animation before its first frame. */
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 260ms ease, visibility 0s linear 260ms;
+}
+.xw-menu.is-open {
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 260ms ease, visibility 0s;
+}
+.xw-menu__link {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1.05rem 0;
+  border-bottom: 1px solid rgb(var(--xw-line));
+  font-family: 'Outfit', sans-serif;
+  font-size: 1.75rem;
+  font-weight: 300;
+  letter-spacing: -0.03em;
+  color: rgb(var(--xw-ink));
+  opacity: 0;
+  transform: translateY(14px);
+}
+.xw-menu.is-open .xw-menu__link {
+  animation: xw-menu-in 520ms var(--xw-ease) forwards;
+  animation-delay: calc(60ms + var(--i, 0) * 55ms);
+}
+.xw-menu__link i {
+  font-family: 'IBM Plex Mono', ui-monospace, monospace;
+  font-style: normal;
+  font-size: 0.6875rem;
+  letter-spacing: 0.16em;
+  color: rgb(var(--xw-ink-3));
+}
+@keyframes xw-menu-in { to { opacity: 1; transform: none; } }
+.xw-menu__foot { margin-top: auto; padding-top: 2rem; }
+.xw-menu__foot .xw-btn { width: 100%; }
+
+/* ══ Hero ═══════════════════════════════════════════════════════ */
+.xw-hero {
+  position: relative;
+  padding-top: clamp(7rem, 14vw, 10rem);
+  padding-bottom: clamp(3rem, 7vw, 5rem);
+  overflow: hidden;
+}
+/* One soft pool of blue behind the device, low opacity, no blur
+   filter — a blurred pseudo-element on a full-width section is the
+   single most expensive thing a page like this can paint. */
+.xw-hero::before {
+  content: "";
+  position: absolute;
+  top: -20%; right: -10%;
+  width: 70vw; height: 70vw;
+  max-width: 900px; max-height: 900px;
+  background: radial-gradient(circle, rgb(var(--xw-blue) / 0.13) 0%, rgb(var(--xw-blue) / 0) 62%);
+  pointer-events: none;
+}
+.xw-hero__grid {
+  position: relative;
+  display: grid;
+  gap: clamp(3rem, 6vw, 4rem);
+  align-items: center;
+}
+@media (min-width: 1000px) {
+  .xw-hero__grid { grid-template-columns: minmax(0, 0.92fr) minmax(0, 1.08fr); gap: clamp(2.5rem, 4vw, 4rem); }
+}
+.xw-hero__copy > * + * { margin-top: 1.5rem; }
+.xw-hero__h { max-width: 17ch; }
+.xw-hero__actions { display: flex; flex-wrap: wrap; gap: 0.7rem; }
+.xw-hero__note {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  margin-top: 2.25rem;
+  font-size: 0.75rem;
+  color: rgb(var(--xw-ink-3));
+}
+.xw-hero__note svg { width: 14px; height: 14px; color: rgb(var(--xw-blue-hi)); }
+
+/* ══ The device showcase ════════════════════════════════════════
+   A laptop and a phone, drawn in CSS, each containing a real page
+   rendered in real markup rather than a screenshot. It stays sharp
+   at every density, it themes with the site, and it costs one image
+   request instead of three.
+
+   The whole cluster scales with a single custom property, so the
+   composition holds at any width instead of being rebuilt per
+   breakpoint. */
+.xw-stage {
+  position: relative;
+  --s: 1;
+  aspect-ratio: 16 / 10.5;
+  perspective: 1500px;
+}
+@media (min-width: 1000px) {
+  /* Past the shell on the right. The laptop is the subject; boxing it
+     inside the text column makes it look like a stock photo. */
+  .xw-stage { margin-right: calc(var(--xw-gut) * -1); }
+}
+@media (min-width: 1400px) {
+  .xw-stage { margin-right: clamp(-6rem, -4vw, -2rem); }
+}
+@media (max-width: 640px) { .xw-stage { --s: 0.94; aspect-ratio: 16 / 11.5; } }
+
+.xw-laptop {
+  position: absolute;
+  left: 0; top: 50%;
+  width: 84%;
+  transform: translateY(-50%) rotateY(-9deg) rotateX(3deg) scale(var(--s));
+  transform-style: preserve-3d;
+  transition: transform var(--xw-slow);
+}
+.xw-stage:hover .xw-laptop { transform: translateY(-50%) rotateY(-6deg) rotateX(2deg) scale(calc(var(--s) * 1.012)); }
+
+.xw-laptop__screen {
+  position: relative;
+  border: 1px solid rgb(var(--xw-line-2));
+  border-radius: 10px;
+  background: rgb(var(--xw-bg-2));
+  padding: 9px 9px 10px;
+  box-shadow: 0 40px 80px -30px rgb(0 0 0 / 0.9);
+}
+.xw-laptop__glass {
+  position: relative;
+  aspect-ratio: 16 / 10;
+  border-radius: 4px;
+  overflow: hidden;
+  background: rgb(var(--xw-bg-3));
+}
+/* The shine. A single linear gradient at a low opacity, which is
+   what makes glass read as glass without a filter. */
+.xw-laptop__glass::after {
+  content: "";
+  position: absolute; inset: 0;
+  background: linear-gradient(105deg, rgb(255 255 255 / 0.07) 0%, rgb(255 255 255 / 0) 38%);
+  pointer-events: none;
+}
+.xw-laptop__base {
+  position: relative;
+  height: 14px;
+  margin: 0 -6.5%;
+  border-radius: 0 0 12px 12px;
+  background: linear-gradient(180deg, rgb(var(--xw-line-2)) 0%, rgb(var(--xw-bg-2)) 62%, rgb(var(--xw-bg)) 100%);
+  border: 1px solid rgb(var(--xw-line));
+  border-top: 0;
+  box-shadow: 0 26px 40px -22px rgb(0 0 0 / 0.9);
+}
+/* The notch a hand goes into. Two pixels of detail that stop the
+   shape reading as a grey rectangle. */
+.xw-laptop__base::after {
+  content: "";
+  position: absolute;
+  left: 50%; top: 0;
+  transform: translateX(-50%);
+  width: 14%; height: 3px;
+  border-radius: 0 0 4px 4px;
+  background: rgb(var(--xw-bg) / 0.8);
+}
+.xw-laptop__notch {
+  width: 14%; height: 4px;
+  margin: 0 auto;
+  border-radius: 0 0 4px 4px;
+  background: rgb(var(--xw-line-2));
+}
+
+.xw-phone {
+  position: absolute;
+  right: 0; top: 50%;
+  width: 27.5%;
+  /* Sits forward of the laptop and a touch lower, so the two read as
+     one object photographed together rather than two pasted side by
+     side. */
+  transform: translateY(-44%) rotateY(-9deg) scale(var(--s));
+  transition: transform var(--xw-slow);
+  z-index: 2;
+}
+.xw-stage:hover .xw-phone { transform: translateY(-46%) rotateY(-6deg) scale(calc(var(--s) * 1.012)); }
+.xw-phone__body {
+  border: 1px solid rgb(var(--xw-line-2));
+  border-radius: 20px;
+  background: rgb(var(--xw-bg-2));
+  padding: 5px;
+  box-shadow: 0 30px 60px -22px rgb(0 0 0 / 0.95);
+}
+.xw-phone__glass {
+  position: relative;
+  aspect-ratio: 9 / 19;
+  border-radius: 16px;
+  overflow: hidden;
+  background: rgb(var(--xw-bg-3));
+}
+.xw-phone__pill {
+  position: absolute;
+  top: 6px; left: 50%;
+  transform: translateX(-50%);
+  width: 26%; height: 4px;
+  border-radius: 99px;
+  background: rgb(var(--xw-bg));
+  z-index: 3;
+}
+
+/* ── What is inside the screens ───────────────────────────────
+   A miniature site. Sizes are in em so the whole thing scales with
+   one font-size on the frame, which is how it survives going from a
+   1200px laptop to a 90px phone. */
+.xw-mini { font-size: 8px; color: #e8eaee; height: 100%; display: flex; flex-direction: column; }
+.xw-phone .xw-mini { font-size: 3.6px; }
+@media (max-width: 1000px) { .xw-mini { font-size: 7px; } .xw-phone .xw-mini { font-size: 3.2px; } }
+@media (max-width: 640px) { .xw-mini { font-size: 5.2px; } .xw-phone .xw-mini { font-size: 2.6px; } }
+
+.xw-mini__bar {
+  display: flex; align-items: center; gap: 1em;
+  padding: 1.1em 1.4em;
+  border-bottom: 1px solid rgb(255 255 255 / 0.07);
+  flex: none;
+}
+.xw-mini__dot { width: 0.55em; height: 0.55em; border-radius: 50%; background: rgb(255 255 255 / 0.18); }
+.xw-mini__logo { font-weight: 600; letter-spacing: 0.18em; font-size: 0.95em; text-transform: uppercase; }
+.xw-mini__nav { margin-left: auto; display: flex; gap: 1.3em; font-size: 0.85em; color: rgb(255 255 255 / 0.45); }
+.xw-mini__pill {
+  margin-left: 0.6em; padding: 0.35em 0.9em; border-radius: 99px;
+  background: rgb(var(--xw-blue)); color: #fff; font-size: 0.8em; font-weight: 600;
+}
+.xw-mini__body { flex: 1; min-height: 0; padding: 2.2em 1.6em; display: flex; flex-direction: column; }
+.xw-mini__kicker { font-size: 0.8em; letter-spacing: 0.24em; color: rgb(var(--xw-blue-hi)); text-transform: uppercase; }
+.xw-mini__h {
+  margin-top: 0.9em;
+  font-family: 'Outfit', sans-serif; font-weight: 300;
+  font-size: 3.1em; line-height: 0.95; letter-spacing: -0.04em;
+}
+.xw-mini__p { margin-top: 1.1em; font-size: 0.95em; line-height: 1.6; color: rgb(255 255 255 / 0.5); max-width: 22em; }
+.xw-mini__row { margin-top: 1.6em; display: flex; gap: 0.7em; }
+.xw-mini__btn { padding: 0.65em 1.4em; border-radius: 0.4em; font-size: 0.85em; font-weight: 600; }
+.xw-mini__btn--f { background: rgb(var(--xw-blue)); color: #fff; }
+.xw-mini__btn--o { border: 1px solid rgb(255 255 255 / 0.2); color: rgb(255 255 255 / 0.75); }
+.xw-mini__strip { margin-top: auto; display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.7em; }
+.xw-mini__tile {
+  aspect-ratio: 4 / 3;
+  border-radius: 0.35em;
+  background-size: cover;
+  background-position: center;
+  border: 1px solid rgb(255 255 255 / 0.06);
+}
+.xw-phone .xw-mini__body { padding: 2em 1.4em; }
+.xw-phone .xw-mini__strip { grid-template-columns: 1fr 1fr; }
+
+/* ══ Trust bar ══════════════════════════════════════════════════ */
+.xw-trust {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1.25rem clamp(1.5rem, 4vw, 3.25rem);
+}
+.xw-trust__label { flex: none; }
+.xw-trust__list {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1rem clamp(1.5rem, 4vw, 3rem);
+  margin-left: auto;
+}
+.xw-trust__item {
+  font-family: 'Outfit', sans-serif;
+  font-size: clamp(0.8125rem, 1.4vw, 0.9375rem);
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgb(var(--xw-ink-3));
+  transition: color var(--xw-quick);
+}
+.xw-trust__item:hover { color: rgb(var(--xw-ink-2)); }
+
+/* ══ Section heads ══════════════════════════════════════════════ */
+.xw-head {
+  display: grid;
+  gap: 1.5rem;
+  align-items: end;
+}
+@media (min-width: 900px) {
+  .xw-head { grid-template-columns: minmax(0, 1fr) auto; gap: 2rem 3rem; }
+}
+.xw-head__h { margin-top: 1.1rem; }
+
+/* ══ Work ═══════════════════════════════════════════════════════
+   An asymmetric grid: one tall feature, then a stack. Identical
+   cards in a 3-up row is the layout every template ships with, and
+   it is the fastest way to look like one. */
+.xw-work {
+  display: grid;
+  gap: clamp(0.75rem, 1.4vw, 1rem);
+  margin-top: clamp(2.5rem, 5vw, 3.5rem);
+}
+@media (min-width: 860px) {
+  .xw-work {
+    grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+    grid-template-rows: auto auto;
+  }
+  .xw-work__item--feature { grid-row: span 2; }
+  .xw-work__item--wide { grid-column: span 2; }
+}
+
+.xw-work__item {
+  position: relative;
+  display: block;
+  border: 1px solid rgb(var(--xw-line));
+  border-radius: var(--xw-r-lg);
+  background: rgb(var(--xw-bg-2));
+  overflow: hidden;
+  transition: border-color 320ms ease, transform 420ms var(--xw-ease);
+}
+.xw-work__item:hover { border-color: rgb(var(--xw-line-2)); transform: translateY(-3px); }
+
+.xw-work__shot {
+  position: relative;
+  overflow: hidden;
+  background: rgb(var(--xw-bg-3));
+}
+.xw-work__item--feature .xw-work__shot { aspect-ratio: 4 / 5; }
+.xw-work__item--small .xw-work__shot { aspect-ratio: 16 / 10; }
+.xw-work__item--wide .xw-work__shot { aspect-ratio: 21 / 9; }
+
+.xw-work__img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  transform: scale(1.01);
+  transition: transform 900ms var(--xw-ease), opacity 400ms ease;
+  opacity: 0.86;
+}
+.xw-work__item:hover .xw-work__img { transform: scale(1.06); opacity: 1; }
+/* Keeps the caption legible over any photograph without washing the
+   image out with a flat overlay. */
+.xw-work__shot::after {
+  content: "";
+  position: absolute; inset: 0;
+  background: linear-gradient(180deg, rgb(var(--xw-bg) / 0.15) 0%, rgb(var(--xw-bg) / 0) 40%, rgb(var(--xw-bg) / 0.82) 100%);
+  pointer-events: none;
+}
+
+.xw-work__cap {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1.1rem 1.25rem 1.25rem;
+}
+.xw-work__name {
+  font-family: 'Outfit', sans-serif;
+  font-size: 1.0625rem;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+}
+.xw-work__item--feature .xw-work__name { font-size: clamp(1.25rem, 2.2vw, 1.6rem); }
+.xw-work__meta {
+  margin-top: 0.3rem;
+  font-family: 'IBM Plex Mono', ui-monospace, monospace;
+  font-size: 0.6875rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgb(var(--xw-ink-3));
+}
+.xw-work__go {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  flex: none;
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: rgb(var(--xw-ink-3));
+  transition: color var(--xw-quick);
+}
+.xw-work__go svg { width: 13px; height: 13px; transition: transform var(--xw-quick); }
+.xw-work__item:hover .xw-work__go { color: rgb(var(--xw-blue-hi)); }
+.xw-work__item:hover .xw-work__go svg { transform: translate(3px, -3px); }
+
+/* ══ Services ═══════════════════════════════════════════════════
+   Numbered rows, two columns on desktop. Hairlines, not boxes. */
+.xw-svc {
+  display: grid;
+  gap: 0 clamp(2rem, 5vw, 4.5rem);
+  margin-top: clamp(2rem, 4vw, 3rem);
+}
+@media (min-width: 900px) { .xw-svc { grid-template-columns: 1fr 1fr; } }
+
+.xw-svc__row {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  gap: 0 1.25rem;
+  align-items: start;
+  padding: 1.5rem 0;
+  border-top: 1px solid rgb(var(--xw-line));
+  transition: border-color var(--xw-quick);
+}
+.xw-svc__row:hover { border-color: rgb(var(--xw-line-2)); }
+/* The sweep. Sits behind the text, clipped to the row, and slides in
+   from the left — cheap, and it reads as the row waking up. */
+.xw-svc__row::before {
+  content: "";
+  position: absolute;
+  inset: 0 -1rem;
+  background: linear-gradient(90deg, rgb(var(--xw-blue) / 0.06), rgb(var(--xw-blue) / 0));
+  opacity: 0;
+  transition: opacity 260ms ease;
+  pointer-events: none;
+  border-radius: var(--xw-r);
+}
+.xw-svc__row { position: relative; }
+.xw-svc__row:hover::before { opacity: 1; }
+
+.xw-svc__n {
+  font-family: 'IBM Plex Mono', ui-monospace, monospace;
+  font-size: 0.75rem;
+  color: rgb(var(--xw-ink-3));
+  padding-top: 0.32rem;
+  transition: color var(--xw-quick);
+}
+.xw-svc__row:hover .xw-svc__n { color: rgb(var(--xw-blue-hi)); }
+/* Both are spans inside a span, so without this the title and the
+   description run together on one line. */
+.xw-svc__t, .xw-svc__d { display: block; }
+.xw-svc__t {
+  font-size: 1.0625rem;
+  font-weight: 500;
+  letter-spacing: -0.015em;
+  color: rgb(var(--xw-ink));
+}
+.xw-svc__d { margin-top: 0.3rem; font-size: 0.8125rem; line-height: 1.6; color: rgb(var(--xw-ink-3)); }
+.xw-svc__a {
+  width: 15px; height: 15px;
+  margin-top: 0.4rem;
+  color: rgb(var(--xw-ink-3));
+  transition: transform var(--xw-quick), color var(--xw-quick);
+}
+.xw-svc__row:hover .xw-svc__a { transform: translateX(4px); color: rgb(var(--xw-blue-hi)); }
+
+/* ══ Process ════════════════════════════════════════════════════ */
+.xw-proc {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+}
+.xw-proc__bg {
+  position: absolute; inset: 0;
+  z-index: -2;
+  width: 100%; height: 100%;
+  object-fit: cover;
+  opacity: 0.26;
+  /* Stripped of its own colour. The photograph is here as texture;
+     left warm it fights the blue accent and the near-black ground,
+     and the section stops reading as part of the same site. */
+  filter: grayscale(1) contrast(1.15) brightness(0.8);
+}
+.xw-proc::after {
+  content: "";
+  position: absolute; inset: 0;
+  z-index: -1;
+  background: linear-gradient(90deg, rgb(var(--xw-bg)) 8%, rgb(var(--xw-bg) / 0.72) 55%, rgb(var(--xw-bg) / 0.88) 100%);
+}
+.xw-proc__steps {
+  display: grid;
+  gap: 0;
+  margin-top: clamp(2.5rem, 5vw, 3.5rem);
+  border-top: 1px solid rgb(var(--xw-line-2));
+}
+@media (min-width: 780px) {
+  .xw-proc__steps { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+}
+.xw-proc__step {
+  padding: 1.75rem 1.5rem 1.75rem 0;
+  border-bottom: 1px solid rgb(var(--xw-line));
+}
+@media (min-width: 780px) {
+  .xw-proc__step { border-bottom: 0; border-left: 1px solid rgb(var(--xw-line)); padding: 1.75rem 1.5rem; }
+  .xw-proc__step:first-child { border-left: 0; padding-left: 0; }
+}
+.xw-proc__n {
+  font-family: 'IBM Plex Mono', ui-monospace, monospace;
+  font-size: 0.6875rem;
+  letter-spacing: 0.16em;
+  color: rgb(var(--xw-blue-hi));
+}
+.xw-proc__t {
+  margin-top: 0.85rem;
+  font-family: 'Outfit', sans-serif;
+  font-size: 1.05rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+.xw-proc__d { margin-top: 0.6rem; font-size: 0.8125rem; line-height: 1.65; color: rgb(var(--xw-ink-3)); max-width: 30ch; }
+
+/* ══ Pricing ════════════════════════════════════════════════════ */
+.xw-plans {
+  display: grid;
+  gap: clamp(0.75rem, 1.4vw, 1rem);
+  margin-top: clamp(2.5rem, 5vw, 3.5rem);
+  align-items: start;
+}
+@media (min-width: 900px) { .xw-plans { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+
+.xw-plan {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  padding: 1.75rem 1.5rem 1.5rem;
+  border: 1px solid rgb(var(--xw-line));
+  border-radius: var(--xw-r-lg);
+  background: rgb(var(--xw-bg-2));
+  transition: border-color 300ms ease, background-color 300ms ease;
+}
+.xw-plan:hover { border-color: rgb(var(--xw-line-2)); }
+.xw-plan--lead {
+  border-color: rgb(var(--xw-blue) / 0.55);
+  background: linear-gradient(180deg, rgb(var(--xw-blue) / 0.05), rgb(var(--xw-bg-2)) 55%);
+}
+.xw-plan--lead:hover { border-color: rgb(var(--xw-blue) / 0.8); }
+
+.xw-plan__flag {
+  position: absolute;
+  top: -1px; right: 1.25rem;
+  padding: 0.3rem 0.7rem;
+  border-radius: 0 0 var(--xw-r) var(--xw-r);
+  background: rgb(var(--xw-blue));
+  color: #fff;
+  font-family: 'IBM Plex Mono', ui-monospace, monospace;
+  font-size: 0.5625rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+.xw-plan__name {
+  font-family: 'IBM Plex Mono', ui-monospace, monospace;
+  font-size: 0.6875rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgb(var(--xw-ink-3));
+}
+.xw-plan--lead .xw-plan__name { color: rgb(var(--xw-blue-hi)); }
+.xw-plan__for { margin-top: 0.55rem; font-size: 0.8125rem; color: rgb(var(--xw-ink-3)); }
+.xw-plan__fig {
+  display: flex;
+  align-items: baseline;
+  gap: 0.45rem;
+  margin-top: 1.4rem;
+  padding-bottom: 1.4rem;
+  border-bottom: 1px solid rgb(var(--xw-line));
+}
+.xw-plan__amt {
+  font-family: 'Outfit', sans-serif;
+  font-size: clamp(2rem, 3.4vw, 2.6rem);
+  font-weight: 300;
+  letter-spacing: -0.04em;
+  line-height: 1;
+}
+.xw-plan__unit { font-size: 0.75rem; color: rgb(var(--xw-ink-3)); }
+.xw-plan__list { margin-top: 1.25rem; display: grid; gap: 0.6rem; flex: 1; }
+.xw-plan__li {
+  display: flex;
+  gap: 0.6rem;
+  font-size: 0.8125rem;
+  line-height: 1.55;
+  color: rgb(var(--xw-ink-2));
+}
+.xw-plan__li svg { width: 13px; height: 13px; flex: none; margin-top: 0.28rem; color: rgb(var(--xw-blue-hi)); }
+.xw-plan__li--off { color: rgb(var(--xw-ink-3)); }
+.xw-plan__li--off svg { color: rgb(var(--xw-line-2)); }
+.xw-plan__cta { margin-top: 1.5rem; width: 100%; }
+
+/* ══ Extras ═════════════════════════════════════════════════════ */
+.xw-extras {
+  display: grid;
+  gap: 0 clamp(2rem, 5vw, 4.5rem);
+  margin-top: clamp(2rem, 4vw, 3rem);
+}
+@media (min-width: 820px) { .xw-extras { grid-template-columns: 1fr 1fr; } }
+.xw-extra {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1.25rem;
+  padding: 1.15rem 0;
+  border-top: 1px solid rgb(var(--xw-line));
+  transition: border-color var(--xw-quick);
+}
+.xw-extra:hover { border-color: rgb(var(--xw-line-2)); }
+.xw-extra__n { font-size: 0.9375rem; font-weight: 450; color: rgb(var(--xw-ink)); }
+.xw-extra__d { margin-top: 0.22rem; font-size: 0.8125rem; color: rgb(var(--xw-ink-3)); }
+.xw-extra__p {
+  flex: none;
+  font-family: 'IBM Plex Mono', ui-monospace, monospace;
+  font-size: 0.875rem;
+  color: rgb(var(--xw-blue-hi));
+}
+
+/* ══ Closing CTA ════════════════════════════════════════════════ */
+.xw-closer {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  border-radius: var(--xw-r-lg);
+  border: 1px solid rgb(var(--xw-line));
+}
+.xw-closer__bg {
+  position: absolute; inset: 0;
+  z-index: -2;
+  width: 100%; height: 100%;
+  object-fit: cover;
+  opacity: 0.34;
+  filter: grayscale(1) contrast(1.1) brightness(0.85);
+}
+.xw-closer::after {
+  content: "";
+  position: absolute; inset: 0; z-index: -1;
+  background: linear-gradient(100deg, rgb(var(--xw-bg)) 18%, rgb(var(--xw-bg) / 0.55) 100%);
+}
+.xw-closer__in {
+  display: grid;
+  gap: 2rem;
+  align-items: center;
+  padding: clamp(2.5rem, 6vw, 4.5rem) clamp(1.5rem, 4vw, 3.5rem);
+}
+@media (min-width: 860px) { .xw-closer__in { grid-template-columns: minmax(0, 1fr) auto; gap: 3rem; } }
+
+/* ══ Footer ═════════════════════════════════════════════════════ */
+.xw-foot { border-top: 1px solid rgb(var(--xw-line)); }
+.xw-foot__in {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem 2rem;
+  padding-block: 2.25rem;
+}
+.xw-foot__links { display: flex; flex-wrap: wrap; gap: 0.5rem 1.75rem; }
+.xw-foot__links a {
+  font-size: 0.8125rem;
+  color: rgb(var(--xw-ink-3));
+  padding: 0.35rem 0;
+  transition: color var(--xw-quick);
+}
+.xw-foot__links a:hover { color: rgb(var(--xw-ink)); }
+.xw-foot__legal {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem 1.25rem;
+  padding-block: 1.25rem 2.5rem;
+  border-top: 1px solid rgb(var(--xw-line));
+  font-size: 0.75rem;
+  color: rgb(var(--xw-ink-3));
+}
+.xw-foot__legal a { padding: 0.3rem 0; }
+.xw-foot__legal a:hover { color: rgb(var(--xw-ink-2)); }
+
+/* ══ Reveal ═════════════════════════════════════════════════════
+   Opt-in, and the default is visible. An element that starts at
+   opacity 0 and waits for an observer is an element that stays
+   invisible the moment the observer does not fire. xw.js adds
+   .xw-watch only once it knows it can take it away again. */
+.xw-watch [data-xw-in] {
+  opacity: 0;
+  transform: translateY(18px);
+}
+.xw-watch [data-xw-in].is-in {
+  opacity: 1;
+  transform: none;
+  transition: opacity 760ms var(--xw-ease), transform 760ms var(--xw-ease);
+  transition-delay: calc(var(--d, 0) * 80ms);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .xw *, .xw *::before, .xw *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+  .xw-watch [data-xw-in] { opacity: 1; transform: none; }
+  .xw-stage:hover .xw-laptop,
+  .xw-stage:hover .xw-phone { transform: translateY(-50%) scale(var(--s)); }
+}
+
+
+/* ══ The showcase on a phone ════════════════════════════════════
+   Below 560px the laptop and the phone together leave both of them
+   unreadable. One device, full width, is a better photograph than
+   two thumbnails. */
+@media (max-width: 559px) {
+  .xw-stage { aspect-ratio: 16 / 10; }
+  .xw-laptop { width: 100%; transform: translateY(-50%) scale(var(--s)); }
+  .xw-phone { display: none; }
+  .xw-stage:hover .xw-laptop { transform: translateY(-50%) scale(var(--s)); }
+}
+
+/* ══ Work previews ══════════════════════════════════════════════
+   The cards hold a website, not a photograph. A studio's portfolio
+   showing stock imagery reads as a stock-photo site; showing the
+   thing it actually makes reads as a studio.
+
+   Each preview is a browser frame around real markup, so it stays
+   sharp at any density, themes with the site, and costs one small
+   image rather than a screenshot per card. */
+.xw-shot__chrome {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  padding: 0.6rem 0.8rem;
+  border-bottom: 1px solid rgb(255 255 255 / 0.07);
+  background: rgb(var(--xw-bg-2));
+  flex: none;
+}
+.xw-shot__dots { display: flex; gap: 4px; }
+.xw-shot__dots i { width: 6px; height: 6px; border-radius: 50%; background: rgb(255 255 255 / 0.16); }
+.xw-shot__url {
+  flex: 1;
+  min-width: 0;
+  padding: 0.22rem 0.6rem;
+  border-radius: 99px;
+  background: rgb(255 255 255 / 0.05);
+  font-family: 'IBM Plex Mono', ui-monospace, monospace;
+  font-size: 0.5625rem;
+  letter-spacing: 0.04em;
+  color: rgb(var(--xw-ink-3));
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* The page inside. em-based throughout so one font-size on the frame
+   scales the whole composition. */
+.xw-site {
+  --site: rgb(var(--xw-blue));
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  font-size: 9px;
+  color: #eef0f3;
+  background: #0b0d10;
+  overflow: hidden;
+}
+.xw-work__item--feature .xw-site { font-size: 11px; }
+.xw-work__item--wide .xw-site { font-size: 10px; }
+@media (max-width: 860px) { .xw-site { font-size: 10px; } }
+@media (max-width: 520px) { .xw-site { font-size: 8px; } }
+
+.xw-site__nav {
+  display: flex;
+  align-items: center;
+  gap: 1.1em;
+  padding: 1.15em 1.5em;
+  flex: none;
+}
+.xw-site__logo {
+  font-family: 'Outfit', sans-serif;
+  font-weight: 600;
+  font-size: 0.95em;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+.xw-site__links {
+  margin-left: auto;
+  display: flex;
+  gap: 1.2em;
+  font-size: 0.78em;
+  color: rgb(255 255 255 / 0.42);
+}
+.xw-site__cta {
+  padding: 0.4em 1em;
+  border-radius: 99px;
+  background: var(--site);
+  color: #fff;
+  font-size: 0.72em;
+  font-weight: 600;
+}
+.xw-site__body {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  padding: 1.4em 1.5em 1.5em;
+}
+.xw-site__kicker {
+  font-family: 'IBM Plex Mono', ui-monospace, monospace;
+  font-size: 0.66em;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--site);
+}
+.xw-site__h {
+  margin-top: 0.7em;
+  font-family: 'Outfit', sans-serif;
+  font-weight: 300;
+  font-size: 2.5em;
+  line-height: 0.98;
+  letter-spacing: -0.04em;
+  max-width: 11ch;
+}
+.xw-site__p {
+  margin-top: 0.8em;
+  font-size: 0.82em;
+  line-height: 1.55;
+  color: rgb(255 255 255 / 0.45);
+  max-width: 26em;
+}
+.xw-site__strip {
+  margin-top: auto;
+  display: grid;
+  grid-template-columns: 1.4fr 1fr 1fr;
+  gap: 0.55em;
+  padding-top: 1.2em;
+}
+.xw-site__tile {
+  aspect-ratio: 5 / 4;
+  border-radius: 0.3em;
+  background-size: cover;
+  background-position: center;
+  border: 1px solid rgb(255 255 255 / 0.07);
+}
+.xw-site__tile--solid { background: rgb(255 255 255 / 0.05); }
+
+/* Feature card is portrait, so the page inside gets room to breathe
+   and the strip goes taller. */
+.xw-work__item--feature .xw-site__strip { grid-template-columns: 1fr 1fr; }
+.xw-work__item--feature .xw-site__tile { aspect-ratio: 1 / 1; }
+.xw-work__item--wide .xw-site__h { max-width: 16ch; }
+
+/* The shot area holds the frame; the zoom on hover applies to the
+   whole page rather than to a photograph. */
+.xw-work__shot { display: flex; flex-direction: column; }
+.xw-work__frame {
+  position: relative;
+  flex: 1;
+  min-height: 0;
+  transform: scale(1);
+  transform-origin: top center;
+  transition: transform 900ms var(--xw-ease);
+}
+.xw-work__item:hover .xw-work__frame { transform: scale(1.035); }
+
+/* The caption gradient was written for a photograph. Over a rendered
+   page it only needs to separate the two, not rescue contrast. */
+.xw-work__shot::after {
+  background: linear-gradient(180deg, rgb(var(--xw-bg) / 0) 55%, rgb(var(--xw-bg) / 0.55) 100%);
+}

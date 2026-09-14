@@ -1,0 +1,299 @@
+/* ───────────────────────────────────────────────────────────────
+   XOVAHWEB — /start, in the new visual system
+
+   The builder itself is not rebuilt. Its markup, its state and its
+   submission are tested and working; what was wrong was that it
+   still wore the old light theme, so pressing "Start a Project" on a
+   near-black editorial site landed you somewhere that looked like a
+   different company.
+
+   So this is a re-skin, not a rewrite: it maps the existing .bd-*
+   and .pj-* classes onto the xw tokens. Loaded AFTER build.css and
+   project.css, which is what lets it win without !important on
+   anything but the two cases noted below.
+   ─────────────────────────────────────────────────────────────── */
+
+/* The old system's tokens still drive a handful of shared pieces
+   (the dock, the support widget). Repointing them at the new palette
+   is cheaper and more consistent than hunting every rule. */
+body.xw-start {
+  --c-paper:      8   9  11;
+  --c-surface:   13  15  18;
+  --c-ink:      244 245 247;
+  --c-ink-mid:  158 165 175;
+  --c-ink-soft: 107 114 124;
+  --c-line:      31  35  41;
+  --c-line-firm: 47  53  61;
+  --c-accent:    58 130 255;
+  --c-accent-hi: 96 158 255;
+  --c-accent-tint: 18 30 54;
+  --c-accent-text: 96 158 255;
+  --c-on-accent: 255 255 255;
+  --c-shadow:     0   0   0;
+
+  background: rgb(var(--xw-bg));
+  color: rgb(var(--xw-ink));
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+}
+
+/* ══ Head ═══════════════════════════════════════════════════════ */
+.xw-start .bd-head { padding-top: clamp(7rem, 13vw, 9.5rem); }
+.xw-start .bd-head h1 {
+  font-family: 'Outfit', sans-serif;
+  font-weight: 300;
+  font-size: clamp(2.35rem, 5vw, 4.15rem);
+  line-height: 0.98;
+  letter-spacing: -0.045em;
+  color: rgb(var(--xw-ink));
+}
+.xw-start .bd-head p { color: rgb(var(--xw-ink-2)); }
+
+.xw-start .bd-assure {
+  border-color: rgb(var(--xw-line-2));
+  background: rgb(var(--xw-bg-2));
+  color: rgb(var(--xw-ink-2));
+}
+.xw-start .bd-assure svg { color: rgb(var(--xw-blue-hi)); }
+
+.xw-start .eyebrow,
+.xw-start .pj-rail li,
+.xw-start .ob-step {
+  font-family: 'IBM Plex Mono', ui-monospace, monospace;
+  letter-spacing: 0.2em;
+  color: rgb(var(--xw-ink-3));
+}
+.xw-start .pj-rail li.is-done { color: rgb(var(--xw-ink-2)); }
+.xw-start .pj-rail li.is-done::before {
+  background: rgb(var(--xw-blue));
+  border-color: rgb(var(--xw-blue));
+}
+.xw-start .pj-rail li::before { border-color: rgb(var(--xw-line-2)); }
+
+/* ══ Steps ══════════════════════════════════════════════════════ */
+.xw-start .bd-step-head h2 {
+  font-family: 'Outfit', sans-serif;
+  font-weight: 400;
+  letter-spacing: -0.03em;
+  color: rgb(var(--xw-ink));
+}
+.xw-start .bd-step-n {
+  font-family: 'IBM Plex Mono', ui-monospace, monospace;
+  color: rgb(var(--xw-blue-hi));
+  background: rgb(var(--xw-blue) / 0.1);
+  border-color: rgb(var(--xw-blue) / 0.3);
+}
+.xw-start .pj-hint { color: rgb(var(--xw-ink-3)); }
+
+/* ══ Package cards ══════════════════════════════════════════════ */
+.xw-start .bd-tier-box {
+  border: 1px solid rgb(var(--xw-line));
+  border-radius: var(--xw-r-lg);
+  background: rgb(var(--xw-bg-2));
+  transition: border-color 260ms var(--xw-ease), background-color 260ms var(--xw-ease);
+}
+.xw-start .bd-tier:hover .bd-tier-box { border-color: rgb(var(--xw-line-2)); }
+.xw-start .bd-tier.is-on .bd-tier-box,
+.xw-start .bd-tier input:checked + .bd-tier-box {
+  border-color: rgb(var(--xw-blue));
+  background: linear-gradient(180deg, rgb(var(--xw-blue) / 0.07), rgb(var(--xw-bg-2)) 60%);
+}
+.xw-start .bd-tier-name { color: rgb(var(--xw-ink)); }
+.xw-start .bd-tier-price b {
+  font-family: 'Outfit', sans-serif;
+  font-weight: 300;
+  letter-spacing: -0.04em;
+  color: rgb(var(--xw-ink));
+}
+.xw-start .bd-tier-flag { color: rgb(var(--xw-ink-3)); }
+.xw-start .bd-tier-blurb { color: rgb(var(--xw-ink-2)); }
+.xw-start .bd-tier-dep { color: rgb(var(--xw-ink-3)); }
+.xw-start .bd-tier-tick {
+  border-color: rgb(var(--xw-line-2));
+  color: transparent;
+}
+.xw-start .bd-tier.is-on .bd-tier-tick,
+.xw-start .bd-tier input:checked + .bd-tier-box .bd-tier-tick {
+  background: rgb(var(--xw-blue));
+  border-color: rgb(var(--xw-blue));
+  color: #fff;
+}
+
+/* ══ Extras ═════════════════════════════════════════════════════ */
+.xw-start .bd-group { border-color: rgb(var(--xw-line)); }
+.xw-start .bd-group-btn { color: rgb(var(--xw-ink)); }
+.xw-start .bd-group-name { color: rgb(var(--xw-ink)); }
+.xw-start .bd-group-meta { color: rgb(var(--xw-ink-3)); }
+.xw-start .bd-group-count {
+  background: rgb(var(--xw-blue));
+  color: #fff;
+}
+.xw-start .bd-item { color: rgb(var(--xw-ink-2)); }
+.xw-start .bd-item:hover { background: rgb(var(--xw-ink) / 0.025); }
+.xw-start .bd-item-name { color: rgb(var(--xw-ink-2)); }
+.xw-start .bd-item-price {
+  font-family: 'IBM Plex Mono', ui-monospace, monospace;
+  color: rgb(var(--xw-ink-3));
+}
+.xw-start .bd-box {
+  border-color: rgb(var(--xw-line-2));
+  background: transparent;
+  color: transparent;
+}
+.xw-start .bd-item input:checked + .bd-box {
+  background: rgb(var(--xw-blue));
+  border-color: rgb(var(--xw-blue));
+  color: #fff;
+}
+.xw-start .bd-item input:checked ~ .bd-item-name { color: rgb(var(--xw-ink)); }
+.xw-start .bd-item input:checked ~ .bd-item-price { color: rgb(var(--xw-blue-hi)); }
+
+/* ══ Fields ═════════════════════════════════════════════════════ */
+.xw-start .pj-field > label,
+.xw-start .pj-legend { color: rgb(var(--xw-ink)); }
+.xw-start .pj-in,
+.xw-start .pj-ta {
+  border-color: rgb(var(--xw-line-2));
+  background: rgb(var(--xw-bg-2));
+  color: rgb(var(--xw-ink));
+  border-radius: var(--xw-r);
+}
+.xw-start .pj-in::placeholder,
+.xw-start .pj-ta::placeholder { color: rgb(var(--xw-ink-3)); }
+.xw-start .pj-in:focus,
+.xw-start .pj-ta:focus {
+  border-color: rgb(var(--xw-blue));
+  box-shadow: 0 0 0 3px rgb(var(--xw-blue) / 0.16);
+}
+.xw-start .pj-in[aria-invalid="true"],
+.xw-start .pj-ta[aria-invalid="true"] {
+  border-color: rgb(239 90 90);
+  box-shadow: 0 0 0 3px rgb(239 90 90 / 0.14);
+}
+.xw-start .pj-count { color: rgb(var(--xw-ink-3)); }
+.xw-start .pj-more { border-color: rgb(var(--xw-line)); }
+.xw-start .pj-more > summary { color: rgb(var(--xw-ink)); }
+.xw-start .pj-more > summary::after { color: rgb(var(--xw-ink-3)); }
+.xw-start .pj-more-sub { color: rgb(var(--xw-ink-3)); }
+
+/* ══ The generated request ══════════════════════════════════════ */
+.xw-start .pj-preview {
+  border-color: rgb(var(--xw-line-2));
+  background: rgb(var(--xw-bg-2));
+  border-radius: var(--xw-r-lg);
+  overflow: hidden;
+}
+.xw-start .pj-preview-head {
+  border-color: rgb(var(--xw-line));
+  background: rgb(var(--xw-bg-3));
+}
+.xw-start .pj-preview-head p { color: rgb(var(--xw-ink-3)); }
+.xw-start .pj-preview-body { color: rgb(var(--xw-ink-2)); }
+.xw-start .pj-copy {
+  border-color: rgb(var(--xw-line-2));
+  background: transparent;
+  color: rgb(var(--xw-ink-2));
+  border-radius: var(--xw-r);
+}
+.xw-start .pj-copy:hover { color: rgb(var(--xw-ink)); border-color: rgb(var(--xw-ink-3)); }
+
+/* ══ Messages ═══════════════════════════════════════════════════ */
+.xw-start .pj-note {
+  border-color: rgb(var(--xw-line-2));
+  background: rgb(var(--xw-bg-2));
+  color: rgb(var(--xw-ink-2));
+  border-radius: var(--xw-r);
+}
+.xw-start .pj-note.is-bad {
+  border-color: rgb(239 90 90 / 0.5);
+  background: rgb(239 90 90 / 0.08);
+  color: rgb(255 150 150);
+}
+
+/* ══ Summary rail ═══════════════════════════════════════════════ */
+.xw-start .bd-sum {
+  border: 1px solid rgb(var(--xw-line));
+  border-radius: var(--xw-r-lg);
+  background: rgb(var(--xw-bg-2));
+}
+.xw-start .bd-sum-total,
+.xw-start .pj-sum-pack { color: rgb(var(--xw-ink)); }
+.xw-start .pj-sum-label { color: rgb(var(--xw-ink-3)); }
+.xw-start .pj-sum-extras li { color: rgb(var(--xw-ink-2)); }
+.xw-start .pj-sum-none { color: rgb(var(--xw-ink-3)); }
+.xw-start .bd-sum-rule { background: rgb(var(--xw-line)); }
+.xw-start .bd-sum-today { color: rgb(var(--xw-ink-3)); }
+.xw-start .bd-sum-today-row dd {
+  font-family: 'Outfit', sans-serif;
+  font-weight: 300;
+  letter-spacing: -0.03em;
+  color: rgb(var(--xw-ink));
+}
+.xw-start .bd-sum-foot { color: rgb(var(--xw-ink-3)); }
+.xw-start .bd-sum-clear { color: rgb(var(--xw-ink-3)); }
+.xw-start .bd-sum-clear:hover { color: rgb(var(--xw-ink-2)); }
+
+/* ══ Buttons ════════════════════════════════════════════════════ */
+.xw-start .bd-cta {
+  background: rgb(var(--xw-blue));
+  color: #fff;
+  border: 0;
+  border-radius: var(--xw-r);
+  font-family: inherit;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  transition: background-color var(--xw-quick), opacity var(--xw-quick);
+}
+.xw-start .bd-cta:hover:not(:disabled) { background: rgb(var(--xw-blue-hi)); }
+.xw-start .bd-cta:disabled { background: rgb(var(--xw-line-2)); color: rgb(var(--xw-ink-3)); }
+
+/* ══ The phone bar ══════════════════════════════════════════════ */
+.xw-start .bd-bar {
+  background: rgb(var(--xw-bg) / 0.92);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-top: 1px solid rgb(var(--xw-line));
+}
+.xw-start .bd-bar-today {
+  font-family: 'Outfit', sans-serif;
+  font-weight: 300;
+  letter-spacing: -0.03em;
+  color: rgb(var(--xw-ink));
+}
+.xw-start .bd-bar-sub { color: rgb(var(--xw-ink-3)); }
+
+/* ══ Success ════════════════════════════════════════════════════ */
+.xw-start .pj-done h1 {
+  font-family: 'Outfit', sans-serif;
+  font-weight: 300;
+  letter-spacing: -0.04em;
+  color: rgb(var(--xw-ink));
+}
+.xw-start .pj-done p { color: rgb(var(--xw-ink-2)); }
+.xw-start .pj-done-mark {
+  border-color: rgb(var(--xw-blue));
+  color: rgb(var(--xw-blue-hi));
+}
+.xw-start .pj-done-card {
+  border-color: rgb(var(--xw-line));
+  background: rgb(var(--xw-bg-2));
+  border-radius: var(--xw-r-lg);
+}
+.xw-start .pj-done-row { color: rgb(var(--xw-ink-2)); }
+.xw-start .pj-done-row b { color: rgb(var(--xw-ink)); }
+.xw-start .pj-done-row--total { border-color: rgb(var(--xw-line)); }
+
+/* The old .btn classes on the success screen belong to the light
+   system and there is no dark variant of them. These two are the
+   exception to the no-important rule: edge.css ships a radius reset
+   with !important, and .btn carries its own colours inline in the
+   old stylesheet's cascade. */
+.xw-start .pj-done-actions .btn-primary {
+  background: rgb(var(--xw-blue)) !important;
+  color: #fff !important;
+  border-color: rgb(var(--xw-blue)) !important;
+}
+.xw-start .pj-done-actions .btn-ghost {
+  border-color: rgb(var(--xw-line-2)) !important;
+  color: rgb(var(--xw-ink)) !important;
+  background: transparent !important;
+}
