@@ -303,3 +303,129 @@ body.pr-page .pr-stage {
   .pr-cta { transition: none; }
   .pr-cta:active { transform: none; }
 }
+
+/* ───────────────────────────────────────────────────────────────
+   Extras and add-ons
+
+   Every price on the page, folded into groups so the list reads as a
+   choice rather than a wall. Built by pricing.js from the catalogue,
+   so nothing here hard-codes a figure.
+   ─────────────────────────────────────────────────────────────── */
+.pr-extras {
+  margin-top: clamp(2.5rem, 6vw, 4rem);
+  padding-top: clamp(2.5rem, 6vw, 4rem);
+  border-top: 1px solid rgb(var(--c-line));
+}
+
+.pr-extras-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 1rem 2rem;
+}
+.pr-extras-link {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: rgb(var(--c-accent-text));
+  white-space: nowrap;
+}
+.pr-extras-link:hover { text-decoration: underline; text-underline-offset: 3px; }
+
+[data-pr-extras] { margin-top: 1.75rem; }
+
+.pr-x-group { border-bottom: 1px solid rgb(var(--c-line)); }
+.pr-x-group:first-child { border-top: 1px solid rgb(var(--c-line)); }
+
+.pr-x-group > summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  /* 52px of target, because this is the row a thumb has to hit. */
+  min-height: 52px;
+  padding: 0.9rem 0;
+  cursor: pointer;
+  list-style: none;
+}
+.pr-x-group > summary::-webkit-details-marker { display: none; }
+
+.pr-x-group-name {
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: rgb(var(--c-ink));
+}
+.pr-x-group-n {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-family: 'IBM Plex Mono', ui-monospace, monospace;
+  font-size: 0.75rem;
+  color: rgb(var(--c-ink-soft));
+}
+/* The chevron is drawn here rather than shipped as an icon, so it can
+   rotate without a second element to keep in step. */
+.pr-x-group-n::after {
+  content: "";
+  width: 9px; height: 9px;
+  border-right: 1.6px solid currentColor;
+  border-bottom: 1.6px solid currentColor;
+  transform: translateY(-2px) rotate(45deg);
+  transition: transform 200ms cubic-bezier(.22,1,.36,1);
+}
+.pr-x-group[open] .pr-x-group-n::after { transform: translateY(1px) rotate(-135deg); }
+
+.pr-x-body { padding: 0 0 1.1rem; }
+.pr-x-note {
+  margin: 0 0 0.7rem;
+  font-size: 0.8125rem;
+  color: rgb(var(--c-ink-soft));
+}
+
+.pr-x-row {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1.25rem;
+  padding: 0.42rem 0;
+  font-size: 0.875rem;
+  color: rgb(var(--c-ink-mid));
+}
+.pr-x-name { min-width: 0; }
+.pr-x-price {
+  flex: none;
+  font-family: 'IBM Plex Mono', ui-monospace, monospace;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: rgb(var(--c-ink));
+  white-space: nowrap;
+}
+.pr-x-from, .pr-x-per {
+  font-family: inherit;
+  font-size: 0.6875rem;
+  font-weight: 400;
+  color: rgb(var(--c-ink-soft));
+}
+
+.pr-extras-foot {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem 1.5rem;
+  margin-top: 2rem;
+  padding: 1.25rem 1.4rem;
+  border: 1px solid rgb(var(--c-line));
+  background: rgb(var(--c-surface));
+}
+.pr-extras-foot p {
+  margin: 0;
+  max-width: 40ch;
+  font-size: 0.9375rem;
+  line-height: 1.6;
+  color: rgb(var(--c-ink-mid));
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pr-x-group-n::after { transition: none; }
+}

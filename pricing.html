@@ -75,11 +75,9 @@
     <div class="flex items-center gap-5 md:gap-7">
       <a href="pricing.html" class="text-sm font-semibold text-ink" aria-current="page">Pricing</a>
       <a href="free.html" class="hidden text-sm font-semibold text-accent hover:text-accent-hi sm:inline">Free page</a>
-      <a href="build.html" class="hidden text-sm font-medium text-ink-mid hover:text-ink lg:inline">Build a package</a>
       <a href="extras.html" class="hidden text-sm font-medium text-ink-mid hover:text-ink md:inline">Extras</a>
       <a href="faq.html" class="hidden text-sm font-medium text-ink-mid hover:text-ink md:inline">FAQ</a>
-      <a href="contact.html" class="hidden text-sm font-medium text-ink-mid hover:text-ink lg:inline">Contact</a>
-      <a href="contact.html" class="rounded-md bg-accent px-4 py-2.5 text-sm font-semibold text-white hover:bg-accent-hi">Start a Project</a>
+      <a href="start.html" class="rounded-md bg-accent px-4 py-2.5 text-sm font-semibold text-white hover:bg-accent-hi">Start a Project</a>
     </div>
   </nav>
 </header>
@@ -116,8 +114,8 @@
               A single-page site with up to 20 sections from our 34, built around your business.
             </p>
             <div class="pr-foot">
-              <a href="contact.html" class="pr-cta">
-                Get Started
+              <a href="start.html?package=custom" class="pr-cta">
+                Choose Package
               </a>
             </div>
             <ul class="pr-list">
@@ -146,8 +144,8 @@
               Every one of the 34 sections, plus the search, analytics and legal setup a real site needs.
             </p>
             <div class="pr-foot">
-              <a href="contact.html" class="pr-cta pr-cta--solid">
-                Get Started
+              <a href="start.html?package=full" class="pr-cta pr-cta--solid">
+                Choose Package
               </a>
             </div>
             <ul class="pr-list">
@@ -175,8 +173,8 @@
               The end-to-end setup: branding, local SEO, three years of hosting and ongoing maintenance.
             </p>
             <div class="pr-foot">
-              <a href="contact.html" class="pr-cta">
-                Get Started
+              <a href="start.html?package=complete" class="pr-cta">
+                Choose Package
               </a>
             </div>
             <ul class="pr-list">
@@ -194,9 +192,40 @@
       </div>
 
       <p class="price-next-line">
-        No checkout and no account &mdash; we agree the price with you first.
-        <a href="contact.html">Talk to us</a>.
+        No checkout and no account &mdash; you send a request and we agree the price with you first.
+        <a href="start.html">Start a project</a>.
       </p>
+
+      <!-- ── Extras ────────────────────────────────────────────────
+           Everything that can be added to any package, each priced on
+           its own. Grouped and closed, because seventy-six lines at
+           once is not a choice, it is a wall. -->
+      <section id="extras" class="pr-extras scroll-mt-24">
+        <div class="pr-extras-head">
+          <div>
+            <h2 class="h-section text-xl">Extras and add-ons</h2>
+            <p class="mt-2 max-w-prose text-[0.9375rem] leading-relaxed text-ink-mid">
+              Optional, every one of them. Add any of these to any package &mdash; the price is the
+              price, and it is listed here so you know before you choose.
+            </p>
+          </div>
+          <a href="extras.html" class="pr-extras-link">What each one does &rarr;</a>
+        </div>
+
+        <div data-pr-extras>
+          <!-- Filled from Sitehouse.CATALOG by pricing.js. -->
+          <noscript>
+            <p class="mt-4 text-[0.9375rem] text-ink-mid">
+              <a href="extras.html" class="font-semibold text-accent underline underline-offset-2">See the full list of extras and prices</a>.
+            </p>
+          </noscript>
+        </div>
+
+        <div class="pr-extras-foot">
+          <p>Pick your package and your extras together, and watch the total add itself up.</p>
+          <a href="start.html" class="btn btn-primary">Start a Project</a>
+        </div>
+      </section>
 
       <!-- Domain and hosting. Said once, here, so no card has to repeat it. -->
       <div class="mt-10 border border-line bg-paper px-6 py-5">
@@ -221,11 +250,12 @@
       <div class="card-ink p-8">
         <h2 class="h-section text-xl text-white">Not sure which one?</h2>
         <p class="mt-3 max-w-prose text-[0.9375rem] leading-relaxed text-white/80">
-          Tell us what the business does and we will say which package covers it &mdash; including
-          when the cheapest one is genuinely enough.
+          Start a project and describe what the business does. We will say which package covers it
+          &mdash; including when the cheapest one is genuinely enough. Nothing is charged and
+          nothing is committed by asking.
         </p>
         <div class="mt-6 flex flex-wrap gap-3">
-          <a href="contact.html" class="btn btn-light">Ask us first</a>
+          <a href="start.html" class="btn btn-light">Start a Project</a>
           <a href="faq.html" class="btn btn-ghost">Read the FAQ</a>
         </div>
       </div>
@@ -254,7 +284,6 @@
 <script src="assets/demo.js?v=2"></script>
 <script src="assets/dock.js?v=2"></script>
 <script src="assets/support.js?v=2"></script>
-<script src="assets/contact-config.js?v=2"></script>
-<script src="assets/pricing.js?v=2" defer></script>
+<script src="assets/pricing.js?v=2"></script>
 </body>
 </html>

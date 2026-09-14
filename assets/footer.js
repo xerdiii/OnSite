@@ -67,7 +67,7 @@
           '<div class="ft-list">' +
             '<a href="./#pricing">Products &amp; pricing</a>' +
             '<a href="faq.html">FAQ</a>' +
-            '<a href="start.html">What we need from you</a>' +
+            '<a href="extras.html">Extras &amp; add-ons</a>' +
           '</div>' +
         '</div>' +
 
@@ -83,13 +83,13 @@
         '</div>' +
 
         '<div>' +
-          '<p class="ft-label">Contact</p>' +
+          '<p class="ft-label">Get started</p>' +
           '<div class="ft-contact">' +
-            '<a href="contact.html">Contact us</a>' +
+            '<a href="start.html">Start a project</a>' +
+            '<a href="pricing.html">Packages &amp; prices</a>' +
+            '<a href="extras.html">Extras &amp; add-ons</a>' +
             '<a href="support.html">Help &amp; support</a>' +
             '<span>Xovah</span>' +
-            '<a data-mail href="mailto:info@xovahweb.com"><span data-mail-display>info@xovahweb.com</span></a>' +
-            '<a data-ig href="#">Instagram</a>' +
           '</div>' +
         '</div>' +
 
@@ -117,7 +117,6 @@
     footer.innerHTML = html();
     slot.parentNode.replaceChild(footer, slot);
 
-    if (global.XovahContact) global.XovahContact.apply(footer);
   }
 
   if (doc.readyState === 'loading') {

@@ -50,8 +50,66 @@ function resolve(rel) {
   return null;
 }
 
+/* Vercel-style handlers, loaded on demand and cached, so editing one
+   only costs a restart rather than a rebuild. */
+const apiCache = new Map();
+
+async function runApi(rel, req, res) {
+  const file = path.join(root, rel.replace(/^\//, '') + '.mjs');
+  if (!fs.existsSync(file)) {
+    res.writeHead(404, { 'Content-Type': 'application/json' });
+    res.end(JSON.stringify({ error: 'no such endpoint' }));
+    return;
+  }
+
+  let mod = apiCache.get(file);
+  if (!mod) {
+    mod = await import('file://' + file.replace(/\\/g, '/'));
+    apiCache.set(file, mod);
+  }
+
+  const body = await new Promise((resolve) => {
+    const chunks = [];
+    req.on('data', (c) => chunks.push(c));
+    req.on('end', () => resolve(Buffer.concat(chunks).toString('utf8')));
+    req.on('error', () => resolve(''));
+  });
+
+  /* The handlers call res.status(n).json(o) and res.setHeader(); give
+     them exactly that and nothing more, so anything they rely on here
+     is something Vercel also provides. */
+  const shim = {
+    setHeader: (k, v) => res.setHeader(k, v),
+    status(code) {
+      shim._code = code;
+      return shim;
+    },
+    json(payload) {
+      res.writeHead(shim._code || 200, { 'Content-Type': 'application/json' });
+      res.end(JSON.stringify(payload));
+      return shim;
+    },
+    _code: 200
+  };
+
+  try {
+    await mod.default({ method: req.method, headers: req.headers, body }, shim);
+  } catch (e) {
+    console.error('api ' + rel + ' threw', e);
+    if (!res.headersSent) {
+      res.writeHead(500, { 'Content-Type': 'application/json' });
+      res.end(JSON.stringify({ error: 'handler threw' }));
+    }
+  }
+}
+
 http.createServer((req, res) => {
   const rel = decodeURIComponent(req.url.split('?')[0]);
+
+  if (rel.startsWith('/api/')) {
+    runApi(rel, req, res);
+    return;
+  }
 
   // /login/ would serve the page, but its relative links would then resolve
   // against /login/ — 'signup' becoming /login/signup. Drop the slash first.

@@ -1,8 +1,18 @@
 /* ───────────────────────────────────────────────────────────────
-   POST /api/contact  —  the contact form lands in your inbox
+   POST /api/contact  —  enquiries and project requests reach the inbox
 
-   Same shape as /api/signup: the browser posts here, this posts to
-   Resend server-side, and the API key never leaves the server.
+   Two shapes come through here:
+
+     · a plain message from the short form
+     · a PROJECT REQUEST from the builder on /start — a package, its
+       extras, an estimate and a brief
+
+   Both land as email through Resend, server-side, so the API key never
+   reaches the browser. One endpoint rather than two because the
+   throttle, the honeypot, the escaping and the Resend wiring already
+   live here, and a second copy of those is a second place to get them
+   wrong. A body carrying `project` takes the project path; anything
+   else behaves exactly as it did before.
 
    Vercel → Settings → Environment Variables:
 
@@ -29,6 +39,16 @@ const esc = (v) => String(v == null ? '' : v)
 
 const EMAIL = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
 
+const cap = (v, n) => String(v == null ? '' : v).trim().slice(0, n);
+
+// A price from the browser, forced into a sane integer number of cents.
+const cents = (v) => {
+  const n = Number(v);
+  return Number.isFinite(n) && n >= 0 && n < 100_000_000 ? Math.round(n) : 0;
+};
+
+const eur = (c) => '€' + (c / 100).toFixed(2);
+
 /* A best-effort throttle. Serverless instances are not shared, so this
    is a speed bump rather than a wall — it stops a script hammering one
    warm instance and burning the mail quota. A real limit needs shared
@@ -43,6 +63,29 @@ function tooMany(ip) {
   if (!hit) { seen.set(ip, { first: now, n: 1 }); return false; }
   hit.n += 1;
   return hit.n > MAX;
+}
+
+async function send({ key, from, to, replyTo, subject, html }) {
+  const r = await fetch('https://api.resend.com/emails', {
+    method: 'POST',
+    headers: { Authorization: `Bearer ${key}`, 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      from,
+      to: [to],
+      // So hitting reply in Gmail goes to the sender, not to nobody.
+      reply_to: replyTo,
+      // A newline in a subject is a header injection in every mail
+      // system that builds headers by concatenation.
+      subject: subject.replace(/[\r\n]+/g, ' '),
+      html
+    })
+  });
+  if (!r.ok) {
+    const detail = await r.text();
+    console.error('resend rejected', r.status, detail);
+    return false;
+  }
+  return true;
 }
 
 export default async function handler(req, res) {
@@ -66,9 +109,11 @@ export default async function handler(req, res) {
 
   let body = req.body;
   if (typeof body === 'string') {
-    // A 20KB contact message is not a contact message. Parsing an
-    // unbounded string is how one request eats the whole memory budget.
-    if (body.length > 20_000) return res.status(413).json({ error: 'too large' });
+    // A project request carries a brief and seven optional fields, so
+    // the ceiling is higher than a contact message — but still a
+    // ceiling. Parsing an unbounded string is how one request eats the
+    // whole memory budget.
+    if (body.length > 60_000) return res.status(413).json({ error: 'too large' });
     try { body = JSON.parse(body); } catch { return res.status(400).json({ error: 'bad json' }); }
   }
   body = body || {};
@@ -76,7 +121,8 @@ export default async function handler(req, res) {
   // A honeypot the real form leaves empty. Bots fill everything in.
   if (body.company) return res.status(200).json({ ok: true });
 
-  const cap = (v, n) => String(v == null ? '' : v).trim().slice(0, n);
+  if (body.project) return projectRequest(req, res, body, { key, to, from });
+
   const name = cap(body.name, 120);
   const email = cap(body.email, 200);
   const business = cap(body.business, 200);
@@ -109,27 +155,137 @@ export default async function handler(req, res) {
     <p style="font:14px/1.6 system-ui;white-space:pre-wrap;margin:0">${esc(message)}</p>`;
 
   try {
-    const r = await fetch('https://api.resend.com/emails', {
-      method: 'POST',
-      headers: { Authorization: `Bearer ${key}`, 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        from,
-        to: [to],
-        // So hitting reply in Gmail goes to the sender, not to nobody.
-        reply_to: email,
-        // A newline in a subject is a header injection in every mail
-        // system that builds headers by concatenation.
-        subject: `Contact — ${(subject || name).replace(/[\r\n]+/g, ' ')}`,
-        html
-      })
+    const ok = await send({
+      key, from, to, replyTo: email,
+      subject: `Contact — ${subject || name}`,
+      html
     });
+    return ok
+      ? res.status(200).json({ ok: true })
+      : res.status(502).json({ error: 'mail rejected' });
+  } catch (e) {
+    console.error('mail failed', e);
+    return res.status(502).json({ error: 'mail failed' });
+  }
+}
 
-    if (!r.ok) {
-      const detail = await r.text();
-      console.error('resend rejected', r.status, detail);
-      return res.status(502).json({ error: 'mail rejected' });
-    }
-    return res.status(200).json({ ok: true });
+/* ═══════════════════════════════════════════════════════════════
+   A project request from the builder on /start
+
+   What assets/project.js posts:
+
+     email:   'reply@address'              the one required field
+     project: {
+       package: { key, name, cents },
+       extras:  [ { name, cents }, … ],
+       totalCents: 39400,                  what the browser displayed
+       brief:   'free text',
+       details: { businessName, siteType, style, colours,
+                  features, references, notes }
+     }
+
+   THE TOTAL IS NOT TAKEN ON TRUST. It is recomputed from the line
+   items and compared with what the browser claimed, so a figure edited
+   in devtools cannot quietly become the number sitting in your inbox —
+   and if the two disagree the email says so in red rather than picking
+   one silently.
+
+   The individual line prices do still come from the browser. Pricing
+   them here would mean a second copy of a seventy-item catalogue, and
+   a second copy is a second thing to forget to update. That trade is
+   fine while this is a REQUEST: nothing is charged, and you agree the
+   figure before any work starts.
+
+   TODO — if this ever takes a payment, that trade stops being fine.
+   A checkout must price the order on the server from the selected keys
+   alone and ignore every number the browser sends.
+   ═══════════════════════════════════════════════════════════════ */
+async function projectRequest(req, res, body, { key, to, from }) {
+  const p = body.project || {};
+
+  const email = cap(body.email, 200);
+  if (!EMAIL.test(email)) return res.status(400).json({ error: 'bad email' });
+
+  const pack = p.package || {};
+  const packName = cap(pack.name, 120);
+  const packCents = cents(pack.cents);
+  if (!packName) return res.status(400).json({ error: 'missing', fields: ['package'] });
+
+  const brief = cap(p.brief, 5000);
+  if (!brief) return res.status(400).json({ error: 'missing', fields: ['brief'] });
+
+  // Seventy in the catalogue today; the cap is a ceiling, not a limit.
+  const extras = (Array.isArray(p.extras) ? p.extras : [])
+    .slice(0, 100)
+    .map((x) => ({ name: cap(x && x.name, 120), cents: cents(x && x.cents) }))
+    .filter((x) => x.name);
+
+  const d = p.details || {};
+  const details = [
+    ['Business / project name', cap(d.businessName, 160)],
+    ['Website type',            cap(d.siteType, 120)],
+    ['Preferred style',         cap(d.style, 160)],
+    ['Colour preferences',      cap(d.colours, 160)],
+    ['Features needed',         cap(d.features, 1500)],
+    ['Reference websites',      cap(d.references, 1500)],
+    ['Anything else',           cap(d.notes, 1500)]
+  ].filter(([, v]) => v);
+
+  const computed = packCents + extras.reduce((n, x) => n + x.cents, 0);
+  const claimed = cents(p.totalCents);
+  const mismatch = claimed !== computed;
+
+  const who = cap(d.businessName, 160);
+
+  const extraRows = extras.length
+    ? extras.map((x) =>
+        `<tr><td style="padding:3px 16px 3px 0">${esc(x.name)}</td>` +
+        `<td style="padding:3px 0;text-align:right;white-space:nowrap">${eur(x.cents)}</td></tr>`
+      ).join('')
+    : '<tr><td style="padding:3px 0;color:#666" colspan="2">None selected</td></tr>';
+
+  const detailRows = details.map(([k, v]) =>
+    `<tr><td style="padding:4px 16px 4px 0;color:#666;vertical-align:top;white-space:nowrap">${esc(k)}</td>` +
+    `<td style="padding:4px 0;white-space:pre-wrap">${esc(v)}</td></tr>`
+  ).join('');
+
+  const html = `
+    <h2 style="font:600 18px system-ui;margin:0 0 4px">Project request${who ? ' — ' + esc(who) : ''}</h2>
+    <p style="font:13px system-ui;color:#666;margin:0 0 20px">Reply to ${esc(email)}</p>
+
+    <h3 style="font:600 13px system-ui;text-transform:uppercase;letter-spacing:.06em;color:#666;margin:0 0 6px">Package</h3>
+    <table style="font:14px system-ui;border-collapse:collapse;width:100%;max-width:520px">
+      <tr><td style="padding:3px 16px 3px 0"><b>${esc(packName)}</b></td>
+          <td style="padding:3px 0;text-align:right;white-space:nowrap"><b>${eur(packCents)}</b></td></tr>
+    </table>
+
+    <h3 style="font:600 13px system-ui;text-transform:uppercase;letter-spacing:.06em;color:#666;margin:20px 0 6px">Extras (${extras.length})</h3>
+    <table style="font:14px system-ui;border-collapse:collapse;width:100%;max-width:520px">${extraRows}</table>
+
+    <table style="font:15px system-ui;border-collapse:collapse;width:100%;max-width:520px;margin:14px 0 0;border-top:2px solid #111">
+      <tr><td style="padding:10px 16px 3px 0"><b>Estimated total</b></td>
+          <td style="padding:10px 0 3px;text-align:right;white-space:nowrap"><b>${eur(computed)}</b></td></tr>
+    </table>
+    ${mismatch ? `<p style="font:13px system-ui;color:#b00;margin:8px 0 0">
+      The browser displayed ${eur(claimed)}. The figure above was recomputed from the line items — check before quoting.
+    </p>` : ''}
+
+    <h3 style="font:600 13px system-ui;text-transform:uppercase;letter-spacing:.06em;color:#666;margin:24px 0 6px">What they need</h3>
+    <p style="font:14px/1.6 system-ui;white-space:pre-wrap;margin:0">${esc(brief)}</p>
+    ${detailRows
+      ? `<h3 style="font:600 13px system-ui;text-transform:uppercase;letter-spacing:.06em;color:#666;margin:24px 0 6px">Project details</h3>
+         <table style="font:14px system-ui;border-collapse:collapse;max-width:560px">${detailRows}</table>`
+      : ''}`;
+
+  try {
+    const ok = await send({
+      key, from, to, replyTo: email,
+      subject: `Project request — ${who || packName} — ${eur(computed)}`,
+      html
+    });
+    return ok
+      ? res.status(200).json({ ok: true })
+      : res.status(502).json({ error: 'mail rejected' });
   } catch (e) {
     console.error('mail failed', e);
     return res.status(502).json({ error: 'mail failed' });

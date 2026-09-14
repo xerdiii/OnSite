@@ -1,0 +1,359 @@
+/* ───────────────────────────────────────────────────────────────
+   Xovah — the project builder on /start
+
+   Loads AFTER build.css and deliberately reuses its vocabulary —
+   .bd-step, .bd-tier, .bd-group, .bd-sum, .bd-bar. The configurator
+   already looked right; rebuilding that language here would give the
+   site two dialects for the same idea and guarantee they drift.
+
+   What is new is only what /start adds: the brief, the optional
+   detail fields, the generated request preview, and the success
+   screen. Everything else is inherited.
+   ─────────────────────────────────────────────────────────────── */
+
+/* ── Progress ──────────────────────────────────────────────────
+   Four marks, not a percentage. A configurator is not a download. */
+.pj-rail {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem 1.5rem;
+  margin-top: 1.75rem;
+  padding: 0;
+  list-style: none;
+}
+.pj-rail li {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: 'IBM Plex Mono', ui-monospace, monospace;
+  font-size: 0.6875rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgb(var(--c-ink-soft));
+  transition: color 180ms ease;
+}
+.pj-rail li::before {
+  content: "";
+  width: 7px;
+  height: 7px;
+  flex: none;
+  border: 1.5px solid rgb(var(--c-line-firm));
+  border-radius: 50%;
+  transition: background-color 180ms ease, border-color 180ms ease;
+}
+.pj-rail li.is-done { color: rgb(var(--c-ink-mid)); }
+.pj-rail li.is-done::before {
+  background: rgb(var(--c-accent));
+  border-color: rgb(var(--c-accent));
+}
+
+/* ── Fields ────────────────────────────────────────────────────
+   One look for every input on the page, matching the rest of the
+   site's forms rather than inventing a third style. */
+.pj-field { margin-top: 1.4rem; }
+.pj-field > label,
+.pj-legend {
+  display: block;
+  margin-bottom: 0.45rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: rgb(var(--c-ink));
+}
+.pj-hint {
+  margin: 0.35rem 0 0;
+  font-size: 0.8125rem;
+  line-height: 1.55;
+  color: rgb(var(--c-ink-soft));
+}
+.pj-opt {
+  margin-left: 0.4rem;
+  font-weight: 400;
+  color: rgb(var(--c-ink-soft));
+}
+
+.pj-in,
+.pj-ta {
+  width: 100%;
+  padding: 0.7rem 0.85rem;
+  border: 1px solid rgb(var(--c-line-firm));
+  background: rgb(var(--c-surface));
+  color: rgb(var(--c-ink));
+  font-family: inherit;
+  /* 16px minimum: anything smaller and iOS zooms the page on focus,
+     which reads as the layout breaking. */
+  font-size: 16px;
+  line-height: 1.5;
+  transition: border-color 140ms ease, box-shadow 140ms ease;
+}
+.pj-in { min-height: 48px; }
+.pj-ta {
+  min-height: 9.5rem;
+  resize: vertical;
+}
+.pj-ta--tall { min-height: 13rem; }
+.pj-in::placeholder,
+.pj-ta::placeholder { color: rgb(var(--c-ink-soft)); }
+.pj-in:focus,
+.pj-ta:focus {
+  outline: none;
+  border-color: rgb(var(--c-ink) / 0.55);
+  box-shadow: 0 0 0 3px rgb(var(--c-ink) / 0.08);
+}
+.pj-in[aria-invalid="true"],
+.pj-ta[aria-invalid="true"] {
+  border-color: rgb(var(--c-accent));
+  box-shadow: 0 0 0 3px rgb(var(--c-accent) / 0.13);
+}
+
+.pj-pair { display: grid; gap: 1.4rem; }
+@media (min-width: 640px) { .pj-pair { grid-template-columns: 1fr 1fr; } }
+.pj-pair .pj-field { margin-top: 0; }
+
+.pj-count {
+  display: block;
+  margin-top: 0.4rem;
+  font-family: 'IBM Plex Mono', ui-monospace, monospace;
+  font-size: 0.75rem;
+  color: rgb(var(--c-ink-soft));
+}
+
+/* ── The optional block, folded away ───────────────────────────
+   Seven questions nobody has to answer should not look like seven
+   questions everybody has to answer. */
+.pj-more { margin-top: 1.75rem; border-top: 1px solid rgb(var(--c-line)); }
+.pj-more > summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1rem 0;
+  cursor: pointer;
+  list-style: none;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: rgb(var(--c-ink));
+}
+.pj-more > summary::-webkit-details-marker { display: none; }
+.pj-more > summary::after {
+  content: "+";
+  flex: none;
+  font-family: 'IBM Plex Mono', ui-monospace, monospace;
+  font-size: 1.15rem;
+  font-weight: 400;
+  color: rgb(var(--c-ink-soft));
+}
+.pj-more[open] > summary::after { content: "\2212"; }
+.pj-more-sub {
+  margin: -0.4rem 0 0;
+  padding-bottom: 0.4rem;
+  font-size: 0.8125rem;
+  color: rgb(var(--c-ink-soft));
+}
+.pj-more-body { padding-bottom: 1.5rem; }
+
+/* ── The generated request ─────────────────────────────────────
+   Shown before sending, because a customer who can read what is
+   about to be sent on their behalf trusts the thing that sent it. */
+.pj-preview {
+  margin-top: 1.25rem;
+  border: 1px solid rgb(var(--c-line-firm));
+  background: rgb(var(--c-paper));
+}
+.pj-preview-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.8rem 1rem;
+  border-bottom: 1px solid rgb(var(--c-line));
+  background: rgb(var(--c-surface));
+}
+.pj-preview-head p {
+  margin: 0;
+  font-family: 'IBM Plex Mono', ui-monospace, monospace;
+  font-size: 0.6875rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgb(var(--c-ink-soft));
+}
+.pj-preview-body {
+  margin: 0;
+  padding: 1.1rem 1rem 1.25rem;
+  max-height: 24rem;
+  overflow-y: auto;
+  font-family: 'IBM Plex Mono', ui-monospace, monospace;
+  font-size: 0.8125rem;
+  line-height: 1.7;
+  color: rgb(var(--c-ink-mid));
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+.pj-copy {
+  border: 1px solid rgb(var(--c-line-firm));
+  background: rgb(var(--c-surface));
+  color: rgb(var(--c-ink-mid));
+  padding: 0.35rem 0.7rem;
+  min-height: 34px;
+  font: inherit;
+  font-size: 0.75rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: color 140ms ease, border-color 140ms ease;
+}
+.pj-copy:hover { color: rgb(var(--c-ink)); border-color: rgb(var(--c-ink) / 0.4); }
+
+/* ── Messages ──────────────────────────────────────────────────
+   The same shape the contact form used, so an error on this page
+   looks like an error anywhere else on the site. */
+.pj-note {
+  display: flex;
+  gap: 0.6rem;
+  align-items: flex-start;
+  margin-top: 1.1rem;
+  padding: 0.8rem 0.95rem;
+  border: 1px solid rgb(var(--c-line-firm));
+  background: rgb(var(--c-surface));
+  font-size: 0.875rem;
+  line-height: 1.55;
+  color: rgb(var(--c-ink-mid));
+}
+.pj-note[hidden] { display: none; }
+.pj-note::before { content: "i"; font-weight: 700; flex: none; font-style: italic; }
+.pj-note.is-bad {
+  border-color: rgb(var(--c-accent) / 0.45);
+  background: rgb(var(--c-accent-tint));
+  color: rgb(var(--c-accent-text));
+}
+.pj-note.is-bad::before { content: "!"; font-style: normal; }
+.pj-note a { color: inherit; font-weight: 600; text-decoration: underline; text-underline-offset: 2px; }
+
+/* ── Summary additions ─────────────────────────────────────────
+   .bd-sum does the heavy lifting; these are the lines it did not
+   have to draw before. */
+.pj-sum-extras {
+  margin: 0.5rem 0 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 0.3rem;
+}
+.pj-sum-extras li {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.9rem;
+  font-size: 0.8125rem;
+  color: rgb(var(--c-ink-mid));
+}
+.pj-sum-extras li b {
+  font-family: 'IBM Plex Mono', ui-monospace, monospace;
+  font-weight: 500;
+  white-space: nowrap;
+}
+.pj-sum-none { font-size: 0.8125rem; color: rgb(var(--c-ink-soft)); margin: 0.5rem 0 0; }
+
+.pj-sum-label {
+  margin: 1.1rem 0 0;
+  font-family: 'IBM Plex Mono', ui-monospace, monospace;
+  font-size: 0.6875rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgb(var(--c-ink-soft));
+}
+.pj-sum-pack {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.9rem;
+  margin-top: 0.4rem;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: rgb(var(--c-ink));
+}
+.pj-sum-pack b {
+  font-family: 'IBM Plex Mono', ui-monospace, monospace;
+  white-space: nowrap;
+}
+
+/* ── Success ───────────────────────────────────────────────────
+   A screen, not a toast. Sending a project request is the biggest
+   thing anyone does on this site; it deserves a page that says so. */
+.pj-done {
+  max-width: 34rem;
+  margin: 0 auto;
+  padding: clamp(3.5rem, 12vh, 7rem) 0 clamp(4rem, 12vh, 7rem);
+  text-align: center;
+}
+.pj-done-mark {
+  width: 56px;
+  height: 56px;
+  margin: 0 auto 1.75rem;
+  display: grid;
+  place-items: center;
+  border: 1.5px solid rgb(var(--c-accent));
+  border-radius: 50%;
+  color: rgb(var(--c-accent-text));
+}
+.pj-done-mark svg { width: 26px; height: 26px; }
+.pj-done h1 {
+  font-size: clamp(1.9rem, 6vw, 2.6rem);
+  line-height: 1.08;
+  letter-spacing: -0.035em;
+  color: rgb(var(--c-ink));
+  margin: 0;
+}
+.pj-done p {
+  margin: 1rem auto 0;
+  max-width: 34ch;
+  font-size: 1rem;
+  line-height: 1.65;
+  color: rgb(var(--c-ink-mid));
+}
+.pj-done-card {
+  margin-top: 2rem;
+  padding: 1.1rem 1.25rem;
+  border: 1px solid rgb(var(--c-line));
+  background: rgb(var(--c-surface));
+  text-align: left;
+}
+.pj-done-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  font-size: 0.875rem;
+  color: rgb(var(--c-ink-mid));
+}
+.pj-done-row + .pj-done-row { margin-top: 0.4rem; }
+.pj-done-row b { color: rgb(var(--c-ink)); font-weight: 600; }
+.pj-done-row--total {
+  margin-top: 0.75rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid rgb(var(--c-line));
+  font-size: 1rem;
+}
+.pj-done-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.7rem;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+/* ── Motion ────────────────────────────────────────────────────
+   Small, and only where it carries meaning: a card that was just
+   chosen, a total that just changed. */
+@keyframes pj-bump {
+  0%   { transform: none; }
+  40%  { transform: translateY(-2px) scale(1.035); }
+  100% { transform: none; }
+}
+.pj-bump { animation: pj-bump 340ms cubic-bezier(.22,1,.36,1); }
+
+@keyframes pj-in {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: none; }
+}
+.pj-enter { animation: pj-in 420ms cubic-bezier(.16,1,.3,1) both; }
+
+@media (prefers-reduced-motion: reduce) {
+  .pj-bump, .pj-enter { animation: none; }
+  .pj-rail li, .pj-in, .pj-ta, .pj-copy { transition: none; }
+}

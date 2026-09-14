@@ -43,3 +43,89 @@
     wire();
   }
 })(window);
+
+/* ───────────────────────────────────────────────────────────────
+   The extras list, rendered from the catalogue
+
+   Every add-on and every price, on the page rather than a click
+   away, because a pricing page that hides half its prices is not a
+   pricing page. Built from Sitehouse.CATALOG so this list and the
+   builder on /start can never quote different numbers.
+
+   Grouped and closed to begin with: seventy-six lines at once is not
+   a choice, it is a wall. Each group says how many are inside, so
+   nothing is hidden — only folded.
+   ─────────────────────────────────────────────────────────────── */
+(function (global) {
+  'use strict';
+
+  var doc = global.document;
+
+  function money(cents) {
+    if (global.SitehouseI18n) return global.SitehouseI18n.format(cents / 100);
+    return '€' + (cents / 100).toFixed(2);
+  }
+
+  function render() {
+    var host = doc.querySelector('[data-pr-extras]');
+    if (!host) return;
+
+    var O = global.Sitehouse;
+    if (!O || !O.CATALOG) return;   // the noscript fallback already links out
+    var CAT = O.CATALOG;
+
+    function row(item, perMonth) {
+      return '<div class="pr-x-row">' +
+        '<span class="pr-x-name">' + O.esc(item.name) + '</span>' +
+        '<span class="pr-x-price">' +
+          (item.from ? '<span class="pr-x-from">from</span> ' : '') +
+          '<span class="cur" data-eur="' + (item.cents / 100) + '">' + money(item.cents) + '</span>' +
+          (perMonth ? '<span class="pr-x-per">/mo</span>' : '') +
+        '</span>' +
+      '</div>';
+    }
+
+    function group(title, rows, count, note) {
+      return '<details class="pr-x-group">' +
+        '<summary>' +
+          '<span class="pr-x-group-name">' + O.esc(title) + '</span>' +
+          '<span class="pr-x-group-n">' + count + '</span>' +
+        '</summary>' +
+        '<div class="pr-x-body">' +
+          (note ? '<p class="pr-x-note">' + O.esc(note) + '</p>' : '') +
+          rows +
+        '</div>' +
+      '</details>';
+    }
+
+    var html = Object.keys(CAT.groups).map(function (g) {
+      var items = CAT.oneTime.filter(function (i) { return i.group === g; });
+      if (!items.length) return '';
+      var rows = items.map(function (i) { return row(i, false); }).join('');
+      return group(CAT.groups[g], rows, items.length, 'Paid once, with the build.');
+    }).join('');
+
+    if (CAT.monthly && CAT.monthly.length) {
+      html += group('Monthly services',
+        CAT.monthly.map(function (m) { return row(m, true); }).join(''),
+        CAT.monthly.length,
+        'Billed every month from the day the site goes live, and stoppable at any time.');
+    }
+
+    host.innerHTML = html;
+
+    if (global.SitehouseI18n && global.SitehouseI18n.paintPrices) {
+      global.SitehouseI18n.paintPrices(host);
+    }
+  }
+
+  // Re-format every figure when the currency changes.
+  doc.addEventListener('xovah:i18n', render);
+  doc.addEventListener('sitehouse:i18n', render);
+
+  if (doc.readyState === 'loading') {
+    doc.addEventListener('DOMContentLoaded', render, { once: true });
+  } else {
+    render();
+  }
+})(window);
