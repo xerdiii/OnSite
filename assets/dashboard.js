@@ -115,9 +115,8 @@
   function freeUpsell() {
     return '<div class="upsell mt-6">' +
       '<p class="upsell-h">Want your own name instead?</p>' +
-      '<p class="upsell-p">Your page is live on an address we gave you. For ' +
-        '<span class="cur" data-eur="10">€10</span> a month we register the domain you want, move the ' +
-        'page across, and the old address keeps working. Or step up to a full build and get all 34 ' +
+      '<p class="upsell-p">Your page is live on an address we gave you. We can register the domain ' +
+        'you want, move the page across, and the old address keeps working. Or step up to a full build and get all 34 ' +
         'sections, your own domain for a year, and the setup work done.</p>' +
       '<div class="approve-row">' +
         '<a class="btn btn-primary" href="#/build">See the builds</a>' +
@@ -259,12 +258,12 @@
       action = '<div class="card-ink mt-6 p-6">' +
         '<p class="mono-label text-white/70">Final payment</p>' +
         '<h3 class="h-section mt-2 text-xl text-white">Approved — ' + money(bal) + ' now due</h3>' +
-        '<p class="mt-2 text-[0.8125rem] leading-relaxed text-white/80">Once this is paid your website goes live and your monthly services begin.</p>' +
+        '<p class="mt-2 text-[0.8125rem] leading-relaxed text-white/80">Once this is paid your website goes live.</p>' +
         '<button class="btn btn-light mt-5" data-act="pay-final">Pay ' + money(bal) + ' &amp; go live</button></div>';
     } else if (stage === 'live') {
       action = '<div class="card mt-6 p-6"><p class="mono-label text-ink-soft">Live</p>' +
         '<h3 class="h-section mt-2 text-xl">Your website is live</h3>' +
-        '<p class="mt-2 text-[0.8125rem] leading-relaxed text-ink-mid">Paid in full. Monthly services are running — see <a href="#/services" class="font-semibold text-accent underline underline-offset-2">My Services</a>.</p></div>';
+        '<p class="mt-2 text-[0.8125rem] leading-relaxed text-ink-mid">Paid in full. Need something changed? <a href="#/request" class="font-semibold text-accent underline underline-offset-2">Request a change</a>.</p></div>';
     }
 
     return head('My Website', s.customer.business, null) +
@@ -308,7 +307,6 @@
     var dep = O.deposit(o.oneTimeCents), bal = O.balance(o.oneTimeCents);
     var stage = s.project.stage;
     var finalPaid = stage === 'live';
-    var monthlyRunning = stage === 'live';
 
     var rows = s.payments.map(function (p) {
       var st = p.status === 'paid' ? 'paid' : (stage === 'final' ? 'due' : 'pending');
@@ -319,8 +317,8 @@
         '<td><button class="btn btn-ghost px-3 py-1 text-[0.75rem]" data-act="invoice" data-id="' + esc(p.id) + '">Receipt</button></td></tr>';
     }).join('');
 
-    return head('Payments', 'One-time and monthly, kept apart.',
-      'Your website is a one-time cost split 25/75. Monthly services are separate and only start once you are live.') +
+    return head('Payments', 'One price, paid in two parts.',
+      'Your website is a one-time cost split 25/75. There is nothing recurring.') +
 
       '<div class="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-3">' +
         '<div class="card p-5"><p class="mono-label text-ink-soft">One-time website total</p><p class="h-section mt-2 text-xl">' + money(o.oneTimeCents) + '</p></div>' +
@@ -334,24 +332,10 @@
           '<li><span class="font-semibold text-ink">25% deposit — ' + money(dep) + '</span><br>Paid ' + esc(O.date('2026-08-04')) + '. This started the project.</li>' +
           '<li' + (finalPaid ? '' : ' class="pending"') + '><span class="font-semibold text-ink">Remaining 75% — ' + money(bal) + '</span><br>' +
             (finalPaid ? 'Paid in full.' : 'Due after you approve the finished website.') + '</li>' +
-          '<li' + (monthlyRunning ? '' : ' class="pending"') + '><span class="font-semibold text-ink">Monthly services — ' + money(o.monthlyCents) + ' / month</span><br>' +
-            (monthlyRunning ? 'Billing monthly from launch.' : 'Not charged until your website goes live.') + '</li>' +
         '</ul>' +
       '</div>' +
 
-      '<div class="mt-6 grid grid-cols-1 gap-6 lg:grid-cols-2">' +
-        '<div class="card p-6"><p class="mono-label text-ink-soft">Monthly services</p>' +
-          '<table class="tbl m-cards mt-4"><tbody>' +
-            o.monthlyItems.map(function (m) {
-              return '<tr><td class="name">' + esc(m.name) + '</td><td class="font-mono">' + money(m.cents) + ' / mo</td><td>' +
-                statusTag(monthlyRunning ? 'active' : 'pending') + '</td></tr>';
-            }).join('') +
-            '<tr><td class="name">Total</td><td class="font-mono">' + money(o.monthlyCents) + ' / mo</td><td></td></tr>' +
-          '</tbody></table>' +
-          '<p class="mt-4 text-[0.8125rem] leading-relaxed text-ink-soft">' +
-            (monthlyRunning ? 'Next monthly payment: ' + esc(O.date('2026-09-18')) + '.' : 'First monthly payment is taken on the day your website goes live.') +
-          '</p>' +
-        '</div>' +
+      '<div class="mt-6">' +
         '<div class="card p-6"><p class="mono-label text-ink-soft">Invoices &amp; receipts</p>' +
           '<div class="mt-4 overflow-x-auto"><table class="tbl m-cards">' +
             '<thead><tr><th>Ref</th><th>Description</th><th>Date</th><th>Amount</th><th>Status</th><th></th></tr></thead>' +
@@ -399,7 +383,7 @@
             return '<tr><td class="name">' + esc(h.day) + '</td><td>' + esc(h.open) + '</td></tr>';
           }).join('') +
         '</tbody></table></div>' +
-        '<p class="mt-4 text-[0.8125rem] text-ink-soft">To change your hours, send it as a change request — it counts as one of your monthly changes.</p>' +
+        '<p class="mt-4 text-[0.8125rem] text-ink-soft">To change your hours, send it as a change request — we quote it before we make it.</p>' +
       '</div>' +
 
       '<div class="card mt-6 p-6"><p class="mono-label text-ink-soft">Website content</p>' +
@@ -422,20 +406,6 @@
 
   routes['/request'] = function () {
     var s = O.load();
-    var active = O.maintenanceActive();
-    var left = O.changesLeft();
-
-    if (!active) {
-      return head('Request a Change', 'Website Maintenance is not active.',
-        'Change requests are part of the Website Maintenance subscription. Without it, changes are quoted individually.') +
-        '<div class="card mt-8 p-6">' +
-          '<p class="mono-label text-ink-soft">Website Maintenance</p>' +
-          '<p class="h-section mt-2 text-2xl">€19.99 <span class="text-base text-ink-soft">/ month</span></p>' +
-          '<p class="mt-3 max-w-prose text-[0.8125rem] leading-relaxed text-ink-mid">Up to 15 reasonable changes a month — text, photos, opening hours, prices, services and business information.</p>' +
-          '<button class="btn btn-primary mt-5" data-act="activate-maintenance">Activate Website Maintenance — €19.99/month</button>' +
-        '</div>';
-    }
-
     var rows = s.changeRequests.slice().reverse().map(function (r) {
       return '<tr><td class="name">' + esc(r.id) + '</td><td>' + esc(r.type) + '</td>' +
         '<td class="max-w-sm">' + esc(r.description) + '</td>' +
@@ -443,7 +413,7 @@
     }).join('');
 
     return head('Request a Change', 'Tell us what to change.',
-      'Send it here and we handle it. You will see the status move from pending to in progress to completed.') +
+      'Send it here and we quote it before doing anything. You will see the status move from pending to in progress to completed.') +
 
       '<div class="mt-8 grid grid-cols-1 gap-6 lg:grid-cols-5">' +
         '<div class="card p-6 lg:col-span-3">' +
@@ -468,17 +438,15 @@
         '</div>' +
 
         '<div class="lg:col-span-2">' +
-          '<div class="card p-6"><p class="mono-label text-ink-soft">Your allowance</p>' +
-            '<p class="h-section mt-2 text-2xl">' + left + ' / ' + s.maintenance.included + '</p>' +
-            '<p class="mt-1 text-[0.8125rem] text-ink-soft">changes remaining this month</p>' +
-            '<p class="mt-4 text-[0.8125rem] leading-relaxed text-ink-soft">Unused changes do not roll over into next month.</p>' +
+          '<div class="card p-6"><p class="mono-label text-ink-soft">How changes are priced</p>' +
+            '<p class="mt-3 text-[0.8125rem] leading-relaxed text-ink-mid">Every request is quoted individually. You see the price and say yes before we start — nothing is charged automatically.</p>' +
           '</div>' +
-          '<div class="card mt-4 p-6"><p class="mono-label text-ink-soft">Not included</p>' +
+          '<div class="card mt-4 p-6"><p class="mono-label text-ink-soft">Bigger jobs</p>' +
             '<ul class="mt-3 space-y-1.5 text-[0.8125rem] text-ink-mid">' +
               ['Major redesigns', 'New functionality', 'New pages beyond scope', 'Custom development']
                 .map(function (i) { return '<li><span class="arrow">&rarr;</span> ' + i + '</li>'; }).join('') +
             '</ul>' +
-            '<p class="mt-3 text-[0.8125rem] text-ink-soft">These are quoted separately.</p>' +
+            '<p class="mt-3 text-[0.8125rem] text-ink-soft">These are quoted as their own project.</p>' +
           '</div>' +
         '</div>' +
       '</div>' +
@@ -490,72 +458,13 @@
       '</div>';
   };
 
-  routes['/maintenance'] = function () {
-    var s = O.load();
-    var active = O.maintenanceActive();
-    var left = O.changesLeft();
-
-    var history = s.changeRequests.slice().reverse().map(function (r) {
-      return '<tr><td class="name">' + esc(r.id) + '</td><td>' + esc(r.type) + '</td>' +
-        '<td>' + esc(O.date(r.created)) + '</td><td>' + statusTag(r.status) + '</td></tr>';
-    }).join('');
-
-    return head('Website Maintenance', 'Changes, handled.',
-      'Send us what needs updating and we do it — no editor to learn, no plugin to update.') +
-
-      '<div class="mt-8 grid grid-cols-1 gap-6 lg:grid-cols-5">' +
-        '<div class="card p-6 lg:col-span-3">' +
-          '<div class="flex flex-wrap items-baseline justify-between gap-3">' +
-            '<p class="h-section text-2xl">€19.99 <span class="text-base text-ink-soft">/ month</span></p>' +
-            statusTag(active ? 'active' : 'inactive') +
-          '</div>' +
-          '<p class="mono-label mt-6 text-ink-soft">Included every month</p>' +
-          '<ul class="mt-3 grid grid-cols-1 gap-1.5 text-[0.8125rem] text-ink-mid sm:grid-cols-2">' +
-            ['Up to 15 website changes', 'Text updates', 'Photo updates', 'Opening hours',
-             'Prices', 'Services', 'Business information']
-              .map(function (i) { return '<li><span class="arrow">&rarr;</span> ' + i + '</li>'; }).join('') +
-          '</ul>' +
-          (active
-            ? '<button class="btn btn-ghost mt-6" data-act="cancel-maintenance">Cancel maintenance</button>'
-            : '<button class="btn btn-primary mt-6" data-act="activate-maintenance">Activate — €19.99/month</button>') +
-        '</div>' +
-
-        '<div class="card p-6 lg:col-span-2">' +
-          '<p class="mono-label text-ink-soft">This month</p>' +
-          /* No allowance until the service is on. Dividing by it gave
-             a bar of NaN% and a headline of 0 / 0. */
-          (s.maintenance.included
-            ? '<p class="h-section mt-2 text-3xl">' + left + ' / ' + s.maintenance.included + '</p>' +
-              '<p class="mt-1 text-[0.8125rem] text-ink-soft">changes remaining</p>' +
-              '<div class="mt-4 h-1.5 w-full overflow-hidden rounded-full bg-line">' +
-                '<div class="h-full bg-accent" style="width:' +
-                  Math.round((s.maintenance.used / s.maintenance.included) * 100) + '%"></div>' +
-              '</div>' +
-              '<p class="mt-4 text-[0.8125rem] leading-relaxed text-ink-soft">' + s.maintenance.used +
-                ' used. Unused changes do not roll over — the allowance resets on the 1st.</p>'
-            : '<p class="h-section mt-2 text-3xl">15</p>' +
-              '<p class="mt-1 text-[0.8125rem] text-ink-soft">changes a month, once this is switched on</p>' +
-              '<p class="mt-4 text-[0.8125rem] leading-relaxed text-ink-soft">Nothing is counting yet. The allowance starts the month you activate.</p>') +
-          '<a href="#/request" class="btn btn-primary btn-block mt-5">Request a change</a>' +
-        '</div>' +
-      '</div>' +
-
-      '<div class="card mt-6 p-6"><p class="mono-label text-ink-soft">Recent requests</p>' +
-        '<div class="mt-4 overflow-x-auto"><table class="tbl m-cards">' +
-          '<thead><tr><th>Ref</th><th>Type</th><th>Sent</th><th>Status</th></tr></thead>' +
-          '<tbody>' + history + '</tbody></table></div>' +
-      '</div>';
-  };
-
   routes['/services'] = function () {
     var s = O.load(), C = O.CATALOG;
     var live = s.project.stage === 'live';
     var order = s.order || {};
     var haveOnce = (order.oneTimeItems || []).map(function (i) { return i.name; });
-    var haveMonth = (order.monthlyItems || []).map(function (m) { return m.name; });
     var t = tier();
     var coveredOne = (C.included || {})[t] || [];
-    var coveredMon = (C.includedMonthly || {})[t] || [];
 
     function row(name, priceHtml, state, note) {
       var tag = state === 'on' ? '<span class="tag tag-ok">Active</span>'
@@ -566,16 +475,16 @@
         '<b>' + priceHtml + ' ' + tag + '</b></div>';
     }
 
-    function group(title, items, kind) {
+    function group(title, items) {
       if (!items.length) return '';
       return '<div class="panel mt-5">' +
         '<div class="panel-head"><h2>' + esc(title) + '</h2>' +
           '<span class="mono-label text-ink-soft">' + items.length + '</span></div>' +
         '<div class="panel-body">' + items.map(function (i) {
-          var inc = (kind === 'month' ? coveredMon : coveredOne).indexOf(i.name) > -1;
-          var on = kind === 'month' ? haveMonth.indexOf(i.name) > -1 : haveOnce.indexOf(i.name) > -1;
+          var inc = coveredOne.indexOf(i.name) > -1;
+          var on = haveOnce.indexOf(i.name) > -1;
           return row(i.name,
-            inc ? '&mdash;' : (i.from ? 'from ' : '') + money(i.cents) + (kind === 'month' ? '/mo' : ''),
+            inc ? '&mdash;' : (i.from ? 'from ' : '') + money(i.cents),
             inc ? 'inc' : (on ? 'on' : 'off'));
         }).join('') + '</div></div>';
     }
@@ -608,7 +517,7 @@
         '</div></div>';
     }
 
-    var activeCount = haveOnce.length + haveMonth.length + mine.length;
+    var activeCount = haveOnce.length + mine.length;
 
     return head('My services', 'Everything you have, and everything you could add.',
       'Anything marked "In your pack" is already covered and is never charged again.') +
@@ -618,16 +527,13 @@
           esc(window.SitehouseApp ? window.SitehouseApp.tierName(tier()) : '—') + '</p></div>' +
         '<div class="stat"><p class="stat-l">Active</p><p class="stat-v">' + activeCount + '</p>' +
           '<p class="stat-s">services and add-ons</p></div>' +
-        '<div class="stat"><p class="stat-l">Monthly</p><p class="stat-v">' + money(order.monthlyCents || 0) + '</p>' +
-          '<p class="stat-s">' + (live ? 'billing now' : 'starts at launch') + '</p></div>' +
         '<div class="stat"><p class="stat-l">Available</p><p class="stat-v">' +
-          (C.oneTime.length + C.monthly.length) + '</p><p class="stat-s">in the catalogue</p></div>' +
+          C.oneTime.length + '</p><p class="stat-s">in the catalogue</p></div>' +
       '</div>' +
 
       featuresPanel() +
-      group('Monthly services', C.monthly, 'month') +
       Object.keys(groups).map(function (g) {
-        return group((C.groups || {})[g] || g, groups[g], 'once');
+        return group((C.groups || {})[g] || g, groups[g]);
       }).join('') +
 
       '<div class="mt-6"><a class="btn btn-primary" href="#/build">Add something</a>' +
@@ -654,32 +560,25 @@
 
   // Add-ons a tier already covers cost nothing and cannot be unpicked.
   function coveredOnce(key) { return (O.CATALOG.included || {})[key] || []; }
-  function coveredMonth(key) { return (O.CATALOG.includedMonthly || {})[key] || []; }
 
-  // One-time and monthly totals for whatever is currently selected.
+  // The one-time total for whatever is currently selected.
   function draftTotals() {
     var d = draft(), C = O.CATALOG;
-    var once = 0, month = 0;
+    var once = 0;
 
     var base = C.websites.filter(function (w) { return w.key === d.base; })[0];
     if (base) once += base.cents;
 
     var inOnce = base ? coveredOnce(base.key) : [];
-    var inMonth = base ? coveredMonth(base.key) : [];
 
     C.oneTime.forEach(function (i) {
       if (d.oneTime.indexOf(i.name) < 0) return;
       if (inOnce.indexOf(i.name) > -1) return;      // already in the tier
       once += i.cents;
     });
-    C.monthly.forEach(function (m) {
-      if (d.monthly.indexOf(m.name) < 0) return;
-      if (inMonth.indexOf(m.name) > -1) return;
-      month += m.cents;
-    });
 
-    return { once: once, month: month, deposit: O.deposit(once),
-             balance: O.balance(once), base: base, inOnce: inOnce, inMonth: inMonth };
+    return { once: once, deposit: O.deposit(once),
+             balance: O.balance(once), base: base, inOnce: inOnce };
   }
 
   function draftReady() {
@@ -718,12 +617,7 @@
         if (d.oneTime.indexOf(i.name) < 0) return;
         once.push([i.name, t.inOnce.indexOf(i.name) > -1 ? 'Included' : O.euro(i.cents)]);
       });
-      var month = [];
-      C.monthly.forEach(function (m) {
-        if (d.monthly.indexOf(m.name) < 0) return;
-        month.push([m.name, t.inMonth.indexOf(m.name) > -1 ? 'Included' : O.euro(m.cents) + '/mo']);
-      });
-      return { once: once, month: month };
+      return { once: once };
     }
   };
 
@@ -799,17 +693,6 @@
         }).join('') + '</div>';
     }).join('');
 
-    /* Step 04 — monthly */
-    var monthly = C.monthly.map(function (m) {
-      var inc = t.inMonth.indexOf(m.name) > -1;
-      return tile({
-        on: d.monthly.indexOf(m.name) > -1, included: inc, name: m.name,
-        price: inc ? 'In your pack' : money(m.cents),
-        tag: inc ? '' : '<span class="tag tag-month">Per month</span>',
-        act: 'toggle-monthly', key: m.name, off: !base || isFree
-      });
-    }).join('');
-
     function step(n, title, aside, body) {
       return '<section class="build-step">' +
         '<div class="build-step-head">' +
@@ -835,9 +718,6 @@
 
           step('03', 'Add-ons', 'Optional · paid once', addons) +
 
-          step('04', 'Monthly services', 'Starts the day you go live',
-            '<div class="build-grid mt-4">' + monthly + '</div>') +
-
         '</div>' +
 
       '</div>';
@@ -858,48 +738,6 @@
         '<p class="work-empty-h">Nothing here yet.</p>' +
         '<p class="work-empty-p">The finished sites will be listed here as they go live — screenshot, ' +
           'business, and a link you can open. We are wiring this up to the staff dashboard next.</p>' +
-      '</div>';
-  };
-
-  routes['/subscriptions'] = function () {
-    var s = O.load(), o = s.order;
-    var live = s.project.stage === 'live';
-    var nextBilling = live ? O.date('2026-09-18') : 'When your website goes live';
-
-    var rows = o.monthlyItems.map(function (m) {
-      return '<tr><td class="name">' + esc(m.name) + '</td>' +
-        '<td class="font-mono">' + money(m.cents) + ' / month</td>' +
-        '<td>Monthly</td>' +
-        '<td>' + esc(nextBilling) + '</td>' +
-        '<td>' + statusTag(live ? 'active' : 'pending') + '</td>' +
-        '<td><button class="btn btn-ghost px-3 py-1 text-[0.75rem]" data-act="cancel-service" data-name="' + esc(m.name) + '">Cancel</button></td></tr>';
-    }).join('');
-
-    return head('Subscriptions', 'What recurs, and when.',
-      'Monthly services are separate from your one-time website cost. They start at launch and can be stopped at any time.') +
-
-      '<div class="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-3">' +
-        '<div class="card p-5"><p class="mono-label text-ink-soft">Monthly total</p><p class="h-section mt-2 text-xl">' + money(o.monthlyCents) + '</p></div>' +
-        '<div class="card p-5"><p class="mono-label text-ink-soft">Billing frequency</p><p class="h-section mt-2 text-xl">Monthly</p><p class="mt-1 text-[0.8125rem] text-ink-soft">No minimum term</p></div>' +
-        '<div class="card p-5"><p class="mono-label text-ink-soft">Next billing date</p><p class="h-section mt-2 text-base">' + esc(nextBilling) + '</p></div>' +
-      '</div>' +
-
-      '<div class="card mt-6 p-6"><p class="mono-label text-ink-soft">Active subscriptions</p>' +
-        '<div class="mt-4 overflow-x-auto"><table class="tbl m-cards">' +
-          '<thead><tr><th>Service</th><th>Price</th><th>Billing</th><th>Next payment</th><th>Status</th><th></th></tr></thead>' +
-          '<tbody>' + (rows || '<tr><td colspan="6" class="text-ink-soft">No monthly services selected.</td></tr>') + '</tbody>' +
-        '</table></div>' +
-        '<p id="sub-note" class="mt-4 hidden text-[0.8125rem] font-semibold text-accent"></p>' +
-      '</div>' +
-
-      '<div class="card mt-6 p-6"><p class="mono-label text-ink-soft">Cancelling</p>' +
-        '<ul class="mt-3 space-y-2 text-[0.8125rem] leading-relaxed text-ink-mid">' +
-          '<li><span class="arrow">&rarr;</span> Cancel here or by email — no minimum term, no reason required.</li>' +
-          '<li><span class="arrow">&rarr;</span> Cancellation takes effect at the end of the period you have already paid for.</li>' +
-          '<li><span class="arrow">&rarr;</span> Cancelling a service does not take your website offline.</li>' +
-          '<li><span class="arrow">&rarr;</span> Full detail in the <a href="refunds.html" class="font-semibold text-accent underline underline-offset-2">Cancellation &amp; Refund Policy</a>.</li>' +
-        '</ul>' +
-        '<a href="#/services" class="btn btn-ghost mt-5">Add a service</a>' +
       '</div>';
   };
 
@@ -970,7 +808,7 @@
       '<div class="card mt-6 p-6"><p class="mono-label text-ink-soft">Notification preferences</p>' +
         '<div class="mt-4">' +
           toggle('nt-project', 'Project updates', 'Build progress, review ready, going live.', true) +
-          toggle('nt-payment', 'Payment reminders', 'When the remaining 75% or a monthly payment is due.', true) +
+          toggle('nt-payment', 'Payment reminders', 'When the remaining 75% is due.', true) +
           toggle('nt-changes', 'Change requests', 'When a request moves to in progress or completed.', true) +
           toggle('nt-news', 'Product news', 'New services such as AI Receptionist when they open.', false) +
         '</div>' +
@@ -1051,7 +889,6 @@
     },
     'toggle-feature': function (el) { toggleIn(draft().features, el.getAttribute('data-key')); O.save(); render(true); },
     'toggle-onetime': function (el) { toggleIn(draft().oneTime, el.getAttribute('data-key')); O.save(); render(true); },
-    'toggle-monthly': function (el) { toggleIn(draft().monthly, el.getAttribute('data-key')); O.save(); render(true); },
 
     'toggle-agree':   function () { var d = draft(); d.agreed = !d.agreed; O.save(); render(true); },
     'approve-site': function () {
@@ -1089,10 +926,7 @@
 
       s.order = {
         oneTimeCents: t.once,
-        monthlyCents: t.month,
-        oneTimeItems: onceItems,
-        monthlyItems: C.monthly.filter(function (m) { return d.monthly.indexOf(m.name) > -1; })
-                               .map(function (m) { return { name: m.name, cents: m.cents }; })
+        oneTimeItems: onceItems
       };
 
       s.project.features = (d.base === 'full' || d.base === 'complete') ? C.features.slice() : d.features.slice();
@@ -1134,8 +968,7 @@
 
       // Services follow what was actually bought
       s.services.forEach(function (sv) {
-        if (sv.cadence === 'month') { sv.state = d.monthly.indexOf(sv.name) > -1 ? 'active' : 'available'; }
-        else if (sv.cadence === 'once' && sv.state !== 'soon') {
+        if (sv.cadence === 'once' && sv.state !== 'soon') {
           sv.state = (sv.name === t.base.name || d.oneTime.indexOf(sv.name) > -1) ? 'active' : 'available';
         }
       });
@@ -1163,7 +996,7 @@
       s.payments[1].status = 'paid';
       s.payments[1].date = new Date().toISOString().slice(0, 10);
       O.save();
-      O.notify('Final payment received — your website is live and your monthly services have started.');
+      O.notify('Final payment received — your website is live.');
       render();
     },
     preview: function () { document.getElementById('preview-note').classList.remove('hidden'); },
@@ -1181,7 +1014,6 @@
         created: new Date().toISOString().slice(0, 10),
         deadline: '', status: 'pending', notes: ''
       });
-      if (O.maintenanceActive()) { s.maintenance.used = Math.min(s.maintenance.included, s.maintenance.used + 1); }
       O.save();
       O.notify('Change request received — your business information is queued for review.');
       var d = document.getElementById('business-done');
@@ -1193,7 +1025,6 @@
       var desc = document.getElementById('cr-desc').value.trim();
       var done = document.getElementById('cr-done');
       if (!desc) { done.textContent = 'Add a short description so we know what to change.'; done.classList.remove('hidden'); return; }
-      if (O.changesLeft() <= 0) { done.textContent = 'You have used all 15 changes this month. The allowance resets on the 1st.'; done.classList.remove('hidden'); return; }
       var s = O.load();
       s.changeRequests.push({
         id: 'CR-' + (125 + s.changeRequests.length),
@@ -1204,45 +1035,9 @@
         status: 'pending',
         notes: document.getElementById('cr-notes').value.trim()
       });
-      s.maintenance.used = Math.min(s.maintenance.included, s.maintenance.used + 1);
       O.save();
-      O.notify('Change request received. We will move it to in progress shortly.');
+      O.notify('Change request received. We will send you a quote before we start.');
       render();
-    },
-    'activate-maintenance': function () {
-      var s = O.load();
-      s.services.forEach(function (x) { if (x.name === 'Website Maintenance') x.state = 'active'; });
-      if (!s.order.monthlyItems.some(function (m) { return m.name === 'Website Maintenance'; })) {
-        s.order.monthlyItems.push({ name: 'Website Maintenance', cents: 1999 });
-        s.order.monthlyCents += 1999;
-      }
-      O.save();
-      O.notify('Website Maintenance is active — 15 changes a month.');
-      render();
-    },
-    'cancel-maintenance': function () {
-      var s = O.load();
-      s.services.forEach(function (x) { if (x.name === 'Website Maintenance') x.state = 'available'; });
-      s.order.monthlyItems = s.order.monthlyItems.filter(function (m) { return m.name !== 'Website Maintenance'; });
-      s.order.monthlyCents = s.order.monthlyItems.reduce(function (t, m) { return t + m.cents; }, 0);
-      O.save();
-      O.notify('Website Maintenance cancelled. It stays available until the end of the paid month.');
-      render();
-    },
-    'cancel-service': function (el) {
-      var name = el.getAttribute('data-name');
-      var s = O.load();
-      s.services.forEach(function (x) { if (x.name === name) x.state = 'available'; });
-      s.order.monthlyItems = s.order.monthlyItems.filter(function (m) { return m.name !== name; });
-      s.order.monthlyCents = s.order.monthlyItems.reduce(function (t, m) { return t + m.cents; }, 0);
-      O.save();
-      O.notify(name + ' cancelled. It stays available until the end of the period you have paid for.');
-      render();
-      var n = document.getElementById('sub-note');
-      if (n) {
-        n.textContent = name + ' cancelled. It runs until the end of the paid period, then stops.';
-        n.classList.remove('hidden');
-      }
     },
     'activate-service': function (el) {
       var name = el.getAttribute('data-name');
@@ -1250,10 +1045,6 @@
       var sv = s.services.filter(function (x) { return x.name === name; })[0];
       if (!sv) return;
       sv.state = 'active';
-      if (sv.cadence === 'month' && !s.order.monthlyItems.some(function (m) { return m.name === name; })) {
-        s.order.monthlyItems.push({ name: name, cents: sv.cents });
-        s.order.monthlyCents += sv.cents;
-      }
       O.save();
       O.notify(name + ' is now active.');
       render();
@@ -1401,7 +1192,7 @@
 
     var t = draftTotals();
     bar.querySelector('[data-bar-figure]').textContent =
-      money(t.once) + ' one-time' + (t.month ? ' + ' + money(t.month) + '/mo' : '');
+      money(t.once) + ' one-time';
     bar.querySelector('[data-bar-sub]').textContent =
       t.once ? 'Pay today ' + money(t.deposit) + ' — 25% deposit' : 'Choose a website to begin';
     var btn = bar.querySelector('[data-bar-cta]');
@@ -1420,7 +1211,7 @@
   // Nav items a free or brand-new account has no use for yet. They are
   // removed rather than shown disabled: a sidebar of dead links is a
   // worse first impression than a short one.
-  var PAID_ONLY = ['/website', '/payments', '/request', '/maintenance', '/subscriptions'];
+  var PAID_ONLY = ['/website', '/payments', '/request'];
 
   // The bottom bar holds five at most before it stops being tappable, so
   // the two halves of the audience get different fives: a paying customer

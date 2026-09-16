@@ -74,13 +74,12 @@
     if (!O || !O.CATALOG) return;   // the noscript fallback already links out
     var CAT = O.CATALOG;
 
-    function row(item, perMonth) {
+    function row(item) {
       return '<div class="pr-x-row">' +
         '<span class="pr-x-name">' + O.esc(item.name) + '</span>' +
         '<span class="pr-x-price">' +
           (item.from ? '<span class="pr-x-from">from</span> ' : '') +
           '<span class="cur" data-eur="' + (item.cents / 100) + '">' + money(item.cents) + '</span>' +
-          (perMonth ? '<span class="pr-x-per">/mo</span>' : '') +
         '</span>' +
       '</div>';
     }
@@ -101,16 +100,9 @@
     var html = Object.keys(CAT.groups).map(function (g) {
       var items = CAT.oneTime.filter(function (i) { return i.group === g; });
       if (!items.length) return '';
-      var rows = items.map(function (i) { return row(i, false); }).join('');
+      var rows = items.map(function (i) { return row(i); }).join('');
       return group(CAT.groups[g], rows, items.length, 'Paid once, with the build.');
     }).join('');
-
-    if (CAT.monthly && CAT.monthly.length) {
-      html += group('Monthly services',
-        CAT.monthly.map(function (m) { return row(m, true); }).join(''),
-        CAT.monthly.length,
-        'Billed every month from the day the site goes live, and stoppable at any time.');
-    }
 
     host.innerHTML = html;
 

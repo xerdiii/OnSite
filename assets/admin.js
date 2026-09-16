@@ -85,8 +85,6 @@
     var live = u.filter(function (x) { return x.website === 'Live'; }).length;
     var building = u.filter(function (x) { return x.website === 'Building' || x.website === 'Awaiting content'; }).length;
     var review = u.filter(function (x) { return x.website === 'Ready for review'; }).length;
-    var mrr = u.filter(function (x) { return x.monthly === 'active'; })
-               .reduce(function (t, x) { return t + x.monthlyCents; }, 0);
     var owed = u.filter(function (x) { return x.final === 'pending'; })
                 .reduce(function (t, x) { return t + O.balance(x.oneTimeCents); }, 0);
 
@@ -99,11 +97,10 @@
       }).join('');
 
     return head('Overview', 'Where every customer is right now.', null) +
-      '<div class="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-5">' +
+      '<div class="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-4">' +
         stat('Customers', String(u.length)) +
         stat('Live websites', String(live)) +
         stat('In build', String(building + review), review + ' awaiting approval') +
-        stat('Monthly recurring', money(mrr), 'from active subscriptions') +
         stat('Awaiting 75%', money(owed), 'across open projects') +
       '</div>' +
       '<div class="card mt-6 p-6"><p class="mono-label text-ink-soft">Needs attention</p>' +
@@ -120,13 +117,12 @@
         '<td>' + esc(x.email) + '</td>' +
         '<td>' + tag(x.website) + '</td>' +
         '<td>' + tag(x.final === 'paid' ? 'paid' : x.final) + '</td>' +
-        '<td class="font-mono">' + (x.monthlyCents ? money(x.monthlyCents) + ' / mo' : '—') + '</td>' +
         '<td>' + esc(O.date(x.created)) + '</td></tr>';
     }).join('');
 
     return head('Users', 'Every customer account.', 'Select a row to open the customer.') +
       '<div class="card mt-8 p-6">' +
-        table(['Name', 'Business', 'Email', 'Website', 'Final payment', 'Monthly', 'Created'], rows) +
+        table(['Name', 'Business', 'Email', 'Website', 'Final payment', 'Created'], rows) +
       '</div>';
   };
 
@@ -138,11 +134,10 @@
     return '<a href="#/users" class="text-[0.8125rem] font-semibold text-ink-mid hover:text-ink">← All users</a>' +
       '<div class="mt-4">' + head('Customer', u.business, u.name + ' · ' + u.email) + '</div>' +
 
-      '<div class="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-4">' +
+      '<div class="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-3">' +
         stat('Website', tag(u.website)) +
         stat('Deposit (25%)', money(dep) + ' ' + tag(u.deposit)) +
         stat('Remaining (75%)', money(bal) + ' ' + tag(u.final)) +
-        stat('Monthly', (u.monthlyCents ? money(u.monthlyCents) : '—') + ' ' + tag(u.monthly)) +
       '</div>' +
 
       '<div class="mt-6 grid grid-cols-1 gap-6 lg:grid-cols-2">' +
@@ -151,7 +146,6 @@
             '<tr><td class="name">One-time total</td><td class="font-mono">' + money(u.oneTimeCents) + '</td></tr>' +
             '<tr><td class="name">25% deposit</td><td class="font-mono">' + money(dep) + '</td></tr>' +
             '<tr><td class="name">Remaining 75%</td><td class="font-mono">' + money(bal) + '</td></tr>' +
-            '<tr><td class="name">Monthly services</td><td class="font-mono">' + (u.monthlyCents ? money(u.monthlyCents) + ' / mo' : '—') + '</td></tr>' +
           '</tbody></table></div>' +
         '<div class="card p-6"><p class="mono-label text-ink-soft">Account</p>' +
           '<table class="tbl m-cards mt-4"><tbody>' +
@@ -190,26 +184,21 @@
     }, 0);
     var outstanding = u.filter(function (x) { return x.final === 'pending'; })
                        .reduce(function (t, x) { return t + O.balance(x.oneTimeCents); }, 0);
-    var mrr = u.filter(function (x) { return x.monthly === 'active'; })
-               .reduce(function (t, x) { return t + x.monthlyCents; }, 0);
 
     var rows = u.map(function (x, i) {
       return '<tr class="clickable" data-act="open-user" data-i="' + i + '">' +
         '<td class="name">' + esc(x.business) + '</td>' +
         '<td class="font-mono">' + money(O.deposit(x.oneTimeCents)) + '</td><td>' + tag(x.deposit) + '</td>' +
-        '<td class="font-mono">' + money(O.balance(x.oneTimeCents)) + '</td><td>' + tag(x.final) + '</td>' +
-        '<td class="font-mono">' + (x.monthlyCents ? money(x.monthlyCents) + ' / mo' : '—') + '</td>' +
-        '<td>' + tag(x.monthly) + '</td></tr>';
+        '<td class="font-mono">' + money(O.balance(x.oneTimeCents)) + '</td><td>' + tag(x.final) + '</td></tr>';
     }).join('');
 
-    return head('Payments', 'One-time and recurring, side by side.', null) +
-      '<div class="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-3">' +
+    return head('Payments', 'Deposits and balances.', null) +
+      '<div class="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2">' +
         stat('Collected one-time', money(collected)) +
         stat('Outstanding 75%', money(outstanding), 'awaiting customer approval') +
-        stat('Monthly recurring', money(mrr), 'active subscriptions only') +
       '</div>' +
       '<div class="card mt-6 p-6">' +
-        table(['Business', 'Deposit', 'Status', 'Remaining', 'Status', 'Monthly', 'Status'], rows) +
+        table(['Business', 'Deposit', 'Status', 'Remaining', 'Status'], rows) +
       '</div>';
   };
 
@@ -253,38 +242,6 @@
       '</div>';
   };
 
-  routes['/maintenance'] = function () {
-    var s = O.load();
-    var active = O.maintenanceActive();
-    return head('Maintenance', 'Allowances and usage.', 'Unused changes do not roll over.') +
-      '<div class="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-3">' +
-        stat('Subscribers', active ? '1' : '0', '€19.99 / month each') +
-        stat('Changes used', s.maintenance.used + ' / ' + s.maintenance.included, 'this month') +
-        stat('Remaining', String(O.changesLeft()), 'resets on the 1st') +
-      '</div>' +
-      '<div class="card mt-6 p-6"><p class="mono-label text-ink-soft">By customer</p>' +
-        table(['Business', 'Plan', 'Used', 'Remaining'],
-          '<tr><td class="name">' + esc(s.customer.business) + '</td>' +
-          '<td>' + (active ? 'Website Maintenance — €19.99 / mo' : 'None') + '</td>' +
-          '<td>' + s.maintenance.used + '</td><td>' + O.changesLeft() + '</td></tr>') +
-      '</div>';
-  };
-
-  routes['/subscriptions'] = function () {
-    var u = O.load().users;
-    var rows = u.filter(function (x) { return x.monthlyCents > 0; }).map(function (x, i) {
-      return '<tr class="clickable" data-act="open-user" data-i="' + u.indexOf(x) + '">' +
-        '<td class="name">' + esc(x.business) + '</td>' +
-        '<td class="font-mono">' + money(x.monthlyCents) + ' / mo</td>' +
-        '<td>' + tag(x.monthly) + '</td>' +
-        '<td>' + (x.monthly === 'active' ? 'Billing monthly' : 'Starts when the site goes live') + '</td></tr>';
-    }).join('');
-
-    return head('Subscriptions', 'Recurring services.',
-      'Monthly billing only starts once a website goes live.') +
-      '<div class="card mt-8 p-6">' + table(['Business', 'Monthly', 'Status', 'Note'], rows) + '</div>';
-  };
-
   routes['/support'] = function () {
     var s = O.load();
     var rows = s.support.slice().reverse().map(function (t) {
@@ -306,8 +263,6 @@
     { key: 'website-ready',    name: 'Website ready for review', trigger: 'Build complete', status: 'Specified' },
     { key: 'final-due',        name: 'Final payment due', trigger: 'Customer approves the website', status: 'Specified' },
     { key: 'website-live',     name: 'Website live', trigger: 'Final 75% received', status: 'Specified' },
-    { key: 'subscription-started', name: 'Monthly service started', trigger: 'Website goes live', status: 'Specified' },
-    { key: 'payment-failed',   name: 'Payment failed', trigger: 'Monthly charge declines', status: 'Specified' },
     { key: 'verify-email',     name: 'Email verification code', trigger: 'Sign-up or sign-in', status: 'Simulated in demo' },
     { key: 'password-reset',   name: 'Password reset', trigger: 'Reset requested', status: 'Simulated in demo' }
   ];
@@ -332,7 +287,7 @@
 
   routes['/refunds'] = function () {
     var u = O.load().users;
-    var cancelled = u.filter(function (x) { return x.monthly === 'cancelled' || x.final === 'cancelled'; });
+    var cancelled = u.filter(function (x) { return x.final === 'cancelled'; });
     var rows = cancelled.length ? cancelled.map(function (x) {
       return '<tr class="clickable" data-act="open-user" data-i="' + u.indexOf(x) + '">' +
         '<td class="name">' + esc(x.business) + '</td><td>' + esc(x.name) + '</td>' +
@@ -362,7 +317,6 @@
           '<table class="tbl m-cards mt-4"><tbody>' +
             '<tr><td class="name">Deposit</td><td>25% of the one-time total</td></tr>' +
             '<tr><td class="name">Balance</td><td>75%, due on customer approval</td></tr>' +
-            '<tr><td class="name">Monthly services</td><td>Start at launch, never during build</td></tr>' +
             '<tr><td class="name">Target delivery</td><td>7 days from receiving all content</td></tr>' +
           '</tbody></table></div>' +
         '<div class="card p-6"><p class="mono-label text-ink-soft">Local data</p>' +

@@ -25,8 +25,6 @@
     var panel   = scope.querySelector('[data-pick-total]');
     var countEl = scope.querySelector('[data-pick-count]');
     var onceEl  = scope.querySelector('[data-pick-once]');
-    var monEl   = scope.querySelector('[data-pick-monthly]');
-    var monRow  = scope.querySelector('[data-pick-monthly-row]');
     var depEl   = scope.querySelector('[data-pick-deposit]');
     var fromEl  = scope.querySelector('[data-pick-from]');
     var clear   = scope.querySelector('[data-pick-clear]');
@@ -36,8 +34,6 @@
     var bar     = doc.querySelector('[data-ex-bar-sum]');
     var barCount= doc.querySelector('[data-ex-bar-count]');
     var barOnce = doc.querySelector('[data-ex-bar-once]');
-    var barMon  = doc.querySelector('[data-ex-bar-month]');
-    var barMonV = doc.querySelector('[data-ex-bar-monthv]');
 
     function money(n) {
       // Round to cents first, then decide. A deposit of 39.9975 is €40, not
@@ -59,14 +55,12 @@
     }
 
     function total() {
-      var once = 0, month = 0, n = 0, from = false;
+      var once = 0, n = 0, from = false;
 
       boxes.forEach(function (b) {
         if (!b.checked) return;
         n++;
-        var price = parseFloat(b.getAttribute('data-price')) || 0;
-        if (b.getAttribute('data-kind') === 'month') month += price;
-        else once += price;
+        once += parseFloat(b.getAttribute('data-price')) || 0;
         // "from €50" is a floor, not a quote. Say so rather than pretending.
         var label = b.parentNode.querySelector('.pick-price');
         if (label && /from/i.test(label.textContent)) from = true;
@@ -74,9 +68,7 @@
 
       countEl.textContent = n;
       onceEl.textContent = money(once);
-      monEl.textContent = money(month);
       depEl.textContent = money(once * 0.25);
-      monRow.hidden = month === 0;
       fromEl.hidden = !from;
       panel.hidden = n === 0;
 
@@ -84,8 +76,6 @@
         bar.hidden = n === 0;
         barCount.textContent = n;
         barOnce.textContent = money(once);
-        barMonV.textContent = money(month);
-        barMon.hidden = month === 0;
       }
 
       write(boxes.filter(function (b) { return b.checked; })

@@ -51,13 +51,12 @@
   .lede { font-size:1.0625rem; line-height:1.6; }
   @media (min-width:768px){ .lede { font-size:1.125rem; } }
 
-  /* Price tags — the one device that keeps one-time and monthly from ever blurring */
+  /* Price tags */
   .tag {
     font-family:inherit; font-size:0.75rem; font-weight:600; letter-spacing:0;
     padding:0.15rem 0.5rem; border-radius:0.25rem; white-space:nowrap;
   }
   .tag-once  { background:rgb(var(--c-accent-tint)); color:rgb(var(--c-accent-text)); border:1px solid rgb(var(--c-line-firm)); }
-  .tag-month { background:rgb(var(--c-accent)); color:rgb(var(--c-on-accent)); }
   .tag-soon  { background:transparent; color:rgb(var(--c-ink-soft)); border:1px dashed rgb(var(--c-line-firm)); }
 
   .arrow { color:rgb(var(--c-accent-text)); font-weight:600; }
@@ -168,7 +167,7 @@
   }
   @media (min-width:1280px){ .step-n { font-size:2.5rem; } }
 
-  /* Price rows — used for the monthly services and every extra */
+  /* Price rows — used for every extra */
   /* A rule that draws itself, with a spinning marker riding the head of
      the stroke. Pure CSS: three absolutely positioned spans and one SVG,
      no library and nothing measured in JS. */
@@ -351,7 +350,6 @@
     <nav class="site-menu-links" aria-label="Main">
       <a href="pricing.html">Pricing</a>
       <a href="#features">Features</a>
-      <a href="#services">Monthly</a>
       <a href="extras.html">Extras</a>
       <a href="faq.html">FAQ</a>
       <a href="support.html">Help &amp; support</a>
@@ -611,11 +609,9 @@
       <div class="mt-8 border border-line bg-surface px-6 py-5">
         <div class="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-1">
           <h3 class="h-section text-base">Domain &amp; hosting</h3>
-          <p class="text-[0.9375rem] font-semibold text-ink"><span class="cur" data-eur="10">€10</span> <span class="font-normal text-ink-soft">/ month, once the included years run out</span></p>
         </div>
         <p class="mt-3 max-w-prose text-[0.875rem] leading-relaxed text-ink-mid">
-          Custom and Professional include the first year. Complete includes the first three. After that it
-          is <span class="cur" data-eur="10">€10</span> a month for the domain, the hosting and the padlock — nothing else changes.
+          Custom and Professional include the first year. Complete includes the first three.
         </p>
         <p class="mt-2 max-w-prose text-[0.875rem] leading-relaxed text-ink-mid">
           You choose the domain name yourself. Type the one you want before you order and we register it for you.
@@ -730,16 +726,7 @@
             <a href="#pricing" class="mt-4 inline-block text-sm font-semibold text-accent underline decoration-line-firm decoration-2 underline-offset-4 hover:decoration-accent">Compare the two</a>
           </div>
 
-          <div class="mt-9 grid grid-cols-1 gap-9 border-t border-line pt-7 sm:grid-cols-2 sm:gap-8" data-reveal-group>
-            <div>
-              <h3 class="h-section text-base">Monthly services</h3>
-              <p class="mt-2 text-[0.875rem] leading-relaxed text-ink-mid">
-                Maintenance, content updates, SEO upkeep, monitoring, priority support. None of them
-                start until you are live.
-              </p>
-              <p class="mt-2.5 text-[0.8125rem] text-ink-soft">Ten of them, <span class="cur" data-eur="10">€10</span> – <span class="cur" data-eur="40">€40</span> a month each.</p>
-              <a href="#services" class="mt-2.5 inline-block text-sm font-semibold text-accent underline decoration-line-firm decoration-2 underline-offset-4 hover:decoration-accent">What each one does</a>
-            </div>
+          <div class="mt-9 border-t border-line pt-7" data-reveal-group>
             <div>
               <h3 class="h-section text-base">Business extras</h3>
               <p class="mt-2 text-[0.875rem] leading-relaxed text-ink-mid">
@@ -799,11 +786,6 @@
         </li>
 
       </ol>
-
-      <p class="mt-8 max-w-prose text-[0.8125rem] leading-relaxed text-ink-soft">
-        Nothing monthly is charged while we are still building. If you have added a monthly service, it
-        starts the day the site goes live.
-      </p>
     </div>
   </section>
 
@@ -829,8 +811,8 @@
           <h2 class="h-section sec-title mt-4" data-rise>The things a website does not cover.</h2>
           <p class="mt-5 max-w-prose text-[0.9375rem] leading-relaxed text-ink-mid">
             Booking, SEO, analytics, automation, a logo, an email on your own domain. Sixty-six one-off
-            jobs and ten monthly services, each priced on its own page so you can tick your way to a
-            total before you talk to anyone.
+            jobs, each priced on its own page so you can tick your way to a total before you talk to
+            anyone.
           </p>
           <div class="mt-8 flex flex-wrap items-center gap-x-6 gap-y-4">
             <a href="build.html" class="inline-flex min-h-[52px] items-center justify-center rounded-full bg-accent px-7 py-3.5 text-[0.9375rem] font-semibold text-white hover:bg-accent-hi">
@@ -860,7 +842,7 @@
   <section class="border-b border-line">
     <div class="mx-auto max-w-shell px-6 py-16 md:px-10 md:py-24">
       <p class="eyebrow text-ink-soft" data-rise>Straight answers</p>
-      <h2 class="h-section sec-title mt-4 max-w-2xl" data-rise>One-time, monthly, and what happens next.</h2>
+      <h2 class="h-section sec-title mt-4 max-w-2xl" data-rise>What you pay, and what happens next.</h2>
       <p class="mt-5 max-w-prose text-[0.9375rem] leading-relaxed text-ink-mid">
         The ones that come up most. The rest are answered in the
         <a href="faq.html" class="font-semibold text-accent underline underline-offset-2 hover:text-accent-hi">full FAQ</a>.
@@ -877,31 +859,19 @@
         </div>
         <div data-acc-item class="border-b border-line">
           <dt data-acc-head class="h-section text-base">What happens to my domain and hosting?</dt>
-          <dd data-acc-body class="max-w-prose pb-6 text-[0.9375rem] leading-relaxed text-ink-mid">Your domain, the hosting and the security padlock are included — the first year with Custom and Professional, the first three years with Complete. After that it is <span class="cur" data-eur="10">€10</span> a month, and that is the only thing that changes. You pick the domain name yourself: type the one you want before you order and we register it in your name.</dd>
-        </div>
-        <div data-acc-item class="border-b border-line">
-          <dt data-acc-head class="h-section text-base">Which services repeat every month?</dt>
-          <dd data-acc-body class="max-w-prose pb-6 text-[0.9375rem] leading-relaxed text-ink-mid">The ten monthly services — maintenance, content updates, image and text changes, SEO upkeep and reporting, Google Business Profile upkeep, performance monitoring, security and backup monitoring, priority support — from <span class="cur" data-eur="10">€10</span> to <span class="cur" data-eur="40">€40</span> a month each. Plus the <span class="cur" data-eur="10">€10</span> a month for domain and hosting once your included years run out. Everything else on this page is paid once.</dd>
+          <dd data-acc-body class="max-w-prose pb-6 text-[0.9375rem] leading-relaxed text-ink-mid">Your domain, the hosting and the security padlock are included — the first year with Custom and Professional, the first three years with Complete. You pick the domain name yourself: type the one you want before you order and we register it in your name.</dd>
         </div>
         <div data-acc-item class="border-b border-line">
           <dt data-acc-head class="h-section text-base">Are Business Extras required?</dt>
           <dd data-acc-body class="max-w-prose pb-6 text-[0.9375rem] leading-relaxed text-ink-mid">No. All 34 sections and features come with every website. The add-ons are extra work on top, and buying none of them is a perfectly normal order.</dd>
         </div>
         <div data-acc-item class="border-b border-line">
-          <dt data-acc-head class="h-section text-base">Are Business Extras monthly payments?</dt>
-          <dd data-acc-body class="max-w-prose pb-6 text-[0.9375rem] leading-relaxed text-ink-mid">No — they are one-time, every one of them. Nothing there quietly becomes a monthly bill.</dd>
-        </div>
-        <div data-acc-item class="border-b border-line">
           <dt data-acc-head class="h-section text-base">How much do I actually pay today?</dt>
-          <dd data-acc-body class="max-w-prose pb-6 text-[0.9375rem] leading-relaxed text-ink-mid">A quarter of the one-time total. That is it for now. The rest is due once the site is built and you have said you are happy with it, and nothing monthly gets charged until you are actually live. The order summary spells out all three numbers before you pay anything.</dd>
+          <dd data-acc-body class="max-w-prose pb-6 text-[0.9375rem] leading-relaxed text-ink-mid">A quarter of the one-time total. That is it for now. The rest is due once the site is built and you have said you are happy with it. The order summary spells out all three numbers before you pay anything.</dd>
         </div>
         <div data-acc-item class="border-b border-line">
           <dt data-acc-head class="h-section text-base">How long does it take?</dt>
           <dd data-acc-body class="max-w-prose pb-6 text-[0.9375rem] leading-relaxed text-ink-mid">About a week from the day we have everything — logo, photos, your services and prices, opening hours, how people reach you. It is a target, not a promise carved in stone: if the photos land three weeks later, so does the website.</dd>
-        </div>
-        <div data-acc-item class="border-b border-line">
-          <dt data-acc-head class="h-section text-base">Can I add or stop a monthly service later?</dt>
-          <dd data-acc-body class="max-w-prose pb-6 text-[0.9375rem] leading-relaxed text-ink-mid">Yes. Monthly services are separate from the website. You can start with none of them, add one when you need it, and stop it without affecting the website you already paid for.</dd>
         </div>
       </dl>
     </div>

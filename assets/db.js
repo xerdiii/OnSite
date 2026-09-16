@@ -131,7 +131,6 @@
       var deposit = Math.floor(oneTime * 0.25);
       return {
         oneTimeCents: oneTime,
-        monthlyCents: (order && order.monthly_cents) || 0,
         depositCents: deposit,
         balanceCents: oneTime - deposit
       };

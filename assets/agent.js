@@ -50,11 +50,9 @@
       stage: s.project && s.project.stage,
       statusLabel: O.statusLabel(),
       oneTimeTotal: money(o.oneTimeCents || 0),
-      monthlyTotal: money(o.monthlyCents || 0),
       depositPaid: (s.project && s.project.stage) !== 'deposit',
       balanceDue: money(O.balance(o.oneTimeCents || 0)),
       items: (o.oneTimeItems || []).map(function (i) { return i.name; }),
-      monthly: (o.monthlyItems || []).map(function (m) { return m.name; }),
       featuresBuilt: (s.project && s.project.features) || [],
       hoursSet: hours.length,
       openChangeRequests: (s.changeRequests || [])
@@ -81,8 +79,7 @@
                'The remaining ' + money(bal) + ' is only due once you have approved the finished site.';
       }
       if ((s.project && s.project.stage) === 'live') {
-        return 'Your one-time total is settled. What continues is ' + money(o.monthlyCents || 0) +
-               ' a month for your monthly services. Full history is on the Payments page.';
+        return 'You are paid in full and there is nothing recurring. Full history is on the Payments page.';
       }
       return 'You have paid the ' + money(dep) + ' deposit. The remaining ' + money(bal) +
              ' falls due when you approve the finished website — not before. Nothing is taken automatically.';
@@ -95,9 +92,7 @@
 
     if (has('what did i', 'what am i', 'my order', 'my package', 'included', 'what do i get')) {
       var once = (o.oneTimeItems || []).map(function (i) { return i.name; }).join(', ') || 'nothing yet';
-      var mon = (o.monthlyItems || []).map(function (m) { return m.name; }).join(', ') || 'none';
-      return 'One-time: ' + once + ' (' + money(o.oneTimeCents || 0) + ').\n' +
-             'Monthly: ' + mon + (o.monthlyCents ? ' (' + money(o.monthlyCents) + ' a month)' : '') + '.';
+      return 'One-time: ' + once + ' (' + money(o.oneTimeCents || 0) + ').';
     }
 
     if (has('hour', 'open', 'closing', 'closed')) {
@@ -123,7 +118,7 @@
 
     if (has('domain', 'hosting', 'address', 'url')) {
       return 'Hosting, the padlock and the domain come with every build — the first year on Custom and Full, ' +
-             'three years on Complete. After that it is ' + money(1000) + ' a month. On the free page you are ' +
+             'three years on Complete. On the free page you are ' +
              'on an address we provide until you want your own name.';
     }
 

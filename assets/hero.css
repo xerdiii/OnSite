@@ -115,7 +115,7 @@ html[data-hero-visible] .fp-header {
 
 /* ───────────────────────────────────────────────────────────────
    The one navigation
-   Three things and nothing else: the mark, Monthly, Log in. It is on
+   Three things and nothing else: the mark, the menu, Log in. It is on
    every screen at every scroll position, so it is a grid rather than a
    flex row — the middle link has to sit on the page's centre line, not
    wherever the two sides happen to leave it.
@@ -321,7 +321,7 @@ html[data-hero-visible] .fp-header {
 /* ───────────────────────────────────────────────────────────────
    The menu
    The bar shows the mark and one control. Pricing, features, the
-   monthly services, the account link and the theme switch all live
+   extras, the account link and the theme switch all live
    behind it, so the top of the page stays off the picture — which is
    the point of a full-bleed hero.
    ─────────────────────────────────────────────────────────────── */

@@ -70,11 +70,8 @@
   var ONCE_BY_KEY = {};
   CAT.oneTime.forEach(function (i) { ONCE_BY_KEY[slug(i.name)] = i; });
 
-  var MONTH_BY_KEY = {};
-  CAT.monthly.forEach(function (m) { MONTH_BY_KEY[slug(m.name)] = m; });
-
   /* ── State ───────────────────────────────────────────────────── */
-  var picks = { tier: null, extras: {}, monthly: {} };
+  var picks = { tier: null, extras: {} };
   var brief = {
     text: '',
     email: '',
@@ -90,7 +87,6 @@
       if (!v || typeof v !== 'object') return;
       picks.tier = TIERS[v.tier] ? v.tier : null;
       picks.extras = (v.extras && typeof v.extras === 'object') ? v.extras : {};
-      picks.monthly = (v.monthly && typeof v.monthly === 'object') ? v.monthly : {};
     } catch (e) { /* private mode, corrupt JSON — start clean */ }
   }
   function savePicks() {
@@ -130,25 +126,15 @@
       .filter(function (k) { return picks.extras[k] && ONCE_BY_KEY[k]; })
       .map(function (k) { return ONCE_BY_KEY[k]; });
   }
-  function chosenMonthly() {
-    return Object.keys(picks.monthly)
-      .filter(function (k) { return picks.monthly[k] && MONTH_BY_KEY[k]; })
-      .map(function (k) { return MONTH_BY_KEY[k]; });
-  }
-
   function totals() {
     var tier = picks.tier ? TIERS[picks.tier] : null;
     var once = chosenExtras();
-    var mon = chosenMonthly();
     var extrasCents = once.reduce(function (n, i) { return n + i.cents; }, 0);
-    var monthCents = mon.reduce(function (n, i) { return n + i.cents; }, 0);
     return {
       tier: tier,
       website: tier ? tier.cents : 0,
       extras: once,
       extrasCents: extrasCents,
-      monthly: mon,
-      monthlyCents: monthCents,
       total: (tier ? tier.cents : 0) + extrasCents
     };
   }
@@ -210,13 +196,12 @@
     var host = root.querySelector('[data-pj-extras]');
     if (!host) return;
 
-    function row(item, kind, key) {
-      var on = kind === 'monthly' ? !!picks.monthly[key] : !!picks.extras[key];
+    function row(item, key) {
+      var on = !!picks.extras[key];
       var price = (item.from ? 'from ' : '') +
-        '<span class="cur" data-eur="' + (item.cents / 100) + '">' + money(item.cents) + '</span>' +
-        (kind === 'monthly' ? ' <span class="bd-tier-flag">/mo</span>' : '');
+        '<span class="cur" data-eur="' + (item.cents / 100) + '">' + money(item.cents) + '</span>';
       return '<label class="bd-item">' +
-        '<input type="checkbox" data-pj-extra="' + key + '" data-pj-kind="' + kind + '"' +
+        '<input type="checkbox" data-pj-extra="' + key + '"' +
           (on ? ' checked' : '') + '>' +
         '<span class="bd-box" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" ' +
           'stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round">' +
@@ -248,15 +233,9 @@
     var html = Object.keys(CAT.groups).map(function (g) {
       var items = CAT.oneTime.filter(function (i) { return i.group === g; });
       if (!items.length) return '';
-      var rows = items.map(function (i) { return row(i, 'once', slug(i.name)); }).join('');
+      var rows = items.map(function (i) { return row(i, slug(i.name)); }).join('');
       return group(g, CAT.groups[g], rows, items.length, '');
     }).join('');
-
-    if (CAT.monthly.length) {
-      var mrows = CAT.monthly.map(function (m) { return row(m, 'monthly', slug(m.name)); }).join('');
-      html += group('monthly', 'Monthly services', mrows, CAT.monthly.length,
-        'Billed every month from the day the site goes live. Kept out of the one-time estimate so the two are never confused.');
-    }
 
     host.innerHTML = html;
 
@@ -272,9 +251,7 @@
       var cb = e.target.closest ? e.target.closest('[data-pj-extra]') : null;
       if (!cb) return;
       var k = cb.getAttribute('data-pj-extra');
-      var kind = cb.getAttribute('data-pj-kind');
-      var bag = kind === 'monthly' ? picks.monthly : picks.extras;
-      if (cb.checked) bag[k] = true; else delete bag[k];
+      if (cb.checked) picks.extras[k] = true; else delete picks.extras[k];
       savePicks();
       var label = cb.closest('.bd-item');
       if (label && cb.checked) bump(label);
@@ -291,9 +268,7 @@
   function openGroupsWithPicks() {
     [].forEach.call(root.querySelectorAll('[data-pj-group]'), function (grp) {
       var g = grp.getAttribute('data-pj-group');
-      var has = g === 'monthly'
-        ? CAT.monthly.some(function (m) { return picks.monthly[slug(m.name)]; })
-        : CAT.oneTime.some(function (i) { return i.group === g && picks.extras[slug(i.name)]; });
+      var has = CAT.oneTime.some(function (i) { return i.group === g && picks.extras[slug(i.name)]; });
       if (!has) return;
       grp.classList.add('is-open');
       var b = grp.querySelector('.bd-group-btn');
@@ -332,15 +307,6 @@
     out.push('ESTIMATED TOTAL');
     out.push(money(t.total) + (showingEuro() ? '' : ' (billed in ' + euro(t.total) + ')'));
     out.push('');
-
-    if (t.monthly.length) {
-      out.push('MONTHLY SERVICES');
-      t.monthly.forEach(function (m) {
-        out.push('• ' + m.name + ' — ' + money(m.cents) + ' / month');
-      });
-      out.push('Monthly total: ' + money(t.monthlyCents) + ' / month, from launch');
-      out.push('');
-    }
 
     out.push('WHAT I NEED');
     out.push(brief.text.trim() || '(not filled in yet)');
@@ -393,18 +359,6 @@
         : '<li class="pj-sum-none" style="display:block">None selected</li>';
     }
 
-    /* Summary — monthly, only when there is one */
-    var monWrap = root.querySelector('[data-pj-sum-monthly]');
-    if (monWrap) {
-      monWrap.hidden = !t.monthly.length;
-      var monHost = root.querySelector('[data-pj-sum-monthly-list]');
-      if (monHost && t.monthly.length) {
-        monHost.innerHTML = t.monthly.map(function (m) {
-          return '<li><span>' + O.esc(m.name) + '</span><b>' + money(m.cents) + '/mo</b></li>';
-        }).join('');
-      }
-    }
-
     set('[data-pj-total]', money(t.total));
     set('[data-pj-bar-total]', money(t.total));
 
@@ -425,9 +379,7 @@
     /* Group counters */
     [].forEach.call(root.querySelectorAll('[data-pj-group]'), function (grp) {
       var g = grp.getAttribute('data-pj-group');
-      var n = g === 'monthly'
-        ? CAT.monthly.filter(function (m) { return picks.monthly[slug(m.name)]; }).length
-        : CAT.oneTime.filter(function (i) { return i.group === g && picks.extras[slug(i.name)]; }).length;
+      var n = CAT.oneTime.filter(function (i) { return i.group === g && picks.extras[slug(i.name)]; }).length;
       var badge = grp.querySelector('[data-pj-gcount]');
       if (badge) { badge.textContent = n; badge.hidden = !n; }
     });
@@ -565,9 +517,7 @@
       project: {
         package: { key: t.tier.key, name: t.tier.name, cents: t.tier.cents },
         extras: t.extras.map(function (i) { return { name: i.name, cents: i.cents }; }),
-        monthly: t.monthly.map(function (m) { return { name: m.name, cents: m.cents }; }),
         totalCents: t.total,
-        monthlyCents: t.monthlyCents,
         brief: brief.text.trim(),
         details: {
           businessName: brief.businessName.trim(),
@@ -622,19 +572,10 @@
         : 'None';
     root.querySelector('[data-pj-done-total]').textContent = money(t.total);
 
-    var monRow = root.querySelector('[data-pj-done-monthly]');
-    if (monRow) {
-      monRow.hidden = !t.monthly.length;
-      if (t.monthly.length) {
-        root.querySelector('[data-pj-done-monthly-v]').textContent =
-          money(t.monthlyCents) + ' / month';
-      }
-    }
-
     /* The basket is spent. Leaving it would mean a second visit opens
        with a request that has already been sent, which reads as a
        mistake the first time and as a duplicate the second. */
-    picks = { tier: null, extras: {}, monthly: {} };
+    picks = { tier: null, extras: {} };
     brief.text = '';
     savePicks();
     saveBrief();
@@ -696,7 +637,7 @@
     var clear = one('[data-pj-clear]');
     if (clear) {
       clear.addEventListener('click', function () {
-        picks = { tier: null, extras: {}, monthly: {} };
+        picks = { tier: null, extras: {} };
         savePicks();
         [].forEach.call(root.querySelectorAll('[data-pj-tier]'), function (r) { r.checked = false; });
         [].forEach.call(root.querySelectorAll('[data-pj-extra]'), function (c) { c.checked = false; });

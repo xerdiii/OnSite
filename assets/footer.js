@@ -58,8 +58,7 @@
         '<div>' +
           '<a href="./" class="ft-mark">' + MARK + '<h2>Xovah</h2></a>' +
           '<p class="ft-blurb">Professional business websites, built and managed for local businesses. ' +
-            'One-time build price, optional monthly services, and a payment schedule you can read in full ' +
-            'before you pay anything.</p>' +
+            'One-time build price, and a payment schedule you can read in full before you pay anything.</p>' +
         '</div>' +
 
         '<div>' +

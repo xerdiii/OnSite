@@ -55,10 +55,6 @@
       return '<div class="ord-line"><span>' + esc(l[0]) + '</span><b>' + l[1] + '</b></div>';
     }).join('') || '<div class="ord-line"><span>Nothing chosen yet</span><b>&mdash;</b></div>';
 
-    var month = lines.month.map(function (l) {
-      return '<div class="ord-line"><span>' + esc(l[0]) + '</span><b>' + l[1] + '</b></div>';
-    }).join('');
-
     return '' +
       '<div class="ord">' +
         '<div class="ord-due' + (t.deposit ? '' : ' ord-due--clear') + '">' +
@@ -84,17 +80,12 @@
         '<div class="ord-body">' +
           once +
           '<div class="ord-sum"><span>One-time</span><b>' + money(t.once) + '</b></div>' +
-          (month
-            ? '<div style="margin-top:.9rem;padding-top:.7rem;border-top:1px solid rgb(var(--c-line))">' +
-              month + '<div class="ord-sum"><span>Monthly</span><b>' + money(t.month) + '</b></div></div>'
-            : '') +
         '</div>' +
       '</div>' +
 
       '<div class="ord">' +
         '<div class="ord-body"><p style="font-size:.8125rem;line-height:1.6;color:rgb(var(--c-ink-mid))">' +
-          'After approval: <b>' + money(t.balance) + '</b>. ' +
-          'Monthly starts the day you go live.' +
+          'After approval: <b>' + money(t.balance) + '</b>. Nothing recurring.' +
         '</p></div>' +
       '</div>';
   }
@@ -105,7 +96,7 @@
       if (d) return d;
     }
     var s = O.load();
-    var o = s.order || { oneTimeCents: 0, monthlyCents: 0, oneTimeItems: [], monthlyItems: [] };
+    var o = s.order || { oneTimeCents: 0, oneTimeItems: [] };
     var tier = s.tier || 'none';
     var free = tier === 'free';
     var stage = (s.project && s.project.stage) || 'deposit';
@@ -133,8 +124,8 @@
         : 'Nothing to pay yet — this falls due when you approve the finished site.';
       dueAct = stage === 'review' ? { label: 'Review my website', act: 'go-website' } : null;
     } else {
-      due = o.monthlyCents; dueLabel = 'Monthly'; clear = true;
-      dueNote = o.monthlyCents ? 'Billed monthly. Stop any service at the end of a month.' : 'Nothing recurring.';
+      due = 0; dueLabel = 'Paid in full'; clear = true;
+      dueNote = 'Nothing more to pay.';
       dueAct = null;
     }
 
@@ -142,10 +133,6 @@
       return '<div class="ord-line"><span>' + esc(i.name) + '</span><b>' +
         (i.cents === 0 ? 'Included' : money(i.cents)) + '</b></div>';
     }).join('') || '<div class="ord-line"><span>Nothing yet</span><b>&mdash;</b></div>';
-
-    var monthLines = (o.monthlyItems || []).map(function (m) {
-      return '<div class="ord-line"><span>' + esc(m.name) + '</span><b>' + money(m.cents) + '</b></div>';
-    }).join('');
 
     var steps = STAGES.map(function (st, i) {
       var cls = i < at ? 'is-done' : (i === at ? 'is-now' : '');
@@ -168,10 +155,6 @@
         '<div class="ord-body">' +
           onceLines +
           '<div class="ord-sum"><span>One-time</span><b>' + money(o.oneTimeCents) + '</b></div>' +
-          (monthLines
-            ? '<div style="margin-top:.9rem;padding-top:.7rem;border-top:1px solid rgb(var(--c-line))">' +
-              monthLines + '<div class="ord-sum"><span>Monthly</span><b>' + money(o.monthlyCents) + '</b></div></div>'
-            : '') +
         '</div>' +
       '</div>' +
 
@@ -199,7 +182,7 @@
     if (!bar) return;
 
     // Nothing ordered and not currently choosing: no number to show.
-    if (!onBuilder() && !(o.oneTimeCents || o.monthlyCents)) { bar.hidden = true; return; }
+    if (!onBuilder() && !o.oneTimeCents) { bar.hidden = true; return; }
     bar.hidden = false;
 
     if (onBuilder() && global.SitehouseDraft) {
@@ -212,9 +195,9 @@
 
     var stage = (s.project && s.project.stage) || 'deposit';
     var owed = stage === 'deposit' ? O.deposit(o.oneTimeCents || 0)
-             : (stageIndex(stage) < stageIndex('final') ? O.balance(o.oneTimeCents || 0) : (o.monthlyCents || 0));
+             : (stageIndex(stage) < stageIndex('final') ? O.balance(o.oneTimeCents || 0) : 0);
     doc.querySelector('[data-sheet-l]').textContent =
-      stage === 'deposit' ? 'Pay to start' : (stageIndex(stage) < stageIndex('final') ? 'Due on approval' : 'Monthly');
+      stage === 'deposit' ? 'Pay to start' : (stageIndex(stage) < stageIndex('final') ? 'Due on approval' : 'Paid in full');
     doc.querySelector('[data-sheet-v]').textContent = money(owed);
   }
 

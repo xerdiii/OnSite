@@ -217,7 +217,7 @@
 
 
 /* ── Coming soon ──────────────────────────────────────────────
-   Monthly services are listed but not yet sold. No checkbox and no
+   Extras that are listed but not yet sold. No checkbox and no
    price, so there is nothing to click and nothing to add to a total. */
 .pick--soon {
   display: flex;

@@ -101,7 +101,6 @@
     if (global.SitehouseI18n) return global.SitehouseI18n.format(cents / 100);
     return '€' + (cents / 100).toFixed(2);
   }
-  function euroMonth(cents) { return euro(cents) + ' / month'; }
 
   // Deposit is 25%, rounded down; the balance takes the remainder so
   // the two halves always add back to the total.
@@ -169,17 +168,13 @@
 
       order: {
         oneTimeCents: 0,
-        monthlyCents: 0,
-        oneTimeItems: [],
-        monthlyItems: []
+        oneTimeItems: []
       },
 
       payments: [],
 
       // Filled in when an order is placed, from the catalogue.
       services: [],
-
-      maintenance: { included: 0, used: 0 },
 
       threads: [],
 
@@ -328,18 +323,6 @@
       { group: 'brand', name: 'Business Document Templates', cents: 2999 }
     ],
 
-    monthly: [
-      { name: 'Website maintenance', cents: 2000 },
-      { name: 'Website content updates', cents: 1500 },
-      { name: 'Monthly image updates', cents: 1500 },
-      { name: 'Monthly text changes', cents: 1000 },
-      { name: 'Monthly SEO maintenance', cents: 4000 },
-      { name: 'Monthly SEO report', cents: 2500 },
-      { name: 'Google Business Profile maintenance', cents: 3000 },
-      { name: 'Website performance monitoring', cents: 2000 },
-      { name: 'Security & backup monitoring', cents: 2500 },
-      { name: 'Priority technical support', cents: 3000 }
-    ],
 
     // What each paid tier already covers, so the builder can mark those
     // add-ons as included instead of charging for them twice.
@@ -355,12 +338,11 @@
                  'Google Business Profile setup', 'Google Business Profile optimization',
                  'Logo Design', 'Menu Design', 'WhatsApp Business Setup',
                  'Professional business email setup']
-    },
-    includedMonthly: { free: [], custom: [], full: [], complete: ['Website maintenance'] }
+    }
   };
 
   function emptyDraft() {
-    return { base: null, features: [], oneTime: [], monthly: [], extras: [], agreed: false };
+    return { base: null, features: [], oneTime: [], extras: [], agreed: false };
   }
 
   // ── Store ────────────────────────────────────────────────────
@@ -583,17 +565,6 @@
     save();
   }
 
-  function maintenanceActive() {
-    return load().services.some(function (s) {
-      return s.name === 'Website Maintenance' && s.state === 'active';
-    });
-  }
-
-  function changesLeft() {
-    var m = load().maintenance;
-    return Math.max(0, m.included - m.used);
-  }
-
   /* A URL that a person typed, made safe to put in an href.
 
      Escaping stops a value breaking OUT of the attribute. It does
@@ -651,7 +622,7 @@
   global.Sitehouse = {
     navAuth: navAuth,
     CATALOG: CATALOG, emptyDraft: emptyDraft,
-    euro: euro, euroMonth: euroMonth, deposit: deposit, balance: balance, date: date,
+    euro: euro, deposit: deposit, balance: balance, date: date,
     load: load, save: save, reset: reset,
     bindUser: bindUser, unbindUser: unbindUser, storeKey: storeKey,
     onSave: onSave, replaceState: replaceState,
@@ -660,7 +631,6 @@
     requireAuth: requireAuth,
     stages: stages, statusLabel: statusLabel, advance: advance,
     notify: notify, unreadCount: unreadCount, markAllRead: markAllRead,
-    maintenanceActive: maintenanceActive, changesLeft: changesLeft,
     esc: escapeHtml, safeUrl: safeUrl
   };
 })(window);
