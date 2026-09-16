@@ -34,8 +34,16 @@
   --c-shadow:       26  26  26;
   --c-on-accent:   255 255 255;
 
-  /* Every corner, everywhere. 0.5rem = 8px at the default root size. */
-  --radius: 0.5rem;
+  /* Every corner, everywhere. 0.30rem = 4.8px at the default root size. */
+  --radius: 0.30rem;
+}
+
+/* Selected text, everywhere: the brand crimson with white on top. It reads
+   --c-accent, so dark mode gets its lifted crimson without a second rule. */
+::selection {
+  background: rgb(var(--c-accent));
+  color: #fff;
+  text-shadow: none;
 }
 
 /* Dark keeps the same geometry and the same crimson, lifted so it
