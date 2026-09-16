@@ -1,1150 +1,1101 @@
-<!doctype html>
-<html lang="en-US">
+<!DOCTYPE html>
+<html lang="en">
 <head>
 <meta charset="utf-8">
-<title>Vision — Streamline the shop virtual</title>
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="/assets/oauth-catch.js?v=2"></script>
+<title>Xovah — Professional websites for small businesses</title>
+<meta name="description" content="We build modern one-page websites and landing pages for small and local businesses. Paid once, live in about a week, with hosting and your domain included.">
+<link rel="canonical" href="https://www.xovahweb.com/">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
 
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Xovah">
+<meta property="og:locale" content="en_GB">
+<meta property="og:url" content="https://www.xovahweb.com/">
+<meta property="og:title" content="Xovah — Professional websites for small businesses">
+<meta property="og:description" content="We build modern one-page websites and landing pages for small and local businesses. Paid once, live in about a week, with hosting and your domain included.">
+<meta property="og:image" content="https://www.xovahweb.com/assets/brand/xovah-card-v2.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Xovah — professional websites for small businesses">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:url" content="https://www.xovahweb.com/">
+<meta name="twitter:title" content="Xovah — Professional websites for small businesses">
+<meta name="twitter:description" content="We build modern one-page websites and landing pages for small and local businesses. Paid once, live in about a week, with hosting and your domain included.">
+<meta name="twitter:image" content="https://www.xovahweb.com/assets/brand/xovah-card-v2.png">
+<meta name="twitter:image:alt" content="Xovah — professional websites for small businesses">
+
+<meta name="apple-mobile-web-app-title" content="Xovah">
+<meta name="application-name" content="Xovah">
+<meta name="theme-color" content="#14161A">
+<link rel="apple-touch-icon" href="/assets/brand/xovah-touch-v2.png">
+<link rel="icon" href="/assets/brand/xovah-favicon-v2.png" type="image/png">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://www.xovahweb.com/#organization","name":"Xovah","url":"https://www.xovahweb.com","logo":{"@type":"ImageObject","url":"https://www.xovahweb.com/assets/brand/xovah-logo-ink-v2.png","width":473,"height":340},"image":"https://www.xovahweb.com/assets/brand/xovah-card-v2.png","email":"info@xovahweb.com","description":"Xovah builds professional one-page websites and landing pages for small and local businesses.","contactPoint":[{"@type":"ContactPoint","contactType":"sales","email":"info@xovahweb.com","availableLanguage":["en","sq","de"]},{"@type":"ContactPoint","contactType":"customer support","email":"info@xovahweb.com","availableLanguage":["en","sq","de"]}]},{"@type":"WebSite","@id":"https://www.xovahweb.com/#website","url":"https://www.xovahweb.com","name":"Xovah","description":"Professional websites for small businesses.","publisher":{"@id":"https://www.xovahweb.com/#organization"},"inLanguage":"en-GB"},{"@type":"ProfessionalService","@id":"https://www.xovahweb.com/#service","name":"Xovah","url":"https://www.xovahweb.com","image":"https://www.xovahweb.com/assets/brand/xovah-card-v2.png","email":"info@xovahweb.com","parentOrganization":{"@id":"https://www.xovahweb.com/#organization"},"areaServed":[{"@type":"Country","name":"Kosovo"},{"@type":"Place","name":"Europe"}],"serviceType":["Website design","Landing page design","Web development","Local SEO"],"priceRange":"€50–€500"}]}</script>
+<link rel="dns-prefetch" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,600;1,600&display=swap" rel="stylesheet">
-
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400&family=Instrument+Serif&family=Inter:wght@400;500;600;700&family=Outfit:wght@200..800&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400&family=Instrument+Serif&family=Inter:wght@400;500;600;700&family=Outfit:wght@200..800&display=swap" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400&family=Instrument+Serif&family=Inter:wght@400;500;600;700&family=Outfit:wght@200..800&display=swap"></noscript>
+<script>/* Theme before paint. Light is the site, dark is a choice you make — the attribute is always stamped so the system setting never decides for you. */(function(){var t='light';try{t=localStorage.getItem('sitehouse.theme')==='dark'?'dark':'light';}catch(e){}document.documentElement.setAttribute('data-theme',t);})();</script>
 <style>
-/* ============================ 0. RESET / SHELL ============================ */
-*{margin:0;padding:0;box-sizing:border-box}
-html,body{height:100%;overflow:hidden;background:#020204}   /* page never scrolls */
-body{font-family:Poppins,Inter,system-ui,sans-serif;color:#fff;-webkit-font-smoothing:antialiased}
-a{text-decoration:none;color:inherit}   /* button labels must never underline */
+  html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+  body { font-feature-settings: "kern" 1, "liga" 1; }
 
-/* ================= 1. FIXED DESIGN CANVAS, SCALED BY ONE TRANSFORM =========
-   The desktop composition is authored at a fixed 1172 x 657 design canvas, and
-   every element is absolutely positioned in raw design pixels. The whole canvas
-   is then scaled by a single transform to fit the viewport, so nothing reflows.
-   The optical centre of every centred element is x = 586.                     */
-.stage{position:fixed;inset:0;overflow:hidden;background:#020204}
-.canvas{position:absolute;left:50%;top:0;width:1172px;height:657px;
-  transform:translateX(-50%) scale(var(--k,1));transform-origin:50% 0}
-.canvas>*{position:absolute}
-.stack{position:absolute;inset:0;z-index:300}   /* layout shell, no box of its own */
-.stack>*{position:absolute}
-.navmenu{display:contents}                      /* shell, invisible on desktop */
-.burger{display:none}                           /* desktop */
+  .eyebrow {
+    font-family:'IBM Plex Mono',ui-monospace,monospace;
+    font-size:0.6875rem; font-weight:400; letter-spacing:0.16em; text-transform:uppercase;
+  }
+  .lede { font-size:1.0625rem; line-height:1.6; }
+  @media (min-width:768px){ .lede { font-size:1.125rem; } }
 
-.bg{position:absolute;inset:0;
-  background:
-   linear-gradient(180deg, rgba(25,127,255,0) 38%, rgba(25,127,255,.042) 54%,
-     rgba(25,127,255,.052) 68%, rgba(25,127,255,.030) 100%),
-   #020204}
+  /* Price tags — the one device that keeps one-time and monthly from ever blurring */
+  .tag {
+    font-family:inherit; font-size:0.75rem; font-weight:600; letter-spacing:0;
+    padding:0.15rem 0.5rem; border-radius:0.25rem; white-space:nowrap;
+  }
+  .tag-once  { background:rgb(var(--c-accent-tint)); color:rgb(var(--c-accent-text)); border:1px solid rgb(var(--c-line-firm)); }
+  .tag-month { background:rgb(var(--c-accent)); color:rgb(var(--c-on-accent)); }
+  .tag-soon  { background:transparent; color:rgb(var(--c-ink-soft)); border:1px dashed rgb(var(--c-line-firm)); }
 
-/* starfield: one 1x1 div per layer, the whole field is a single box-shadow list */
-.stars{position:absolute;left:0;top:0;width:1px;height:1px;border-radius:50%;background:#fff}
+  .arrow { color:rgb(var(--c-accent-text)); font-weight:600; }
 
-/* ========================= 2. PIXEL CONTRACT A - BADGE =====================
-   A fixed-size absolutely-positioned box with an icon tile pinned to its left
-   edge and a LEFT-ALIGNED label beside it. Not a centred pill, not a flex row. */
-.badge{left:462px;top:95px;width:250px;height:39px;border-radius:12px;z-index:300;
-  border:1px solid rgba(255,255,255,.115);
-  background:linear-gradient(to top,
-    rgba(190,225,255,.175) 0px, rgba(190,225,255,.128) 2px, rgba(190,225,255,.075) 4px,
-    rgba(190,225,255,.026) 6px, rgba(255,255,255,.012) 9px, rgba(255,255,255,.012) 100%);
-  -webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);
-  box-shadow:inset 0 1px 0 rgba(255,255,255,.035)}
-.badge i{position:absolute;left:4px;top:4px;width:29px;height:29px;border-radius:8px;
-  display:grid;place-items:center;
-  background:linear-gradient(to top,
-    #46afc8 0px, #35abc7 2px, #0b859d 4px, #026c84 6px, #004e66 8px,
-    #053f58 10px, #012c3d 12px, #031a2a 14px, #061125 16px, #090f25 19px,
-    #090c1c 23px, #060d16 29px);
-  box-shadow:inset 1px 0 0 rgba(150,220,250,.40),
-    inset -1px 0 0 rgba(150,220,250,.52),
-    0 0 6px rgba(60,190,230,.20), 0 3px 8px -5px rgba(90,220,255,.6)}
-.badge i svg{width:14px;height:16px;position:relative;top:-1px;left:0px}
-.badge b{position:absolute;left:45px;transform-origin:0 50%;top:0;height:39px;
-  display:flex;align-items:center;
-  font-size:13px;font-weight:400;color:rgba(255,255,255,.94);white-space:nowrap;
-  padding-top:1.5px}
+  /* Price cards — the two options are the first thing after the hero, so
+     they are objects you can pick up rather than panels ruled off the
+     page. The featured one is heavier at every level: border, shadow,
+     numeral, and the column it sits in. */
+  .price-card {
+    display:flex; flex-direction:column; height:100%;
+    background:rgb(var(--c-paper));
+    border:1px solid rgb(var(--c-line));
+    border-radius:1.5rem;
+    padding:1.6rem;
+    box-shadow:0 1px 2px rgb(var(--c-shadow) / 0.04), 0 12px 28px -18px rgb(var(--c-shadow) / 0.20);
+    transition: border-color 220ms ease, box-shadow 220ms ease, transform 220ms cubic-bezier(0.22,1,0.36,1);
+  }
+  @media (min-width:768px){ .price-card { padding:2rem; } }
+  .price-card:hover { border-color:rgb(var(--c-line-firm)); box-shadow:0 2px 4px rgb(var(--c-shadow) / 0.05), 0 22px 44px -22px rgb(var(--c-shadow) / 0.28); transform:translateY(-3px); }
 
-/* ================== 3. PIXEL CONTRACT B - THE GLOW BUTTON =================
-   A near-black button with a bank of cyan light pooled at its FOOT. The light is
-   a background gradient CLIPPED BY THE ROUNDED RECT OF THE BUTTON ITSELF - not a
-   glow, not a shadow, not a bar. overflow:hidden is mandatory, it does the clip. */
-.btn{display:grid;place-items:center;color:#fff;position:relative;overflow:hidden;
-  background:linear-gradient(to top,
-    #9ad9ec 1px, #89dff0 2px, #79e0f1 3px, #61daef 4px, #3ec8e4 5px,
-    #14a8c6 6px, #0596b3 7px, #038aa8 8px, #047796 9px, #006180 10px,
-    #025066 12px, #0a4f5e 13px, #04465a 14px, #073746 16px,
-    #0a2a37 18px, #0d212e 20px, #0f1824 24px, #0a121e 30px,
-    #0a111d 34px, #0a111d 100%);
-  box-shadow:
-    inset 0 3px 3px -2px rgba(180,228,255,.10),
-    inset 1px 0 0 rgba(255,255,255,.09),
-    inset -1px 0 0 rgba(255,255,255,.09),
-    var(--hair,0 1px 0 rgba(152,218,234,.38)),
-    1px 0 0 rgba(152,218,234,.17), -1px 0 0 rgba(152,218,234,.17),
-    0 0 8px rgba(60,190,235,.10),
-    0 2px 5px -3px rgba(90,220,255,.45);
-  transition:transform .25s,box-shadow .25s,filter .25s}
-/* thin bright streak across the TOP edge only */
-.btn::before{content:"";position:absolute;left:22%;right:38%;top:0.8px;height:1.9px;z-index:1;
-  filter:blur(.55px);
-  background:linear-gradient(90deg,rgba(120,225,255,0) 0%,rgba(120,225,255,.58) 34%,
-    rgba(160,240,255,.74) 50%,rgba(120,225,255,.58) 66%,rgba(120,225,255,0) 100%)}
-/* side edge-light with a 13px inward falloff, MASKED so it attenuates up the
-   button. Without the mask the edge light floods the entire button. */
-.btn::after{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;z-index:1;
-  background:linear-gradient(90deg,rgba(200,245,255,.70),rgba(200,245,255,0) 13px),
-             linear-gradient(270deg,rgba(200,245,255,.70),rgba(200,245,255,0) 13px);
-  -webkit-mask:linear-gradient(to top,#000 0,#000 6px,rgba(0,0,0,.40) 12px,
-    rgba(0,0,0,.15) 18px,rgba(0,0,0,.09) 24px,rgba(0,0,0,.02) 30px,rgba(0,0,0,.02) 100%);
-          mask:linear-gradient(to top,#000 0,#000 6px,rgba(0,0,0,.40) 12px,
-    rgba(0,0,0,.15) 18px,rgba(0,0,0,.09) 24px,rgba(0,0,0,.02) 30px,rgba(0,0,0,.02) 100%)}
-.btn span{position:relative;z-index:2;display:block;line-height:1;
-  text-shadow:0 1px 2px rgba(0,20,30,.5)}
-.btn:hover{transform:translateY(-1px);filter:brightness(1.12);
-  box-shadow:inset 0 1px 0 rgba(200,245,255,.6),inset 1px 0 0 rgba(170,225,255,.35),
-             inset -1px 0 0 rgba(170,225,255,.35),0 6px 22px rgba(20,180,225,.55)}
+  .price-card--lead {
+    border-color:rgb(var(--c-accent));
+    box-shadow:0 2px 4px rgb(var(--c-shadow) / 0.06), 0 0 0 3px rgb(var(--c-accent) / 0.10);
+  }
+  @media (min-width:768px){ .price-card--lead { padding:2.25rem; } }
+  .price-card--lead:hover {
+    border-color:rgb(var(--c-accent));
+    box-shadow:0 12px 36px rgb(var(--c-shadow) / 0.12), 0 0 0 4px rgb(var(--c-accent) / 0.14);
+  }
 
-/* Instance A - nav CTA (HAS the top streak) */
-.nav .btn{position:absolute;left:530.7px;top:10.5px;width:125.5px;height:39.5px;
-  border-radius:14px;font-size:14px;font-weight:500;letter-spacing:-.005em}
-.nav .btn span{margin-top:0}
-/* Instance B - hero CTA (NO top streak) */
-.cta2{position:absolute;left:526px;top:349px;width:121px;height:54.5px;
-  --hair:0 0 0 transparent;border-radius:13px;font-size:17px;font-weight:500;
-  letter-spacing:-.01em;z-index:300}
-.cta2::before{display:none}
-.cta2 span{margin-top:0}
+  .price-card-head { display:flex; flex-wrap:wrap; align-items:baseline; justify-content:space-between; gap:0.5rem 1.25rem; }
+  .price-card-figure { display:flex; align-items:baseline; gap:0.6rem; margin-top:0.9rem; }
+  .price-card-list { margin-top:1.15rem; display:grid; gap:0.7rem; font-size:0.9375rem; line-height:1.55; color:rgb(var(--c-ink-mid)); }
+  .price-card-list li { display:grid; grid-template-columns:1.05rem 1fr; gap:0.5rem; align-items:start; }
+  .price-card-list .arrow { color:rgb(var(--c-accent-text)); font-weight:700; }
+  .price-card-note { margin-top:1.35rem; border-top:1px solid rgb(var(--c-line)); padding-top:1.35rem; font-size:0.9375rem; line-height:1.65; color:rgb(var(--c-ink-mid)); }
+  .price-card-foot { margin-top:auto; padding-top:1.6rem; }
 
-/* ============================== 4. NAV PILL ============================== */
-.nav{left:247px;top:3px;width:678px;height:64px;border-radius:32px;z-index:400;
-  background:rgba(255,255,255,.008);
-  border:1px solid rgba(255,255,255,.105);
-  -webkit-backdrop-filter:blur(16px) saturate(140%);
-  backdrop-filter:blur(16px) saturate(140%);
-  box-shadow:inset 0 1px 0 rgba(255,255,255,.03)}
-.mark{position:absolute;left:21px;top:19px;width:24px;height:24px;
-  filter:drop-shadow(0 0 6px rgba(60,224,255,.75))}
-.wm{position:absolute;left:50px;top:0;white-space:nowrap}
-.wm .kick{position:absolute;left:3px;top:20px;font-size:4.4px;font-weight:600;
-  letter-spacing:.10em;color:#fff;opacity:.92;line-height:1}
-.wm .name{position:absolute;left:0;top:26px;transform-origin:0 50%;
-  font-family:Poppins;font-weight:900;font-size:22px;line-height:1;
-  letter-spacing:-.01em;color:#fff}
-.links{position:absolute;left:156px;top:0;height:62px;transform-origin:0 50%;
-  display:flex;align-items:center;gap:24px}
-.links a{font-size:12.5px;font-weight:400;color:rgba(255,255,255,.92);
-  white-space:nowrap;transition:opacity .25s}
-.links a:hover{opacity:.65}
+  /* On a phone the three cards stack to 3105px — nearly four screens,
+     with no way to see two side by side. A scroll-snapped rail puts
+     them back on one screen and makes comparing a swipe. */
+  .price-swipe { display:none; }
+  @media (max-width: 767px) {
+    .price-swipe {
+      display:block; margin-top:2rem;
+      font-family:'IBM Plex Mono',ui-monospace,monospace;
+      font-size:0.6875rem; letter-spacing:0.12em; text-transform:uppercase;
+      color:rgb(var(--c-ink-soft));
+    }
+    #pricing .price-rail {
+      display:flex; gap:0.85rem;
+      /* No negative margin. The section's own padding is not a fixed
+         value at every width, so bleeding by a guessed amount put 4px
+         of the page off-screen sideways. Staying inside it cannot. */
+      margin:0.85rem 0 0;
+      padding:0.25rem 0 0.75rem;
+      overflow-x:auto;
+      scroll-snap-type:x mandatory;
+      -webkit-overflow-scrolling:touch;
+      scrollbar-width:none;
+    }
+    #pricing .price-rail::-webkit-scrollbar { display:none; }
+    /* 84% leaves the next card peeking, which is what tells you to swipe.
+       min-width:0 is required: flex items default to min-width:auto and
+       refuse to shrink below their content, so the longest card ignored
+       the basis and came out wider than the other two. */
+    #pricing .price-rail > * { flex:0 0 84%; min-width:0; scroll-snap-align:center; }
+    #pricing .price-rail .price-card { height:100%; }
+  }
 
-/* ============================= 5. HERO TYPE ============================== */
-.h1{left:586px;transform:translateX(-50%);white-space:nowrap;line-height:1;
-  font-family:Poppins;font-weight:900;font-size:54px;letter-spacing:-.004em;
-  word-spacing:.175em;text-transform:uppercase;color:#fff;
-  text-shadow:0 0 34px rgba(130,180,255,.22);z-index:300}
-.sub{left:586px;transform:translateX(-50%);white-space:nowrap;line-height:1;
-  font-size:13.2px;color:#a9aeb5;z-index:300}
-.sub b{font-weight:600;color:#fff}
-.nb{white-space:nowrap}
+  /* Pill CTAs. These were long utility strings ending in rounded-md,
+     which is what made the buttons look square against the cards. */
+  .price-cta {
+    display:inline-flex; align-items:center; justify-content:center; gap:0.4rem;
+    width:100%; min-height:54px; padding:0.9rem 1.5rem;
+    border-radius:999px;
+    border:1px solid rgb(var(--c-line-firm));
+    background:rgb(var(--c-surface));
+    font-size:0.9375rem; font-weight:600; color:rgb(var(--c-ink));
+    transition: background-color 180ms ease, border-color 180ms ease, color 180ms ease, transform 180ms cubic-bezier(0.22,1,0.36,1);
+  }
+  .price-cta:hover { border-color:rgb(var(--c-accent)); color:rgb(var(--c-accent-text)); }
+  .price-cta:active { transform:translateY(1px); }
+  .price-cta--solid {
+    background:rgb(var(--c-accent)); border-color:rgb(var(--c-accent)); color:rgb(var(--c-on-accent));
+  }
+  .price-cta--solid:hover {
+    background:rgb(var(--c-accent-hi)); border-color:rgb(var(--c-accent-hi)); color:rgb(var(--c-on-accent));
+  }
 
-/* ============ 6. THE PORTFOLIO RING - A TRUE 3D PERSPECTIVE CAROUSEL =======
-   Not a flat slider. The panels sit on a cylinder whose camera is AT the ring
-   centre, so each panel is tangent to the cylinder and faces the camera exactly.
-   Vertical panel sides with a slanted top edge is PERSPECTIVE, not rotation.
-   Geometry: radius R = 891, perspective = 891, panels spread over an 84 deg
-   period, culled at 42 deg, drifting at 1.9 deg/s. See RING in the script.     */
-.showcase{position:absolute;left:0;top:0;width:1172px;height:0}
-.ring{position:absolute;left:0;top:0;width:1172px;height:657px;z-index:5;
-  perspective:891px;perspective-origin:586px 918px;transform-style:preserve-3d;
-  pointer-events:none}
+  .price-badge {
+    font-family:'IBM Plex Mono',ui-monospace,monospace;
+    font-size:0.625rem; letter-spacing:0.14em; text-transform:uppercase;
+    color:rgb(var(--c-on-accent)); background:rgb(var(--c-accent));
+    border-radius:999px; padding:0.28rem 0.6rem; white-space:nowrap;
+  }
 
-/* ONE reusable portfolio-card component, rendered once per PORTFOLIO slot.
-   Size, tilt and depth come from CSS custom properties written per slot, so a
-   new project needs no new CSS and no new animation.                          */
-.card{position:absolute;left:586px;top:616px;
-  width:var(--w,130px);height:var(--h,300px);
-  margin:calc(var(--h,300px) / -2) 0 0 calc(var(--w,130px) / -2);
-  border-radius:12px;overflow:hidden;background:#0d1117;
-  box-shadow:0 24px 46px rgba(0,0,0,.6),0 3px 8px rgba(0,0,0,.5);
-  backface-visibility:hidden;will-change:transform,opacity}
-/* the screenshot. object-position frames a different band of the SAME capture
-   per slot, which is what makes six views of one site read as intentional. */
-.shot{position:absolute;inset:0;
-  background:linear-gradient(155deg,#2b3b50,#131c28 60%,#1d1526)}
-.shot img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
-  object-position:var(--focus,50% 0%);
-  transform:scale(var(--zoom,1));transform-origin:50% 50%}
-.card.broken .shot img{display:none}   /* gradient placeholder shows through */
-/* The caption sits at the TOP of the panel, not the foot: the browser mock
-   covers everything below design y=558 and the panels run to y=766, so a
-   bottom caption would be legible on the outer panels only. */
-.card .scrim{position:absolute;left:0;right:0;top:0;height:64px;
-  background:linear-gradient(180deg,rgba(6,8,14,.88),rgba(6,8,14,.58) 48%,rgba(6,8,14,0))}
-.card .meta{position:absolute;left:9px;right:9px;top:8px}
-.card .meta i{display:block;font-style:normal;font-size:4.4px;
-  font-weight:500;letter-spacing:.18em;text-transform:uppercase;
-  color:rgba(255,255,255,.62)}
-.card .meta b{display:block;margin-top:2.5px;font-size:6.6px;font-weight:600;
-  letter-spacing:.01em;color:#fff}
-.card .edge{position:absolute;inset:0;border-radius:12px;
-  box-shadow:inset 0 0 0 1px rgba(255,255,255,.15),
-             inset 0 16px 30px rgba(255,255,255,.05)}
+  @media (prefers-reduced-motion: reduce){
+    .price-card { transition:border-color 220ms ease; }
+    .price-card:hover { transform:none; }
+  }
 
-/* ====================== 9. THE BROWSER MOCK (in FRONT) ==================== */
-.browser{position:absolute;left:165px;top:558px;width:842px;
-  height:calc(99px + var(--fill,0px));   /* --fill is written by JS, see resize() */
-  border-radius:28px 28px 0 0;overflow:hidden;z-index:100;
-  box-shadow:0 -14px 44px rgba(0,0,0,.55)}
-.browser::before{content:"";position:absolute;left:0;right:0;top:42px;bottom:0;
-  background:rgba(20,20,26,.82);z-index:0}
-.bar{position:absolute;left:0;top:0;width:100%;height:42px;
-  background:linear-gradient(180deg,rgba(20,24,48,.48),rgba(15,19,38,.58));
-  -webkit-backdrop-filter:blur(6px) saturate(112%);backdrop-filter:blur(6px) saturate(112%)}
-.dots{position:absolute;left:27px;top:16px;display:flex;gap:2.6px}
-.dots i{width:7.6px;height:7.6px;border-radius:50%}
-.omni{position:absolute;left:246px;top:7px;width:336px;height:26px;border-radius:5px;
-  background:rgba(9,13,26,.93);box-shadow:inset 0 0 0 1px rgba(255,255,255,.045);
-  display:flex;align-items:center;justify-content:center;gap:6px}
-.omni svg{width:9px;height:9px;opacity:.72}
-.omni span{font-size:9.5px;color:rgba(255,255,255,.72);letter-spacing:.005em}
-.tools{position:absolute;right:27px;top:14px;display:flex;align-items:center;gap:4px;opacity:.9}
-.tools svg{width:11px;height:12px}
-.page{position:absolute;left:7px;right:6px;top:42px;bottom:0;background:#fff;
-  color:#111;overflow:hidden;border-radius:10px 10px 0 0}
-.ann{position:absolute;left:0;top:0;width:100%;height:16px;background:#101210;
-  display:grid;place-items:center;border-radius:10px 10px 0 0}
-.ann span{font-size:5px;letter-spacing:.06em;color:#cfcfcf}
-.ann u{position:absolute;font-size:6px;color:#9a9a9a;text-decoration:none}
-.shoplogo{position:absolute;left:50%;transform:translateX(-50%);top:24px;text-align:center}
-.shoplogo em{font-family:"Playfair Display",serif;font-style:normal;font-weight:600;
-  font-size:15px;letter-spacing:.14em;line-height:1;display:block}
-.shoplogo i{font-style:normal;font-size:5px;letter-spacing:.3em;color:#3a3a3a;
-  margin-top:3px;display:block}
-.shopicons{position:absolute;right:100px;top:33px;display:flex;gap:5px;opacity:.85}
-.shopicons svg{width:7px;height:7px}
-.pagebody{position:absolute;left:0;right:0;top:62px;bottom:0;background:#fff;overflow:hidden}
-.pghero{position:relative;margin:0 26px;height:158px;border-radius:7px;overflow:hidden;
-  background:linear-gradient(120deg,#e8dcd4,#cbb6a8)}
-.pghero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-/* the banner photograph is composed with its subject on the RIGHT and an
-   intentionally empty left third, so this left-to-right scrim carries the copy */
-.pghero .scrim{position:absolute;inset:0;
-  background:linear-gradient(90deg,rgba(28,20,16,.62) 0%,rgba(28,20,16,.30) 46%,rgba(28,20,16,0) 72%)}
-.pghero .copy{position:absolute;left:22px;top:50%;transform:translateY(-50%);color:#fff}
-.pghero .copy u{font-size:4.6px;letter-spacing:.26em;text-transform:uppercase;
-  opacity:.9;display:block;text-decoration:none}
-.pghero .copy em{font-family:"Playfair Display",serif;font-style:normal;font-weight:600;
-  font-size:15px;line-height:1.12;margin-top:6px;display:block}
-.pghero .copy i{display:inline-block;font-style:normal;margin-top:10px;padding:5px 13px;
-  border-radius:20px;background:#fff;color:#17181c;font-size:5.2px;font-weight:600;
-  letter-spacing:.06em}
-.pgsec{display:flex;align-items:baseline;justify-content:space-between;margin:16px 26px 9px}
-.pgsec b{font-family:"Playfair Display",serif;font-weight:600;font-size:9px;color:#17181c}
-.pgsec u{font-size:4.6px;letter-spacing:.14em;color:#8a8a8a;text-transform:uppercase;
-  text-decoration:none}
-.pggrid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:0 26px}
-.pgcard .ph{position:relative;height:0;padding-bottom:104%;border-radius:6px;
-  overflow:hidden;background:linear-gradient(150deg,#efe7e1,#ddcfc6)}
-.pgcard .ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-.pgcard .tag{position:absolute;left:6px;top:6px;padding:2px 5px;border-radius:3px;
-  background:#17181c;color:#fff;font-size:3.8px;font-weight:600;letter-spacing:.1em}
-.pgcard b{display:block;margin-top:6px;font-size:5.4px;font-weight:600;color:#17181c;
-  letter-spacing:.01em}
-.pgcard i{display:block;font-style:normal;margin-top:2px;font-size:4.6px;color:#8a8a8a}
-.pgcard s{display:block;margin-top:3px;font-size:5.6px;font-weight:700;color:#17181c;
-  text-decoration:none}
-.pgcard s span{font-weight:400;color:#a08f86;text-decoration:line-through;
-  margin-left:4px;font-size:4.6px}
-.pgstrip{display:flex;justify-content:space-between;margin:16px 26px 0;padding:9px 0;
-  border-top:1px solid #eee6e0;border-bottom:1px solid #eee6e0}
-.pgstrip span{font-size:4.4px;letter-spacing:.12em;color:#7d7169;text-transform:uppercase}
+  /* The four steps — the numeral does the work, nothing else has to */
+  .step-n {
+    font-family:'Instrument Serif','Iowan Old Style',Georgia,serif;
+    font-size:2.25rem; line-height:1; letter-spacing:0.01em;
+    color:rgb(var(--c-accent-text));
+  }
+  @media (min-width:1280px){ .step-n { font-size:2.5rem; } }
 
-/* ====================== FLOATING WHATSAPP BUTTON ======================== */
-.wa{position:absolute;right:16px;bottom:24px;width:56px;height:56px;border-radius:50%;
-  background:#25d366;display:grid;place-items:center;z-index:300;
-  box-shadow:0 8px 20px rgba(0,0,0,.5)}
-.wa svg{width:31px;height:31px}
-.wa::after{content:"";position:absolute;inset:0;border-radius:50%;
-  border:2px solid rgba(37,211,102,.5);animation:pulse 2.8s ease-out infinite}
-@keyframes pulse{0%{transform:scale(1);opacity:.75}70%{transform:scale(1.4);opacity:0}
-  100%{opacity:0}}
+  /* Price rows — used for the monthly services and every extra */
+  /* A rule that draws itself, with a spinning marker riding the head of
+     the stroke. Pure CSS: three absolutely positioned spans and one SVG,
+     no library and nothing measured in JS. */
+  .drawline { position:relative; height:36px; margin:0 0 3.5rem; }
+  .drawline-track, .drawline-fill {
+    position:absolute; left:0; top:50%; height:1px; margin-top:-0.5px;
+  }
+  .drawline-track { right:0; background:rgb(var(--c-ink) / 0.14); }
+  .drawline-fill {
+    width:0; background:linear-gradient(90deg, rgb(var(--c-accent) / 0) 0%, rgb(var(--c-accent)) 68%);
+    animation:drawline-fill 9s cubic-bezier(0.65,0,0.35,1) infinite;
+  }
+  .drawline-tick {
+    position:absolute; top:50%; width:1px; height:9px; margin-top:-4.5px;
+    background:rgb(var(--c-ink) / 0.2);
+  }
+  .drawline-orb {
+    position:absolute; top:50%; left:0; width:34px; height:34px; margin:-17px 0 0 -17px;
+    animation:drawline-travel 9s cubic-bezier(0.65,0,0.35,1) infinite;
+  }
+  .drawline-orb svg { display:block; width:34px; height:34px; animation:drawline-spin 3.2s linear infinite; }
+  .drawline-orb circle {
+    fill:none; stroke:rgb(var(--c-accent)); stroke-width:1.3;
+    stroke-dasharray:5 8; stroke-linecap:round; opacity:0.85;
+  }
+  .drawline-orb i {
+    position:absolute; left:50%; top:50%; width:6px; height:6px; margin:-3px 0 0 -3px;
+    border-radius:999px; background:rgb(var(--c-accent));
+    box-shadow:0 0 0 5px rgb(var(--c-accent) / 0.12);
+  }
+  @keyframes drawline-fill {
+    0%   { width:0;    opacity:0; }
+    7%   { opacity:1; }
+    86%  { opacity:1; }
+    100% { width:100%; opacity:0; }
+  }
+  @keyframes drawline-travel {
+    0%   { left:0;    opacity:0; }
+    7%   { opacity:1; }
+    86%  { opacity:1; }
+    100% { left:100%; opacity:0; }
+  }
+  @keyframes drawline-spin { to { transform:rotate(360deg); } }
 
-/* ============ 10. SHARED NARROW-VIEWPORT NAV (tablet + phone) ============
-   The links and CTA are the SAME DOM NODES as desktop, re-laid-out by CSS
-   inside a panel. The markup is never duplicated.                           */
-@media (max-width:1080px){
-  .burger{display:grid;place-content:center;gap:4px;position:absolute;right:12px;top:11px;
-    width:42px;height:42px;padding:0;border:0;border-radius:14px;background:transparent;
-    cursor:pointer;-webkit-tap-highlight-color:transparent}
-  .burger span{display:block;width:19px;height:1.6px;border-radius:2px;
-    background:rgba(255,255,255,.92);
-    transition:transform .28s cubic-bezier(.4,0,.2,1),opacity .18s}
-  .burger:focus-visible{outline:2px solid rgba(120,225,255,.7);outline-offset:2px}
-  .nav.open .burger span:nth-child(1){transform:translateY(5.6px) rotate(45deg)}
-  .nav.open .burger span:nth-child(2){opacity:0}
-  .nav.open .burger span:nth-child(3){transform:translateY(-5.6px) rotate(-45deg)}
-  .navmenu{display:block;position:absolute;left:0;right:0;top:74px;padding:12px;
-    border-radius:22px;border:1px solid rgba(255,255,255,.10);
-    background:linear-gradient(180deg,rgba(11,15,22,.985),rgba(7,10,16,.99));
-    -webkit-backdrop-filter:blur(18px) saturate(140%);backdrop-filter:blur(18px) saturate(140%);
-    box-shadow:0 26px 60px rgba(0,0,0,.6),inset 0 1px 0 rgba(255,255,255,.05);
-    opacity:0;visibility:hidden;transform:translateY(-8px);
-    transition:opacity .24s ease,transform .28s cubic-bezier(.4,0,.2,1),visibility .28s}
-  .nav.open .navmenu{opacity:1;visibility:visible;transform:none}
-  .links{position:static;display:flex;flex-direction:column;align-items:stretch;
-    height:auto;gap:2px;transform:none!important}
-  .links a{font-size:15px;padding:11px 14px;border-radius:12px;color:rgba(255,255,255,.9);
-    transition:background .2s,color .2s}
-  .nav .btn{position:static;width:100%;height:46px;margin-top:10px;font-size:15px}
-  .nav .btn span{margin-top:3px}
-}
-@media (hover:hover) and (max-width:1080px){
-  .burger:hover span{background:#fff}
-  .links a:hover{background:rgba(255,255,255,.055);color:#fff;opacity:1}
-}
+  /* Nothing here carries meaning, so motion-off gets the finished state. */
+  @media (prefers-reduced-motion:reduce) {
+    .drawline-fill { width:100%; opacity:0.5; animation:none; }
+    .drawline-orb { left:25%; opacity:1; animation:none; }
+    .drawline-orb svg { animation:none; }
+  }
 
-/* --------------------------- TABLET 701-1080px ---------------------------
-   1080 is where the desktop composition measurably stops holding: nav links
-   fall below 10.3px, and on portrait tablets the mock swells to 64-69% of the
-   viewport. The design WINDOW narrows here so type stops shrinking with the
-   viewport, and k stays continuous across 1080 (see resize()).               */
-@media (min-width:701px) and (max-width:1080px){
-  .nav{left:286px;width:620px}       /* narrows to logo + burger */
-  .badge{left:448px;width:277px}     /* width grows; .badge b stays at left:45px */
-  .stack{transform:translateY(var(--stshift,0px))}
-  .showcase{transform:translateY(var(--sshift,0px))}
-  .ring{transform:scale(var(--rs,1));transform-origin:586px 595px}
-  .wa{width:58px;height:58px;right:22px;bottom:26px}
-  .wa svg{width:32px;height:32px}
-}
+  /* The 34, named in one running line. The list itself lives on the
+     extras page; this is only here to make the number concrete. */
+  .inc-strip {
+    max-width: 60rem;
+    font-size: 0.8125rem; line-height: 1.85; color: rgb(var(--c-ink-mid));
+    word-spacing: 0.02em;
+  }
 
-/* ------------------- PHONE <=700px : A GENUINE FLOW COLUMN ----------------
-   Below 700 the scaled canvas puts body copy under 10px and the mock side
-   margins under 20px, so the phone gets real flow layout: same elements, same
-   order, rebuilt as a column that owns the viewport. JS sets k = 1 and drops
-   --k / --fill.                                                              */
-@media (max-width:700px){
-  .canvas{position:relative;left:auto;top:auto;width:100%;height:100%;transform:none;
-    display:flex;flex-direction:column;align-items:center;padding:0 20px}
-  .canvas>*{position:static}
-  .stack{display:contents}
-  .nav{position:relative;left:auto;top:auto;width:100%;max-width:500px;height:58px;
-    margin-top:clamp(10px,1.5vh,15px);flex:0 0 auto}
-  /* logo lockup: mark centre and wordmark cap centre pinned to the pill mid; the
-     wordmark keeps the desktop condensed proportion so it never outgrows the mark */
-  .mark{left:16px;top:calc(50% - 13px);width:26px;height:26px}
-  .wm{left:49px;top:0;height:100%}
-  .wm .kick{top:calc(50% - 15px);font-size:5px;letter-spacing:.2em}
-  .wm .name{top:calc(50% - 9px);font-size:18px;transform:scaleX(.88);
-    transform-origin:left center}
-  .burger{right:8px;top:7px;width:44px;height:44px}   /* 44px min touch target */
-  .navmenu{top:68px;padding:12px}
-  .links a{font-size:16px;padding:12px 15px;border-radius:12px}
-  .nav .btn{height:48px;margin-top:10px;font-size:16px}
-  /* the badge becomes auto-width, but the tile stays pinned left and the label
-     stays to its RIGHT via padding - it must still never overlap the tile */
-  .badge{position:relative;left:auto;top:auto;margin-top:clamp(16px,2.6vh,26px);
-    width:auto;max-width:100%;height:36px;flex:0 0 auto;border-radius:18px}
-  .badge b{position:relative;left:auto;top:auto;height:36px;padding:0 15px 0 42px;
-    font-size:12.5px}
-  .badge i{top:4px;left:4px;width:28px;height:28px}
-  .badge i svg{width:13px;height:19px}
-  /* 7.4em sits between the width of STREAMLINE (6.36em) and STREAMLINE THE
-     (8.45em), so the line break always lands balanced instead of orphaning SHOP */
-  .h1{position:relative;left:auto;top:auto;transform:none;white-space:normal;
-    text-align:center;font-size:clamp(29px,8.4vw,36px);line-height:1.06;
-    letter-spacing:-.01em;max-width:7.4em}
-  .h1.l1{margin-top:clamp(12px,2.2vh,20px)}
-  .sub{position:relative;left:auto;top:auto;transform:none;white-space:normal;
-    text-align:center;font-size:clamp(14px,3.9vw,15.5px);line-height:1.5;max-width:340px}
-  .sub.s1{margin-top:clamp(10px,1.8vh,16px)}
-  .cta2{position:relative;left:auto;top:auto;margin-top:clamp(16px,2.6vh,26px);
-    flex:0 0 auto;width:auto;min-width:158px;height:52px;padding:0 26px;font-size:16px}
-  .showcase{position:relative;left:auto;top:auto;flex:1 1 auto;width:100%;height:auto;
-    min-height:224px}
-  /* the ring keeps its full 1172x657 3D geometry, just repositioned and clipped */
-  .ring{position:absolute;left:50%;margin-left:-586px;top:-446px;bottom:auto;
-    width:1172px;height:657px;transform-origin:586px 466px;transform:scale(1.02)}
-  .browser{position:absolute;left:50%;transform:translateX(-50%);top:212px;bottom:0;
-    width:calc(100% + 40px);height:auto;border-radius:22px 22px 0 0}
-  .browser .bar{height:36px}
-  .omni{left:50%;transform:translateX(-50%);width:58%;height:24px;top:6px}
-  .omni span{font-size:9px}
-  .dots{top:14px}
-  .tools{display:none}
-  .ann{height:15px}
-  .ann span{font-size:6px}
-  .page{top:36px}
-  /* the mock is now nearly full-bleed, so the store front reads as a real UI
-     rather than a miniature: two-up products and legible type */
-  .pagebody{top:56px}
-  .pghero{margin:0 18px;height:122px;border-radius:10px}
-  .pghero .copy{left:18px}
-  .pghero .copy u{font-size:7.5px;letter-spacing:.2em}
-  .pghero .copy em{font-size:20px;margin-top:5px}
-  .pghero .copy i{font-size:8.5px;padding:6px 13px;margin-top:8px}
-  .pgsec{margin:16px 18px 10px}
-  .pgsec b{font-size:14px}
-  .pgsec u{font-size:8px}
-  .pggrid{grid-template-columns:repeat(2,1fr);gap:14px;margin:0 18px}
-  .pgcard .ph{border-radius:9px}
-  .pgcard .tag{font-size:7px;padding:3px 7px;border-radius:4px}
-  .pgcard b{font-size:10.5px;margin-top:7px}
-  .pgcard i{font-size:8.5px}
-  .pgcard s{font-size:11.5px;margin-top:4px}
-  .pgcard s span{font-size:8.5px}
-  .pgstrip{margin:16px 18px 0;flex-wrap:wrap;gap:5px 16px}
-  .pgstrip span{font-size:8px}
-  .wa{width:54px;height:54px;right:14px;bottom:16px}
-  .wa svg{width:29px;height:29px}
-  /* portfolio panel captions scale up with the larger phone ring */
-  .card .meta b{font-size:8px}
-  .card .meta i{font-size:5.4px}
-}
+  /* Business Extras — the list is one column on the left; the right is held
+     empty on purpose, and still holds its space on a phone. */
+  .extras-slot { min-height:280px; }
+  @media (min-width:1024px){ .extras-slot { position:sticky; top:6rem; min-height:560px; } }
+  .rate { display:flex; align-items:baseline; justify-content:space-between; gap:1.25rem; }
+  .rate dt { font-weight:600; color:rgb(var(--c-ink)); font-size:0.9375rem; }
+  .rate dd { font-size:0.9375rem; font-weight:600; white-space:nowrap; color:rgb(var(--c-ink)); }
+  .rate + .note { margin-top:0.3rem; font-size:0.8125rem; line-height:1.55; color:rgb(var(--c-ink-mid)); max-width:34rem; }
 
-/* ================= 12. MASTER ENTRANCE TIMELINE - RESTING STATES ===========
-   These use the INDIVIDUAL translate / scale / clip-path properties rather than
-   `transform`, because transform is already owned by the pixel type-fitter and
-   the ring loop. Individual properties compose with transform instead of
-   colliding with it. The background never moves.                              */
-html.intro .nav{opacity:0;translate:0 -9px}
-html.intro .mark,
-html.intro .wm,
-html.intro .links a,
-html.intro .nav .btn,
-html.intro .burger{opacity:0;translate:0 6px}
-html.intro .badge{opacity:0;translate:0 11px;scale:.985}
-html.intro .h1{opacity:0;translate:0 15px;clip-path:inset(100% 0 -30% 0)}
-html.intro .sub{opacity:0;translate:0 10px}
-html.intro .cta2{opacity:0;translate:0 13px;scale:.985}
-html.intro .ring{opacity:0;translate:0 18px;scale:.99}
-html.intro .browser{opacity:0;translate:0 26px}
-html.intro .wa{opacity:0;scale:.88}
+  a, button { transition: background-color 160ms ease, color 160ms ease, border-color 160ms ease, opacity 160ms ease; }
+  a:focus-visible, button:focus-visible { outline:2px solid rgb(var(--c-accent)); outline-offset:3px; border-radius:2px; }
+  button:disabled { opacity:0.4; cursor:not-allowed; }
 
-@media (prefers-reduced-motion:reduce){
-  .navmenu,.burger span{transition:none}
-  .wa::after{animation:none}
-  html.intro .nav,html.intro .mark,html.intro .wm,html.intro .links a,
-  html.intro .nav .btn,html.intro .burger,html.intro .badge,html.intro .h1,
-  html.intro .sub,html.intro .cta2,html.intro .ring,html.intro .browser,
-  html.intro .wa{opacity:1;translate:none;scale:none;clip-path:none}
-}
+  .skip:not(:focus){ position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap; }
+  @media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto;} a,button{transition:none;} }
+
+  /* Trusted businesses — a horizontal rail of real client work. It is a plain
+     scroll container with snap points, so it swipes natively on a phone and the
+     arrows are a convenience on top rather than the only way through it. */
+  /* The rail is pulled out to the container edge with a negative margin. The
+     shell padding is not the same at every breakpoint, so clip the overpull
+     here rather than trying to match it — otherwise the page gains a few
+     pixels of horizontal scroll on a phone. */
+  #trusted { overflow-x:hidden; overflow-x:clip; }
+  .tb-head { display:flex; align-items:flex-end; justify-content:space-between; gap:1.5rem; flex-wrap:wrap; }
+  .tb-nav { display:flex; gap:0.5rem; flex:0 0 auto; }
+  .tb-arrow {
+    width:2.75rem; height:2.75rem; display:grid; place-items:center;
+    border:1px solid rgb(var(--c-line-firm)); border-radius:0.5rem;
+    background:rgb(var(--c-paper)); color:rgb(var(--c-ink)); cursor:pointer;
+  }
+  .tb-arrow:hover:not(:disabled) { border-color:rgb(var(--c-accent)); color:rgb(var(--c-accent-text)); }
+  .tb-arrow svg { width:1.05rem; height:1.05rem; }
+
+  .tb-rail {
+    display:flex; gap:1.25rem; margin-top:2.5rem;
+    overflow-x:auto; scroll-snap-type:x mandatory; scroll-behavior:smooth;
+    scrollbar-width:none; -ms-overflow-style:none;
+    /* bleed the rail to the screen edge so a card is always cut off — the
+       clearest possible signal that there is more to the right */
+    padding:0.25rem 1.5rem 1.5rem; margin-inline:-1.5rem;
+    scroll-padding-left:1.5rem;
+  }
+  .tb-rail::-webkit-scrollbar { display:none; }
+  @media (min-width:768px){
+    .tb-rail { padding-inline:2.5rem; margin-inline:-2.5rem; scroll-padding-left:2.5rem; }
+  }
+  @media (prefers-reduced-motion: reduce){ .tb-rail { scroll-behavior:auto; } }
+
+  .tb-card {
+    flex:0 0 17rem; scroll-snap-align:start;
+    background:rgb(var(--c-paper));
+    border:1px solid rgb(var(--c-line));
+    border-radius:1rem; overflow:hidden;
+    transition: border-color 220ms ease, box-shadow 220ms ease, transform 220ms cubic-bezier(0.22,1,0.36,1);
+  }
+  @media (min-width:768px){ .tb-card { flex-basis:19rem; } }
+  .tb-card:hover {
+    border-color:rgb(var(--c-line-firm)); transform:translateY(-3px);
+    box-shadow:0 2px 4px rgb(var(--c-shadow) / 0.05), 0 22px 44px -22px rgb(var(--c-shadow) / 0.28);
+  }
+  .tb-shot { display:block; position:relative; aspect-ratio:4 / 3; background:rgb(var(--c-surface)); overflow:hidden; }
+  .tb-shot img { width:100%; height:100%; object-fit:cover; object-position:top center; display:block; }
+  .tb-card:hover .tb-shot img { transform:scale(1.03); }
+  .tb-shot img { transition: transform 420ms cubic-bezier(0.22,1,0.36,1); }
+  @media (prefers-reduced-motion: reduce){ .tb-shot img, .tb-card { transition:none; } .tb-card:hover { transform:none; } }
+  .tb-meta { padding:1rem 1.15rem 1.15rem; border-top:1px solid rgb(var(--c-line)); }
+  .tb-name { font-weight:600; font-size:0.9375rem; color:rgb(var(--c-ink)); }
+  .tb-cat  { margin-top:0.2rem; font-size:0.8125rem; line-height:1.5; color:rgb(var(--c-ink-soft)); }
+  .tb-live { margin-top:0.55rem; font-size:0.8125rem; font-weight:600; color:rgb(var(--c-accent-text)); }
 </style>
-
-<script>
-/* Arm the entrance BEFORE first paint. The failsafe timer guarantees content
-   can never be stranded invisible if the timeline never runs. */
-document.documentElement.classList.add('intro');
-setTimeout(function(){document.documentElement.classList.remove('intro');},4000);
-</script>
+<link rel="stylesheet" href="assets/mobile.css?v=2">
+<link rel="stylesheet" href="assets/closer.css?v=2">
+<link rel="stylesheet" href="assets/rails.css?v=2">
+<link rel="stylesheet" href="assets/cinema.css?v=2">
+<link rel="stylesheet" href="assets/tailwind.css?v=2">
+<link rel="stylesheet" href="assets/theme.css?v=2">
+<link rel="stylesheet" href="assets/dock.css?v=2">
+<link rel="stylesheet" href="assets/support.css?v=2">
+<link rel="stylesheet" href="assets/hero.css?v=2">
+<link rel="stylesheet" href="assets/pricing.css?v=2">
+<link rel="stylesheet" href="/assets/edge.css?v=2">
+<noscript><style>
+  .closer-media {
+    background: url("assets/media/rose-poster.jpg?v=3") center / cover no-repeat;
+  }
+</style></noscript>
 </head>
 
-<body>
-<div class="stage">
-  <div class="bg"></div>
-  <div class="stars" id="stA"></div>
-  <div class="stars" id="stB"></div>
+<body class="bg-paper font-sans text-ink antialiased">
+<a href="#main" class="skip absolute left-4 top-4 z-30 bg-ink px-4 py-2 text-sm text-white">Skip to content</a>
 
-  <div class="canvas" id="canvas">
+<!-- 1 — NAVIGATION -->
+<header class="fp-nav" data-nav>
+  <a class="fp-nav-brand" href="./">
+    <span class="brand-mark brand-mark--nav" role="img" aria-label="Xovah"></span>Xovah
+  </a>
 
-    <!-- ============================== NAV ============================== -->
-    <nav class="nav" id="nav">
-      <svg class="mark" viewBox="0 0 48 48" aria-hidden="true">
-        <defs>
-          <linearGradient id="sw" x1="8" y1="8" x2="40" y2="40" gradientUnits="userSpaceOnUse">
-            <stop stop-color="#8ef4ff"/><stop offset=".5" stop-color="#35d8ff"/>
-            <stop offset="1" stop-color="#0a86d8"/>
-          </linearGradient>
-          <linearGradient id="sw2" x1="40" y1="10" x2="10" y2="40" gradientUnits="userSpaceOnUse">
-            <stop stop-color="#a6f7ff"/><stop offset="1" stop-color="#0f9ae0" stop-opacity=".25"/>
-          </linearGradient>
-        </defs>
-        <g transform="rotate(-32 24 24)">
-          <ellipse cx="24" cy="24" rx="18.5" ry="9.6" fill="none" stroke="url(#sw2)"
-            stroke-width="3.1" stroke-linecap="round" stroke-dasharray="58 30" stroke-dashoffset="14"/>
-          <circle cx="41.4" cy="20.6" r="3.1" fill="#bff6ff"/>
-        </g>
-        <circle cx="24" cy="24" r="6.6" fill="url(#sw)"/>
-        <circle cx="24" cy="24" r="2.6" fill="#fff"/>
-      </svg>
+  <div class="fp-nav-right">
+    <a class="fp-nav-link" href="pricing.html">Pricing</a>
+    <a class="fp-nav-link" href="extras.html">Extras</a>
+    <a class="fp-nav-link" href="faq.html">FAQ</a>
+    <a class="fp-nav-link fp-nav-link--free" href="free.html">Free page</a>
+    <a class="fp-nav-cta" href="start.html">Start a Project</a>
+  <button type="button" class="fp-nav-btn fp-nav-btn--icon" data-menu-open aria-expanded="false" aria-controls="siteMenu" aria-label="Open menu">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" aria-hidden="true"><path d="M4.5 9.5h15M4.5 15h9"/></svg>
+  </button>
+  </div>
+</header>
 
-      <div class="wm">
-        <span class="kick">SHOPS</span>
-        <span class="name" id="wmName">VERTEX</span>
-      </div>
-
-      <button class="burger" type="button" id="burger"
-        aria-label="Opens menu" aria-expanded="false" aria-controls="navmenu">
-        <span></span><span></span><span></span>
+<div class="site-menu" id="siteMenu" data-menu hidden>
+  <button type="button" class="site-menu-scrim" data-menu-close tabindex="-1" aria-hidden="true"></button>
+  <div class="site-menu-panel" role="dialog" aria-modal="true" aria-label="Menu">
+    <div class="site-menu-head">
+      <span class="fp-nav-brand"><span class="brand-mark brand-mark--nav" role="img" aria-label="Xovah"></span>Xovah</span>
+      <button type="button" class="fp-nav-btn fp-nav-btn--icon" data-menu-close aria-label="Close menu">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
       </button>
+    </div>
 
-      <div class="navmenu" id="navmenu">
-        <div class="links" id="links">
-          <a href="#">Origin</a>
-          <a href="#">Learn how</a>
-          <a href="#">Core Vertex</a>
-          <a href="#">Prices</a>
-          <a href="#">Support</a>
-        </div>
-        <a class="btn" href="#"><span id="ctaLabel">Build new shop</span></a>
-      </div>
+    <nav class="site-menu-links" aria-label="Main">
+      <a href="pricing.html">Pricing</a>
+      <a href="#features">Features</a>
+      <a href="#services">Monthly</a>
+      <a href="extras.html">Extras</a>
+      <a href="faq.html">FAQ</a>
+      <a href="support.html">Help &amp; support</a>
     </nav>
 
-    <!-- ============================= STACK ============================= -->
-    <div class="stack">
+    <div class="site-menu-foot">
+      <a class="site-menu-cta" href="start.html">Start a Project</a>
 
-      <div class="badge">
-        <i>
-          <svg viewBox="5 1 14 22" preserveAspectRatio="none" aria-hidden="true">
-            <path d="M13.9 1.6 5.5 13.6a.7.7 0 0 0 .6 1.1h4.2l-1 7.7a.7.7 0 0 0 1.25.55l8.3-12.1a.7.7 0 0 0-.6-1.1h-4.2l1-7.7a.7.7 0 0 0-1.25-.55Z"
-              fill="rgba(16,112,152,.72)" stroke="rgba(190,236,255,.6)" stroke-width="1.6"
-              stroke-linejoin="round"/>
-          </svg>
-        </i>
-        <b id="badgeTxt">Professionals at store startup</b>
+      <div class="site-menu-set">
+        <p class="site-menu-set-l">Appearance</p>
+        <div class="site-menu-theme" data-theme-slot></div>
       </div>
+    </div>
+  </div>
+</div>
 
-      <h1 class="h1 l1" id="h1a">Streamline the shop</h1>
-      <h1 class="h1 l2" id="h1b">Process</h1>
+<main id="main">
 
-      <p class="sub s1" id="sub1"><b>Restructuring store systems / <span class="nb">E-commerce</span></b> orchestrated with</p>
-      <p class="sub s2" id="sub2">checkouts, performance, a sustainable expansion.</p>
+  <!-- Side video rails. Fixed, decorative, and gone below 1280px. -->
+  <div class="rails" data-rails aria-hidden="true"></div>
 
-      <a class="btn cta2" href="#"><span id="vpLabel">See prices</span></a>
+  <!-- 2 — HERO
+       Full-bleed footage, glass navigation. The page header below is
+       held back while this is on screen (assets/hero.js) so there is
+       only ever one nav in view. -->
+  <section class="fp-hero relative h-screen w-full overflow-hidden" data-hero data-backdrop>
 
-      <div class="showcase">
-        <!-- portfolio panels are injected here, one per PORTFOLIO slot -->
-        <div class="ring" id="ring" aria-hidden="true"></div>
+    <div class="fp-hero-media">
+      <video muted loop playsinline preload="none"
+             data-poster="assets/media/hero-poster.jpg"
+             data-poster-tall="assets/media/hero-poster-tall.jpg"
+             data-poster-light="assets/media/hero-light-poster.jpg"
+             data-poster-light-tall="assets/media/hero-light-poster-tall.jpg"
+             data-src="assets/media/hero.mp4"
+             data-src-tall="assets/media/hero-tall.mp4"
+             data-src-light="assets/media/hero-light.mp4"
+             data-src-light-tall="assets/media/hero-light-tall.mp4"
+             aria-hidden="true"></video>
+    </div>
+    <div class="fp-hero-wash" aria-hidden="true"></div>
+    <div class="fp-hero-fade" aria-hidden="true"></div>
 
-        <!-- ===================== BROWSER MOCK ===================== -->
-        <div class="browser" id="browser">
-          <div class="bar">
-            <div class="dots">
-              <i style="background:#ee5c62"></i>
-              <i style="background:#f6b719"></i>
-              <i style="background:#12c02f"></i>
-            </div>
-            <div class="omni">
-              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                <circle cx="11" cy="11" r="7" stroke="#fff" stroke-width="2.4"/>
-                <path d="M20 20l-3.8-3.8" stroke="#fff" stroke-width="2.4"/>
-              </svg>
-              <span>Shop Focused - Skin Care</span>
-            </div>
-            <div class="tools">
-              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                <path d="M12 16V4m0 0L8 8m4-4 4 4" stroke="#fff" stroke-width="2"/>
-                <path d="M4 15v5h16v-5" stroke="#fff" stroke-width="2"/>
-              </svg>
-              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                <path d="M12 5v14M5 12h14" stroke="#fff" stroke-width="2.2"/>
-              </svg>
-              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                <path d="M12 3 3 8l9 5 9-5-9-5Z" fill="#fff" opacity=".95"/>
-                <path d="M3 13l9 5 9-5" stroke="#fff" stroke-width="2" opacity=".55"/>
-              </svg>
-            </div>
-          </div>
+    <div class="relative z-10 flex h-full flex-col">
 
-          <div class="page">
-            <div class="ann">
-              <u style="left:20px">&#8249;</u>
-              <span>Moisturized daily at home</span>
-              <u style="right:20px">&#8250;</u>
-            </div>
 
-            <div class="shoplogo"><em>GLOW</em><i>SKIN CARE</i></div>
 
-            <div class="shopicons">
-              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                <circle cx="11" cy="11" r="7" stroke="#222" stroke-width="2"/>
-                <path d="M20 20l-3.8-3.8" stroke="#222" stroke-width="2"/>
-              </svg>
-              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                <circle cx="12" cy="8" r="4" stroke="#222" stroke-width="2"/>
-                <path d="M4.5 21c0-4.2 3.4-6.6 7.5-6.6s7.5 2.4 7.5 6.6" stroke="#222" stroke-width="2"/>
-              </svg>
-              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                <path d="M5.5 8h13l-1.2 12H6.7L5.5 8Z" stroke="#222" stroke-width="2"/>
-                <path d="M9 8V6.2A3 3 0 0 1 15 6.2V8" stroke="#222" stroke-width="2"/>
-              </svg>
-            </div>
+      <!-- Hero copy -->
+      <div class="fp-hero-copy">
 
-            <div class="pagebody">
-              <div class="pghero">
-                <img alt="Warm amber and ivory skincare collection in golden morning light"
-                  src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260912_110504_0316394c-37bd-432b-a1f2-ee46a461c22b.png">
-                <div class="scrim"></div>
-                <div class="copy">
-                  <u>Just added</u>
-                  <em>Let your beauty<br>be sacred.</em>
-                  <i>EXPLORE TODAY</i>
-                </div>
-              </div>
+        <h1 class="fp-hero-h">
+          You run the business.<br>We build the website.
+        </h1>
 
-              <div class="pgsec"><b>Best reviewed</b><u>see more</u></div>
+        <p class="fp-hero-p">
+          Websites and landing pages for small businesses.<br>
+          From &euro;50 once — hosting and domain included.
+        </p>
 
-              <div class="pggrid">
-                <div class="pgcard">
-                  <div class="ph">
-                    <img alt="Vitamin C serum in amber glass"
-                      src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260912_110423_3b5dcf24-cc07-4f3b-8423-b597fffcdbfb.png">
-                    <div class="tag">-24%</div>
-                  </div>
-                  <b>Serum Radiance C</b><i>Brightens &middot; 30ml</i>
-                  <s>$ 129.90 <span>$ 169.90</span></s>
-                </div>
-                <div class="pgcard">
-                  <div class="ph">
-                    <img alt="Nourishing lotion jar on soft linen"
-                      src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260912_110504_50ec81be-8341-447f-a0c2-a5673a465447.png">
-                  </div>
-                  <b>Nourishing Lotion</b><i>Arid skin &middot; 50g</i>
-                  <s>$ 89.90</s>
-                </div>
-                <div class="pgcard">
-                  <div class="ph">
-                    <img alt="Three-piece Sunset Renewal skincare kit"
-                      src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260912_110504_fd208d72-9112-4cde-b509-8d273b470c6f.png">
-                    <div class="tag">SET</div>
-                  </div>
-                  <b>Kit Sunset Renewal</b><i>3 products</i>
-                  <s>$ 219.90 <span>$ 289.90</span></s>
-                </div>
-                <div class="pgcard">
-                  <div class="ph">
-                    <img alt="Lightweight facial sunscreen beside clear water"
-                      src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260912_110504_9731544c-a83b-48c4-bacb-e31e4d4b9f42.png">
-                    <div class="tag">JUST</div>
-                  </div>
-                  <b>Defender SPF 60</b><i>Light feel &middot; 40g</i>
-                  <s>$ 74.90</s>
-                </div>
-              </div>
-
-              <div class="pgstrip">
-                <span>Ships gratis north of $ 199</span>
-                <span>Pay 12x nil rates</span>
-                <span>Swaps in 30 days</span>
-                <span>Hypoallergenically checked</span>
-              </div>
-            </div>
-          </div>
+        <div class="fp-hero-cta">
+          <a class="fp-btn fp-btn--solid" href="start.html"><span class="swap"><span>Get your website for <span class="cur" data-eur="50">€50</span></span><span aria-hidden="true">Get your website for <span class="cur" data-eur="50">€50</span></span></span></a>
+          <a class="fp-btn fp-btn--glass" href="#pricing"><span class="swap"><span>See the pricing</span><span aria-hidden="true">See the pricing</span></span></a>
         </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- Between the hero and the price: who this is actually for. It
+       reads as a client strip, which is what it becomes the day there
+       are logos to put in it. -->
+  <div class="marquee" role="region" aria-label="Businesses we build for">
+    <div class="marquee-track">
+      <div class="marquee-set" aria-hidden="false">
+          <span class="marquee-item">Barbershop</span>
+          <i class="marquee-dot" aria-hidden="true"></i>
+          <span class="marquee-item">Café</span>
+          <i class="marquee-dot" aria-hidden="true"></i>
+          <span class="marquee-item">Salon</span>
+          <i class="marquee-dot" aria-hidden="true"></i>
+          <span class="marquee-item">Mechanic</span>
+          <i class="marquee-dot" aria-hidden="true"></i>
+          <span class="marquee-item">Restaurant</span>
+          <i class="marquee-dot" aria-hidden="true"></i>
+          <span class="marquee-item">Dentist</span>
+          <i class="marquee-dot" aria-hidden="true"></i>
+          <span class="marquee-item">Bakery</span>
+          <i class="marquee-dot" aria-hidden="true"></i>
+          <span class="marquee-item">Gym</span>
+          <i class="marquee-dot" aria-hidden="true"></i>
+          <span class="marquee-item">Florist</span>
+          <i class="marquee-dot" aria-hidden="true"></i>
+          <span class="marquee-item">Car wash</span>
+          <i class="marquee-dot" aria-hidden="true"></i>
+          <span class="marquee-item">Tattoo studio</span>
+          <i class="marquee-dot" aria-hidden="true"></i>
+          <span class="marquee-item">Pizzeria</span>
+          <i class="marquee-dot" aria-hidden="true"></i>
+          <span class="marquee-item">Butcher</span>
+          <i class="marquee-dot" aria-hidden="true"></i>
+          <span class="marquee-item">Pharmacy</span>
+          <i class="marquee-dot" aria-hidden="true"></i>
+      </div>
+      <!-- The second set is the same list again, and it is what makes
+           the loop seamless. It must not be read out twice. -->
+      <div class="marquee-set" aria-hidden="true">
+          <span class="marquee-item">Barbershop</span>
+          <i class="marquee-dot" aria-hidden="true"></i>
+          <span class="marquee-item">Café</span>
+          <i class="marquee-dot" aria-hidden="true"></i>
+          <span class="marquee-item">Salon</span>
+          <i class="marquee-dot" aria-hidden="true"></i>
+          <span class="marquee-item">Mechanic</span>
+          <i class="marquee-dot" aria-hidden="true"></i>
+          <span class="marquee-item">Restaurant</span>
+          <i class="marquee-dot" aria-hidden="true"></i>
+          <span class="marquee-item">Dentist</span>
+          <i class="marquee-dot" aria-hidden="true"></i>
+          <span class="marquee-item">Bakery</span>
+          <i class="marquee-dot" aria-hidden="true"></i>
+          <span class="marquee-item">Gym</span>
+          <i class="marquee-dot" aria-hidden="true"></i>
+          <span class="marquee-item">Florist</span>
+          <i class="marquee-dot" aria-hidden="true"></i>
+          <span class="marquee-item">Car wash</span>
+          <i class="marquee-dot" aria-hidden="true"></i>
+          <span class="marquee-item">Tattoo studio</span>
+          <i class="marquee-dot" aria-hidden="true"></i>
+          <span class="marquee-item">Pizzeria</span>
+          <i class="marquee-dot" aria-hidden="true"></i>
+          <span class="marquee-item">Butcher</span>
+          <i class="marquee-dot" aria-hidden="true"></i>
+          <span class="marquee-item">Pharmacy</span>
+          <i class="marquee-dot" aria-hidden="true"></i>
       </div>
     </div>
   </div>
 
-  <a class="wa" href="#" aria-label="WhatsApp">
-    <svg viewBox="0 0 32 32" aria-hidden="true">
-      <path fill="#fff" d="M16.04 3.2C8.94 3.2 3.17 8.97 3.17 16.07c0 2.27.6 4.49 1.73 6.44L3.07 29.1l6.76-1.77a12.8 12.8 0 0 0 6.2 1.58h.01c7.1 0 12.87-5.77 12.87-12.87S23.14 3.2 16.04 3.2Zm0 23.07h-.01a10.7 10.7 0 0 1-5.45-1.49l-.39-.23-4.01 1.05 1.07-3.91-.25-.4a10.65 10.65 0 0 1-1.63-5.69c0-5.9 4.8-10.7 10.7-10.7 2.86 0 5.54 1.11 7.56 3.14a10.62 10.62 0 0 1 3.13 7.57c0 5.9-4.8 10.66-10.72 10.66Zm5.87-7.98c-.32-.16-1.9-.94-2.2-1.05-.3-.11-.51-.16-.73.16-.21.32-.83 1.05-1.02 1.26-.19.21-.38.24-.7.08-.32-.16-1.36-.5-2.59-1.6-.96-.85-1.6-1.91-1.79-2.23-.19-.32-.02-.5.14-.66.15-.14.32-.38.48-.56.16-.19.21-.32.32-.54.11-.21.05-.4-.03-.56-.08-.16-.73-1.75-1-2.4-.26-.63-.53-.54-.73-.55l-.62-.01c-.21 0-.56.08-.86.4-.29.32-1.12 1.1-1.12 2.68s1.15 3.11 1.31 3.32c.16.21 2.26 3.45 5.48 4.84.77.33 1.36.53 1.82.68.77.24 1.46.21 2.02.13.62-.09 1.9-.78 2.17-1.53.27-.75.27-1.39.19-1.53-.08-.13-.29-.21-.61-.37Z"/>
-    </svg>
-  </a>
+  <div data-rails-region>
+
+  <!-- Held open for a phone. Empty on purpose; nothing shows on desktop. -->
+  <div class="m-slot m-slot--short" data-slot="after-hero">
+    <ul class="m-trust" data-reveal-group>
+      <li><b>7 days</b><span>from your content to live</span></li>
+      <li><b>Yours</b><span>the domain and the site, in your name</span></li>
+      <li><b>25%</b><span>to start &mdash; the rest on approval</span></li>
+    </ul>
+  </div>
+
+  <!-- 3 — PRICING -->
+  <section id="pricing" class="scroll-mt-16 border-b border-line bg-surface">
+    <div class="mx-auto max-w-shell px-6 py-16 md:px-10 md:py-24">
+      <p class="eyebrow text-ink-soft" data-rise>Websites</p>
+      <h2 class="h-section sec-title mt-4 max-w-2xl" data-rise>Three ways to get one.</h2>
+      <p class="mt-5 max-w-prose text-[0.9375rem] leading-relaxed text-ink-mid">
+        All paid once. The domain, the hosting and the padlock come with every one of them.
+      </p>
+
+      <div class="pr-rail mt-12" data-reveal-group>
+
+        <!-- Custom -->
+        <div class="pr-spot">
+          <div class="pr-card">
+            <p class="pr-eyebrow">Custom Website</p>
+            <div class="pr-rule"></div>
+            <p class="pr-figure">
+              <span class="h-display pr-amount"><span class="cur" data-eur="50">&euro;50</span></span>
+              <span class="tag tag-once">One-time</span>
+            </p>
+            <p class="pr-note">
+              A single-page site with up to 20 sections from our 34, built around your business.
+            </p>
+            <div class="pr-foot">
+              <a href="start.html?package=custom" class="pr-cta">
+                Choose Package
+              </a>
+            </div>
+            <ul class="pr-list">
+              <li class="is-off"><span class="pr-mark pr-mark--no"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M4 4l8 8M12 4l-8 8"/></svg></span> All 34 sections, no limit</li>
+              <li><span class="pr-mark pr-mark--yes"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.4 8.4l3 3 6.2-6.6"/></svg></span> Domain, hosting &amp; SSL included</li>
+              <li><span class="pr-mark pr-mark--yes"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.4 8.4l3 3 6.2-6.6"/></svg></span> Mobile-responsive design</li>
+              <li class="is-off"><span class="pr-mark pr-mark--no"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M4 4l8 8M12 4l-8 8"/></svg></span> SEO, analytics &amp; legal pages</li>
+              <li class="is-off"><span class="pr-mark pr-mark--no"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M4 4l8 8M12 4l-8 8"/></svg></span> Anti-spam protection on forms</li>
+              <li class="is-off"><span class="pr-mark pr-mark--no"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M4 4l8 8M12 4l-8 8"/></svg></span> Custom logo &amp; menu design</li>
+              <li class="is-off"><span class="pr-mark pr-mark--no"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M4 4l8 8M12 4l-8 8"/></svg></span> Maintenance &amp; local SEO</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Full - the middle one, and the one we point at -->
+        <div class="pr-spot pr-spot--lead">
+          <div class="pr-card pr-card--lead">
+            <span class="pr-badge">Most popular</span>
+            <p class="pr-eyebrow">Full Website</p>
+            <div class="pr-rule"></div>
+            <p class="pr-figure">
+              <span class="h-display pr-amount"><span class="cur" data-eur="200">&euro;200</span></span>
+              <span class="tag tag-once">One-time</span>
+            </p>
+            <p class="pr-note">
+              Every one of the 34 sections, plus the search, analytics and legal setup a real site needs.
+            </p>
+            <div class="pr-foot">
+              <a href="start.html?package=full" class="pr-cta pr-cta--solid">
+                Choose Package
+              </a>
+            </div>
+            <ul class="pr-list">
+              <li><span class="pr-mark pr-mark--yes"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.4 8.4l3 3 6.2-6.6"/></svg></span> All 34 sections, no limit</li>
+              <li><span class="pr-mark pr-mark--yes"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.4 8.4l3 3 6.2-6.6"/></svg></span> Domain, hosting &amp; SSL included</li>
+              <li><span class="pr-mark pr-mark--yes"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.4 8.4l3 3 6.2-6.6"/></svg></span> Mobile-responsive design</li>
+              <li><span class="pr-mark pr-mark--yes"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.4 8.4l3 3 6.2-6.6"/></svg></span> SEO, analytics &amp; legal pages</li>
+              <li><span class="pr-mark pr-mark--yes"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.4 8.4l3 3 6.2-6.6"/></svg></span> Anti-spam protection on forms</li>
+              <li class="is-off"><span class="pr-mark pr-mark--no"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M4 4l8 8M12 4l-8 8"/></svg></span> Custom logo &amp; menu design</li>
+              <li class="is-off"><span class="pr-mark pr-mark--no"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M4 4l8 8M12 4l-8 8"/></svg></span> Maintenance &amp; local SEO</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Complete -->
+        <div class="pr-spot">
+          <div class="pr-card">
+            <p class="pr-eyebrow">Complete Package</p>
+            <div class="pr-rule"></div>
+            <p class="pr-figure">
+              <span class="h-display pr-amount"><span class="cur" data-eur="500">&euro;500</span></span>
+              <span class="tag tag-once">One-time</span>
+            </p>
+            <p class="pr-note">
+              The end-to-end setup: branding, local SEO, three years of hosting and ongoing maintenance.
+            </p>
+            <div class="pr-foot">
+              <a href="start.html?package=complete" class="pr-cta">
+                Choose Package
+              </a>
+            </div>
+            <ul class="pr-list">
+              <li><span class="pr-mark pr-mark--yes"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.4 8.4l3 3 6.2-6.6"/></svg></span> All 34 sections, no limit</li>
+              <li><span class="pr-mark pr-mark--yes"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.4 8.4l3 3 6.2-6.6"/></svg></span> Domain, hosting &amp; SSL &mdash; 3 years</li>
+              <li><span class="pr-mark pr-mark--yes"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.4 8.4l3 3 6.2-6.6"/></svg></span> Mobile-responsive design</li>
+              <li><span class="pr-mark pr-mark--yes"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.4 8.4l3 3 6.2-6.6"/></svg></span> SEO, analytics &amp; legal pages</li>
+              <li><span class="pr-mark pr-mark--yes"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.4 8.4l3 3 6.2-6.6"/></svg></span> Anti-spam protection on forms</li>
+              <li><span class="pr-mark pr-mark--yes"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.4 8.4l3 3 6.2-6.6"/></svg></span> Custom logo &amp; menu design</li>
+              <li><span class="pr-mark pr-mark--yes"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.4 8.4l3 3 6.2-6.6"/></svg></span> Maintenance &amp; local SEO</li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+
+
+      <p class="price-next-line">
+        No checkout and no account &mdash; we agree the price with you first.
+        <a href="start.html">Start a project</a>.
+      </p>
+
+      <!-- Domain and hosting. Said once, here, so no card has to repeat it. -->
+      <div class="mt-8 border border-line bg-surface px-6 py-5">
+        <div class="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-1">
+          <h3 class="h-section text-base">Domain &amp; hosting</h3>
+          <p class="text-[0.9375rem] font-semibold text-ink"><span class="cur" data-eur="10">€10</span> <span class="font-normal text-ink-soft">/ month, once the included years run out</span></p>
+        </div>
+        <p class="mt-3 max-w-prose text-[0.875rem] leading-relaxed text-ink-mid">
+          Custom and Professional include the first year. Complete includes the first three. After that it
+          is <span class="cur" data-eur="10">€10</span> a month for the domain, the hosting and the padlock — nothing else changes.
+        </p>
+        <p class="mt-2 max-w-prose text-[0.875rem] leading-relaxed text-ink-mid">
+          You choose the domain name yourself. Type the one you want before you order and we register it for you.
+        </p>
+      </div>
+
+      <!-- The 34, named but not laid out. The full list is a page of its
+           own now; here it only has to prove the number is real. -->
+      <div class="mt-12 border-t border-line pt-8">
+        <div class="flex flex-wrap items-baseline gap-x-4 gap-y-1">
+          <p id="features" class="scroll-mt-24 text-sm font-semibold text-ink">34 sections and features, in every website</p>
+          <a href="extras.html#included" class="ml-auto text-[0.8125rem] font-semibold text-accent underline decoration-line-firm decoration-2 underline-offset-4 hover:decoration-accent">See all 34</a>
+        </div>
+        <p class="inc-strip mt-4">
+          About Us · FAQ · Price list · Special offers · Promotions · Portfolio · Projects · Team ·
+          Before &amp; after · Service area · Pricing comparison · Packages · Events · Announcements ·
+          Landing page · 404 page · Product catalog · Online menu · PDF menu · PDF catalog ·
+          Downloads · Reviews · Sticky nav · Sticky mobile buttons · Back to top · Lightbox ·
+          FAQ accordion · Galleries · Video · YouTube · Inquiry form · Social preview · Favicon ·
+          Mobile optimisation
+        </p>
+      </div>
+
+      <div class="mt-10 flex flex-wrap items-center gap-x-6 gap-y-4 border-t border-line pt-8">
+        <a href="start.html" class="inline-flex items-center justify-center rounded-md bg-accent px-7 py-4 text-base font-semibold text-white hover:bg-accent-hi">
+          Create an account to build your package
+        </a>
+        <p class="max-w-prose text-[0.8125rem] leading-relaxed text-ink-soft">
+          You choose your website, features and services inside your dashboard, see the full total, and
+          pay 25% to start. Nothing is charged before you get there.
+        </p>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- 4b — TRUSTED BUSINESSES -->
+  <section id="trusted" class="scroll-mt-16 border-b border-line">
+    <div class="mx-auto max-w-shell px-6 py-16 md:px-10 md:py-20">
+
+      <div class="tb-head">
+        <div>
+          <p class="eyebrow text-ink-soft" data-rise>Trusted by</p>
+          <h2 class="h-section sec-title mt-4 max-w-2xl" data-rise>Businesses already running on Xovah.</h2>
+        </div>
+        <div class="tb-nav">
+          <button type="button" class="tb-arrow" data-tb-prev aria-label="Previous businesses" aria-controls="tb-rail">
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M15 5l-7 7 7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+          <button type="button" class="tb-arrow" data-tb-next aria-label="More businesses" aria-controls="tb-rail">
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M9 5l7 7-7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <p class="mt-5 max-w-prose text-[0.9375rem] leading-relaxed text-ink-mid">
+        Real businesses, real sites, live right now. Every one of them is a link you can open.
+      </p>
+
+      <!-- ═══════════════════════════════════════════════════════════════
+           TRUSTED BUSINESSES — ADD NEW ONES HERE
+           Copy one <article class="tb-card"> block and change four things:
+             the href, the img src, the tb-name and the tb-cat.
+           The arrows, snapping and sizing keep working with any number.
+           Images: drop files in assets/portfolio/ and use that path.
+           ═══════════════════════════════════════════════════════════════ -->
+      <div class="tb-rail" id="tb-rail" data-tb-rail tabindex="0" role="region" aria-label="Businesses we have built for">
+
+        <article class="tb-card">
+          <a class="tb-shot" href="https://shkurtanails.salon" target="_blank" rel="noopener noreferrer">
+            <img src="https://image.thum.io/get/width/900/viewportWidth/1440/noanimate/https://shkurtanails.salon"
+                 alt="Shkurta Nails — nail salon website built by Xovah" loading="lazy" decoding="async">
+          </a>
+          <div class="tb-meta">
+            <p class="tb-name">Shkurta Nails</p>
+            <p class="tb-cat">Beauty &amp; salon &middot; Podujev&euml;, Kosov&euml;</p>
+            <p class="tb-live">shkurtanails.salon &rarr;</p>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- 5 — WHAT WE OFFER -->
+  <section class="border-b border-line">
+    <div class="mx-auto max-w-shell px-6 py-16 md:px-10 md:py-20">
+      <div class="grid grid-cols-1 gap-10 lg:grid-cols-12 lg:gap-14">
+
+        <div class="lg:col-span-5">
+          <h2 class="h-section sec-title" data-rise>There are three things here. You need one of them.</h2>
+          <p class="mt-5 max-w-prose text-[0.9375rem] leading-relaxed text-ink-mid">
+            The website is the bit you buy. The other two are optional.
+          </p>
+        </div>
+
+        <div class="lg:col-span-6 lg:col-start-7">
+          <div class="border-t-2 border-accent pt-6">
+            <div class="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-1">
+              <h3 class="h-section text-xl">The website</h3>
+              <p class="text-[0.9375rem] font-semibold text-ink"><span class="cur" data-eur="50">€50</span> or <span class="cur" data-eur="200">€200</span> <span class="font-normal text-ink-soft">· once</span></p>
+            </div>
+            <p class="mt-3 max-w-prose text-[0.9375rem] leading-relaxed text-ink-mid">
+              Built around what you actually do, and made to work on a phone — because that is where
+              people find you. Domain, hosting and padlock included.
+            </p>
+            <a href="#pricing" class="mt-4 inline-block text-sm font-semibold text-accent underline decoration-line-firm decoration-2 underline-offset-4 hover:decoration-accent">Compare the two</a>
+          </div>
+
+          <div class="mt-9 grid grid-cols-1 gap-9 border-t border-line pt-7 sm:grid-cols-2 sm:gap-8" data-reveal-group>
+            <div>
+              <h3 class="h-section text-base">Monthly services</h3>
+              <p class="mt-2 text-[0.875rem] leading-relaxed text-ink-mid">
+                Maintenance, content updates, SEO upkeep, monitoring, priority support. None of them
+                start until you are live.
+              </p>
+              <p class="mt-2.5 text-[0.8125rem] text-ink-soft">Ten of them, <span class="cur" data-eur="10">€10</span> – <span class="cur" data-eur="40">€40</span> a month each.</p>
+              <a href="#services" class="mt-2.5 inline-block text-sm font-semibold text-accent underline decoration-line-firm decoration-2 underline-offset-4 hover:decoration-accent">What each one does</a>
+            </div>
+            <div>
+              <h3 class="h-section text-base">Business extras</h3>
+              <p class="mt-2 text-[0.875rem] leading-relaxed text-ink-mid">
+                Booking, SEO, analytics, automation, a logo, an email on your own domain.
+                Sixty-six one-off jobs.
+              </p>
+              <p class="mt-2.5 text-[0.8125rem] text-ink-soft">From <span class="cur" data-eur="5">€5</span>, paid once.</p>
+              <a href="#extras" class="mt-2.5 inline-block text-sm font-semibold text-accent underline decoration-line-firm decoration-2 underline-offset-4 hover:decoration-accent">See all sixty-six</a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- 6 — THE FOUR STEPS -->
+  <section id="how" class="scroll-mt-16 border-b border-line bg-accent-tint">
+    <div class="mx-auto max-w-shell px-6 py-16 md:px-10 md:py-24">
+
+      <p class="eyebrow text-ink-soft" data-rise>How it works</p>
+      <h2 class="h-section sec-title mt-4 max-w-xl" data-rise>Four steps, start to live.</h2>
+
+      <ol class="mt-12 grid grid-cols-1 border-t border-line-firm sm:grid-cols-2 xl:grid-cols-4" data-reveal-group>
+
+        <li class="border-b border-line py-7 sm:pr-8 xl:border-b-0 xl:border-r xl:pr-7">
+          <p class="step-n">01</p>
+          <h3 class="h-section mt-3 text-lg">Pay 25%</h3>
+          <p class="mt-2.5 max-w-prose text-[0.875rem] leading-relaxed text-ink-mid">
+            A quarter of the one-time total, and that books the work in. Nothing else is charged today.
+          </p>
+        </li>
+
+        <li class="border-b border-line py-7 sm:pl-8 xl:border-b-0 xl:border-r xl:pl-7 xl:pr-7">
+          <p class="step-n">02</p>
+          <h3 class="h-section mt-3 text-lg">Send your content</h3>
+          <p class="mt-2.5 max-w-prose text-[0.875rem] leading-relaxed text-ink-mid">
+            Logo, photos, what you do, what it costs, when you are open.
+            <a href="start.html" class="font-semibold text-accent underline underline-offset-2 hover:text-accent-hi">Here is the list</a>.
+          </p>
+        </li>
+
+        <li class="border-b border-line py-7 sm:border-b-0 sm:pr-8 xl:border-r xl:px-7">
+          <p class="step-n">03</p>
+          <h3 class="h-section mt-3 text-lg">We build it</h3>
+          <p class="mt-2.5 max-w-prose text-[0.875rem] leading-relaxed text-ink-mid">
+            Roughly a week from the day the last photo lands — not from the day you paid.
+          </p>
+        </li>
+
+        <li class="py-7 sm:pl-8 xl:pl-7">
+          <p class="step-n">04</p>
+          <h3 class="h-section mt-3 text-lg">Approve it, pay the rest</h3>
+          <p class="mt-2.5 max-w-prose text-[0.875rem] leading-relaxed text-ink-mid">
+            You look it over on your own phone. If it is right, you pay the remaining 75% and we put it up.
+          </p>
+        </li>
+
+      </ol>
+
+      <p class="mt-8 max-w-prose text-[0.8125rem] leading-relaxed text-ink-soft">
+        Nothing monthly is charged while we are still building. If you have added a monthly service, it
+        starts the day the site goes live.
+      </p>
+    </div>
+  </section>
+
+  <div class="m-slot" data-slot="after-steps">
+    <div class="m-band" data-reveal>
+      <p class="m-band-k">Not sure what you need?</p>
+      <p class="m-band-h">Pick the parts, watch the price add itself up.</p>
+      <a href="build.html" class="m-band-cta">
+        Build your package
+        <svg viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 11h15.4M11 3.3l7.7 7.7-7.7 7.7"/></svg>
+      </a>
+      <p class="m-band-s">No account, nothing sent. About a minute.</p>
+    </div>
+  </div>
+
+  <!-- 8 — EXTRAS, POINTED AT -->
+  <section id="extras" class="scroll-mt-16 border-b border-line bg-surface">
+    <div class="mx-auto max-w-shell px-6 py-16 md:px-10 md:py-24">
+      <div class="grid grid-cols-1 gap-10 lg:grid-cols-12 lg:gap-14">
+
+        <div class="lg:col-span-6">
+          <p class="eyebrow text-ink-soft" data-rise>Business extras</p>
+          <h2 class="h-section sec-title mt-4" data-rise>The things a website does not cover.</h2>
+          <p class="mt-5 max-w-prose text-[0.9375rem] leading-relaxed text-ink-mid">
+            Booking, SEO, analytics, automation, a logo, an email on your own domain. Sixty-six one-off
+            jobs and ten monthly services, each priced on its own page so you can tick your way to a
+            total before you talk to anyone.
+          </p>
+          <div class="mt-8 flex flex-wrap items-center gap-x-6 gap-y-4">
+            <a href="build.html" class="inline-flex min-h-[52px] items-center justify-center rounded-full bg-accent px-7 py-3.5 text-[0.9375rem] font-semibold text-white hover:bg-accent-hi">
+              See the extras and build a total
+            </a>
+            <p class="text-[0.8125rem] text-ink-soft">From <span class="cur" data-eur="5">€5</span>, paid once.</p>
+          </div>
+
+          <dl class="mt-10 grid grid-cols-2 gap-x-8 gap-y-5 border-t border-line pt-7 sm:grid-cols-4" data-reveal-group>
+            <div><dt class="text-[0.8125rem] text-ink-soft">Website features</dt><dd class="h-section mt-1 text-xl">18</dd></div>
+            <div><dt class="text-[0.8125rem] text-ink-soft">Business &amp; technical</dt><dd class="h-section mt-1 text-xl">27</dd></div>
+            <div><dt class="text-[0.8125rem] text-ink-soft">Automation</dt><dd class="h-section mt-1 text-xl">10</dd></div>
+            <div><dt class="text-[0.8125rem] text-ink-soft">Brand &amp; design</dt><dd class="h-section mt-1 text-xl">11</dd></div>
+          </dl>
+        </div>
+
+        <!-- Held open on purpose. Nothing goes here yet. -->
+        <div class="lg:col-span-5 lg:col-start-8" aria-hidden="true">
+          <div class="extras-slot"></div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- 9 — FAQ -->
+  <section class="border-b border-line">
+    <div class="mx-auto max-w-shell px-6 py-16 md:px-10 md:py-24">
+      <p class="eyebrow text-ink-soft" data-rise>Straight answers</p>
+      <h2 class="h-section sec-title mt-4 max-w-2xl" data-rise>One-time, monthly, and what happens next.</h2>
+      <p class="mt-5 max-w-prose text-[0.9375rem] leading-relaxed text-ink-mid">
+        The ones that come up most. The rest are answered in the
+        <a href="faq.html" class="font-semibold text-accent underline underline-offset-2 hover:text-accent-hi">full FAQ</a>.
+      </p>
+
+      <dl data-accordion class="mt-12 grid grid-cols-1 gap-x-16 border-t border-line lg:grid-cols-2">
+        <div data-acc-item class="border-b border-line">
+          <dt data-acc-head class="h-section text-base">What does the <span class="cur" data-eur="50">€50</span> cover?</dt>
+          <dd data-acc-body class="max-w-prose pb-6 text-[0.9375rem] leading-relaxed text-ink-mid">The custom website itself, built with the sections you select from the 34 — that is the base website price, paid one time. Choosing more of them does not increase it.</dd>
+        </div>
+        <div data-acc-item class="border-b border-line">
+          <dt data-acc-head class="h-section text-base">What is the difference between the three?</dt>
+          <dd data-acc-body class="max-w-prose pb-6 text-[0.9375rem] leading-relaxed text-ink-mid">The <span class="cur" data-eur="50">€50</span> Custom Website builds any twenty of the 34, your choice, with three as the minimum. The <span class="cur" data-eur="200">€200</span> Full Website builds all thirty-four with no cap, and does the setup work every site needs anyway — search indexing, analytics, the cookie banner and legal pages, spam protection. The <span class="cur" data-eur="500">€500</span> Complete Package is the Full Website plus the work around it: maintenance, Local SEO, a logo and menu design, WhatsApp Business and business email, and three years of hosting instead of one. All three are paid one time.</dd>
+        </div>
+        <div data-acc-item class="border-b border-line">
+          <dt data-acc-head class="h-section text-base">What happens to my domain and hosting?</dt>
+          <dd data-acc-body class="max-w-prose pb-6 text-[0.9375rem] leading-relaxed text-ink-mid">Your domain, the hosting and the security padlock are included — the first year with Custom and Professional, the first three years with Complete. After that it is <span class="cur" data-eur="10">€10</span> a month, and that is the only thing that changes. You pick the domain name yourself: type the one you want before you order and we register it in your name.</dd>
+        </div>
+        <div data-acc-item class="border-b border-line">
+          <dt data-acc-head class="h-section text-base">Which services repeat every month?</dt>
+          <dd data-acc-body class="max-w-prose pb-6 text-[0.9375rem] leading-relaxed text-ink-mid">The ten monthly services — maintenance, content updates, image and text changes, SEO upkeep and reporting, Google Business Profile upkeep, performance monitoring, security and backup monitoring, priority support — from <span class="cur" data-eur="10">€10</span> to <span class="cur" data-eur="40">€40</span> a month each. Plus the <span class="cur" data-eur="10">€10</span> a month for domain and hosting once your included years run out. Everything else on this page is paid once.</dd>
+        </div>
+        <div data-acc-item class="border-b border-line">
+          <dt data-acc-head class="h-section text-base">Are Business Extras required?</dt>
+          <dd data-acc-body class="max-w-prose pb-6 text-[0.9375rem] leading-relaxed text-ink-mid">No. All 34 sections and features come with every website. The add-ons are extra work on top, and buying none of them is a perfectly normal order.</dd>
+        </div>
+        <div data-acc-item class="border-b border-line">
+          <dt data-acc-head class="h-section text-base">Are Business Extras monthly payments?</dt>
+          <dd data-acc-body class="max-w-prose pb-6 text-[0.9375rem] leading-relaxed text-ink-mid">No — they are one-time, every one of them. Nothing there quietly becomes a monthly bill.</dd>
+        </div>
+        <div data-acc-item class="border-b border-line">
+          <dt data-acc-head class="h-section text-base">How much do I actually pay today?</dt>
+          <dd data-acc-body class="max-w-prose pb-6 text-[0.9375rem] leading-relaxed text-ink-mid">A quarter of the one-time total. That is it for now. The rest is due once the site is built and you have said you are happy with it, and nothing monthly gets charged until you are actually live. The order summary spells out all three numbers before you pay anything.</dd>
+        </div>
+        <div data-acc-item class="border-b border-line">
+          <dt data-acc-head class="h-section text-base">How long does it take?</dt>
+          <dd data-acc-body class="max-w-prose pb-6 text-[0.9375rem] leading-relaxed text-ink-mid">About a week from the day we have everything — logo, photos, your services and prices, opening hours, how people reach you. It is a target, not a promise carved in stone: if the photos land three weeks later, so does the website.</dd>
+        </div>
+        <div data-acc-item class="border-b border-line">
+          <dt data-acc-head class="h-section text-base">Can I add or stop a monthly service later?</dt>
+          <dd data-acc-body class="max-w-prose pb-6 text-[0.9375rem] leading-relaxed text-ink-mid">Yes. Monthly services are separate from the website. You can start with none of them, add one when you need it, and stop it without affecting the website you already paid for.</dd>
+        </div>
+      </dl>
+    </div>
+  </section>
+
+  <!-- 9b — WHY A QUARTER (after the questions, where it answers the last one) -->
+  <section class="border-b border-line bg-accent-tint">
+    <div class="mx-auto max-w-shell px-6 py-16 md:px-10 md:py-24">
+
+      <!-- A line that draws itself across the section, over and over. The
+           quarter mark is where the dot pauses — the whole argument below
+           in one gesture. -->
+      <div class="drawline" aria-hidden="true">
+        <span class="drawline-track"></span>
+        <span class="drawline-fill"></span>
+        <span class="drawline-tick" style="left:25%"></span>
+        <span class="drawline-tick" style="left:50%"></span>
+        <span class="drawline-tick" style="left:75%"></span>
+        <span class="drawline-orb">
+          <svg viewBox="0 0 34 34"><circle cx="17" cy="17" r="14"></circle></svg>
+          <i></i>
+        </span>
+      </div>
+
+      <div class="grid grid-cols-1 gap-10 lg:grid-cols-12 lg:gap-14">
+        <div class="lg:col-span-7">
+          <h2 class="h-section sec-title max-w-xl" data-rise>Why a quarter, and not the whole thing?</h2>
+          <p class="mt-6 max-w-prose text-[1.0625rem] leading-relaxed text-ink-mid">
+            Because you have never met us. Handing a stranger hundreds of euro for a website that does
+            not exist yet is a bad deal, and we would rather not ask for it.
+          </p>
+          <p class="mt-4 max-w-prose text-[1.0625rem] leading-relaxed text-ink-mid">
+            So you pay a quarter, we build the thing, and you look at it on your own phone before the
+            rest is due. If it is wrong, we fix it. If you walk away, you have spent a quarter, not the lot.
+          </p>
+        </div>
+        <aside class="lg:col-span-4 lg:col-start-9 lg:pt-16">
+          <p class="border-l-2 border-accent pl-5 text-[0.9375rem] leading-relaxed text-ink-mid">
+            The other half of it: we get paid for finishing, not for starting. That tends to focus the mind.
+          </p>
+          <p class="mt-6 pl-5 text-[0.9375rem] leading-relaxed text-ink-soft">
+            No discovery call, no strategy workshop, no onboarding sequence. You send us your opening
+            hours and some photos. We send you back a website.
+          </p>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <!-- 9b2 — WHAT PEOPLE SAY -->
+  <section class="border-b border-line bg-surface" data-ratings hidden>
+    <div class="mx-auto max-w-shell px-6 py-16 md:px-10 md:py-20">
+      <div class="flex flex-wrap items-baseline gap-x-4 gap-y-2">
+        <p class="eyebrow text-ink-soft" data-rise>What people say</p>
+        <div class="ml-auto flex items-baseline gap-2" data-rate-head></div>
+      </div>
+      <h2 class="h-section sec-title mt-4 max-w-xl" data-rise data-rise-delay="1">
+        From the businesses, not from us.
+      </h2>
+      <div class="pub-rates mt-10" data-rate-list></div>
+      <p class="mt-8 text-[0.8125rem] leading-relaxed text-ink-soft">
+        Left by customers inside their own dashboard after we finished the work. Nothing is filtered.
+      </p>
+    </div>
+  </section>
+
+  <!-- 9c — KEY FIGURES -->
+  <section class="border-b border-line">
+    <div class="mx-auto max-w-shell px-6 py-16 md:px-10 md:py-20">
+      <p class="eyebrow text-ink-soft" data-rise>Key figures</p>
+      <h2 class="h-section sec-title mt-4 max-w-xl" data-rise data-rise-delay="1">The numbers, before the sales pitch.</h2>
+
+      <div class="figures mt-12" data-rise data-rise-delay="2">
+        <div class="figure">
+          <p class="figure-n">01</p>
+          <span class="figure-v" data-count>34</span>
+          <p class="figure-l">Sections and features in every website, whichever one you buy.</p>
+        </div>
+        <div class="figure">
+          <p class="figure-n">02</p>
+          <span class="figure-v" data-count>66</span>
+          <p class="figure-l">One-off jobs you can add, from €5. None of them compulsory.</p>
+        </div>
+        <div class="figure">
+          <p class="figure-n">03</p>
+          <span class="figure-v" data-count>7</span>
+          <p class="figure-l">Days to build, counted from the last photo you send us.</p>
+        </div>
+        <div class="figure">
+          <p class="figure-n">04</p>
+          <span class="figure-v" data-count>25%</span>
+          <p class="figure-l">Paid today. The rest once you have seen it on your own phone.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="m-slot" data-slot="before-closer">
+    <div class="m-band m-band--quiet" data-reveal>
+      <p class="m-band-k">Paying</p>
+      <p class="m-band-h">You pay a quarter to start. Nothing else until you have seen it.</p>
+      <dl class="m-split">
+        <div><dt>Today</dt><dd><span class="cur" data-eur="50">&euro;50</span></dd></div>
+        <div><dt>On approval</dt><dd><span class="cur" data-eur="150">&euro;150</span></dd></div>
+      </dl>
+      <p class="m-band-s">Example: the &euro;200 Full Website. We agree the price with you first &mdash; nothing is charged on this site.</p>
+    </div>
+  </div>
+
+  </div><!-- /rails region -->
+
+  <!-- 10 — CLOSING -->
+  <section class="closer grain" data-backdrop>
+    <div class="closer-media">
+      <video muted loop playsinline preload="none"
+             data-poster="assets/media/rose-poster.jpg?v=3"
+             data-poster-tall="assets/media/rose-poster-tall.jpg?v=3"
+             data-src="assets/media/rose.mp4?v=3"
+             data-src-tall="assets/media/rose-tall.mp4?v=3"
+             aria-hidden="true"></video>
+    </div>
+    <div class="closer-wash" aria-hidden="true"></div>
+    <div class="closer-body mx-auto max-w-shell px-6 md:px-10">
+      <div class="grid grid-cols-1 gap-10 lg:grid-cols-12 lg:items-end lg:gap-14">
+        <div class="lg:col-span-7">
+          <p class="closer-eyebrow">Get started</p>
+          <h2 class="closer-h">Ready when you are.</h2>
+          <p data-mobile-cta class="closer-price sm:hidden">
+            From <strong><span class="cur" data-eur="50">€50</span></strong>. Pay 25% to start.
+          </p>
+          <p class="closer-p">
+            Pick your features, see your total, know exactly what you pay today.
+          </p>
+        </div>
+        <div class="lg:col-span-4 lg:col-start-9">
+          <a href="start.html" class="closer-cta">Get your website for <span class="cur" data-eur="50">€50</span></a>
+          <p class="closer-note">
+            Or <a href="faq.html">read the FAQ first</a>. Every question we get asked, answered.
+          </p>
+        </div>
+      </div>
+
+      <!-- The three things people actually ask before they click. They sit
+           under the button because that is where the hesitation is, and
+           they give the panel something to hold besides one heading. -->
+      <dl class="closer-facts">
+        <div class="closer-fact">
+          <dt>Live in</dt>
+          <dd>About a week<span>From the day your content arrives.</span></dd>
+        </div>
+        <div class="closer-fact">
+          <dt>Included</dt>
+          <dd>Domain, hosting &amp; SSL<span>With every package, nothing extra.</span></dd>
+        </div>
+        <div class="closer-fact">
+          <dt>To start</dt>
+          <dd>25% today<span>The rest once you approve the site.</span></dd>
+        </div>
+      </dl>
+    </div>
+  </section>
+
+</main>
+
+<div data-site-footer>
+  <!-- Replaced by footer.js. Present in the served HTML so the legal
+       links survive without JavaScript, for crawlers and for payment
+       provider domain review. -->
+  <nav class="mx-auto flex max-w-shell flex-wrap items-center gap-x-5 gap-y-2 px-6 py-8 text-[0.8125rem] text-ink-soft md:px-10" aria-label="Legal">
+    <a class="hover:text-ink" href="terms.html">Terms of Service</a>
+    <a class="hover:text-ink" href="privacy.html">Privacy Policy</a>
+    <a class="hover:text-ink" href="refunds.html">Cancellation &amp; Refund Policy</a>
+    <a class="hover:text-ink" href="cookies.html">Cookie Policy</a>
+    <a class="hover:text-ink" href="contact.html">Contact</a>
+  </nav>
 </div>
 
-<script>
-(function(){
-'use strict';
-
-/* ██████████████████████████████████████████████████████████████████████████
-   ██                                                                      ██
-   ██   P O R T F O L I O   D A T A                                        ██
-   ██   THE ONLY BLOCK YOU EDIT TO CHANGE WHAT THE CAROUSEL SHOWS          ██
-   ██                                                                      ██
-   ██████████████████████████████████████████████████████████████████████████
-
-   HOW TO ADD A NEW PROJECT
-   ------------------------
-   Replace ONE slot object below. Nothing else changes - the carousel geometry,
-   animation, sizing, depth and transitions all read from this array, so a new
-   entry appears in the ring automatically.
-
-       { slot:'PORTFOLIO_SLOT_06',
-         name:     'PROJECT_NAME',            // required
-         category: 'Category',                // required
-         image:    'https://.../shot.png',    // required - URL or local path
-         url:      'https://project.com',     // optional
-         description: 'One line about it' }   // optional
-
-   Every presentation field (focus / zoom / width / height / tilt / depth) is
-   OPTIONAL and falls back to SLOT_DEFAULTS, so the minimal object above is
-   enough for a new project to drop straight in and look right.
-
-   IMAGES
-   ------
-   Three live captures of shkurtanails.salon are defined below, at desktop /
-   tablet / phone viewport widths. The six slots currently all use the PHONE
-   capture and each frames a different region of it through `focus` (an
-   object-position) plus `zoom`. That is deliberate on two counts:
-     - six views of the SAME site, not six fake projects;
-     - the panels are narrow portrait (130 x 300 design px), so a landscape
-       desktop capture crops to a thin vertical slice that reads as a photo
-       rather than as a website. The phone capture fills the panel shape and
-       stays legible.
-   All six therefore share ONE cached HTTP request. The desktop and tablet
-   constants are kept ready for wider panels or a future project.
-
-   Do NOT use thum.io /fullpage/ here - this site's hero is 100vh, so a
-   full-page capture stretches that one hero across the entire document height
-   and every panel below the fold comes back as empty haze.
-
-   To pin a slot to a static file instead, just swap its `image` for a path,
-   e.g. image:'assets/portfolio/shkurtanails-01.png'.
-   ────────────────────────────────────────────────────────────────────────── */
-
-var SHKURTANAILS_DESKTOP =
-  'https://image.thum.io/get/width/1100/viewportWidth/1440/noanimate/https://shkurtanails.salon';
-var SHKURTANAILS_TABLET  =
-  'https://image.thum.io/get/width/900/viewportWidth/834/noanimate/https://shkurtanails.salon';
-var SHKURTANAILS_MOBILE  =
-  'https://image.thum.io/get/width/700/viewportWidth/430/noanimate/https://shkurtanails.salon';
-
-/* Applied to any field a slot leaves out. */
-var SLOT_DEFAULTS = {
-  url:'', description:'',
-  focus:'50% 0%', zoom:1, width:130, height:300, tilt:0, depth:0
-};
-
-var SN = {                       /* shared by every ShkurtaNails slot for now */
-  name:'ShkurtaNails',
-  category:'Beauty / Salon',
-  url:'https://shkurtanails.salon',
-  description:'Nail salon in Podujeve, Kosove - Instagram-led booking, work gallery and team pages.'
-};
-
-var PORTFOLIO = [
-  /* full phone view - masthead, nav and the top of the hero */
-  { slot:'PORTFOLIO_SLOT_01',
-    name:SN.name, category:SN.category, url:SN.url, description:SN.description,
-    image:SHKURTANAILS_MOBILE,
-    focus:'50% 2%',   zoom:1.00, width:130, height:300, tilt:0,    depth:0 },
-
-  /* tight on the headline */
-  { slot:'PORTFOLIO_SLOT_02',
-    name:SN.name, category:SN.category, url:SN.url, description:SN.description,
-    image:SHKURTANAILS_MOBILE,
-    focus:'50% 48%',  zoom:1.26, width:124, height:286, tilt:-1.1, depth:14 },
-
-  /* the two calls to action */
-  { slot:'PORTFOLIO_SLOT_03',
-    name:SN.name, category:SN.category, url:SN.url, description:SN.description,
-    image:SHKURTANAILS_MOBILE,
-    focus:'50% 80%',  zoom:1.14, width:134, height:308, tilt:0.9,  depth:-10 },
-
-  /* left edge, in close on the logo lockup */
-  { slot:'PORTFOLIO_SLOT_04',
-    name:SN.name, category:SN.category, url:SN.url, description:SN.description,
-    image:SHKURTANAILS_MOBILE,
-    focus:'8% 26%',   zoom:1.30, width:128, height:294, tilt:-0.7, depth:18 },
-
-  /* the foot of the hero and the scroll cue */
-  { slot:'PORTFOLIO_SLOT_05',
-    name:SN.name, category:SN.category, url:SN.url, description:SN.description,
-    image:SHKURTANAILS_MOBILE,
-    focus:'50% 100%', zoom:1.02, width:136, height:312, tilt:1.3,  depth:-14 },
-
-  /* right edge, mid-hero */
-  { slot:'PORTFOLIO_SLOT_06',
-    name:SN.name, category:SN.category, url:SN.url, description:SN.description,
-    image:SHKURTANAILS_MOBILE,
-    focus:'92% 58%',  zoom:1.20, width:126, height:290, tilt:-0.5, depth:8 }
-];
-
-/* ══════════════ end of portfolio data - nothing below needs editing ═══════ */
-
-
-/* ---------------------------- ring geometry ------------------------------
-   The panels sit on a cylinder of radius R with the camera at its centre.
-   `period` is the arc one full pass of the portfolio occupies; spacing is
-   derived from the slot count, so adding or removing a project re-spaces the
-   ring automatically instead of leaving a hole. period === 2 * cull means the
-   band always fills the visible arc and a panel leaving one edge is the same
-   panel arriving at the other, which is what makes the loop seamless.        */
-var RING = {
-  radius: 891,
-  period: 84,     /* degrees per full pass of the portfolio                  */
-  cull:   42,     /* hide anything beyond +/- this angle                     */
-  fade:   9,      /* degrees of opacity ramp at each edge, hides the wrap    */
-  speed:  1.9     /* degrees per second                                      */
-};
-
-var CW = 1172, TAB_MAX = 1080, TAB_MIN = 701, DW_MIN = 920;
-
-var canvas  = document.getElementById('canvas'),
-    ringEl  = document.getElementById('ring'),
-    nav     = document.getElementById('nav'),
-    burger  = document.getElementById('burger'),
-    links   = document.getElementById('links'),
-    h1a     = document.getElementById('h1a'),
-    h1b     = document.getElementById('h1b'),
-    sub1    = document.getElementById('sub1'),
-    sub2    = document.getElementById('sub2'),
-    badgeTxt= document.getElementById('badgeTxt'),
-    wmName  = document.getElementById('wmName'),
-    ctaLabel= document.getElementById('ctaLabel'),
-    vpLabel = document.getElementById('vpLabel');
-
-var k = 1, mobile = false, tablet = false, tboost = 1;
-var reduce = matchMedia('(prefers-reduced-motion: reduce)');
-
-/* ------------------------------ starfield -------------------------------- */
-function starfield(el, n, blur, lo, hi){
-  var out = [], i;
-  for (i = 0; i < n; i++){
-    out.push((Math.random()*100).toFixed(2) + 'vw ' +
-             (Math.random()*100).toFixed(2) + 'vh ' + blur + 'px 0 rgba(255,255,255,' +
-             (lo + Math.random()*(hi-lo)).toFixed(3) + ')');
-  }
-  el.style.boxShadow = out.join(',');
-}
-starfield(document.getElementById('stA'), 150, 0,   0.05, 0.30);
-starfield(document.getElementById('stB'),  18, 1.2, 0.35, 0.70);
-
-/* ------------------- build the ring from PORTFOLIO ----------------------
-   ONE component, rendered once per slot. No per-card animation code.        */
-var cards = [];
-function buildRing(){
-  ringEl.innerHTML = '';
-  cards = [];
-  PORTFOLIO.forEach(function(raw, i){
-    var d = {}, key;
-    for (key in SLOT_DEFAULTS) d[key] = SLOT_DEFAULTS[key];
-    for (key in raw) if (raw[key] !== undefined && raw[key] !== null) d[key] = raw[key];
-
-    var el = document.createElement('article');
-    el.className = 'card';
-    el.setAttribute('data-slot', d.slot || ('PORTFOLIO_SLOT_' + (i+1)));
-    el.style.setProperty('--w', d.width + 'px');
-    el.style.setProperty('--h', d.height + 'px');
-    el.style.setProperty('--focus', d.focus);
-    el.style.setProperty('--zoom', d.zoom);
-    if (d.description) el.title = d.name + ' - ' + d.description;
-
-    var img = document.createElement('img');
-    img.alt = '';                       /* decorative: the ring is aria-hidden */
-    img.loading = 'eager';
-    img.decoding = 'async';
-    img.addEventListener('error', function(){ el.classList.add('broken'); });
-    img.src = d.image;
-
-    var shot = document.createElement('div');
-    shot.className = 'shot';
-    shot.appendChild(img);
-
-    var meta = document.createElement('div');
-    meta.className = 'meta';
-    var ct = document.createElement('i'); ct.textContent = d.category;
-    var nm = document.createElement('b'); nm.textContent = d.name;
-    meta.appendChild(ct); meta.appendChild(nm);
-
-    var scrim = document.createElement('div'); scrim.className = 'scrim';
-    var edge  = document.createElement('div'); edge.className  = 'edge';
-
-    el.appendChild(shot); el.appendChild(scrim); el.appendChild(meta); el.appendChild(edge);
-    ringEl.appendChild(el);
-    cards.push({ el:el, tilt:d.tilt, depth:d.depth });
-  });
-}
-buildRing();
-
-/* ------------------------------ placement -------------------------------- */
-var phase = -2;
-var step  = RING.period / Math.max(cards.length, 1);
-
-function placeCards(){
-  var R = RING.radius, P = RING.period, i, c, a, ad, r, cs, o;
-  for (i = 0; i < cards.length; i++){
-    c = cards[i];
-    /* signed angle wrapped into -P/2 .. +P/2 */
-    a = ((i*step + phase) % P + P*1.5) % P - P/2;
-    ad = Math.abs(a);
-    if (ad > RING.cull){ c.el.style.visibility = 'hidden'; continue; }
-    c.el.style.visibility = 'visible';
-
-    r  = a * Math.PI / 180;
-    cs = Math.cos(r);
-    /* tangent to the cylinder: push out along the arc, back by the sagitta,
-       then yaw back so the panel faces the camera exactly */
-    c.el.style.transform =
-      'translate3d(' + (R*Math.sin(r)).toFixed(2) + 'px,0,' +
-      (R*(1-cs) + c.depth).toFixed(2) + 'px) rotateY(' + (-a).toFixed(3) + 'deg)' +
-      (c.tilt ? ' rotateZ(' + c.tilt + 'deg)' : '');
-    /* near-flat grade so the real screenshots stay legible; depth is carried by
-       perspective scale, shadow and the edge fade rather than by dimming */
-    c.el.style.filter = 'brightness(' + (0.94 + 0.09*cs).toFixed(4) + ') contrast(1.05) saturate(1.04)';
-    /* smoothstep opacity ramp at both edges - this is what hides the wrap */
-    o = Math.min(1, (RING.cull - ad) / RING.fade);
-    c.el.style.opacity = (o*o*(3 - 2*o)).toFixed(4);
-  }
-}
-
-var last = 0;
-function tick(t){
-  if (!last) last = t;
-  var dt = Math.min((t - last)/1000, 0.1);
-  last = t;
-  if (!reduce.matches) phase -= RING.speed * dt;   /* continuous, never resets */
-  placeCards();
-  requestAnimationFrame(tick);
-}
-/* a backgrounded tab must not jump when it comes back */
-document.addEventListener('visibilitychange', function(){ last = 0; });
-
-/* =========================== 11. THE TYPE FITTER =========================
-   Every text run is scaled so its INK WIDTH and CAP HEIGHT hit the authored
-   targets and its BASELINE lands on the authored y. Metrics are read from a
-   detached 2D context so the result is exact whatever face actually loads.   */
-var mc = document.createElement('canvas').getContext('2d');
-
-function fontOf(el){
-  var cs = getComputedStyle(el);
-  return { css: cs.fontWeight + ' ' + cs.fontSize + ' ' + cs.fontFamily,
-           size: parseFloat(cs.fontSize) };
-}
-function inkWidth(el){
-  return el.getBoundingClientRect().width / (mobile ? 1 : k);
-}
-function capRatio(el){                       /* cap height per 1px of font-size */
-  var f = fontOf(el);
-  mc.font = f.css.replace(/[\d.]+px/, '100px');
-  var m = mc.measureText('H');
-  return (m.actualBoundingBoxAscent || 70) / 100;
-}
-function fitW(el, target){
-  el.style.fontSize = '';
-  var f = fontOf(el), w = inkWidth(el);
-  if (w > 0) el.style.fontSize = (f.size * target / w) + 'px';
-}
-function fitBox(el, tw, tc, pre){            /* exact cap height AND ink width */
-  el.style.transform = pre || '';
-  el.style.fontSize = (tc / capRatio(el)) + 'px';
-  var w = inkWidth(el);
-  if (w > 0) el.style.transform = (pre ? pre + ' ' : '') + 'scaleX(' + (tw / w) + ')';
-}
-function baseline(el, y){
-  var f = fontOf(el);
-  mc.font = f.css;
-  var m = mc.measureText('H'),
-      A = m.fontBoundingBoxAscent  || f.size * 0.8,
-      D = m.fontBoundingBoxDescent || f.size * 0.2;
-  /* line-height is 1, so the half-leading is (fontSize - (A+D)) / 2 */
-  el.style.top = (y - ((f.size - (A + D)) / 2 + A)) + 'px';
-}
-function centreLabel(btn, el, capPx){
-  var BIAS = 1.1;              /* the reference sits labels ~0.6px below centre */
-  el.style.top = '0px';
-  var probe = document.createElement('i');
-  probe.style.cssText = 'display:inline-block;width:0;height:0;overflow:hidden';
-  el.appendChild(probe);
-  var s = mobile ? 1 : k,
-      base = (probe.getBoundingClientRect().top - btn.getBoundingClientRect().top) / s,
-      bh   = btn.getBoundingClientRect().height / s;
-  probe.parentNode.removeChild(probe);
-  el.style.top = (bh/2 - (base - capPx/2) + BIAS) + 'px';
-}
-
-function clearFit(el){
-  el.style.fontSize = '';
-  el.style.top = '';
-  el.style.transform = '';     /* leaving this behind shifts the headline off-screen */
-}
-
-function layout(){
-  var kids = Array.prototype.slice.call(links.children), i;
-
-  if (mobile){
-    /* hand every inline style the fitter wrote back to CSS */
-    [h1a, h1b, sub1, sub2, badgeTxt, wmName, ctaLabel, vpLabel].forEach(clearFit);
-    links.style.fontSize = '';
-    links.style.transform = '';
-    for (i = 0; i < kids.length; i++) kids[i].style.fontSize = '';
-    placeCards();
-    return;
-  }
-
-  var T = tablet ? tboost : 1;
-
-  fitBox(h1a, 563.5*T, 37.2*T, 'translateX(-50%)');  baseline(h1a, 204.5);
-  fitBox(h1b, 197.5*T, 37.2*T, 'translateX(-50%)');  baseline(h1b, 258.5);
-  fitBox(sub1, 389*T,   8.4*T, 'translateX(-50%)');  baseline(sub1, 300.5);
-  fitBox(sub2, 311*T,   8.4*T, 'translateX(-50%)');  baseline(sub2, 316.5);
-
-  fitBox(badgeTxt, 184*T, 9.4*T, 'translate(2px,-1px)');
-  fitBox(wmName, 51*T, 11.4*T);  baseline(wmName, 38.5);
-
-  fitBox(ctaLabel, 87*T, 8.9*T); centreLabel(ctaLabel.parentNode, ctaLabel, 8.9*T);
-  fitBox(vpLabel,  76*T, 9.5*T); centreLabel(vpLabel.parentNode,  vpLabel,  9.5*T);
-
-  links.style.transform = '';
-  if (tablet){
-    for (i = 0; i < kids.length; i++) kids[i].style.fontSize = '';
-  } else if (kids.length){
-    var fs = 7.9 / capRatio(kids[0]);
-    for (i = 0; i < kids.length; i++) kids[i].style.fontSize = fs + 'px';
-    var rw = links.getBoundingClientRect().width / k;
-    if (rw > 0) links.style.transform = 'scaleX(' + (317 / rw) + ')';
-  }
-
-  placeCards();
-}
-
-/* ============================ 10. SCALE LAW ============================== */
-function resize(){
-  var vw = innerWidth, vh = innerHeight, cs = canvas.style;
-  mobile = vw <= 700;
-  tablet = !mobile && vw <= TAB_MAX;
-
-  if (vw > TAB_MAX) closeMenu();     /* force-close when leaving the nav band */
-
-  if (mobile){
-    k = 1;
-    cs.removeProperty('--k');    cs.removeProperty('--fill');
-    cs.removeProperty('--stshift'); cs.removeProperty('--sshift');
-    cs.removeProperty('--rs');
-    layout();
-    return;
-  }
-
-  var W = CW;
-  if (tablet){
-    /* the design WINDOW narrows across the tablet band so type stops shrinking
-       with the viewport, and k stays CONTINUOUS at 1080 (no jump) */
-    W = DW_MIN + (vw - TAB_MIN) * (CW - DW_MIN) / (TAB_MAX - TAB_MIN);
-    if (vh > vw*1.15) W = Math.min(W, 900);   /* portrait tablet: read larger */
-  }
-
-  /* k = min(vw/W, vh/560). 560 rather than 657 is deliberate: it fills the
-     width and lets the browser mock bleed off the bottom rather than letterbox */
-  k = Math.min(vw / W, vh / 560);
-  cs.setProperty('--k', k);
-
-  var fill = Math.max(0, vh/k - 657), ss = 0, rs = 1, st = 0, ramp;
-
-  if (tablet){
-    ramp   = Math.min(1, (TAB_MAX - vw)/120);   /* ease the change in over 120px */
-    tboost = 1 + 0.14*ramp;
-    if (fill > 0){
-      /* share surplus height three ways: ring travel, ring scale, hero drop */
-      ss = Math.min(fill*0.55, 420) * ramp;         /* wheel + mock toward foot */
-      rs = 1 + Math.min(fill/1100, 0.75) * ramp;    /* wheel grows = closer camera */
-      var slack = 219.5 - 125*rs + ss;
-      st = Math.max(0, slack/2 - 28) * ramp;        /* hero sits optically centred */
-      fill -= ss;                                   /* mock keeps what is left */
-    }
-  } else {
-    tboost = 1;
-  }
-
-  cs.setProperty('--fill',    fill + 'px');
-  cs.setProperty('--sshift',  ss + 'px');
-  cs.setProperty('--stshift', st + 'px');
-  cs.setProperty('--rs',      rs);
-
-  layout();
-}
-
-/* ============================== NAV MENU ================================= */
-function openMenu(){
-  nav.classList.add('open');
-  burger.setAttribute('aria-expanded', 'true');
-}
-function closeMenu(){
-  if (!nav.classList.contains('open')) return;
-  nav.classList.remove('open');
-  burger.setAttribute('aria-expanded', 'false');
-}
-burger.addEventListener('click', function(e){
-  e.stopPropagation();
-  if (nav.classList.contains('open')) closeMenu(); else openMenu();
-});
-document.addEventListener('click', function(e){
-  if (nav.classList.contains('open') && !nav.contains(e.target)) closeMenu();
-});
-document.addEventListener('keydown', function(e){
-  if (e.key === 'Escape' && nav.classList.contains('open')){
-    closeMenu();
-    burger.focus();
-  }
-});
-links.addEventListener('click', function(e){
-  if (e.target.closest('a')) closeMenu();
-});
-
-/* ============================== WIRING =================================== */
-addEventListener('resize', resize);
-if (window.visualViewport) visualViewport.addEventListener('resize', resize);
-resize();
-if (document.fonts && document.fonts.ready) document.fonts.ready.then(layout);
-setTimeout(layout, 400);
-setTimeout(layout, 1400);
-requestAnimationFrame(tick);
-
-/* ==================== 12. MASTER ENTRANCE TIMELINE ======================= */
-(function(){
-  var root = document.documentElement;
-
-  function settle(){
-    if (document.getAnimations){
-      document.getAnimations().forEach(function(a){
-        if (a.id && a.id.indexOf('intro:') === 0) a.cancel();
-      });
-    }
-    root.classList.remove('intro');
-  }
-
-  if (!root.classList.contains('intro') || reduce.matches || !Element.prototype.animate){
-    settle();
-    return;
-  }
-
-  var D    = innerWidth <= 700 ? 0.66 : 1,       /* phones travel shorter */
-      EXPO = 'cubic-bezier(.16,1,.3,1)',
-      SOFT = 'cubic-bezier(.22,.61,.36,1)',
-      n = 0, last = null, lastEnd = -1;
-
-  function Y(px){ return '0 ' + (px * D) + 'px'; }
-
-  function play(el, from, dur, delay, ease){
-    if (!el) return;
-    var to = { opacity: 1 };
-    if (from.translate) to.translate = '0 0';
-    if (from.scale)     to.scale = '1';
-    if (from.clipPath)  to.clipPath = 'inset(-30% 0 -30% 0)';
-    var a = el.animate([from, to],
-      { duration: dur, delay: delay, easing: ease, fill: 'both' });
-    a.id = 'intro:' + (n++);
-    if (delay + dur > lastEnd){ lastEnd = delay + dur; last = a; }
-  }
-
-  /* the frame settles */
-  play(nav,                         {opacity:0, translate:Y(-9)}, 620,  60, EXPO);
-  play(document.querySelector('.mark'), {opacity:0, translate:Y(6)}, 520, 150, SOFT);
-  play(document.querySelector('.wm'),   {opacity:0, translate:Y(6)}, 520, 185, SOFT);
-  Array.prototype.forEach.call(links.children, function(a, i){
-    play(a, {opacity:0, translate:Y(6)}, 460, 215 + i*45, SOFT);
-  });
-  play(burger,                          {opacity:0, translate:Y(6)}, 460, 300, SOFT);
-  play(nav.querySelector('.btn'),       {opacity:0, translate:Y(6)}, 500, 400, SOFT);
-
-  /* context, then the message */
-  play(document.querySelector('.badge'), {opacity:0, translate:Y(11), scale:'.985'}, 560, 270, EXPO);
-  /* the headline WIPES UP out of its own baseline, it does not simply fade */
-  play(h1a, {opacity:0, translate:Y(15), clipPath:'inset(100% 0 -30% 0)'}, 900, 380, EXPO);
-  play(h1b, {opacity:0, translate:Y(15), clipPath:'inset(100% 0 -30% 0)'}, 900, 470, EXPO);
-  play(sub1, {opacity:0, translate:Y(10)}, 620, 690, EXPO);
-  play(sub2, {opacity:0, translate:Y(10)}, 620, 745, EXPO);
-  play(document.querySelector('.cta2'), {opacity:0, translate:Y(13), scale:'.985'}, 620, 830, EXPO);
-
-  /* the payoff: the portfolio ring rises into depth, and the mock lands in
-     FRONT of it last, reinforcing the real z-order */
-  play(ringEl,                            {opacity:0, translate:Y(18), scale:'.99'}, 950,  700, EXPO);
-  play(document.getElementById('browser'), {opacity:0, translate:Y(26)},             900,  900, EXPO);
-  play(document.querySelector('.wa'),      {opacity:0, scale:'.88'},                 500, 1260, EXPO);
-
-  if (last) last.finished.then(settle).catch(settle);
-  else settle();
-})();
-
-})();
-</script>
+<script src="assets/vendor/gsap.min.js?v=2" defer></script>
+<script src="assets/vendor/ScrollTrigger.min.js?v=2" defer></script>
+<script src="assets/backdrop.js?v=2" defer></script>
+<script src="assets/rails.js?v=2" defer></script>
+<script src="assets/hero.js?v=2" defer></script>
+<script src="assets/demo.js?v=2"></script>
+<script src="assets/ratings.js?v=2" defer></script>
+<script src="assets/cinema.js?v=2" defer></script>
+<script src="assets/picker.js?v=2" defer></script>
+<script src="assets/pricing.js?v=2" defer></script>
+<script src="assets/mobile.js?v=2"></script>
+<script src="assets/theme.js?v=2"></script>
+<script src="assets/footer.js?v=2"></script>
+<script src="assets/cookies.js?v=2"></script>
+<script src="assets/i18n.js?v=2"></script>
+<script src="assets/dock.js?v=2"></script>
+<script src="assets/support.js?v=2"></script>
+<script src="assets/trusted.js?v=2" defer></script>
 </body>
 </html>
