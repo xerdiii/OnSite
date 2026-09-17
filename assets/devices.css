@@ -1,0 +1,234 @@
+/* ───────────────────────────────────────────────────────────────
+   Xovah — device mockups in the home page extras section
+   An iPhone 17 Pro Max beside the text on a wide screen, a Mac under it
+   on a phone, both running the same "Fast Email Sender" app screen. All
+   of it is HTML and CSS: no images, sharp at any size.
+
+   The app screen sizes itself from the width of whichever screen it is
+   in (container query units), so one block of markup fills a narrow
+   phone and a wide monitor alike.
+
+   edge.css puts the site's small radius on every element with !important;
+   the rules below that need real device curves are scoped under #extras,
+   which outranks it.
+   ─────────────────────────────────────────────────────────────── */
+
+/* ── Layout: which device, and where the extra button goes ─────── */
+#extras .dv { position: relative; }
+#extras .dv-phone { display: none; }
+#extras .dv-mac { display: block; }
+.or-build--side { display: none; }
+.or-build--below { display: inline-flex; }
+
+@media (min-width: 1024px) {
+  #extras .dv { position: sticky; top: 6rem; }
+  #extras .dv-phone { display: block; }
+  #extras .dv-mac { display: none; }
+  .or-build--side { display: inline-flex; }
+  .or-build--below { display: none; }
+}
+
+/* ── "or build your package" ───────────────────────────────────── */
+.or-build {
+  align-items: center; justify-content: center; gap: 0.5rem;
+  min-height: 48px; margin-top: 1.75rem; padding: 0 1.35rem;
+  border: 1px solid rgb(var(--c-line-firm));
+  color: rgb(var(--c-ink)); font-size: 0.9375rem; font-weight: 600;
+  background: transparent;
+  transition: border-color 180ms ease, color 180ms ease, background-color 180ms ease;
+}
+.or-build:hover { border-color: rgb(var(--c-accent)); color: rgb(var(--c-accent-text)); }
+.or-build span { transition: transform 180ms ease; }
+.or-build:hover span { transform: translateX(3px); }
+.or-build--below { width: 100%; }
+
+/* ── iPhone 17 Pro Max ─────────────────────────────────────────── */
+#extras .dv-phone {
+  position: relative;
+  width: min(272px, 100%); aspect-ratio: 776 / 1634; margin: 0 auto;
+  padding: 9px;
+  border-radius: 46px !important;
+  background: linear-gradient(150deg, #43464c 0%, #1c1d20 34%, #2c2e33 62%, #121315 100%);
+  box-shadow:
+    inset 0 0 0 1px rgb(255 255 255 / 0.10),
+    0 0 0 1.5px #0a0a0b,
+    0 50px 90px -40px rgb(0 0 0 / 0.75),
+    0 0 90px -20px rgb(var(--c-accent) / 0.28);
+}
+#extras .dv-phone-glass {
+  height: 100%; padding: 3px; background: #000;
+  border-radius: 38px !important; overflow: hidden;
+}
+#extras .dv-phone-screen {
+  position: relative; height: 100%; overflow: hidden;
+  border-radius: 35px !important;
+  background: radial-gradient(120% 60% at 50% 0%, #1a1418 0%, #0d0f12 55%);
+  container-type: inline-size;
+  display: flex; flex-direction: column;
+}
+/* a faint reflection across the glass */
+#extras .dv-phone-screen::after {
+  content: ''; position: absolute; inset: 0; pointer-events: none;
+  background: linear-gradient(115deg, rgb(255 255 255 / 0.06) 0%, rgb(255 255 255 / 0) 38%);
+}
+#extras .dv-island {
+  position: absolute; left: 50%; top: 2.6%; transform: translateX(-50%);
+  width: 31%; height: 3.4%; background: #000;
+  border-radius: 999px !important;
+}
+#extras .dv-status {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 6.2cqw 8cqw 0; height: 15cqw; flex: none;
+  font: 600 4.6cqw/1 Inter, system-ui, sans-serif; color: #f4f5f7;
+}
+#extras .dv-status i { display: inline-flex; gap: 1.2cqw; align-items: center; }
+#extras .dv-status i b { display: block; width: 1.3cqw; background: #f4f5f7; border-radius: 0.4cqw !important; }
+#extras .dv-status i b:nth-child(1) { height: 1.8cqw; }
+#extras .dv-status i b:nth-child(2) { height: 2.6cqw; }
+#extras .dv-status i b:nth-child(3) { height: 3.4cqw; }
+#extras .dv-status i em {
+  display: block; width: 6.4cqw; height: 3.2cqw; margin-left: 1.2cqw;
+  border: 1px solid rgb(244 245 247 / 0.6); border-radius: 1cqw !important;
+  background: linear-gradient(90deg, #f4f5f7 70%, transparent 70%) content-box; padding: 0.5cqw;
+}
+/* side buttons: action + volume on the left, power and camera control on the right */
+#extras .dv-key {
+  position: absolute; width: 3px; background: linear-gradient(90deg, #2a2c30, #4a4d53);
+  border-radius: 2px !important;
+}
+#extras .dv-key--action { left: -3px; top: 18%; height: 5.5%; }
+#extras .dv-key--up     { left: -3px; top: 26%; height: 9%; }
+#extras .dv-key--down   { left: -3px; top: 37%; height: 9%; }
+#extras .dv-key--power  { right: -3px; top: 29%; height: 13%; }
+#extras .dv-key--cam    { right: -3px; top: 55%; height: 7%; }
+
+/* ── Mac (iMac-style display) ──────────────────────────────────── */
+#extras .dv-mac { width: 100%; max-width: 560px; margin: 0 auto; }
+#extras .dv-mac-display {
+  padding: 2.4% 2.4% 0;
+  border-radius: 14px 14px 0 0 !important;
+  background: linear-gradient(180deg, #e3e5e9, #cfd2d7);
+  box-shadow: 0 30px 70px -35px rgb(0 0 0 / 0.7), 0 0 80px -25px rgb(var(--c-accent) / 0.25);
+}
+#extras .dv-mac-screen {
+  aspect-ratio: 16 / 10; overflow: hidden;
+  border: 5px solid #0b0b0c; border-bottom: 0;
+  border-radius: 7px 7px 0 0 !important;
+  background: #0d0f12;
+  container-type: inline-size;
+  display: flex; flex-direction: column;
+}
+#extras .dv-mac-bar {
+  flex: none; display: flex; align-items: center; gap: 1cqw;
+  height: 5.4cqw; padding: 0 2cqw;
+  background: #15181d; border-bottom: 1px solid rgb(255 255 255 / 0.06);
+  font: 500 1.9cqw/1 Inter, system-ui, sans-serif; color: #8b93a1;
+}
+#extras .dv-mac-bar i { width: 1.5cqw; height: 1.5cqw; border-radius: 50% !important; }
+#extras .dv-mac-bar i:nth-child(1) { background: #ff5f57; }
+#extras .dv-mac-bar i:nth-child(2) { background: #febc2e; }
+#extras .dv-mac-bar i:nth-child(3) { background: #28c840; }
+#extras .dv-mac-bar span { margin: 0 auto; transform: translateX(-3cqw); }
+#extras .dv-mac-chin {
+  height: 34px;
+  border-radius: 0 0 14px 14px !important;
+  background: linear-gradient(180deg, #d4d6db, #bec1c7);
+}
+#extras .dv-mac-stand {
+  width: 24%; height: 54px; margin: 0 auto;
+  background: linear-gradient(90deg, #a2a6ac, #dcdfe3 50%, #a2a6ac);
+  clip-path: polygon(10% 0, 90% 0, 100% 100%, 0 100%);
+}
+#extras .dv-mac-foot {
+  width: 34%; height: 7px; margin: 0 auto;
+  border-radius: 0 0 8px 8px !important;
+  background: linear-gradient(180deg, #c8cbd0, #a9adb3);
+}
+
+/* ── Fast Email Sender, the app on both screens ────────────────── */
+#extras .fes {
+  flex: 1; min-height: 0; display: grid; grid-template-columns: 1fr;
+  font-family: Inter, system-ui, sans-serif; color: #f2f3f5;
+  font-size: 4cqw; line-height: 1.25;
+}
+#extras .dv-mac-screen .fes { grid-template-columns: 26% 1fr; font-size: 2cqw; }
+
+#extras .fes-side { display: none; }
+#extras .dv-mac-screen .fes-side {
+  display: block; padding: 2.4cqw 1.8cqw;
+  background: #11141a; border-right: 1px solid rgb(255 255 255 / 0.06);
+}
+#extras .fes-logo { display: flex; align-items: center; gap: 0.5em; font-weight: 700; letter-spacing: -0.01em; }
+#extras .fes-logo svg { width: 1.25em; height: 1.25em; flex: none; color: rgb(var(--c-accent)); }
+#extras .fes-nav { margin-top: 1.4em; display: grid; gap: 0.2em; }
+#extras .fes-nav span { padding: 0.55em 0.7em; color: #8b93a1; border-radius: 0.5em !important; }
+#extras .fes-nav span.is-on { color: #fff; background: rgb(var(--c-accent) / 0.16); }
+
+#extras .fes-main { min-width: 0; padding: 2em 1.4em 1.4em; display: flex; flex-direction: column; gap: 0.95em; overflow: hidden; }
+#extras .dv-mac-screen .fes-main { padding: 2cqw 2.6cqw; gap: 0.62em; }
+#extras .fes-top { display: flex; align-items: center; justify-content: space-between; }
+#extras .dv-mac-screen .fes-top .fes-logo { visibility: hidden; }
+#extras .fes-avatar {
+  display: grid; place-items: center; width: 2.2em; height: 2.2em; flex: none;
+  background: linear-gradient(135deg, rgb(var(--c-accent)), #7a1016); color: #fff;
+  font-size: 0.8em; font-weight: 700; border-radius: 50% !important;
+}
+#extras .fes-k { font-size: 0.75em; letter-spacing: 0.14em; text-transform: uppercase; color: #8b93a1; }
+#extras .fes-title { margin-top: -0.55em; font-size: 1.35em; font-weight: 700; letter-spacing: -0.02em; }
+
+#extras .fes-card {
+  background: #161a20; border: 1px solid rgb(255 255 255 / 0.07);
+  border-radius: 0.9em !important; padding: 0.85em 0.95em;
+}
+#extras .fes-field { display: flex; justify-content: space-between; gap: 0.8em; padding: 0.35em 0; }
+#extras .fes-field + .fes-field { border-top: 1px solid rgb(255 255 255 / 0.06); }
+#extras .fes-field span { color: #8b93a1; }
+#extras .fes-field b { font-weight: 600; text-align: right; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+
+#extras .fes-progress-top { display: flex; justify-content: space-between; align-items: baseline; }
+#extras .fes-progress-top span { color: #8b93a1; }
+#extras .fes-progress-top b { font-size: 1.2em; font-weight: 700; }
+#extras .fes-track {
+  position: relative; height: 0.55em; margin: 0.6em 0 0.5em; overflow: hidden;
+  background: rgb(255 255 255 / 0.08); border-radius: 999px !important;
+}
+#extras .fes-track i {
+  position: absolute; inset: 0 25% 0 0; overflow: hidden;
+  background: linear-gradient(90deg, #b3121c, rgb(var(--c-accent)) 60%, #ff5a61);
+  border-radius: 999px !important;
+}
+/* a light passes along the bar: the send is in progress */
+#extras .fes-track i::after {
+  content: ''; position: absolute; top: 0; bottom: 0; width: 40%;
+  background: linear-gradient(90deg, rgb(255 255 255 / 0), rgb(255 255 255 / 0.55), rgb(255 255 255 / 0));
+  animation: fes-run 2.2s ease-in-out infinite;
+}
+@keyframes fes-run { from { left: -40%; } to { left: 110%; } }
+#extras .fes-progress-s { font-size: 0.85em; color: #8b93a1; }
+
+#extras .fes-list { display: grid; gap: 0.1em; }
+#extras .fes-list li { display: flex; align-items: center; gap: 0.6em; padding: 0.45em 0; font-size: 0.92em; }
+#extras .fes-list li + li { border-top: 1px solid rgb(255 255 255 / 0.05); }
+#extras .fes-ok {
+  display: grid; place-items: center; width: 1.35em; height: 1.35em; flex: none;
+  background: rgb(62 207 142 / 0.15); color: #3ecf8e; border-radius: 50% !important;
+}
+#extras .fes-ok svg { width: 0.8em; height: 0.8em; }
+#extras .fes-list em { margin-left: auto; font-style: normal; color: #3ecf8e; font-size: 0.9em; }
+/* a monitor is wide but short: one delivered row is enough, or the send
+   button falls off the bottom of the screen on a narrow phone */
+#extras .dv-mac-screen .fes-list li:nth-child(n+2) { display: none; }
+
+#extras .fes-send {
+  margin-top: auto; display: flex; align-items: center; justify-content: center; gap: 0.5em;
+  padding: 0.9em; background: rgb(var(--c-accent)); color: #fff;
+  font-weight: 700; border-radius: 0.9em !important;
+  box-shadow: 0 0.6em 1.6em -0.6em rgb(var(--c-accent) / 0.8);
+}
+#extras .fes-send svg { width: 1.05em; height: 1.05em; }
+#extras .dv-mac-screen .fes-send { align-self: flex-start; padding: 0.7em 1.4em; margin-top: 0.2em; }
+
+@media (prefers-reduced-motion: reduce) {
+  #extras .fes-track i::after { animation: none; display: none; }
+  .or-build, .or-build span { transition: none; }
+}

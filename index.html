@@ -170,8 +170,6 @@
   /* Price rows — used for every extra */
   /* Business Extras — the list is one column on the left; the right is held
      empty on purpose, and still holds its space on a phone. */
-  .extras-slot { min-height:280px; }
-  @media (min-width:1024px){ .extras-slot { position:sticky; top:6rem; min-height:560px; } }
   .rate { display:flex; align-items:baseline; justify-content:space-between; gap:1.25rem; }
   .rate dt { font-weight:600; color:rgb(var(--c-ink)); font-size:0.9375rem; }
   .rate dd { font-size:0.9375rem; font-weight:600; white-space:nowrap; color:rgb(var(--c-ink)); }
@@ -234,6 +232,7 @@
 <link rel="stylesheet" href="assets/theme.css?v=2">
 <link rel="stylesheet" href="assets/hero.css?v=3">
 <link rel="stylesheet" href="assets/pricing.css?v=2">
+<link rel="stylesheet" href="assets/devices.css?v=2">
 <link rel="stylesheet" href="/assets/edge.css?v=3">
 <noscript><style>
   .closer-media {
@@ -689,11 +688,95 @@
             <div><dt class="text-[0.8125rem] text-ink-soft">Automation</dt><dd class="h-section mt-1 text-xl">10</dd></div>
             <div><dt class="text-[0.8125rem] text-ink-soft">Brand &amp; design</dt><dd class="h-section mt-1 text-xl">11</dd></div>
           </dl>
+
+          <a href="start.html" class="or-build or-build--side">or build your package <span aria-hidden="true">&rarr;</span></a>
         </div>
 
-        <!-- Held open on purpose. Nothing goes here yet. -->
-        <div class="lg:col-span-5 lg:col-start-8" aria-hidden="true">
-          <div class="extras-slot"></div>
+        <!-- The work, shown on a device: an iPhone 17 Pro Max beside the text on
+             a wide screen, a Mac under it on a phone, both running the same
+             Fast Email Sender screen. Pure HTML and CSS (assets/devices.css). -->
+        <div class="lg:col-span-5 lg:col-start-8">
+          <div class="dv" aria-hidden="true">
+
+            <div class="dv-phone">
+              <span class="dv-key dv-key--action"></span><span class="dv-key dv-key--up"></span><span class="dv-key dv-key--down"></span>
+              <span class="dv-key dv-key--power"></span><span class="dv-key dv-key--cam"></span>
+              <div class="dv-phone-glass">
+                <div class="dv-phone-screen">
+                  <span class="dv-island"></span>
+                  <div class="dv-status"><span>9:41</span><i><b></b><b></b><b></b><em></em></i></div>
+                  <div class="fes">
+                    <aside class="fes-side">
+                      <p class="fes-logo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 3L4 14h6l-1 7 9-11h-6l1-7z"/></svg>Fast Email Sender</p>
+                      <nav class="fes-nav"><span class="is-on">Campaigns</span><span>Contacts</span><span>Templates</span><span>Reports</span></nav>
+                    </aside>
+                    <div class="fes-main">
+                      <div class="fes-top"><p class="fes-logo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 3L4 14h6l-1 7 9-11h-6l1-7z"/></svg>Fast Email Sender</p><span class="fes-avatar">YB</span></div>
+                      <p class="fes-k">New campaign</p>
+                      <p class="fes-title">Autumn offers — 20% off</p>
+                      <div class="fes-card">
+                        <div class="fes-field"><span>To</span><b>All customers · 2,480</b></div>
+                        <div class="fes-field"><span>From</span><b>hello@yourbusiness.com</b></div>
+                      </div>
+                      <div class="fes-card">
+                        <div class="fes-progress-top"><span>Sending</span><b>75%</b></div>
+                        <div class="fes-track"><i></i></div>
+                        <p class="fes-progress-s">1,860 of 2,480 delivered</p>
+                      </div>
+                      <ul class="fes-list">
+                          <li><span class="fes-ok"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span>a•••@gmail.com<em>Delivered</em></li>
+                          <li><span class="fes-ok"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span>m•••@outlook.com<em>Delivered</em></li>
+                          <li><span class="fes-ok"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span>k•••@yahoo.com<em>Delivered</em></li>
+                          <li><span class="fes-ok"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span>d•••@icloud.com<em>Delivered</em></li>
+                      </ul>
+                      <span class="fes-send"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 3L10 14M21 3l-7 18-4-7-7-4 18-7z"/></svg>Send campaign</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="dv-mac">
+              <div class="dv-mac-display">
+                <div class="dv-mac-screen">
+                  <div class="dv-mac-bar"><i></i><i></i><i></i><span>Fast Email Sender</span></div>
+                  <div class="fes">
+                    <aside class="fes-side">
+                      <p class="fes-logo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 3L4 14h6l-1 7 9-11h-6l1-7z"/></svg>Fast Email Sender</p>
+                      <nav class="fes-nav"><span class="is-on">Campaigns</span><span>Contacts</span><span>Templates</span><span>Reports</span></nav>
+                    </aside>
+                    <div class="fes-main">
+                      <div class="fes-top"><p class="fes-logo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 3L4 14h6l-1 7 9-11h-6l1-7z"/></svg>Fast Email Sender</p><span class="fes-avatar">YB</span></div>
+                      <p class="fes-k">New campaign</p>
+                      <p class="fes-title">Autumn offers — 20% off</p>
+                      <div class="fes-card">
+                        <div class="fes-field"><span>To</span><b>All customers · 2,480</b></div>
+                        <div class="fes-field"><span>From</span><b>hello@yourbusiness.com</b></div>
+                      </div>
+                      <div class="fes-card">
+                        <div class="fes-progress-top"><span>Sending</span><b>75%</b></div>
+                        <div class="fes-track"><i></i></div>
+                        <p class="fes-progress-s">1,860 of 2,480 delivered</p>
+                      </div>
+                      <ul class="fes-list">
+                          <li><span class="fes-ok"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span>a•••@gmail.com<em>Delivered</em></li>
+                          <li><span class="fes-ok"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span>m•••@outlook.com<em>Delivered</em></li>
+                          <li><span class="fes-ok"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span>k•••@yahoo.com<em>Delivered</em></li>
+                          <li><span class="fes-ok"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span>d•••@icloud.com<em>Delivered</em></li>
+                      </ul>
+                      <span class="fes-send"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 3L10 14M21 3l-7 18-4-7-7-4 18-7z"/></svg>Send campaign</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="dv-mac-chin"></div>
+              </div>
+              <div class="dv-mac-stand"></div>
+              <div class="dv-mac-foot"></div>
+            </div>
+
+          </div>
+
+          <a href="start.html" class="or-build or-build--below">or build your package <span aria-hidden="true">&rarr;</span></a>
         </div>
 
       </div>
