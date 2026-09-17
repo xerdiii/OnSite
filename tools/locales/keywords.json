@@ -539,151 +539,6 @@
       ]
     }
   },
-  "start": {
-    "intent": "transactional",
-    "en": {
-      "primary": "hire a web designer",
-      "secondary": [
-        "start a website project",
-        "custom website quote",
-        "website design quote",
-        "build a website for my business",
-        "request a website",
-        "web design enquiry",
-        "get a website made",
-        "website project brief"
-      ],
-      "long_tail": [
-        "get a quote for a custom website",
-        "hire someone to build my business website",
-        "request a website design quote with no account",
-        "start a website project online"
-      ],
-      "semantic": [
-        "no payment to request",
-        "reply the same working day",
-        "package and extras",
-        "project request"
-      ]
-    },
-    "sq": {
-      "primary": "fillo projektin e faqes",
-      "secondary": [
-        "kerkese per faqe interneti",
-        "oferte per faqe interneti",
-        "punesо nje dizajner web",
-        "ndertimi i faqes per biznesin tim"
-      ],
-      "long_tail": [
-        "si te marr oferte per nje faqe interneti",
-        "kerkese projekti per faqe interneti"
-      ]
-    },
-    "de": {
-      "primary": "Website Angebot anfordern",
-      "secondary": [
-        "Webdesigner beauftragen",
-        "Website Projekt starten",
-        "Angebot Website erstellen lassen",
-        "Website Anfrage"
-      ],
-      "long_tail": [
-        "Angebot für eine individuelle Website anfordern",
-        "Webdesigner für kleines Unternehmen beauftragen"
-      ]
-    },
-    "fr": {
-      "primary": "demander un devis site internet",
-      "secondary": [
-        "engager un créateur de site",
-        "démarrer un projet de site",
-        "devis création site vitrine",
-        "demande de site internet"
-      ],
-      "long_tail": [
-        "demander un devis pour un site sur mesure",
-        "faire appel à un webdesigner pour mon entreprise"
-      ]
-    },
-    "it": {
-      "primary": "preventivo sito web",
-      "secondary": [
-        "richiesta sito web",
-        "avviare un progetto web",
-        "assumere un web designer",
-        "preventivo realizzazione sito"
-      ],
-      "long_tail": [
-        "chiedere un preventivo per un sito su misura",
-        "far realizzare il sito della mia attività"
-      ]
-    },
-    "es": {
-      "primary": "presupuesto página web",
-      "secondary": [
-        "contratar diseñador web",
-        "empezar un proyecto web",
-        "pedir presupuesto web",
-        "solicitud de página web"
-      ],
-      "long_tail": [
-        "pedir presupuesto para una web a medida",
-        "contratar a alguien para hacer la web de mi negocio"
-      ]
-    },
-    "pt": {
-      "primary": "orçamento site",
-      "secondary": [
-        "contratar web designer",
-        "iniciar projeto de site",
-        "pedir orçamento de site",
-        "pedido de site"
-      ],
-      "long_tail": [
-        "pedir orçamento para um site à medida",
-        "contratar alguém para fazer o site do meu negócio"
-      ]
-    },
-    "nl": {
-      "primary": "website offerte aanvragen",
-      "secondary": [
-        "webdesigner inhuren",
-        "websiteproject starten",
-        "prijsopgave website",
-        "website aanvragen"
-      ],
-      "long_tail": [
-        "offerte aanvragen voor een website op maat",
-        "iemand inhuren om mijn bedrijfswebsite te bouwen"
-      ]
-    },
-    "sv": {
-      "primary": "offert hemsida",
-      "secondary": [
-        "anlita webbdesigner",
-        "starta webbprojekt",
-        "begära offert webbplats",
-        "hemsida förfrågan"
-      ],
-      "long_tail": [
-        "begära offert på en skräddarsydd hemsida",
-        "anlita någon som bygger företagets hemsida"
-      ]
-    },
-    "tr": {
-      "primary": "web sitesi teklifi",
-      "secondary": [
-        "web tasarımcı tutmak",
-        "web projesi başlatmak",
-        "web sitesi fiyat teklifi",
-        "web sitesi talebi"
-      ],
-      "long_tail": [
-        "özel web sitesi için teklif almak",
-        "işletmem için web sitesi yaptırma talebi"
-      ]
-    }
-  },
   "contact": {
     "intent": "navigational / transactional",
     "en": {
@@ -994,6 +849,145 @@
       ],
       "long_tail": [
         "which cookies does this website set"
+      ]
+    }
+  },
+  "features": {
+    "intent": "commercial investigation",
+    "en": {
+      "primary": "what a business website includes",
+      "secondary": [
+        "website features list",
+        "business website sections",
+        "website functionality",
+        "online menu for restaurant website",
+        "photo gallery website",
+        "website inquiry form",
+        "mobile optimised website",
+        "google reviews on website"
+      ],
+      "long_tail": [
+        "what should a small business website include",
+        "list of features a business website needs",
+        "website with online menu and gallery",
+        "does my website include a contact form"
+      ]
+    },
+    "sq": {
+      "primary": "cfare permban nje faqe interneti",
+      "secondary": [
+        "veçoritë e faqes",
+        "seksionet e faqes",
+        "menu online",
+        "galeri fotosh",
+        "formular kontakti"
+      ],
+      "long_tail": [
+        "cfare duhet te permbaje nje faqe biznesi"
+      ]
+    },
+    "de": {
+      "primary": "was eine Unternehmenswebsite enthält",
+      "secondary": [
+        "Website Funktionen",
+        "Website Abschnitte",
+        "Online-Speisekarte",
+        "Bildergalerie",
+        "Kontaktformular"
+      ],
+      "long_tail": [
+        "was gehört auf eine Unternehmenswebsite"
+      ]
+    },
+    "fr": {
+      "primary": "que contient un site vitrine",
+      "secondary": [
+        "fonctionnalités site internet",
+        "sections site web",
+        "menu en ligne",
+        "galerie photos",
+        "formulaire de contact"
+      ],
+      "long_tail": [
+        "que doit contenir le site d'une petite entreprise"
+      ]
+    },
+    "it": {
+      "primary": "cosa contiene un sito aziendale",
+      "secondary": [
+        "funzionalità sito web",
+        "sezioni sito",
+        "menù online",
+        "galleria foto",
+        "modulo contatti"
+      ],
+      "long_tail": [
+        "cosa deve avere il sito di una piccola impresa"
+      ]
+    },
+    "es": {
+      "primary": "qué incluye una web de empresa",
+      "secondary": [
+        "funciones de una web",
+        "secciones de una web",
+        "carta online",
+        "galería de fotos",
+        "formulario de contacto"
+      ],
+      "long_tail": [
+        "qué debe tener la web de un negocio pequeño"
+      ]
+    },
+    "pt": {
+      "primary": "o que inclui um site de empresa",
+      "secondary": [
+        "funcionalidades de um site",
+        "secções de um site",
+        "menu online",
+        "galeria de fotos",
+        "formulário de contacto"
+      ],
+      "long_tail": [
+        "o que deve ter o site de um pequeno negócio"
+      ]
+    },
+    "nl": {
+      "primary": "wat hoort er op een zakelijke website",
+      "secondary": [
+        "website functies",
+        "website secties",
+        "online menukaart",
+        "fotogalerij",
+        "contactformulier"
+      ],
+      "long_tail": [
+        "wat moet er op de website van een klein bedrijf staan"
+      ]
+    },
+    "sv": {
+      "primary": "vad ska en företagshemsida innehålla",
+      "secondary": [
+        "hemsidans funktioner",
+        "hemsidans avsnitt",
+        "meny online",
+        "bildgalleri",
+        "kontaktformulär"
+      ],
+      "long_tail": [
+        "vad bör en hemsida för småföretag innehålla"
+      ]
+    },
+    "tr": {
+      "primary": "kurumsal web sitesinde neler olmalı",
+      "secondary": [
+        "web sitesi özellikleri",
+        "site bölümleri",
+        "çevrimiçi menü",
+        "fotoğraf galerisi",
+        "iletişim formu"
+      ],
+      "long_tail": [
+        "küçük işletme web sitesinde neler olmalı"
       ]
     }
   }

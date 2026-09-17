@@ -18,7 +18,7 @@
     { label: 'Extras',          href: 'extras.html' },
     { label: 'FAQ',             href: 'faq.html' },
     { label: 'Contact',         href: 'contact.html' },
-    { label: 'Log in',          href: 'start.html' }
+    { label: 'Log in',          href: 'login.html' }
   ];
 
   var ICON_MENU = '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><path d="M4.5 9.5h15M4.5 15h9"/></svg>';
@@ -87,7 +87,7 @@
           return '<a class="m-drawer-link" href="' + l.href + '" style="animation-delay:' + (240 + i * 55) + 'ms">' +
             l.label + '<span>' + (active ? '•' : '→') + '</span></a>';
         }).join('') +
-        '<a class="m-drawer-cta" href="start.html">Build My Website</a>' +
+        '<a class="m-drawer-cta" href="extras.html">Build My Website</a>' +
         '<p class="m-drawer-note">Nothing up front. You review the finished website, then pay once before it goes live.</p>' +
       '</div>';
     doc.body.appendChild(drawer);

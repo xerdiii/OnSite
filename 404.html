@@ -17,7 +17,7 @@
 <script>(function(){var t='dark';try{t=localStorage.getItem('sitehouse.theme')==='light'?'light':'dark';}catch(e){}document.documentElement.setAttribute('data-theme',t);})();</script>
 <link rel="stylesheet" href="/assets/xovah.css?v=2">
 <link rel="stylesheet" href="/assets/tailwind.css?v=2">
-<link rel="stylesheet" href="/assets/theme.css?v=5">
+<link rel="stylesheet" href="/assets/theme.css?v=6">
 <link rel="stylesheet" href="assets/gutters.css?v=2">
 <link rel="stylesheet" href="/assets/edge.css?v=4">
 <style>
@@ -62,6 +62,33 @@
   .nf-btn--ghost:hover { border-color: rgb(var(--c-ink)); }
   .nf-help { margin-top: 2rem; font-size: 0.8125rem; color: rgb(var(--c-ink-soft)); }
   .nf-help a { color: rgb(var(--c-ink-mid)); text-decoration: underline; text-underline-offset: 3px; }
+
+  /* Every door out, not only the front one: someone who lands here by a
+     dead link is usually looking for one of these six. */
+  .nf-grid {
+    margin-top: 3rem; padding-top: 2rem;
+    border-top: 1px solid rgb(var(--c-line));
+    display: grid; gap: 0.5rem; text-align: left;
+  }
+  @media (min-width: 640px) { .nf-grid { grid-template-columns: 1fr 1fr; gap: 0.6rem; } }
+  .nf-card {
+    display: block; padding: 0.95rem 1.05rem;
+    border: 1px solid rgb(var(--c-line));
+    background: rgb(var(--c-surface));
+    text-decoration: none;
+    transition: border-color 180ms ease, transform 180ms ease;
+  }
+  .nf-card:hover { border-color: rgb(var(--c-accent)); transform: translateY(-1px); }
+  .nf-card-h { display: block; font-size: 0.9375rem; font-weight: 600; color: rgb(var(--c-ink)); }
+  .nf-card-p { display: block; margin-top: 0.25rem; font-size: 0.8125rem; line-height: 1.5; color: rgb(var(--c-ink-soft)); }
+
+  .nf { min-height: auto; padding: clamp(3rem, 9vh, 6rem) 1.5rem 3rem; }
+  .nf-in { width: min(46rem, 100%); }
+
+  @media (prefers-reduced-motion: reduce) {
+    .nf-card { transition: none; }
+    .nf-card:hover { transform: none; }
+  }
 </style>
 </head>
 
@@ -69,7 +96,7 @@
 
 <main class="nf">
   <div class="nf-in">
-    <a class="nf-mark" href="/">
+    <a class="nf-mark" href="/en">
       <span class="brand-mark" role="img" aria-label="Xovah"></span>
       <span>Xovah</span>
     </a>
@@ -82,16 +109,40 @@
     <p class="nf-path" id="nfPath" hidden></p>
 
     <div class="nf-row">
-      <a class="nf-btn" href="/">Back to the homepage</a>
-      <a class="nf-btn nf-btn--ghost" href="/start">Start a project</a>
+      <a class="nf-btn" href="/en">Back to the homepage</a>
+      <a class="nf-btn nf-btn--ghost" href="/en#extras">Send a project request</a>
     </div>
 
-    <p class="nf-help">
-      Looking for something specific? Try the <a href="/pricing">packages</a>,
-      the <a href="/extras">list of add-ons</a>, or the <a href="/faq">FAQ</a>.
-    </p>
+    <nav class="nf-grid" aria-label="Pages">
+      <a class="nf-card" href="/en/pricing">
+        <span class="nf-card-h">Pricing</span>
+        <span class="nf-card-p">Three packages, each paid once, with what every one includes.</span>
+      </a>
+      <a class="nf-card" href="/en/services">
+        <span class="nf-card-h">Services &amp; extras</span>
+        <span class="nf-card-p">Booking, local SEO, a logo, business email — sixty-six one-off jobs.</span>
+      </a>
+      <a class="nf-card" href="/en/features">
+        <span class="nf-card-h">What is included</span>
+        <span class="nf-card-p">The thirty-four things built into every website, explained.</span>
+      </a>
+      <a class="nf-card" href="/en/faq">
+        <span class="nf-card-h">Questions</span>
+        <span class="nf-card-p">Cost, timing, what you own and what happens if you cancel.</span>
+      </a>
+      <a class="nf-card" href="/en/contact">
+        <span class="nf-card-h">Contact</span>
+        <span class="nf-card-p">Write to a person. We answer, usually the same working day.</span>
+      </a>
+      <a class="nf-card" href="https://instagram.com/xovahweb" target="_blank" rel="me noopener noreferrer">
+        <span class="nf-card-h">Instagram</span>
+        <span class="nf-card-p">@xovahweb — the work as it goes live, and the quickest reply.</span>
+      </a>
+    </nav>
   </div>
 </main>
+
+<div data-site-footer></div>
 
 <script>
 /* Show what was actually asked for. It helps somebody spot their own
@@ -106,5 +157,7 @@
   el.hidden = false;
 })();
 </script>
+<script src="/assets/footer.js?v=6"></script>
+<script src="/assets/theme.js?v=3"></script>
 </body>
 </html>

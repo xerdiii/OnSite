@@ -29,13 +29,13 @@
       "permanent": true
     },
     {
-      "source": "/start-project",
-      "destination": "/en/start-project",
+      "source": "/features",
+      "destination": "/en/features",
       "permanent": true
     },
     {
-      "source": "/start-project.html",
-      "destination": "/en/start-project",
+      "source": "/features.html",
+      "destination": "/en/features",
       "permanent": true
     },
     {
@@ -110,7 +110,7 @@
     },
     {
       "source": "/build",
-      "destination": "/en/start-project",
+      "destination": "/en/services",
       "permanent": true
     },
     {
@@ -269,48 +269,48 @@
       "permanent": true
     },
     {
-      "source": "/sq/start-project",
-      "destination": "/sq/fillo-projektin",
+      "source": "/sq/features",
+      "destination": "/sq/vecorite",
       "permanent": true
     },
     {
-      "source": "/de/start-project",
-      "destination": "/de/projekt-starten",
+      "source": "/de/features",
+      "destination": "/de/funktionen",
       "permanent": true
     },
     {
-      "source": "/fr/start-project",
-      "destination": "/fr/demarrer-projet",
+      "source": "/fr/features",
+      "destination": "/fr/fonctionnalites",
       "permanent": true
     },
     {
-      "source": "/it/start-project",
-      "destination": "/it/avvia-progetto",
+      "source": "/it/features",
+      "destination": "/it/funzionalita",
       "permanent": true
     },
     {
-      "source": "/es/start-project",
-      "destination": "/es/empezar-proyecto",
+      "source": "/es/features",
+      "destination": "/es/funciones",
       "permanent": true
     },
     {
-      "source": "/pt/start-project",
-      "destination": "/pt/iniciar-projeto",
+      "source": "/pt/features",
+      "destination": "/pt/funcionalidades",
       "permanent": true
     },
     {
-      "source": "/nl/start-project",
-      "destination": "/nl/project-starten",
+      "source": "/nl/features",
+      "destination": "/nl/functies",
       "permanent": true
     },
     {
-      "source": "/sv/start-project",
-      "destination": "/sv/starta-projekt",
+      "source": "/sv/features",
+      "destination": "/sv/funktioner",
       "permanent": true
     },
     {
-      "source": "/tr/start-project",
-      "destination": "/tr/proje-baslat",
+      "source": "/tr/features",
+      "destination": "/tr/ozellikler",
       "permanent": true
     },
     {
@@ -791,6 +791,176 @@
     {
       "source": "/tr/free-landing-page",
       "destination": "/tr",
+      "permanent": true
+    },
+    {
+      "source": "/en/start-project",
+      "destination": "/en/services",
+      "permanent": true
+    },
+    {
+      "source": "/sq/fillo-projektin",
+      "destination": "/sq/sherbimet",
+      "permanent": true
+    },
+    {
+      "source": "/de/projekt-starten",
+      "destination": "/de/leistungen",
+      "permanent": true
+    },
+    {
+      "source": "/fr/demarrer-projet",
+      "destination": "/fr/services",
+      "permanent": true
+    },
+    {
+      "source": "/it/avvia-progetto",
+      "destination": "/it/servizi",
+      "permanent": true
+    },
+    {
+      "source": "/es/empezar-proyecto",
+      "destination": "/es/servicios",
+      "permanent": true
+    },
+    {
+      "source": "/pt/iniciar-projeto",
+      "destination": "/pt/servicos",
+      "permanent": true
+    },
+    {
+      "source": "/nl/project-starten",
+      "destination": "/nl/diensten",
+      "permanent": true
+    },
+    {
+      "source": "/sv/starta-projekt",
+      "destination": "/sv/tjanster",
+      "permanent": true
+    },
+    {
+      "source": "/tr/proje-baslat",
+      "destination": "/tr/hizmetler",
+      "permanent": true
+    },
+    {
+      "source": "/start",
+      "destination": "/en/services",
+      "permanent": true
+    },
+    {
+      "source": "/start.html",
+      "destination": "/en/services",
+      "permanent": true
+    },
+    {
+      "source": "/en/start",
+      "destination": "/en/services",
+      "permanent": true
+    },
+    {
+      "source": "/sq/start",
+      "destination": "/sq/sherbimet",
+      "permanent": true
+    },
+    {
+      "source": "/de/start",
+      "destination": "/de/leistungen",
+      "permanent": true
+    },
+    {
+      "source": "/fr/start",
+      "destination": "/fr/services",
+      "permanent": true
+    },
+    {
+      "source": "/it/start",
+      "destination": "/it/servizi",
+      "permanent": true
+    },
+    {
+      "source": "/es/start",
+      "destination": "/es/servicios",
+      "permanent": true
+    },
+    {
+      "source": "/pt/start",
+      "destination": "/pt/servicos",
+      "permanent": true
+    },
+    {
+      "source": "/nl/start",
+      "destination": "/nl/diensten",
+      "permanent": true
+    },
+    {
+      "source": "/sv/start",
+      "destination": "/sv/tjanster",
+      "permanent": true
+    },
+    {
+      "source": "/tr/start",
+      "destination": "/tr/hizmetler",
+      "permanent": true
+    },
+    {
+      "source": "/start-project",
+      "destination": "/en/services",
+      "permanent": true
+    },
+    {
+      "source": "/start-project.html",
+      "destination": "/en/services",
+      "permanent": true
+    },
+    {
+      "source": "/en/start-project",
+      "destination": "/en/services",
+      "permanent": true
+    },
+    {
+      "source": "/sq/start-project",
+      "destination": "/sq/sherbimet",
+      "permanent": true
+    },
+    {
+      "source": "/de/start-project",
+      "destination": "/de/leistungen",
+      "permanent": true
+    },
+    {
+      "source": "/fr/start-project",
+      "destination": "/fr/services",
+      "permanent": true
+    },
+    {
+      "source": "/it/start-project",
+      "destination": "/it/servizi",
+      "permanent": true
+    },
+    {
+      "source": "/es/start-project",
+      "destination": "/es/servicios",
+      "permanent": true
+    },
+    {
+      "source": "/pt/start-project",
+      "destination": "/pt/servicos",
+      "permanent": true
+    },
+    {
+      "source": "/nl/start-project",
+      "destination": "/nl/diensten",
+      "permanent": true
+    },
+    {
+      "source": "/sv/start-project",
+      "destination": "/sv/tjanster",
+      "permanent": true
+    },
+    {
+      "source": "/tr/start-project",
+      "destination": "/tr/hizmetler",
       "permanent": true
     }
   ],

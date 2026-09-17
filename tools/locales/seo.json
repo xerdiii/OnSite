@@ -126,48 +126,6 @@
       "description": "Çevrimiçi randevu, yerel SEO, analiz, otomasyon, logo tasarımı ve kurumsal e-posta: her biri ayrı fiyatlı 66 tek seferlik hizmet ve her sitede 34 özellik."
     }
   },
-  "start": {
-    "en": {
-      "title": "Start Your Website Project — Get a Quote | Xovahweb",
-      "description": "Choose a package, add the extras you need and describe your business. No account and no payment: we reply with the real figure, usually the same working day."
-    },
-    "sq": {
-      "title": "Filloni projektin e faqes suaj | Xovahweb",
-      "description": "Zgjidhni një paketë, shtoni shtesat që ju duhen dhe përshkruani biznesin tuaj. Pa llogari dhe pa pagesë: përgjigjemi me shifrën e vërtetë, zakonisht brenda ditës."
-    },
-    "de": {
-      "title": "Website-Projekt starten und Angebot erhalten | Xovahweb",
-      "description": "Paket wählen, Extras ergänzen, Ihr Unternehmen beschreiben. Ohne Konto und ohne Zahlung — wir antworten mit der echten Zahl, meist am selben Werktag."
-    },
-    "fr": {
-      "title": "Démarrer votre projet de site — devis | Xovahweb",
-      "description": "Choisissez une formule, ajoutez les options utiles et décrivez votre activité. Sans compte ni paiement : nous répondons avec le vrai montant, en général le jour ouvré même."
-    },
-    "it": {
-      "title": "Avvia il tuo progetto web e ricevi un preventivo | Xovahweb",
-      "description": "Scegli un pacchetto, aggiungi gli extra che ti servono e descrivi la tua attività. Senza account e senza pagamento: rispondiamo con la cifra reale, di solito in giornata."
-    },
-    "es": {
-      "title": "Empieza tu proyecto web y pide presupuesto | Xovahweb",
-      "description": "Elige un paquete, añade los extras que necesites y describe tu negocio. Sin cuenta y sin pago: te respondemos con la cifra real, normalmente el mismo día laborable."
-    },
-    "pt": {
-      "title": "Inicie o seu projeto de site e peça orçamento | Xovahweb",
-      "description": "Escolha um pacote, junte os extras de que precisa e descreva o seu negócio. Sem conta e sem pagamento: respondemos com o valor real, normalmente no mesmo dia útil."
-    },
-    "nl": {
-      "title": "Start je websiteproject en vraag een prijs | Xovahweb",
-      "description": "Kies een pakket, voeg de extra's toe die je nodig hebt en beschrijf je bedrijf. Geen account en geen betaling: we antwoorden met het echte bedrag, meestal dezelfde werkdag."
-    },
-    "sv": {
-      "title": "Starta ditt webbprojekt och få en offert | Xovahweb",
-      "description": "Välj ett paket, lägg till de tillägg du behöver och beskriv din verksamhet. Utan konto och utan betalning: vi svarar med den riktiga siffran, oftast samma arbetsdag."
-    },
-    "tr": {
-      "title": "Web sitesi projenizi başlatın, teklif alın | Xovahweb",
-      "description": "Bir paket seçin, ihtiyacınız olan ekstraları ekleyin ve işletmenizi anlatın. Hesap yok, ödeme yok: gerçek rakamla, genellikle aynı iş günü içinde dönüyoruz."
-    }
-  },
   "contact": {
     "en": {
       "title": "Contact Xovahweb — Talk to a Web Designer",
@@ -274,6 +232,48 @@
     "en": {
       "title": "Cookie Policy | Xovahweb",
       "description": "Which cookies this site sets, what each one is for, and how to change your choice at any time."
+    }
+  },
+  "features": {
+    "en": {
+      "title": "What Every Website Includes — 34 Features | Xovahweb",
+      "description": "The thirty-four things built into every Xovahweb site — booking-ready sections, galleries, menus, forms, reviews and mobile handling — with what each one does."
+    },
+    "sq": {
+      "title": "Çfarë përfshin çdo faqe — 34 veçori | Xovahweb",
+      "description": "Tridhjetë e katër gjërat e ndërtuara në çdo faqe të Xovahweb — seksione, galeri, menu, formularë, vlerësime dhe telefoni — me shpjegim çfarë bën secila."
+    },
+    "de": {
+      "title": "Was jede Website enthält — 34 Funktionen | Xovahweb",
+      "description": "Die vierunddreißig Dinge, die in jeder Xovahweb-Website stecken — Abschnitte, Galerien, Menüs, Formulare, Bewertungen und Mobilgeräte — und was jedes davon tut."
+    },
+    "fr": {
+      "title": "Ce que contient chaque site — 34 fonctions | Xovahweb",
+      "description": "Les trente-quatre éléments intégrés à chaque site Xovahweb — sections, galeries, menus, formulaires, avis et mobile — avec ce que chacun fait réellement."
+    },
+    "it": {
+      "title": "Cosa contiene ogni sito — 34 funzioni | Xovahweb",
+      "description": "Le trentaquattro cose incluse in ogni sito Xovahweb — sezioni, gallerie, menù, moduli, recensioni e mobile — con la spiegazione di cosa fa ciascuna."
+    },
+    "es": {
+      "title": "Qué incluye cada web — 34 funciones | Xovahweb",
+      "description": "Las treinta y cuatro cosas integradas en cada web de Xovahweb — secciones, galerías, cartas, formularios, reseñas y móvil — y qué hace cada una."
+    },
+    "pt": {
+      "title": "O que cada site inclui — 34 funcionalidades | Xovahweb",
+      "description": "As trinta e quatro coisas incluídas em cada site da Xovahweb — secções, galerias, menus, formulários, avaliações e telemóvel — e o que cada uma faz."
+    },
+    "nl": {
+      "title": "Wat elke website bevat — 34 functies | Xovahweb",
+      "description": "De vierendertig dingen die in elke Xovahweb-website zitten — secties, galerijen, menukaarten, formulieren, reviews en mobiel — en wat elk ervan doet."
+    },
+    "sv": {
+      "title": "Vad varje webbplats innehåller — 34 funktioner | Xovahweb",
+      "description": "De trettiofyra saker som ingår i varje Xovahweb-webbplats — avsnitt, gallerier, menyer, formulär, omdömen och mobil — och vad var och en gör."
+    },
+    "tr": {
+      "title": "Her sitede neler var — 34 özellik | Xovahweb",
+      "description": "Her Xovahweb sitesinde hazır gelen otuz dört şey — bölümler, galeriler, menüler, formlar, yorumlar ve mobil — ve her birinin ne işe yaradığı."
     }
   }
 }

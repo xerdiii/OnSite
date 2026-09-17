@@ -235,9 +235,14 @@ def head_block(key, code, lang_meta, title, description, kept_faq):
 
 
 # ── Rewriting the body ────────────────────────────────────────────
-LINK_KEYS = {'index': 'home', 'pricing': 'pricing', 'extras': 'services', 'start': 'start',
-             'contact': 'contact', 'faq': 'faq', 'free': 'free', 'terms': 'terms',
-             'privacy': 'privacy', 'refunds': 'refunds', 'cookies': 'cookies', 'build': 'start'}
+# What each English source filename becomes in a language's URLs. Names
+# that no longer have a page of their own point at the page that replaced
+# them, so an old link in hand-written markup still lands somewhere real.
+LINK_KEYS = {'index': 'home', 'pricing': 'pricing', 'extras': 'services',
+             'features': 'features', 'contact': 'contact', 'faq': 'faq',
+             'terms': 'terms', 'privacy': 'privacy', 'refunds': 'refunds',
+             'cookies': 'cookies', 'start': 'services', 'build': 'services',
+             'free': 'home'}
 
 HREF = re.compile(r'(\s(?:href|action)=")([^"]+)(")')
 
@@ -390,7 +395,7 @@ def redirects():
                 out.append({'source': src, 'destination': path_for(key, 'en'), 'permanent': True})
     out.append({'source': '/extras', 'destination': path_for('services', 'en'), 'permanent': True})
     out.append({'source': '/extras.html', 'destination': path_for('services', 'en'), 'permanent': True})
-    out.append({'source': '/build', 'destination': path_for('start', 'en'), 'permanent': True})
+    out.append({'source': '/build', 'destination': path_for('services', 'en'), 'permanent': True})
     out.append({'source': '/index.html', 'destination': '/en', 'permanent': True})
     out.append({'source': '/support', 'destination': path_for('contact', 'en'), 'permanent': True})
     out.append({'source': '/support.html', 'destination': path_for('contact', 'en'), 'permanent': True})
@@ -416,15 +421,18 @@ def redirects():
 
     # pages that have been retired: their old URLs go to the language home
     for gone in CONFIG.get('gone', []):
+        key = gone.get('to')
+        def home_or(code):
+            return path_for(key, code) if key else '/' + code
         for code, slug in gone.get('slugs', {}).items():
             if code in BUILT_CODES and slug:
-                out.append({'source': '/%s/%s' % (code, slug), 'destination': '/' + code,
+                out.append({'source': '/%s/%s' % (code, slug), 'destination': home_or(code),
                             'permanent': True})
         for alias in gone.get('english_aliases', []):
-            out.append({'source': '/' + alias, 'destination': '/en', 'permanent': True})
-            out.append({'source': '/%s.html' % alias, 'destination': '/en', 'permanent': True})
+            out.append({'source': '/' + alias, 'destination': home_or('en'), 'permanent': True})
+            out.append({'source': '/%s.html' % alias, 'destination': home_or('en'), 'permanent': True})
             for code in BUILT_CODES:
-                out.append({'source': '/%s/%s' % (code, alias), 'destination': '/' + code,
+                out.append({'source': '/%s/%s' % (code, alias), 'destination': home_or(code),
                             'permanent': True})
     return out
 

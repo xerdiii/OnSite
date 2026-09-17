@@ -228,7 +228,7 @@
           }).join('') +
         '</ul>' +
         '<a class="xw-btn ' + (lead ? 'xw-btn--blue' : 'xw-btn--ghost') + ' xw-plan__cta" ' +
-          'href="start.html?package=' + w.key + '">Start with this' +
+          'href="extras.html">Start with this' +
           '<span class="xw-btn__arrow">' + ARROW + '</span></a>' +
       '</article>';
     }).join('');

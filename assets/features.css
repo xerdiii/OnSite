@@ -1,0 +1,44 @@
+/* ───────────────────────────────────────────────────────────────
+   Xovah — the 34 included features, explained (features.html)
+   A numbered list in two columns on a wide screen: the name, then one
+   line saying what it actually does. No icons, no cards — the page is
+   a reference, and a reference reads best as a list.
+   ─────────────────────────────────────────────────────────────── */
+.fe-group + .fe-group { margin-top: 3.25rem; }
+
+.fe-head {
+  display: flex; align-items: baseline; gap: 1rem;
+  padding-bottom: 0.9rem;
+  border-bottom: 1px solid rgb(var(--c-line-firm));
+}
+.fe-count {
+  margin-left: auto;
+  font-family: 'IBM Plex Mono', ui-monospace, monospace;
+  font-size: 0.75rem; color: rgb(var(--c-ink-soft));
+}
+
+.fe-list { margin-top: 0.5rem; display: grid; grid-template-columns: 1fr; }
+@media (min-width: 900px) {
+  .fe-list { grid-template-columns: 1fr 1fr; column-gap: 3.5rem; }
+}
+
+.fe-row {
+  display: flex; align-items: baseline; gap: 1rem;
+  padding: 1rem 0;
+  border-bottom: 1px solid rgb(var(--c-line));
+}
+.fe-n {
+  flex: none; width: 1.75rem;
+  font-family: 'IBM Plex Mono', ui-monospace, monospace;
+  font-size: 0.6875rem; color: rgb(var(--c-accent));
+}
+.fe-name { font-size: 0.9375rem; font-weight: 600; color: rgb(var(--c-ink)); }
+.fe-what { margin-top: 0.3rem; font-size: 0.875rem; line-height: 1.55; color: rgb(var(--c-ink-mid)); }
+
+.fe-end {
+  margin-top: 3.5rem; padding-top: 2rem;
+  border-top: 1px solid rgb(var(--c-line-firm));
+}
+.fe-end-h { font-size: 1.0625rem; font-weight: 600; color: rgb(var(--c-ink)); }
+.fe-end-p { margin-top: 0.6rem; max-width: 38rem; font-size: 0.9375rem; line-height: 1.6; color: rgb(var(--c-ink-mid)); }
+.fe-end-row { margin-top: 1.5rem; display: flex; flex-wrap: wrap; gap: 0.75rem; }

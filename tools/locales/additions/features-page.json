@@ -1,0 +1,473 @@
+{
+  "_comment": "The 34-features page, the card block on the two full builds, and the Instagram band. Keyed on the English string.",
+
+  "What is included": {
+    "sq": "Çfarë përfshihet", "de": "Was enthalten ist", "fr": "Ce qui est compris",
+    "it": "Cosa è incluso", "es": "Qué incluye", "pt": "O que está incluído",
+    "nl": "Wat inbegrepen is", "sv": "Vad som ingår", "tr": "Neler dahil"
+  },
+  "The 34 things in every website.": {
+    "sq": "34 gjërat në çdo faqe interneti.", "de": "Die 34 Dinge in jeder Website.",
+    "fr": "Les 34 éléments de chaque site.", "it": "Le 34 cose in ogni sito.",
+    "es": "Las 34 cosas de cada web.", "pt": "As 34 coisas em cada site.",
+    "nl": "De 34 dingen in elke website.", "sv": "De 34 sakerna i varje webbplats.",
+    "tr": "Her web sitesindeki 34 şey."
+  },
+  "These are built into the website itself, not sold on top of it. Custom builds any twenty of them; Full Website and the Complete Package build all thirty-four. Here is what each one does.": {
+    "sq": "Këto janë pjesë e vetë faqes, jo diçka që shitet veç. Faqja e Zgjedhur ndërton njëzet prej tyre; Faqja e Plotë dhe Paketa e Plotë i ndërtojnë të tridhjetë e katërta. Ja çfarë bën secila.",
+    "de": "Diese stecken in der Website selbst, sie werden nicht obendrauf verkauft. Die individuelle Website baut zwanzig davon; Komplette Website und Rundum-Paket bauen alle vierunddreißig. Hier steht, was jede davon tut.",
+    "fr": "Tout cela fait partie du site lui-même, ce n'est pas vendu en plus. Le site sur mesure en construit vingt ; le site complet et la formule intégrale construisent les trente-quatre. Voici ce que fait chacun.",
+    "it": "Fanno parte del sito stesso, non si vendono a parte. Il sito su misura ne costruisce venti; il sito completo e il pacchetto completo li costruiscono tutti e trentaquattro. Ecco cosa fa ciascuno.",
+    "es": "Forman parte de la web misma, no se venden aparte. La web a medida construye veinte de ellas; la web completa y el paquete completo construyen las treinta y cuatro. Esto es lo que hace cada una.",
+    "pt": "Fazem parte do próprio site, não são vendidas à parte. O site à medida constrói vinte delas; o site completo e o pacote completo constroem as trinta e quatro. Eis o que cada uma faz.",
+    "nl": "Dit zit in de website zelf, het wordt er niet bij verkocht. Website op maat bouwt er twintig; Volledige website en het complete pakket bouwen alle vierendertig. Hier staat wat elk ervan doet.",
+    "sv": "De finns i själva webbplatsen, de säljs inte ovanpå. Skräddarsydd webbplats bygger tjugo av dem; Komplett webbplats och helhetspaketet bygger alla trettiofyra. Så här fungerar var och en.",
+    "tr": "Bunlar sitenin kendisinde hazır gelir, üzerine satılmaz. Özel Site bunlardan yirmisini, Tam Site ve Eksiksiz Paket ise otuz dördünün tamamını kurar. İşte her birinin işlevi."
+  },
+  "See the packages": {
+    "sq": "Shihni paketat", "de": "Pakete ansehen", "fr": "Voir les formules",
+    "it": "Vedi i pacchetti", "es": "Ver los paquetes", "pt": "Ver os pacotes",
+    "nl": "Bekijk de pakketten", "sv": "Se paketen", "tr": "Paketleri görün"
+  },
+  "Or the 66 optional extras": {
+    "sq": "Ose 66 shtesat opsionale", "de": "Oder die 66 optionalen Extras",
+    "fr": "Ou les 66 options facultatives", "it": "Oppure i 66 extra facoltativi",
+    "es": "O los 66 extras opcionales", "pt": "Ou os 66 extras opcionais",
+    "nl": "Of de 66 optionele extra's", "sv": "Eller de 66 valfria tilläggen",
+    "tr": "Ya da 66 isteğe bağlı ekstra"
+  },
+
+  "Who you are and why people should trust you, written the way you would say it.": {
+    "sq": "Kush jeni dhe pse duhet t'ju besojnë, shkruar ashtu si do ta thoshit ju.",
+    "de": "Wer Sie sind und warum man Ihnen vertrauen sollte, so formuliert, wie Sie es sagen würden.",
+    "fr": "Qui vous êtes et pourquoi vous faire confiance, écrit comme vous le diriez.",
+    "it": "Chi sei e perché fidarsi di te, scritto come lo diresti tu.",
+    "es": "Quién eres y por qué confiar en ti, escrito como lo dirías tú.",
+    "pt": "Quem é e porque devem confiar em si, escrito como o diria.",
+    "nl": "Wie je bent en waarom mensen je moeten vertrouwen, zoals jij het zou zeggen.",
+    "sv": "Vem du är och varför man ska lita på dig, skrivet som du skulle säga det.",
+    "tr": "Kim olduğunuz ve neden güvenilmeniz gerektiği, sizin ağzınızdan yazılmış hâliyle."
+  },
+  "The questions you answer every week, written down once so people stop asking.": {
+    "sq": "Pyetjet që u përgjigjeni çdo javë, shkruar një herë që të mos pyesin më.",
+    "de": "Die Fragen, die Sie jede Woche beantworten, einmal aufgeschrieben, damit sie aufhören.",
+    "fr": "Les questions auxquelles vous répondez chaque semaine, écrites une fois pour toutes.",
+    "it": "Le domande a cui rispondi ogni settimana, scritte una volta per tutte.",
+    "es": "Las preguntas que respondes cada semana, escritas una vez para que dejen de preguntar.",
+    "pt": "As perguntas que responde todas as semanas, escritas uma vez para deixarem de perguntar.",
+    "nl": "De vragen die je elke week beantwoordt, één keer opgeschreven zodat ze stoppen.",
+    "sv": "Frågorna du svarar på varje vecka, nedskrivna en gång så att de slutar komma.",
+    "tr": "Her hafta yanıtladığınız sorular, bir kez yazılınca sormaları biter."
+  },
+  "Your prices laid out plainly, so nobody has to message you to find out what things cost.": {
+    "sq": "Çmimet tuaja qartë, që askush të mos ju shkruajë për të mësuar sa kushton.",
+    "de": "Ihre Preise klar aufgelistet, damit niemand schreiben muss, um sie zu erfahren.",
+    "fr": "Vos tarifs affichés clairement, pour que personne n'ait à écrire pour les connaître.",
+    "it": "I tuoi prezzi in chiaro, così nessuno deve scriverti per sapere quanto costa.",
+    "es": "Tus precios a la vista, para que nadie tenga que escribirte para saberlos.",
+    "pt": "Os seus preços à vista, para ninguém ter de lhe escrever para os saber.",
+    "nl": "Je prijzen gewoon zichtbaar, zodat niemand hoeft te appen om ze te weten.",
+    "sv": "Dina priser tydligt uppställda, så ingen behöver skriva för att få veta.",
+    "tr": "Fiyatlarınız açıkça listeli; kimse ne kadar olduğunu sormak için yazmak zorunda kalmaz."
+  },
+  "A place for the deal you are running now, easy to swap when it changes.": {
+    "sq": "Një vend për ofertën që keni tani, e lehtë për ta ndërruar kur ndryshon.",
+    "de": "Ein Platz für das Angebot, das gerade läuft — schnell getauscht, wenn es wechselt.",
+    "fr": "Un espace pour l'offre du moment, simple à remplacer quand elle change.",
+    "it": "Uno spazio per l'offerta del momento, facile da cambiare quando cambia.",
+    "es": "Un sitio para la oferta que tienes ahora, fácil de cambiar cuando cambie.",
+    "pt": "Um espaço para a promoção atual, fácil de trocar quando mudar.",
+    "nl": "Een plek voor de actie van nu, zo gewisseld als die verandert.",
+    "sv": "En plats för erbjudandet du kör nu, lätt att byta när det ändras.",
+    "tr": "Şu anki kampanyanız için bir alan; değiştiğinde kolayca güncellenir."
+  },
+  "A wider banner for a seasonal push, a launch or a limited run.": {
+    "sq": "Një banderolë më e gjerë për një fushatë sezonale, një nisje ose një ofertë të kufizuar.",
+    "de": "Ein breiteres Banner für eine Saisonaktion, einen Start oder eine limitierte Reihe.",
+    "fr": "Une bannière plus large pour une opération saisonnière, un lancement ou une série limitée.",
+    "it": "Un banner più ampio per una campagna stagionale, un lancio o una serie limitata.",
+    "es": "Un banner más ancho para una campaña de temporada, un lanzamiento o una serie limitada.",
+    "pt": "Um banner mais largo para uma campanha sazonal, um lançamento ou uma série limitada.",
+    "nl": "Een brede banner voor een seizoensactie, een lancering of een beperkte reeks.",
+    "sv": "En bredare banner för en säsongskampanj, en lansering eller en begränsad serie.",
+    "tr": "Mevsimsel bir kampanya, lansman ya da sınırlı sayıda ürün için daha geniş bir alan."
+  },
+  "Your work shown properly, with room for the pictures that sell it.": {
+    "sq": "Puna juaj e paraqitur si duhet, me hapësirë për fotot që e shesin.",
+    "de": "Ihre Arbeit richtig gezeigt, mit Platz für die Bilder, die sie verkaufen.",
+    "fr": "Votre travail montré correctement, avec la place pour les photos qui le vendent.",
+    "it": "Il tuo lavoro mostrato come si deve, con spazio per le foto che lo vendono.",
+    "es": "Tu trabajo bien mostrado, con espacio para las fotos que lo venden.",
+    "pt": "O seu trabalho bem mostrado, com espaço para as fotografias que o vendem.",
+    "nl": "Je werk goed getoond, met ruimte voor de foto's die het verkopen.",
+    "sv": "Ditt arbete visat som det ska, med plats för bilderna som säljer det.",
+    "tr": "İşiniz hakkıyla gösterilir; onu satan fotoğraflara yer açılır."
+  },
+  "One project at a time, told as a short story: what it was, what you did.": {
+    "sq": "Një projekt në një kohë, i treguar shkurt: çfarë ishte, çfarë bëtë.",
+    "de": "Ein Projekt nach dem anderen, kurz erzählt: was es war, was Sie gemacht haben.",
+    "fr": "Un projet à la fois, raconté brièvement : ce que c'était, ce que vous avez fait.",
+    "it": "Un progetto alla volta, raccontato in breve: cos'era, cosa hai fatto.",
+    "es": "Un proyecto cada vez, contado en corto: qué era y qué hiciste.",
+    "pt": "Um projeto de cada vez, contado em breve: o que era, o que fez.",
+    "nl": "Eén project tegelijk, kort verteld: wat het was en wat je deed.",
+    "sv": "Ett projekt i taget, berättat kort: vad det var och vad du gjorde.",
+    "tr": "Tek tek projeler; kısaca ne olduğu ve ne yaptığınız anlatılır."
+  },
+  "Faces and names. For a service business, people pick a person, not a company.": {
+    "sq": "Fytyra dhe emra. Në shërbime, njerëzit zgjedhin një person, jo një kompani.",
+    "de": "Gesichter und Namen. Bei Dienstleistungen wählt man einen Menschen, keine Firma.",
+    "fr": "Des visages et des noms. Dans les services, on choisit une personne, pas une société.",
+    "it": "Volti e nomi. Nei servizi si sceglie una persona, non un'azienda.",
+    "es": "Caras y nombres. En servicios la gente elige a una persona, no a una empresa.",
+    "pt": "Caras e nomes. Nos serviços escolhe-se uma pessoa, não uma empresa.",
+    "nl": "Gezichten en namen. Bij diensten kiezen mensen een persoon, geen bedrijf.",
+    "sv": "Ansikten och namn. I tjänstebranschen väljer man en person, inte ett företag.",
+    "tr": "Yüzler ve isimler. Hizmet işinde insanlar şirketi değil, kişiyi seçer."
+  },
+  "Two pictures side by side, which is the most convincing thing a trade can show.": {
+    "sq": "Dy foto krah për krah — gjëja më bindëse që mund të tregojë një zanat.",
+    "de": "Zwei Bilder nebeneinander — das Überzeugendste, was ein Handwerk zeigen kann.",
+    "fr": "Deux photos côte à côte : ce qu'un métier manuel a de plus convaincant à montrer.",
+    "it": "Due foto affiancate: la cosa più convincente che un mestiere possa mostrare.",
+    "es": "Dos fotos una al lado de la otra: lo más convincente que puede enseñar un oficio.",
+    "pt": "Duas fotografias lado a lado: o mais convincente que um ofício pode mostrar.",
+    "nl": "Twee foto's naast elkaar, het overtuigendste wat een vakman kan laten zien.",
+    "sv": "Två bilder bredvid varandra — det mest övertygande ett hantverk kan visa.",
+    "tr": "Yan yana iki fotoğraf: bir ustanın gösterebileceği en ikna edici şey."
+  },
+  "Where you work, so people know before they call whether you come to them.": {
+    "sq": "Ku punoni, që ta dinë para se të telefonojnë nëse shkoni te ata.",
+    "de": "Wo Sie arbeiten, damit man vor dem Anruf weiß, ob Sie herauskommen.",
+    "fr": "Où vous intervenez, pour qu'on sache avant d'appeler si vous vous déplacez.",
+    "it": "Dove lavori, così si sa prima di chiamare se ti sposti da loro.",
+    "es": "Dónde trabajas, para que sepan antes de llamar si vas hasta ellos.",
+    "pt": "Onde trabalha, para saberem antes de ligar se vai ter com eles.",
+    "nl": "Waar je werkt, zodat men vóór het bellen weet of je langskomt.",
+    "sv": "Var du arbetar, så man vet innan man ringer om du kommer dit.",
+    "tr": "Nerede çalıştığınız; aramadan önce yanlarına gidip gitmediğinizi bilirler."
+  },
+  "Your packages beside each other, so the choice takes ten seconds to make.": {
+    "sq": "Paketat tuaja pranë njëra-tjetrës, që zgjedhja të bëhet për dhjetë sekonda.",
+    "de": "Ihre Pakete nebeneinander, damit die Wahl zehn Sekunden dauert.",
+    "fr": "Vos formules côte à côte, pour que le choix prenne dix secondes.",
+    "it": "I tuoi pacchetti uno accanto all'altro, così la scelta dura dieci secondi.",
+    "es": "Tus paquetes uno al lado del otro, para que elegir cueste diez segundos.",
+    "pt": "Os seus pacotes lado a lado, para escolher demorar dez segundos.",
+    "nl": "Je pakketten naast elkaar, zodat kiezen tien seconden kost.",
+    "sv": "Dina paket bredvid varandra, så valet tar tio sekunder.",
+    "tr": "Paketleriniz yan yana; seçim on saniye sürer."
+  },
+  "Bundled offers with what each one includes, priced and ready to book.": {
+    "sq": "Oferta të paketuara me çfarë përfshin secila, me çmim dhe gati për rezervim.",
+    "de": "Gebündelte Angebote mit dem, was jedes enthält — mit Preis und buchbar.",
+    "fr": "Des offres groupées avec ce que chacune comprend, chiffrées et réservables.",
+    "it": "Offerte in pacchetto con quel che include ciascuna, con prezzo e prenotabili.",
+    "es": "Ofertas agrupadas con lo que incluye cada una, con precio y listas para reservar.",
+    "pt": "Ofertas agrupadas com o que cada uma inclui, com preço e prontas a marcar.",
+    "nl": "Gebundelde aanbiedingen met wat er in zit, geprijsd en direct te boeken.",
+    "sv": "Paketerbjudanden med vad som ingår i varje, prissatta och bokningsbara.",
+    "tr": "Neleri kapsadığı yazılı paket teklifler; fiyatlı ve rezervasyona hazır."
+  },
+  "Dates, times and places for what is coming, with the past ones cleared away.": {
+    "sq": "Data, orare dhe vende për çfarë vjen, me të kaluarat të hequra.",
+    "de": "Termine, Zeiten und Orte für das, was kommt — Vergangenes verschwindet von selbst.",
+    "fr": "Dates, horaires et lieux de ce qui arrive, les passés étant retirés.",
+    "it": "Date, orari e luoghi di ciò che arriva, con i passati tolti di mezzo.",
+    "es": "Fechas, horas y lugares de lo que viene, con lo pasado ya retirado.",
+    "pt": "Datas, horas e locais do que aí vem, com os passados já retirados.",
+    "nl": "Data, tijden en plaatsen van wat eraan komt, met het verleden opgeruimd.",
+    "sv": "Datum, tider och platser för det som kommer, med det som varit bortplockat.",
+    "tr": "Yaklaşan etkinliklerin tarihi, saati ve yeri; geçmiş olanlar listeden düşer."
+  },
+  "A short notice at the top for holiday hours, a move, or anything urgent.": {
+    "sq": "Një njoftim i shkurtër lart për orar festash, zhvendosje ose diçka urgjente.",
+    "de": "Ein kurzer Hinweis oben für Feiertagszeiten, einen Umzug oder etwas Dringendes.",
+    "fr": "Un court avis en haut pour les horaires de fêtes, un déménagement ou une urgence.",
+    "it": "Un breve avviso in alto per orari festivi, un trasloco o qualcosa di urgente.",
+    "es": "Un aviso corto arriba para horarios festivos, una mudanza o algo urgente.",
+    "pt": "Um aviso curto no topo para horários de feriado, uma mudança ou algo urgente.",
+    "nl": "Een korte melding bovenaan voor feestdagen, een verhuizing of iets dringends.",
+    "sv": "En kort notis högst upp om helgtider, en flytt eller något brådskande.",
+    "tr": "Üstte kısa bir duyuru: tatil saatleri, taşınma ya da acil bir durum."
+  },
+  "A page built for one campaign, with nothing on it that distracts from the ask.": {
+    "sq": "Një faqe e ndërtuar për një fushatë, pa asgjë që largon vëmendjen nga kërkesa.",
+    "de": "Eine Seite für genau eine Kampagne, ohne alles, was vom Ziel ablenkt.",
+    "fr": "Une page faite pour une seule campagne, sans rien qui détourne de la demande.",
+    "it": "Una pagina fatta per una sola campagna, senza nulla che distragga dall'obiettivo.",
+    "es": "Una página hecha para una sola campaña, sin nada que distraiga del objetivo.",
+    "pt": "Uma página feita para uma só campanha, sem nada que distraia do objetivo.",
+    "nl": "Een pagina voor één campagne, zonder iets dat afleidt van de vraag.",
+    "sv": "En sida byggd för en enda kampanj, utan något som distraherar från frågan.",
+    "tr": "Tek bir kampanya için hazırlanmış, amacından uzaklaştıracak hiçbir şey içermeyen bir sayfa."
+  },
+  "A wrong link lands somewhere that looks like you and points the way back.": {
+    "sq": "Një lidhje e gabuar përfundon diku që ju ngjan dhe tregon rrugën e kthimit.",
+    "de": "Ein falscher Link landet auf einer Seite, die nach Ihnen aussieht und zurückführt.",
+    "fr": "Un mauvais lien arrive sur une page à votre image, qui indique le chemin du retour.",
+    "it": "Un link sbagliato finisce su una pagina che ti somiglia e indica la via del ritorno.",
+    "es": "Un enlace roto cae en una página con tu imagen que señala el camino de vuelta.",
+    "pt": "Um link errado cai numa página com a sua cara, que indica o caminho de volta.",
+    "nl": "Een verkeerde link komt uit op een pagina die van jou is en de weg terug wijst.",
+    "sv": "En trasig länk landar på en sida som ser ut som du och visar vägen tillbaka.",
+    "tr": "Hatalı bir bağlantı, size benzeyen ve geri dönüş yolunu gösteren bir sayfaya düşer."
+  },
+  "Your products with pictures, descriptions and prices, browsable without a shop.": {
+    "sq": "Produktet tuaja me foto, përshkrime dhe çmime, të shfletueshme pa dyqan.",
+    "de": "Ihre Produkte mit Bildern, Beschreibungen und Preisen — auch ohne Shop durchblätterbar.",
+    "fr": "Vos produits avec photos, descriptions et prix, consultables sans boutique.",
+    "it": "I tuoi prodotti con foto, descrizioni e prezzi, sfogliabili senza negozio.",
+    "es": "Tus productos con fotos, descripciones y precios, para ver sin tener tienda.",
+    "pt": "Os seus produtos com fotografias, descrições e preços, sem precisar de loja.",
+    "nl": "Je producten met foto's, omschrijvingen en prijzen, te bekijken zonder webshop.",
+    "sv": "Dina produkter med bilder, beskrivningar och priser, utan att ha en butik.",
+    "tr": "Ürünleriniz fotoğraf, açıklama ve fiyatla; mağaza olmadan göz atılabilir."
+  },
+  "A menu people can read on a phone: no pinching, no zooming, no PDF.": {
+    "sq": "Një meny që lexohet në telefon: pa zmadhim, pa zoom, pa PDF.",
+    "de": "Eine Karte, die man am Handy lesen kann: kein Zoomen, kein Ziehen, kein PDF.",
+    "fr": "Une carte lisible au téléphone : sans pincer, sans zoomer, sans PDF.",
+    "it": "Un menù leggibile dal telefono: niente pizzico, niente zoom, niente PDF.",
+    "es": "Una carta legible en el móvil: sin pellizcar, sin zoom y sin PDF.",
+    "pt": "Um menu legível no telemóvel: sem apertar, sem zoom, sem PDF.",
+    "nl": "Een menukaart die op een telefoon leesbaar is: geen knijpen, zoomen of PDF.",
+    "sv": "En meny som går att läsa i mobilen: inget nyp, ingen zoom, ingen PDF.",
+    "tr": "Telefonda okunabilen bir menü: yakınlaştırma yok, zum yok, PDF yok."
+  },
+  "Keep the menu you already print, shown neatly on the page and downloadable.": {
+    "sq": "Mbani menynë që tashmë e printoni, e paraqitur bukur në faqe dhe e shkarkueshme.",
+    "de": "Behalten Sie die gedruckte Karte — sauber auf der Seite gezeigt und herunterladbar.",
+    "fr": "Gardez la carte que vous imprimez déjà, affichée proprement et téléchargeable.",
+    "it": "Tieni il menù che già stampi, mostrato bene sulla pagina e scaricabile.",
+    "es": "Conserva la carta que ya imprimes, bien mostrada en la página y descargable.",
+    "pt": "Mantenha o menu que já imprime, bem mostrado na página e descarregável.",
+    "nl": "Houd de kaart die je al drukt, netjes op de pagina en te downloaden.",
+    "sv": "Behåll menyn du redan trycker, snyggt visad på sidan och nedladdningsbar.",
+    "tr": "Zaten bastırdığınız menü sayfada düzgün görünür ve indirilebilir."
+  },
+  "Your catalogue opens inside the page and can be saved, without leaving the site.": {
+    "sq": "Katalogu juaj hapet brenda faqes dhe mund të ruhet, pa dalë nga faqja.",
+    "de": "Ihr Katalog öffnet sich in der Seite und lässt sich speichern, ohne sie zu verlassen.",
+    "fr": "Votre catalogue s'ouvre dans la page et peut être enregistré, sans quitter le site.",
+    "it": "Il tuo catalogo si apre nella pagina e si può salvare, senza uscire dal sito.",
+    "es": "Tu catálogo se abre dentro de la página y se puede guardar sin salir de la web.",
+    "pt": "O seu catálogo abre dentro da página e pode ser guardado, sem sair do site.",
+    "nl": "Je catalogus opent in de pagina en is te bewaren, zonder de site te verlaten.",
+    "sv": "Din katalog öppnas i sidan och går att spara, utan att lämna webbplatsen.",
+    "tr": "Kataloğunuz sayfanın içinde açılır ve siteden çıkmadan kaydedilebilir."
+  },
+  "Price lists, forms, certificates — anything a visitor needs to take away.": {
+    "sq": "Lista çmimesh, formularë, certifikata — çdo gjë që vizitori merr me vete.",
+    "de": "Preislisten, Formulare, Zertifikate — alles, was ein Besucher mitnehmen soll.",
+    "fr": "Tarifs, formulaires, certificats — tout ce qu'un visiteur doit emporter.",
+    "it": "Listini, moduli, certificati — tutto ciò che un visitatore deve portarsi via.",
+    "es": "Tarifas, formularios, certificados: todo lo que un visitante necesite llevarse.",
+    "pt": "Tabelas de preços, formulários, certificados — tudo o que o visitante leva consigo.",
+    "nl": "Prijslijsten, formulieren, certificaten — alles wat een bezoeker mee moet nemen.",
+    "sv": "Prislistor, blanketter, intyg — allt en besökare behöver ta med sig.",
+    "tr": "Fiyat listeleri, formlar, sertifikalar — ziyaretçinin yanında götüreceği her şey."
+  },
+  "Your Google reviews on the page, keeping themselves up to date as new ones arrive.": {
+    "sq": "Vlerësimet tuaja në Google në faqe, që përditësohen vetë kur vijnë të reja.",
+    "de": "Ihre Google-Bewertungen auf der Seite, die sich mit jeder neuen selbst aktualisieren.",
+    "fr": "Vos avis Google sur la page, mis à jour tout seuls à chaque nouvel avis.",
+    "it": "Le tue recensioni Google sulla pagina, che si aggiornano da sole all'arrivo di nuove.",
+    "es": "Tus reseñas de Google en la página, actualizándose solas según llegan nuevas.",
+    "pt": "As suas avaliações do Google na página, atualizando-se sozinhas à medida que chegam.",
+    "nl": "Je Google-reviews op de pagina, die zichzelf bijwerken als er nieuwe komen.",
+    "sv": "Dina Google-omdömen på sidan, som uppdaterar sig själva när nya kommer.",
+    "tr": "Google yorumlarınız sayfada; yenileri geldikçe kendiliğinden güncellenir."
+  },
+  "The menu stays with you as you scroll, so the next step is always one tap away.": {
+    "sq": "Menyja qëndron me ju ndërsa lëvizni, që hapi tjetër të jetë gjithmonë një prekje larg.",
+    "de": "Das Menü bleibt beim Scrollen sichtbar, der nächste Schritt ist immer einen Tipp entfernt.",
+    "fr": "Le menu reste visible au défilement : l'étape suivante est toujours à un geste.",
+    "it": "Il menù resta con te mentre scorri, così il passo dopo è sempre a un tocco.",
+    "es": "El menú te acompaña al desplazarte, así el siguiente paso está a un toque.",
+    "pt": "O menu acompanha-o enquanto desce, por isso o passo seguinte está a um toque.",
+    "nl": "Het menu blijft staan terwijl je scrolt, dus de volgende stap is één tik ver.",
+    "sv": "Menyn följer med när du skrollar, så nästa steg är alltid ett tryck bort.",
+    "tr": "Menü siz kaydırırken de ekranda kalır; bir sonraki adım hep bir dokunuş uzakta."
+  },
+  "Call and directions pinned to the bottom of a phone screen, always in reach.": {
+    "sq": "Telefoni dhe drejtimet të fiksuara poshtë në ekranin e telefonit, gjithmonë afër.",
+    "de": "Anruf und Route unten am Handy-Bildschirm festgesetzt, immer in Reichweite.",
+    "fr": "Appel et itinéraire fixés en bas de l'écran du téléphone, toujours à portée.",
+    "it": "Chiamata e indicazioni fissate in fondo allo schermo del telefono, sempre a portata.",
+    "es": "Llamar y cómo llegar fijados abajo en el móvil, siempre al alcance.",
+    "pt": "Ligar e direções fixados no fundo do ecrã do telemóvel, sempre à mão.",
+    "nl": "Bellen en route vastgezet onderaan het telefoonscherm, altijd binnen bereik.",
+    "sv": "Ring och vägbeskrivning fästa längst ner i mobilen, alltid inom räckhåll.",
+    "tr": "Arama ve yol tarifi telefon ekranının altına sabitlenir; hep elinizin altında."
+  },
+  "One tap back to the top of a long page instead of a thumb-scroll marathon.": {
+    "sq": "Një prekje për t'u kthyer lart në një faqe të gjatë, pa maratonë me gisht.",
+    "de": "Ein Tipp zurück nach oben statt eines Daumen-Marathons auf langen Seiten.",
+    "fr": "Un geste pour revenir en haut d'une longue page, au lieu d'un marathon de pouce.",
+    "it": "Un tocco per tornare in cima a una pagina lunga, senza maratone di pollice.",
+    "es": "Un toque para volver arriba en una página larga, sin maratón de dedo.",
+    "pt": "Um toque para voltar ao topo de uma página longa, sem maratona de polegar.",
+    "nl": "Eén tik terug naar boven op een lange pagina, geen duimmarathon.",
+    "sv": "Ett tryck tillbaka till toppen av en lång sida i stället för ett tummarathon.",
+    "tr": "Uzun sayfada tek dokunuşla en üste dönüş; parmak maratonu yok."
+  },
+  "Tap a photo and it opens full size, with the rest of the set a swipe away.": {
+    "sq": "Prek një foto dhe hapet në madhësi të plotë, pjesa tjetër një rrëshqitje larg.",
+    "de": "Ein Tipp aufs Foto öffnet es groß, der Rest der Serie ist einen Wisch entfernt.",
+    "fr": "Une photo s'ouvre en grand d'un geste, le reste de la série à un glissement.",
+    "it": "Tocchi una foto e si apre a tutto schermo, il resto della serie a uno scorrimento.",
+    "es": "Tocas una foto y se abre a tamaño completo, el resto a un deslizamiento.",
+    "pt": "Toca numa fotografia e abre em tamanho real, o resto a um deslize.",
+    "nl": "Tik op een foto en hij opent groot, de rest is één veeg verder.",
+    "sv": "Tryck på ett foto så öppnas det i full storlek, resten ett svep bort.",
+    "tr": "Bir fotoğrafa dokununca tam boy açılır; gerisi bir kaydırma uzakta."
+  },
+  "Answers folded away until they are wanted, so the page stays short.": {
+    "sq": "Përgjigjet të palosura derisa duhen, që faqja të mbetet e shkurtër.",
+    "de": "Antworten bleiben eingeklappt, bis sie gebraucht werden — die Seite bleibt kurz.",
+    "fr": "Les réponses restent repliées jusqu'à ce qu'on les veuille : la page reste courte.",
+    "it": "Le risposte restano ripiegate finché non servono, così la pagina resta corta.",
+    "es": "Las respuestas quedan plegadas hasta que se quieren, y la página sigue corta.",
+    "pt": "As respostas ficam recolhidas até serem precisas, mantendo a página curta.",
+    "nl": "Antwoorden blijven ingeklapt tot ze nodig zijn, zo blijft de pagina kort.",
+    "sv": "Svaren är hopfällda tills de behövs, så sidan hålls kort.",
+    "tr": "Yanıtlar istenene kadar kapalı durur; sayfa kısa kalır."
+  },
+  "Sets of photos that swipe and group, for work that needs more than one picture.": {
+    "sq": "Grupe fotosh që rrëshqasin dhe grupohen, për punë që kërkon më shumë se një foto.",
+    "de": "Foto-Sets, die sich wischen und gruppieren lassen — für Arbeit, die ein Bild nicht fasst.",
+    "fr": "Des séries de photos qui se font glisser et se groupent, quand une image ne suffit pas.",
+    "it": "Serie di foto che scorrono e si raggruppano, per lavori che non stanno in una foto.",
+    "es": "Series de fotos que se deslizan y agrupan, para trabajos que no caben en una.",
+    "pt": "Conjuntos de fotografias que deslizam e se agrupam, quando uma não chega.",
+    "nl": "Fotosets die vegen en groeperen, voor werk waar één foto niet genoeg is.",
+    "sv": "Bildserier som sveps och grupperas, för arbete som inte ryms i en bild.",
+    "tr": "Kaydırılan ve gruplanan fotoğraf setleri; tek kareye sığmayan işler için."
+  },
+  "A video that plays inside the page, hosted so it starts quickly on a phone.": {
+    "sq": "Një video që luhet brenda faqes, e strehuar që të nisë shpejt në telefon.",
+    "de": "Ein Video, das in der Seite läuft und am Handy schnell startet.",
+    "fr": "Une vidéo qui se lit dans la page, hébergée pour démarrer vite au téléphone.",
+    "it": "Un video che parte dentro la pagina, ospitato per avviarsi in fretta da telefono.",
+    "es": "Un vídeo que se reproduce en la página, alojado para arrancar rápido en el móvil.",
+    "pt": "Um vídeo que toca dentro da página, alojado para arrancar depressa no telemóvel.",
+    "nl": "Een video die in de pagina speelt, gehost zodat hij snel start op een telefoon.",
+    "sv": "En video som spelas i sidan, driftad så att den startar snabbt i mobilen.",
+    "tr": "Sayfanın içinde oynayan, telefonda hızlı başlaması için barındırılmış bir video."
+  },
+  "Your channel or a single video embedded, without dragging the page down with it.": {
+    "sq": "Kanali juaj ose një video e vetme e vendosur, pa e rënduar faqen.",
+    "de": "Ihr Kanal oder ein einzelnes Video eingebunden, ohne die Seite auszubremsen.",
+    "fr": "Votre chaîne ou une seule vidéo intégrée, sans ralentir la page.",
+    "it": "Il tuo canale o un singolo video incorporato, senza appesantire la pagina.",
+    "es": "Tu canal o un solo vídeo insertado, sin frenar la página.",
+    "pt": "O seu canal ou um vídeo isolado embutido, sem travar a página.",
+    "nl": "Je kanaal of één video ingesloten, zonder de pagina mee te vertragen.",
+    "sv": "Din kanal eller en enskild video inbäddad, utan att tynga ner sidan.",
+    "tr": "Kanalınız ya da tek bir video gömülür; sayfayı yavaşlatmadan."
+  },
+  "A form that reaches your inbox, with spam protection you never have to think about.": {
+    "sq": "Një formular që vjen te email-i juaj, me mbrojtje nga spami që s'ju shqetëson.",
+    "de": "Ein Formular, das in Ihrem Postfach landet — mit Spamschutz, der einfach läuft.",
+    "fr": "Un formulaire qui arrive dans votre boîte, avec une protection anti-spam invisible.",
+    "it": "Un modulo che arriva nella tua casella, con un antispam a cui non devi pensare.",
+    "es": "Un formulario que llega a tu correo, con antispam del que no te enteras.",
+    "pt": "Um formulário que chega ao seu email, com antispam em que nunca pensa.",
+    "nl": "Een formulier dat in je inbox komt, met spamfilter waar je niets van merkt.",
+    "sv": "Ett formulär som når din inkorg, med skräppostskydd du aldrig behöver tänka på.",
+    "tr": "Gelen kutunuza ulaşan bir form; hiç uğraşmayacağınız spam korumasıyla."
+  },
+  "When your link is shared, it arrives with your picture, your title and your words.": {
+    "sq": "Kur lidhja juaj ndahet, vjen me foton, titullin dhe fjalët tuaja.",
+    "de": "Wird Ihr Link geteilt, kommt er mit Ihrem Bild, Ihrem Titel und Ihren Worten an.",
+    "fr": "Quand votre lien est partagé, il arrive avec votre image, votre titre et vos mots.",
+    "it": "Quando il tuo link viene condiviso, arriva con la tua immagine, il titolo e le tue parole.",
+    "es": "Cuando comparten tu enlace, llega con tu imagen, tu título y tus palabras.",
+    "pt": "Quando o seu link é partilhado, chega com a sua imagem, título e palavras.",
+    "nl": "Als je link gedeeld wordt, komt hij aan met jouw beeld, titel en woorden.",
+    "sv": "När din länk delas kommer den med din bild, din rubrik och dina ord.",
+    "tr": "Bağlantınız paylaşıldığında görselinizle, başlığınızla ve sözlerinizle görünür."
+  },
+  "Your mark in the browser tab, so your site is findable among twenty others.": {
+    "sq": "Shenja juaj në skedën e shfletuesit, që faqja të gjendet mes njëzet të tjerave.",
+    "de": "Ihr Zeichen im Browser-Tab, damit Ihre Seite zwischen zwanzig anderen auffindbar ist.",
+    "fr": "Votre marque dans l'onglet, pour retrouver votre site parmi vingt autres.",
+    "it": "Il tuo segno nella scheda del browser, per ritrovare il sito tra altri venti.",
+    "es": "Tu marca en la pestaña del navegador, para encontrar tu web entre otras veinte.",
+    "pt": "A sua marca no separador do navegador, para encontrar o site entre outros vinte.",
+    "nl": "Je merkteken in de browsertab, zodat je site tussen twintig andere opvalt.",
+    "sv": "Ditt märke i webbläsarfliken, så sidan går att hitta bland tjugo andra.",
+    "tr": "Tarayıcı sekmesinde işaretiniz; siteniz yirmi sekme arasında bulunur."
+  },
+  "Built for the phone first, because that is where nearly everyone will see it.": {
+    "sq": "Ndërtuar së pari për telefonin, sepse aty do ta shohin pothuajse të gjithë.",
+    "de": "Zuerst fürs Handy gebaut, weil fast alle die Seite genau dort sehen.",
+    "fr": "Conçu d'abord pour le téléphone, car c'est là que presque tout le monde le verra.",
+    "it": "Pensato prima per il telefono, perché è lì che lo vedranno quasi tutti.",
+    "es": "Hecho primero para el móvil, porque ahí lo verá casi todo el mundo.",
+    "pt": "Feito primeiro para o telemóvel, porque é aí que quase todos o vão ver.",
+    "nl": "Eerst voor de telefoon gebouwd, want daar ziet bijna iedereen het.",
+    "sv": "Byggd för mobilen först, för det är där nästan alla kommer att se den.",
+    "tr": "Önce telefon için yapıldı; çünkü neredeyse herkes orada görecek."
+  },
+
+  "All thirty-four, in every Full and Complete build.": {
+    "sq": "Të tridhjetë e katërta, në çdo ndërtim të Plotë dhe Komplet.",
+    "de": "Alle vierunddreißig, in jeder Kompletten Website und jedem Rundum-Paket.",
+    "fr": "Les trente-quatre, dans chaque site complet et chaque formule intégrale.",
+    "it": "Tutte e trentaquattro, in ogni Sito completo e Pacchetto completo.",
+    "es": "Las treinta y cuatro, en cada Web completa y Paquete completo.",
+    "pt": "As trinta e quatro, em cada Site completo e Pacote completo.",
+    "nl": "Alle vierendertig, in elke Volledige website en elk Compleet pakket.",
+    "sv": "Alla trettiofyra, i varje Komplett webbplats och Helhetspaket.",
+    "tr": "Otuz dördünün tamamı, her Tam Site ve Eksiksiz Paket yapımında."
+  },
+  "Tell us what the business does and we will say which of them belong on your website — including the ones you do not need. Nothing is charged for asking.": {
+    "sq": "Na thoni çfarë bën biznesi dhe ne ju themi cilat prej tyre i takojnë faqes suaj — përfshirë ato që nuk ju duhen. Pyetja nuk kushton asgjë.",
+    "de": "Sagen Sie uns, was das Unternehmen macht, und wir sagen Ihnen, welche davon auf Ihre Website gehören — auch, welche Sie nicht brauchen. Fragen kostet nichts.",
+    "fr": "Dites-nous ce que fait l'entreprise et nous vous dirons lesquels ont leur place sur votre site — y compris ceux dont vous n'avez pas besoin. Demander ne coûte rien.",
+    "it": "Dicci cosa fa l'attività e ti diremo quali di questi hanno senso sul tuo sito — compresi quelli che non ti servono. Chiedere non costa nulla.",
+    "es": "Cuéntanos a qué se dedica el negocio y te diremos cuáles encajan en tu web, incluidos los que no necesitas. Preguntar no cuesta nada.",
+    "pt": "Diga-nos o que o negócio faz e dizemos-lhe quais fazem sentido no seu site — incluindo os que não precisa. Perguntar não custa nada.",
+    "nl": "Vertel wat het bedrijf doet en wij zeggen welke hiervan op jouw website horen — ook welke niet. Vragen kost niets.",
+    "sv": "Berätta vad verksamheten gör så säger vi vilka av dem som hör hemma på din webbplats — även de du inte behöver. Att fråga kostar inget.",
+    "tr": "İşletmenin ne yaptığını anlatın, hangilerinin sitenize ait olduğunu söyleyelim — ihtiyacınız olmayanlar dahil. Sormanın bedeli yok."
+  },
+  "Send a project request": {
+    "sq": "Dërgo një kërkesë projekti", "de": "Projektanfrage senden", "fr": "Envoyer une demande de projet",
+    "it": "Invia una richiesta di progetto", "es": "Enviar una solicitud de proyecto",
+    "pt": "Enviar um pedido de projeto", "nl": "Projectaanvraag sturen",
+    "sv": "Skicka en projektförfrågan", "tr": "Proje talebi gönder"
+  },
+  "Compare the packages": {
+    "sq": "Krahasoni paketat", "de": "Pakete vergleichen", "fr": "Comparer les formules",
+    "it": "Confronta i pacchetti", "es": "Comparar los paquetes", "pt": "Comparar os pacotes",
+    "nl": "Vergelijk de pakketten", "sv": "Jämför paketen", "tr": "Paketleri karşılaştırın"
+  },
+  "A few of the 34 included": {
+    "sq": "Disa nga 34 të përfshirat", "de": "Einige der 34 enthaltenen",
+    "fr": "Quelques-uns des 34 compris", "it": "Alcune delle 34 incluse",
+    "es": "Algunas de las 34 incluidas", "pt": "Algumas das 34 incluídas",
+    "nl": "Een paar van de 34 inbegrepen", "sv": "Några av de 34 som ingår",
+    "tr": "Dahil olan 34 özellikten birkaçı"
+  },
+  "See all 34 features": {
+    "sq": "Shihni të 34 veçoritë", "de": "Alle 34 Funktionen ansehen",
+    "fr": "Voir les 34 fonctions", "it": "Vedi tutte le 34 funzioni",
+    "es": "Ver las 34 funciones", "pt": "Ver as 34 funcionalidades",
+    "nl": "Bekijk alle 34 functies", "sv": "Se alla 34 funktioner",
+    "tr": "34 özelliğin tümünü görün"
+  },
+  "Agree your price with us on Instagram.": {
+    "sq": "Merruni vesh për çmimin me ne në Instagram.",
+    "de": "Ihren Preis besprechen wir mit Ihnen auf Instagram.",
+    "fr": "Convenons de votre prix sur Instagram.",
+    "it": "Mettiamoci d'accordo sul prezzo su Instagram.",
+    "es": "Acordamos tu precio contigo en Instagram.",
+    "pt": "Combinamos o seu preço no Instagram.",
+    "nl": "Spreek je prijs met ons af op Instagram.",
+    "sv": "Kom överens om ditt pris med oss på Instagram.",
+    "tr": "Fiyatınızı bizimle Instagram'da konuşun."
+  }
+}

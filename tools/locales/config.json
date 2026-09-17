@@ -313,21 +313,21 @@
       }
     },
     {
-      "key": "start",
-      "source": "start.html",
+      "key": "features",
+      "source": "features.html",
       "priority": "0.8",
       "changefreq": "monthly",
       "slugs": {
-        "en": "start-project",
-        "sq": "fillo-projektin",
-        "de": "projekt-starten",
-        "fr": "demarrer-projet",
-        "it": "avvia-progetto",
-        "es": "empezar-proyecto",
-        "pt": "iniciar-projeto",
-        "nl": "project-starten",
-        "sv": "starta-projekt",
-        "tr": "proje-baslat"
+        "en": "features",
+        "sq": "vecorite",
+        "de": "funktionen",
+        "fr": "fonctionnalites",
+        "it": "funzionalita",
+        "es": "funciones",
+        "pt": "funcionalidades",
+        "nl": "functies",
+        "sv": "funktioner",
+        "tr": "ozellikler"
       }
     },
     {
@@ -440,6 +440,26 @@
         "free",
         "free-landing-page"
       ]
+    },
+    {
+      "_comment": "The project request lives on the home page form and the extras page now; the old start URLs point at the extras page.",
+      "slugs": {
+        "en": "start-project",
+        "sq": "fillo-projektin",
+        "de": "projekt-starten",
+        "fr": "demarrer-projet",
+        "it": "avvia-progetto",
+        "es": "empezar-proyecto",
+        "pt": "iniciar-projeto",
+        "nl": "project-starten",
+        "sv": "starta-projekt",
+        "tr": "proje-baslat"
+      },
+      "english_aliases": [
+        "start",
+        "start-project"
+      ],
+      "to": "services"
     }
   ]
 }

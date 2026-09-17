@@ -483,3 +483,39 @@ body.pr-page .pr-stage {
   #pricing .pr-cta { width: 100%; min-height: 44px; }
   #pricing .pr-badge { top: 1rem; right: 1.1rem; }
 }
+
+/* ── A few of the 34, on the two builds that include them all ──── */
+.pr-best { margin-top: 1rem; padding-top: 0.9rem; border-top: 1px solid rgb(var(--c-line)); }
+.pr-card--lead .pr-best { border-top-color: rgb(var(--c-paper) / 0.16); }
+.pr-best-l {
+  font-family: 'IBM Plex Mono', ui-monospace, monospace;
+  font-size: 0.625rem; letter-spacing: 0.14em; text-transform: uppercase;
+  color: rgb(var(--c-ink-soft));
+}
+.pr-card--lead .pr-best-l { color: rgb(var(--c-paper) / 0.62); }
+.pr-best-list { margin-top: 0.5rem; display: grid; gap: 0.3rem; }
+.pr-best-list li {
+  position: relative; padding-left: 0.85rem;
+  font-size: 0.8125rem; line-height: 1.35; color: rgb(var(--c-ink-mid));
+}
+.pr-card--lead .pr-best-list li { color: rgb(var(--c-paper) / 0.88); }
+.pr-best-list li::before {
+  content: ''; position: absolute; left: 0; top: 0.5em;
+  width: 4px; height: 4px; border-radius: 50%;
+  background: rgb(var(--c-accent));
+}
+.pr-card--lead .pr-best-list li::before { background: rgb(var(--c-paper)); }
+.pr-best-link {
+  display: inline-flex; align-items: center; gap: 0.35rem; margin-top: 0.75rem;
+  font-size: 0.8125rem; font-weight: 600; color: rgb(var(--c-accent-text));
+  text-decoration: underline; text-underline-offset: 4px;
+}
+.pr-card--lead .pr-best-link { color: rgb(var(--c-paper)); }
+.pr-best-link span { transition: transform 180ms ease; }
+.pr-best-link:hover span { transform: translateX(3px); }
+
+/* the landing page keeps its short comparison, so the extra block
+   stays out of the four-line list rule above */
+@media (min-width: 1024px) {
+  #pricing .pr-best-list li { font-size: 0.78125rem; }
+}

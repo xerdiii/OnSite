@@ -45,6 +45,11 @@
       'display:flex;flex-wrap:wrap;gap:1rem 1.5rem;align-items:center;justify-content:space-between}' +
     '.ft-base p{font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:0.6875rem;' +
       'letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.5)}' +
+    '.ft-social{display:inline-flex;align-items:center;gap:0.55rem;' +
+      'font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:0.75rem;letter-spacing:0.08em;' +
+      'color:rgba(255,255,255,0.72);text-decoration:none;transition:color 180ms ease}' +
+    '.ft-social svg{width:18px;height:18px;display:block}' +
+    '.ft-social:hover{color:#FFFFFF}' +
     '.ft-btn{background:none;border:0;padding:0;font:inherit;font-size:0.875rem;' +
       'color:rgba(255,255,255,0.78);cursor:pointer;text-align:left}' +
     '.ft-btn:hover{color:#FFFFFF}' +
@@ -106,7 +111,7 @@
         '<div>' +
           '<p class="ft-label">Get started</p>' +
           '<div class="ft-contact">' +
-            '<a href="start.html">Start a project</a>' +
+            '<a href="extras.html">Start a project</a>' +
             '<a href="pricing.html">Packages &amp; prices</a>' +
             '<a href="extras.html">Extras &amp; add-ons</a>' +
             '<a href="contact.html">Contact</a>' +
@@ -117,7 +122,9 @@
       '</div>' +
 
       '<div class="ft-base">' +
-                '<p>We agree every price with you before any payment.</p>' +
+        '<a class="ft-social" href="https://instagram.com/xovahweb" target="_blank" rel="me noopener noreferrer">' +
+          IG + '<span>@xovahweb</span>' +
+        '</a>' +
       '</div>' +
     '</div>' +
     '<div class="ft-word" aria-hidden="true">' +
@@ -129,6 +136,14 @@
       '</div>' +
     '</div>';
   }
+
+  /* Instagram, drawn rather than fetched: one more file for one 20px
+     glyph is not a trade worth making. */
+  var IG = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" ' +
+    'stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' +
+    '<rect x="3" y="3" width="18" height="18" rx="5"/>' +
+    '<circle cx="12" cy="12" r="4"/>' +
+    '<circle cx="17.4" cy="6.6" r="1.1" fill="currentColor" stroke="none"/></svg>';
 
   function mount() {
     var slot = doc.querySelector('[data-site-footer]');

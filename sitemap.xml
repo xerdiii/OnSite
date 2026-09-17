@@ -482,162 +482,162 @@
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://www.xovahweb.com/en/start-project</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://www.xovahweb.com/en/start-project"/>
-    <xhtml:link rel="alternate" hreflang="sq" href="https://www.xovahweb.com/sq/fillo-projektin"/>
-    <xhtml:link rel="alternate" hreflang="de" href="https://www.xovahweb.com/de/projekt-starten"/>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://www.xovahweb.com/fr/demarrer-projet"/>
-    <xhtml:link rel="alternate" hreflang="it" href="https://www.xovahweb.com/it/avvia-progetto"/>
-    <xhtml:link rel="alternate" hreflang="es" href="https://www.xovahweb.com/es/empezar-proyecto"/>
-    <xhtml:link rel="alternate" hreflang="pt" href="https://www.xovahweb.com/pt/iniciar-projeto"/>
-    <xhtml:link rel="alternate" hreflang="nl" href="https://www.xovahweb.com/nl/project-starten"/>
-    <xhtml:link rel="alternate" hreflang="sv" href="https://www.xovahweb.com/sv/starta-projekt"/>
-    <xhtml:link rel="alternate" hreflang="tr" href="https://www.xovahweb.com/tr/proje-baslat"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.xovahweb.com/en/start-project"/>
+    <loc>https://www.xovahweb.com/en/features</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.xovahweb.com/en/features"/>
+    <xhtml:link rel="alternate" hreflang="sq" href="https://www.xovahweb.com/sq/vecorite"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.xovahweb.com/de/funktionen"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.xovahweb.com/fr/fonctionnalites"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://www.xovahweb.com/it/funzionalita"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.xovahweb.com/es/funciones"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://www.xovahweb.com/pt/funcionalidades"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://www.xovahweb.com/nl/functies"/>
+    <xhtml:link rel="alternate" hreflang="sv" href="https://www.xovahweb.com/sv/funktioner"/>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://www.xovahweb.com/tr/ozellikler"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.xovahweb.com/en/features"/>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.xovahweb.com/sq/fillo-projektin</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://www.xovahweb.com/en/start-project"/>
-    <xhtml:link rel="alternate" hreflang="sq" href="https://www.xovahweb.com/sq/fillo-projektin"/>
-    <xhtml:link rel="alternate" hreflang="de" href="https://www.xovahweb.com/de/projekt-starten"/>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://www.xovahweb.com/fr/demarrer-projet"/>
-    <xhtml:link rel="alternate" hreflang="it" href="https://www.xovahweb.com/it/avvia-progetto"/>
-    <xhtml:link rel="alternate" hreflang="es" href="https://www.xovahweb.com/es/empezar-proyecto"/>
-    <xhtml:link rel="alternate" hreflang="pt" href="https://www.xovahweb.com/pt/iniciar-projeto"/>
-    <xhtml:link rel="alternate" hreflang="nl" href="https://www.xovahweb.com/nl/project-starten"/>
-    <xhtml:link rel="alternate" hreflang="sv" href="https://www.xovahweb.com/sv/starta-projekt"/>
-    <xhtml:link rel="alternate" hreflang="tr" href="https://www.xovahweb.com/tr/proje-baslat"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.xovahweb.com/en/start-project"/>
+    <loc>https://www.xovahweb.com/sq/vecorite</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.xovahweb.com/en/features"/>
+    <xhtml:link rel="alternate" hreflang="sq" href="https://www.xovahweb.com/sq/vecorite"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.xovahweb.com/de/funktionen"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.xovahweb.com/fr/fonctionnalites"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://www.xovahweb.com/it/funzionalita"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.xovahweb.com/es/funciones"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://www.xovahweb.com/pt/funcionalidades"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://www.xovahweb.com/nl/functies"/>
+    <xhtml:link rel="alternate" hreflang="sv" href="https://www.xovahweb.com/sv/funktioner"/>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://www.xovahweb.com/tr/ozellikler"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.xovahweb.com/en/features"/>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.xovahweb.com/de/projekt-starten</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://www.xovahweb.com/en/start-project"/>
-    <xhtml:link rel="alternate" hreflang="sq" href="https://www.xovahweb.com/sq/fillo-projektin"/>
-    <xhtml:link rel="alternate" hreflang="de" href="https://www.xovahweb.com/de/projekt-starten"/>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://www.xovahweb.com/fr/demarrer-projet"/>
-    <xhtml:link rel="alternate" hreflang="it" href="https://www.xovahweb.com/it/avvia-progetto"/>
-    <xhtml:link rel="alternate" hreflang="es" href="https://www.xovahweb.com/es/empezar-proyecto"/>
-    <xhtml:link rel="alternate" hreflang="pt" href="https://www.xovahweb.com/pt/iniciar-projeto"/>
-    <xhtml:link rel="alternate" hreflang="nl" href="https://www.xovahweb.com/nl/project-starten"/>
-    <xhtml:link rel="alternate" hreflang="sv" href="https://www.xovahweb.com/sv/starta-projekt"/>
-    <xhtml:link rel="alternate" hreflang="tr" href="https://www.xovahweb.com/tr/proje-baslat"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.xovahweb.com/en/start-project"/>
+    <loc>https://www.xovahweb.com/de/funktionen</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.xovahweb.com/en/features"/>
+    <xhtml:link rel="alternate" hreflang="sq" href="https://www.xovahweb.com/sq/vecorite"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.xovahweb.com/de/funktionen"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.xovahweb.com/fr/fonctionnalites"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://www.xovahweb.com/it/funzionalita"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.xovahweb.com/es/funciones"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://www.xovahweb.com/pt/funcionalidades"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://www.xovahweb.com/nl/functies"/>
+    <xhtml:link rel="alternate" hreflang="sv" href="https://www.xovahweb.com/sv/funktioner"/>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://www.xovahweb.com/tr/ozellikler"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.xovahweb.com/en/features"/>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.xovahweb.com/fr/demarrer-projet</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://www.xovahweb.com/en/start-project"/>
-    <xhtml:link rel="alternate" hreflang="sq" href="https://www.xovahweb.com/sq/fillo-projektin"/>
-    <xhtml:link rel="alternate" hreflang="de" href="https://www.xovahweb.com/de/projekt-starten"/>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://www.xovahweb.com/fr/demarrer-projet"/>
-    <xhtml:link rel="alternate" hreflang="it" href="https://www.xovahweb.com/it/avvia-progetto"/>
-    <xhtml:link rel="alternate" hreflang="es" href="https://www.xovahweb.com/es/empezar-proyecto"/>
-    <xhtml:link rel="alternate" hreflang="pt" href="https://www.xovahweb.com/pt/iniciar-projeto"/>
-    <xhtml:link rel="alternate" hreflang="nl" href="https://www.xovahweb.com/nl/project-starten"/>
-    <xhtml:link rel="alternate" hreflang="sv" href="https://www.xovahweb.com/sv/starta-projekt"/>
-    <xhtml:link rel="alternate" hreflang="tr" href="https://www.xovahweb.com/tr/proje-baslat"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.xovahweb.com/en/start-project"/>
+    <loc>https://www.xovahweb.com/fr/fonctionnalites</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.xovahweb.com/en/features"/>
+    <xhtml:link rel="alternate" hreflang="sq" href="https://www.xovahweb.com/sq/vecorite"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.xovahweb.com/de/funktionen"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.xovahweb.com/fr/fonctionnalites"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://www.xovahweb.com/it/funzionalita"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.xovahweb.com/es/funciones"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://www.xovahweb.com/pt/funcionalidades"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://www.xovahweb.com/nl/functies"/>
+    <xhtml:link rel="alternate" hreflang="sv" href="https://www.xovahweb.com/sv/funktioner"/>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://www.xovahweb.com/tr/ozellikler"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.xovahweb.com/en/features"/>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.xovahweb.com/it/avvia-progetto</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://www.xovahweb.com/en/start-project"/>
-    <xhtml:link rel="alternate" hreflang="sq" href="https://www.xovahweb.com/sq/fillo-projektin"/>
-    <xhtml:link rel="alternate" hreflang="de" href="https://www.xovahweb.com/de/projekt-starten"/>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://www.xovahweb.com/fr/demarrer-projet"/>
-    <xhtml:link rel="alternate" hreflang="it" href="https://www.xovahweb.com/it/avvia-progetto"/>
-    <xhtml:link rel="alternate" hreflang="es" href="https://www.xovahweb.com/es/empezar-proyecto"/>
-    <xhtml:link rel="alternate" hreflang="pt" href="https://www.xovahweb.com/pt/iniciar-projeto"/>
-    <xhtml:link rel="alternate" hreflang="nl" href="https://www.xovahweb.com/nl/project-starten"/>
-    <xhtml:link rel="alternate" hreflang="sv" href="https://www.xovahweb.com/sv/starta-projekt"/>
-    <xhtml:link rel="alternate" hreflang="tr" href="https://www.xovahweb.com/tr/proje-baslat"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.xovahweb.com/en/start-project"/>
+    <loc>https://www.xovahweb.com/it/funzionalita</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.xovahweb.com/en/features"/>
+    <xhtml:link rel="alternate" hreflang="sq" href="https://www.xovahweb.com/sq/vecorite"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.xovahweb.com/de/funktionen"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.xovahweb.com/fr/fonctionnalites"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://www.xovahweb.com/it/funzionalita"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.xovahweb.com/es/funciones"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://www.xovahweb.com/pt/funcionalidades"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://www.xovahweb.com/nl/functies"/>
+    <xhtml:link rel="alternate" hreflang="sv" href="https://www.xovahweb.com/sv/funktioner"/>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://www.xovahweb.com/tr/ozellikler"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.xovahweb.com/en/features"/>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.xovahweb.com/es/empezar-proyecto</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://www.xovahweb.com/en/start-project"/>
-    <xhtml:link rel="alternate" hreflang="sq" href="https://www.xovahweb.com/sq/fillo-projektin"/>
-    <xhtml:link rel="alternate" hreflang="de" href="https://www.xovahweb.com/de/projekt-starten"/>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://www.xovahweb.com/fr/demarrer-projet"/>
-    <xhtml:link rel="alternate" hreflang="it" href="https://www.xovahweb.com/it/avvia-progetto"/>
-    <xhtml:link rel="alternate" hreflang="es" href="https://www.xovahweb.com/es/empezar-proyecto"/>
-    <xhtml:link rel="alternate" hreflang="pt" href="https://www.xovahweb.com/pt/iniciar-projeto"/>
-    <xhtml:link rel="alternate" hreflang="nl" href="https://www.xovahweb.com/nl/project-starten"/>
-    <xhtml:link rel="alternate" hreflang="sv" href="https://www.xovahweb.com/sv/starta-projekt"/>
-    <xhtml:link rel="alternate" hreflang="tr" href="https://www.xovahweb.com/tr/proje-baslat"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.xovahweb.com/en/start-project"/>
+    <loc>https://www.xovahweb.com/es/funciones</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.xovahweb.com/en/features"/>
+    <xhtml:link rel="alternate" hreflang="sq" href="https://www.xovahweb.com/sq/vecorite"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.xovahweb.com/de/funktionen"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.xovahweb.com/fr/fonctionnalites"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://www.xovahweb.com/it/funzionalita"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.xovahweb.com/es/funciones"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://www.xovahweb.com/pt/funcionalidades"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://www.xovahweb.com/nl/functies"/>
+    <xhtml:link rel="alternate" hreflang="sv" href="https://www.xovahweb.com/sv/funktioner"/>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://www.xovahweb.com/tr/ozellikler"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.xovahweb.com/en/features"/>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.xovahweb.com/pt/iniciar-projeto</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://www.xovahweb.com/en/start-project"/>
-    <xhtml:link rel="alternate" hreflang="sq" href="https://www.xovahweb.com/sq/fillo-projektin"/>
-    <xhtml:link rel="alternate" hreflang="de" href="https://www.xovahweb.com/de/projekt-starten"/>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://www.xovahweb.com/fr/demarrer-projet"/>
-    <xhtml:link rel="alternate" hreflang="it" href="https://www.xovahweb.com/it/avvia-progetto"/>
-    <xhtml:link rel="alternate" hreflang="es" href="https://www.xovahweb.com/es/empezar-proyecto"/>
-    <xhtml:link rel="alternate" hreflang="pt" href="https://www.xovahweb.com/pt/iniciar-projeto"/>
-    <xhtml:link rel="alternate" hreflang="nl" href="https://www.xovahweb.com/nl/project-starten"/>
-    <xhtml:link rel="alternate" hreflang="sv" href="https://www.xovahweb.com/sv/starta-projekt"/>
-    <xhtml:link rel="alternate" hreflang="tr" href="https://www.xovahweb.com/tr/proje-baslat"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.xovahweb.com/en/start-project"/>
+    <loc>https://www.xovahweb.com/pt/funcionalidades</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.xovahweb.com/en/features"/>
+    <xhtml:link rel="alternate" hreflang="sq" href="https://www.xovahweb.com/sq/vecorite"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.xovahweb.com/de/funktionen"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.xovahweb.com/fr/fonctionnalites"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://www.xovahweb.com/it/funzionalita"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.xovahweb.com/es/funciones"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://www.xovahweb.com/pt/funcionalidades"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://www.xovahweb.com/nl/functies"/>
+    <xhtml:link rel="alternate" hreflang="sv" href="https://www.xovahweb.com/sv/funktioner"/>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://www.xovahweb.com/tr/ozellikler"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.xovahweb.com/en/features"/>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.xovahweb.com/nl/project-starten</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://www.xovahweb.com/en/start-project"/>
-    <xhtml:link rel="alternate" hreflang="sq" href="https://www.xovahweb.com/sq/fillo-projektin"/>
-    <xhtml:link rel="alternate" hreflang="de" href="https://www.xovahweb.com/de/projekt-starten"/>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://www.xovahweb.com/fr/demarrer-projet"/>
-    <xhtml:link rel="alternate" hreflang="it" href="https://www.xovahweb.com/it/avvia-progetto"/>
-    <xhtml:link rel="alternate" hreflang="es" href="https://www.xovahweb.com/es/empezar-proyecto"/>
-    <xhtml:link rel="alternate" hreflang="pt" href="https://www.xovahweb.com/pt/iniciar-projeto"/>
-    <xhtml:link rel="alternate" hreflang="nl" href="https://www.xovahweb.com/nl/project-starten"/>
-    <xhtml:link rel="alternate" hreflang="sv" href="https://www.xovahweb.com/sv/starta-projekt"/>
-    <xhtml:link rel="alternate" hreflang="tr" href="https://www.xovahweb.com/tr/proje-baslat"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.xovahweb.com/en/start-project"/>
+    <loc>https://www.xovahweb.com/nl/functies</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.xovahweb.com/en/features"/>
+    <xhtml:link rel="alternate" hreflang="sq" href="https://www.xovahweb.com/sq/vecorite"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.xovahweb.com/de/funktionen"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.xovahweb.com/fr/fonctionnalites"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://www.xovahweb.com/it/funzionalita"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.xovahweb.com/es/funciones"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://www.xovahweb.com/pt/funcionalidades"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://www.xovahweb.com/nl/functies"/>
+    <xhtml:link rel="alternate" hreflang="sv" href="https://www.xovahweb.com/sv/funktioner"/>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://www.xovahweb.com/tr/ozellikler"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.xovahweb.com/en/features"/>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.xovahweb.com/sv/starta-projekt</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://www.xovahweb.com/en/start-project"/>
-    <xhtml:link rel="alternate" hreflang="sq" href="https://www.xovahweb.com/sq/fillo-projektin"/>
-    <xhtml:link rel="alternate" hreflang="de" href="https://www.xovahweb.com/de/projekt-starten"/>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://www.xovahweb.com/fr/demarrer-projet"/>
-    <xhtml:link rel="alternate" hreflang="it" href="https://www.xovahweb.com/it/avvia-progetto"/>
-    <xhtml:link rel="alternate" hreflang="es" href="https://www.xovahweb.com/es/empezar-proyecto"/>
-    <xhtml:link rel="alternate" hreflang="pt" href="https://www.xovahweb.com/pt/iniciar-projeto"/>
-    <xhtml:link rel="alternate" hreflang="nl" href="https://www.xovahweb.com/nl/project-starten"/>
-    <xhtml:link rel="alternate" hreflang="sv" href="https://www.xovahweb.com/sv/starta-projekt"/>
-    <xhtml:link rel="alternate" hreflang="tr" href="https://www.xovahweb.com/tr/proje-baslat"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.xovahweb.com/en/start-project"/>
+    <loc>https://www.xovahweb.com/sv/funktioner</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.xovahweb.com/en/features"/>
+    <xhtml:link rel="alternate" hreflang="sq" href="https://www.xovahweb.com/sq/vecorite"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.xovahweb.com/de/funktionen"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.xovahweb.com/fr/fonctionnalites"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://www.xovahweb.com/it/funzionalita"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.xovahweb.com/es/funciones"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://www.xovahweb.com/pt/funcionalidades"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://www.xovahweb.com/nl/functies"/>
+    <xhtml:link rel="alternate" hreflang="sv" href="https://www.xovahweb.com/sv/funktioner"/>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://www.xovahweb.com/tr/ozellikler"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.xovahweb.com/en/features"/>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.xovahweb.com/tr/proje-baslat</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://www.xovahweb.com/en/start-project"/>
-    <xhtml:link rel="alternate" hreflang="sq" href="https://www.xovahweb.com/sq/fillo-projektin"/>
-    <xhtml:link rel="alternate" hreflang="de" href="https://www.xovahweb.com/de/projekt-starten"/>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://www.xovahweb.com/fr/demarrer-projet"/>
-    <xhtml:link rel="alternate" hreflang="it" href="https://www.xovahweb.com/it/avvia-progetto"/>
-    <xhtml:link rel="alternate" hreflang="es" href="https://www.xovahweb.com/es/empezar-proyecto"/>
-    <xhtml:link rel="alternate" hreflang="pt" href="https://www.xovahweb.com/pt/iniciar-projeto"/>
-    <xhtml:link rel="alternate" hreflang="nl" href="https://www.xovahweb.com/nl/project-starten"/>
-    <xhtml:link rel="alternate" hreflang="sv" href="https://www.xovahweb.com/sv/starta-projekt"/>
-    <xhtml:link rel="alternate" hreflang="tr" href="https://www.xovahweb.com/tr/proje-baslat"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.xovahweb.com/en/start-project"/>
+    <loc>https://www.xovahweb.com/tr/ozellikler</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.xovahweb.com/en/features"/>
+    <xhtml:link rel="alternate" hreflang="sq" href="https://www.xovahweb.com/sq/vecorite"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.xovahweb.com/de/funktionen"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.xovahweb.com/fr/fonctionnalites"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://www.xovahweb.com/it/funzionalita"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.xovahweb.com/es/funciones"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://www.xovahweb.com/pt/funcionalidades"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://www.xovahweb.com/nl/functies"/>
+    <xhtml:link rel="alternate" hreflang="sv" href="https://www.xovahweb.com/sv/funktioner"/>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://www.xovahweb.com/tr/ozellikler"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.xovahweb.com/en/features"/>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>

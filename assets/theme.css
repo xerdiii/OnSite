@@ -377,3 +377,7 @@ h1.doc-title {
   :root { --shell: 84rem; }
   .max-w-shell { max-width: 84rem; }
 }
+
+/* the Instagram band reads as one line of type, not as a link in a wall */
+.ig-line { color: inherit; text-decoration: none; }
+.ig-line:hover { text-decoration: underline; text-underline-offset: 0.12em; text-decoration-thickness: 2px; }
