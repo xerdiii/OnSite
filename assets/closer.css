@@ -71,21 +71,21 @@
   position: absolute; inset: 0; z-index: 1; pointer-events: none;
   background:
     linear-gradient(97deg,
-      rgb(10 9 10 / 0.82) 0%,
-      rgb(10 9 10 / 0.76) 34%,
-      rgb(10 9 10 / 0.46) 62%,
-      rgb(10 9 10 / 0.38) 78%,
-      rgb(10 9 10 / 0.54) 100%),
+      rgb(10 9 10 / 0.62) 0%,
+      rgb(10 9 10 / 0.54) 34%,
+      rgb(10 9 10 / 0.26) 62%,
+      rgb(10 9 10 / 0.18) 78%,
+      rgb(10 9 10 / 0.34) 100%),
     linear-gradient(180deg,
-      rgb(10 9 10 / 0.34) 0%,
-      rgb(10 9 10 / 0.06) 22%,
-      rgb(10 9 10 / 0.12) 48%,
-      rgb(10 9 10 / 0.62) 78%,
-      rgb(10 9 10 / 0.74) 100%),
+      rgb(10 9 10 / 0.22) 0%,
+      rgb(10 9 10 / 0.04) 22%,
+      rgb(10 9 10 / 0.08) 48%,
+      rgb(10 9 10 / 0.44) 78%,
+      rgb(10 9 10 / 0.58) 100%),
     radial-gradient(128% 96% at 52% 46%,
-      rgb(0 0 0 / 0) 42%,
-      rgb(0 0 0 / 0.30) 86%,
-      rgb(0 0 0 / 0.44) 100%);
+      rgb(0 0 0 / 0) 46%,
+      rgb(0 0 0 / 0.20) 86%,
+      rgb(0 0 0 / 0.30) 100%);
 }
 
 .closer.grain::before { z-index: 2; opacity: 0.1; }
@@ -151,9 +151,12 @@
 
 .closer-h {
   margin: 1.5rem 0 0;
-  font-family: 'Instrument Serif', 'Iowan Old Style', Georgia, 'Times New Roman', serif;
+  /* the same face as every other section heading on the site */
+  font-family: 'Outfit', 'Inter', 'Helvetica Neue', Arial, sans-serif;
   font-weight: 400;
-  font-size: clamp(2.6rem, 5.2vw, 4rem);
+  font-variation-settings: 'wght' 584;
+  letter-spacing: -0.06em;
+  font-size: clamp(2.6rem, 5.4vw, 4.2rem);
   line-height: 1.0;
   letter-spacing: -0.024em;
   color: #FFFFFF;
@@ -247,4 +250,10 @@
   .closer .closer-media video { transition: none; }
   .closer-cta { transition: none; }
   .closer-cta:hover { transform: none; }
+}
+
+/* With less wash over the film, the words carry their own contrast
+   rather than borrowing it from a darker overlay. */
+.closer-h, .closer-p, .closer-price, .closer-eyebrow, .closer-note {
+  text-shadow: 0 1px 2px rgb(0 0 0 / 0.45), 0 8px 30px rgb(0 0 0 / 0.35);
 }
