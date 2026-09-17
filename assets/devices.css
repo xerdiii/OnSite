@@ -1,12 +1,17 @@
 /* ───────────────────────────────────────────────────────────────
    Xovah — device mockups in the home page extras section
-   An iPhone 17 Pro Max beside the text on a wide screen, a Mac under it
-   on a phone, both running the same "Fast Email Sender" app screen. All
+   A large iPhone beside the text on a wide screen, a MacBook under it on
+   a phone, both running the same "Start your project" request form. All
    of it is HTML and CSS: no images, sharp at any size.
 
-   The app screen sizes itself from the width of whichever screen it is
-   in (container query units), so one block of markup fills a narrow
-   phone and a wide monitor alike.
+   The form sizes itself from the width of whichever screen it is in
+   (container query units), so one block of markup fills a tall phone and
+   a wide laptop alike.
+
+   Motion lives in assets/extras.js: it sets --dv-y / --dv-r as the
+   section scrolls, adds .is-armed then .is-in for the card entrances, and
+   moves .is-on between options. Without it (or with reduced motion) the
+   form simply shows, fully filled in.
 
    edge.css puts the site's small radius on every element with !important;
    the rules below that need real device curves are scoped under #extras,
@@ -16,14 +21,14 @@
 /* ── Layout: which device, and where the extra button goes ─────── */
 #extras .dv { position: relative; }
 #extras .dv-phone { display: none; }
-#extras .dv-mac { display: block; }
+#extras .dv-book { display: block; }
 .or-build--side { display: none; }
 .or-build--below { display: inline-flex; }
 
 @media (min-width: 1024px) {
-  #extras .dv { position: sticky; top: 6rem; }
+  #extras .dv-copy, #extras .dv-col { align-self: center; }
   #extras .dv-phone { display: block; }
-  #extras .dv-mac { display: none; }
+  #extras .dv-book { display: none; }
   .or-build--side { display: inline-flex; }
   .or-build--below { display: none; }
 }
@@ -42,193 +47,294 @@
 .or-build:hover span { transform: translateX(3px); }
 .or-build--below { width: 100%; }
 
-/* ── iPhone 17 Pro Max ─────────────────────────────────────────── */
+/* ── The stage: glow, floor shadow, scroll drift, slow breathing ── */
+#extras .dv-stage {
+  position: relative; isolation: isolate;
+  transform: translate3d(0, var(--dv-y, 0px), 0) rotate(var(--dv-r, 0deg));
+  will-change: transform;
+}
+/* a very soft red light behind the device */
+#extras .dv-stage::before {
+  content: ''; position: absolute; z-index: -2; left: 50%; top: 50%;
+  width: 118%; height: 78%; transform: translate(-50%, -50%);
+  background:
+    radial-gradient(closest-side, rgb(var(--c-accent) / 0.3), rgb(var(--c-accent) / 0.1) 55%, transparent 100%);
+  filter: blur(34px);
+  pointer-events: none;
+}
+/* the shadow it casts on the floor */
+#extras .dv-stage::after {
+  content: ''; position: absolute; z-index: -1; left: 50%; bottom: -4%;
+  width: 66%; height: 7%; transform: translateX(-50%);
+  background: radial-gradient(closest-side, rgb(0 0 0 / 0.55), transparent);
+  filter: blur(10px);
+  pointer-events: none;
+}
+#extras .dv-phone, #extras .dv-book { animation: dv-breathe 9s ease-in-out infinite; }
+@keyframes dv-breathe {
+  0%, 100% { transform: translate3d(0, 0, 0); }
+  50%      { transform: translate3d(0, -9px, 0); }
+}
+
+/* ── iPhone ────────────────────────────────────────────────────── */
 #extras .dv-phone {
   position: relative;
-  width: min(272px, 100%); aspect-ratio: 776 / 1634; margin: 0 auto;
-  padding: 9px;
-  border-radius: 46px !important;
-  background: linear-gradient(150deg, #43464c 0%, #1c1d20 34%, #2c2e33 62%, #121315 100%);
+  width: min(372px, 100%); aspect-ratio: 776 / 1634; margin: 0 auto;
+  padding: 11px;
+  border-radius: 60px !important;
+  /* brushed titanium: bright rails at the edges, darker across the back */
+  background:
+    linear-gradient(90deg, #17181b 0%, #5d6067 1.4%, #2a2c30 3.6%, #1c1d20 50%, #2a2c30 96.4%, #5d6067 98.6%, #17181b 100%);
   box-shadow:
-    inset 0 0 0 1px rgb(255 255 255 / 0.10),
-    0 0 0 1.5px #0a0a0b,
-    0 50px 90px -40px rgb(0 0 0 / 0.75),
-    0 0 90px -20px rgb(var(--c-accent) / 0.28);
+    inset 0 1px 0 rgb(255 255 255 / 0.22),
+    inset 0 0 0 1px rgb(255 255 255 / 0.08),
+    0 0 0 1.5px #09090a,
+    0 2px 3px rgb(0 0 0 / 0.4),
+    0 40px 60px -30px rgb(0 0 0 / 0.7),
+    0 90px 140px -60px rgb(0 0 0 / 0.85);
+}
+@media (min-width: 1280px) {
+  /* reach a little past the column, toward the middle of the section */
+  #extras .dv-stage { margin-left: -9%; }
 }
 #extras .dv-phone-glass {
-  height: 100%; padding: 3px; background: #000;
-  border-radius: 38px !important; overflow: hidden;
+  height: 100%; padding: 4px; background: #000;
+  border-radius: 50px !important; overflow: hidden;
+  box-shadow: inset 0 0 0 1px rgb(255 255 255 / 0.05);
 }
 #extras .dv-phone-screen {
   position: relative; height: 100%; overflow: hidden;
-  border-radius: 35px !important;
-  background: radial-gradient(120% 60% at 50% 0%, #1a1418 0%, #0d0f12 55%);
+  border-radius: 46px !important;
+  background: radial-gradient(130% 55% at 50% -6%, #22151a 0%, #101114 52%, #0c0d0f 100%);
   container-type: inline-size;
   display: flex; flex-direction: column;
 }
-/* a faint reflection across the glass */
+/* the glass: one soft diagonal reflection, faint enough to read through */
 #extras .dv-phone-screen::after {
-  content: ''; position: absolute; inset: 0; pointer-events: none;
-  background: linear-gradient(115deg, rgb(255 255 255 / 0.06) 0%, rgb(255 255 255 / 0) 38%);
+  content: ''; position: absolute; inset: 0; pointer-events: none; z-index: 3;
+  background:
+    linear-gradient(118deg, rgb(255 255 255 / 0.075) 0%, rgb(255 255 255 / 0.02) 30%, rgb(255 255 255 / 0) 31%),
+    linear-gradient(180deg, rgb(255 255 255 / 0.025), transparent 18%);
 }
 #extras .dv-island {
-  position: absolute; left: 50%; top: 2.6%; transform: translateX(-50%);
-  width: 31%; height: 3.4%; background: #000;
+  position: absolute; left: 50%; top: 3.1cqw; transform: translateX(-50%); z-index: 2;
+  width: 30%; height: 8.6cqw; background: #000;
   border-radius: 999px !important;
 }
 #extras .dv-status {
   display: flex; align-items: center; justify-content: space-between;
-  padding: 6.2cqw 8cqw 0; height: 15cqw; flex: none;
-  font: 600 4.6cqw/1 Inter, system-ui, sans-serif; color: #f4f5f7;
+  padding: 4.6cqw 8.5cqw 0 10cqw; height: 15.5cqw; flex: none;
+  font: 600 4.1cqw/1 Inter, system-ui, sans-serif; color: #f4f5f7;
 }
-#extras .dv-status i { display: inline-flex; gap: 1.2cqw; align-items: center; }
-#extras .dv-status i b { display: block; width: 1.3cqw; background: #f4f5f7; border-radius: 0.4cqw !important; }
-#extras .dv-status i b:nth-child(1) { height: 1.8cqw; }
-#extras .dv-status i b:nth-child(2) { height: 2.6cqw; }
-#extras .dv-status i b:nth-child(3) { height: 3.4cqw; }
+#extras .dv-status i { display: inline-flex; gap: 1cqw; align-items: flex-end; }
+#extras .dv-status i b { display: block; width: 1.1cqw; background: #f4f5f7; border-radius: 0.4cqw !important; }
+#extras .dv-status i b:nth-child(1) { height: 1.6cqw; }
+#extras .dv-status i b:nth-child(2) { height: 2.3cqw; }
+#extras .dv-status i b:nth-child(3) { height: 3cqw; }
 #extras .dv-status i em {
-  display: block; width: 6.4cqw; height: 3.2cqw; margin-left: 1.2cqw;
-  border: 1px solid rgb(244 245 247 / 0.6); border-radius: 1cqw !important;
-  background: linear-gradient(90deg, #f4f5f7 70%, transparent 70%) content-box; padding: 0.5cqw;
+  display: block; width: 6cqw; height: 2.9cqw; margin-left: 1.3cqw;
+  border: 1px solid rgb(244 245 247 / 0.55); border-radius: 0.9cqw !important;
+  background: linear-gradient(90deg, #f4f5f7 78%, transparent 78%) content-box; padding: 0.45cqw;
 }
 /* side buttons: action + volume on the left, power and camera control on the right */
 #extras .dv-key {
-  position: absolute; width: 3px; background: linear-gradient(90deg, #2a2c30, #4a4d53);
+  position: absolute; width: 3px; background: linear-gradient(90deg, #26282c, #54575d);
   border-radius: 2px !important;
 }
-#extras .dv-key--action { left: -3px; top: 18%; height: 5.5%; }
-#extras .dv-key--up     { left: -3px; top: 26%; height: 9%; }
-#extras .dv-key--down   { left: -3px; top: 37%; height: 9%; }
-#extras .dv-key--power  { right: -3px; top: 29%; height: 13%; }
-#extras .dv-key--cam    { right: -3px; top: 55%; height: 7%; }
+#extras .dv-key--action { left: -3px; top: 17%; height: 4.5%; }
+#extras .dv-key--up     { left: -3px; top: 24.5%; height: 8%; }
+#extras .dv-key--down   { left: -3px; top: 34.5%; height: 8%; }
+#extras .dv-key--power  { right: -3px; top: 27%; height: 12%; }
+#extras .dv-key--cam    { right: -2px; top: 53%; height: 6.5%; width: 2px; }
 
-/* ── Mac (iMac-style display) ──────────────────────────────────── */
-#extras .dv-mac { width: 100%; max-width: 560px; margin: 0 auto; }
-#extras .dv-mac-display {
-  padding: 2.4% 2.4% 0;
-  border-radius: 14px 14px 0 0 !important;
-  background: linear-gradient(180deg, #e3e5e9, #cfd2d7);
-  box-shadow: 0 30px 70px -35px rgb(0 0 0 / 0.7), 0 0 80px -25px rgb(var(--c-accent) / 0.25);
+/* ── MacBook ───────────────────────────────────────────────────── */
+#extras .dv-book { position: relative; width: 100%; max-width: 620px; margin: 0 auto; padding-bottom: 2px; }
+#extras .dv-book-lid {
+  position: relative; margin: 0 6.5%;
+  padding: 2.3% 2.3% 2.9%;
+  background: #050506;
+  border-radius: 18px 18px 5px 5px !important;
+  /* a thin aluminium rim around the black glass bezel */
+  box-shadow:
+    inset 0 0 0 1px rgb(255 255 255 / 0.05),
+    0 0 0 1.5px #3b3d42,
+    0 0 0 2.5px #151618;
 }
-#extras .dv-mac-screen {
-  aspect-ratio: 16 / 10; overflow: hidden;
-  border: 5px solid #0b0b0c; border-bottom: 0;
-  border-radius: 7px 7px 0 0 !important;
-  background: #0d0f12;
+#extras .dv-book-notch {
+  position: absolute; left: 50%; top: 2.1%; transform: translateX(-50%); z-index: 2;
+  width: 12%; height: 5.2%; background: #050506;
+  border-radius: 0 0 6px 6px !important;
+}
+#extras .dv-book-screen {
+  position: relative; aspect-ratio: 16 / 10.2; overflow: hidden;
+  border-radius: 5px 5px 0 0 !important;
+  background: radial-gradient(90% 70% at 50% -10%, #20151a 0%, #0f1013 55%, #0c0d0f 100%);
   container-type: inline-size;
   display: flex; flex-direction: column;
 }
-#extras .dv-mac-bar {
-  flex: none; display: flex; align-items: center; gap: 1cqw;
-  height: 5.4cqw; padding: 0 2cqw;
-  background: #15181d; border-bottom: 1px solid rgb(255 255 255 / 0.06);
-  font: 500 1.9cqw/1 Inter, system-ui, sans-serif; color: #8b93a1;
+#extras .dv-book-screen::after {
+  content: ''; position: absolute; inset: 0; pointer-events: none; z-index: 3;
+  background: linear-gradient(122deg, rgb(255 255 255 / 0.06) 0%, rgb(255 255 255 / 0.015) 36%, rgb(255 255 255 / 0) 37%);
 }
-#extras .dv-mac-bar i { width: 1.5cqw; height: 1.5cqw; border-radius: 50% !important; }
-#extras .dv-mac-bar i:nth-child(1) { background: #ff5f57; }
-#extras .dv-mac-bar i:nth-child(2) { background: #febc2e; }
-#extras .dv-mac-bar i:nth-child(3) { background: #28c840; }
-#extras .dv-mac-bar span { margin: 0 auto; transform: translateX(-3cqw); }
-#extras .dv-mac-chin {
-  height: 34px;
-  border-radius: 0 0 14px 14px !important;
-  background: linear-gradient(180deg, #d4d6db, #bec1c7);
+#extras .dv-book-bar {
+  flex: none; display: flex; align-items: center; gap: 0.9cqw;
+  height: 5.6cqw; padding: 0 2cqw;
+  background: #121317; border-bottom: 1px solid rgb(255 255 255 / 0.06);
+  font: 500 1.55cqw/1 Inter, system-ui, sans-serif; color: #8b8f98;
 }
-#extras .dv-mac-stand {
-  width: 24%; height: 54px; margin: 0 auto;
-  background: linear-gradient(90deg, #a2a6ac, #dcdfe3 50%, #a2a6ac);
-  clip-path: polygon(10% 0, 90% 0, 100% 100%, 0 100%);
+#extras .dv-book-bar i { width: 1.2cqw; height: 1.2cqw; border-radius: 50% !important; background: #34363c; }
+#extras .dv-book-bar span {
+  margin-left: 2cqw;
+  padding: 0.7cqw 4cqw 0.7cqw 1.6cqw; background: #1b1d22; border-radius: 0.8cqw !important;
 }
-#extras .dv-mac-foot {
-  width: 34%; height: 7px; margin: 0 auto;
-  border-radius: 0 0 8px 8px !important;
-  background: linear-gradient(180deg, #c8cbd0, #a9adb3);
+/* the deck: wider than the lid, with the thumb scoop in the front edge */
+#extras .dv-book-base {
+  position: relative; height: 0; padding-bottom: 3.4%;
+  background: linear-gradient(180deg, #4b4e54 0%, #2a2c31 22%, #1a1b1f 70%, #0d0e10 100%);
+  border-radius: 3px 3px 22px 22px / 3px 3px 100% 100% !important;
+  box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.22), 0 24px 40px -22px rgb(0 0 0 / 0.8);
+}
+#extras .dv-book-base::before {
+  content: ''; position: absolute; left: 50%; top: 0; transform: translateX(-50%);
+  width: 15%; height: 38%;
+  background: linear-gradient(180deg, #121316, #26282d);
+  border-radius: 0 0 10px 10px !important;
 }
 
-/* ── Fast Email Sender, the app on both screens ────────────────── */
-#extras .fes {
-  flex: 1; min-height: 0; display: grid; grid-template-columns: 1fr;
-  font-family: Inter, system-ui, sans-serif; color: #f2f3f5;
-  font-size: 4cqw; line-height: 1.25;
+/* ── The request form, on both screens ─────────────────────────── */
+#extras .rq {
+  position: relative; flex: 1; min-height: 0;
+  display: flex; flex-direction: column; gap: 3.4cqw;
+  padding: 1.5cqw 5.4cqw 6.4cqw;
+  font-family: Inter, system-ui, sans-serif; color: #f3f4f6;
+  font-size: 3.8cqw; line-height: 1.3;
+  cursor: default; user-select: none;
 }
-#extras .dv-mac-screen .fes { grid-template-columns: 26% 1fr; font-size: 2cqw; }
-
-#extras .fes-side { display: none; }
-#extras .dv-mac-screen .fes-side {
-  display: block; padding: 2.4cqw 1.8cqw;
-  background: #11141a; border-right: 1px solid rgb(255 255 255 / 0.06);
+#extras .rq-head { display: flex; align-items: center; justify-content: space-between; }
+#extras .rq-brand {
+  display: inline-flex; align-items: center; gap: 0.45em;
+  font-size: 0.8em; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase;
 }
-#extras .fes-logo { display: flex; align-items: center; gap: 0.5em; font-weight: 700; letter-spacing: -0.01em; }
-#extras .fes-logo svg { width: 1.25em; height: 1.25em; flex: none; color: rgb(var(--c-accent)); }
-#extras .fes-nav { margin-top: 1.4em; display: grid; gap: 0.2em; }
-#extras .fes-nav span { padding: 0.55em 0.7em; color: #8b93a1; border-radius: 0.5em !important; }
-#extras .fes-nav span.is-on { color: #fff; background: rgb(var(--c-accent) / 0.16); }
-
-#extras .fes-main { min-width: 0; padding: 2em 1.4em 1.4em; display: flex; flex-direction: column; gap: 0.95em; overflow: hidden; }
-#extras .dv-mac-screen .fes-main { padding: 2cqw 2.6cqw; gap: 0.62em; }
-#extras .fes-top { display: flex; align-items: center; justify-content: space-between; }
-#extras .dv-mac-screen .fes-top .fes-logo { visibility: hidden; }
-#extras .fes-avatar {
-  display: grid; place-items: center; width: 2.2em; height: 2.2em; flex: none;
-  background: linear-gradient(135deg, rgb(var(--c-accent)), #7a1016); color: #fff;
-  font-size: 0.8em; font-weight: 700; border-radius: 50% !important;
+#extras .rq-brand::before {
+  content: ''; width: 0.5em; height: 0.5em; background: rgb(var(--c-accent));
+  border-radius: 50% !important; box-shadow: 0 0 0.8em rgb(var(--c-accent) / 0.8);
 }
-#extras .fes-k { font-size: 0.75em; letter-spacing: 0.14em; text-transform: uppercase; color: #8b93a1; }
-#extras .fes-title { margin-top: -0.55em; font-size: 1.35em; font-weight: 700; letter-spacing: -0.02em; }
-
-#extras .fes-card {
-  background: #161a20; border: 1px solid rgb(255 255 255 / 0.07);
-  border-radius: 0.9em !important; padding: 0.85em 0.95em;
+#extras .rq-step { font-size: 0.78em; color: #8a8e97; font-variant-numeric: tabular-nums; }
+#extras .rq-bar {
+  height: 0.22em; margin-top: -0.35em; overflow: hidden;
+  background: rgb(255 255 255 / 0.07); border-radius: 999px !important;
 }
-#extras .fes-field { display: flex; justify-content: space-between; gap: 0.8em; padding: 0.35em 0; }
-#extras .fes-field + .fes-field { border-top: 1px solid rgb(255 255 255 / 0.06); }
-#extras .fes-field span { color: #8b93a1; }
-#extras .fes-field b { font-weight: 600; text-align: right; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-
-#extras .fes-progress-top { display: flex; justify-content: space-between; align-items: baseline; }
-#extras .fes-progress-top span { color: #8b93a1; }
-#extras .fes-progress-top b { font-size: 1.2em; font-weight: 700; }
-#extras .fes-track {
-  position: relative; height: 0.55em; margin: 0.6em 0 0.5em; overflow: hidden;
-  background: rgb(255 255 255 / 0.08); border-radius: 999px !important;
-}
-#extras .fes-track i {
-  position: absolute; inset: 0 25% 0 0; overflow: hidden;
-  background: linear-gradient(90deg, #b3121c, rgb(var(--c-accent)) 60%, #ff5a61);
+#extras .rq-bar i {
+  display: block; height: 100%; width: var(--rq-fill, 50%);
+  background: linear-gradient(90deg, #9e1119, rgb(var(--c-accent)));
   border-radius: 999px !important;
+  transition: width 900ms cubic-bezier(0.22, 0.7, 0.2, 1);
 }
-/* a light passes along the bar: the send is in progress */
-#extras .fes-track i::after {
-  content: ''; position: absolute; top: 0; bottom: 0; width: 40%;
-  background: linear-gradient(90deg, rgb(255 255 255 / 0), rgb(255 255 255 / 0.55), rgb(255 255 255 / 0));
-  animation: fes-run 2.2s ease-in-out infinite;
-}
-@keyframes fes-run { from { left: -40%; } to { left: 110%; } }
-#extras .fes-progress-s { font-size: 0.85em; color: #8b93a1; }
 
-#extras .fes-list { display: grid; gap: 0.1em; }
-#extras .fes-list li { display: flex; align-items: center; gap: 0.6em; padding: 0.45em 0; font-size: 0.92em; }
-#extras .fes-list li + li { border-top: 1px solid rgb(255 255 255 / 0.05); }
-#extras .fes-ok {
-  display: grid; place-items: center; width: 1.35em; height: 1.35em; flex: none;
-  background: rgb(62 207 142 / 0.15); color: #3ecf8e; border-radius: 50% !important;
-}
-#extras .fes-ok svg { width: 0.8em; height: 0.8em; }
-#extras .fes-list em { margin-left: auto; font-style: normal; color: #3ecf8e; font-size: 0.9em; }
-/* a monitor is wide but short: one delivered row is enough, or the send
-   button falls off the bottom of the screen on a narrow phone */
-#extras .dv-mac-screen .fes-list li:nth-child(n+2) { display: none; }
+#extras .rq-intro { padding: 0.5em 0 0.15em; }
+#extras .rq-title { font-size: 1.72em; font-weight: 700; letter-spacing: -0.03em; line-height: 1.1; }
+#extras .rq-sub { margin-top: 0.35em; color: #9a9ea7; font-size: 0.92em; }
 
-#extras .fes-send {
-  margin-top: auto; display: flex; align-items: center; justify-content: center; gap: 0.5em;
-  padding: 0.9em; background: rgb(var(--c-accent)); color: #fff;
-  font-weight: 700; border-radius: 0.9em !important;
-  box-shadow: 0 0.6em 1.6em -0.6em rgb(var(--c-accent) / 0.8);
+#extras .rq-grid { display: flex; flex-direction: column; gap: 2.9cqw; }
+#extras .rq-card {
+  padding: 1.1em 1em 1.15em;
+  background: linear-gradient(180deg, rgb(255 255 255 / 0.045), rgb(255 255 255 / 0.02));
+  border: 1px solid rgb(255 255 255 / 0.07);
+  border-radius: 1.05em !important;
+  box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.03);
 }
-#extras .fes-send svg { width: 1.05em; height: 1.05em; }
-#extras .dv-mac-screen .fes-send { align-self: flex-start; padding: 0.7em 1.4em; margin-top: 0.2em; }
+#extras .rq-q {
+  font-size: 0.66em; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: #9a9ea7;
+}
+#extras .rq-q em { margin-left: 0.4em; font-style: normal; font-weight: 500; letter-spacing: 0.04em; text-transform: none; color: #62666e; }
+#extras .rq-opts { display: grid; gap: 0.42em; margin-top: 0.8em; }
+#extras .rq-opts--3 { grid-template-columns: repeat(3, 1fr); }
+#extras .rq-opts--4 { grid-template-columns: repeat(4, 1fr); }
+#extras .rq-opt {
+  position: relative; display: flex; align-items: center; justify-content: center;
+  min-width: 0; padding: 0.76em 0.2em;
+  font-size: 0.84em; font-weight: 500; white-space: nowrap; color: #b9bcc3;
+  background: rgb(255 255 255 / 0.03);
+  border: 1px solid rgb(255 255 255 / 0.08);
+  border-radius: 0.72em !important;
+  cursor: pointer;
+  transition:
+    color 420ms ease, background-color 520ms ease, border-color 520ms ease,
+    box-shadow 520ms ease, transform 260ms cubic-bezier(0.3, 0.7, 0.3, 1);
+}
+#extras .rq-opts--4 .rq-opt { font-size: 0.78em; }
+#extras .rq-opt:hover { color: #e6e7ea; border-color: rgb(255 255 255 / 0.16); }
+#extras .rq-opt.is-on {
+  color: #fff; font-weight: 600;
+  background: rgb(var(--c-accent) / 0.13);
+  border-color: rgb(var(--c-accent) / 0.62);
+  box-shadow: 0 0 0 0.2em rgb(var(--c-accent) / 0.08), 0 0.35em 1em -0.5em rgb(var(--c-accent) / 0.55);
+}
+#extras .rq-opt.is-tap { transform: scale(0.96); }
+
+#extras .rq-field {
+  display: flex; align-items: center; margin-top: 0.7em; padding: 0.7em 0.8em;
+  font-size: 0.86em; color: #d9dbe0;
+  background: rgb(0 0 0 / 0.25); border: 1px solid rgb(255 255 255 / 0.07);
+  border-radius: 0.72em !important;
+}
+#extras .rq-caret {
+  width: 1px; height: 1.1em; margin-left: 1px; background: rgb(var(--c-accent));
+  animation: rq-blink 1.1s steps(1) infinite;
+}
+@keyframes rq-blink { 50% { opacity: 0; } }
+
+#extras .rq-go {
+  margin-top: auto; display: flex; align-items: center; justify-content: center; gap: 0.45em;
+  padding: 0.95em; color: #fff; font-weight: 600; font-size: 0.98em;
+  background: linear-gradient(180deg, rgb(255 255 255 / 0.1), rgb(255 255 255 / 0) 60%), rgb(var(--c-accent));
+  border-radius: 999px !important;
+  box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.2), 0 0.7em 1.8em -0.7em rgb(var(--c-accent) / 0.85);
+}
+#extras .rq-go span { transition: transform 600ms ease; }
+#extras .dv.is-done .rq-go span { transform: translateX(0.2em); }
+
+/* the laptop is wide and short: cards two by two, note and button side by side */
+#extras .dv-book-screen .rq {
+  display: grid; grid-template-columns: 1fr auto; align-content: start;
+  column-gap: 1.6cqw; row-gap: 1.35cqw;
+  padding: 1.7cqw 3.6cqw 2.4cqw;
+  font-size: 2.05cqw;
+}
+#extras .dv-book-screen .rq-head,
+#extras .dv-book-screen .rq-bar,
+#extras .dv-book-screen .rq-intro,
+#extras .dv-book-screen .rq-grid { grid-column: 1 / -1; }
+#extras .dv-book-screen .rq-bar { margin-top: -0.35em; }
+#extras .dv-book-screen .rq-intro { padding: 0.2em 0 0; }
+#extras .dv-book-screen .rq-title { font-size: 1.55em; }
+#extras .dv-book-screen .rq-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.35cqw; }
+#extras .dv-book-screen .rq-card { padding: 0.8em 0.8em 0.85em; }
+#extras .dv-book-screen .rq-opts { margin-top: 0.6em; gap: 0.35em; }
+#extras .dv-book-screen .rq-opt { padding: 0.6em 0.1em; }
+#extras .dv-book-screen .rq-note { display: flex; align-items: center; gap: 0.9em; padding: 0.45em 0.45em 0.45em 0.9em; }
+#extras .dv-book-screen .rq-note .rq-q { flex: none; }
+#extras .dv-book-screen .rq-note .rq-q em { display: none; }
+#extras .dv-book-screen .rq-field { flex: 1; min-width: 0; margin-top: 0; padding: 0.55em 0.7em; }
+#extras .dv-book-screen .rq-go { margin-top: 0; align-self: stretch; padding: 0 2.2em; }
+
+/* ── Entrances: set up by extras.js only, so nothing hides without it ── */
+#extras .dv.is-armed .dv-stage { opacity: 0; transform: translate3d(0, calc(var(--dv-y, 0px) + 28px), 0); }
+#extras .dv.is-armed.is-in .dv-stage {
+  opacity: 1; transform: translate3d(0, var(--dv-y, 0px), 0) rotate(var(--dv-r, 0deg));
+  transition: opacity 1400ms ease, transform 1600ms cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+#extras .dv.is-armed.is-settled .dv-stage { transition: none; }
+#extras .dv.is-armed .rq-in { opacity: 0; transform: translate3d(0, 0.7em, 0); }
+#extras .dv.is-armed.is-in .rq-in {
+  opacity: 1; transform: none;
+  transition: opacity 900ms ease, transform 1100ms cubic-bezier(0.2, 0.7, 0.2, 1);
+  transition-delay: calc(500ms + var(--i, 0) * 120ms);
+}
 
 @media (prefers-reduced-motion: reduce) {
-  #extras .fes-track i::after { animation: none; display: none; }
+  #extras .dv-phone, #extras .dv-book, #extras .rq-caret { animation: none; }
+  #extras .dv-stage { transform: none; }
+  #extras .rq-opt, #extras .rq-bar i, #extras .rq-go span { transition: none; }
   .or-build, .or-build span { transition: none; }
 }
