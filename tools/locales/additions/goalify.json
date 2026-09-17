@@ -1,0 +1,50 @@
+{
+  "_comment": "The Goalify card in the portfolio slider. 'Goalify' is a business name and stays as it is everywhere, so it is in _untranslatable.txt rather than here.",
+
+  "Goalify": {},
+
+  "Homepage of Goalify, the savings and budgeting web app built by Xovahweb": {
+    "sq": "Faqja kryesore e Goalify, aplikacioni për kursime dhe buxhet i ndërtuar nga Xovahweb",
+    "de": "Startseite von Goalify, der von Xovahweb gebauten Web-App fürs Sparen und Budgetieren",
+    "fr": "Page d'accueil de Goalify, l'application d'épargne et de budget réalisée par Xovahweb",
+    "it": "Homepage di Goalify, la web app per risparmio e budget realizzata da Xovahweb",
+    "es": "Página de inicio de Goalify, la web app de ahorro y presupuesto creada por Xovahweb",
+    "pt": "Página inicial da Goalify, a web app de poupança e orçamento criada pela Xovahweb",
+    "nl": "Homepage van Goalify, de spaar- en budget-webapp gebouwd door Xovahweb",
+    "sv": "Startsidan för Goalify, spar- och budgetappen byggd av Xovahweb",
+    "tr": "Xovahweb tarafından geliştirilen tasarruf ve bütçe uygulaması Goalify'ın ana sayfası"
+  },
+  "Web app · Saving and budgeting": {
+    "sq": "Aplikacion web · Kursime dhe buxhet",
+    "de": "Web-App · Sparen und Budget",
+    "fr": "Application web · Épargne et budget",
+    "it": "Web app · Risparmio e budget",
+    "es": "Web app · Ahorro y presupuesto",
+    "pt": "Web app · Poupança e orçamento",
+    "nl": "Webapp · Sparen en budget",
+    "sv": "Webbapp · Sparande och budget",
+    "tr": "Web uygulaması · Tasarruf ve bütçe"
+  },
+  "A savings app people actually keep using: goals with a real date, spending logged in seconds, streaks that hold the habit together, in six languages.": {
+    "sq": "Një aplikacion kursimesh që njerëzit vazhdojnë ta përdorin: objektiva me një datë të vërtetë, shpenzime të shënuara për sekonda, seri që e mbajnë zakonin gjallë, në gjashtë gjuhë.",
+    "de": "Eine Spar-App, die man wirklich weiter benutzt: Ziele mit einem echten Datum, Ausgaben in Sekunden erfasst, Serien, die die Gewohnheit zusammenhalten — in sechs Sprachen.",
+    "fr": "Une appli d'épargne qu'on continue vraiment d'utiliser : des objectifs avec une date réelle, des dépenses notées en quelques secondes, des séries qui tiennent l'habitude, en six langues.",
+    "it": "Un'app di risparmio che si continua davvero a usare: obiettivi con una data reale, spese registrate in pochi secondi, serie che tengono insieme l'abitudine, in sei lingue.",
+    "es": "Una app de ahorro que la gente sigue usando de verdad: objetivos con una fecha real, gastos anotados en segundos, rachas que sostienen el hábito, en seis idiomas.",
+    "pt": "Uma app de poupança que as pessoas continuam mesmo a usar: objetivos com uma data real, despesas registadas em segundos, sequências que seguram o hábito, em seis línguas.",
+    "nl": "Een spaar-app die mensen echt blijven gebruiken: doelen met een echte datum, uitgaven in seconden genoteerd, reeksen die de gewoonte vasthouden, in zes talen.",
+    "sv": "En sparapp som folk faktiskt fortsätter använda: mål med ett riktigt datum, utgifter loggade på sekunder, serier som håller ihop vanan, på sex språk.",
+    "tr": "İnsanların gerçekten kullanmayı sürdürdüğü bir tasarruf uygulaması: gerçek tarihli hedefler, saniyeler içinde kaydedilen harcamalar, alışkanlığı ayakta tutan seriler ve altı dil."
+  },
+  "Visit goalify.online": {
+    "sq": "Vizito goalify.online",
+    "de": "goalify.online besuchen",
+    "fr": "Voir goalify.online",
+    "it": "Visita goalify.online",
+    "es": "Visitar goalify.online",
+    "pt": "Visitar goalify.online",
+    "nl": "Bekijk goalify.online",
+    "sv": "Besök goalify.online",
+    "tr": "goalify.online adresini ziyaret edin"
+  }
+}

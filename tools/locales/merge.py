@@ -99,7 +99,11 @@ def main():
             for english, by_lang in batch.items():
                 if english.startswith('_') or not isinstance(by_lang, dict):
                     continue
-                if by_lang.get(code):
+                if not by_lang:
+                    # an empty entry means the string stays English everywhere:
+                    # a business name, an address, a URL
+                    untranslatable.add(english)
+                elif by_lang.get(code):
                     d[english] = by_lang[code]
         write(code, d)
         added_total += len(d) - before
