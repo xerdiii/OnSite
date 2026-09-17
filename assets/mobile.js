@@ -68,6 +68,11 @@
     drawer.setAttribute('aria-modal', 'true');
     drawer.setAttribute('aria-label', 'Menu');
     drawer.innerHTML =
+      /* The two shapes that open it: the accent one sweeps out from the
+         button first, the dark one follows, and the gap between their
+         edges is the curve. Decorative, so hidden from screen readers. */
+      '<span class="m-drawer-blob m-drawer-blob--accent" aria-hidden="true"></span>' +
+      '<span class="m-drawer-blob m-drawer-blob--ink" aria-hidden="true"></span>' +
       '<div class="m-drawer-head">' +
         '<span class="flex items-center gap-2.5">' +
           '<span style="display:block;width:14px;height:14px;border-radius:3px;background:rgb(var(--c-accent))"></span>' +
@@ -78,7 +83,8 @@
       '<div class="m-drawer-body">' +
         LINKS.map(function (l, i) {
           var active = key(l.href.split('#')[0]) === here;
-          return '<a class="m-drawer-link" href="' + l.href + '" style="animation-delay:' + (i * 35) + 'ms">' +
+          /* the links wait for the shape to be on its way, then arrive one at a time */
+          return '<a class="m-drawer-link" href="' + l.href + '" style="animation-delay:' + (240 + i * 55) + 'ms">' +
             l.label + '<span>' + (active ? '•' : '→') + '</span></a>';
         }).join('') +
         '<a class="m-drawer-cta" href="start.html">Build My Website</a>' +

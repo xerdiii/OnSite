@@ -26,7 +26,7 @@
   'use strict';
 
   var doc = global.document;
-  var CLOSE_MS = 320;          // must clear the panel transition in hero.css
+  var CLOSE_MS = 680;          // must clear the longest close transition in hero.css
 
   function init() {
     var menu = doc.querySelector('[data-menu]');
