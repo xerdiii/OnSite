@@ -1,117 +1,129 @@
 /* ───────────────────────────────────────────────────────────────
-   Xovah — motion for the device in the home page extras section
+   Xovah — the project request in the home page extras section
    (markup in index.html #extras, styles in assets/devices.css)
 
-   - the device drifts a few pixels and tilts a fraction of a degree as
-     the section scrolls past, eased so it never tracks the wheel exactly
-   - the form cards come in one after another the first time it is seen
-   - the answers fill in one at a time, and a click on any option moves
-     the selection there; the progress bar follows
-
-   With reduced motion none of this runs and the form shows filled in.
+   Step 1: four questions, each needs an answer.
+   Step 2: name and email (both needed to reply), an optional note.
+   Sending posts to /api/contact in the shape the plain contact form
+   uses, so it arrives in the same inbox. If mail is not configured
+   (503) or anything else fails, the form says so and keeps what was
+   typed rather than pretending it was sent.
    ─────────────────────────────────────────────────────────────── */
 (function () {
-  var dv = document.querySelector('#extras .dv');
-  if (!dv) return;
+  var form = document.getElementById('rq');
+  if (!form) return;
 
-  var forms = dv.querySelectorAll('.rq');
+  var ENDPOINT = '/api/contact';
+  var EMAIL = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+  var QUESTIONS = ['package', 'budget', 'timeline', 'type'];
 
-  function fill(form) {
-    var groups = form.querySelectorAll('.rq-opts');
-    var done = form.querySelectorAll('.rq-opt.is-on').length;
-    var bar = form.querySelector('.rq-bar i');
-    // step 1 of 2: four answers take the bar to half way
-    if (bar) bar.style.setProperty('--rq-fill', (12 + (done / groups.length) * 38) + '%');
-  }
+  var pages = form.querySelectorAll('[data-rq-page]');
+  var stepText = form.querySelector('[data-rq-step]');
+  var submit = form.querySelector('button[type="submit"]');
 
-  function pick(opt) {
-    var group = opt.parentNode;
-    var current = group.querySelector('.is-on');
-    if (current === opt) return;
-    if (current) current.classList.remove('is-on');
-    opt.classList.add('is-on');
-    opt.classList.add('is-tap');
-    setTimeout(function () { opt.classList.remove('is-tap'); }, 220);
-    fill(group.closest('.rq'));
-  }
-
-  dv.addEventListener('click', function (e) {
-    var opt = e.target.closest && e.target.closest('.rq-opt');
-    if (opt) pick(opt);
-  });
-
-  Array.prototype.forEach.call(forms, fill);
-
-  if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-  if (!('IntersectionObserver' in window)) return;
-
-  /* ── Entrance, then the answers fill in one by one ── */
-  var answers = [];
-  Array.prototype.forEach.call(forms, function (form) {
-    var chosen = [];
-    Array.prototype.forEach.call(form.querySelectorAll('.rq-opts'), function (group, i) {
-      var on = group.querySelector('.is-on');
-      // the first answer is already given; the rest are chosen as it plays
-      if (on && i > 0) { on.classList.remove('is-on'); chosen.push(on); }
+  function show(n) {
+    Array.prototype.forEach.call(pages, function (p) {
+      p.hidden = p.getAttribute('data-rq-page') !== String(n);
     });
-    answers.push(chosen);
-    fill(form);
+    stepText.textContent = n === 3 ? 'Sent' : 'Step ' + n + ' of 2';
+    form.scrollTop = 0;
+  }
+
+  function error(n, text) {
+    form.querySelector('[data-rq-error="' + n + '"]').textContent = text || '';
+  }
+
+  function value(name) {
+    var el = form.querySelector('input[name="' + name + '"]:checked');
+    return el ? el.value : '';
+  }
+
+  /* ── Step 1 ── */
+  form.querySelector('[data-rq-next]').addEventListener('click', function () {
+    var missing = QUESTIONS.filter(function (q) {
+      var set = form.querySelector('[data-q="' + q + '"]');
+      var empty = !value(q);
+      set.classList.toggle('is-missing', empty);
+      return empty;
+    });
+    if (missing.length) {
+      error(1, 'Choose an answer for each question.');
+      return;
+    }
+    error(1);
+    show(2);
+    form.querySelector('#rq-name').focus({ preventScroll: true });
   });
 
-  dv.classList.add('is-armed');
+  // an answer clears that question's warning
+  form.addEventListener('change', function (e) {
+    var set = e.target.closest('[data-q]');
+    if (set) set.classList.remove('is-missing');
+    if (!form.querySelector('.rq-card.is-missing')) error(1);
+  });
 
-  var shown = false;
-  function reveal() {
-    if (shown) return;
-    shown = true;
-    io.disconnect();
-    dv.classList.add('is-in');
-    setTimeout(function () { dv.classList.add('is-settled'); }, 1700);
-    answers.forEach(function (chosen) {
-      chosen.forEach(function (opt, i) {
-        setTimeout(function () {
-          // a visitor may already have picked something in this group
-          if (!opt.parentNode.querySelector('.is-on')) pick(opt);
-        }, 1900 + i * 750);
+  form.querySelector('[data-rq-back]').addEventListener('click', function () {
+    error(2);
+    show(1);
+  });
+
+  /* ── Step 2: send ── */
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var name = form.elements.name.value.trim();
+    var email = form.elements.email.value.trim();
+    var note = form.elements.note.value.trim();
+
+    form.elements.name.classList.toggle('is-missing', !name);
+    form.elements.email.classList.toggle('is-missing', !EMAIL.test(email));
+    if (!name) return error(2, 'Add your name so we know who to reply to.');
+    if (!EMAIL.test(email)) return error(2, 'Enter a valid email address.');
+    error(2);
+
+    var lines = [
+      'Project request from the home page',
+      '',
+      'Package: ' + value('package'),
+      'Budget: ' + value('budget'),
+      'Timeline: ' + value('timeline'),
+      'Website type: ' + value('type')
+    ];
+    if (note) lines.push('', note);
+
+    submit.disabled = true;
+    submit.textContent = 'Sending…';
+
+    fetch(ENDPOINT, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        name: name,
+        email: email,
+        service: value('package') + ' package',
+        budget: value('budget'),
+        message: lines.join('\n'),
+        company: form.elements.company.value
+      })
+    })
+      .then(function (r) {
+        if (!r.ok) throw new Error(String(r.status));
+        form.querySelector('[data-rq-done-text]').textContent =
+          'Thanks, ' + name + '. We will reply to ' + email + '.';
+        show(3);
+      })
+      .catch(function (err) {
+        error(2, err.message === '429'
+          ? 'Too many attempts. Wait a minute and try again.'
+          : 'Your request could not be sent. Try again, or use the contact page.');
+      })
+      .then(function () {
+        submit.disabled = false;
+        submit.textContent = 'Send request';
       });
-    });
-    setTimeout(function () { dv.classList.add('is-done'); }, 1900 + 3 * 750);
-  }
-  var io = new IntersectionObserver(function (entries) {
-    if (entries[0].isIntersecting) reveal();
-  }, { threshold: 0.25 });
-  io.observe(dv);
+  });
 
-  /* ── Scroll drift ── */
-  var y = 0, r = 0, ty = 0, tr = 0, raf = 0;
-
-  function target() {
-    var box = dv.getBoundingClientRect();
-    var vh = window.innerHeight || 1;
-    // -1 when the device is a screen below centre, +1 a screen above
-    var t = ((vh / 2) - (box.top + box.height / 2)) / vh;
-    t = Math.max(-1, Math.min(1, t));
-    // belt and braces for the observer: in view is in view
-    if (!shown && box.top < vh * 0.8 && box.bottom > 0) reveal();
-    ty = t * -26;
-    tr = t * 0.9;
-  }
-
-  function frame() {
-    y += (ty - y) * 0.08;
-    r += (tr - r) * 0.08;
-    dv.style.setProperty('--dv-y', y.toFixed(2) + 'px');
-    dv.style.setProperty('--dv-r', r.toFixed(3) + 'deg');
-    raf = (Math.abs(ty - y) > 0.05 || Math.abs(tr - r) > 0.001) ? requestAnimationFrame(frame) : 0;
-  }
-
-  function onScroll() {
-    target();
-    if (!raf) raf = requestAnimationFrame(frame);
-  }
-
-  window.addEventListener('scroll', onScroll, { passive: true });
-  window.addEventListener('resize', onScroll);
-  target(); y = ty; r = tr;
-  frame();
+  form.querySelector('[data-rq-reset]').addEventListener('click', function () {
+    form.reset();
+    show(1);
+  });
 })();
