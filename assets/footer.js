@@ -17,8 +17,8 @@
 
   var STYLES = '' +
     '.ft{background:#14161A;color:#FFFFFF}' +
-    '.ft-in{max-width:76rem;margin:0 auto;padding:3rem 1.5rem 2rem}' +
-    '@media(min-width:768px){.ft-in{padding:3.5rem 2.5rem 2rem}}' +
+    '.ft-in{max-width:76rem;margin:0 auto;padding:3rem 1.5rem clamp(4rem,14vw,11rem)}' +
+    '@media(min-width:768px){.ft-in{padding:3.5rem 2.5rem clamp(4rem,12vw,12rem)}}' +
     '.ft-grid{display:grid;grid-template-columns:1fr;gap:2.5rem}' +
     '@media(min-width:640px){.ft-grid{grid-template-columns:1fr 1fr}}' +
     '@media(min-width:1024px){.ft-grid{grid-template-columns:1.4fr 1fr 1fr 1.3fr}}' +
@@ -50,38 +50,27 @@
     '.ft-btn:hover{color:#FFFFFF}' +
     '.ft a:focus-visible,.ft-btn:focus-visible{outline:2px solid #FFFFFF;outline-offset:3px;border-radius:2px}' +
 
-    /* The sign-off: XOVAHWEB as a lit, extruded wordmark receding to the
-       right, standing on a dark floor that reflects it. Pure CSS — two
-       stacked copies of the word (a dark extrusion and a gradient face), a
-       glow, and a reflection. Decorative; the name is already in the footer. */
-    '.ft-word{position:relative;overflow:hidden;margin-top:2.5rem;padding:1.5rem 0 3.2rem;' +
-      'background:radial-gradient(70% 90% at 22% 100%,rgba(217,35,46,0.28),rgba(217,35,46,0) 70%),' +
-      'linear-gradient(180deg,#14161A 0%,#0a0a0b 100%);' +
-      '-webkit-user-select:none;user-select:none;pointer-events:none}' +
+    /* The sign-off: XOVAHWEB as a quiet watermark behind the footer. The
+       same extruded, receding word as before, but dim, low-contrast and
+       cropped by the foot of the page, so it reads as texture behind the
+       links rather than as a thing competing with them. Decorative; the
+       name is already in the footer. */
+    '.ft{position:relative;overflow:hidden}' +
+    '.ft-in{position:relative;z-index:1}' +
+    '.ft-word{position:absolute;left:0;right:0;bottom:0;z-index:0;pointer-events:none;' +
+      '-webkit-user-select:none;user-select:none;opacity:0.2;transform:translateY(16%)}' +
     '.ft-word-stage{perspective:105vw;perspective-origin:0% 50%;padding-left:clamp(1rem,2.5vw,3rem)}' +
     '.ft-word-tilt{position:relative;display:inline-block;transform-origin:0% 60%;' +
       'transform:rotateY(18deg);font-family:Outfit,Inter,"Helvetica Neue",Arial,sans-serif;' +
       'font-weight:800;font-size:clamp(3rem,24vw,30rem);line-height:0.82;letter-spacing:-0.045em;white-space:nowrap}' +
-    /* extrusion: the same word, solid dark crimson, stepped back and down */
-    '.ft-word-depth{display:block;color:#3b060a;' +
-      'text-shadow:0.006em 0.004em 0 #4a080d,0.012em 0.008em 0 #43070c,0.018em 0.012em 0 #3b060a,' +
-      '0.024em 0.016em 0 #330509,0.03em 0.02em 0 #2a0407,0.036em 0.024em 0 #210306}' +
-    /* face: lit from the upper left, a hot edge along the top of each letter */
+    '.ft-word-depth{display:block;color:#2a0508;' +
+      'text-shadow:0.008em 0.006em 0 #33060a,0.016em 0.012em 0 #2a0508,0.024em 0.018em 0 #210406}' +
     '.ft-word-face{position:absolute;inset:0;display:block;' +
-      'background:linear-gradient(100deg,rgba(255,255,255,0) 30%,rgba(255,196,196,0.55) 45%,rgba(255,255,255,0) 60%),' +
-      'linear-gradient(180deg,#ff5a61 0%,#e32a35 26%,#b8121c 62%,#6c0a10 100%);' +
-      'background-size:250% 100%,100% 100%;background-position:120% 0,0 0;' +
+      'background:linear-gradient(180deg,#e0303a 0%,#a8121b 55%,#4a070b 100%);' +
       '-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent;' +
-      'filter:drop-shadow(0 0 0.06em rgba(255,40,52,0.55)) drop-shadow(0 0 0.28em rgba(217,35,46,0.35));' +
-      'animation:ft-sheen 9s cubic-bezier(0.45,0,0.2,1) infinite}' +
-    '@keyframes ft-sheen{0%,55%{background-position:120% 0,0 0}100%{background-position:-60% 0,0 0}}' +
-    /* the floor: a faint mirror of the word, and a thin red horizon of light */
-    '@supports (-webkit-box-reflect:below 0){.ft-word-tilt{-webkit-box-reflect:below -0.1em ' +
-      'linear-gradient(transparent 62%,rgba(255,255,255,0.16))}}' +
-    '.ft-word::after{content:"";position:absolute;left:0;right:0;bottom:2.4rem;height:1px;' +
-      'background:linear-gradient(90deg,rgba(255,60,70,0) 0%,rgba(255,60,70,0.85) 18%,rgba(255,60,70,0.25) 70%,rgba(255,60,70,0) 100%);' +
-      'box-shadow:0 0 18px 2px rgba(217,35,46,0.45)}' +
-    '@media (prefers-reduced-motion:reduce){.ft-word-face{animation:none}}';
+      'filter:drop-shadow(0 0 0.12em rgba(217,35,46,0.35))}' +
+    /* light mode: the footer is still ink, so the watermark stays the same */
+    '';
 
   function html() {
     return '' +
@@ -120,7 +109,7 @@
             '<a href="start.html">Start a project</a>' +
             '<a href="pricing.html">Packages &amp; prices</a>' +
             '<a href="extras.html">Extras &amp; add-ons</a>' +
-            '<a href="support.html">Help &amp; support</a>' +
+            '<a href="contact.html">Contact</a>' +
             '<span>Xovah</span>' +
           '</div>' +
         '</div>' +

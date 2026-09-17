@@ -72,15 +72,33 @@ body.m-locked { overflow: hidden; }
   .m-nav-toggle:active, .m-drawer-close:active { transform: none; }
 }
 
-@media (max-width: 767px) {
-  .m-nav-toggle { display: inline-flex; }
-  /* The cluster itself stays — it is what holds the two controls to the
-     right edge. Only the links inside it go. */
-  nav .m-nav-desktop > a { display: none !important; }
-  /* Beat Tailwind's gap-5 and theme.css's own sizing without !important —
-     both of those files load after this one. */
-  nav .m-nav-desktop { gap: 0.5rem; }
-  header .theme-toggle { width: 44px; height: 44px; }
+/* The navbar is the logo and the menu, at every width. The cluster itself
+   stays — it is what holds the menu button to the right edge. Only the
+   links and the call to action inside it go; both live in the drawer. */
+.m-nav-toggle { display: inline-flex; }
+nav .m-nav-desktop > a { display: none !important; }
+nav .m-nav-desktop { gap: 0.5rem; }
+header .theme-toggle { width: 44px; height: 44px; }
+
+/* On a phone the drawer is the whole screen. Wider than that it is a panel
+   down the right edge over a dimmed page, so it reads as a menu rather
+   than a new page. */
+.m-drawer-scrim {
+  position: fixed; inset: 0; z-index: 69;
+  background: rgb(0 0 0 / 0.45);
+  opacity: 0; visibility: hidden;
+  transition: opacity 240ms ease, visibility 240ms;
+}
+.m-drawer-scrim.is-open { opacity: 1; visibility: visible; }
+@media (min-width: 768px) {
+  .m-drawer {
+    left: auto; width: min(26rem, 100%);
+    border-left: 1px solid rgb(var(--c-line));
+    box-shadow: -24px 0 60px rgb(0 0 0 / 0.35);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .m-drawer-scrim { transition: none; }
 }
 
 /* ── Mobile spacing + type rhythm ──────────────────────────── */

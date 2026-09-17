@@ -2,7 +2,7 @@
    Xovah — theme switch
    The stored choice is applied by a tiny inline snippet in <head>
    before paint; this file only builds the control and handles the
-   click. No choice stored means "follow the system".
+   click. No choice stored means dark.
    ─────────────────────────────────────────────────────────────── */
 (function (global) {
   'use strict';
@@ -15,7 +15,7 @@
   var MOON = '<svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">' +
     '<path d="M20 14.2A8.2 8.2 0 0 1 9.8 4a8.4 8.4 0 1 0 10.2 10.2z"/></svg>';
 
-  // Light is what the site is. Dark is a choice, and only a choice —
+  // Dark is what the site is. Light is a choice, and only a choice —
   // the operating system's preference is deliberately not consulted.
   function current() {
     return doc.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'light';
@@ -52,8 +52,11 @@
     var slot = doc.querySelector('[data-theme-slot]');
     if (slot && !slot.querySelector('.theme-toggle')) { slot.appendChild(button(true)); }
 
-    // Public pages: next to the nav links. App shells: in the top bar.
-    var nav = doc.querySelector('header nav') || doc.querySelector('header > div');
+    // Public pages keep their navbar to the logo and the menu, so the
+    // control lives in the menu (the site menu slot above, the drawer
+    // below). App shells have no such menu and keep it in their top bar.
+    var nav = doc.body.hasAttribute('data-app') &&
+      (doc.querySelector('header nav') || doc.querySelector('header > div'));
     if (nav && !nav.querySelector('.theme-toggle')) {
       var cluster = nav.querySelector('div.flex.items-center:last-child');
       var btn = button(false);

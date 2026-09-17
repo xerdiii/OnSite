@@ -40,10 +40,63 @@ body[data-cookiebar="up"] .dock { bottom: calc(clamp(0.85rem, 2.2vw, 1.6rem) + 5
 .dock-btn:focus-visible { outline: 2px solid rgb(var(--c-accent)); outline-offset: 3px; }
 .dock-btn svg { width: 17px; height: 17px; flex: none; }
 
+/* Liquid glass: a crimson-tinted pane that blurs and saturates whatever
+   scrolls behind it, a bright rim and inner highlights where the "glass"
+   catches the light, a soft gloss on its upper half, and a slow sheen that
+   drifts across it. The content sits above the gloss. */
 .dock-btn--free {
-  background: rgb(var(--c-accent)); color: #fff;
+  color: #fff;
+  background:
+    linear-gradient(180deg, rgb(255 255 255 / 0.20) 0%, rgb(255 255 255 / 0.04) 48%, rgb(255 255 255 / 0) 52%),
+    linear-gradient(135deg, rgb(var(--c-accent) / 0.62), rgb(var(--c-accent) / 0.34));
+  border-color: rgb(255 255 255 / 0.30);
+  -webkit-backdrop-filter: blur(14px) saturate(180%);
+          backdrop-filter: blur(14px) saturate(180%);
+  box-shadow:
+    inset 0 1px 0 rgb(255 255 255 / 0.55),
+    inset 0 -1px 0 rgb(255 255 255 / 0.10),
+    inset 0 0 20px rgb(255 255 255 / 0.10),
+    0 10px 32px rgb(var(--c-accent) / 0.38),
+    0 2px 8px rgb(0 0 0 / 0.22);
+  text-shadow: 0 1px 2px rgb(0 0 0 / 0.25);
+  overflow: hidden;
+  isolation: isolate;
 }
-.dock-btn--free:hover { background: rgb(var(--c-accent-hi)); transform: translateY(-2px); }
+.dock-btn--free > * { position: relative; z-index: 1; }
+.dock-btn--free::after { display: none; }   /* the glass clips the old ping ring; the sheen replaces it */
+.dock-btn--free::before {
+  content: ''; position: absolute; inset: -40% -60%; z-index: 0; pointer-events: none;
+  background: linear-gradient(105deg, rgb(255 255 255 / 0) 42%, rgb(255 255 255 / 0.34) 50%, rgb(255 255 255 / 0) 58%);
+  transform: translateX(-60%);
+  animation: dock-sheen 6.5s cubic-bezier(0.45, 0, 0.2, 1) 1.5s infinite;
+}
+@keyframes dock-sheen {
+  0%, 62% { transform: translateX(-60%); }
+  100%    { transform: translateX(60%); }
+}
+.dock-btn--free:hover {
+  transform: translateY(-2px);
+  background:
+    linear-gradient(180deg, rgb(255 255 255 / 0.24) 0%, rgb(255 255 255 / 0.06) 48%, rgb(255 255 255 / 0) 52%),
+    linear-gradient(135deg, rgb(var(--c-accent) / 0.78), rgb(var(--c-accent) / 0.48));
+  box-shadow:
+    inset 0 1px 0 rgb(255 255 255 / 0.65),
+    inset 0 -1px 0 rgb(255 255 255 / 0.12),
+    inset 0 0 22px rgb(255 255 255 / 0.14),
+    0 14px 38px rgb(var(--c-accent) / 0.48),
+    0 2px 8px rgb(0 0 0 / 0.22);
+}
+/* On a light page the glass needs more tint, or white type loses its ground. */
+:root[data-theme="light"] .dock-btn--free {
+  background:
+    linear-gradient(180deg, rgb(255 255 255 / 0.22) 0%, rgb(255 255 255 / 0.05) 48%, rgb(255 255 255 / 0) 52%),
+    linear-gradient(135deg, rgb(var(--c-accent) / 0.88), rgb(var(--c-accent) / 0.70));
+}
+:root[data-theme="light"] .dock-btn--free:hover {
+  background:
+    linear-gradient(180deg, rgb(255 255 255 / 0.24) 0%, rgb(255 255 255 / 0.06) 48%, rgb(255 255 255 / 0) 52%),
+    linear-gradient(135deg, rgb(var(--c-accent) / 0.96), rgb(var(--c-accent) / 0.82));
+}
 
 .dock-btn--extras {
   background: rgb(var(--c-paper)); color: rgb(var(--c-ink));
@@ -83,5 +136,5 @@ body[data-app] .dock { display: none; }
 
 @media (prefers-reduced-motion: reduce) {
   .dock-btn, .dock-btn:hover { transition: none; transform: none; }
-  .dock-btn--free::after { animation: none; }
+  .dock-btn--free::after, .dock-btn--free::before { animation: none; }
 }

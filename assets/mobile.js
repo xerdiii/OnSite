@@ -87,11 +87,19 @@
       '</div>';
     doc.body.appendChild(drawer);
 
+    /* Only visible on wider screens, where the drawer is a side panel:
+       clicking the dimmed page closes it. */
+    var scrim = doc.createElement('div');
+    scrim.className = 'm-drawer-scrim';
+    scrim.setAttribute('aria-hidden', 'true');
+    doc.body.appendChild(scrim);
+
     var lastFocus = null;
 
     function open() {
       lastFocus = doc.activeElement;
       drawer.classList.add('is-open');
+      scrim.classList.add('is-open');
       doc.body.classList.add('m-locked');
       toggle.setAttribute('aria-expanded', 'true');
       var first = drawer.querySelector('.m-drawer-close');
@@ -100,6 +108,7 @@
 
     function close() {
       drawer.classList.remove('is-open');
+      scrim.classList.remove('is-open');
       doc.body.classList.remove('m-locked');
       toggle.setAttribute('aria-expanded', 'false');
       if (lastFocus && lastFocus.focus) lastFocus.focus();
@@ -107,6 +116,7 @@
 
     toggle.addEventListener('click', open);
     drawer.querySelector('.m-drawer-close').addEventListener('click', close);
+    scrim.addEventListener('click', close);
     drawer.addEventListener('click', function (e) {
       if (e.target.closest('a')) close();
     });
