@@ -26,11 +26,10 @@
 
   /* ══ Stages ══════════════════════════════════════════════════ */
   var STAGES = [
-    { key: 'deposit', label: 'Deposit paid' },
     { key: 'content', label: 'Your content received' },
     { key: 'build',   label: 'We build it' },
     { key: 'review',  label: 'Ready for your review' },
-    { key: 'final',   label: 'Balance paid' },
+    { key: 'final',   label: 'Paid' },
     { key: 'live',    label: 'Live' }
   ];
   function stageIndex(stage) {
@@ -57,19 +56,19 @@
 
     return '' +
       '<div class="ord">' +
-        '<div class="ord-due' + (t.deposit ? '' : ' ord-due--clear') + '">' +
-          '<p class="ord-due-l">Deposit &mdash; 25%</p>' +
-          '<p class="ord-due-v">' + money(t.deposit) + '</p>' +
+        '<div class="ord-due ord-due--clear">' +
+          '<p class="ord-due-l">Pay today</p>' +
+          '<p class="ord-due-v">' + money(0) + '</p>' +
           '<p class="ord-due-p">' + (t.base
-            ? 'We invoice the deposit once you place the order. The rest is due ' +
-              'only after you have approved the finished site.'
+            ? 'Nothing is charged when you order. You pay the one-time total once, ' +
+              'when your finished site is ready to go live.'
             : 'Choose a website to begin.') + '</p>' +
           (D2.blocked() ? '<p class="ord-due-p">' + esc(D2.blocked()) + '</p>' : '') +
           '<label class="ord-agree">' +
             '<input type="checkbox" data-act="toggle-agree"' + (D2.agreed() ? ' checked' : '') + '>' +
             '<span>I agree to the <a href="terms.html" target="_blank" rel="noopener">Terms of Service</a>.</span>' +
           '</label>' +
-          '<button type="button" class="ord-btn" data-act="pay-deposit"' + (t.ready ? '' : ' disabled') + '>' +
+          '<button type="button" class="ord-btn" data-act="place-order"' + (t.ready ? '' : ' disabled') + '>' +
             (t.base && t.base.key === 'free' ? 'Request my free page' : 'Place my order') +
           '</button>' +
         '</div>' +
@@ -85,7 +84,7 @@
 
       '<div class="ord">' +
         '<div class="ord-body"><p style="font-size:.8125rem;line-height:1.6;color:rgb(var(--c-ink-mid))">' +
-          'After approval: <b>' + money(t.balance) + '</b>. Nothing recurring.' +
+          'Before it goes live: <b>' + money(t.once) + '</b>, paid once. Nothing recurring.' +
         '</p></div>' +
       '</div>';
   }
@@ -99,13 +98,9 @@
     var o = s.order || { oneTimeCents: 0, oneTimeItems: [] };
     var tier = s.tier || 'none';
     var free = tier === 'free';
-    var stage = (s.project && s.project.stage) || 'deposit';
+    var stage = (s.project && s.project.stage) || 'content';
     var at = stageIndex(stage);
-
-    var dep = O.deposit(o.oneTimeCents);
-    var bal = O.balance(o.oneTimeCents);
-    var depositPaid = at >= 0 && stage !== 'deposit';
-    var balancePaid = at >= stageIndex('final');
+    var paid = stage === 'live';
 
     /* What is actually owed right now, and nothing else in colour. */
     var due, dueLabel, dueNote, dueAct, clear = false;
@@ -113,16 +108,14 @@
       due = 0; dueLabel = 'Cost so far'; clear = true;
       dueNote = 'The free landing page stays free. Upgrade only when you want your own domain.';
       dueAct = { label: 'See the paid builds', act: 'go-build' };
-    } else if (!depositPaid) {
-      due = dep; dueLabel = 'Pay to start';
-      dueNote = '25% today. The rest only once you have approved the finished site.';
-      dueAct = { label: 'Pay ' + money(dep), act: 'go-build' };
-    } else if (!balancePaid) {
-      due = bal; dueLabel = 'Due on approval';
-      dueNote = stage === 'review'
-        ? 'Your site is ready. Approving it is what makes this due.'
-        : 'Nothing to pay yet — this falls due when you approve the finished site.';
-      dueAct = stage === 'review' ? { label: 'Review my website', act: 'go-website' } : null;
+    } else if (!paid) {
+      due = o.oneTimeCents; dueLabel = stage === 'final' ? 'Payment due' : 'Due before it goes live';
+      dueNote = stage === 'final'
+        ? 'Approved. Pay once and your site goes live.'
+        : stage === 'review'
+          ? 'Your site is ready. Approving it is what makes this due.'
+          : 'Nothing to pay yet — this falls due when your finished site is ready.';
+      dueAct = stage === 'review' || stage === 'final' ? { label: 'Open my website', act: 'go-website' } : null;
     } else {
       due = 0; dueLabel = 'Paid in full'; clear = true;
       dueNote = 'Nothing more to pay.';
@@ -188,16 +181,15 @@
     if (onBuilder() && global.SitehouseDraft) {
       var dt = global.SitehouseDraft.totals();
       doc.querySelector('[data-sheet-l]').textContent =
-        dt.base ? 'Deposit — 25%' : 'Choose a website';
-      doc.querySelector('[data-sheet-v]').textContent = money(dt.deposit);
+        dt.base ? 'One-time total' : 'Choose a website';
+      doc.querySelector('[data-sheet-v]').textContent = money(dt.once);
       return;
     }
 
-    var stage = (s.project && s.project.stage) || 'deposit';
-    var owed = stage === 'deposit' ? O.deposit(o.oneTimeCents || 0)
-             : (stageIndex(stage) < stageIndex('final') ? O.balance(o.oneTimeCents || 0) : 0);
+    var stage = (s.project && s.project.stage) || 'content';
+    var owed = stage === 'live' ? 0 : (o.oneTimeCents || 0);
     doc.querySelector('[data-sheet-l]').textContent =
-      stage === 'deposit' ? 'Pay to start' : (stageIndex(stage) < stageIndex('final') ? 'Due on approval' : 'Paid in full');
+      stage === 'live' ? 'Paid in full' : (stage === 'final' ? 'Payment due' : 'Due before it goes live');
     doc.querySelector('[data-sheet-v]').textContent = money(owed);
   }
 

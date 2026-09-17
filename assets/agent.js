@@ -50,8 +50,7 @@
       stage: s.project && s.project.stage,
       statusLabel: O.statusLabel(),
       oneTimeTotal: money(o.oneTimeCents || 0),
-      depositPaid: (s.project && s.project.stage) !== 'deposit',
-      balanceDue: money(O.balance(o.oneTimeCents || 0)),
+      paid: (s.project && s.project.stage) === 'live',
       items: (o.oneTimeItems || []).map(function (i) { return i.name; }),
       featuresBuilt: (s.project && s.project.features) || [],
       hoursSet: hours.length,
@@ -71,23 +70,21 @@
     };
 
     if (has('owe', 'due', 'pay', 'payment', 'invoice', 'balance', 'cost me')) {
-      var bal = O.balance(o.oneTimeCents || 0);
-      var dep = O.deposit(o.oneTimeCents || 0);
-      if ((s.project && s.project.stage) === 'deposit') {
-        return 'Nothing has been charged yet. To start, the deposit is ' + money(dep) +
-               ' — 25% of your ' + money(o.oneTimeCents || 0) + ' one-time total. ' +
-               'The remaining ' + money(bal) + ' is only due once you have approved the finished site.';
-      }
-      if ((s.project && s.project.stage) === 'live') {
+      var stage = s.project && s.project.stage;
+      if (stage === 'live') {
         return 'You are paid in full and there is nothing recurring. Full history is on the Payments page.';
       }
-      return 'You have paid the ' + money(dep) + ' deposit. The remaining ' + money(bal) +
-             ' falls due when you approve the finished website — not before. Nothing is taken automatically.';
+      if (stage === 'final') {
+        return 'You approved your website, so the one-time ' + money(o.oneTimeCents || 0) +
+               ' is now due. Your site goes live as soon as it is paid.';
+      }
+      return 'Nothing has been charged. Your one-time total is ' + money(o.oneTimeCents || 0) +
+             ', paid once when you have approved the finished website and before it goes live.';
     }
 
     if (has('status', 'how far', 'where is', 'progress', 'ready yet', 'when will')) {
       return 'Your site is at: ' + O.statusLabel() + '. Last updated ' + O.date(s.project.lastUpdate) +
-             '. The build target is about 7 days from the last piece of content you send — a target, not a promise.';
+             '. The build target is 5–7 days from the last piece of content you send — a target, not a promise.';
     }
 
     if (has('what did i', 'what am i', 'my order', 'my package', 'included', 'what do i get')) {
@@ -108,7 +105,7 @@
 
     if (has('cancel', 'refund', 'money back')) {
       return 'The Cancellation and Refund Policy has the exact terms — it is linked in the footer. ' +
-             'The short version: the 25% books the work in, and the 75% is only ever due after you approve.';
+             'The short version: nothing is charged until your finished site is ready, and you pay once, before it goes live.';
     }
 
     if (has('rate', 'review', 'feedback', 'stars')) {

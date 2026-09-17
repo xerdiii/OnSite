@@ -83,7 +83,7 @@
             l.label + '<span>' + (active ? '•' : '→') + '</span></a>';
         }).join('') +
         '<a class="m-drawer-cta" href="start.html">Build My Website</a>' +
-        '<p class="m-drawer-note">Pay 25% to start. You review the finished website before the remaining 75% is due.</p>' +
+        '<p class="m-drawer-note">Nothing up front. You review the finished website, then pay once before it goes live.</p>' +
       '</div>';
     doc.body.appendChild(drawer);
 

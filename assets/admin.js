@@ -86,7 +86,7 @@
     var building = u.filter(function (x) { return x.website === 'Building' || x.website === 'Awaiting content'; }).length;
     var review = u.filter(function (x) { return x.website === 'Ready for review'; }).length;
     var owed = u.filter(function (x) { return x.final === 'pending'; })
-                .reduce(function (t, x) { return t + O.balance(x.oneTimeCents); }, 0);
+                .reduce(function (t, x) { return t + x.oneTimeCents; }, 0);
 
     var attention = u.filter(function (x) { return x.website === 'Ready for review' || x.website === 'Awaiting content'; })
       .map(function (x, i) {
@@ -101,7 +101,7 @@
         stat('Customers', String(u.length)) +
         stat('Live websites', String(live)) +
         stat('In build', String(building + review), review + ' awaiting approval') +
-        stat('Awaiting 75%', money(owed), 'across open projects') +
+        stat('Awaiting payment', money(owed), 'across open projects') +
       '</div>' +
       '<div class="card mt-6 p-6"><p class="mono-label text-ink-soft">Needs attention</p>' +
         '<div class="mt-4">' + table(['Business', 'Contact', 'Status', 'Next action'], attention) + '</div>' +
@@ -129,23 +129,21 @@
   routes['/user'] = function (i) {
     var u = O.load().users[i];
     if (!u) return head('Users', 'Customer not found.', null);
-    var dep = O.deposit(u.oneTimeCents), bal = O.balance(u.oneTimeCents);
 
     return '<a href="#/users" class="text-[0.8125rem] font-semibold text-ink-mid hover:text-ink">← All users</a>' +
       '<div class="mt-4">' + head('Customer', u.business, u.name + ' · ' + u.email) + '</div>' +
 
       '<div class="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-3">' +
         stat('Website', tag(u.website)) +
-        stat('Deposit (25%)', money(dep) + ' ' + tag(u.deposit)) +
-        stat('Remaining (75%)', money(bal) + ' ' + tag(u.final)) +
+        stat('One-time payment', money(u.oneTimeCents) + ' ' + tag(u.final)) +
+        stat('Ordered', esc(O.date(u.created))) +
       '</div>' +
 
       '<div class="mt-6 grid grid-cols-1 gap-6 lg:grid-cols-2">' +
         '<div class="card p-6"><p class="mono-label text-ink-soft">Order</p>' +
           '<table class="tbl m-cards mt-4"><tbody>' +
             '<tr><td class="name">One-time total</td><td class="font-mono">' + money(u.oneTimeCents) + '</td></tr>' +
-            '<tr><td class="name">25% deposit</td><td class="font-mono">' + money(dep) + '</td></tr>' +
-            '<tr><td class="name">Remaining 75%</td><td class="font-mono">' + money(bal) + '</td></tr>' +
+            '<tr><td class="name">Payment</td><td>' + tag(u.final) + '</td></tr>' +
           '</tbody></table></div>' +
         '<div class="card p-6"><p class="mono-label text-ink-soft">Account</p>' +
           '<table class="tbl m-cards mt-4"><tbody>' +
@@ -163,42 +161,38 @@
       return '<tr class="clickable" data-act="open-user" data-i="' + i + '">' +
         '<td class="name">' + esc(x.business) + '</td>' +
         '<td class="font-mono">' + money(x.oneTimeCents) + '</td>' +
-        '<td class="font-mono">' + money(O.deposit(x.oneTimeCents)) + '</td>' +
-        '<td>' + tag(x.deposit) + '</td>' +
-        '<td class="font-mono">' + money(O.balance(x.oneTimeCents)) + '</td>' +
         '<td>' + tag(x.final) + '</td>' +
         '<td>' + esc(O.date(x.created)) + '</td></tr>';
     }).join('');
 
     return head('Orders', 'Every project and where its money is.',
-      'One-time work is split 25/75 — deposit on order, balance once the customer approves.') +
+      'Paid once, in full, after the customer approves the finished site and before it goes live.') +
       '<div class="card mt-8 p-6">' +
-        table(['Business', 'One-time total', 'Deposit 25%', 'Deposit status', 'Remaining 75%', 'Final status', 'Ordered'], rows) +
+        table(['Business', 'One-time total', 'Payment', 'Ordered'], rows) +
       '</div>';
   };
 
   routes['/payments'] = function () {
     var u = O.load().users;
     var collected = u.reduce(function (t, x) {
-      return t + O.deposit(x.oneTimeCents) + (x.final === 'paid' ? O.balance(x.oneTimeCents) : 0);
+      return t + (x.final === 'paid' ? x.oneTimeCents : 0);
     }, 0);
     var outstanding = u.filter(function (x) { return x.final === 'pending'; })
-                       .reduce(function (t, x) { return t + O.balance(x.oneTimeCents); }, 0);
+                       .reduce(function (t, x) { return t + x.oneTimeCents; }, 0);
 
     var rows = u.map(function (x, i) {
       return '<tr class="clickable" data-act="open-user" data-i="' + i + '">' +
         '<td class="name">' + esc(x.business) + '</td>' +
-        '<td class="font-mono">' + money(O.deposit(x.oneTimeCents)) + '</td><td>' + tag(x.deposit) + '</td>' +
-        '<td class="font-mono">' + money(O.balance(x.oneTimeCents)) + '</td><td>' + tag(x.final) + '</td></tr>';
+        '<td class="font-mono">' + money(x.oneTimeCents) + '</td><td>' + tag(x.final) + '</td></tr>';
     }).join('');
 
-    return head('Payments', 'Deposits and balances.', null) +
+    return head('Payments', 'One payment per website.', null) +
       '<div class="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2">' +
         stat('Collected one-time', money(collected)) +
-        stat('Outstanding 75%', money(outstanding), 'awaiting customer approval') +
+        stat('Outstanding', money(outstanding), 'awaiting approval or payment') +
       '</div>' +
       '<div class="card mt-6 p-6">' +
-        table(['Business', 'Deposit', 'Status', 'Remaining', 'Status'], rows) +
+        table(['Business', 'One-time payment', 'Status'], rows) +
       '</div>';
   };
 
@@ -258,11 +252,11 @@
   // wired to a provider yet — this is the specification, and the preview
   // page renders each template in full.
   var EMAILS = [
-    { key: 'deposit-received', name: 'Deposit received', trigger: '25% deposit succeeds', status: 'Specified' },
-    { key: 'content-required', name: 'Content required', trigger: 'Deposit paid, content outstanding', status: 'Specified' },
+    { key: 'order-received',   name: 'Order received', trigger: 'Order placed', status: 'Specified' },
+    { key: 'content-required', name: 'Content required', trigger: 'Order placed, content outstanding', status: 'Specified' },
     { key: 'website-ready',    name: 'Website ready for review', trigger: 'Build complete', status: 'Specified' },
     { key: 'final-due',        name: 'Final payment due', trigger: 'Customer approves the website', status: 'Specified' },
-    { key: 'website-live',     name: 'Website live', trigger: 'Final 75% received', status: 'Specified' },
+    { key: 'website-live',     name: 'Website live', trigger: 'One-time payment received', status: 'Specified' },
     { key: 'verify-email',     name: 'Email verification code', trigger: 'Sign-up or sign-in', status: 'Simulated in demo' },
     { key: 'password-reset',   name: 'Password reset', trigger: 'Reset requested', status: 'Simulated in demo' }
   ];
@@ -292,18 +286,18 @@
       return '<tr class="clickable" data-act="open-user" data-i="' + u.indexOf(x) + '">' +
         '<td class="name">' + esc(x.business) + '</td><td>' + esc(x.name) + '</td>' +
         '<td>' + tag(x.website) + '</td>' +
-        '<td class="font-mono">' + money(O.deposit(x.oneTimeCents)) + '</td>' +
-        '<td>Deposit retained — build had started</td></tr>';
+        '<td class="font-mono">' + money(x.oneTimeCents) + '</td>' +
+        '<td>Cancelled before payment — nothing charged</td></tr>';
     }).join('') : '<tr><td colspan="5" class="text-ink-soft">No cancellations.</td></tr>';
 
     return head('Refunds &amp; cancellations', 'What stopped, and what was returned.',
-      'Deposits cover work already done; balances are never charged on unapproved projects. Statutory rights override this table.') +
+      'Nothing is charged before a site is approved, so a project cancelled before payment owes nothing. Statutory rights override this table.') +
       '<div class="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-3">' +
         stat('Cancellations', String(cancelled.length)) +
         stat('Refunds issued', money(0), 'none to date') +
-        stat('Balances never charged', money(cancelled.reduce(function (t, x) { return t + O.balance(x.oneTimeCents); }, 0)), 'unapproved projects') +
+        stat('Never charged', money(cancelled.reduce(function (t, x) { return t + x.oneTimeCents; }, 0)), 'cancelled before payment') +
       '</div>' +
-      '<div class="card mt-6 p-6">' + table(['Business', 'Contact', 'Website', 'Deposit', 'Outcome'], rows) + '</div>' +
+      '<div class="card mt-6 p-6">' + table(['Business', 'Contact', 'Website', 'Order value', 'Outcome'], rows) + '</div>' +
       '<div class="card mt-6 p-6"><p class="mono-label text-ink-soft">Policy reminder</p>' +
         '<p class="mt-3 max-w-prose text-[0.8125rem] leading-relaxed text-ink-mid">Before refusing a refund, check the ' +
           '<a href="refunds.html" class="font-semibold text-accent underline underline-offset-2">Cancellation &amp; Refund Policy</a> ' +
@@ -315,9 +309,9 @@
       '<div class="mt-8 grid grid-cols-1 gap-6 lg:grid-cols-2">' +
         '<div class="card p-6"><p class="mono-label text-ink-soft">Payment model</p>' +
           '<table class="tbl m-cards mt-4"><tbody>' +
-            '<tr><td class="name">Deposit</td><td>25% of the one-time total</td></tr>' +
-            '<tr><td class="name">Balance</td><td>75%, due on customer approval</td></tr>' +
-            '<tr><td class="name">Target delivery</td><td>7 days from receiving all content</td></tr>' +
+            '<tr><td class="name">Payment</td><td>100% of the one-time total, once, on delivery</td></tr>' +
+            '<tr><td class="name">Due</td><td>After customer approval, before the site goes live</td></tr>' +
+            '<tr><td class="name">Target delivery</td><td>5–7 days from receiving all content</td></tr>' +
           '</tbody></table></div>' +
         '<div class="card p-6"><p class="mono-label text-ink-soft">Local data</p>' +
           '<p class="mt-3 text-[0.8125rem] leading-relaxed text-ink-mid">The client dashboard and this admin share one mock store in your browser. Reset it to put the example customer back to “ready for review”.</p>' +

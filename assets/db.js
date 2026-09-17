@@ -122,18 +122,10 @@
       });
     },
 
-    /* Deposit is 25% rounded down and the balance takes the remainder,
-       so the two halves always add back to the total — same rule as
-       Sitehouse.deposit()/balance(), kept here so a row written by this
-       module cannot disagree with what the dashboard renders. */
+    /* One payment, for the whole one-time total, due once the finished
+       site has been reviewed and before it goes live. */
     totals: function (order) {
-      var oneTime = (order && order.one_time_cents) || 0;
-      var deposit = Math.floor(oneTime * 0.25);
-      return {
-        oneTimeCents: oneTime,
-        depositCents: deposit,
-        balanceCents: oneTime - deposit
-      };
+      return { oneTimeCents: (order && order.one_time_cents) || 0 };
     },
 
     messagesIn: function (threadId) {

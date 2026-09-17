@@ -25,7 +25,6 @@
     var panel   = scope.querySelector('[data-pick-total]');
     var countEl = scope.querySelector('[data-pick-count]');
     var onceEl  = scope.querySelector('[data-pick-once]');
-    var depEl   = scope.querySelector('[data-pick-deposit]');
     var fromEl  = scope.querySelector('[data-pick-from]');
     var clear   = scope.querySelector('[data-pick-clear]');
 
@@ -36,7 +35,7 @@
     var barOnce = doc.querySelector('[data-ex-bar-once]');
 
     function money(n) {
-      // Round to cents first, then decide. A deposit of 39.9975 is €40, not
+      // Round to cents first, then decide. A total of 39.9975 is €40, not
       // €39.99 — but the design extras carry a real .99 and must keep it.
       var c = Math.round(n * 100) / 100;
       // Totals follow the chosen currency like every other price does.
@@ -68,7 +67,6 @@
 
       countEl.textContent = n;
       onceEl.textContent = money(once);
-      depEl.textContent = money(once * 0.25);
       fromEl.hidden = !from;
       panel.hidden = n === 0;
 

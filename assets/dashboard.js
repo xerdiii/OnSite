@@ -85,15 +85,15 @@
   }
 
   function approveCard(s) {
-    var bal = O.balance(s.order.oneTimeCents);
+    var total = s.order.oneTimeCents;
     if (s.project.stage === 'review') {
       return '<div class="approve mt-5">' +
         '<p class="approve-h">Your website is ready for you to look at.</p>' +
         '<p class="approve-p">Go through every section. Anything wrong, send it back and we fix it — that ' +
-          'costs nothing and there is no limit before approval. Approving is what makes the remaining ' +
-          money(bal) + ' due.</p>' +
+          'costs nothing and there is no limit before approval. Approving is what makes the one-time ' +
+          money(total) + ' due; your site goes live once it is paid.</p>' +
         '<div class="approve-row">' +
-          '<button type="button" class="btn btn-primary" data-act="approve-site">Approve and go live</button>' +
+          '<button type="button" class="btn btn-primary" data-act="approve-site">Approve website</button>' +
           '<a class="btn btn-ghost" href="#/request">Something needs changing</a>' +
         '</div>' +
       '</div>';
@@ -130,8 +130,6 @@
     var app = A();
     var free = tier() === 'free';
     var st = app ? app.ratingStats() : { avg: 0, total: 0 };
-    var dep = O.deposit(o.oneTimeCents);
-    var paidDeposit = s.project.stage !== 'deposit';
 
     var hoursSet = ((s.freePage && s.freePage.hours) || s.customer.hours || []).length;
 
@@ -144,7 +142,7 @@
           '</p><p class="stat-s">' + (s.project.lastUpdate
             ? 'Updated ' + esc(O.date(s.project.lastUpdate)) : 'Nothing to report yet') + '</p></div>' +
         '<div class="stat"><p class="stat-l">Paid so far</p><p class="stat-v">' +
-          money(paidDeposit ? dep : 0) + '</p><p class="stat-s">of ' + money(o.oneTimeCents) + ' one-time</p></div>' +
+          money(s.project.stage === 'live' ? o.oneTimeCents : 0) + '</p><p class="stat-s">of ' + money(o.oneTimeCents) + ' one-time</p></div>' +
         '<div class="stat"><p class="stat-l">Your pack</p><p class="stat-v">' +
           esc(app ? app.tierName(tier()) : '—') + '</p><p class="stat-s">' +
           (tier() === 'none' ? 'Choose one in Build' : free ? 'Free, hosted by us' : 'Paid once') + '</p></div>' +
@@ -241,7 +239,7 @@
 
   routes['/website'] = function () {
     var s = O.load(), p = s.project, o = s.order;
-    var bal = O.balance(o.oneTimeCents);
+    var total = o.oneTimeCents;
     var stage = p.stage;
 
     var action = '';
@@ -249,17 +247,17 @@
       action = '<div class="card-ink mt-6 p-6">' +
         '<p class="mono-label text-white/70">Your move</p>' +
         '<h3 class="h-section mt-2 text-xl text-white">Ready for your review</h3>' +
-        '<p class="mt-2 text-[0.8125rem] leading-relaxed text-white/80">Look through the preview. When you are happy, approve it — that is what makes the remaining 75% (' + money(bal) + ') due. Nothing is charged automatically.</p>' +
+        '<p class="mt-2 text-[0.8125rem] leading-relaxed text-white/80">Look through the preview. When you are happy, approve it — that is what makes the one-time payment (' + money(total) + ') due. Nothing is charged automatically.</p>' +
         '<div class="mt-5 flex flex-wrap gap-3">' +
           '<button class="btn btn-light" data-act="approve">Approve website</button>' +
           '<button class="btn btn-ghost" data-act="changes">Something needs changing</button>' +
         '</div></div>';
     } else if (stage === 'final') {
       action = '<div class="card-ink mt-6 p-6">' +
-        '<p class="mono-label text-white/70">Final payment</p>' +
-        '<h3 class="h-section mt-2 text-xl text-white">Approved — ' + money(bal) + ' now due</h3>' +
+        '<p class="mono-label text-white/70">Payment</p>' +
+        '<h3 class="h-section mt-2 text-xl text-white">Approved — ' + money(total) + ' now due</h3>' +
         '<p class="mt-2 text-[0.8125rem] leading-relaxed text-white/80">Once this is paid your website goes live.</p>' +
-        '<button class="btn btn-light mt-5" data-act="pay-final">Pay ' + money(bal) + ' &amp; go live</button></div>';
+        '<button class="btn btn-light mt-5" data-act="pay-final">Pay ' + money(total) + ' &amp; go live</button></div>';
     } else if (stage === 'live') {
       action = '<div class="card mt-6 p-6"><p class="mono-label text-ink-soft">Live</p>' +
         '<h3 class="h-section mt-2 text-xl">Your website is live</h3>' +
@@ -304,7 +302,6 @@
 
   routes['/payments'] = function () {
     var s = O.load(), o = s.order;
-    var dep = O.deposit(o.oneTimeCents), bal = O.balance(o.oneTimeCents);
     var stage = s.project.stage;
     var finalPaid = stage === 'live';
 
@@ -317,21 +314,21 @@
         '<td><button class="btn btn-ghost px-3 py-1 text-[0.75rem]" data-act="invoice" data-id="' + esc(p.id) + '">Receipt</button></td></tr>';
     }).join('');
 
-    return head('Payments', 'One price, paid in two parts.',
-      'Your website is a one-time cost split 25/75. There is nothing recurring.') +
+    return head('Payments', 'One price, paid once.',
+      'You pay the one-time total when your finished site is ready to go live. There is nothing recurring.') +
 
       '<div class="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-3">' +
         '<div class="card p-5"><p class="mono-label text-ink-soft">One-time website total</p><p class="h-section mt-2 text-xl">' + money(o.oneTimeCents) + '</p></div>' +
-        '<div class="card p-5"><p class="mono-label text-ink-soft">Paid</p><p class="h-section mt-2 text-xl">' + money(finalPaid ? o.oneTimeCents : dep) + '</p><p class="mt-1 text-[0.8125rem] text-ink-soft">25% deposit' + (finalPaid ? ' + 75% balance' : '') + '</p></div>' +
-        '<div class="card p-5"><p class="mono-label text-ink-soft">Outstanding</p><p class="h-section mt-2 text-xl">' + money(finalPaid ? 0 : bal) + '</p><p class="mt-1 text-[0.8125rem] text-ink-soft">' + (finalPaid ? 'Nothing outstanding' : 'Due after approval') + '</p></div>' +
+        '<div class="card p-5"><p class="mono-label text-ink-soft">Paid</p><p class="h-section mt-2 text-xl">' + money(finalPaid ? o.oneTimeCents : 0) + '</p><p class="mt-1 text-[0.8125rem] text-ink-soft">' + (finalPaid ? 'Paid in full' : 'Nothing paid yet') + '</p></div>' +
+        '<div class="card p-5"><p class="mono-label text-ink-soft">Outstanding</p><p class="h-section mt-2 text-xl">' + money(finalPaid ? 0 : o.oneTimeCents) + '</p><p class="mt-1 text-[0.8125rem] text-ink-soft">' + (finalPaid ? 'Nothing outstanding' : 'Due before it goes live') + '</p></div>' +
       '</div>' +
 
       '<div class="card mt-6 p-6">' +
         '<p class="mono-label text-ink-soft">Website — ' + money(o.oneTimeCents) + ' one-time</p>' +
         '<ul class="timeline mt-4 text-[0.8125rem] leading-relaxed text-ink-mid">' +
-          '<li><span class="font-semibold text-ink">25% deposit — ' + money(dep) + '</span><br>Paid ' + esc(O.date('2026-08-04')) + '. This started the project.</li>' +
-          '<li' + (finalPaid ? '' : ' class="pending"') + '><span class="font-semibold text-ink">Remaining 75% — ' + money(bal) + '</span><br>' +
-            (finalPaid ? 'Paid in full.' : 'Due after you approve the finished website.') + '</li>' +
+          '<li><span class="font-semibold text-ink">Order placed</span><br>Nothing charged.</li>' +
+          '<li' + (finalPaid ? '' : ' class="pending"') + '><span class="font-semibold text-ink">One-time payment — ' + money(o.oneTimeCents) + '</span><br>' +
+            (finalPaid ? 'Paid in full.' : 'Due after you approve the finished website, before it goes live.') + '</li>' +
         '</ul>' +
       '</div>' +
 
@@ -577,8 +574,7 @@
       once += i.cents;
     });
 
-    return { once: once, deposit: O.deposit(once),
-             balance: O.balance(once), base: base, inOnce: inOnce };
+    return { once: once, base: base, inOnce: inOnce };
   }
 
   function draftReady() {
@@ -599,8 +595,8 @@
       if (!t.base) return 'Choose a website to continue.';
       if (t.base.key === 'custom' && d.features.length < 3) return 'Pick at least three features.';
       if (!d.agreed) return null;                 // the tick box says it itself
-      return t.deposit > 0
-        ? 'Only the 25% deposit is charged today.'
+      return t.once > 0
+        ? 'Nothing is charged today. You pay once, before it goes live.'
         : 'Nothing is charged for the free page.';
     },
     agreed: function () { return draft().agreed; },
@@ -703,7 +699,7 @@
     }
 
     return head('Build your package', 'Choose what you need.',
-      'Pick a website, what goes in it, and anything around it. You pay 25% today and the rest once you have seen the finished site.') +
+      'Pick a website, what goes in it, and anything around it. Nothing is charged today: you pay once, when you have seen the finished site.') +
 
       '<div class="build-wrap build-wrap--solo">' +
         '<div class="build-main">' +
@@ -808,7 +804,7 @@
       '<div class="card mt-6 p-6"><p class="mono-label text-ink-soft">Notification preferences</p>' +
         '<div class="mt-4">' +
           toggle('nt-project', 'Project updates', 'Build progress, review ready, going live.', true) +
-          toggle('nt-payment', 'Payment reminders', 'When the remaining 75% is due.', true) +
+          toggle('nt-payment', 'Payment reminders', 'When your website payment is due.', true) +
           toggle('nt-changes', 'Change requests', 'When a request moves to in progress or completed.', true) +
           toggle('nt-news', 'Product news', 'New services such as AI Receptionist when they open.', false) +
         '</div>' +
@@ -894,12 +890,13 @@
     'approve-site': function () {
       var s = O.load();
       if (s.project.stage !== 'review') return;
-      s.project.stage = 'live';
+      /* Approving makes the payment due; the site goes live once it is paid. */
+      s.project.stage = 'final';
       s.project.lastUpdate = new Date().toISOString().slice(0, 10);
       (s.payments || []).forEach(function (p) {
         if (p.status === 'due-after-approval') { p.status = 'due'; p.date = s.project.lastUpdate; }
       });
-      O.notify('You approved your website. The remaining balance is now due.');
+      O.notify('You approved your website. Your one-time payment is now due.');
       O.save();
       render(true);
     },
@@ -908,7 +905,7 @@
 
     'clear-draft':    function () { var s = O.load(); s.draft = O.emptyDraft(); O.save(); render(true); },
 
-    'pay-deposit': function (el) {
+    'place-order': function (el) {
       // A double click used to place the order twice before the first
       // render had removed the button.
       if (placing || !draftReady()) return;
@@ -931,15 +928,16 @@
 
       s.project.features = (d.base === 'full' || d.base === 'complete') ? C.features.slice() : d.features.slice();
       s.tier = d.base;
-      // 'deposit' means the deposit is outstanding, which it is. It
-      // becomes 'content' when a verified payment says so.
-      s.project.stage = t.deposit > 0 ? 'deposit' : 'content';
+      // Nothing is taken when the order is placed: the project goes
+      // straight to waiting for content.
+      s.project.stage = 'content';
 
       var today = new Date().toISOString().slice(0, 10);
 
       /* ══ TODO — CONNECT THE PAYMENT PROVIDER HERE ═══════════════════
-         Nothing above this line has taken any money. Until a provider
-         is wired up, the deposit is 'due' and the project waits.
+         Nothing is charged when an order is placed. The one payment is
+         taken at 'pay-final', after the customer approves the site.
+         Until a provider is wired up, that payment is simulated.
 
          When Stripe (or similar) goes in:
            1. This handler creates a Checkout Session server-side, in a
@@ -959,12 +957,10 @@
       /* Invoice numbers are derived, not rolled. Math.random() could
          hand two orders the same number. */
       var ref = today.replace(/-/g, '').slice(2);
-      s.payments = [
+      s.payments = t.once > 0 ? [
         { id: 'INV-' + ref + '-1', date: null,
-          description: '25% deposit — ' + t.base.name, cents: t.deposit, kind: 'one-time', status: 'due' },
-        { id: 'INV-' + ref + '-2', date: null,
-          description: 'Remaining 75% — due after you approve the website', cents: t.balance, kind: 'one-time', status: 'due-after-approval' }
-      ];
+          description: t.base.name + ' — due after you approve the website', cents: t.once, kind: 'one-time', status: 'due-after-approval' }
+      ] : [];
 
       // Services follow what was actually bought
       s.services.forEach(function (sv) {
@@ -976,9 +972,9 @@
       s.draft = O.emptyDraft();
       O.save();
       placing = false;
-      O.notify(t.deposit > 0
-        ? 'Your order is in. We will send an invoice for the ' + money(t.deposit) +
-          ' deposit — your project starts the moment it clears.'
+      O.notify(t.once > 0
+        ? 'Your order is in — nothing has been charged. Send us your content and we build it; ' +
+          'you pay ' + money(t.once) + ' once, when it is ready to go live.'
         : 'Your free landing page is requested. We will be in touch within 48 hours.');
       location.hash = '#/overview';
       render();
@@ -986,15 +982,17 @@
 
     approve: function () {
       O.advance('final');
-      O.notify('Website approved — your remaining 75% payment is now due.');
+      O.notify('Website approved — your one-time payment is now due.');
       render();
     },
     changes: function () { location.hash = '#/request'; },
     'pay-final': function () {
       O.advance('live');
       var s = O.load();
-      s.payments[1].status = 'paid';
-      s.payments[1].date = new Date().toISOString().slice(0, 10);
+      if (s.payments[0]) {
+        s.payments[0].status = 'paid';
+        s.payments[0].date = new Date().toISOString().slice(0, 10);
+      }
       O.save();
       O.notify('Final payment received — your website is live.');
       render();
@@ -1194,10 +1192,10 @@
     bar.querySelector('[data-bar-figure]').textContent =
       money(t.once) + ' one-time';
     bar.querySelector('[data-bar-sub]').textContent =
-      t.once ? 'Pay today ' + money(t.deposit) + ' — 25% deposit' : 'Choose a website to begin';
+      t.once ? 'Nothing today — paid once, before it goes live' : 'Choose a website to begin';
     var btn = bar.querySelector('[data-bar-cta]');
     btn.disabled = !draftReady();
-    btn.textContent = draftReady() ? 'Pay ' + money(t.deposit) + ' & start' : 'Continue';
+    btn.textContent = draftReady() ? 'Place my order' : 'Continue';
     bar.classList.add('is-up');
   }
 

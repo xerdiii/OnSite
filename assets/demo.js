@@ -102,11 +102,6 @@
     return '€' + (cents / 100).toFixed(2);
   }
 
-  // Deposit is 25%, rounded down; the balance takes the remainder so
-  // the two halves always add back to the total.
-  function deposit(cents) { return Math.floor(cents * 0.25); }
-  function balance(cents) { return cents - deposit(cents); }
-
   function date(iso, blank) {
     if (!iso) return blank || '—';
     var d = new Date(iso + 'T00:00:00');
@@ -158,7 +153,7 @@
       },
 
       project: {
-        // none → deposit → content → build → review → final payment → live
+        // none → content → build → review → payment → live
         stage: 'none',
         deliveryDate: null,
         lastUpdate: null,
@@ -500,11 +495,10 @@
 
   // ── Project stages ───────────────────────────────────────────
   var STAGES = [
-    { key: 'deposit', label: '25% deposit',    doneNote: 'Paid',     waitNote: 'Waiting', activeNote: 'Awaiting payment' },
     { key: 'content', label: 'Content',        doneNote: 'Received', waitNote: 'Waiting' },
     { key: 'build',   label: 'Website build',  doneNote: 'Complete', waitNote: 'Waiting' },
     { key: 'review',  label: 'Customer review',doneNote: 'Approved', waitNote: 'Waiting' },
-    { key: 'final',   label: '75% final payment', doneNote: 'Paid',  waitNote: 'Waiting', activeNote: 'Awaiting payment' },
+    { key: 'final',   label: 'Payment',        doneNote: 'Paid',     waitNote: 'Waiting', activeNote: 'Awaiting payment' },
     { key: 'live',    label: 'Website live',   doneNote: 'Live',     waitNote: 'Waiting' }
   ];
 
@@ -525,14 +519,10 @@
   function statusLabel() {
     var map = {
       none:    'Not started',
-      // 'deposit' is the stage where the deposit is OUTSTANDING. It used
-      // to read 'Deposit received', so the overview announced a payment
-      // on the same screen as the invoice marked Due.
-      deposit: 'Deposit due',
       content: 'Awaiting your content',
       build:   'Website in progress',
       review:  'Ready for review',
-      final:   'Approved — final payment due',
+      final:   'Approved — payment due',
       live:    'Live'
     };
     return map[load().project.stage] || 'In progress';
@@ -622,7 +612,7 @@
   global.Sitehouse = {
     navAuth: navAuth,
     CATALOG: CATALOG, emptyDraft: emptyDraft,
-    euro: euro, deposit: deposit, balance: balance, date: date,
+    euro: euro, date: date,
     load: load, save: save, reset: reset,
     bindUser: bindUser, unbindUser: unbindUser, storeKey: storeKey,
     onSave: onSave, replaceState: replaceState,
