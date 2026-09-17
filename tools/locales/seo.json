@@ -1,6 +1,5 @@
 {
   "_comment": "Title and meta description for every page in every built language. Written per language rather than translated, so each one uses the words people actually search in that language. Titles stay under ~60 characters, descriptions under ~160.",
-
   "home": {
     "en": {
       "title": "Web Design Agency for Small Businesses | Xovahweb",
@@ -43,7 +42,6 @@
       "description": "Küçük işletmeler için özel web siteleri ve açılış sayfaları. Tek seferlik 50 €'dan başlayan fiyat, 5–7 günde yayında, alan adı ve hosting dahil."
     }
   },
-
   "pricing": {
     "en": {
       "title": "Website Design Pricing & Packages | Xovahweb",
@@ -86,7 +84,6 @@
       "description": "Üç web sitesi paketi, her biri tek seferlik ödemeyle: 50 €, 200 € veya 500 €. Neyin dahil olduğunu — alan adı, hosting, SSL ve bölümler — konuşmadan önce karşılaştırın."
     }
   },
-
   "services": {
     "en": {
       "title": "Web Design Services & Website Add-ons | Xovahweb",
@@ -129,7 +126,6 @@
       "description": "Çevrimiçi randevu, yerel SEO, analiz, otomasyon, logo tasarımı ve kurumsal e-posta: her biri ayrı fiyatlı 66 tek seferlik hizmet ve her sitede 34 özellik."
     }
   },
-
   "start": {
     "en": {
       "title": "Start Your Website Project — Get a Quote | Xovahweb",
@@ -172,7 +168,6 @@
       "description": "Bir paket seçin, ihtiyacınız olan ekstraları ekleyin ve işletmenizi anlatın. Hesap yok, ödeme yok: gerçek rakamla, genellikle aynı iş günü içinde dönüyoruz."
     }
   },
-
   "contact": {
     "en": {
       "title": "Contact Xovahweb — Talk to a Web Designer",
@@ -215,7 +210,6 @@
       "description": "Yeni bir site, teklif ya da daha önce yaptığımız bir site hakkında sorular mı var? Bize yazın: yanıtı bir insan verir, genellikle aynı iş günü içinde."
     }
   },
-
   "faq": {
     "en": {
       "title": "Website FAQ: Cost, Timing & Ownership | Xovahweb",
@@ -258,50 +252,6 @@
       "description": "Tek seferlik site ücretinin neleri kapsadığı, ne zaman ödediğiniz, yapımın ne kadar sürdüğü, alan adının kime ait olduğu ve yayına girmeden iptal ederseniz ne olacağı."
     }
   },
-
-  "free": {
-    "en": {
-      "title": "Free One-Page Website for Your Business | Xovahweb",
-      "description": "A real one-page website for your business, built by a person and live within 48 hours. We host it, there is no domain to buy, and it costs you nothing."
-    },
-    "sq": {
-      "title": "Faqe interneti falas për biznesin tuaj | Xovahweb",
-      "description": "Një faqe e vërtetë me një faqe të vetme për biznesin tuaj, e ndërtuar nga një person dhe online brenda 48 orëve. E mbajmë ne online, pa domen për të blerë, pa kosto."
-    },
-    "de": {
-      "title": "Kostenlose einseitige Website für Ihr Unternehmen | Xovahweb",
-      "description": "Eine echte einseitige Website für Ihr Unternehmen, von Hand gebaut und in 48 Stunden online. Wir hosten sie, Sie kaufen keine Domain, und sie kostet nichts."
-    },
-    "fr": {
-      "title": "Site web d'une page gratuit pour votre entreprise | Xovahweb",
-      "description": "Un vrai site d'une page pour votre entreprise, construit par une personne et en ligne sous 48 heures. Nous l'hébergeons, aucun domaine à acheter, aucun frais."
-    },
-    "it": {
-      "title": "Sito di una pagina gratuito per la tua attività | Xovahweb",
-      "description": "Un vero sito di una pagina per la tua attività, realizzato da una persona e online entro 48 ore. Lo ospitiamo noi, nessun dominio da comprare, nessun costo."
-    },
-    "es": {
-      "title": "Web de una página gratis para tu negocio | Xovahweb",
-      "description": "Una web de una página de verdad para tu negocio, hecha por una persona y online en 48 horas. La alojamos nosotros, no compras dominio y no te cuesta nada."
-    },
-    "pt": {
-      "title": "Site de uma página grátis para o seu negócio | Xovahweb",
-      "description": "Um site de uma página a sério para o seu negócio, construído por uma pessoa e online em 48 horas. Alojamos nós, não compra domínio e não lhe custa nada."
-    },
-    "nl": {
-      "title": "Gratis website van één pagina voor je bedrijf | Xovahweb",
-      "description": "Een echte website van één pagina voor je bedrijf, gebouwd door een mens en binnen 48 uur live. Wij hosten hem, je koopt geen domein en het kost je niets."
-    },
-    "sv": {
-      "title": "Gratis ensidig webbplats för ditt företag | Xovahweb",
-      "description": "En riktig ensidig webbplats för ditt företag, byggd av en människa och live inom 48 timmar. Vi driftar den, ingen domän att köpa, och den kostar ingenting."
-    },
-    "tr": {
-      "title": "İşletmeniz için ücretsiz tek sayfalık site | Xovahweb",
-      "description": "İşletmeniz için gerçek, tek sayfalık bir web sitesi: bir insan tarafından yapılır ve 48 saat içinde yayına girer. Barındırma bizden, alan adı almanıza gerek yok."
-    }
-  },
-
   "terms": {
     "en": {
       "title": "Terms of Service | Xovahweb",

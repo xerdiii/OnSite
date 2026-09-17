@@ -34,6 +34,14 @@
     var barCount= doc.querySelector('[data-ex-bar-count]');
     var barOnce = doc.querySelector('[data-ex-bar-once]');
 
+    /* The same number again, pinned to the bottom of a phone screen,
+       where the list is long enough that the panel below is off screen
+       for most of the time you are using it. */
+    var dock      = doc.querySelector('[data-ex-dock]');
+    var dockCount = doc.querySelector('[data-ex-dock-count]');
+    var dockOnce  = doc.querySelector('[data-ex-dock-once]');
+    var bumpTimer = 0, lastShown = null;
+
     function money(n) {
       // Round to cents first, then decide. A total of 39.9975 is €40, not
       // €39.99 — but the design extras carry a real .99 and must keep it.
@@ -74,6 +82,20 @@
         bar.hidden = n === 0;
         barCount.textContent = n;
         barOnce.textContent = money(once);
+      }
+
+      if (dock) {
+        var shown = money(once);
+        dockCount.textContent = n;
+        dockOnce.textContent = shown;
+        dock.classList.toggle('is-up', n > 0);
+        doc.body.classList.toggle('has-ex-dock', n > 0);
+        if (lastShown !== null && shown !== lastShown) {
+          dock.classList.add('is-bump');
+          global.clearTimeout(bumpTimer);
+          bumpTimer = global.setTimeout(function () { dock.classList.remove('is-bump'); }, 260);
+        }
+        lastShown = shown;
       }
 
       write(boxes.filter(function (b) { return b.checked; })

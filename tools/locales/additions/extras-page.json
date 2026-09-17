@@ -1,0 +1,105 @@
+{
+  "_comment": "Second round of additions, keyed on the English string itself. Merged by tools/locales/merge.py alongside the numbered file.",
+
+  "Already included": {
+    "sq": "Tashmë të përfshira", "de": "Schon enthalten", "fr": "Déjà compris",
+    "it": "Già inclusi", "es": "Ya incluido", "pt": "Já incluído",
+    "nl": "Al inbegrepen", "sv": "Ingår redan", "tr": "Zaten dahil"
+  },
+  "Thirty-four features are built into every website we make. They cost nothing extra.": {
+    "sq": "Tridhjetë e katër veçori janë pjesë e çdo faqeje që ndërtojmë. Nuk kushtojnë asgjë më shumë.",
+    "de": "Vierunddreißig Funktionen stecken in jeder Website, die wir bauen. Sie kosten nichts extra.",
+    "fr": "Trente-quatre fonctions sont intégrées à chaque site que nous réalisons. Elles ne coûtent rien de plus.",
+    "it": "Trentaquattro funzioni fanno parte di ogni sito che realizziamo. Non costano nulla in più.",
+    "es": "Treinta y cuatro funciones vienen en cada web que hacemos. No cuestan nada más.",
+    "pt": "Trinta e quatro funcionalidades fazem parte de cada site que fazemos. Não custam mais nada.",
+    "nl": "Vierendertig functies zitten in elke website die we bouwen. Ze kosten niets extra.",
+    "sv": "Trettiofyra funktioner finns i varje webbplats vi bygger. De kostar inget extra.",
+    "tr": "Yaptığımız her sitede otuz dört özellik hazır gelir. Hiçbiri ek ücrete tabi değildir."
+  },
+  "Optional extras": {
+    "sq": "Shtesa opsionale", "de": "Optionale Extras", "fr": "Options facultatives",
+    "it": "Extra facoltativi", "es": "Extras opcionales", "pt": "Extras opcionais",
+    "nl": "Optionele extra's", "sv": "Valfria tillägg", "tr": "İsteğe bağlı ekstralar"
+  },
+  "Sixty-six further jobs, each with its own one-off price. Take only the ones you need.": {
+    "sq": "Gjashtëdhjetë e gjashtë punë të tjera, secila me çmimin e vet një herë të vetme. Merrni vetëm ato që ju duhen.",
+    "de": "Sechsundsechzig weitere Leistungen, jede mit eigenem Einmalpreis. Nehmen Sie nur, was Sie brauchen.",
+    "fr": "Soixante-six prestations supplémentaires, chacune à son prix unique. Ne prenez que celles qu'il vous faut.",
+    "it": "Altri sessantasei interventi, ognuno con il suo prezzo una tantum. Prendi solo quelli che ti servono.",
+    "es": "Sesenta y seis trabajos más, cada uno con su precio único. Coge solo los que necesites.",
+    "pt": "Mais sessenta e seis trabalhos, cada um com o seu preço único. Leve só os que precisa.",
+    "nl": "Zesenzestig andere klussen, elk met een eigen eenmalige prijs. Neem alleen wat je nodig hebt.",
+    "sv": "Sextiosex ytterligare jobb, vart och ett med sitt eget engångspris. Ta bara det du behöver.",
+    "tr": "Her biri kendi tek seferlik fiyatıyla altmış altı iş daha. Yalnızca ihtiyacınız olanları alın."
+  },
+  "Your running total": {
+    "sq": "Totali juaj në kohë reale", "de": "Ihre laufende Summe", "fr": "Votre total en direct",
+    "it": "Il tuo totale aggiornato", "es": "Tu total en marcha", "pt": "O seu total em curso",
+    "nl": "Je lopende totaal", "sv": "Din löpande summa", "tr": "Anlık toplamınız"
+  },
+  "Tick the ones you want and the total adds itself up. Send it with your project request.": {
+    "sq": "Shënoni ato që doni dhe totali mblidhet vetë. Dërgojeni bashkë me kërkesën e projektit.",
+    "de": "Haken Sie an, was Sie möchten, und die Summe rechnet sich selbst zusammen. Schicken Sie sie mit Ihrer Projektanfrage.",
+    "fr": "Cochez celles que vous voulez et le total se calcule seul. Envoyez-le avec votre demande de projet.",
+    "it": "Spunta quelli che vuoi e il totale si somma da solo. Mandalo insieme alla tua richiesta di progetto.",
+    "es": "Marca los que quieras y el total se suma solo. Envíalo con tu solicitud de proyecto.",
+    "pt": "Assinale os que quiser e o total soma-se sozinho. Envie-o com o seu pedido de projeto.",
+    "nl": "Vink aan wat je wilt en het totaal telt zichzelf op. Stuur het mee met je projectaanvraag.",
+    "sv": "Bocka för det du vill ha så räknar summan ihop sig själv. Skicka den med din projektförfrågan.",
+    "tr": "İstediklerinizi işaretleyin, toplam kendi kendine çıksın. Proje talebinizle birlikte gönderin."
+  },
+  "Pick your extras": {
+    "sq": "Zgjidhni shtesat tuaja", "de": "Extras auswählen", "fr": "Choisir vos options",
+    "it": "Scegli i tuoi extra", "es": "Elige tus extras", "pt": "Escolha os seus extras",
+    "nl": "Kies je extra's", "sv": "Välj dina tillägg", "tr": "Ekstralarınızı seçin"
+  },
+  ", paid once. Nothing is charged on this page.": {
+    "sq": ", paguhet një herë. Në këtë faqe nuk faturohet asgjë.",
+    "de": ", einmalig bezahlt. Auf dieser Seite wird nichts berechnet.",
+    "fr": ", payé une seule fois. Rien n'est facturé sur cette page.",
+    "it": ", pagato una volta sola. Su questa pagina non viene addebitato nulla.",
+    "es": ", pago único. En esta página no se cobra nada.",
+    "pt": ", pago uma só vez. Nesta página não é cobrado nada.",
+    "nl": ", eenmalig betaald. Op deze pagina wordt niets in rekening gebracht.",
+    "sv": ", betalas en gång. Inget debiteras på den här sidan.",
+    "tr": ", tek seferlik ödenir. Bu sayfada hiçbir tahsilat yapılmaz."
+  },
+  "Included in every website": {
+    "sq": "Përfshihen në çdo faqe", "de": "In jeder Website enthalten", "fr": "Compris dans chaque site",
+    "it": "Incluso in ogni sito", "es": "Incluido en cada web", "pt": "Incluído em cada site",
+    "nl": "In elke website inbegrepen", "sv": "Ingår i varje webbplats", "tr": "Her web sitesinde dahil"
+  },
+  "no extra cost": {
+    "sq": "pa kosto shtesë", "de": "ohne Aufpreis", "fr": "sans supplément",
+    "it": "senza costi aggiuntivi", "es": "sin coste añadido", "pt": "sem custo adicional",
+    "nl": "zonder meerprijs", "sv": "utan extra kostnad", "tr": "ek ücret yok"
+  },
+  "Extras only. The price of the website itself is on top of this.": {
+    "sq": "Vetëm shtesat. Çmimi i vetë faqes shkon mbi këtë.",
+    "de": "Nur die Extras. Der Preis der Website selbst kommt dazu.",
+    "fr": "Les options seules. Le prix du site lui-même s'ajoute à cela.",
+    "it": "Solo gli extra. Il prezzo del sito in sé si aggiunge a questo.",
+    "es": "Solo los extras. El precio de la web va aparte de esto.",
+    "pt": "Apenas os extras. O preço do próprio site soma-se a isto.",
+    "nl": "Alleen de extra's. De prijs van de website zelf komt hierbij.",
+    "sv": "Bara tilläggen. Priset för själva webbplatsen tillkommer.",
+    "tr": "Yalnızca ekstralar. Sitenin kendi ücreti bunun üzerine gelir."
+  },
+  "Send these with my project request": {
+    "sq": "Dërgoji këto me kërkesën time",
+    "de": "Mit meiner Projektanfrage senden",
+    "fr": "Envoyer avec ma demande de projet",
+    "it": "Invia insieme alla mia richiesta",
+    "es": "Enviar con mi solicitud de proyecto",
+    "pt": "Enviar com o meu pedido de projeto",
+    "nl": "Meesturen met mijn projectaanvraag",
+    "sv": "Skicka med min projektförfrågan",
+    "tr": "Proje talebimle gönder"
+  },
+  "Send with my request": {
+    "sq": "Dërgo me kërkesën time", "de": "Mit Anfrage senden", "fr": "Envoyer avec ma demande",
+    "it": "Invia con la richiesta", "es": "Enviar con mi solicitud", "pt": "Enviar com o pedido",
+    "nl": "Meesturen met aanvraag", "sv": "Skicka med förfrågan", "tr": "Talebimle gönder"
+  }
+}

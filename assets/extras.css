@@ -150,3 +150,69 @@
   padding: 0.28rem 0.7rem;
   white-space: nowrap;
 }
+
+/* ── How this page works ─────────────────────────────────────────
+   Three lines at the top, because the honest problem with this page
+   is that it opens with a hundred items and no explanation of which
+   of them you are already getting. */
+.ex-how {
+  display: grid; grid-template-columns: 1fr; gap: 1.5rem;
+  margin: 0; padding: 0; list-style: none;
+  border-top: 1px solid rgb(var(--c-line)); padding-top: 1.6rem;
+  max-width: 62rem;
+}
+@media (min-width: 768px) { .ex-how { grid-template-columns: repeat(3, 1fr); gap: 2.25rem; } }
+.ex-how-n {
+  font-family: 'IBM Plex Mono', ui-monospace, monospace;
+  font-size: 0.6875rem; letter-spacing: 0.18em; color: rgb(var(--c-accent));
+}
+.ex-how-h { margin-top: 0.5rem; font-size: 0.9375rem; font-weight: 600; color: rgb(var(--c-ink)); }
+.ex-how-p { margin-top: 0.35rem; font-size: 0.875rem; line-height: 1.6; color: rgb(var(--c-ink-mid)); }
+
+/* the next step, at the end of the total */
+.pick-send {
+  display: flex; align-items: center; justify-content: center;
+  min-height: 46px; margin-top: 1.1rem; padding: 0 1.1rem;
+  background: rgb(var(--c-accent)); color: #fff;
+  font-size: 0.875rem; font-weight: 600; text-align: center;
+}
+.pick-send:hover { background: rgb(var(--c-accent-hi, var(--c-accent))); opacity: 0.92; }
+
+/* ── The total, pinned to the bottom on a phone ──────────────────
+   It rises when the first extra is ticked and the figure gives a
+   small push every time it changes, so the number is visibly the
+   thing that just moved. */
+.ex-dock {
+  position: fixed; left: 0; right: 0; bottom: 0; z-index: 46;
+  background: color-mix(in srgb, rgb(var(--c-surface)) 94%, transparent);
+  -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px);
+  border-top: 1px solid rgb(var(--c-line-firm));
+  padding: 0.7rem 1.25rem calc(0.7rem + env(safe-area-inset-bottom, 0px));
+  transform: translateY(130%);
+  transition: transform 340ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+.ex-dock.is-up { transform: none; }
+.ex-dock-in { display: flex; align-items: center; gap: 1rem; }
+.ex-dock-sum { flex: 1; min-width: 0; line-height: 1.25; }
+.ex-dock-sum b {
+  display: block; font-size: 1.2rem; font-weight: 700; color: rgb(var(--c-ink));
+  transform-origin: left center;
+  transition: transform 260ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+.ex-dock.is-bump .ex-dock-sum b { transform: scale(1.14); }
+.ex-dock-sum span { font-size: 0.75rem; color: rgb(var(--c-ink-soft)); }
+.ex-dock-cta {
+  flex: none; display: inline-flex; align-items: center; min-height: 44px;
+  padding: 0 1.1rem; background: rgb(var(--c-accent)); color: #fff;
+  font-size: 0.875rem; font-weight: 600;
+}
+@media (min-width: 768px) { .ex-dock { display: none; } }
+/* the top bar already carries the total on a wide screen; on a phone
+   the dock does, and two of them is one too many */
+@media (max-width: 767px) { .ex-bar-sum { display: none !important; } }
+body.has-ex-dock { padding-bottom: 5.25rem; }
+@media (min-width: 768px) { body.has-ex-dock { padding-bottom: 0; } }
+
+@media (prefers-reduced-motion: reduce) {
+  .ex-dock, .ex-dock-sum b { transition: none; }
+}

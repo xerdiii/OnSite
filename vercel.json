@@ -59,16 +59,6 @@
       "permanent": true
     },
     {
-      "source": "/free-landing-page",
-      "destination": "/en/free-landing-page",
-      "permanent": true
-    },
-    {
-      "source": "/free-landing-page.html",
-      "destination": "/en/free-landing-page",
-      "permanent": true
-    },
-    {
       "source": "/terms",
       "destination": "/en/terms",
       "permanent": true
@@ -404,51 +394,6 @@
       "permanent": true
     },
     {
-      "source": "/sq/free-landing-page",
-      "destination": "/sq/faqe-falas",
-      "permanent": true
-    },
-    {
-      "source": "/de/free-landing-page",
-      "destination": "/de/kostenlose-landingpage",
-      "permanent": true
-    },
-    {
-      "source": "/fr/free-landing-page",
-      "destination": "/fr/landing-page-gratuite",
-      "permanent": true
-    },
-    {
-      "source": "/it/free-landing-page",
-      "destination": "/it/landing-page-gratuita",
-      "permanent": true
-    },
-    {
-      "source": "/es/free-landing-page",
-      "destination": "/es/landing-page-gratis",
-      "permanent": true
-    },
-    {
-      "source": "/pt/free-landing-page",
-      "destination": "/pt/landing-page-gratis",
-      "permanent": true
-    },
-    {
-      "source": "/nl/free-landing-page",
-      "destination": "/nl/gratis-landingspagina",
-      "permanent": true
-    },
-    {
-      "source": "/sv/free-landing-page",
-      "destination": "/sv/gratis-landningssida",
-      "permanent": true
-    },
-    {
-      "source": "/tr/free-landing-page",
-      "destination": "/tr/ucretsiz-acilis-sayfasi",
-      "permanent": true
-    },
-    {
       "source": "/sq/terms",
       "destination": "/en/terms",
       "permanent": true
@@ -675,6 +620,176 @@
     },
     {
       "source": "/tr/index",
+      "destination": "/tr",
+      "permanent": true
+    },
+    {
+      "source": "/en/free-landing-page",
+      "destination": "/en",
+      "permanent": true
+    },
+    {
+      "source": "/sq/faqe-falas",
+      "destination": "/sq",
+      "permanent": true
+    },
+    {
+      "source": "/de/kostenlose-landingpage",
+      "destination": "/de",
+      "permanent": true
+    },
+    {
+      "source": "/fr/landing-page-gratuite",
+      "destination": "/fr",
+      "permanent": true
+    },
+    {
+      "source": "/it/landing-page-gratuita",
+      "destination": "/it",
+      "permanent": true
+    },
+    {
+      "source": "/es/landing-page-gratis",
+      "destination": "/es",
+      "permanent": true
+    },
+    {
+      "source": "/pt/landing-page-gratis",
+      "destination": "/pt",
+      "permanent": true
+    },
+    {
+      "source": "/nl/gratis-landingspagina",
+      "destination": "/nl",
+      "permanent": true
+    },
+    {
+      "source": "/sv/gratis-landningssida",
+      "destination": "/sv",
+      "permanent": true
+    },
+    {
+      "source": "/tr/ucretsiz-acilis-sayfasi",
+      "destination": "/tr",
+      "permanent": true
+    },
+    {
+      "source": "/free",
+      "destination": "/en",
+      "permanent": true
+    },
+    {
+      "source": "/free.html",
+      "destination": "/en",
+      "permanent": true
+    },
+    {
+      "source": "/en/free",
+      "destination": "/en",
+      "permanent": true
+    },
+    {
+      "source": "/sq/free",
+      "destination": "/sq",
+      "permanent": true
+    },
+    {
+      "source": "/de/free",
+      "destination": "/de",
+      "permanent": true
+    },
+    {
+      "source": "/fr/free",
+      "destination": "/fr",
+      "permanent": true
+    },
+    {
+      "source": "/it/free",
+      "destination": "/it",
+      "permanent": true
+    },
+    {
+      "source": "/es/free",
+      "destination": "/es",
+      "permanent": true
+    },
+    {
+      "source": "/pt/free",
+      "destination": "/pt",
+      "permanent": true
+    },
+    {
+      "source": "/nl/free",
+      "destination": "/nl",
+      "permanent": true
+    },
+    {
+      "source": "/sv/free",
+      "destination": "/sv",
+      "permanent": true
+    },
+    {
+      "source": "/tr/free",
+      "destination": "/tr",
+      "permanent": true
+    },
+    {
+      "source": "/free-landing-page",
+      "destination": "/en",
+      "permanent": true
+    },
+    {
+      "source": "/free-landing-page.html",
+      "destination": "/en",
+      "permanent": true
+    },
+    {
+      "source": "/en/free-landing-page",
+      "destination": "/en",
+      "permanent": true
+    },
+    {
+      "source": "/sq/free-landing-page",
+      "destination": "/sq",
+      "permanent": true
+    },
+    {
+      "source": "/de/free-landing-page",
+      "destination": "/de",
+      "permanent": true
+    },
+    {
+      "source": "/fr/free-landing-page",
+      "destination": "/fr",
+      "permanent": true
+    },
+    {
+      "source": "/it/free-landing-page",
+      "destination": "/it",
+      "permanent": true
+    },
+    {
+      "source": "/es/free-landing-page",
+      "destination": "/es",
+      "permanent": true
+    },
+    {
+      "source": "/pt/free-landing-page",
+      "destination": "/pt",
+      "permanent": true
+    },
+    {
+      "source": "/nl/free-landing-page",
+      "destination": "/nl",
+      "permanent": true
+    },
+    {
+      "source": "/sv/free-landing-page",
+      "destination": "/sv",
+      "permanent": true
+    },
+    {
+      "source": "/tr/free-landing-page",
       "destination": "/tr",
       "permanent": true
     }

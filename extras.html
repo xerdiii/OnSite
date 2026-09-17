@@ -41,7 +41,7 @@
 <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400&family=Instrument+Serif&family=Inter:wght@400;500;600;700&family=Outfit:wght@200..800&display=swap"></noscript>
 <script>/* Theme before paint. Dark is the site, light is a choice you make — the attribute is always stamped so the system setting never decides for you. */(function(){var t='dark';try{t=localStorage.getItem('sitehouse.theme')==='light'?'light':'dark';}catch(e){}document.documentElement.setAttribute('data-theme',t);})();</script>
 <link rel="stylesheet" href="assets/xovah.css?v=2">
-<link rel="stylesheet" href="assets/extras.css?v=3">
+<link rel="stylesheet" href="assets/extras.css?v=4">
 <link rel="stylesheet" href="assets/mobile.css?v=3">
 <link rel="stylesheet" href="assets/tailwind.css?v=2">
 <link rel="stylesheet" href="assets/theme.css?v=2">
@@ -60,7 +60,6 @@
 
     <div class="flex items-center gap-5 md:gap-7">
       <a href="pricing.html" class="text-sm font-medium text-ink-mid hover:text-ink">Pricing</a>
-      <a href="free.html" class="hidden text-sm font-semibold text-accent hover:text-accent-hi sm:inline">Free page</a>
       <a href="extras.html" class="hidden text-sm font-medium text-ink-mid hover:text-ink md:inline">Extras</a>
       <a href="faq.html" class="hidden text-sm font-medium text-ink-mid hover:text-ink md:inline">FAQ</a>
       <a href="start.html" class="rounded-md bg-accent px-4 py-2.5 text-sm font-semibold text-white hover:bg-accent-hi">Start a Project</a>
@@ -81,9 +80,27 @@
         one-off jobs, each priced on its own so you can tick your way to a total before you
         talk to anyone.
       </p>
-      <div class="mt-7 flex flex-wrap items-center gap-x-5 gap-y-3">
-        <a href="#website" class="btn btn-primary">See the extras and build a total</a>
-        <span class="text-sm text-ink-soft">From <span class="cur" data-eur="5">€5</span>, paid once</span>
+      <ol class="ex-how mt-8" data-reveal-group>
+        <li>
+          <span class="ex-how-n">01</span>
+          <p class="ex-how-h">Already included</p>
+          <p class="ex-how-p">Thirty-four features are built into every website we make. They cost nothing extra.</p>
+        </li>
+        <li>
+          <span class="ex-how-n">02</span>
+          <p class="ex-how-h">Optional extras</p>
+          <p class="ex-how-p">Sixty-six further jobs, each with its own one-off price. Take only the ones you need.</p>
+        </li>
+        <li>
+          <span class="ex-how-n">03</span>
+          <p class="ex-how-h">Your running total</p>
+          <p class="ex-how-p">Tick the ones you want and the total adds itself up. Send it with your project request.</p>
+        </li>
+      </ol>
+
+      <div class="mt-8 flex flex-wrap items-center gap-x-5 gap-y-3">
+        <a href="#website" class="btn btn-primary">Pick your extras</a>
+        <span class="text-sm text-ink-soft">From <span class="cur" data-eur="5">€5</span>, paid once. Nothing is charged on this page.</span>
       </div>
     </div>
   </section>
@@ -94,9 +111,9 @@
   <div class="ex-bar" data-ex-bar>
     <div class="mx-auto flex max-w-shell items-center gap-4 px-6 md:px-10">
       <nav class="ex-bar-nav" aria-label="Sections">
-        <a href="#included">The 34</a>
+        <a href="#included">Included</a>
         <a href="#website">Website</a>
-        <a href="#technical">Technical</a>
+        <a href="#technical">Business</a>
         <a href="#automation">Automation</a>
         <a href="#brand">Brand</a>
       </nav>
@@ -111,8 +128,8 @@
   <section id="included" class="scroll-mt-28 border-b border-line">
     <div class="mx-auto max-w-shell px-6 py-14 md:px-10 md:py-20">
       <div class="flex flex-wrap items-baseline gap-x-4 gap-y-1">
-        <h2 class="h-section text-xl">The 34 that come with every website</h2>
-        <span class="ml-auto text-[0.8125rem] text-ink-soft">part of the build</span>
+        <h2 class="h-section text-xl">Included in every website</h2>
+        <span class="ml-auto text-[0.8125rem] text-ink-soft">no extra cost</span>
       </div>
       <p class="mt-4 max-w-prose text-[0.9375rem] leading-relaxed text-ink-mid">
         Custom builds any twenty of them. Full Website and the Complete Package build all thirty-four.
@@ -185,7 +202,7 @@
   <section class="border-b border-line bg-surface">
     <div class="mx-auto max-w-shell px-6 py-14 md:px-10 md:py-20">
       <div class="flex flex-wrap items-baseline gap-x-4 gap-y-1">
-        <h2 class="h-section text-xl">Extras</h2>
+        <h2 class="h-section text-xl">Optional extras</h2>
         <span class="ml-auto text-[0.8125rem] text-ink-soft">sixty-six one-off jobs</span>
       </div>
 
@@ -638,8 +655,9 @@
                 Some of these start &ldquo;from&rdquo; a figure. Those are confirmed in writing before anything is charged.
               </p>
               <p class="mt-4 text-[0.8125rem] leading-relaxed text-ink-soft">
-                Add-ons only. Your website price is on top.
+                Extras only. The price of the website itself is on top of this.
               </p>
+              <a href="start.html" class="pick-send">Send these with my project request</a>
             </div>
 
         </div>
@@ -669,6 +687,17 @@
     </div>
   </section>
 
+  <!-- The running total on a phone. The panel above is the same number;
+       this is the copy you can see while your thumb is still ticking. -->
+  <div class="ex-dock" data-ex-dock aria-live="polite">
+    <div class="ex-dock-in">
+      <p class="ex-dock-sum">
+        <b data-ex-dock-once><span class="cur" data-eur="0">€0</span></b>
+        <span><span data-ex-dock-count>0</span> selected</span>
+      </p>
+      <a href="start.html" class="ex-dock-cta">Send with my request</a>
+    </div>
+  </div>
 </main>
 
 <div data-site-footer>
@@ -684,7 +713,7 @@
   </nav>
 </div>
 
-<script src="assets/picker.js?v=3" defer></script>
+<script src="assets/picker.js?v=4" defer></script>
 <script src="assets/footer.js?v=5"></script>
 <script src="assets/cookies.js?v=2"></script>
 <script src="assets/mobile.js?v=4"></script>

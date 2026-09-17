@@ -100,12 +100,6 @@
       </p>
 
       <div class="ob-packs" role="group" aria-label="Choose a package">
-        <button type="button" class="ob-pack" data-pack="free">
-          <span class="ob-pack-n">Free landing page</span>
-          <span class="ob-pack-p">Free</span>
-          <span class="ob-pack-d">One page, built and hosted by us, live inside 48 hours. On an
-            address we provide — your own domain is the upgrade.</span>
-        </button>
 
         <button type="button" class="ob-pack" data-pack="custom">
           <span class="ob-pack-n">Custom Website</span>
@@ -275,7 +269,7 @@
       for (var i = 0; i < all.length; i++) all[i].classList.toggle('is-on', all[i] === b);
       $('obErr2').hidden = true;
       $('obGo2').querySelector('span').textContent =
-        picked === 'free' ? 'Get my free page' : 'Open my dashboard';
+        'Open my dashboard';
     });
 
     $('obGo2').addEventListener('click', function () {
@@ -284,7 +278,7 @@
       /* The free page is not built in the package builder — it has its
          own short form, because what it needs is photos and a phone
          number, not a feature list. */
-      work($('obGo2'), finish(picked, picked === 'free' ? 'free.html' : 'dashboard.html#/build'),
+      work($('obGo2'), finish(picked, 'dashboard.html#/build'),
            function () {});
     });
 

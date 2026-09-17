@@ -21,6 +21,7 @@ import sys
 ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 HERE = os.path.join(ROOT, 'tools', 'locales', 'additions')
 LANGS = ['sq', 'de', 'fr', 'it', 'es', 'pt', 'nl', 'sv', 'tr']
+LANG_FILES = set('%s.json' % c for c in LANGS)
 
 READ_JS = ('global.window={};eval(require("fs").readFileSync(process.argv[1],"utf8"));'
            'process.stdout.write(JSON.stringify(window.SitehouseI18nStrings["%s"]))')
@@ -88,6 +89,18 @@ def main():
                 untranslatable.add(key)
                 continue
             d[key] = value
+
+        # later rounds are keyed on the English string itself: one file
+        # per batch of new copy, every language in it
+        for name in sorted(os.listdir(HERE)):
+            if not name.endswith('.json') or name in LANG_FILES:
+                continue
+            batch = json.load(open(os.path.join(HERE, name), encoding='utf-8'))
+            for english, by_lang in batch.items():
+                if english.startswith('_') or not isinstance(by_lang, dict):
+                    continue
+                if by_lang.get(code):
+                    d[english] = by_lang[code]
         write(code, d)
         added_total += len(d) - before
         print('%s: %d -> %d strings' % (code, before, len(d)))

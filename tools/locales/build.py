@@ -413,6 +413,19 @@ def redirects():
             out.append({'source': '/%s/%s' % (code, en_slug), 'destination': target, 'permanent': True})
     for code in BUILT_CODES:
         out.append({'source': '/%s/index' % code, 'destination': '/' + code, 'permanent': True})
+
+    # pages that have been retired: their old URLs go to the language home
+    for gone in CONFIG.get('gone', []):
+        for code, slug in gone.get('slugs', {}).items():
+            if code in BUILT_CODES and slug:
+                out.append({'source': '/%s/%s' % (code, slug), 'destination': '/' + code,
+                            'permanent': True})
+        for alias in gone.get('english_aliases', []):
+            out.append({'source': '/' + alias, 'destination': '/en', 'permanent': True})
+            out.append({'source': '/%s.html' % alias, 'destination': '/en', 'permanent': True})
+            for code in BUILT_CODES:
+                out.append({'source': '/%s/%s' % (code, alias), 'destination': '/' + code,
+                            'permanent': True})
     return out
 
 

@@ -80,15 +80,22 @@
     if (!EMAIL.test(email)) return error(2, 'Enter a valid email address.');
     error(2);
 
+    /* What lands in the inbox. Written as a short briefing rather than
+       four bare values, so it can be read on a phone and answered
+       without opening anything else. */
     var lines = [
-      'Project request from the home page',
+      name + ' wants a website.',
       '',
-      'Package: ' + value('package'),
-      'Budget: ' + value('budget'),
-      'Timeline: ' + value('timeline'),
-      'Website type: ' + value('type')
+      'Package they picked:  ' + value('package'),
+      'Budget:               ' + value('budget'),
+      'They need it:         ' + value('timeline'),
+      'Type of website:      ' + value('type'),
+      '',
+      note ? 'In their words:' : 'They did not add a note.',
     ];
-    if (note) lines.push('', note);
+    if (note) lines.push(note);
+    lines.push('', 'Reply to ' + name + ' at ' + email + '.',
+               'Sent from the request form on the home page.');
 
     submit.disabled = true;
     submit.textContent = 'Sending…';
@@ -99,7 +106,7 @@
       body: JSON.stringify({
         name: name,
         email: email,
-        service: value('package') + ' package',
+        service: 'Website project request (' + value('package') + ')',
         budget: value('budget'),
         message: lines.join('\n'),
         company: form.elements.company.value
@@ -108,7 +115,8 @@
       .then(function (r) {
         if (!r.ok) throw new Error(String(r.status));
         form.querySelector('[data-rq-done-text]').textContent =
-          'Thanks, ' + name + '. We will reply to ' + email + '.';
+          'Thanks, ' + name + '. Your request is with us — we read every one and '
+          + 'reply to ' + email + ', usually the same working day.';
         show(3);
       })
       .catch(function (err) {
