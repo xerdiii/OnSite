@@ -206,7 +206,8 @@
   #trusted .tb-meta { padding:1.1rem 1.25rem 1.25rem; border-top:1px solid rgb(var(--c-line)); }
   #trusted .tb-name { font-weight:600; font-size:1rem; color:rgb(var(--c-ink)); }
   #trusted .tb-cat  { margin-top:0.2rem; font-size:0.875rem; line-height:1.5; color:rgb(var(--c-ink-soft)); }
-  #trusted .tb-live { margin-top:0.6rem; font-size:0.875rem; font-weight:600; color:rgb(var(--c-accent-text)); }
+  #trusted .tb-desc { margin-top:0.7rem; font-size:0.875rem; line-height:1.6; color:rgb(var(--c-ink-mid)); }
+  #trusted .tb-live { display:inline-block; margin-top:0.8rem; font-size:0.875rem; font-weight:600; color:rgb(var(--c-accent-text)); }
 
   /* the arrows sit over the screenshot, centred on it: half of a 6:5 image */
   #trusted .tb-arrow {
@@ -220,6 +221,31 @@
   #trusted .tb-arrow--next { right:0.75rem; }
   #trusted .tb-arrow:hover:not(:disabled) { border-color:rgb(var(--c-accent)); color:rgb(var(--c-accent-text)); }
   #trusted .tb-arrow svg { width:1.05rem; height:1.05rem; }
+
+  /* Wide screens: a case study, not a centred photo. The card spans the
+     content column under the heading, screenshot left in a widescreen frame,
+     the details beside it; the arrows leave the photo for the top right. */
+  @media (min-width:1024px){
+    #trusted .tb-frame { max-width:none; margin-top:3rem; }
+    #trusted .tb-card { display:grid; grid-template-columns:minmax(0,1.55fr) minmax(0,1fr); }
+    #trusted .tb-shot { aspect-ratio:16 / 10; }
+    #trusted .tb-meta {
+      display:flex; flex-direction:column; justify-content:center;
+      padding:2.5rem 2.25rem; border-top:0; border-left:1px solid rgb(var(--c-line));
+    }
+    #trusted .tb-name { font-family:'Outfit','Inter',sans-serif; font-size:1.875rem; font-weight:600; letter-spacing:-0.025em; line-height:1.1; }
+    #trusted .tb-cat { margin-top:0.5rem; font-size:0.9375rem; }
+    #trusted .tb-desc { margin-top:1.25rem; font-size:0.9375rem; }
+    #trusted .tb-live {
+      align-self:flex-start; margin-top:1.75rem; padding:0.8rem 1.15rem;
+      border:1px solid rgb(var(--c-line-firm)); color:rgb(var(--c-ink));
+      transition:border-color 180ms ease, color 180ms ease;
+    }
+    #trusted .tb-live:hover { border-color:rgb(var(--c-accent)); color:rgb(var(--c-accent-text)); }
+    #trusted .tb-arrow { top:-3.75rem; background:rgb(var(--c-paper)); }
+    #trusted .tb-arrow--prev { left:auto; right:3.25rem; }
+    #trusted .tb-arrow--next { right:0; }
+  }
 
   #trusted .tb-frame, #trusted .tb-frame * { border-radius:0 !important; }
   @media (prefers-reduced-motion: reduce){ #trusted .tb-track { transition:none; } }
@@ -524,7 +550,7 @@
   <section id="trusted" class="scroll-mt-16 border-b border-line">
     <div class="mx-auto max-w-shell px-6 pt-16 md:px-10 md:pt-20">
       <p class="eyebrow text-ink-soft" data-rise>Trusted by</p>
-      <h2 class="h-section sec-title mt-4 max-w-2xl" data-rise>Businesses already running on Xovah.</h2>
+      <h2 class="h-section sec-title mt-4 max-w-2xl" data-rise>Businesses that trusted Xovahweb.</h2>
       <p class="mt-5 max-w-prose text-[0.9375rem] leading-relaxed text-ink-mid">
         Real businesses, real sites, live right now. Every one of them is a link you can open.
       </p>
@@ -546,13 +572,14 @@
 
         <article class="tb-card">
           <a class="tb-shot" href="https://shkurtanails.salon" target="_blank" rel="noopener noreferrer">
-            <img src="https://image.thum.io/get/width/900/viewportWidth/1440/noanimate/https://shkurtanails.salon"
+            <img src="https://image.thum.io/get/width/1200/viewportWidth/1440/noanimate/https://shkurtanails.salon"
                  alt="Shkurta Nails — nail salon website built by Xovah" loading="lazy" decoding="async">
           </a>
           <div class="tb-meta">
             <p class="tb-name">Shkurta Nails</p>
             <p class="tb-cat">Beauty &amp; salon &middot; Podujev&euml;, Kosov&euml;</p>
-            <p class="tb-live">shkurtanails.salon &rarr;</p>
+            <p class="tb-desc">A one-page site for a nail salon: services, a gallery of their work, the team, and booking through Instagram.</p>
+            <a class="tb-live" href="https://shkurtanails.salon" target="_blank" rel="noopener noreferrer">Visit shkurtanails.salon <span aria-hidden="true">&rarr;</span></a>
           </div>
         </article>
 
