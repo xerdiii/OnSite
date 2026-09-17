@@ -341,3 +341,24 @@ h1.doc-title {
     font-size: 16px;
   }
 }
+
+/* ── The tinted bands keep their dark red in light mode ──────────
+   The two banded sections on the home page are the page's punctuation.
+   In light mode the tint token turns pale pink, which loses that, so
+   these sections carry the dark values with them: the band stays the
+   colour it is in dark mode and its own text tokens flip to suit.
+   Only full sections are caught — the same token elsewhere is a hover
+   or a tag, and those stay light. */
+:root[data-theme="light"] section.bg-accent-tint {
+  --c-accent-tint:  48  22  24;
+  --c-ink:         242 241 238;
+  --c-ink-mid:     186 191 198;
+  --c-ink-soft:    142 148 157;
+  --c-line:         41  46  53;
+  --c-line-firm:    62  68  77;
+  --c-accent:      226  58  62;
+  --c-accent-hi:   240  86  88;
+  --c-accent-text: 252 133 133;
+  border-color: rgb(41 46 53);
+  color: rgb(242 241 238);
+}
