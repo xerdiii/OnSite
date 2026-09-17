@@ -36,6 +36,7 @@
 
   /* Every corner, everywhere. 0.30rem = 4.8px at the default root size. */
   --radius: 0.30rem;
+  --radius-btn: 0.10rem;
 }
 
 /* Selected text, everywhere: the brand crimson with white on top. It reads
@@ -311,3 +312,15 @@ textarea:focus-visible {
 /* Nothing may spill past a card edge at any width. */
 .price-card-list,
 .price-card-note { min-width: 0; overflow-wrap: anywhere; }
+
+/* ── Buttons ─────────────────────────────────────────────────────
+   Square-ish on purpose: 0.10rem, so a button reads as a pressed edge
+   rather than a pill. Everything else keeps the site radius above. */
+button,
+input[type="submit"],
+input[type="button"],
+.btn, .fp-btn, .pr-cta, .or-build, .closer-cta, .tb-live, .tb-arrow,
+.m-drawer-cta, .m-chip, .acct-btn, .free-submit, .ff-submit,
+.rq-go, .rq-back, .rq-opt span, .rq-input, .mail-cta {
+  border-radius: var(--radius-btn) !important;
+}

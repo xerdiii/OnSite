@@ -429,3 +429,26 @@ body.pr-page .pr-stage {
 @media (prefers-reduced-motion: reduce) {
   .pr-x-group-n::after { transition: none; }
 }
+
+/* ── On a phone ──────────────────────────────────────────────────
+   One card fills the screen at this size, so the desktop proportions
+   read as oversized: the price alone was taller than the sentence
+   explaining it. Everything steps down together, and the card keeps
+   its structure. */
+@media (max-width: 767px) {
+  .pr-rail { gap: 1rem; margin-top: 2rem; }
+  .pr-card { padding: 1.15rem 1.1rem 1.25rem; }
+  .pr-eyebrow { font-size: 0.625rem; }
+  .pr-rule { margin-top: 0.7rem; }
+  .pr-figure { margin-top: 1.1rem; gap: 0.5rem; }
+  .pr-amount { font-size: 1.85rem; }
+  .pr-badge { padding: 0.25rem 0.6rem; font-size: 0.625rem; }
+  .pr-note { margin-top: 0.7rem; font-size: 0.8125rem; line-height: 1.5; }
+  .pr-foot { margin-top: 1.1rem; }
+  .pr-cta { min-height: 42px; padding: 0 1rem; font-size: 0.875rem; }
+  .pr-list { margin-top: 1.1rem; }
+  .pr-list li { gap: 0.6rem; padding: 0.55rem 0; font-size: 0.8125rem; line-height: 1.4; }
+  .pr-mark { width: 1.05rem; height: 1.05rem; }
+  .pr-mark svg { width: 10px; height: 10px; }
+  .tag-once { padding: 0.2rem 0.5rem; font-size: 0.625rem; }
+}
