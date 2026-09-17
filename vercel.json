@@ -4,13 +4,678 @@
   "trailingSlash": false,
   "redirects": [
     {
+      "source": "/",
+      "destination": "/en",
+      "permanent": true
+    },
+    {
+      "source": "/pricing",
+      "destination": "/en/pricing",
+      "permanent": true
+    },
+    {
+      "source": "/pricing.html",
+      "destination": "/en/pricing",
+      "permanent": true
+    },
+    {
+      "source": "/services",
+      "destination": "/en/services",
+      "permanent": true
+    },
+    {
+      "source": "/services.html",
+      "destination": "/en/services",
+      "permanent": true
+    },
+    {
+      "source": "/start-project",
+      "destination": "/en/start-project",
+      "permanent": true
+    },
+    {
+      "source": "/start-project.html",
+      "destination": "/en/start-project",
+      "permanent": true
+    },
+    {
+      "source": "/contact",
+      "destination": "/en/contact",
+      "permanent": true
+    },
+    {
+      "source": "/contact.html",
+      "destination": "/en/contact",
+      "permanent": true
+    },
+    {
+      "source": "/faq",
+      "destination": "/en/faq",
+      "permanent": true
+    },
+    {
+      "source": "/faq.html",
+      "destination": "/en/faq",
+      "permanent": true
+    },
+    {
+      "source": "/free-landing-page",
+      "destination": "/en/free-landing-page",
+      "permanent": true
+    },
+    {
+      "source": "/free-landing-page.html",
+      "destination": "/en/free-landing-page",
+      "permanent": true
+    },
+    {
+      "source": "/terms",
+      "destination": "/en/terms",
+      "permanent": true
+    },
+    {
+      "source": "/terms.html",
+      "destination": "/en/terms",
+      "permanent": true
+    },
+    {
+      "source": "/privacy",
+      "destination": "/en/privacy",
+      "permanent": true
+    },
+    {
+      "source": "/privacy.html",
+      "destination": "/en/privacy",
+      "permanent": true
+    },
+    {
+      "source": "/refunds",
+      "destination": "/en/refunds",
+      "permanent": true
+    },
+    {
+      "source": "/refunds.html",
+      "destination": "/en/refunds",
+      "permanent": true
+    },
+    {
+      "source": "/cookies",
+      "destination": "/en/cookies",
+      "permanent": true
+    },
+    {
+      "source": "/cookies.html",
+      "destination": "/en/cookies",
+      "permanent": true
+    },
+    {
+      "source": "/extras",
+      "destination": "/en/services",
+      "permanent": true
+    },
+    {
+      "source": "/extras.html",
+      "destination": "/en/services",
+      "permanent": true
+    },
+    {
+      "source": "/build",
+      "destination": "/en/start-project",
+      "permanent": true
+    },
+    {
+      "source": "/index.html",
+      "destination": "/en",
+      "permanent": true
+    },
+    {
       "source": "/support",
-      "destination": "/contact",
+      "destination": "/en/contact",
       "permanent": true
     },
     {
       "source": "/support.html",
-      "destination": "/contact",
+      "destination": "/en/contact",
+      "permanent": true
+    },
+    {
+      "source": "/:lang(en|sq|de|fr|it|es|pt|nl|sv|tr)/404",
+      "destination": "/404",
+      "permanent": false
+    },
+    {
+      "source": "/:lang(en|sq|de|fr|it|es|pt|nl|sv|tr)/admin",
+      "destination": "/admin",
+      "permanent": false
+    },
+    {
+      "source": "/:lang(en|sq|de|fr|it|es|pt|nl|sv|tr)/build",
+      "destination": "/build",
+      "permanent": false
+    },
+    {
+      "source": "/:lang(en|sq|de|fr|it|es|pt|nl|sv|tr)/dashboard",
+      "destination": "/dashboard",
+      "permanent": false
+    },
+    {
+      "source": "/:lang(en|sq|de|fr|it|es|pt|nl|sv|tr)/emails",
+      "destination": "/emails",
+      "permanent": false
+    },
+    {
+      "source": "/:lang(en|sq|de|fr|it|es|pt|nl|sv|tr)/forgot-email",
+      "destination": "/forgot-email",
+      "permanent": false
+    },
+    {
+      "source": "/:lang(en|sq|de|fr|it|es|pt|nl|sv|tr)/login",
+      "destination": "/login",
+      "permanent": false
+    },
+    {
+      "source": "/:lang(en|sq|de|fr|it|es|pt|nl|sv|tr)/onboarding",
+      "destination": "/onboarding",
+      "permanent": false
+    },
+    {
+      "source": "/:lang(en|sq|de|fr|it|es|pt|nl|sv|tr)/preview",
+      "destination": "/preview",
+      "permanent": false
+    },
+    {
+      "source": "/:lang(en|sq|de|fr|it|es|pt|nl|sv|tr)/signup",
+      "destination": "/signup",
+      "permanent": false
+    },
+    {
+      "source": "/:lang(en|sq|de|fr|it|es|pt|nl|sv|tr)/trouble",
+      "destination": "/trouble",
+      "permanent": false
+    },
+    {
+      "source": "/sq/pricing",
+      "destination": "/sq/cmimet",
+      "permanent": true
+    },
+    {
+      "source": "/de/pricing",
+      "destination": "/de/preise",
+      "permanent": true
+    },
+    {
+      "source": "/fr/pricing",
+      "destination": "/fr/tarifs",
+      "permanent": true
+    },
+    {
+      "source": "/it/pricing",
+      "destination": "/it/prezzi",
+      "permanent": true
+    },
+    {
+      "source": "/es/pricing",
+      "destination": "/es/precios",
+      "permanent": true
+    },
+    {
+      "source": "/pt/pricing",
+      "destination": "/pt/precos",
+      "permanent": true
+    },
+    {
+      "source": "/nl/pricing",
+      "destination": "/nl/prijzen",
+      "permanent": true
+    },
+    {
+      "source": "/sv/pricing",
+      "destination": "/sv/priser",
+      "permanent": true
+    },
+    {
+      "source": "/tr/pricing",
+      "destination": "/tr/fiyatlar",
+      "permanent": true
+    },
+    {
+      "source": "/sq/services",
+      "destination": "/sq/sherbimet",
+      "permanent": true
+    },
+    {
+      "source": "/de/services",
+      "destination": "/de/leistungen",
+      "permanent": true
+    },
+    {
+      "source": "/it/services",
+      "destination": "/it/servizi",
+      "permanent": true
+    },
+    {
+      "source": "/es/services",
+      "destination": "/es/servicios",
+      "permanent": true
+    },
+    {
+      "source": "/pt/services",
+      "destination": "/pt/servicos",
+      "permanent": true
+    },
+    {
+      "source": "/nl/services",
+      "destination": "/nl/diensten",
+      "permanent": true
+    },
+    {
+      "source": "/sv/services",
+      "destination": "/sv/tjanster",
+      "permanent": true
+    },
+    {
+      "source": "/tr/services",
+      "destination": "/tr/hizmetler",
+      "permanent": true
+    },
+    {
+      "source": "/sq/start-project",
+      "destination": "/sq/fillo-projektin",
+      "permanent": true
+    },
+    {
+      "source": "/de/start-project",
+      "destination": "/de/projekt-starten",
+      "permanent": true
+    },
+    {
+      "source": "/fr/start-project",
+      "destination": "/fr/demarrer-projet",
+      "permanent": true
+    },
+    {
+      "source": "/it/start-project",
+      "destination": "/it/avvia-progetto",
+      "permanent": true
+    },
+    {
+      "source": "/es/start-project",
+      "destination": "/es/empezar-proyecto",
+      "permanent": true
+    },
+    {
+      "source": "/pt/start-project",
+      "destination": "/pt/iniciar-projeto",
+      "permanent": true
+    },
+    {
+      "source": "/nl/start-project",
+      "destination": "/nl/project-starten",
+      "permanent": true
+    },
+    {
+      "source": "/sv/start-project",
+      "destination": "/sv/starta-projekt",
+      "permanent": true
+    },
+    {
+      "source": "/tr/start-project",
+      "destination": "/tr/proje-baslat",
+      "permanent": true
+    },
+    {
+      "source": "/sq/contact",
+      "destination": "/sq/kontakt",
+      "permanent": true
+    },
+    {
+      "source": "/de/contact",
+      "destination": "/de/kontakt",
+      "permanent": true
+    },
+    {
+      "source": "/it/contact",
+      "destination": "/it/contatti",
+      "permanent": true
+    },
+    {
+      "source": "/es/contact",
+      "destination": "/es/contacto",
+      "permanent": true
+    },
+    {
+      "source": "/pt/contact",
+      "destination": "/pt/contacto",
+      "permanent": true
+    },
+    {
+      "source": "/sv/contact",
+      "destination": "/sv/kontakt",
+      "permanent": true
+    },
+    {
+      "source": "/tr/contact",
+      "destination": "/tr/iletisim",
+      "permanent": true
+    },
+    {
+      "source": "/sq/faq",
+      "destination": "/sq/pyetje-te-shpeshta",
+      "permanent": true
+    },
+    {
+      "source": "/de/faq",
+      "destination": "/de/haeufige-fragen",
+      "permanent": true
+    },
+    {
+      "source": "/fr/faq",
+      "destination": "/fr/questions-frequentes",
+      "permanent": true
+    },
+    {
+      "source": "/it/faq",
+      "destination": "/it/domande-frequenti",
+      "permanent": true
+    },
+    {
+      "source": "/es/faq",
+      "destination": "/es/preguntas-frecuentes",
+      "permanent": true
+    },
+    {
+      "source": "/pt/faq",
+      "destination": "/pt/perguntas-frequentes",
+      "permanent": true
+    },
+    {
+      "source": "/nl/faq",
+      "destination": "/nl/veelgestelde-vragen",
+      "permanent": true
+    },
+    {
+      "source": "/sv/faq",
+      "destination": "/sv/vanliga-fragor",
+      "permanent": true
+    },
+    {
+      "source": "/tr/faq",
+      "destination": "/tr/sikca-sorulan-sorular",
+      "permanent": true
+    },
+    {
+      "source": "/sq/free-landing-page",
+      "destination": "/sq/faqe-falas",
+      "permanent": true
+    },
+    {
+      "source": "/de/free-landing-page",
+      "destination": "/de/kostenlose-landingpage",
+      "permanent": true
+    },
+    {
+      "source": "/fr/free-landing-page",
+      "destination": "/fr/landing-page-gratuite",
+      "permanent": true
+    },
+    {
+      "source": "/it/free-landing-page",
+      "destination": "/it/landing-page-gratuita",
+      "permanent": true
+    },
+    {
+      "source": "/es/free-landing-page",
+      "destination": "/es/landing-page-gratis",
+      "permanent": true
+    },
+    {
+      "source": "/pt/free-landing-page",
+      "destination": "/pt/landing-page-gratis",
+      "permanent": true
+    },
+    {
+      "source": "/nl/free-landing-page",
+      "destination": "/nl/gratis-landingspagina",
+      "permanent": true
+    },
+    {
+      "source": "/sv/free-landing-page",
+      "destination": "/sv/gratis-landningssida",
+      "permanent": true
+    },
+    {
+      "source": "/tr/free-landing-page",
+      "destination": "/tr/ucretsiz-acilis-sayfasi",
+      "permanent": true
+    },
+    {
+      "source": "/sq/terms",
+      "destination": "/en/terms",
+      "permanent": true
+    },
+    {
+      "source": "/de/terms",
+      "destination": "/en/terms",
+      "permanent": true
+    },
+    {
+      "source": "/fr/terms",
+      "destination": "/en/terms",
+      "permanent": true
+    },
+    {
+      "source": "/it/terms",
+      "destination": "/en/terms",
+      "permanent": true
+    },
+    {
+      "source": "/es/terms",
+      "destination": "/en/terms",
+      "permanent": true
+    },
+    {
+      "source": "/pt/terms",
+      "destination": "/en/terms",
+      "permanent": true
+    },
+    {
+      "source": "/nl/terms",
+      "destination": "/en/terms",
+      "permanent": true
+    },
+    {
+      "source": "/sv/terms",
+      "destination": "/en/terms",
+      "permanent": true
+    },
+    {
+      "source": "/tr/terms",
+      "destination": "/en/terms",
+      "permanent": true
+    },
+    {
+      "source": "/sq/privacy",
+      "destination": "/en/privacy",
+      "permanent": true
+    },
+    {
+      "source": "/de/privacy",
+      "destination": "/en/privacy",
+      "permanent": true
+    },
+    {
+      "source": "/fr/privacy",
+      "destination": "/en/privacy",
+      "permanent": true
+    },
+    {
+      "source": "/it/privacy",
+      "destination": "/en/privacy",
+      "permanent": true
+    },
+    {
+      "source": "/es/privacy",
+      "destination": "/en/privacy",
+      "permanent": true
+    },
+    {
+      "source": "/pt/privacy",
+      "destination": "/en/privacy",
+      "permanent": true
+    },
+    {
+      "source": "/nl/privacy",
+      "destination": "/en/privacy",
+      "permanent": true
+    },
+    {
+      "source": "/sv/privacy",
+      "destination": "/en/privacy",
+      "permanent": true
+    },
+    {
+      "source": "/tr/privacy",
+      "destination": "/en/privacy",
+      "permanent": true
+    },
+    {
+      "source": "/sq/refunds",
+      "destination": "/en/refunds",
+      "permanent": true
+    },
+    {
+      "source": "/de/refunds",
+      "destination": "/en/refunds",
+      "permanent": true
+    },
+    {
+      "source": "/fr/refunds",
+      "destination": "/en/refunds",
+      "permanent": true
+    },
+    {
+      "source": "/it/refunds",
+      "destination": "/en/refunds",
+      "permanent": true
+    },
+    {
+      "source": "/es/refunds",
+      "destination": "/en/refunds",
+      "permanent": true
+    },
+    {
+      "source": "/pt/refunds",
+      "destination": "/en/refunds",
+      "permanent": true
+    },
+    {
+      "source": "/nl/refunds",
+      "destination": "/en/refunds",
+      "permanent": true
+    },
+    {
+      "source": "/sv/refunds",
+      "destination": "/en/refunds",
+      "permanent": true
+    },
+    {
+      "source": "/tr/refunds",
+      "destination": "/en/refunds",
+      "permanent": true
+    },
+    {
+      "source": "/sq/cookies",
+      "destination": "/en/cookies",
+      "permanent": true
+    },
+    {
+      "source": "/de/cookies",
+      "destination": "/en/cookies",
+      "permanent": true
+    },
+    {
+      "source": "/fr/cookies",
+      "destination": "/en/cookies",
+      "permanent": true
+    },
+    {
+      "source": "/it/cookies",
+      "destination": "/en/cookies",
+      "permanent": true
+    },
+    {
+      "source": "/es/cookies",
+      "destination": "/en/cookies",
+      "permanent": true
+    },
+    {
+      "source": "/pt/cookies",
+      "destination": "/en/cookies",
+      "permanent": true
+    },
+    {
+      "source": "/nl/cookies",
+      "destination": "/en/cookies",
+      "permanent": true
+    },
+    {
+      "source": "/sv/cookies",
+      "destination": "/en/cookies",
+      "permanent": true
+    },
+    {
+      "source": "/tr/cookies",
+      "destination": "/en/cookies",
+      "permanent": true
+    },
+    {
+      "source": "/en/index",
+      "destination": "/en",
+      "permanent": true
+    },
+    {
+      "source": "/sq/index",
+      "destination": "/sq",
+      "permanent": true
+    },
+    {
+      "source": "/de/index",
+      "destination": "/de",
+      "permanent": true
+    },
+    {
+      "source": "/fr/index",
+      "destination": "/fr",
+      "permanent": true
+    },
+    {
+      "source": "/it/index",
+      "destination": "/it",
+      "permanent": true
+    },
+    {
+      "source": "/es/index",
+      "destination": "/es",
+      "permanent": true
+    },
+    {
+      "source": "/pt/index",
+      "destination": "/pt",
+      "permanent": true
+    },
+    {
+      "source": "/nl/index",
+      "destination": "/nl",
+      "permanent": true
+    },
+    {
+      "source": "/sv/index",
+      "destination": "/sv",
+      "permanent": true
+    },
+    {
+      "source": "/tr/index",
+      "destination": "/tr",
       "permanent": true
     }
   ],

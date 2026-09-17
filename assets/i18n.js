@@ -75,7 +75,14 @@
     catch (e) { return fallback; }
   }
 
-  var lang = stored(LKEY, 'en');
+  /* A page built for one language (assets under /de/, /sq/ …) says so on
+     <html>. That is the language, whatever a previous visit preferred: the
+     URL is what the visitor and the search engine both see. The preference
+     is still kept, so links from an app page follow it. */
+  var BUILT_LANG = doc.documentElement.getAttribute('data-built-lang') || '';
+  var ROUTES = global.XovahRoutes || null;
+
+  var lang = BUILT_LANG || stored(LKEY, 'en');
   var currency = stored(CKEY, 'EUR');
   if (!LANGS.some(function (l) { return l.code === lang; })) lang = 'en';
   if (!CURRENCIES.some(function (c) { return c.code === currency; })) currency = 'EUR';
@@ -220,6 +227,7 @@
   function apply() {
     paintWords();
     paintPrices();
+    localizeLinks();
     listeners.forEach(function (fn) { try { fn(); } catch (e) {} });
     /* An event as well as the callback list, because script order is not
        guaranteed: anything loaded before this file cannot have called
@@ -231,9 +239,48 @@
   }
 
   function setLang(code) {
-    lang = code;
     try { global.localStorage.setItem(LKEY, code); } catch (e) {}
+    /* On a built page the translation lives at another URL, so switching
+       language means going there — to the same page, not to the home page. */
+    if (BUILT_LANG) {
+      var alt = doc.querySelector('link[rel="alternate"][hreflang="' + code + '"]');
+      /* The path, not the whole URL: the alternates are written with the
+         production domain, and a preview or a local run must stay put. */
+      var to = '/' + code;
+      if (alt) {
+        try { to = new global.URL(alt.getAttribute('href'), global.location.href).pathname; }
+        catch (e) { to = alt.getAttribute('href'); }
+      }
+      global.location.href = to;
+      return;
+    }
+    lang = code;
     ensure(code, function () { if (lang === code) apply(); });
+  }
+
+  /* ── Links written by scripts ──────────────────────────────────
+     Several files build their own markup with the English filenames
+     ('pricing.html'). Inside /de/ that would resolve to a page that does
+     not exist, so every link is pointed at this language's own URL as it
+     appears — including the ones added after this file has run. */
+  function localizeLinks(root) {
+    if (!ROUTES) return;
+    var links = (root || doc).querySelectorAll ? (root || doc).querySelectorAll('a[href]') : [];
+    [].forEach.call(links, function (a) {
+      var href = a.getAttribute('href');
+      if (!href || /^(https?:|mailto:|tel:|#|\/\/|\/)/.test(href)) return;
+      var rest = href.replace(/^\.\//, '');
+      var cut = rest.search(/[?#]/);
+      var name = (cut === -1 ? rest : rest.slice(0, cut)).replace(/\.html$/, '') || 'index';
+      var tail = cut === -1 ? '' : rest.slice(cut);
+      var key = null;
+      for (var k in ROUTES.names) if (ROUTES.names[k] === name) key = k;
+      if (key && ROUTES.routes[key]) {
+        a.setAttribute('href', (ROUTES.routes[key][ROUTES.lang] || ROUTES.routes[key].en) + tail);
+      } else if (ROUTES.app.indexOf(name) !== -1) {
+        a.setAttribute('href', '/' + name + tail);
+      }
+    });
   }
 
   function setCurrency(code) {
@@ -318,6 +365,13 @@
        they have had their turn. */
     global.setTimeout(function () { apply(); mount(); }, 0);
     global.setTimeout(function () { apply(); mount(); }, 400);
+    if (ROUTES && global.MutationObserver) {
+      var pending = 0;
+      new global.MutationObserver(function () {
+        if (pending) return;
+        pending = global.setTimeout(function () { pending = 0; localizeLinks(); }, 60);
+      }).observe(doc.body, { childList: true, subtree: true });
+    }
   }
 
   if (doc.readyState === 'loading') doc.addEventListener('DOMContentLoaded', start);

@@ -1,17 +1,18 @@
-# Xovah — https://www.xovahweb.com
+# Xovahweb — https://www.xovahweb.com
+#
+# Public pages live under a language folder: /en/, /sq/, /de/, /fr/, /it/,
+# /es/, /pt/, /nl/, /sv/, /tr/. The root URLs redirect there.
 
 User-agent: *
 Allow: /
 
 # Application surfaces. Nothing here renders without a session, and a
-# sign-in wall in search results helps nobody.
+# sign-in wall in search results helps nobody. The sign-in screens
+# themselves are left crawlable but carry noindex, so they drop out of
+# the index cleanly instead of lingering as blocked URLs.
 Disallow: /dashboard
 Disallow: /admin
 Disallow: /onboarding
-Disallow: /login
-Disallow: /signup
-Disallow: /forgot-email
-Disallow: /trouble
 Disallow: /emails
 Disallow: /preview
 Disallow: /api/

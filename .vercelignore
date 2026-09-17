@@ -1,0 +1,12 @@
+# Files that belong in the repository but not on the web server.
+# Anything listed here is never uploaded, so it cannot be crawled,
+# indexed or downloaded by anyone who guesses the URL.
+
+node_modules
+src
+tools
+gallery
+photos
+README.md
+dev-server.js
+_i18n_*.json

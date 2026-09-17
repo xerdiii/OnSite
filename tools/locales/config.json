@@ -1,0 +1,125 @@
+{
+  "site": "https://www.xovahweb.com",
+  "brand": "Xovahweb",
+  "_comment": [
+    "Languages with status 'built' have a full dictionary in assets/i18n and are",
+    "published as real pages under /<code>/. Languages with status 'planned' are",
+    "prepared here — code, locale, direction, native label, slugs — but are NOT",
+    "published, because publishing an English page under a foreign URL is a",
+    "duplicate, not a translation. Adding one is: translate the strings into",
+    "assets/i18n/<code>.js, add its slugs and SEO text, flip status to 'built',",
+    "run the build. Nothing else changes."
+  ],
+  "languages": [
+    { "code": "en", "locale": "en_GB", "label": "English",    "dir": "ltr", "status": "built" },
+    { "code": "sq", "locale": "sq_AL", "label": "Shqip",      "dir": "ltr", "status": "built" },
+    { "code": "de", "locale": "de_DE", "label": "Deutsch",    "dir": "ltr", "status": "built" },
+    { "code": "fr", "locale": "fr_FR", "label": "Français",   "dir": "ltr", "status": "built" },
+    { "code": "it", "locale": "it_IT", "label": "Italiano",   "dir": "ltr", "status": "built" },
+    { "code": "es", "locale": "es_ES", "label": "Español",    "dir": "ltr", "status": "built" },
+    { "code": "pt", "locale": "pt_PT", "label": "Português",  "dir": "ltr", "status": "built" },
+    { "code": "nl", "locale": "nl_NL", "label": "Nederlands", "dir": "ltr", "status": "built" },
+    { "code": "sv", "locale": "sv_SE", "label": "Svenska",    "dir": "ltr", "status": "built" },
+    { "code": "tr", "locale": "tr_TR", "label": "Türkçe",     "dir": "ltr", "status": "built" },
+
+    { "code": "el",    "locale": "el_GR",    "label": "Ελληνικά",   "dir": "ltr", "status": "planned" },
+    { "code": "pl",    "locale": "pl_PL",    "label": "Polski",     "dir": "ltr", "status": "planned" },
+    { "code": "cs",    "locale": "cs_CZ",    "label": "Čeština",    "dir": "ltr", "status": "planned" },
+    { "code": "sk",    "locale": "sk_SK",    "label": "Slovenčina", "dir": "ltr", "status": "planned" },
+    { "code": "ro",    "locale": "ro_RO",    "label": "Română",     "dir": "ltr", "status": "planned" },
+    { "code": "hu",    "locale": "hu_HU",    "label": "Magyar",     "dir": "ltr", "status": "planned" },
+    { "code": "hr",    "locale": "hr_HR",    "label": "Hrvatski",   "dir": "ltr", "status": "planned" },
+    { "code": "sr",    "locale": "sr_RS",    "label": "Српски",     "dir": "ltr", "status": "planned" },
+    { "code": "bs",    "locale": "bs_BA",    "label": "Bosanski",   "dir": "ltr", "status": "planned" },
+    { "code": "sl",    "locale": "sl_SI",    "label": "Slovenščina","dir": "ltr", "status": "planned" },
+    { "code": "bg",    "locale": "bg_BG",    "label": "Български",  "dir": "ltr", "status": "planned" },
+    { "code": "uk",    "locale": "uk_UA",    "label": "Українська", "dir": "ltr", "status": "planned" },
+    { "code": "ru",    "locale": "ru_RU",    "label": "Русский",    "dir": "ltr", "status": "planned" },
+    { "code": "no",    "locale": "nb_NO",    "label": "Norsk",      "dir": "ltr", "status": "planned" },
+    { "code": "da",    "locale": "da_DK",    "label": "Dansk",      "dir": "ltr", "status": "planned" },
+    { "code": "fi",    "locale": "fi_FI",    "label": "Suomi",      "dir": "ltr", "status": "planned" },
+    { "code": "et",    "locale": "et_EE",    "label": "Eesti",      "dir": "ltr", "status": "planned" },
+    { "code": "lv",    "locale": "lv_LV",    "label": "Latviešu",   "dir": "ltr", "status": "planned" },
+    { "code": "lt",    "locale": "lt_LT",    "label": "Lietuvių",   "dir": "ltr", "status": "planned" },
+    { "code": "ar",    "locale": "ar_AE",    "label": "العربية",     "dir": "rtl", "status": "planned" },
+    { "code": "he",    "locale": "he_IL",    "label": "עברית",       "dir": "rtl", "status": "planned" },
+    { "code": "ja",    "locale": "ja_JP",    "label": "日本語",      "dir": "ltr", "status": "planned" },
+    { "code": "ko",    "locale": "ko_KR",    "label": "한국어",      "dir": "ltr", "status": "planned" },
+    { "code": "zh-CN", "locale": "zh_CN",    "label": "简体中文",    "dir": "ltr", "status": "planned" },
+    { "code": "zh-TW", "locale": "zh_TW",    "label": "繁體中文",    "dir": "ltr", "status": "planned" }
+  ],
+
+  "pages": [
+    {
+      "key": "home", "source": "index.html", "priority": "1.0", "changefreq": "weekly",
+      "slugs": { "en": "", "sq": "", "de": "", "fr": "", "it": "", "es": "", "pt": "", "nl": "", "sv": "", "tr": "" }
+    },
+    {
+      "key": "pricing", "source": "pricing.html", "priority": "0.9", "changefreq": "monthly",
+      "slugs": {
+        "en": "pricing", "sq": "cmimet", "de": "preise", "fr": "tarifs", "it": "prezzi",
+        "es": "precios", "pt": "precos", "nl": "prijzen", "sv": "priser", "tr": "fiyatlar"
+      }
+    },
+    {
+      "key": "services", "source": "extras.html", "priority": "0.9", "changefreq": "monthly",
+      "slugs": {
+        "en": "services", "sq": "sherbimet", "de": "leistungen", "fr": "services", "it": "servizi",
+        "es": "servicios", "pt": "servicos", "nl": "diensten", "sv": "tjanster", "tr": "hizmetler"
+      }
+    },
+    {
+      "key": "start", "source": "start.html", "priority": "0.8", "changefreq": "monthly",
+      "slugs": {
+        "en": "start-project", "sq": "fillo-projektin", "de": "projekt-starten", "fr": "demarrer-projet",
+        "it": "avvia-progetto", "es": "empezar-proyecto", "pt": "iniciar-projeto", "nl": "project-starten",
+        "sv": "starta-projekt", "tr": "proje-baslat"
+      }
+    },
+    {
+      "key": "contact", "source": "contact.html", "priority": "0.7", "changefreq": "monthly",
+      "slugs": {
+        "en": "contact", "sq": "kontakt", "de": "kontakt", "fr": "contact", "it": "contatti",
+        "es": "contacto", "pt": "contacto", "nl": "contact", "sv": "kontakt", "tr": "iletisim"
+      }
+    },
+    {
+      "key": "faq", "source": "faq.html", "priority": "0.8", "changefreq": "monthly",
+      "slugs": {
+        "en": "faq", "sq": "pyetje-te-shpeshta", "de": "haeufige-fragen", "fr": "questions-frequentes",
+        "it": "domande-frequenti", "es": "preguntas-frecuentes", "pt": "perguntas-frequentes",
+        "nl": "veelgestelde-vragen", "sv": "vanliga-fragor", "tr": "sikca-sorulan-sorular"
+      }
+    },
+    {
+      "key": "free", "source": "free.html", "priority": "0.6", "changefreq": "monthly",
+      "slugs": {
+        "en": "free-landing-page", "sq": "faqe-falas", "de": "kostenlose-landingpage",
+        "fr": "landing-page-gratuite", "it": "landing-page-gratuita", "es": "landing-page-gratis",
+        "pt": "landing-page-gratis", "nl": "gratis-landingspagina", "sv": "gratis-landningssida",
+        "tr": "ucretsiz-acilis-sayfasi"
+      }
+    },
+
+    {
+      "key": "terms", "source": "terms.html", "priority": "0.3", "changefreq": "yearly",
+      "english_only": true, "slugs": { "en": "terms" }
+    },
+    {
+      "key": "privacy", "source": "privacy.html", "priority": "0.3", "changefreq": "yearly",
+      "english_only": true, "slugs": { "en": "privacy" }
+    },
+    {
+      "key": "refunds", "source": "refunds.html", "priority": "0.3", "changefreq": "yearly",
+      "english_only": true, "slugs": { "en": "refunds" }
+    },
+    {
+      "key": "cookies", "source": "cookies.html", "priority": "0.3", "changefreq": "yearly",
+      "english_only": true, "slugs": { "en": "cookies" }
+    }
+  ],
+
+  "_legal_note": "Terms, Privacy, Refunds and Cookies stay in English on purpose: a machine-assisted translation of a contract is a liability, not a localisation. Every language links to the English originals.",
+
+  "app_pages": ["login", "signup", "dashboard", "admin", "onboarding", "preview", "trouble", "forgot-email", "emails", "build", "404"]
+}

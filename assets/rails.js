@@ -40,7 +40,7 @@
     /* { id: 'aircon', label: 'Air con' } — waiting on the clip. */
   ];
 
-  var BASE = 'assets/media/rail/';
+  var BASE = '/assets/media/rail/';
   var MIN_W = 1280;
   var FADE = 620;   /* keep in step with the transition in rails.css */
 

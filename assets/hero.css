@@ -222,6 +222,8 @@ html[data-hero-visible] .fp-header {
 }
 .fp-badge svg { width: 15px; height: 14.3px; flex: none; }
 
+.fp-hero-title { margin: 0; display: flex; flex-direction: column; align-items: center; font: inherit; }
+.fp-hero-title .fp-hero-h { display: block; }
 .fp-hero-h {
   margin: 0;
   font-family: 'Outfit', 'Inter', sans-serif;

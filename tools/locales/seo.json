@@ -1,0 +1,329 @@
+{
+  "_comment": "Title and meta description for every page in every built language. Written per language rather than translated, so each one uses the words people actually search in that language. Titles stay under ~60 characters, descriptions under ~160.",
+
+  "home": {
+    "en": {
+      "title": "Web Design Agency for Small Businesses | Xovahweb",
+      "description": "Xovahweb designs and builds custom websites and landing pages for small businesses. One-time price from €50, live in 5–7 days, hosting and domain included."
+    },
+    "sq": {
+      "title": "Agjenci për dizajn ueb-faqesh | Xovahweb",
+      "description": "Xovahweb dizajnon dhe ndërton faqe interneti dhe faqe uljeje për biznese të vogla në Kosovë dhe më gjerë. Çmim një herë nga 50 €, online për 5–7 ditë, me domen dhe hosting."
+    },
+    "de": {
+      "title": "Webdesign-Agentur für kleine Unternehmen | Xovahweb",
+      "description": "Xovahweb gestaltet und entwickelt individuelle Websites und Landingpages für kleine Unternehmen. Einmalpreis ab 50 €, online in 5–7 Tagen, Hosting und Domain inklusive."
+    },
+    "fr": {
+      "title": "Agence de création de sites web | Xovahweb",
+      "description": "Xovahweb conçoit et développe des sites web et des landing pages sur mesure pour les petites entreprises. Prix unique à partir de 50 €, en ligne en 5–7 jours, hébergement et domaine inclus."
+    },
+    "it": {
+      "title": "Agenzia di web design per piccole imprese | Xovahweb",
+      "description": "Xovahweb progetta e realizza siti web e landing page su misura per piccole imprese. Prezzo una tantum da 50 €, online in 5–7 giorni, dominio e hosting inclusi."
+    },
+    "es": {
+      "title": "Agencia de diseño web para pymes | Xovahweb",
+      "description": "Xovahweb diseña y desarrolla webs y landing pages a medida para pequeñas empresas. Pago único desde 50 €, online en 5–7 días, con dominio y alojamiento incluidos."
+    },
+    "pt": {
+      "title": "Agência de criação de sites para empresas | Xovahweb",
+      "description": "A Xovahweb cria e desenvolve sites e landing pages à medida para pequenas empresas. Preço único desde 50 €, online em 5–7 dias, com domínio e alojamento incluídos."
+    },
+    "nl": {
+      "title": "Webdesignbureau voor kleine bedrijven | Xovahweb",
+      "description": "Xovahweb ontwerpt en bouwt websites en landingspagina's op maat voor kleine bedrijven. Eenmalige prijs vanaf € 50, live in 5–7 dagen, hosting en domein inbegrepen."
+    },
+    "sv": {
+      "title": "Webbyrå för små företag | Xovahweb",
+      "description": "Xovahweb formger och bygger skräddarsydda webbplatser och landningssidor för små företag. Engångspris från 50 €, live på 5–7 dagar, domän och webbhotell ingår."
+    },
+    "tr": {
+      "title": "Küçük işletmeler için web tasarım ajansı | Xovahweb",
+      "description": "Xovahweb, küçük işletmeler için özel web siteleri ve açılış sayfaları tasarlayıp geliştirir. Tek seferlik 50 €'dan başlayan fiyat, 5–7 günde yayında, alan adı ve hosting dahil."
+    }
+  },
+
+  "pricing": {
+    "en": {
+      "title": "Website Design Pricing & Packages | Xovahweb",
+      "description": "Three website packages, each paid once: €50, €200 or €500. Compare what is included — domain, hosting, SSL and the sections you get — before you talk to anyone."
+    },
+    "sq": {
+      "title": "Çmimet dhe paketat e faqeve të internetit | Xovahweb",
+      "description": "Tri paketa faqesh interneti, secila e paguar një herë: 50 €, 200 € ose 500 €. Krahasoni çfarë përfshihet — domeni, hostingu, SSL dhe seksionet — para se të flisni me dikë."
+    },
+    "de": {
+      "title": "Website-Preise und Pakete | Xovahweb",
+      "description": "Drei Website-Pakete, jeweils einmalig bezahlt: 50 €, 200 € oder 500 €. Vergleichen Sie, was enthalten ist — Domain, Hosting, SSL und die Abschnitte —, bevor Sie mit uns sprechen."
+    },
+    "fr": {
+      "title": "Tarifs et formules de création de site | Xovahweb",
+      "description": "Trois formules de site web, payées une seule fois : 50 €, 200 € ou 500 €. Comparez ce qui est compris — domaine, hébergement, SSL et sections — avant de nous contacter."
+    },
+    "it": {
+      "title": "Prezzi e pacchetti per siti web | Xovahweb",
+      "description": "Tre pacchetti per il sito, ognuno pagato una volta sola: 50 €, 200 € o 500 €. Confronta cosa è incluso — dominio, hosting, SSL e le sezioni — prima di parlare con noi."
+    },
+    "es": {
+      "title": "Precios y paquetes de diseño web | Xovahweb",
+      "description": "Tres paquetes de web, cada uno con un solo pago: 50 €, 200 € o 500 €. Compara qué incluye cada uno — dominio, alojamiento, SSL y secciones — antes de hablar con nadie."
+    },
+    "pt": {
+      "title": "Preços e pacotes de criação de sites | Xovahweb",
+      "description": "Três pacotes de site, cada um pago uma só vez: 50 €, 200 € ou 500 €. Compare o que está incluído — domínio, alojamento, SSL e secções — antes de falar connosco."
+    },
+    "nl": {
+      "title": "Prijzen en pakketten voor websites | Xovahweb",
+      "description": "Drie websitepakketten, elk één keer betaald: € 50, € 200 of € 500. Vergelijk wat erin zit — domein, hosting, SSL en de secties — voordat je iemand spreekt."
+    },
+    "sv": {
+      "title": "Priser och paket för webbplatser | Xovahweb",
+      "description": "Tre webbpaket, vart och ett betalt en gång: 50 €, 200 € eller 500 €. Jämför vad som ingår — domän, webbhotell, SSL och avsnitten — innan du hör av dig."
+    },
+    "tr": {
+      "title": "Web sitesi fiyatları ve paketleri | Xovahweb",
+      "description": "Üç web sitesi paketi, her biri tek seferlik ödemeyle: 50 €, 200 € veya 500 €. Neyin dahil olduğunu — alan adı, hosting, SSL ve bölümler — konuşmadan önce karşılaştırın."
+    }
+  },
+
+  "services": {
+    "en": {
+      "title": "Web Design Services & Website Add-ons | Xovahweb",
+      "description": "Online booking, local SEO, analytics, automation, logo design and business email: 66 one-off website services, each priced on its own, plus 34 features in every build."
+    },
+    "sq": {
+      "title": "Shërbime për faqe interneti dhe shtesa | Xovahweb",
+      "description": "Rezervime online, SEO lokale, analitikë, automatizim, logo dhe email biznesi: 66 shërbime një herë të vetme, secila me çmimin e vet, plus 34 veçori në çdo ndërtim."
+    },
+    "de": {
+      "title": "Website-Leistungen und Zusatzoptionen | Xovahweb",
+      "description": "Online-Buchung, lokales SEO, Analytics, Automatisierung, Logo-Design und Firmen-E-Mail: 66 einmalige Website-Leistungen mit eigenem Preis, plus 34 Funktionen in jedem Bau."
+    },
+    "fr": {
+      "title": "Prestations web et options pour votre site | Xovahweb",
+      "description": "Réservation en ligne, référencement local, statistiques, automatisation, logo et e-mail professionnel : 66 prestations ponctuelles chiffrées, plus 34 fonctions dans chaque site."
+    },
+    "it": {
+      "title": "Servizi web e opzioni per il tuo sito | Xovahweb",
+      "description": "Prenotazioni online, SEO locale, statistiche, automazioni, logo ed email aziendale: 66 servizi una tantum, ognuno con il suo prezzo, più 34 funzioni in ogni sito."
+    },
+    "es": {
+      "title": "Servicios web y extras para tu web | Xovahweb",
+      "description": "Reservas online, SEO local, analítica, automatización, logo y correo de empresa: 66 servicios puntuales con precio propio, más 34 funciones en cada web."
+    },
+    "pt": {
+      "title": "Serviços web e extras para o seu site | Xovahweb",
+      "description": "Marcações online, SEO local, estatísticas, automatização, logótipo e email de empresa: 66 serviços pontuais com preço próprio, mais 34 funcionalidades em cada site."
+    },
+    "nl": {
+      "title": "Websitediensten en extra's | Xovahweb",
+      "description": "Online reserveren, lokale SEO, statistieken, automatisering, logo-ontwerp en zakelijke e-mail: 66 eenmalige diensten met een eigen prijs, plus 34 functies in elke website."
+    },
+    "sv": {
+      "title": "Webbtjänster och tillägg för din sajt | Xovahweb",
+      "description": "Onlinebokning, lokal SEO, statistik, automatisering, logotyp och företags-e-post: 66 engångstjänster med eget pris, plus 34 funktioner i varje bygge."
+    },
+    "tr": {
+      "title": "Web sitesi hizmetleri ve ek özellikler | Xovahweb",
+      "description": "Çevrimiçi randevu, yerel SEO, analiz, otomasyon, logo tasarımı ve kurumsal e-posta: her biri ayrı fiyatlı 66 tek seferlik hizmet ve her sitede 34 özellik."
+    }
+  },
+
+  "start": {
+    "en": {
+      "title": "Start Your Website Project — Get a Quote | Xovahweb",
+      "description": "Choose a package, add the extras you need and describe your business. No account and no payment: we reply with the real figure, usually the same working day."
+    },
+    "sq": {
+      "title": "Filloni projektin e faqes suaj | Xovahweb",
+      "description": "Zgjidhni një paketë, shtoni shtesat që ju duhen dhe përshkruani biznesin tuaj. Pa llogari dhe pa pagesë: përgjigjemi me shifrën e vërtetë, zakonisht brenda ditës."
+    },
+    "de": {
+      "title": "Website-Projekt starten und Angebot erhalten | Xovahweb",
+      "description": "Wählen Sie ein Paket, ergänzen Sie die nötigen Extras und beschreiben Sie Ihr Unternehmen. Ohne Konto und ohne Zahlung: Wir antworten mit der echten Zahl, meist am selben Werktag."
+    },
+    "fr": {
+      "title": "Démarrer votre projet de site — devis | Xovahweb",
+      "description": "Choisissez une formule, ajoutez les options utiles et décrivez votre activité. Sans compte ni paiement : nous répondons avec le vrai montant, en général le jour ouvré même."
+    },
+    "it": {
+      "title": "Avvia il tuo progetto web e ricevi un preventivo | Xovahweb",
+      "description": "Scegli un pacchetto, aggiungi gli extra che ti servono e descrivi la tua attività. Senza account e senza pagamento: rispondiamo con la cifra reale, di solito in giornata."
+    },
+    "es": {
+      "title": "Empieza tu proyecto web y pide presupuesto | Xovahweb",
+      "description": "Elige un paquete, añade los extras que necesites y describe tu negocio. Sin cuenta y sin pago: te respondemos con la cifra real, normalmente el mismo día laborable."
+    },
+    "pt": {
+      "title": "Inicie o seu projeto de site e peça orçamento | Xovahweb",
+      "description": "Escolha um pacote, junte os extras de que precisa e descreva o seu negócio. Sem conta e sem pagamento: respondemos com o valor real, normalmente no mesmo dia útil."
+    },
+    "nl": {
+      "title": "Start je websiteproject en vraag een prijs | Xovahweb",
+      "description": "Kies een pakket, voeg de extra's toe die je nodig hebt en beschrijf je bedrijf. Geen account en geen betaling: we antwoorden met het echte bedrag, meestal dezelfde werkdag."
+    },
+    "sv": {
+      "title": "Starta ditt webbprojekt och få en offert | Xovahweb",
+      "description": "Välj ett paket, lägg till de tillägg du behöver och beskriv din verksamhet. Utan konto och utan betalning: vi svarar med den riktiga siffran, oftast samma arbetsdag."
+    },
+    "tr": {
+      "title": "Web sitesi projenizi başlatın, teklif alın | Xovahweb",
+      "description": "Bir paket seçin, ihtiyacınız olan ekstraları ekleyin ve işletmenizi anlatın. Hesap yok, ödeme yok: gerçek rakamla, genellikle aynı iş günü içinde dönüyoruz."
+    }
+  },
+
+  "contact": {
+    "en": {
+      "title": "Contact Xovahweb — Talk to a Web Designer",
+      "description": "Questions about a new website, a quote, or a site we already built? Write to Xovahweb and a person replies, usually the same working day."
+    },
+    "sq": {
+      "title": "Kontakt — flisni me një dizajner uebi | Xovahweb",
+      "description": "Pyetje për një faqe të re, për një ofertë, ose për një faqe që e kemi ndërtuar tashmë? Na shkruani dhe përgjigjet një person, zakonisht brenda së njëjtës ditë pune."
+    },
+    "de": {
+      "title": "Kontakt — mit einem Webdesigner sprechen | Xovahweb",
+      "description": "Fragen zu einer neuen Website, einem Angebot oder einer Seite, die wir gebaut haben? Schreiben Sie uns — es antwortet ein Mensch, meist am selben Werktag."
+    },
+    "fr": {
+      "title": "Contact — parler à un créateur de sites | Xovahweb",
+      "description": "Une question sur un nouveau site, un devis ou un site que nous avons réalisé ? Écrivez-nous : c'est une personne qui répond, en général le jour ouvré même."
+    },
+    "it": {
+      "title": "Contatti — parla con un web designer | Xovahweb",
+      "description": "Domande su un nuovo sito, su un preventivo o su un sito che abbiamo già realizzato? Scrivici: risponde una persona, di solito nella stessa giornata lavorativa."
+    },
+    "es": {
+      "title": "Contacto — habla con un diseñador web | Xovahweb",
+      "description": "¿Dudas sobre una web nueva, un presupuesto o una web que ya hicimos? Escríbenos: responde una persona, normalmente el mismo día laborable."
+    },
+    "pt": {
+      "title": "Contacto — fale com um web designer | Xovahweb",
+      "description": "Dúvidas sobre um site novo, um orçamento ou um site que já fizemos? Escreva-nos: responde uma pessoa, normalmente no mesmo dia útil."
+    },
+    "nl": {
+      "title": "Contact — praat met een webdesigner | Xovahweb",
+      "description": "Vragen over een nieuwe website, een prijs of een site die wij bouwden? Mail ons: er antwoordt een mens, meestal dezelfde werkdag."
+    },
+    "sv": {
+      "title": "Kontakt — prata med en webbdesigner | Xovahweb",
+      "description": "Frågor om en ny webbplats, en offert eller en sajt vi redan byggt? Skriv till oss — det är en människa som svarar, oftast samma arbetsdag."
+    },
+    "tr": {
+      "title": "İletişim — bir web tasarımcıyla konuşun | Xovahweb",
+      "description": "Yeni bir site, teklif ya da daha önce yaptığımız bir site hakkında sorular mı var? Bize yazın: yanıtı bir insan verir, genellikle aynı iş günü içinde."
+    }
+  },
+
+  "faq": {
+    "en": {
+      "title": "Website FAQ: Cost, Timing & Ownership | Xovahweb",
+      "description": "What a one-time website price covers, when you pay, how long a build takes, who owns your domain, and what happens if you cancel before it goes live."
+    },
+    "sq": {
+      "title": "Pyetje të shpeshta për faqet e internetit | Xovahweb",
+      "description": "Çfarë mbulon çmimi një herë i faqes, kur paguani, sa zgjat ndërtimi, kush e zotëron domenin dhe çfarë ndodh nëse anuloni para se faqja të shkojë online."
+    },
+    "de": {
+      "title": "Häufige Fragen zur Website: Preis und Ablauf | Xovahweb",
+      "description": "Was der einmalige Website-Preis abdeckt, wann Sie zahlen, wie lange ein Bau dauert, wem die Domain gehört und was passiert, wenn Sie vor dem Start abbrechen."
+    },
+    "fr": {
+      "title": "Questions fréquentes : prix, délais, propriété | Xovahweb",
+      "description": "Ce que couvre le prix unique d'un site, quand vous payez, combien de temps dure la réalisation, à qui appartient le domaine, et ce qui se passe si vous annulez."
+    },
+    "it": {
+      "title": "Domande frequenti: prezzi, tempi e proprietà | Xovahweb",
+      "description": "Cosa copre il prezzo una tantum del sito, quando si paga, quanto dura la realizzazione, di chi è il dominio e cosa succede se annulli prima della pubblicazione."
+    },
+    "es": {
+      "title": "Preguntas frecuentes: precio, plazos y dominio | Xovahweb",
+      "description": "Qué cubre el precio único de la web, cuándo pagas, cuánto tarda la construcción, de quién es el dominio y qué pasa si cancelas antes de publicarla."
+    },
+    "pt": {
+      "title": "Perguntas frequentes: preço, prazos e domínio | Xovahweb",
+      "description": "O que cobre o preço único do site, quando paga, quanto demora a construção, de quem é o domínio e o que acontece se cancelar antes de ficar online."
+    },
+    "nl": {
+      "title": "Veelgestelde vragen: prijs, termijn en domein | Xovahweb",
+      "description": "Wat de eenmalige websiteprijs dekt, wanneer je betaalt, hoe lang het bouwen duurt, van wie het domein is en wat er gebeurt als je annuleert voor de lancering."
+    },
+    "sv": {
+      "title": "Vanliga frågor: pris, tid och ägande | Xovahweb",
+      "description": "Vad engångspriset för webbplatsen täcker, när du betalar, hur lång tid bygget tar, vem som äger domänen och vad som händer om du avbryter före lansering."
+    },
+    "tr": {
+      "title": "Sık sorulan sorular: fiyat, süre ve sahiplik | Xovahweb",
+      "description": "Tek seferlik site ücretinin neleri kapsadığı, ne zaman ödediğiniz, yapımın ne kadar sürdüğü, alan adının kime ait olduğu ve yayına girmeden iptal ederseniz ne olacağı."
+    }
+  },
+
+  "free": {
+    "en": {
+      "title": "Free One-Page Website for Your Business | Xovahweb",
+      "description": "A real one-page website for your business, built by a person and live within 48 hours. We host it, there is no domain to buy, and it costs you nothing."
+    },
+    "sq": {
+      "title": "Faqe interneti falas për biznesin tuaj | Xovahweb",
+      "description": "Një faqe e vërtetë me një faqe të vetme për biznesin tuaj, e ndërtuar nga një person dhe online brenda 48 orëve. E mbajmë ne online, pa domen për të blerë, pa kosto."
+    },
+    "de": {
+      "title": "Kostenlose einseitige Website für Ihr Unternehmen | Xovahweb",
+      "description": "Eine echte einseitige Website für Ihr Unternehmen, von Hand gebaut und in 48 Stunden online. Wir hosten sie, Sie kaufen keine Domain, und sie kostet nichts."
+    },
+    "fr": {
+      "title": "Site web d'une page gratuit pour votre entreprise | Xovahweb",
+      "description": "Un vrai site d'une page pour votre entreprise, construit par une personne et en ligne sous 48 heures. Nous l'hébergeons, aucun domaine à acheter, aucun frais."
+    },
+    "it": {
+      "title": "Sito di una pagina gratuito per la tua attività | Xovahweb",
+      "description": "Un vero sito di una pagina per la tua attività, realizzato da una persona e online entro 48 ore. Lo ospitiamo noi, nessun dominio da comprare, nessun costo."
+    },
+    "es": {
+      "title": "Web de una página gratis para tu negocio | Xovahweb",
+      "description": "Una web de una página de verdad para tu negocio, hecha por una persona y online en 48 horas. La alojamos nosotros, no compras dominio y no te cuesta nada."
+    },
+    "pt": {
+      "title": "Site de uma página grátis para o seu negócio | Xovahweb",
+      "description": "Um site de uma página a sério para o seu negócio, construído por uma pessoa e online em 48 horas. Alojamos nós, não compra domínio e não lhe custa nada."
+    },
+    "nl": {
+      "title": "Gratis website van één pagina voor je bedrijf | Xovahweb",
+      "description": "Een echte website van één pagina voor je bedrijf, gebouwd door een mens en binnen 48 uur live. Wij hosten hem, je koopt geen domein en het kost je niets."
+    },
+    "sv": {
+      "title": "Gratis ensidig webbplats för ditt företag | Xovahweb",
+      "description": "En riktig ensidig webbplats för ditt företag, byggd av en människa och live inom 48 timmar. Vi driftar den, ingen domän att köpa, och den kostar ingenting."
+    },
+    "tr": {
+      "title": "İşletmeniz için ücretsiz tek sayfalık site | Xovahweb",
+      "description": "İşletmeniz için gerçek, tek sayfalık bir web sitesi: bir insan tarafından yapılır ve 48 saat içinde yayına girer. Barındırma bizden, alan adı almanıza gerek yok."
+    }
+  },
+
+  "terms": {
+    "en": {
+      "title": "Terms of Service | Xovahweb",
+      "description": "The agreement covering what we build, when payment is due, what you own when it is finished, and how either side ends the arrangement."
+    }
+  },
+  "privacy": {
+    "en": {
+      "title": "Privacy Policy — Your Data and the GDPR | Xovahweb",
+      "description": "What personal data we collect when you order a website, why we hold it, how long we keep it, and the rights you have over it under the GDPR."
+    }
+  },
+  "refunds": {
+    "en": {
+      "title": "Cancellation and Refund Policy | Xovahweb",
+      "description": "Nothing is paid until your website is ready to go live. What happens if you cancel before then, and what applies once you have paid."
+    }
+  },
+  "cookies": {
+    "en": {
+      "title": "Cookie Policy | Xovahweb",
+      "description": "Which cookies this site sets, what each one is for, and how to change your choice at any time."
+    }
+  }
+}
