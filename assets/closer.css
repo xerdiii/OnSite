@@ -28,7 +28,8 @@
 <filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/>\
 <feColorMatrix type='saturate' values='0'/></filter>\
 <rect width='160' height='160' filter='url(%23n)' opacity='0.22'/></svg>");
-  mix-blend-mode: overlay;
+  /* no mix-blend-mode: blending over a playing video repaints the whole
+     panel every frame, which is what made scrolling past it stutter */
 }
 .grain > div { position: relative; z-index: 1; }
 
@@ -87,7 +88,7 @@
       rgb(0 0 0 / 0.44) 100%);
 }
 
-.closer.grain::before { z-index: 2; opacity: 0.24; }
+.closer.grain::before { z-index: 2; opacity: 0.1; }
 .closer .closer-body { position: relative; z-index: 3; width: 100%; }
 
 /* ── The three facts ───────────────────────────────────────────

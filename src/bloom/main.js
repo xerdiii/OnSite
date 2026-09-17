@@ -258,7 +258,7 @@ function boot() {
     aspect = width / height;
     portrait = aspect < 0.9;
     const small = width < 768;
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, small ? 1.6 : 1.75) * quality);
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, small ? 1.25 : 1.5) * quality);
     renderer.setSize(width, height, false);
     camera.aspect = aspect;
     camera.updateProjectionMatrix();
@@ -468,6 +468,11 @@ function boot() {
 
   /* ── Lifecycle ───────────────────────────────────────────────────── */
   let running = false, visible = true, last = 0, clock = 0, raf = 0, slowFrames = 0;
+  /* While the page is being scrolled the scene holds its frame: the GPU and
+     the main thread go to the scroll, and the flowers pick up where they
+     left off a moment after it stops. */
+  let scrolledAt = 0;
+  window.addEventListener('scroll', () => { scrolledAt = performance.now(); }, { passive: true });
   const STILL_T = 7.3;
 
   new MutationObserver(() => { readTheme(); if (!running) draw(); })
@@ -482,6 +487,7 @@ function boot() {
   function frame(now) {
     raf = 0;
     if (!running) return;
+    if (now - scrolledAt < 160) { last = 0; slowFrames = 0; raf = requestAnimationFrame(frame); return; }
     const dt = last ? Math.min((now - last) / 1000, 0.05) : 0.016;
     last = now;
     clock += dt;

@@ -17,6 +17,7 @@
 .rails {
   position: fixed; inset: 0; z-index: 5;
   pointer-events: none;
+  contain: strict; transform: translateZ(0);
   opacity: 0;
   transition: opacity 520ms ease;
 }
