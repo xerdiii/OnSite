@@ -65,6 +65,13 @@
 <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400&family=Instrument+Serif&family=Inter:wght@400;500;600;700&family=Outfit:wght@200..800&display=swap"></noscript>
 <script>/* Theme before paint. Dark is the site, light is a choice you make — the attribute is always stamped so the system setting never decides for you. */(function(){var t='dark';try{t=localStorage.getItem('sitehouse.theme')==='light'?'light':'dark';}catch(e){}document.documentElement.setAttribute('data-theme',t);})();</script>
 <style>
+  /* The pay-on-delivery band is one sentence and nothing else, so the
+     sentence is the size of the band. */
+  .sec-title.why-line {
+    font-size: clamp(2.3rem, 6.4vw, 4.6rem);
+    line-height: 1.0;
+    max-width: 24ch;
+  }
   html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
   body { font-feature-settings: "kern" 1, "liga" 1; }
 
@@ -822,11 +829,8 @@
 
   <!-- 9b — WHY PAY ON DELIVERY -->
   <section class="border-b border-line bg-accent-tint">
-    <div class="mx-auto max-w-shell px-6 py-9 md:px-10 md:py-11">
-      <h2 class="h-section sec-title max-w-xl" data-rise>İş bittiğinde ödüyorsunuz.</h2>
-      <p class="mt-4 max-w-prose text-[1.0625rem] leading-relaxed text-ink-mid">
-        Önce biz yapıyoruz. Siteyi kendi telefonunuzda görüyorsunuz ve yayına hazır olduğunda bir kez ödüyorsunuz.
-      </p>
+    <div class="mx-auto max-w-shell px-6 py-8 md:px-10 md:py-10">
+      <h2 class="h-section sec-title why-line" data-rise>İş bittiğinde ödüyorsunuz.</h2>
     </div>
   </section>
 
