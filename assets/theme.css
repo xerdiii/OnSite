@@ -362,3 +362,18 @@ h1.doc-title {
   border-color: rgb(41 46 53);
   color: rgb(242 241 238);
 }
+
+/* ── The shell grows on a big screen ─────────────────────────────
+   70rem was set when two video rails filled the gutters. With the
+   gutters quiet, the content itself should take more of the width
+   rather than sitting in a narrow column with space either side.
+   --shell is published so the gutter furniture can measure it. */
+:root { --shell: 70rem; }
+@media (min-width: 1440px) {
+  :root { --shell: 78rem; }
+  .max-w-shell { max-width: 78rem; }
+}
+@media (min-width: 1700px) {
+  :root { --shell: 84rem; }
+  .max-w-shell { max-width: 84rem; }
+}

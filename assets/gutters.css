@@ -1,0 +1,82 @@
+/* ───────────────────────────────────────────────────────────────
+   Xovah — the gutters (built by assets/gutters.js)
+
+   Two fixed columns either side of the shell: the wordmark and a
+   scroll line on the left, the section index on the right. Both are
+   quiet by default and only firm up when the pointer is near, so the
+   page still reads as the content plus white space rather than as a
+   frame around it.
+
+   Everything here is pointer-events: none except the links, so the
+   gutters can never eat a click meant for the page.
+   ─────────────────────────────────────────────────────────────── */
+.gut { position: fixed; inset: 0; z-index: 8; pointer-events: none; }
+
+@media (max-width: 1279px) { .gut { display: none; } }
+
+/* ── Left: the wordmark, and how far down the page you are ─────── */
+.gut-left {
+  position: absolute; left: 0; top: 0; bottom: 0;
+  width: calc((100vw - min(var(--shell, 70rem), 100vw)) / 2);
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  gap: 1.75rem;
+}
+.gut-mark {
+  writing-mode: vertical-rl; transform: rotate(180deg);
+  font-family: 'IBM Plex Mono', ui-monospace, monospace;
+  font-size: 0.6875rem; letter-spacing: 0.42em; text-transform: uppercase;
+  color: rgb(var(--c-ink-soft) / 0.5);
+}
+.gut-line {
+  position: relative; display: block;
+  width: 1px; height: clamp(120px, 22vh, 220px);
+  background: rgb(var(--c-line-firm) / 0.7);
+  overflow: hidden;
+}
+.gut-line i {
+  position: absolute; inset: 0;
+  background: rgb(var(--c-accent));
+  transform: scaleY(0); transform-origin: top center;
+}
+
+/* ── Right: where you are, and everywhere else you could be ────── */
+.gut-right {
+  position: absolute; right: 0; top: 50%; transform: translateY(-50%);
+  width: calc((100vw - min(var(--shell, 70rem), 100vw)) / 2);
+  display: flex; flex-direction: column; gap: 0.15rem;
+  padding-right: clamp(1rem, 2.2vw, 2.25rem);
+  align-items: flex-end;
+}
+.gut-item {
+  pointer-events: auto;
+  display: flex; align-items: baseline; gap: 0.55rem;
+  padding: 0.3rem 0;
+  font-family: 'IBM Plex Mono', ui-monospace, monospace;
+  font-size: 0.625rem; letter-spacing: 0.14em; text-transform: uppercase;
+  color: rgb(var(--c-ink-soft) / 0.55);
+  text-decoration: none; text-align: right;
+  transition: color 200ms ease, opacity 200ms ease;
+}
+.gut-n { font-size: 0.5625rem; color: rgb(var(--c-ink-soft) / 0.4); transition: color 200ms ease; }
+.gut-t {
+  max-width: 11ch;
+  overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+}
+.gut-item:hover { color: rgb(var(--c-ink)); }
+.gut-item:hover .gut-n { color: rgb(var(--c-accent)); }
+.gut-item.is-on { color: rgb(var(--c-ink)); }
+.gut-item.is-on .gut-n { color: rgb(var(--c-accent)); }
+.gut-item:focus-visible { outline: 2px solid rgb(var(--c-accent)); outline-offset: 3px; }
+
+/* The gutter is only as wide as the screen minus the shell, so the
+   labels only appear once there is room for them. Below that the index
+   is numbers alone — still a position, still clickable, never pushed
+   over the content. */
+.gut-t { display: none; }
+@media (min-width: 1600px) { .gut-t { display: block; max-width: 11ch; } }
+@media (min-width: 1800px) { .gut-t { max-width: 16ch; } }
+.gut-item { max-width: 100%; }
+
+@media (prefers-reduced-motion: reduce) {
+  .gut-item, .gut-n { transition: none; }
+}

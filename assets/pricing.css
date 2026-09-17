@@ -452,3 +452,34 @@ body.pr-page .pr-stage {
   .pr-mark svg { width: 10px; height: 10px; }
   .tag-once { padding: 0.2rem 0.5rem; font-size: 0.625rem; }
 }
+
+/* ── The three packages on the landing page ──────────────────────
+   Chunky cards, a little wider than they are tall, three across. The
+   landing page shows the shape of the offer — the four lines that
+   separate the packages and the price — and the pricing page carries
+   the full seven-line comparison, so the card here can be short. */
+@media (min-width: 1024px) {
+  #pricing .pr-rail { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.25rem; }
+
+  #pricing .pr-card {
+    display: flex; flex-direction: column;
+    padding: 1.45rem 1.5rem 1.35rem;
+  }
+  #pricing .pr-rule { margin-top: 0.7rem; }
+  #pricing .pr-figure { margin-top: 0.85rem; }
+  #pricing .pr-amount { font-size: 2.3rem; }
+  #pricing .pr-note {
+    margin-top: 0.55rem; font-size: 0.8125rem; line-height: 1.5;
+    display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
+  }
+
+  /* four lines, then the button; the rest of the comparison is on the
+     pricing page, which is where someone weighing it up ends up */
+  #pricing .pr-list { margin-top: 0.8rem; }
+  #pricing .pr-list li { padding: 0.36rem 0; font-size: 0.8125rem; }
+  #pricing .pr-list li:nth-child(n+4) { display: none; }
+
+  #pricing .pr-foot { margin-top: auto; padding-top: 0.9rem; }
+  #pricing .pr-cta { width: 100%; min-height: 44px; }
+  #pricing .pr-badge { top: 1rem; right: 1.1rem; }
+}
