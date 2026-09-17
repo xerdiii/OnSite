@@ -1,0 +1,177 @@
+{
+  "_comment": "The search intent each page is written for, per language. These are editorial targets chosen from the words the pages already earn, not measured search volumes — no keyword tool is wired into this repo. They exist so metadata and headings stay pointed at one intent per page instead of drifting. Nothing here is rendered to visitors.",
+
+  "home": {
+    "intent": "commercial investigation",
+    "en": {
+      "primary": "web design agency",
+      "secondary": ["web design company", "custom website design", "professional web design", "website design services", "small business website design", "modern web design", "website development agency", "landing page design", "responsive web design", "affordable web design", "one-page website design"],
+      "long_tail": ["web design agency for small businesses", "custom website design for small business", "get a website built for my business", "how to get a professional website made", "small business website with hosting included", "website designer with one-time payment", "modern website for a local business", "website built in a week"],
+      "semantic": ["hosting and domain included", "one-time price", "5–7 day delivery", "pay on delivery", "built by a person", "SSL certificate", "mobile responsive", "local business online"]
+    },
+    "sq": {
+      "primary": "dizajn ueb-faqesh",
+      "secondary": ["krijim faqesh interneti", "ueb faqe per biznes", "agjenci dizajni web", "faqe interneti Kosove", "dizajn faqe interneti Prishtine", "ndertim faqesh interneti", "faqe uljeje", "faqe interneti per biznes te vogel"],
+      "long_tail": ["sa kushton nje faqe interneti ne Kosove", "kush ben faqe interneti ne Prishtine", "faqe interneti me domen dhe hosting", "krijim faqe interneti per biznes te vogel"]
+    },
+    "de": {
+      "primary": "Webdesign Agentur",
+      "secondary": ["Website erstellen lassen", "Webdesign für kleine Unternehmen", "Homepage erstellen lassen", "individuelles Webdesign", "Webentwicklung Agentur", "Landingpage erstellen", "professionelle Website", "günstige Website erstellen lassen"],
+      "long_tail": ["Website erstellen lassen Kosten einmalig", "Homepage für kleines Unternehmen erstellen lassen", "Website mit Hosting und Domain erstellen lassen", "wer erstellt meine Website"]
+    },
+    "fr": {
+      "primary": "agence de création de sites web",
+      "secondary": ["création site internet", "création site vitrine", "agence web design", "site internet pour petite entreprise", "création landing page", "développement de site web", "refonte site internet", "site internet professionnel"],
+      "long_tail": ["faire créer son site internet prix", "création site internet petite entreprise tarif", "site internet avec hébergement et nom de domaine", "combien coûte un site vitrine"]
+    },
+    "it": {
+      "primary": "agenzia web design",
+      "secondary": ["creazione siti web", "realizzazione siti internet", "sito web per piccole imprese", "sito vetrina", "landing page", "sviluppo siti web", "sito web professionale", "web agency"],
+      "long_tail": ["quanto costa creare un sito web", "realizzazione sito web per piccola impresa", "sito web con dominio e hosting inclusi", "creare un sito vetrina one page"]
+    },
+    "es": {
+      "primary": "agencia de diseño web",
+      "secondary": ["diseño web para pymes", "creación de páginas web", "diseño web profesional", "desarrollo web", "landing page", "página web para negocio", "diseño web a medida", "web one page"],
+      "long_tail": ["cuánto cuesta una página web para un negocio", "diseño de página web con dominio y alojamiento", "hacer una web para mi negocio", "diseño web pago único"]
+    },
+    "pt": {
+      "primary": "agência de criação de sites",
+      "secondary": ["criação de sites", "design de sites", "site para pequenas empresas", "desenvolvimento web", "landing page", "site profissional", "site one page", "criar site para negócio"],
+      "long_tail": ["quanto custa criar um site para uma empresa", "criação de site com domínio e alojamento", "fazer um site para o meu negócio", "site com pagamento único"]
+    },
+    "nl": {
+      "primary": "webdesign bureau",
+      "secondary": ["website laten maken", "webdesign voor kleine bedrijven", "website bouwen", "landingspagina laten maken", "professionele website", "webdesigner", "onepager website", "zakelijke website"],
+      "long_tail": ["website laten maken kosten eenmalig", "website laten maken voor klein bedrijf", "website met hosting en domein", "wie maakt mijn website"]
+    },
+    "sv": {
+      "primary": "webbyrå",
+      "secondary": ["bygga hemsida", "hemsida till företag", "webbdesign", "webbplats för småföretag", "landningssida", "webbutveckling", "professionell hemsida", "one page webbplats"],
+      "long_tail": ["vad kostar en hemsida till företag", "bygga hemsida med domän och webbhotell", "hemsida till litet företag pris", "låta någon bygga min hemsida"]
+    },
+    "tr": {
+      "primary": "web tasarım ajansı",
+      "secondary": ["web sitesi yaptırma", "kurumsal web sitesi", "küçük işletme web sitesi", "açılış sayfası tasarımı", "web tasarım firması", "özel web tasarımı", "tek sayfa web sitesi", "web geliştirme"],
+      "long_tail": ["web sitesi yaptırma fiyatları", "küçük işletme için web sitesi yaptırma", "alan adı ve hosting dahil web sitesi", "işletmem için web sitesi nasıl yaptırılır"]
+    }
+  },
+
+  "pricing": {
+    "intent": "commercial investigation / transactional",
+    "en": {
+      "primary": "website design pricing",
+      "secondary": ["website design cost", "web design packages", "how much does a website cost", "website development cost", "custom website pricing", "one-time website price", "small business website cost", "website price list", "cheap website design price", "website packages with hosting"],
+      "long_tail": ["how much does a small business website cost", "website design price with domain and hosting included", "one-off payment website design", "what does a professional website cost", "website cost with no monthly fee"],
+      "semantic": ["€50 website", "one-time payment", "no monthly fees", "domain included", "SSL included", "package comparison"]
+    },
+    "sq": { "primary": "cmimi i faqes se internetit", "secondary": ["sa kushton nje faqe interneti", "paketa faqesh interneti", "cmime dizajn web", "faqe interneti me cmim te lire", "pagese nje here", "cmimet e uebfaqeve"], "long_tail": ["sa kushton te besh nje faqe interneti ne Kosove", "cmimi i faqes se internetit me domen dhe hosting"] },
+    "de": { "primary": "Website Kosten", "secondary": ["Website erstellen lassen Preis", "Webdesign Preise", "Homepage Kosten", "Website Pakete", "Website einmalig bezahlen", "Website Preis kleine Unternehmen"], "long_tail": ["was kostet eine Website für ein kleines Unternehmen", "Website Kosten ohne monatliche Gebühren"] },
+    "fr": { "primary": "prix création site internet", "secondary": ["tarif site vitrine", "combien coûte un site web", "forfaits création site", "prix site internet petite entreprise", "site internet paiement unique"], "long_tail": ["prix d'un site internet avec hébergement inclus", "combien coûte un site vitrine pour une petite entreprise"] },
+    "it": { "primary": "quanto costa un sito web", "secondary": ["prezzi siti web", "costo realizzazione sito", "pacchetti sito web", "prezzo sito vetrina", "sito web pagamento unico"], "long_tail": ["quanto costa un sito web per una piccola impresa", "prezzo sito web con dominio e hosting inclusi"] },
+    "es": { "primary": "precio página web", "secondary": ["cuánto cuesta una página web", "tarifas diseño web", "paquetes de diseño web", "precio web para pymes", "web pago único"], "long_tail": ["cuánto cuesta una web para un pequeño negocio", "precio de página web con dominio y alojamiento"] },
+    "pt": { "primary": "preço criação de site", "secondary": ["quanto custa um site", "pacotes de sites", "preço site empresa", "criação de site pagamento único", "tabela de preços sites"], "long_tail": ["quanto custa um site para uma pequena empresa", "preço de site com domínio e alojamento incluídos"] },
+    "nl": { "primary": "website laten maken kosten", "secondary": ["wat kost een website", "webdesign prijzen", "website pakketten", "website prijs klein bedrijf", "website eenmalige kosten"], "long_tail": ["wat kost een website voor een klein bedrijf", "website prijs inclusief hosting en domein"] },
+    "sv": { "primary": "vad kostar en hemsida", "secondary": ["hemsida pris", "webbdesign priser", "hemsidepaket", "pris hemsida företag", "hemsida engångskostnad"], "long_tail": ["vad kostar en hemsida till ett litet företag", "hemsida pris med domän och webbhotell"] },
+    "tr": { "primary": "web sitesi fiyatları", "secondary": ["web sitesi yaptırma ücreti", "web tasarım paketleri", "kurumsal site fiyatı", "tek seferlik ödeme web sitesi", "uygun web sitesi fiyatı"], "long_tail": ["küçük işletme web sitesi fiyatları", "alan adı ve hosting dahil web sitesi fiyatı"] }
+  },
+
+  "services": {
+    "intent": "commercial investigation",
+    "en": {
+      "primary": "web design services",
+      "secondary": ["website development services", "website add-ons", "local SEO services", "online booking system for website", "logo design", "business email setup", "website maintenance", "Google Business Profile setup", "website analytics setup", "e-commerce website features"],
+      "long_tail": ["add online booking to my website", "set up a business email on my own domain", "local SEO for a small business website", "add a menu or shop to my website", "website features list with prices"],
+      "semantic": ["one-off jobs", "priced individually", "34 features included", "optional extras", "automation", "brand and design"]
+    },
+    "sq": { "primary": "sherbime per faqe interneti", "secondary": ["SEO lokale", "rezervime online", "dizajn logoje", "email biznesi", "mirembajtje faqesh", "analitike web"], "long_tail": ["shtimi i rezervimeve online ne faqen time", "SEO lokale per biznes ne Kosove"] },
+    "de": { "primary": "Website Leistungen", "secondary": ["lokales SEO", "Online-Buchungssystem", "Logo Design", "Firmen-E-Mail einrichten", "Website Wartung", "Google Unternehmensprofil"], "long_tail": ["Online-Terminbuchung auf der Website einrichten", "lokales SEO für kleine Unternehmen"] },
+    "fr": { "primary": "prestations web", "secondary": ["référencement local", "réservation en ligne", "création de logo", "e-mail professionnel", "maintenance site internet", "fiche Google"], "long_tail": ["ajouter la réservation en ligne à mon site", "référencement local pour une petite entreprise"] },
+    "it": { "primary": "servizi web", "secondary": ["SEO locale", "prenotazioni online", "creazione logo", "email aziendale", "manutenzione sito", "profilo Google"], "long_tail": ["aggiungere le prenotazioni online al sito", "SEO locale per piccole imprese"] },
+    "es": { "primary": "servicios de diseño web", "secondary": ["SEO local", "reservas online", "diseño de logo", "correo corporativo", "mantenimiento web", "perfil de empresa en Google"], "long_tail": ["añadir reservas online a mi web", "SEO local para pequeños negocios"] },
+    "pt": { "primary": "serviços web", "secondary": ["SEO local", "marcações online", "criação de logótipo", "email profissional", "manutenção de site", "perfil de empresa Google"], "long_tail": ["adicionar marcações online ao meu site", "SEO local para pequenas empresas"] },
+    "nl": { "primary": "websitediensten", "secondary": ["lokale SEO", "online reserveren", "logo laten maken", "zakelijke e-mail", "website onderhoud", "Google bedrijfsprofiel"], "long_tail": ["online reserveren toevoegen aan mijn website", "lokale SEO voor kleine bedrijven"] },
+    "sv": { "primary": "webbtjänster", "secondary": ["lokal SEO", "onlinebokning", "logotyp design", "företagsmejl", "webbunderhåll", "Google företagsprofil"], "long_tail": ["lägga till onlinebokning på hemsidan", "lokal SEO för småföretag"] },
+    "tr": { "primary": "web sitesi hizmetleri", "secondary": ["yerel SEO", "çevrimiçi randevu", "logo tasarımı", "kurumsal e-posta", "site bakımı", "Google işletme profili"], "long_tail": ["siteme çevrimiçi randevu ekleme", "küçük işletmeler için yerel SEO"] }
+  },
+
+  "start": {
+    "intent": "transactional",
+    "en": {
+      "primary": "hire a web designer",
+      "secondary": ["start a website project", "custom website quote", "website design quote", "build a website for my business", "request a website", "web design enquiry", "get a website made", "website project brief"],
+      "long_tail": ["get a quote for a custom website", "hire someone to build my business website", "request a website design quote with no account", "start a website project online"],
+      "semantic": ["no payment to request", "reply the same working day", "package and extras", "project request"]
+    },
+    "sq": { "primary": "fillo projektin e faqes", "secondary": ["kerkese per faqe interneti", "oferte per faqe interneti", "punesо nje dizajner web", "ndertimi i faqes per biznesin tim"], "long_tail": ["si te marr oferte per nje faqe interneti", "kerkese projekti per faqe interneti"] },
+    "de": { "primary": "Website Angebot anfordern", "secondary": ["Webdesigner beauftragen", "Website Projekt starten", "Angebot Website erstellen lassen", "Website Anfrage"], "long_tail": ["Angebot für eine individuelle Website anfordern", "Webdesigner für kleines Unternehmen beauftragen"] },
+    "fr": { "primary": "demander un devis site internet", "secondary": ["engager un créateur de site", "démarrer un projet de site", "devis création site vitrine", "demande de site internet"], "long_tail": ["demander un devis pour un site sur mesure", "faire appel à un webdesigner pour mon entreprise"] },
+    "it": { "primary": "preventivo sito web", "secondary": ["richiesta sito web", "avviare un progetto web", "assumere un web designer", "preventivo realizzazione sito"], "long_tail": ["chiedere un preventivo per un sito su misura", "far realizzare il sito della mia attività"] },
+    "es": { "primary": "presupuesto página web", "secondary": ["contratar diseñador web", "empezar un proyecto web", "pedir presupuesto web", "solicitud de página web"], "long_tail": ["pedir presupuesto para una web a medida", "contratar a alguien para hacer la web de mi negocio"] },
+    "pt": { "primary": "orçamento site", "secondary": ["contratar web designer", "iniciar projeto de site", "pedir orçamento de site", "pedido de site"], "long_tail": ["pedir orçamento para um site à medida", "contratar alguém para fazer o site do meu negócio"] },
+    "nl": { "primary": "website offerte aanvragen", "secondary": ["webdesigner inhuren", "websiteproject starten", "prijsopgave website", "website aanvragen"], "long_tail": ["offerte aanvragen voor een website op maat", "iemand inhuren om mijn bedrijfswebsite te bouwen"] },
+    "sv": { "primary": "offert hemsida", "secondary": ["anlita webbdesigner", "starta webbprojekt", "begära offert webbplats", "hemsida förfrågan"], "long_tail": ["begära offert på en skräddarsydd hemsida", "anlita någon som bygger företagets hemsida"] },
+    "tr": { "primary": "web sitesi teklifi", "secondary": ["web tasarımcı tutmak", "web projesi başlatmak", "web sitesi fiyat teklifi", "web sitesi talebi"], "long_tail": ["özel web sitesi için teklif almak", "işletmem için web sitesi yaptırma talebi"] }
+  },
+
+  "contact": {
+    "intent": "navigational / transactional",
+    "en": {
+      "primary": "contact web design agency",
+      "secondary": ["contact a web designer", "web design enquiry", "talk to a website developer", "website support contact", "get in touch about a website"],
+      "long_tail": ["ask a web designer a question before buying", "contact someone about changing my existing website"],
+      "semantic": ["reply the same working day", "a person, not a queue"]
+    },
+    "sq": { "primary": "kontakt dizajner web", "secondary": ["kontakto agjencine web", "pyetje per faqe interneti", "ndihme per faqen time"], "long_tail": ["si te kontaktoj per nje faqe interneti"] },
+    "de": { "primary": "Kontakt Webdesigner", "secondary": ["Webdesign Agentur kontaktieren", "Frage zur Website", "Website Support"], "long_tail": ["Webdesigner kontaktieren wegen bestehender Website"] },
+    "fr": { "primary": "contacter un webdesigner", "secondary": ["contacter une agence web", "question sur un site internet", "assistance site web"], "long_tail": ["contacter quelqu'un pour modifier mon site existant"] },
+    "it": { "primary": "contattare un web designer", "secondary": ["contatti web agency", "domanda su un sito web", "assistenza sito"], "long_tail": ["contattare qualcuno per modificare il mio sito"] },
+    "es": { "primary": "contactar diseñador web", "secondary": ["contacto agencia web", "consulta sobre una web", "soporte página web"], "long_tail": ["contactar para cambiar mi web actual"] },
+    "pt": { "primary": "contactar web designer", "secondary": ["contacto agência web", "dúvida sobre um site", "apoio site"], "long_tail": ["contactar alguém para alterar o meu site atual"] },
+    "nl": { "primary": "contact webdesigner", "secondary": ["contact webdesignbureau", "vraag over een website", "websitehulp"], "long_tail": ["contact opnemen over aanpassing van mijn website"] },
+    "sv": { "primary": "kontakta webbdesigner", "secondary": ["kontakta webbyrå", "fråga om hemsida", "hemsida support"], "long_tail": ["kontakta någon om ändring av min befintliga hemsida"] },
+    "tr": { "primary": "web tasarımcı iletişim", "secondary": ["web ajansı iletişim", "web sitesi sorusu", "site desteği"], "long_tail": ["mevcut sitemde değişiklik için iletişim"] }
+  },
+
+  "faq": {
+    "intent": "informational",
+    "en": {
+      "primary": "website design questions",
+      "secondary": ["how long does it take to build a website", "who owns my domain name", "what does a website include", "when do I pay for a website", "can I see the website before paying", "website changes after launch", "website hosting included"],
+      "long_tail": ["how long does a small business website take to build", "do I own my domain if the agency registers it", "can I cancel a website project before paying", "what happens if I do not like the website"],
+      "semantic": ["one-time payment", "5–7 days", "review before paying", "cancellation"]
+    },
+    "sq": { "primary": "pyetje per faqet e internetit", "secondary": ["sa zgjat ndertimi i nje faqeje", "kush e zoteron domenin", "kur paguhet faqja", "a mund ta shoh faqen para pageses"], "long_tail": ["sa kohe duhet per nje faqe interneti per biznes"] },
+    "de": { "primary": "Fragen zur Website", "secondary": ["wie lange dauert eine Website", "wem gehört die Domain", "wann zahle ich die Website", "Website vor Zahlung ansehen"], "long_tail": ["wie lange dauert die Erstellung einer Unternehmenswebsite"] },
+    "fr": { "primary": "questions création site internet", "secondary": ["combien de temps pour créer un site", "à qui appartient le nom de domaine", "quand payer un site internet", "voir le site avant de payer"], "long_tail": ["combien de temps pour créer un site vitrine"] },
+    "it": { "primary": "domande sulla creazione di siti", "secondary": ["quanto tempo serve per un sito", "di chi è il dominio", "quando si paga il sito", "vedere il sito prima di pagare"], "long_tail": ["quanto tempo serve per realizzare un sito aziendale"] },
+    "es": { "primary": "preguntas sobre diseño web", "secondary": ["cuánto se tarda en hacer una web", "de quién es el dominio", "cuándo se paga la web", "ver la web antes de pagar"], "long_tail": ["cuánto tarda una web para un negocio"] },
+    "pt": { "primary": "perguntas sobre criação de sites", "secondary": ["quanto tempo demora um site", "de quem é o domínio", "quando se paga o site", "ver o site antes de pagar"], "long_tail": ["quanto tempo demora um site para empresa"] },
+    "nl": { "primary": "vragen over websites", "secondary": ["hoe lang duurt een website bouwen", "van wie is mijn domeinnaam", "wanneer betaal ik de website", "website zien voor betalen"], "long_tail": ["hoe lang duurt een website voor een klein bedrijf"] },
+    "sv": { "primary": "frågor om hemsidor", "secondary": ["hur lång tid tar en hemsida", "vem äger domänen", "när betalar man hemsidan", "se hemsidan innan betalning"], "long_tail": ["hur lång tid tar en hemsida till ett företag"] },
+    "tr": { "primary": "web sitesi soruları", "secondary": ["web sitesi ne kadar sürede yapılır", "alan adı kimin", "web sitesi ne zaman ödenir", "ödemeden önce siteyi görmek"], "long_tail": ["kurumsal web sitesi ne kadar sürede hazır olur"] }
+  },
+
+  "free": {
+    "intent": "transactional",
+    "en": {
+      "primary": "free one-page website",
+      "secondary": ["free business website", "free landing page", "free website for small business", "free one page site with hosting", "no-cost website for local business"],
+      "long_tail": ["get a free one page website for my business", "free landing page built for me", "free website with hosting and no domain to buy"],
+      "semantic": ["live within 48 hours", "built by a person", "hosting included", "upgrade later"]
+    },
+    "sq": { "primary": "faqe interneti falas", "secondary": ["faqe falas per biznes", "faqe uljeje falas", "faqe nje-faqeshe falas"], "long_tail": ["si te marr nje faqe interneti falas per biznesin tim"] },
+    "de": { "primary": "kostenlose Website", "secondary": ["gratis Landingpage", "kostenlose Homepage für Unternehmen", "einseitige Website kostenlos"], "long_tail": ["kostenlose Website für mein kleines Unternehmen erstellen lassen"] },
+    "fr": { "primary": "site internet gratuit", "secondary": ["landing page gratuite", "site vitrine gratuit", "page unique gratuite"], "long_tail": ["obtenir un site d'une page gratuit pour mon entreprise"] },
+    "it": { "primary": "sito web gratis", "secondary": ["landing page gratuita", "sito vetrina gratis", "sito una pagina gratis"], "long_tail": ["avere un sito di una pagina gratis per la mia attività"] },
+    "es": { "primary": "página web gratis", "secondary": ["landing page gratis", "web gratis para negocio", "web de una página gratis"], "long_tail": ["conseguir una web de una página gratis para mi negocio"] },
+    "pt": { "primary": "site grátis", "secondary": ["landing page grátis", "site grátis para negócio", "site de uma página grátis"], "long_tail": ["ter um site de uma página grátis para o meu negócio"] },
+    "nl": { "primary": "gratis website", "secondary": ["gratis landingspagina", "gratis website voor bedrijf", "onepager gratis"], "long_tail": ["gratis website van één pagina voor mijn bedrijf"] },
+    "sv": { "primary": "gratis hemsida", "secondary": ["gratis landningssida", "gratis hemsida företag", "ensidig hemsida gratis"], "long_tail": ["få en gratis ensidig hemsida till mitt företag"] },
+    "tr": { "primary": "ücretsiz web sitesi", "secondary": ["ücretsiz açılış sayfası", "işletme için ücretsiz site", "tek sayfa ücretsiz site"], "long_tail": ["işletmem için ücretsiz tek sayfalık web sitesi"] }
+  },
+
+  "terms":   { "intent": "navigational", "en": { "primary": "terms of service", "secondary": ["website build agreement", "payment terms", "ownership of website", "cancellation terms"], "long_tail": ["what are the terms for a website build"] } },
+  "privacy": { "intent": "navigational", "en": { "primary": "privacy policy", "secondary": ["GDPR", "personal data", "data retention", "your data rights"], "long_tail": ["what data does a web agency keep about me"] } },
+  "refunds": { "intent": "navigational", "en": { "primary": "cancellation and refund policy", "secondary": ["website refund", "cancel a website project", "refund before launch"], "long_tail": ["can I cancel a website before it goes live"] } },
+  "cookies": { "intent": "navigational", "en": { "primary": "cookie policy", "secondary": ["cookies used", "cookie consent", "change cookie choice"], "long_tail": ["which cookies does this website set"] } }
+}
