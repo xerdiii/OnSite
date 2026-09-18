@@ -33,6 +33,28 @@
     form.querySelector('[data-rq-error="' + n + '"]').textContent = text || '';
   }
 
+  /* If the endpoint cannot send — mail unconfigured on the host, a
+     network that dropped — the request must not die in the browser.
+     The same briefing is handed to the visitor's own mail app,
+     addressed to the inbox this form posts to. Also in exq.js; see the
+     note there on why it is repeated rather than shared. */
+  var INBOX = 'hello@xovahweb.com';
+
+  function offerMail(n, subject, body) {
+    var el = form.querySelector('[data-rq-error="' + n + '"]');
+    el.textContent = 'Your request could not be sent from the site. ';
+    var a = document.createElement('a');
+    // Long mailto: bodies are truncated by Windows and by some mail
+    // apps, so this stays well under the length that survives anywhere.
+    a.href = 'mailto:' + INBOX
+      + '?subject=' + encodeURIComponent(subject)
+      + '&body=' + encodeURIComponent(String(body).slice(0, 1400));
+    a.className = 'underline';
+    a.textContent = 'Send it as an email instead';
+    el.appendChild(a);
+    el.appendChild(document.createTextNode(' — it reaches us at ' + INBOX + '.'));
+  }
+
   function value(name) {
     var el = form.querySelector('input[name="' + name + '"]:checked');
     return el ? el.value : '';
@@ -120,9 +142,11 @@
         show(3);
       })
       .catch(function (err) {
-        error(2, err.message === '429'
-          ? 'Too many attempts. Wait a minute and try again.'
-          : 'Your request could not be sent. Try again, or use the contact page.');
+        if (err.message === '429') {
+          error(2, 'Too many attempts. Wait a minute and try again.');
+          return;
+        }
+        offerMail(2, 'Website request — ' + name, lines.join('\n'));
       })
       .then(function () {
         submit.disabled = false;

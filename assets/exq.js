@@ -28,6 +28,29 @@
   var doneText = doc.querySelector('[data-exq-done-text]');
   var submit = form.querySelector('button[type="submit"]');
 
+  /* If the endpoint cannot send — mail unconfigured on the host, a
+     network that dropped — the request must not die in the browser.
+     The same list is handed to the visitor's own mail app, addressed
+     to the inbox this form posts to, so nothing is lost either way.
+     Ten lines repeated in extras.js rather than a shared file: a
+     shared file is a script tag on every generated page in ten
+     languages, which is the larger cost of the two. */
+  var INBOX = 'hello@xovahweb.com';
+
+  function offerMail(el, subject, body) {
+    el.textContent = 'Your request could not be sent from the site. ';
+    var a = doc.createElement('a');
+    // Long mailto: bodies are truncated by Windows and by some mail
+    // apps, so this stays well under the length that survives anywhere.
+    a.href = 'mailto:' + INBOX
+      + '?subject=' + encodeURIComponent(subject)
+      + '&body=' + encodeURIComponent(String(body).slice(0, 1400));
+    a.className = 'underline';
+    a.textContent = 'Send it as an email instead';
+    el.appendChild(a);
+    el.appendChild(doc.createTextNode(' — it reaches us at ' + INBOX + '.'));
+  }
+
   function money(n) {
     var c = Math.round(n * 100) / 100;
     if (global.SitehouseI18n) return global.SitehouseI18n.format(c);
@@ -128,9 +151,16 @@
         done.scrollIntoView({ block: 'center', behavior: 'smooth' });
       })
       .catch(function (err) {
-        errorEl.textContent = err.message === '429'
-          ? 'Too many attempts. Wait a minute and try again.'
-          : 'Your request could not be sent. Try again, or use the contact page.';
+        if (err.message === '429') {
+          errorEl.textContent = 'Too many attempts. Wait a minute and try again.';
+          return;
+        }
+        offerMail(
+          errorEl,
+          'Website request — ' + (f.business.value.trim() || name),
+          name + ' built a list on the extras page.\n\n' + lines()
+            + '\n\nReply to ' + email + '.'
+        );
       })
       .then(function () {
         submit.disabled = false;

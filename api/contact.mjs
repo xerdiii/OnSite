@@ -16,17 +16,20 @@
 
    Vercel → Settings → Environment Variables:
 
-     RESEND_API_KEY   re_xxx      from resend.com
+     RESEND_API_KEY   re_xxx      from resend.com   ← the only one required
      NOTIFY_EMAIL     where messages should arrive (defaults below)
-     FROM_EMAIL       xovah@your-verified-domain
+     FROM_EMAIL       xovah@your-verified-domain (defaults below)
 
    FROM_EMAIL must be on a domain verified with Resend. You cannot send
    "from" a Gmail address whose DNS you do not control — that rule is
    what stops spoofing and it applies here too. Arriving AT Gmail is
    fine; that is NOTIFY_EMAIL, and it is where these go by default.
 
-   With the variables unset this replies 503 and the form says plainly
-   that nothing was delivered, rather than pretending it was.
+   Only the key has no sensible default: it is a secret, so it cannot
+   live in the repository. Without it this replies 503 and the form says
+   plainly that nothing was delivered, rather than pretending it was —
+   and offers the visitor their own mail app instead, so the enquiry
+   still reaches the same inbox.
    ─────────────────────────────────────────────────────────────── */
 
 // Where messages go when NOTIFY_EMAIL is not set. The business mailbox,
@@ -34,6 +37,10 @@
 // lands in the same inbox the addresses on the site point at.
 // Overridable, so production can point elsewhere without touching this.
 const DEFAULT_TO = 'hello@xovahweb.com';
+
+// Who it is sent AS. The domain is verified with Resend, so this needs
+// no configuration; FROM_EMAIL still overrides it.
+const DEFAULT_FROM = 'Xovahweb <hello@xovahweb.com>';
 
 const esc = (v) => String(v == null ? '' : v)
   .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
@@ -98,8 +105,8 @@ export default async function handler(req, res) {
 
   const key = process.env.RESEND_API_KEY;
   const to = process.env.NOTIFY_EMAIL || DEFAULT_TO;
-  const from = process.env.FROM_EMAIL;
-  if (!key || !from) {
+  const from = process.env.FROM_EMAIL || DEFAULT_FROM;
+  if (!key) {
     return res.status(503).json({ error: 'mail not configured' });
   }
 
