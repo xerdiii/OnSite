@@ -770,6 +770,7 @@
   'Pricing': 'Çmimet',
   'Pricing and the payment schedule are on the': 'Çmimet dhe plani i pagesave gjenden te',
   'Pricing comparison': 'Krahasimi i çmimeve',
+  'Priority build, ahead of the queue': 'Ndërtim me përparësi, para radhës',
   'Priority technical support': 'Mbështetje teknike prioritare',
   'Privacy Policy': 'Politika e Privatësisë',
   'Privacy policy page': 'Faqja e politikës së privatësisë',
@@ -1431,5 +1432,6 @@
   '— while your account is open, and for a reasonable period afterwards in case you come back or a dispute arises.': '— ndërsa llogaria juaj është hapur, dhe për një periudhë të arsyeshme më pas, rastësisht që të ktheheni ose të lindë një mosmarrveshje.',
   '— you owe nothing further. The 75% balance never becomes due on a project you cancelled, because it only becomes due on approval.': '— nuk detyroheni më me asgjë. Bilanci 75% kurrë nuk bëhet i pjesshëm për një projekt që e anuluate, sepse bëhet i pjesshëm vetëm pas miratimit.',
   '— your name, business name, email address and phone number.': '— emri juaj, emri i biznesit, adresa email dhe numri telefonik.',
+  '€150 of extras, whichever you pick': '150 € shtesa, cilat të doni',
   '€79.99, €249.99 or €900 — paid once.': '€79.99, €249.99 ose €900 — të paguara një herë.'
 };

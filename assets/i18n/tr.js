@@ -770,6 +770,7 @@
   'Pricing': 'Fiyatlar',
   'Pricing and the payment schedule are on the': 'Fiyatlandırma ve ödeme planı şuradadır',
   'Pricing comparison': 'Fiyat karşılaştırması',
+  'Priority build, ahead of the queue': 'Sıranın önünde, öncelikli yapım',
   'Priority technical support': 'Öncelikli teknik destek',
   'Privacy Policy': 'Gizlilik Politikası',
   'Privacy policy page': 'Gizlilik politikası sayfası',
@@ -1431,5 +1432,6 @@
   '— while your account is open, and for a reasonable period afterwards in case you come back or a dispute arises.': '— hesabınız açık olduğu sürece, ve dönüş yapmanız ya da bir uyuşmazlık doğması ihtimaline karşın makul bir süre daha.',
   '— you owe nothing further. The 75% balance never becomes due on a project you cancelled, because it only becomes due on approval.': '— başka hiçbir borcunuz yoktur. İptal ettiğiniz bir projede %75\'lik bakiye asla vadesine girmez, çünkü ancak onayla vadesine girer.',
   '— your name, business name, email address and phone number.': '— adınız, işletme adınız, e-posta adresiniz ve telefon numaranız.',
+  '€150 of extras, whichever you pick': 'Seçtiğiniz 150 € değerinde ekstra',
   '€79.99, €249.99 or €900 — paid once.': '€79,99, €249,99 veya €900 — tek seferlik ödenir.'
 };

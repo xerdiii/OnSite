@@ -770,6 +770,7 @@
   'Pricing': 'Priser',
   'Pricing and the payment schedule are on the': 'Prissättning och betalningsplanen finns på',
   'Pricing comparison': 'Prisjämförelse',
+  'Priority build, ahead of the queue': 'Prioriterat bygge, före kön',
   'Priority technical support': 'Prioriterad teknisk support',
   'Privacy Policy': 'Integritetspolicy',
   'Privacy policy page': 'Sida med integritetspolicy',
@@ -1431,5 +1432,6 @@
   '— while your account is open, and for a reasonable period afterwards in case you come back or a dispute arises.': '— medan ditt konto är öppet, och en rimlig tid efteråt ifall du kommer tillbaka eller en tvist uppstår.',
   '— you owe nothing further. The 75% balance never becomes due on a project you cancelled, because it only becomes due on approval.': '— du är skyldig ingenting ytterligare. Saldot på 75 % förfaller aldrig för ett projekt du har sagt upp, eftersom det bara förfaller vid godkännande.',
   '— your name, business name, email address and phone number.': '— ditt namn, företagsnamn, mejladress och telefonnummer.',
+  '€150 of extras, whichever you pick': 'Tillägg för 150 €, vilka du vill',
   '€79.99, €249.99 or €900 — paid once.': '€79,99, €249,99 eller €900 — betalas en gång.'
 };

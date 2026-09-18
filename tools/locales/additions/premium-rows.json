@@ -1,0 +1,26 @@
+{
+  "_comment": "Two rows on the Business Premium card: the extras credit and the place in the queue.",
+
+  "€150 of extras, whichever you pick": {
+    "sq": "150 € shtesa, cilat të doni",
+    "de": "Extras im Wert von 150 €, frei gewählt",
+    "fr": "150 € d'options, celles que vous voulez",
+    "it": "150 € di extra, quelli che vuoi",
+    "es": "150 € en extras, los que elijas",
+    "pt": "150 € em extras, os que escolher",
+    "nl": "€ 150 aan extra's, welke je maar wilt",
+    "sv": "Tillägg för 150 €, vilka du vill",
+    "tr": "Seçtiğiniz 150 € değerinde ekstra"
+  },
+  "Priority build, ahead of the queue": {
+    "sq": "Ndërtim me përparësi, para radhës",
+    "de": "Vorrangiger Bau, vor der Warteschlange",
+    "fr": "Réalisation prioritaire, avant la file",
+    "it": "Realizzazione prioritaria, prima della coda",
+    "es": "Construcción prioritaria, por delante de la cola",
+    "pt": "Construção prioritária, à frente da fila",
+    "nl": "Voorrang bij het bouwen, vóór de wachtrij",
+    "sv": "Prioriterat bygge, före kön",
+    "tr": "Sıranın önünde, öncelikli yapım"
+  }
+}

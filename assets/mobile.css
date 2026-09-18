@@ -544,3 +544,22 @@ header .theme-toggle { width: 44px; height: 44px; }
   .m-drawer-blob { transition: none !important; }
   .m-drawer-head { transition: none !important; opacity: 1; transform: none; }
 }
+
+
+/* ── Space that was tuned for a desktop column ───────────────────
+   On a phone these sections left a hand's width of nothing above the
+   heading and below the last element. The desktop spacing is
+   untouched; only the phone comes in. */
+@media (max-width: 767px) {
+  #trusted > div:first-child { padding-top: 2.5rem; }
+  #trusted > div:last-child { padding-bottom: 2.25rem; }
+  #what > div, #pricing > div, #extras > div, #how > div { padding-top: 2.75rem; padding-bottom: 2.75rem; }
+  [data-ratings] > div, #figures > div { padding-top: 2.75rem; padding-bottom: 2.75rem; }
+}
+
+/* The closing panel sets its own padding; the section rhythm above was
+   adding a second helping of it inside, which showed as dead room under
+   the three facts. */
+@media (max-width: 767px) {
+  main section.closer > div.closer-body { padding-top: 0; padding-bottom: 0; }
+}

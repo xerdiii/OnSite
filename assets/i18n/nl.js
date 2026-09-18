@@ -770,6 +770,7 @@
   'Pricing': 'Prijzen',
   'Pricing and the payment schedule are on the': 'Prijzen en het betalingsschema staan op de',
   'Pricing comparison': 'Prijsvergelijking',
+  'Priority build, ahead of the queue': 'Voorrang bij het bouwen, vóór de wachtrij',
   'Priority technical support': 'Prioritaire technische ondersteuning',
   'Privacy Policy': 'Privacybeleid',
   'Privacy policy page': 'Privacybeleid-pagina',
@@ -1431,5 +1432,6 @@
   '— while your account is open, and for a reasonable period afterwards in case you come back or a dispute arises.': '— zolang je account open staat, en een redelijke periode daarna in geval je terugkomt of er een geschil ontstaat.',
   '— you owe nothing further. The 75% balance never becomes due on a project you cancelled, because it only becomes due on approval.': '— je bent niets verder verschuldigd. Het restant van 75% wordt nooit verschuldigd op een project dat je annuleerde, want het wordt pas verschuldigd bij goedkeuring.',
   '— your name, business name, email address and phone number.': '— je naam, bedrijfsnaam, e-mailadres en telefoonnummer.',
+  '€150 of extras, whichever you pick': '€ 150 aan extra\'s, welke je maar wilt',
   '€79.99, €249.99 or €900 — paid once.': '€79,99, €249,99 of €900 — eenmaal betaald.'
 };

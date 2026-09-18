@@ -225,8 +225,11 @@
    The copy stacks full width, so the scrim turns bottom-weighted and
    the picture keeps the top of the frame to itself. */
 @media (max-width: 767px) {
-  .closer { min-height: 88svh; padding: 6rem 0 7vh; align-items: flex-end; }
-  @supports not (min-height: 1svh) { .closer { min-height: 88vh; } }
+  /* It used to hold 88% of the screen open whatever was in it, which
+     left a blank half-screen under the last line. It is as tall as its
+     content now, with a floor so the picture still reads as a panel. */
+  .closer { min-height: 58svh; padding: 3rem 0 2rem; align-items: flex-end; }
+  @supports not (min-height: 1svh) { .closer { min-height: 58vh; } }
 
   .closer .closer-media video { object-position: var(--focus-tall, center center); }
 

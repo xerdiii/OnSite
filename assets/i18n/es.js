@@ -770,6 +770,7 @@
   'Pricing': 'Precios',
   'Pricing and the payment schedule are on the': 'Los precios y el calendario de pagos están en la',
   'Pricing comparison': 'Comparativa de precios',
+  'Priority build, ahead of the queue': 'Construcción prioritaria, por delante de la cola',
   'Priority technical support': 'Soporte técnico prioritario',
   'Privacy Policy': 'Política de Privacidad',
   'Privacy policy page': 'Página de política de privacidad',
@@ -1431,5 +1432,6 @@
   '— while your account is open, and for a reasonable period afterwards in case you come back or a dispute arises.': '— mientras tu cuenta esté abierta, y un periodo razonable después por si vuelves o surge una disputa.',
   '— you owe nothing further. The 75% balance never becomes due on a project you cancelled, because it only becomes due on approval.': '— no debes nada más. El saldo del 75 % nunca vence en un proyecto cancelado, porque solo vence con la aprobación.',
   '— your name, business name, email address and phone number.': '— tu nombre, nombre del negocio, dirección de email y número de teléfono.',
+  '€150 of extras, whichever you pick': '150 € en extras, los que elijas',
   '€79.99, €249.99 or €900 — paid once.': '€79,99, €249,99 o €900 — pago único.'
 };
