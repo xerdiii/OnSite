@@ -1,0 +1,82 @@
+{
+  "_comment": "The address directory on the contact page. The addresses themselves are the same in every language, so they are marked untranslatable with an empty entry.",
+
+  "hello@xovahweb.com": {},
+  "info@xovahweb.com": {},
+  "support@xovahweb.com": {},
+  "help@xovahweb.com": {},
+  "news@xovahweb.com": {},
+
+  "Write to us directly": {
+    "sq": "Na shkruani drejtpërdrejt", "de": "Schreiben Sie uns direkt",
+    "fr": "Écrivez-nous directement", "it": "Scrivici direttamente",
+    "es": "Escríbenos directamente", "pt": "Escreva-nos diretamente",
+    "nl": "Mail ons rechtstreeks", "sv": "Skriv direkt till oss", "tr": "Bize doğrudan yazın"
+  },
+  "Anything at all. The forms on this site land here.": {
+    "sq": "Çfarëdo qoftë. Formularët e kësaj faqeje vijnë këtu.",
+    "de": "Alles, was Sie wollen. Die Formulare dieser Seite landen hier.",
+    "fr": "N'importe quoi. Les formulaires de ce site arrivent ici.",
+    "it": "Qualsiasi cosa. I moduli di questo sito arrivano qui.",
+    "es": "Cualquier cosa. Los formularios de esta web llegan aquí.",
+    "pt": "Qualquer coisa. Os formulários deste site chegam aqui.",
+    "nl": "Waarover dan ook. De formulieren van deze site komen hier binnen.",
+    "sv": "Vad som helst. Formulären på den här sajten hamnar här.",
+    "tr": "Her konuda. Bu sitedeki formlar buraya düşer."
+  },
+  "Questions before you order — prices, timing, what is possible.": {
+    "sq": "Pyetje para se të porosisni — çmime, afate, çfarë është e mundur.",
+    "de": "Fragen vor der Bestellung — Preise, Termine, was möglich ist.",
+    "fr": "Les questions avant de commander : prix, délais, ce qui est possible.",
+    "it": "Domande prima di ordinare: prezzi, tempi, cosa è possibile.",
+    "es": "Dudas antes de pedir: precios, plazos y qué es posible.",
+    "pt": "Dúvidas antes de encomendar: preços, prazos e o que é possível.",
+    "nl": "Vragen vóór je bestelt: prijzen, termijnen en wat mogelijk is.",
+    "sv": "Frågor innan du beställer — priser, tider och vad som går att göra.",
+    "tr": "Sipariş öncesi sorular: fiyatlar, süreler, nelerin mümkün olduğu."
+  },
+  "A website we built that is already live.": {
+    "sq": "Një faqe që e kemi ndërtuar dhe është tashmë online.",
+    "de": "Eine von uns gebaute Website, die bereits online ist.",
+    "fr": "Un site que nous avons réalisé et qui est déjà en ligne.",
+    "it": "Un sito che abbiamo realizzato e che è già online.",
+    "es": "Una web que hicimos y que ya está online.",
+    "pt": "Um site que fizemos e que já está online.",
+    "nl": "Een website die wij bouwden en die al live staat.",
+    "sv": "En webbplats vi byggt som redan är live.",
+    "tr": "Yaptığımız ve hâlihazırda yayında olan bir site."
+  },
+  "Trouble signing in, or anything to do with your account.": {
+    "sq": "Probleme me hyrjen, ose çdo gjë që lidhet me llogarinë tuaj.",
+    "de": "Probleme beim Anmelden oder alles rund um Ihr Konto.",
+    "fr": "Un souci de connexion, ou tout ce qui touche à votre compte.",
+    "it": "Problemi di accesso, o qualsiasi cosa riguardi il tuo account.",
+    "es": "Problemas para entrar, o cualquier cosa de tu cuenta.",
+    "pt": "Problemas a entrar, ou qualquer coisa sobre a sua conta.",
+    "nl": "Problemen met inloggen, of alles rond je account.",
+    "sv": "Problem att logga in, eller allt som rör ditt konto.",
+    "tr": "Giriş sorunları ya da hesabınızla ilgili her şey."
+  },
+  "Press, partnerships and everything else.": {
+    "sq": "Shtypi, partneritetet dhe gjithçka tjetër.",
+    "de": "Presse, Partnerschaften und alles Übrige.",
+    "fr": "Presse, partenariats et tout le reste.",
+    "it": "Stampa, collaborazioni e tutto il resto.",
+    "es": "Prensa, colaboraciones y todo lo demás.",
+    "pt": "Imprensa, parcerias e tudo o resto.",
+    "nl": "Pers, samenwerkingen en al het andere.",
+    "sv": "Press, samarbeten och allt annat.",
+    "tr": "Basın, iş birlikleri ve diğer her şey."
+  },
+  "All of them reach the same inbox, so pick whichever fits and we will know what it is about.": {
+    "sq": "Të gjitha arrijnë në të njëjtën kuti, prandaj zgjidhni atë që ju përshtatet dhe ne e dimë për çfarë bëhet fjalë.",
+    "de": "Alle landen im selben Postfach — nehmen Sie die passende, dann wissen wir gleich, worum es geht.",
+    "fr": "Toutes arrivent dans la même boîte : prenez celle qui convient et nous saurons de quoi il s'agit.",
+    "it": "Arrivano tutte nella stessa casella: scegli quella giusta e sapremo subito di cosa si tratta.",
+    "es": "Todas llegan al mismo buzón: elige la que encaje y sabremos de qué va.",
+    "pt": "Todas chegam à mesma caixa: escolha a que encaixa e saberemos do que se trata.",
+    "nl": "Ze komen allemaal in dezelfde inbox, dus kies wat past en wij weten waar het over gaat.",
+    "sv": "Alla når samma inkorg, så välj den som passar så vet vi vad det gäller.",
+    "tr": "Hepsi aynı gelen kutusuna düşer; size uyanı seçin, konunun ne olduğunu biliriz."
+  }
+}

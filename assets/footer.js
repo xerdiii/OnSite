@@ -42,7 +42,7 @@
     '.ft-dot{width:1.792rem;height:1.35rem;flex:none;display:block;' +
       'background:url("/assets/brand/xovah-mark-v2.png") center/contain no-repeat}' +
     '.ft-base{margin-top:2.5rem;padding-top:1.5rem;border-top:1px solid rgba(255,255,255,0.2);' +
-      'display:flex;flex-wrap:wrap;gap:1rem 1.5rem;align-items:center;justify-content:space-between}' +
+      'display:flex;flex-wrap:wrap;gap:0.9rem 1.75rem;align-items:center}' +
     '.ft-base p{font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:0.6875rem;' +
       'letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.5)}' +
     '.ft-social{display:inline-flex;align-items:center;gap:0.55rem;' +
@@ -122,6 +122,7 @@
       '</div>' +
 
       '<div class="ft-base">' +
+        '<a class="ft-social" href="mailto:hello@xovahweb.com">' + MAIL + '<span>hello@xovahweb.com</span></a>' +
         '<a class="ft-social" href="https://instagram.com/xovahweb" target="_blank" rel="me noopener noreferrer">' +
           IG + '<span>@xovahweb</span>' +
         '</a>' +
@@ -144,6 +145,10 @@
     '<rect x="3" y="3" width="18" height="18" rx="5"/>' +
     '<circle cx="12" cy="12" r="4"/>' +
     '<circle cx="17.4" cy="6.6" r="1.1" fill="currentColor" stroke="none"/></svg>';
+
+  var MAIL = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" ' +
+    'stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' +
+    '<rect x="3" y="5" width="18" height="14" rx="3"/><path d="m4 7 8 6 8-6"/></svg>';
 
   function mount() {
     var slot = doc.querySelector('[data-site-footer]');

@@ -273,3 +273,14 @@ main > section:nth-of-type(n + 4):not(.fp-hero):not(.closer) {
 img, video { max-width: 100%; height: auto; }
 .prev-frame, .rail-vid, .photo-img, .closer-media video { height: 100%; }
 
+
+/* ── The addresses on the domain ─────────────────────────────────
+   One line each: the address, then what it is for. Plain list, so it
+   reads as a directory rather than as five call-to-actions. */
+.mail-list { display: grid; gap: 0.7rem; }
+.mail-list li { display: grid; gap: 0.15rem; }
+.mail-list a {
+  font-size: 0.8125rem; font-weight: 600; color: rgb(var(--c-accent-text));
+  text-decoration: underline; text-underline-offset: 3px; overflow-wrap: anywhere;
+}
+.mail-list span { font-size: 0.75rem; line-height: 1.5; color: rgb(var(--c-ink-soft)); }
