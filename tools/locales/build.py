@@ -397,7 +397,6 @@ def redirects():
                 out.append({'source': src, 'destination': path_for(key, 'en'), 'permanent': True})
     out.append({'source': '/extras', 'destination': path_for('services', 'en'), 'permanent': True})
     out.append({'source': '/extras.html', 'destination': path_for('services', 'en'), 'permanent': True})
-    out.append({'source': '/build', 'destination': path_for('services', 'en'), 'permanent': True})
     out.append({'source': '/index.html', 'destination': '/en', 'permanent': True})
     out.append({'source': '/support', 'destination': path_for('contact', 'en'), 'permanent': True})
     out.append({'source': '/support.html', 'destination': path_for('contact', 'en'), 'permanent': True})

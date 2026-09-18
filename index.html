@@ -3,7 +3,6 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<script src="/assets/oauth-catch.js?v=2"></script>
 <title>Xovah — Professional websites for small businesses</title>
 <meta name="description" content="We build modern one-page websites and landing pages for small and local businesses. Paid once, live in 5–7 days, with hosting and your domain included.">
 <link rel="canonical" href="https://www.xovahweb.com/">
@@ -262,8 +261,8 @@
 <link rel="stylesheet" href="assets/cinema.css?v=2">
 <link rel="stylesheet" href="assets/tailwind.css?v=2">
 <link rel="stylesheet" href="assets/theme.css?v=6">
-<link rel="stylesheet" href="assets/hero.css?v=9">
-<link rel="stylesheet" href="assets/pricing.css?v=9">
+<link rel="stylesheet" href="assets/hero.css?v=10">
+<link rel="stylesheet" href="assets/pricing.css?v=10">
 <link rel="stylesheet" href="assets/devices.css?v=5">
 <link rel="stylesheet" href="assets/gutters.css?v=2">
 <link rel="stylesheet" href="/assets/edge.css?v=4">
@@ -284,6 +283,14 @@
   </a>
 
   <div class="fp-nav-right">
+  <nav class="fp-nav-links" aria-label="Main">
+    <a class="fp-nav-link" href="pricing.html">Pricing</a>
+    <a class="fp-nav-link" href="extras.html">Extras</a>
+    <a class="fp-nav-link" href="features.html">Features</a>
+    <a class="fp-nav-link" href="faq.html">FAQ</a>
+    <a class="fp-nav-link" href="contact.html">Contact</a>
+  </nav>
+  <a class="fp-nav-cta" href="build.html">Start a Project</a>
   <button type="button" class="fp-nav-btn fp-nav-btn--icon" data-menu-open aria-expanded="false" aria-controls="siteMenu" aria-label="Open menu">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" aria-hidden="true"><path d="M4.5 9.5h15M4.5 15h9"/></svg>
   </button>
@@ -497,202 +504,42 @@
     </div>
   </section>
 
+  <!-- 5 — PRICING, in two lines
+       The six packages have their own page and their own comparison
+       table. On the way past, a visitor needs two things: the range,
+       and the knowledge that a figure can be agreed if none of the six
+       fits. Two small cards carry both; the detail is one click away. -->
   <section id="pricing" class="scroll-mt-16 border-b border-line bg-surface">
     <div class="mx-auto max-w-shell px-6 py-16 md:px-10 md:py-24">
       <p class="eyebrow text-ink-soft" data-rise>Websites</p>
-      <h2 class="h-section sec-title mt-4 max-w-2xl" data-rise>Six ways to get one.</h2>
+      <h2 class="h-section sec-title mt-4 max-w-2xl" data-rise>Two ways to start.</h2>
       <p class="mt-5 max-w-prose text-[0.9375rem] leading-relaxed text-ink-mid">
-        Every one is paid once, never monthly, and the builds come with the domain, the hosting and
-        the padlock. The last one has no figure on it because we agree that one with you.
+        Six packages carry a figure, and everything else we agree with you. Either way it is paid
+        once, never monthly, and every build comes with the domain, the hosting and the padlock.
       </p>
 
-      <div class="pr-rail mt-12" data-reveal-group>
+      <div class="pr-two mt-9">
+        <a class="pr-two-card" href="pricing.html">
+          <p class="pr-two-l">Packages</p>
+          <p class="pr-two-fig">
+            <span class="cur" data-eur="49">&euro;49</span><span class="pr-two-dash">&ndash;</span><span class="cur" data-eur="1049">&euro;1,049</span>
+          </p>
+          <p class="pr-two-note">
+            Six of them, from a one-page site to the complete business build with email and branding.
+          </p>
+          <span class="pr-two-go">See the packages <span class="arrow">&rarr;</span></span>
+        </a>
 
-        <!-- Custom -->
-        <div class="pr-spot">
-          <div class="pr-card">
-            <p class="pr-eyebrow">Custom Website</p>
-            <div class="pr-rule"></div>
-            <p class="pr-figure">
-              <span class="h-display pr-amount"><span class="cur" data-eur="49">&euro;49</span></span>
-              <span class="tag tag-once">One-time</span>
-            </p>
-            <p class="pr-note">
-              A single-page site with up to 20 sections from our 34, built around your business.
-            </p>
-            <div class="pr-foot">
-              <a href="extras.html" class="pr-cta">
-                Choose Package
-              </a>
-            </div>
-            <ul class="pr-list">
-              <li class="is-off"><span class="pr-mark pr-mark--no"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M4 4l8 8M12 4l-8 8"/></svg></span> All 34 sections, no limit</li>
-              <li><span class="pr-mark pr-mark--yes"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.4 8.4l3 3 6.2-6.6"/></svg></span> Domain, hosting &amp; SSL &mdash; 1 year</li>
-              <li><span class="pr-mark pr-mark--yes"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.4 8.4l3 3 6.2-6.6"/></svg></span> Mobile-responsive design</li>
-              <li class="is-off"><span class="pr-mark pr-mark--no"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M4 4l8 8M12 4l-8 8"/></svg></span> SEO, analytics &amp; legal pages</li>
-              <li class="is-off"><span class="pr-mark pr-mark--no"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M4 4l8 8M12 4l-8 8"/></svg></span> Anti-spam protection on forms</li>
-              <li class="is-off"><span class="pr-mark pr-mark--no"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M4 4l8 8M12 4l-8 8"/></svg></span> Logo &amp; brand kit</li>
-              <li class="is-off"><span class="pr-mark pr-mark--no"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M4 4l8 8M12 4l-8 8"/></svg></span> Custom menu design</li>
-              <li class="is-off"><span class="pr-mark pr-mark--no"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M4 4l8 8M12 4l-8 8"/></svg></span> Maintenance &amp; local SEO</li>
-            </ul>
-              <div class="pr-best">
-                <p class="pr-best-l">A few of the 34 included</p>
-                <ul class="pr-best-list"><li>Portfolio section</li><li>Online menu</li><li>Business inquiry form</li><li>Customer reviews integration</li></ul>
-                <a class="pr-best-link" href="features.html">See all 34 features <span aria-hidden="true">&rarr;</span></a>
-              </div>
-          </div>
-        </div>
-
-        <!-- Full - the middle one, and the one we point at -->
-        <div class="pr-spot pr-spot--lead">
-          <div class="pr-card pr-card--lead">
-            <span class="pr-badge">Most popular</span>
-            <p class="pr-eyebrow">Full Website</p>
-            <div class="pr-rule"></div>
-            <p class="pr-figure">
-              <span class="h-display pr-amount"><span class="cur" data-eur="199">&euro;199</span></span>
-              <span class="tag tag-once">One-time</span>
-            </p>
-            <p class="pr-note">
-              Every one of the 34 sections, plus the search, analytics and legal setup a real site needs.
-            </p>
-            <div class="pr-foot">
-              <a href="extras.html" class="pr-cta pr-cta--solid">
-                Choose Package
-              </a>
-            </div>
-            <ul class="pr-list">
-              <li><span class="pr-mark pr-mark--yes"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.4 8.4l3 3 6.2-6.6"/></svg></span> All 34 sections, no limit</li>
-              <li><span class="pr-mark pr-mark--yes"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.4 8.4l3 3 6.2-6.6"/></svg></span> Domain, hosting &amp; SSL &mdash; 1 year</li>
-              <li><span class="pr-mark pr-mark--yes"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.4 8.4l3 3 6.2-6.6"/></svg></span> Mobile-responsive design</li>
-              <li><span class="pr-mark pr-mark--yes"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.4 8.4l3 3 6.2-6.6"/></svg></span> SEO, analytics &amp; legal pages</li>
-              <li><span class="pr-mark pr-mark--yes"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.4 8.4l3 3 6.2-6.6"/></svg></span> Anti-spam protection on forms</li>
-              <li><span class="pr-mark pr-mark--yes"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.4 8.4l3 3 6.2-6.6"/></svg></span> Logo &amp; brand kit</li>
-              <li class="is-off"><span class="pr-mark pr-mark--no"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M4 4l8 8M12 4l-8 8"/></svg></span> Custom menu design</li>
-              <li class="is-off"><span class="pr-mark pr-mark--no"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M4 4l8 8M12 4l-8 8"/></svg></span> Maintenance &amp; local SEO</li>
-            </ul>
-          </div>
-        </div>
-
-        <!-- Complete -->
-        <div class="pr-spot">
-          <div class="pr-card">
-            <p class="pr-eyebrow">Complete Package</p>
-            <div class="pr-rule"></div>
-            <p class="pr-figure">
-              <span class="h-display pr-amount"><span class="cur" data-eur="499">&euro;499</span></span>
-              <span class="tag tag-once">One-time</span>
-            </p>
-            <p class="pr-note">
-              The end-to-end setup: branding, local SEO, three years of hosting and ongoing maintenance.
-            </p>
-            <div class="pr-foot">
-              <a href="extras.html" class="pr-cta">
-                Choose Package
-              </a>
-            </div>
-            <ul class="pr-list">
-              <li><span class="pr-mark pr-mark--yes"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.4 8.4l3 3 6.2-6.6"/></svg></span> All 34 sections, no limit</li>
-              <li><span class="pr-mark pr-mark--yes"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.4 8.4l3 3 6.2-6.6"/></svg></span> Domain, hosting &amp; SSL &mdash; 3 years</li>
-              <li><span class="pr-mark pr-mark--yes"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.4 8.4l3 3 6.2-6.6"/></svg></span> Mobile-responsive design</li>
-              <li><span class="pr-mark pr-mark--yes"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.4 8.4l3 3 6.2-6.6"/></svg></span> SEO, analytics &amp; legal pages</li>
-              <li><span class="pr-mark pr-mark--yes"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.4 8.4l3 3 6.2-6.6"/></svg></span> Anti-spam protection on forms</li>
-              <li><span class="pr-mark pr-mark--yes"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.4 8.4l3 3 6.2-6.6"/></svg></span> Logo &amp; brand kit</li>
-              <li><span class="pr-mark pr-mark--yes"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.4 8.4l3 3 6.2-6.6"/></svg></span> Custom menu design</li>
-              <li><span class="pr-mark pr-mark--yes"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.4 8.4l3 3 6.2-6.6"/></svg></span> Maintenance &amp; local SEO</li>
-            </ul>
-          </div>
-        </div>
-
-          <!-- Redesign: the same build, on a site that already exists -->
-          <div class="pr-spot">
-            <div class="pr-card">
-              <p class="pr-eyebrow">Website Redesign</p>
-              <div class="pr-rule"></div>
-              <p class="pr-figure">
-                <span class="h-display pr-amount"><span class="cur" data-eur="100">&euro;100</span></span>
-                <span class="tag tag-once">One-time</span>
-              </p>
-              <p class="pr-note">
-                Your site rebuilt from the ground up, keeping the words and pictures that already work.
-              </p>
-              <div class="pr-foot">
-                <a href="index.html#extras" class="pr-cta">
-                  Choose Package
-                </a>
-              </div>
-              <ul class="pr-list">
-                  <li><span class="pr-mark pr-mark--yes"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.4 8.4l3 3 6.2-6.6"/></svg></span> Your current site, rebuilt</li>
-                  <li><span class="pr-mark pr-mark--yes"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.4 8.4l3 3 6.2-6.6"/></svg></span> Your text and photos carried over</li>
-                  <li><span class="pr-mark pr-mark--yes"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.4 8.4l3 3 6.2-6.6"/></svg></span> Mobile-responsive design</li>
-                  <li><span class="pr-mark pr-mark--yes"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.4 8.4l3 3 6.2-6.6"/></svg></span> Speed and image optimisation</li>
-                  <li class="is-off"><span class="pr-mark pr-mark--no"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M4 4l8 8M12 4l-8 8"/></svg></span> The 34 sections, on the new build</li>
-                  <li class="is-off"><span class="pr-mark pr-mark--no"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M4 4l8 8M12 4l-8 8"/></svg></span> Logo &amp; brand kit</li>
-                  <li class="is-off"><span class="pr-mark pr-mark--no"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M4 4l8 8M12 4l-8 8"/></svg></span> Domain and hosting</li>
-                  <li class="is-off"><span class="pr-mark pr-mark--no"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M4 4l8 8M12 4l-8 8"/></svg></span> Maintenance &amp; local SEO</li>
-              </ul>
-            </div>
-          </div>
-          <!-- Everything, plus the business email that goes with it -->
-          <div class="pr-spot">
-            <div class="pr-card">
-              <span class="pr-badge">Everything</span>
-              <p class="pr-eyebrow">Business Premium</p>
-              <div class="pr-rule"></div>
-              <p class="pr-figure">
-                <span class="h-display pr-amount"><span class="cur" data-eur="1049">&euro;1049</span></span>
-                <span class="tag tag-once">One-time</span>
-              </p>
-              <p class="pr-note">
-                The Complete Package with the business email, the automation and the brand pieces around it.
-              </p>
-              <div class="pr-foot">
-                <a href="index.html#extras" class="pr-cta">
-                  Choose Package
-                </a>
-              </div>
-              <ul class="pr-list">
-                  <li><span class="pr-mark pr-mark--yes"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.4 8.4l3 3 6.2-6.6"/></svg></span> Everything in the Complete Package</li>
-                  <li><span class="pr-mark pr-mark--yes"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.4 8.4l3 3 6.2-6.6"/></svg></span> Domain, hosting &amp; SSL &mdash; 3 years</li>
-                  <li><span class="pr-mark pr-mark--yes"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.4 8.4l3 3 6.2-6.6"/></svg></span> Business email on your domain</li>
-                  <li><span class="pr-mark pr-mark--yes"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.4 8.4l3 3 6.2-6.6"/></svg></span> Five email aliases &mdash; info, hello, support&hellip;</li>
-                  <li><span class="pr-mark pr-mark--yes"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.4 8.4l3 3 6.2-6.6"/></svg></span> Automatic replies and email signatures</li>
-                  <li><span class="pr-mark pr-mark--yes"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.4 8.4l3 3 6.2-6.6"/></svg></span> Booking, reminders and confirmation emails</li>
-                <li><span class="pr-mark pr-mark--yes"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.4 8.4l3 3 6.2-6.6"/></svg></span> &euro;150 of extras, whichever you pick</li>
-                <li><span class="pr-mark pr-mark--yes"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.4 8.4l3 3 6.2-6.6"/></svg></span> Priority build, ahead of the queue</li>
-              </ul>
-            </div>
-          </div>
-          <!-- And the one that is not a package at all -->
-          <div class="pr-spot">
-            <div class="pr-card">
-              <p class="pr-eyebrow">Talk to a person</p>
-              <div class="pr-rule"></div>
-              <p class="pr-figure">
-                <span class="h-display pr-amount pr-amount--quote">Agreed</span>
-                <span class="tag tag-once">Agreed first</span>
-              </p>
-              <p class="pr-note">
-                Something the packages do not cover. Tell us what you need and we agree a price in writing.
-              </p>
-              <div class="pr-foot">
-                <a href="contact.html" class="pr-cta">
-                  Talk to a person
-                </a>
-              </div>
-              <ul class="pr-list">
-                  <li><span class="pr-mark pr-mark--yes"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.4 8.4l3 3 6.2-6.6"/></svg></span> A price agreed in writing, before anything starts</li>
-                  <li><span class="pr-mark pr-mark--yes"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.4 8.4l3 3 6.2-6.6"/></svg></span> Anything the packages do not cover</li>
-                  <li><span class="pr-mark pr-mark--yes"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.4 8.4l3 3 6.2-6.6"/></svg></span> Shops, booking systems, multiple locations</li>
-                  <li><span class="pr-mark pr-mark--yes"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.4 8.4l3 3 6.2-6.6"/></svg></span> Work on a site somebody else built</li>
-                  <li><span class="pr-mark pr-mark--yes"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.4 8.4l3 3 6.2-6.6"/></svg></span> Paid once, on delivery, like everything else</li>
-                  <li><span class="pr-mark pr-mark--yes"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.4 8.4l3 3 6.2-6.6"/></svg></span> A person reads it and answers, not a form</li>
-              </ul>
-            </div>
-          </div>
-
+        <a class="pr-two-card pr-two-card--quote" href="build.html">
+          <p class="pr-two-l">Anything else</p>
+          <p class="pr-two-fig pr-two-fig--word">Agreed</p>
+          <p class="pr-two-note">
+            Shops, booking systems, work on a site somebody else built. The figure is agreed in
+            writing before anything starts.
+          </p>
+          <span class="pr-two-go">Talk to a person <span class="arrow">&rarr;</span></span>
+        </a>
       </div>
-
     </div>
   </section>
 
@@ -1103,7 +950,7 @@ window.addEventListener('load', function () {
 <script src="assets/mobile.js?v=5"></script>
 <script src="assets/theme.js?v=3"></script>
 <script src="assets/gutters.js?v=2" defer></script>
-<script src="assets/scramble.js?v=3" defer></script>
+<script src="assets/scramble.js?v=4" defer></script>
 <script src="assets/footer.js?v=7"></script>
 <script src="assets/cookies.js?v=2"></script>
 <script src="assets/i18n.js?v=4"></script>

@@ -409,15 +409,6 @@
   ],
   "_legal_note": "Terms, Privacy, Refunds and Cookies stay in English on purpose: a machine-assisted translation of a contract is a liability, not a localisation. Every language links to the English originals.",
   "app_pages": [
-    "login",
-    "signup",
-    "dashboard",
-    "admin",
-    "onboarding",
-    "preview",
-    "trouble",
-    "forgot-email",
-    "emails",
     "build",
     "404"
   ],
@@ -460,6 +451,20 @@
         "start-project"
       ],
       "to": "services"
+    },
+    {
+      "_comment": "The customer account and everything that hung off it - the dashboard, the admin views, the preview and the email templates. The site takes requests by email now, so these URLs go home rather than to a sign-in that no longer exists.",
+      "english_aliases": [
+        "login",
+        "signup",
+        "dashboard",
+        "admin",
+        "onboarding",
+        "preview",
+        "trouble",
+        "forgot-email",
+        "emails"
+      ]
     }
   ]
 }

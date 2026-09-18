@@ -23,7 +23,7 @@
   'use strict';
 
   var doc = global.document;
-  var SELECTOR = '.site-menu-links a, .m-drawer-link, .site-menu-cta, .m-drawer-cta';
+  var SELECTOR = '.site-menu-links a, .m-drawer-link, .site-menu-cta, .m-drawer-cta, .fp-nav-link, .fp-nav-cta';
   var CHARS = '@#$%&*()!?+=^/\\';
 
   var reduce = global.matchMedia && global.matchMedia('(prefers-reduced-motion: reduce)');

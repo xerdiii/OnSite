@@ -577,3 +577,57 @@ body.pr-page .pr-stage {
 /* Six packages wrap to two rows; the badge on the premium card sits
    where "most popular" does on the middle one. */
 @media (min-width: 900px) { .pr-rail { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+
+/* ── The two cards on the home page ──────────────────────────────
+   The landing page used to carry all six packages, which meant six
+   tall cards and a comparison table before the visitor had decided
+   whether the range was for them at all. These two answer that in a
+   glance — a range with a figure, and the one that has no figure
+   because it is agreed — and the packages page carries the detail.
+   Deliberately small: they are a signpost, not the shop. */
+.pr-two {
+  display: grid; gap: 0.9rem;
+  grid-template-columns: 1fr;
+  max-width: 44rem;
+}
+@media (min-width: 640px) { .pr-two { grid-template-columns: 1fr 1fr; gap: 1rem; } }
+
+.pr-two-card {
+  display: flex; flex-direction: column;
+  padding: 1.35rem 1.4rem 1.2rem;
+  background: rgb(var(--c-paper));
+  border: 1px solid rgb(var(--c-line-firm));
+  text-decoration: none; color: inherit;
+  transition: border-color 200ms ease, transform 200ms ease;
+}
+.pr-two-card:hover { border-color: rgb(var(--c-accent)); transform: translateY(-2px); }
+
+.pr-two-l {
+  font-size: 0.6875rem; font-weight: 600; letter-spacing: 0.12em;
+  text-transform: uppercase; color: rgb(var(--c-ink-soft));
+}
+
+.pr-two-fig {
+  margin-top: 0.55rem;
+  font-family: 'Outfit', 'Inter', system-ui, sans-serif;
+  font-size: 1.75rem; font-weight: 600; letter-spacing: -0.035em;
+  line-height: 1.05; color: rgb(var(--c-ink));
+  white-space: nowrap;
+}
+.pr-two-dash { margin: 0 0.2em; color: rgb(var(--c-ink-soft)); font-weight: 400; }
+.pr-two-fig--word { color: rgb(var(--c-accent)); }
+
+.pr-two-note {
+  margin-top: 0.6rem; flex: 1;
+  font-size: 0.8125rem; line-height: 1.55; color: rgb(var(--c-ink-mid));
+}
+
+.pr-two-go {
+  margin-top: 1rem;
+  font-size: 0.8125rem; font-weight: 600; color: rgb(var(--c-accent));
+}
+.pr-two-go .arrow { margin-left: 0.15rem; }
+
+@media (max-width: 400px) {
+  .pr-two-fig { font-size: 1.5rem; }
+}

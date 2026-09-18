@@ -1,0 +1,75 @@
+{
+  "_comment": "The home page stopped carrying all six package cards; two small ones point at the packages page and at the agreed price instead.",
+
+  "Two ways to start.": {
+    "sq": "Dy mënyra për të filluar.",
+    "de": "Zwei Wege, anzufangen.",
+    "fr": "Deux façons de commencer.",
+    "it": "Due modi per iniziare.",
+    "es": "Dos maneras de empezar.",
+    "pt": "Duas formas de começar.",
+    "nl": "Twee manieren om te beginnen.",
+    "sv": "Två sätt att börja.",
+    "tr": "Başlamanın iki yolu."
+  },
+
+  "Six packages carry a figure, and everything else we agree with you. Either way it is paid once, never monthly, and every build comes with the domain, the hosting and the padlock.": {
+    "sq": "Gjashtë paketa kanë shifrën e tyre, dhe për gjithçka tjetër merremi vesh me ju. Sido që të jetë, paguhet një herë, kurrë muaj për muaj, dhe çdo ndërtim vjen me domenin, hostingun dhe drynin.",
+    "de": "Sechs Pakete tragen eine Zahl, alles andere vereinbaren wir mit Ihnen. So oder so wird einmal bezahlt, nie monatlich, und jeder Build kommt mit Domain, Hosting und Schloss.",
+    "fr": "Six formules affichent un prix, et tout le reste se convient avec vous. Dans les deux cas, c'est payé une seule fois, jamais au mois, et chaque site arrive avec le domaine, l'hébergement et le cadenas.",
+    "it": "Sei pacchetti hanno una cifra, tutto il resto lo concordiamo con te. In entrambi i casi si paga una volta sola, mai al mese, e ogni sito arriva con dominio, hosting e lucchetto.",
+    "es": "Seis paquetes llevan una cifra, y todo lo demás lo acordamos contigo. En cualquier caso se paga una vez, nunca al mes, y cada web llega con dominio, alojamiento y candado.",
+    "pt": "Seis pacotes têm um valor, e tudo o resto combinamos consigo. Em qualquer dos casos paga-se uma vez, nunca ao mês, e cada site chega com domínio, alojamento e cadeado.",
+    "nl": "Zes pakketten hebben een bedrag, al het andere spreken we met je af. Hoe dan ook betaal je één keer, nooit maandelijks, en elke site komt met domein, hosting en slotje.",
+    "sv": "Sex paket har en siffra, allt annat kommer vi överens om med dig. Hur som helst betalas det en gång, aldrig per månad, och varje bygge kommer med domän, webbhotell och hänglås.",
+    "tr": "Altı pakette rakam var, geri kalan her şeyi sizinle birlikte belirliyoruz. Her iki durumda da tek seferde ödenir, asla aylık değil; her yapım alan adı, hosting ve kilit simgesiyle gelir."
+  },
+
+  "Packages": {
+    "sq": "Paketat",
+    "de": "Pakete",
+    "fr": "Formules",
+    "it": "Pacchetti",
+    "es": "Paquetes",
+    "pt": "Pacotes",
+    "nl": "Pakketten",
+    "sv": "Paket",
+    "tr": "Paketler"
+  },
+
+  "Six of them, from a one-page site to the complete business build with email and branding.": {
+    "sq": "Gjashtë sosh, nga një faqe e vetme te ndërtimi i plotë i biznesit me email dhe brend.",
+    "de": "Sechs davon, von der Ein-Seiten-Website bis zum kompletten Business-Aufbau mit E-Mail und Branding.",
+    "fr": "Six formules, du site d'une page à la réalisation complète avec e-mail et identité de marque.",
+    "it": "Sei in tutto, dal sito di una pagina alla realizzazione completa con email e branding.",
+    "es": "Seis en total, desde la web de una página hasta la construcción completa con correo y marca.",
+    "pt": "Seis no total, do site de uma página à construção completa com email e marca.",
+    "nl": "Zes stuks, van een site van één pagina tot de complete bouw met e-mail en huisstijl.",
+    "sv": "Sex stycken, från en ensidig webbplats till det kompletta bygget med e-post och varumärke.",
+    "tr": "Altı tane; tek sayfalık siteden e-posta ve marka dahil eksiksiz kuruluma kadar."
+  },
+
+  "Anything else": {
+    "sq": "Gjithçka tjetër",
+    "de": "Alles andere",
+    "fr": "Tout le reste",
+    "it": "Tutto il resto",
+    "es": "Todo lo demás",
+    "pt": "Tudo o resto",
+    "nl": "Al het andere",
+    "sv": "Allt annat",
+    "tr": "Diğer her şey"
+  },
+
+  "Shops, booking systems, work on a site somebody else built. The figure is agreed in writing before anything starts.": {
+    "sq": "Dyqane, sisteme rezervimesh, punë në një faqe që e ka ndërtuar dikush tjetër. Shifra merret vesh me shkrim para se të fillojë çdo gjë.",
+    "de": "Shops, Buchungssysteme, Arbeit an einer Website, die jemand anderes gebaut hat. Die Zahl wird schriftlich vereinbart, bevor irgendetwas beginnt.",
+    "fr": "Boutiques, systèmes de réservation, travail sur un site créé par quelqu'un d'autre. Le montant est convenu par écrit avant que quoi que ce soit ne commence.",
+    "it": "Negozi, sistemi di prenotazione, lavori su un sito costruito da altri. La cifra viene concordata per iscritto prima che inizi qualsiasi cosa.",
+    "es": "Tiendas, sistemas de reservas, trabajo sobre una web hecha por otros. La cifra se acuerda por escrito antes de empezar nada.",
+    "pt": "Lojas, sistemas de marcações, trabalho num site feito por outra pessoa. O valor é acordado por escrito antes de começar seja o que for.",
+    "nl": "Webshops, reserveringssystemen, werk aan een site die iemand anders bouwde. Het bedrag wordt schriftelijk afgesproken voordat er iets begint.",
+    "sv": "Butiker, bokningssystem, arbete på en webbplats som någon annan byggt. Summan avtalas skriftligt innan något börjar.",
+    "tr": "Mağazalar, rezervasyon sistemleri, başkasının yaptığı bir site üzerinde çalışma. Rakam, hiçbir şey başlamadan önce yazılı olarak anlaşılır."
+  }
+}

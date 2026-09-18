@@ -512,6 +512,33 @@ body.menu-locked { overflow: hidden; overscroll-behavior: none; }
 :root[data-theme="dark"] .fp-nav:not(.is-solid) .fp-nav-link { color: #fff; }
 :root[data-theme="dark"] .fp-nav:not(.is-solid) .fp-nav-link:hover { background: rgb(255 255 255 / 0.14); }
 
+/* ── The bar on a desktop ────────────────────────────────────────
+   A wordmark and a lone menu button is a phone bar; on a wide screen it
+   reads as unfinished, and it hides five destinations behind a click
+   nobody needs to make there. From 1024px the sections come out onto
+   the bar with the request button beside them. The menu button stays:
+   it still carries the appearance control. */
+.fp-nav-links { display: none; }
+.fp-nav-cta { display: none; }
+
+@media (min-width: 1024px) {
+  .fp-nav-links { display: flex; align-items: center; gap: 0.1rem; }
+
+  .fp-nav-cta {
+    display: inline-flex; align-items: center; min-height: 40px;
+    padding: 0 1.05rem; margin-left: 0.45rem;
+    font-size: 0.9375rem; font-weight: 600; letter-spacing: -0.01em;
+    background: rgb(var(--c-accent)); color: #fff;
+    border-radius: var(--radius-btn);
+    transition: background-color 180ms ease;
+  }
+  .fp-nav-cta:hover { background: rgb(var(--c-accent-hi)); }
+  /* The bar sits on the hero footage before it solidifies, where white
+     is the only colour that holds; the accent button keeps its own. */
+  :root[data-theme="dark"] .fp-nav:not(.is-solid) .fp-nav-cta,
+  .fp-nav .fp-nav-cta { color: #fff; }
+}
+
 /* ── The menu opening, on a phone ────────────────────────────────
    Not a drawer sliding in. Two circles the size of the screen scale up
    from the menu button: the accent one leads, the dark one follows, and

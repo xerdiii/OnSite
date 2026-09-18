@@ -109,11 +109,6 @@
       "permanent": true
     },
     {
-      "source": "/build",
-      "destination": "/en/services",
-      "permanent": true
-    },
-    {
       "source": "/index.html",
       "destination": "/en",
       "permanent": true
@@ -134,53 +129,8 @@
       "permanent": false
     },
     {
-      "source": "/:lang(en|sq|de|fr|it|es|pt|nl|sv|tr)/admin",
-      "destination": "/admin",
-      "permanent": false
-    },
-    {
       "source": "/:lang(en|sq|de|fr|it|es|pt|nl|sv|tr)/build",
       "destination": "/build",
-      "permanent": false
-    },
-    {
-      "source": "/:lang(en|sq|de|fr|it|es|pt|nl|sv|tr)/dashboard",
-      "destination": "/dashboard",
-      "permanent": false
-    },
-    {
-      "source": "/:lang(en|sq|de|fr|it|es|pt|nl|sv|tr)/emails",
-      "destination": "/emails",
-      "permanent": false
-    },
-    {
-      "source": "/:lang(en|sq|de|fr|it|es|pt|nl|sv|tr)/forgot-email",
-      "destination": "/forgot-email",
-      "permanent": false
-    },
-    {
-      "source": "/:lang(en|sq|de|fr|it|es|pt|nl|sv|tr)/login",
-      "destination": "/login",
-      "permanent": false
-    },
-    {
-      "source": "/:lang(en|sq|de|fr|it|es|pt|nl|sv|tr)/onboarding",
-      "destination": "/onboarding",
-      "permanent": false
-    },
-    {
-      "source": "/:lang(en|sq|de|fr|it|es|pt|nl|sv|tr)/preview",
-      "destination": "/preview",
-      "permanent": false
-    },
-    {
-      "source": "/:lang(en|sq|de|fr|it|es|pt|nl|sv|tr)/signup",
-      "destination": "/signup",
-      "permanent": false
-    },
-    {
-      "source": "/:lang(en|sq|de|fr|it|es|pt|nl|sv|tr)/trouble",
-      "destination": "/trouble",
       "permanent": false
     },
     {
@@ -961,6 +911,546 @@
     {
       "source": "/tr/start-project",
       "destination": "/tr/hizmetler",
+      "permanent": true
+    },
+    {
+      "source": "/login",
+      "destination": "/en",
+      "permanent": true
+    },
+    {
+      "source": "/login.html",
+      "destination": "/en",
+      "permanent": true
+    },
+    {
+      "source": "/en/login",
+      "destination": "/en",
+      "permanent": true
+    },
+    {
+      "source": "/sq/login",
+      "destination": "/sq",
+      "permanent": true
+    },
+    {
+      "source": "/de/login",
+      "destination": "/de",
+      "permanent": true
+    },
+    {
+      "source": "/fr/login",
+      "destination": "/fr",
+      "permanent": true
+    },
+    {
+      "source": "/it/login",
+      "destination": "/it",
+      "permanent": true
+    },
+    {
+      "source": "/es/login",
+      "destination": "/es",
+      "permanent": true
+    },
+    {
+      "source": "/pt/login",
+      "destination": "/pt",
+      "permanent": true
+    },
+    {
+      "source": "/nl/login",
+      "destination": "/nl",
+      "permanent": true
+    },
+    {
+      "source": "/sv/login",
+      "destination": "/sv",
+      "permanent": true
+    },
+    {
+      "source": "/tr/login",
+      "destination": "/tr",
+      "permanent": true
+    },
+    {
+      "source": "/signup",
+      "destination": "/en",
+      "permanent": true
+    },
+    {
+      "source": "/signup.html",
+      "destination": "/en",
+      "permanent": true
+    },
+    {
+      "source": "/en/signup",
+      "destination": "/en",
+      "permanent": true
+    },
+    {
+      "source": "/sq/signup",
+      "destination": "/sq",
+      "permanent": true
+    },
+    {
+      "source": "/de/signup",
+      "destination": "/de",
+      "permanent": true
+    },
+    {
+      "source": "/fr/signup",
+      "destination": "/fr",
+      "permanent": true
+    },
+    {
+      "source": "/it/signup",
+      "destination": "/it",
+      "permanent": true
+    },
+    {
+      "source": "/es/signup",
+      "destination": "/es",
+      "permanent": true
+    },
+    {
+      "source": "/pt/signup",
+      "destination": "/pt",
+      "permanent": true
+    },
+    {
+      "source": "/nl/signup",
+      "destination": "/nl",
+      "permanent": true
+    },
+    {
+      "source": "/sv/signup",
+      "destination": "/sv",
+      "permanent": true
+    },
+    {
+      "source": "/tr/signup",
+      "destination": "/tr",
+      "permanent": true
+    },
+    {
+      "source": "/dashboard",
+      "destination": "/en",
+      "permanent": true
+    },
+    {
+      "source": "/dashboard.html",
+      "destination": "/en",
+      "permanent": true
+    },
+    {
+      "source": "/en/dashboard",
+      "destination": "/en",
+      "permanent": true
+    },
+    {
+      "source": "/sq/dashboard",
+      "destination": "/sq",
+      "permanent": true
+    },
+    {
+      "source": "/de/dashboard",
+      "destination": "/de",
+      "permanent": true
+    },
+    {
+      "source": "/fr/dashboard",
+      "destination": "/fr",
+      "permanent": true
+    },
+    {
+      "source": "/it/dashboard",
+      "destination": "/it",
+      "permanent": true
+    },
+    {
+      "source": "/es/dashboard",
+      "destination": "/es",
+      "permanent": true
+    },
+    {
+      "source": "/pt/dashboard",
+      "destination": "/pt",
+      "permanent": true
+    },
+    {
+      "source": "/nl/dashboard",
+      "destination": "/nl",
+      "permanent": true
+    },
+    {
+      "source": "/sv/dashboard",
+      "destination": "/sv",
+      "permanent": true
+    },
+    {
+      "source": "/tr/dashboard",
+      "destination": "/tr",
+      "permanent": true
+    },
+    {
+      "source": "/admin",
+      "destination": "/en",
+      "permanent": true
+    },
+    {
+      "source": "/admin.html",
+      "destination": "/en",
+      "permanent": true
+    },
+    {
+      "source": "/en/admin",
+      "destination": "/en",
+      "permanent": true
+    },
+    {
+      "source": "/sq/admin",
+      "destination": "/sq",
+      "permanent": true
+    },
+    {
+      "source": "/de/admin",
+      "destination": "/de",
+      "permanent": true
+    },
+    {
+      "source": "/fr/admin",
+      "destination": "/fr",
+      "permanent": true
+    },
+    {
+      "source": "/it/admin",
+      "destination": "/it",
+      "permanent": true
+    },
+    {
+      "source": "/es/admin",
+      "destination": "/es",
+      "permanent": true
+    },
+    {
+      "source": "/pt/admin",
+      "destination": "/pt",
+      "permanent": true
+    },
+    {
+      "source": "/nl/admin",
+      "destination": "/nl",
+      "permanent": true
+    },
+    {
+      "source": "/sv/admin",
+      "destination": "/sv",
+      "permanent": true
+    },
+    {
+      "source": "/tr/admin",
+      "destination": "/tr",
+      "permanent": true
+    },
+    {
+      "source": "/onboarding",
+      "destination": "/en",
+      "permanent": true
+    },
+    {
+      "source": "/onboarding.html",
+      "destination": "/en",
+      "permanent": true
+    },
+    {
+      "source": "/en/onboarding",
+      "destination": "/en",
+      "permanent": true
+    },
+    {
+      "source": "/sq/onboarding",
+      "destination": "/sq",
+      "permanent": true
+    },
+    {
+      "source": "/de/onboarding",
+      "destination": "/de",
+      "permanent": true
+    },
+    {
+      "source": "/fr/onboarding",
+      "destination": "/fr",
+      "permanent": true
+    },
+    {
+      "source": "/it/onboarding",
+      "destination": "/it",
+      "permanent": true
+    },
+    {
+      "source": "/es/onboarding",
+      "destination": "/es",
+      "permanent": true
+    },
+    {
+      "source": "/pt/onboarding",
+      "destination": "/pt",
+      "permanent": true
+    },
+    {
+      "source": "/nl/onboarding",
+      "destination": "/nl",
+      "permanent": true
+    },
+    {
+      "source": "/sv/onboarding",
+      "destination": "/sv",
+      "permanent": true
+    },
+    {
+      "source": "/tr/onboarding",
+      "destination": "/tr",
+      "permanent": true
+    },
+    {
+      "source": "/preview",
+      "destination": "/en",
+      "permanent": true
+    },
+    {
+      "source": "/preview.html",
+      "destination": "/en",
+      "permanent": true
+    },
+    {
+      "source": "/en/preview",
+      "destination": "/en",
+      "permanent": true
+    },
+    {
+      "source": "/sq/preview",
+      "destination": "/sq",
+      "permanent": true
+    },
+    {
+      "source": "/de/preview",
+      "destination": "/de",
+      "permanent": true
+    },
+    {
+      "source": "/fr/preview",
+      "destination": "/fr",
+      "permanent": true
+    },
+    {
+      "source": "/it/preview",
+      "destination": "/it",
+      "permanent": true
+    },
+    {
+      "source": "/es/preview",
+      "destination": "/es",
+      "permanent": true
+    },
+    {
+      "source": "/pt/preview",
+      "destination": "/pt",
+      "permanent": true
+    },
+    {
+      "source": "/nl/preview",
+      "destination": "/nl",
+      "permanent": true
+    },
+    {
+      "source": "/sv/preview",
+      "destination": "/sv",
+      "permanent": true
+    },
+    {
+      "source": "/tr/preview",
+      "destination": "/tr",
+      "permanent": true
+    },
+    {
+      "source": "/trouble",
+      "destination": "/en",
+      "permanent": true
+    },
+    {
+      "source": "/trouble.html",
+      "destination": "/en",
+      "permanent": true
+    },
+    {
+      "source": "/en/trouble",
+      "destination": "/en",
+      "permanent": true
+    },
+    {
+      "source": "/sq/trouble",
+      "destination": "/sq",
+      "permanent": true
+    },
+    {
+      "source": "/de/trouble",
+      "destination": "/de",
+      "permanent": true
+    },
+    {
+      "source": "/fr/trouble",
+      "destination": "/fr",
+      "permanent": true
+    },
+    {
+      "source": "/it/trouble",
+      "destination": "/it",
+      "permanent": true
+    },
+    {
+      "source": "/es/trouble",
+      "destination": "/es",
+      "permanent": true
+    },
+    {
+      "source": "/pt/trouble",
+      "destination": "/pt",
+      "permanent": true
+    },
+    {
+      "source": "/nl/trouble",
+      "destination": "/nl",
+      "permanent": true
+    },
+    {
+      "source": "/sv/trouble",
+      "destination": "/sv",
+      "permanent": true
+    },
+    {
+      "source": "/tr/trouble",
+      "destination": "/tr",
+      "permanent": true
+    },
+    {
+      "source": "/forgot-email",
+      "destination": "/en",
+      "permanent": true
+    },
+    {
+      "source": "/forgot-email.html",
+      "destination": "/en",
+      "permanent": true
+    },
+    {
+      "source": "/en/forgot-email",
+      "destination": "/en",
+      "permanent": true
+    },
+    {
+      "source": "/sq/forgot-email",
+      "destination": "/sq",
+      "permanent": true
+    },
+    {
+      "source": "/de/forgot-email",
+      "destination": "/de",
+      "permanent": true
+    },
+    {
+      "source": "/fr/forgot-email",
+      "destination": "/fr",
+      "permanent": true
+    },
+    {
+      "source": "/it/forgot-email",
+      "destination": "/it",
+      "permanent": true
+    },
+    {
+      "source": "/es/forgot-email",
+      "destination": "/es",
+      "permanent": true
+    },
+    {
+      "source": "/pt/forgot-email",
+      "destination": "/pt",
+      "permanent": true
+    },
+    {
+      "source": "/nl/forgot-email",
+      "destination": "/nl",
+      "permanent": true
+    },
+    {
+      "source": "/sv/forgot-email",
+      "destination": "/sv",
+      "permanent": true
+    },
+    {
+      "source": "/tr/forgot-email",
+      "destination": "/tr",
+      "permanent": true
+    },
+    {
+      "source": "/emails",
+      "destination": "/en",
+      "permanent": true
+    },
+    {
+      "source": "/emails.html",
+      "destination": "/en",
+      "permanent": true
+    },
+    {
+      "source": "/en/emails",
+      "destination": "/en",
+      "permanent": true
+    },
+    {
+      "source": "/sq/emails",
+      "destination": "/sq",
+      "permanent": true
+    },
+    {
+      "source": "/de/emails",
+      "destination": "/de",
+      "permanent": true
+    },
+    {
+      "source": "/fr/emails",
+      "destination": "/fr",
+      "permanent": true
+    },
+    {
+      "source": "/it/emails",
+      "destination": "/it",
+      "permanent": true
+    },
+    {
+      "source": "/es/emails",
+      "destination": "/es",
+      "permanent": true
+    },
+    {
+      "source": "/pt/emails",
+      "destination": "/pt",
+      "permanent": true
+    },
+    {
+      "source": "/nl/emails",
+      "destination": "/nl",
+      "permanent": true
+    },
+    {
+      "source": "/sv/emails",
+      "destination": "/sv",
+      "permanent": true
+    },
+    {
+      "source": "/tr/emails",
+      "destination": "/tr",
       "permanent": true
     }
   ],
