@@ -1,0 +1,75 @@
+{
+  "_comment": "The site no longer has accounts or a dashboard, so the answers that promised one had to say what actually happens instead.",
+
+  "Left by customers after we finished the work. Nothing is filtered.": {
+    "sq": "Lënë nga klientët pasi e mbaruam punën. Asgjë nuk filtrohet.",
+    "de": "Von Kunden hinterlassen, nachdem wir fertig waren. Nichts ist gefiltert.",
+    "fr": "Laissés par des clients une fois le travail terminé. Rien n'est filtré.",
+    "it": "Lasciate dai clienti dopo che abbiamo finito il lavoro. Niente è filtrato.",
+    "es": "Dejadas por clientes después de terminar el trabajo. No se filtra nada.",
+    "pt": "Deixadas por clientes depois de terminarmos o trabalho. Nada é filtrado.",
+    "nl": "Achtergelaten door klanten nadat we het werk hadden afgerond. Niets is gefilterd.",
+    "sv": "Lämnade av kunder efter att vi blev klara. Inget är filtrerat.",
+    "tr": "İşi bitirdikten sonra müşterilerin bıraktığı yorumlar. Hiçbiri elenmiyor."
+  },
+
+  "A problem with a request, an invoice, or anything else.": {
+    "sq": "Një problem me një kërkesë, një faturë, ose çfarëdo tjetër.",
+    "de": "Ein Problem mit einer Anfrage, einer Rechnung oder irgendetwas anderem.",
+    "fr": "Un souci avec une demande, une facture, ou tout autre chose.",
+    "it": "Un problema con una richiesta, una fattura o qualsiasi altra cosa.",
+    "es": "Un problema con una solicitud, una factura o cualquier otra cosa.",
+    "pt": "Um problema com um pedido, uma fatura ou qualquer outra coisa.",
+    "nl": "Een probleem met een aanvraag, een factuur of iets anders.",
+    "sv": "Ett problem med en förfrågan, en faktura eller något annat.",
+    "tr": "Bir talep, bir fatura ya da başka bir konudaki sorun."
+  },
+
+  "No. There is nothing to sign up for and no password to remember. You send a request, we reply by email, and the whole build is handled in that thread — the state of the work, the content you send us, the site to review and the figure to approve.": {
+    "sq": "Jo. Nuk ka asgjë për t'u regjistruar dhe asnjë fjalëkalim për të mbajtur mend. Ju dërgoni një kërkesë, ne përgjigjemi me email, dhe i gjithë ndërtimi trajtohet në atë bisedë — gjendja e punës, materiali që na dërgoni, faqja për ta parë dhe shifra për ta miratuar.",
+    "de": "Nein. Es gibt nichts anzumelden und kein Passwort zu merken. Sie schicken eine Anfrage, wir antworten per E-Mail, und der ganze Bau läuft in diesem Verlauf — der Stand der Arbeit, die Inhalte, die Sie uns schicken, die Website zur Ansicht und die Zahl zur Freigabe.",
+    "fr": "Non. Rien à créer, aucun mot de passe à retenir. Vous envoyez une demande, nous répondons par e-mail, et tout le projet se traite dans ce fil — l'avancement, les contenus que vous nous envoyez, le site à relire et le montant à valider.",
+    "it": "No. Non c'è niente da registrare e nessuna password da ricordare. Mandi una richiesta, rispondiamo via email, e tutto il lavoro passa da lì — lo stato di avanzamento, i materiali che ci mandi, il sito da rivedere e la cifra da approvare.",
+    "es": "No. No hay nada que registrar ni contraseña que recordar. Envías una solicitud, respondemos por correo y todo el trabajo se lleva en ese hilo: el estado del proyecto, el contenido que nos mandas, la web para revisar y la cifra que apruebas.",
+    "pt": "Não. Não há nada para registar nem palavra-passe para decorar. Envia um pedido, respondemos por email, e todo o trabalho é tratado nessa conversa — o estado da obra, os conteúdos que nos envia, o site para rever e o valor para aprovar.",
+    "nl": "Nee. Er valt niets aan te maken en je hoeft geen wachtwoord te onthouden. Je stuurt een aanvraag, wij antwoorden per e-mail, en de hele bouw loopt via die conversatie — de stand van zaken, de content die je stuurt, de site om te bekijken en het bedrag om goed te keuren.",
+    "sv": "Nej. Det finns inget att registrera och inget lösenord att komma ihåg. Du skickar en förfrågan, vi svarar med e-post, och hela bygget sköts i den tråden — hur det går, materialet du skickar, sajten att granska och summan att godkänna.",
+    "tr": "Hayır. Kaydolunacak bir şey ya da akılda tutulacak bir parola yok. Bir talep gönderirsiniz, e-postayla yanıtlarız ve tüm süreç o yazışmada yürür: işin durumu, bize gönderdiğiniz içerik, gözden geçireceğiniz site ve onaylayacağınız rakam."
+  },
+
+  "Yes. Email us the change and we quote it individually, so you know the cost before anything starts.": {
+    "sq": "Po. Na dërgoni ndryshimin me email dhe e vlerësojmë veç e veç, që ta dini koston para se të fillojë çdo gjë.",
+    "de": "Ja. Schicken Sie uns die Änderung per E-Mail, wir kalkulieren sie einzeln, damit Sie den Preis kennen, bevor irgendetwas beginnt.",
+    "fr": "Oui. Envoyez-nous la modification par e-mail et nous la chiffrons séparément, pour que vous connaissiez le prix avant tout démarrage.",
+    "it": "Sì. Mandaci la modifica per email e la quotiamo a parte, così conosci il costo prima che inizi qualsiasi cosa.",
+    "es": "Sí. Mándanos el cambio por correo y lo presupuestamos por separado, para que sepas el coste antes de empezar nada.",
+    "pt": "Sim. Envie-nos a alteração por email e orçamentamo-la à parte, para que saiba o custo antes de começar seja o que for.",
+    "nl": "Ja. Mail ons de wijziging en we offreren hem apart, zodat je de kosten kent voordat er iets begint.",
+    "sv": "Ja. Mejla oss ändringen så prissätter vi den för sig, så att du vet kostnaden innan något börjar.",
+    "tr": "Evet. Değişikliği bize e-postayla gönderin, ayrıca fiyatlandıralım; böylece hiçbir şey başlamadan maliyeti bilirsiniz."
+  },
+
+  "Yes, where available. Ask us for the extra you want and we add it to the project, at the price on the extras page.": {
+    "sq": "Po, aty ku është e mundur. Na kërkoni shtesën që doni dhe ne e shtojmë në projekt, me çmimin e faqes së shtesave.",
+    "de": "Ja, soweit verfügbar. Sagen Sie uns, welches Extra Sie möchten, und wir nehmen es zum Preis der Extras-Seite mit ins Projekt.",
+    "fr": "Oui, quand c'est possible. Demandez-nous l'option voulue et nous l'ajoutons au projet, au prix indiqué sur la page des options.",
+    "it": "Sì, dove è possibile. Chiedici l'extra che vuoi e lo aggiungiamo al progetto, al prezzo indicato nella pagina degli extra.",
+    "es": "Sí, cuando es posible. Pídenos el extra que quieras y lo añadimos al proyecto, al precio de la página de extras.",
+    "pt": "Sim, quando é possível. Peça-nos o extra que quiser e juntamo-lo ao projeto, ao preço da página de extras.",
+    "nl": "Ja, waar mogelijk. Vraag ons om de extra die je wilt en we voegen hem toe aan het project, tegen de prijs op de extra's-pagina.",
+    "sv": "Ja, där det går. Be oss om tillägget du vill ha så lägger vi in det i projektet, till priset på tilläggssidan.",
+    "tr": "Evet, mümkün olduğu yerlerde. İstediğiniz ekstrayı bize söyleyin, ekstralar sayfasındaki fiyatla projeye ekleyelim."
+  },
+
+  "Only if you ask. Buying a website does not opt you in, and we do not add anyone to a list for having been a customer. Every marketing email has an unsubscribe link, and messages about your build and your payments are separate from it.": {
+    "sq": "Vetëm nëse e kërkoni. Blerja e një faqeje nuk ju regjistron askund, dhe ne nuk e shtojmë askënd në një listë vetëm se ka qenë klient. Çdo email marketingu ka një lidhje çregjistrimi, dhe mesazhet për ndërtimin e pagesat tuaja janë të ndara prej tij.",
+    "de": "Nur wenn Sie darum bitten. Der Kauf einer Website meldet Sie nirgends an, und niemand kommt auf eine Liste, nur weil er Kunde war. Jede Marketing-E-Mail hat einen Abmeldelink, und Nachrichten zu Ihrem Bau und Ihren Zahlungen sind davon getrennt.",
+    "fr": "Seulement si vous le demandez. Acheter un site ne vous inscrit à rien, et nous n'ajoutons personne à une liste sous prétexte qu'il a été client. Chaque e-mail marketing a un lien de désinscription, et les messages sur votre projet et vos paiements en sont séparés.",
+    "it": "Solo se lo chiedi. Comprare un sito non ti iscrive a niente, e non mettiamo nessuno in una lista per essere stato cliente. Ogni email di marketing ha un link per disiscriversi, e i messaggi sul tuo lavoro e sui pagamenti sono un'altra cosa.",
+    "es": "Solo si lo pides. Comprar una web no te apunta a nada, y no metemos a nadie en una lista por haber sido cliente. Todo correo de marketing lleva enlace para darse de baja, y los mensajes sobre tu proyecto y tus pagos van aparte.",
+    "pt": "Só se pedir. Comprar um site não o inscreve em nada, e não pomos ninguém numa lista por ter sido cliente. Todos os emails de marketing têm ligação para cancelar, e as mensagens sobre a obra e os pagamentos são outra coisa.",
+    "nl": "Alleen als je erom vraagt. Een website kopen schrijft je nergens voor in, en we zetten niemand op een lijst omdat hij klant was. Elke marketingmail heeft een afmeldlink, en berichten over je bouw en je betalingen staan daar los van.",
+    "sv": "Bara om du ber om det. Att köpa en webbplats anmäler dig ingenstans, och vi lägger inte in någon på en lista för att hen varit kund. Varje marknadsmejl har en avregistreringslänk, och meddelanden om ditt bygge och dina betalningar är något annat.",
+    "tr": "Yalnızca isterseniz. Site almanız sizi hiçbir listeye eklemez ve müşteri oldu diye kimseyi listeye koymayız. Her pazarlama e-postasında abonelikten çıkma bağlantısı vardır; yapımınız ve ödemelerinizle ilgili mesajlar bundan ayrıdır."
+  }
+}

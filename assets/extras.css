@@ -285,3 +285,40 @@ body.has-ex-dock { padding-bottom: 5.25rem; }
 .rq-sent-a { display: inline-block; margin-top: 1rem; font-size: 0.875rem; font-weight: 600; color: rgb(var(--c-accent-text)); text-decoration: underline; text-underline-offset: 4px; }
 
 @media (prefers-reduced-motion: reduce) { .rq-f-i { transition: none; } }
+
+/* ── The catalogue, after the ticking moved to the builder ────────
+   A name and a price told you what something cost and nothing about
+   what it was. Each row now carries a line of its own, and the whole
+   page is read rather than operated: two columns on a wide screen so
+   the price stays on the right of its own name, one column on a phone
+   where a third column would squeeze the sentence into a ribbon. */
+.xrow {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: baseline;
+  gap: 0 1.25rem;
+  padding: 0.85rem 0.15rem 0.9rem;
+  border-bottom: 1px solid rgb(var(--c-line));
+}
+.xrow:last-child { border-bottom: 0; }
+
+.xrow-name {
+  font-size: 0.9375rem; font-weight: 600; line-height: 1.4;
+  color: rgb(var(--c-ink));
+}
+.xrow-price {
+  grid-column: 2; grid-row: 1;
+  font-size: 0.9375rem; font-weight: 600; white-space: nowrap;
+  color: rgb(var(--c-ink));
+}
+.xrow-what {
+  grid-column: 1; grid-row: 2;
+  margin-top: 0.22rem; max-width: 52ch;
+  font-size: 0.8125rem; line-height: 1.55;
+  color: rgb(var(--c-ink-mid));
+}
+
+@media (max-width: 420px) {
+  .xrow { gap: 0 0.75rem; }
+  .xrow-what { font-size: 0.78125rem; }
+}

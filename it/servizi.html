@@ -64,7 +64,7 @@
 <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400&family=Instrument+Serif&family=Inter:wght@400;500;600;700&family=Outfit:wght@200..800&display=swap"></noscript>
 <script>/* Theme before paint. Dark is the site, light is a choice you make — the attribute is always stamped so the system setting never decides for you. */(function(){var t='dark';try{t=localStorage.getItem('sitehouse.theme')==='light'?'light':'dark';}catch(e){}document.documentElement.setAttribute('data-theme',t);})();</script>
 <link rel="stylesheet" href="/assets/xovah.css?v=3">
-<link rel="stylesheet" href="/assets/extras.css?v=5">
+<link rel="stylesheet" href="/assets/extras.css?v=6">
 <link rel="stylesheet" href="/assets/mobile.css?v=7">
 <link rel="stylesheet" href="/assets/tailwind.css?v=2">
 <link rel="stylesheet" href="/assets/theme.css?v=6">
@@ -101,7 +101,7 @@
       <p class="eyebrow text-accent">Servizi per il sito</p>
       <h1 class="h-section sec-title mt-4 max-w-2xl">Tutto quello che sta attorno al tuo sito, con il prezzo voce per voce.</h1>
       <p class="mt-5 max-w-prose text-[0.9375rem] leading-relaxed text-ink-mid">
-        Prenotazioni, SEO, statistiche, automazioni, un logo, un'email sul tuo dominio. Sessantasei interventi una tantum, ognuno con il suo prezzo, così arrivi a un totale spuntando le voci prima di parlare con qualcuno.
+        Prenotazioni, SEO, statistiche, automazioni, un logo, un'email sul tuo dominio. Sessantacinque lavori una tantum, ognuno con il suo prezzo e una riga che dice cosa fa davvero. Li aggiungi dal configuratore quando sei pronto.
       </p>
       <ol class="ex-how mt-8" data-reveal-group>
         <li>
@@ -112,17 +112,18 @@
         <li>
           <span class="ex-how-n">02</span>
           <p class="ex-how-h">Extra facoltativi</p>
-          <p class="ex-how-p">Altri sessantasei interventi, ognuno con il suo prezzo una tantum. Prendi solo quelli che ti servono.</p>
+          <p class="ex-how-p">Altri sessantacinque lavori, ognuno con il suo prezzo una tantum. Prendi solo quelli che ti servono.</p>
         </li>
         <li>
           <span class="ex-how-n">03</span>
-          <p class="ex-how-h">Il tuo totale aggiornato</p>
-          <p class="ex-how-p">Spunta quelli che vuoi e il totale si somma da solo. Mandalo insieme alla tua richiesta di progetto.</p>
+          <p class="ex-how-h">Componilo e invialo</p>
+          <p class="ex-how-p">Il configuratore mette insieme il tuo pacchetto e questi, somma il totale e ce lo invia.</p>
         </li>
       </ol>
 
       <div class="mt-8 flex flex-wrap items-center gap-x-5 gap-y-3">
-        <a href="#website" class="btn btn-primary">Scegli i tuoi extra</a>
+        <a href="/it/servizi" class="btn btn-primary">Componi il tuo pacchetto</a>
+        <a href="#website" class="btn btn-ghost">Leggi l'elenco</a>
         <span class="text-sm text-ink-soft">Da <span class="cur" data-eur="5">€5</span>, pagato una volta sola. Su questa pagina non viene addebitato nulla.</span>
       </div>
     </div>
@@ -139,12 +140,7 @@
         <a href="#technical">Azienda</a>
         <a href="#automation">Automazione</a>
         <a href="#brand">Brand</a>
-      </nav>
-      <p class="ex-bar-sum" data-ex-bar-sum hidden>
-        <span data-ex-bar-count>0</span> scelto
-        <b data-ex-bar-once><span class="cur" data-eur="0">€0</span></b>
-      </p>
-    </div>
+      </nav>    </div>
   </div>
 
   <!-- 3 — THE 34 -->
@@ -226,7 +222,7 @@
     <div class="mx-auto max-w-shell px-6 py-14 md:px-10 md:py-20">
       <div class="flex flex-wrap items-baseline gap-x-4 gap-y-1">
         <h2 class="h-section text-xl">Extra facoltativi</h2>
-        <span class="ml-auto text-[0.8125rem] text-ink-soft">sessantasei interventi una tantum</span>
+        <span class="ml-auto text-[0.8125rem] text-ink-soft">sessantacinque lavori una tantum</span>
       </div>
 
       <div class="mt-10 grid grid-cols-1 gap-y-11 lg:max-w-3xl" data-picker>
@@ -236,114 +232,96 @@
             <p class="eyebrow text-ink-soft">Funzioni del sito</p>
             <span class="ml-auto text-[0.75rem] text-ink-soft">una tantum</span>
           </div>
-            <label class="pick">
-              <input type="checkbox" class="pick-cb" data-pick="online-booking-system" data-price="60" data-kind="once">
-              <span class="pick-box" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3.4 8.4l3 3 6.2-6.6"/></svg></span>
-              <span class="pick-name">Sistema di prenotazione online</span>
-              <span class="pick-price"><span class="cur" data-eur="60">€60</span></span>
-            </label>
-            <label class="pick">
-              <input type="checkbox" class="pick-cb" data-pick="appointment-calendar" data-price="50" data-kind="once">
-              <span class="pick-box" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3.4 8.4l3 3 6.2-6.6"/></svg></span>
-              <span class="pick-name">Calendario appuntamenti</span>
-              <span class="pick-price"><span class="cur" data-eur="50">€50</span></span>
-            </label>
-            <label class="pick">
-              <input type="checkbox" class="pick-cb" data-pick="google-reviews-integration" data-price="20" data-kind="once">
-              <span class="pick-box" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3.4 8.4l3 3 6.2-6.6"/></svg></span>
-              <span class="pick-name">Integrazione Recensioni Google</span>
-              <span class="pick-price"><span class="cur" data-eur="20">€20</span></span>
-            </label>
-            <label class="pick">
-              <input type="checkbox" class="pick-cb" data-pick="newsletter-signup" data-price="20" data-kind="once">
-              <span class="pick-box" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3.4 8.4l3 3 6.2-6.6"/></svg></span>
-              <span class="pick-name">Iscrizione newsletter</span>
-              <span class="pick-price"><span class="cur" data-eur="20">€20</span></span>
-            </label>
-            <label class="pick">
-              <input type="checkbox" class="pick-cb" data-pick="email-button" data-price="5" data-kind="once">
-              <span class="pick-box" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3.4 8.4l3 3 6.2-6.6"/></svg></span>
-              <span class="pick-name">Pulsante email</span>
-              <span class="pick-price"><span class="cur" data-eur="5">€5</span></span>
-            </label>
-            <label class="pick">
-              <input type="checkbox" class="pick-cb" data-pick="job-application-form" data-price="25" data-kind="once">
-              <span class="pick-box" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3.4 8.4l3 3 6.2-6.6"/></svg></span>
-              <span class="pick-name">Modulo candidature lavorative</span>
-              <span class="pick-price"><span class="cur" data-eur="25">€25</span></span>
-            </label>
-            <label class="pick">
-              <input type="checkbox" class="pick-cb" data-pick="careers-section" data-price="15" data-kind="once">
-              <span class="pick-box" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3.4 8.4l3 3 6.2-6.6"/></svg></span>
-              <span class="pick-name">Sezione Lavora con noi</span>
-              <span class="pick-price"><span class="cur" data-eur="15">€15</span></span>
-            </label>
-            <label class="pick">
-              <input type="checkbox" class="pick-cb" data-pick="multi-language-website" data-price="50" data-kind="once">
-              <span class="pick-box" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3.4 8.4l3 3 6.2-6.6"/></svg></span>
-              <span class="pick-name">Sito web multilingua</span>
-              <span class="pick-price">da <span class="cur" data-eur="50">€50</span></span>
-            </label>
-            <label class="pick">
-              <input type="checkbox" class="pick-cb" data-pick="multiple-locations" data-price="30" data-kind="once">
-              <span class="pick-box" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3.4 8.4l3 3 6.2-6.6"/></svg></span>
-              <span class="pick-name">Sedi multiple</span>
-              <span class="pick-price"><span class="cur" data-eur="30">€30</span></span>
-            </label>
-            <label class="pick">
-              <input type="checkbox" class="pick-cb" data-pick="location-selector" data-price="25" data-kind="once">
-              <span class="pick-box" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3.4 8.4l3 3 6.2-6.6"/></svg></span>
-              <span class="pick-name">Selettore località</span>
-              <span class="pick-price"><span class="cur" data-eur="25">€25</span></span>
-            </label>
-            <label class="pick">
-              <input type="checkbox" class="pick-cb" data-pick="store-locator" data-price="50" data-kind="once">
-              <span class="pick-box" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3.4 8.4l3 3 6.2-6.6"/></svg></span>
-              <span class="pick-name">Trova negozio</span>
-              <span class="pick-price"><span class="cur" data-eur="50">€50</span></span>
-            </label>
-            <label class="pick">
-              <input type="checkbox" class="pick-cb" data-pick="membership-section" data-price="40" data-kind="once">
-              <span class="pick-box" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3.4 8.4l3 3 6.2-6.6"/></svg></span>
-              <span class="pick-name">Sezione Membership</span>
-              <span class="pick-price"><span class="cur" data-eur="40">€40</span></span>
-            </label>
-            <label class="pick">
-              <input type="checkbox" class="pick-cb" data-pick="gift-card-section" data-price="30" data-kind="once">
-              <span class="pick-box" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3.4 8.4l3 3 6.2-6.6"/></svg></span>
-              <span class="pick-name">Sezione Gift card</span>
-              <span class="pick-price"><span class="cur" data-eur="30">€30</span></span>
-            </label>
-            <label class="pick">
-              <input type="checkbox" class="pick-cb" data-pick="loyalty-program" data-price="60" data-kind="once">
-              <span class="pick-box" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3.4 8.4l3 3 6.2-6.6"/></svg></span>
-              <span class="pick-name">Programma fedeltà</span>
-              <span class="pick-price">da <span class="cur" data-eur="60">€60</span></span>
-            </label>
-            <label class="pick">
-              <input type="checkbox" class="pick-cb" data-pick="event-registration" data-price="40" data-kind="once">
-              <span class="pick-box" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3.4 8.4l3 3 6.2-6.6"/></svg></span>
-              <span class="pick-name">Registrazione eventi</span>
-              <span class="pick-price"><span class="cur" data-eur="40">€40</span></span>
-            </label>
-            <label class="pick">
-              <input type="checkbox" class="pick-cb" data-pick="blog-section" data-price="30" data-kind="once">
-              <span class="pick-box" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3.4 8.4l3 3 6.2-6.6"/></svg></span>
-              <span class="pick-name">Sezione Blog</span>
-              <span class="pick-price"><span class="cur" data-eur="30">€30</span></span>
-            </label>
-            <label class="pick">
-              <input type="checkbox" class="pick-cb" data-pick="news-section" data-price="20" data-kind="once">
-              <span class="pick-box" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3.4 8.4l3 3 6.2-6.6"/></svg></span>
-              <span class="pick-name">Sezione Notizie</span>
-              <span class="pick-price"><span class="cur" data-eur="20">€20</span></span>
-            </label>
-            <label class="pick">
-              <input type="checkbox" class="pick-cb" data-pick="website-search" data-price="30" data-kind="once">
-              <span class="pick-box" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3.4 8.4l3 3 6.2-6.6"/></svg></span>
-              <span class="pick-name">Ricerca sul sito</span>
-              <span class="pick-price"><span class="cur" data-eur="30">€30</span></span>
-            </label>
+            <div class="xrow">
+              <p class="xrow-name">Sistema di prenotazione online</p>
+              <p class="xrow-what">I clienti scelgono un orario sul tuo sito e l'appuntamento arriva a te da confermare.</p>
+              <p class="xrow-price"><span class="cur" data-eur="60">€60</span></p>
+            </div>
+            <div class="xrow">
+              <p class="xrow-name">Calendario appuntamenti</p>
+              <p class="xrow-what">Un calendario di ciò che è prenotato, così la stessa ora non viene venduta due volte.</p>
+              <p class="xrow-price"><span class="cur" data-eur="50">€50</span></p>
+            </div>
+            <div class="xrow">
+              <p class="xrow-name">Integrazione Recensioni Google</p>
+              <p class="xrow-what">Le tue recensioni Google sulla pagina, che si aggiornano da sole.</p>
+              <p class="xrow-price"><span class="cur" data-eur="20">€20</span></p>
+            </div>
+            <div class="xrow">
+              <p class="xrow-name">Iscrizione newsletter</p>
+              <p class="xrow-what">Un campo email sulla pagina, con la lista dove puoi usarla davvero.</p>
+              <p class="xrow-price"><span class="cur" data-eur="20">€20</span></p>
+            </div>
+            <div class="xrow">
+              <p class="xrow-name">Pulsante email</p>
+              <p class="xrow-what">Un tocco apre la loro app di posta con il tuo indirizzo già dentro.</p>
+              <p class="xrow-price"><span class="cur" data-eur="5">€5</span></p>
+            </div>
+            <div class="xrow">
+              <p class="xrow-name">Modulo candidature lavorative</p>
+              <p class="xrow-what">Le persone si candidano con i loro dati e il CV, e ti arriva in casella.</p>
+              <p class="xrow-price"><span class="cur" data-eur="25">€25</span></p>
+            </div>
+            <div class="xrow">
+              <p class="xrow-name">Sezione Lavora con noi</p>
+              <p class="xrow-what">Una pagina per le posizioni che stai cercando.</p>
+              <p class="xrow-price"><span class="cur" data-eur="15">€15</span></p>
+            </div>
+            <div class="xrow">
+              <p class="xrow-name">Sito web multilingua</p>
+              <p class="xrow-what">Tutto il sito in una seconda lingua, cambiabile dall'angolo.</p>
+              <p class="xrow-price">da <span class="cur" data-eur="50">€50</span></p>
+            </div>
+            <div class="xrow">
+              <p class="xrow-name">Sedi multiple</p>
+              <p class="xrow-what">Una pagina per ogni sede, con il suo indirizzo, i suoi orari e la sua mappa.</p>
+              <p class="xrow-price"><span class="cur" data-eur="30">€30</span></p>
+            </div>
+            <div class="xrow">
+              <p class="xrow-name">Selettore località</p>
+              <p class="xrow-what">Un selettore che porta i visitatori alla sede più vicina.</p>
+              <p class="xrow-price"><span class="cur" data-eur="25">€25</span></p>
+            </div>
+            <div class="xrow">
+              <p class="xrow-name">Trova negozio</p>
+              <p class="xrow-what">Una mappa di ogni sede e di come arrivarci.</p>
+              <p class="xrow-price"><span class="cur" data-eur="50">€50</span></p>
+            </div>
+            <div class="xrow">
+              <p class="xrow-name">Sezione Membership</p>
+              <p class="xrow-what">Una parte del sito che possono aprire solo i tuoi membri.</p>
+              <p class="xrow-price"><span class="cur" data-eur="40">€40</span></p>
+            </div>
+            <div class="xrow">
+              <p class="xrow-name">Sezione Gift card</p>
+              <p class="xrow-what">Buoni regalo che si possono comprare o richiedere dalla pagina.</p>
+              <p class="xrow-price"><span class="cur" data-eur="30">€30</span></p>
+            </div>
+            <div class="xrow">
+              <p class="xrow-name">Programma fedeltà</p>
+              <p class="xrow-what">Punti o timbri per i clienti che tornano, gestiti dal sito.</p>
+              <p class="xrow-price">da <span class="cur" data-eur="60">€60</span></p>
+            </div>
+            <div class="xrow">
+              <p class="xrow-name">Registrazione eventi</p>
+              <p class="xrow-what">Le persone si iscrivono a un evento e tu ricevi l'elenco.</p>
+              <p class="xrow-price"><span class="cur" data-eur="40">€40</span></p>
+            </div>
+            <div class="xrow">
+              <p class="xrow-name">Sezione Blog</p>
+              <p class="xrow-what">Post che puoi aggiungere da solo, con date e immagini.</p>
+              <p class="xrow-price"><span class="cur" data-eur="30">€30</span></p>
+            </div>
+            <div class="xrow">
+              <p class="xrow-name">Sezione Notizie</p>
+              <p class="xrow-what">Annunci brevi in un posto solo, i più recenti per primi.</p>
+              <p class="xrow-price"><span class="cur" data-eur="20">€20</span></p>
+            </div>
+            <div class="xrow">
+              <p class="xrow-name">Ricerca sul sito</p>
+              <p class="xrow-what">Un campo di ricerca che cerca dentro le tue pagine.</p>
+              <p class="xrow-price"><span class="cur" data-eur="30">€30</span></p>
+            </div>
         </div>
 
         <div id="technical" class="scroll-mt-32" data-ex-group="technical">
@@ -351,162 +329,136 @@
             <p class="eyebrow text-ink-soft">Business e tecnica</p>
             <span class="ml-auto text-[0.75rem] text-ink-soft">una tantum</span>
           </div>
-            <label class="pick">
-              <input type="checkbox" class="pick-cb" data-pick="basic-seo-setup" data-price="30" data-kind="once">
-              <span class="pick-box" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3.4 8.4l3 3 6.2-6.6"/></svg></span>
-              <span class="pick-name">Configurazione SEO base</span>
-              <span class="pick-price"><span class="cur" data-eur="30">€30</span></span>
-            </label>
-            <label class="pick">
-              <input type="checkbox" class="pick-cb" data-pick="google-search-indexing" data-price="15" data-kind="once">
-              <span class="pick-box" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3.4 8.4l3 3 6.2-6.6"/></svg></span>
-              <span class="pick-name">Indicizzazione su Google Search</span>
-              <span class="pick-price"><span class="cur" data-eur="15">€15</span></span>
-            </label>
-            <label class="pick">
-              <input type="checkbox" class="pick-cb" data-pick="google-business-profile-setup" data-price="40" data-kind="once">
-              <span class="pick-box" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3.4 8.4l3 3 6.2-6.6"/></svg></span>
-              <span class="pick-name">Configurazione Google Business Profile</span>
-              <span class="pick-price"><span class="cur" data-eur="40">€40</span></span>
-            </label>
-            <label class="pick">
-              <input type="checkbox" class="pick-cb" data-pick="google-business-profile-optimization" data-price="50" data-kind="once">
-              <span class="pick-box" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3.4 8.4l3 3 6.2-6.6"/></svg></span>
-              <span class="pick-name">Ottimizzazione Google Business Profile</span>
-              <span class="pick-price"><span class="cur" data-eur="50">€50</span></span>
-            </label>
-            <label class="pick">
-              <input type="checkbox" class="pick-cb" data-pick="google-analytics-setup" data-price="25" data-kind="once">
-              <span class="pick-box" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3.4 8.4l3 3 6.2-6.6"/></svg></span>
-              <span class="pick-name">Configurazione Google Analytics</span>
-              <span class="pick-price"><span class="cur" data-eur="25">€25</span></span>
-            </label>
-            <label class="pick">
-              <input type="checkbox" class="pick-cb" data-pick="google-search-console-setup" data-price="25" data-kind="once">
-              <span class="pick-box" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3.4 8.4l3 3 6.2-6.6"/></svg></span>
-              <span class="pick-name">Configurazione Google Search Console</span>
-              <span class="pick-price"><span class="cur" data-eur="25">€25</span></span>
-            </label>
-            <label class="pick">
-              <input type="checkbox" class="pick-cb" data-pick="conversion-tracking" data-price="40" data-kind="once">
-              <span class="pick-box" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3.4 8.4l3 3 6.2-6.6"/></svg></span>
-              <span class="pick-name">Tracciamento conversioni</span>
-              <span class="pick-price"><span class="cur" data-eur="40">€40</span></span>
-            </label>
-            <label class="pick">
-              <input type="checkbox" class="pick-cb" data-pick="website-visitor-tracking" data-price="25" data-kind="once">
-              <span class="pick-box" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3.4 8.4l3 3 6.2-6.6"/></svg></span>
-              <span class="pick-name">Tracciamento dei visitatori del sito</span>
-              <span class="pick-price"><span class="cur" data-eur="25">€25</span></span>
-            </label>
-            <label class="pick">
-              <input type="checkbox" class="pick-cb" data-pick="professional-business-email-setup" data-price="25" data-kind="once">
-              <span class="pick-box" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3.4 8.4l3 3 6.2-6.6"/></svg></span>
-              <span class="pick-name">Configurazione email aziendale professionale</span>
-              <span class="pick-price"><span class="cur" data-eur="25">€25</span></span>
-            </label>
-            <label class="pick">
-              <input type="checkbox" class="pick-cb" data-pick="email-signature-setup" data-price="15" data-kind="once">
-              <span class="pick-box" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3.4 8.4l3 3 6.2-6.6"/></svg></span>
-              <span class="pick-name">Configurazione firma email</span>
-              <span class="pick-price"><span class="cur" data-eur="15">€15</span></span>
-            </label>
-            <label class="pick">
-              <input type="checkbox" class="pick-cb" data-pick="domain-registration" data-price="10" data-kind="once">
-              <span class="pick-box" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3.4 8.4l3 3 6.2-6.6"/></svg></span>
-              <span class="pick-name">Registrazione dominio <span class="pick-note">+ il dominio</span></span>
-              <span class="pick-price"><span class="cur" data-eur="10">€10</span></span>
-            </label>
-            <label class="pick">
-              <input type="checkbox" class="pick-cb" data-pick="domain-connection" data-price="10" data-kind="once">
-              <span class="pick-box" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3.4 8.4l3 3 6.2-6.6"/></svg></span>
-              <span class="pick-name">Collegamento dominio</span>
-              <span class="pick-price"><span class="cur" data-eur="10">€10</span></span>
-            </label>
-            <label class="pick">
-              <input type="checkbox" class="pick-cb" data-pick="ssl-https-setup" data-price="10" data-kind="once">
-              <span class="pick-box" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3.4 8.4l3 3 6.2-6.6"/></svg></span>
-              <span class="pick-name">Configurazione SSL / HTTPS</span>
-              <span class="pick-price"><span class="cur" data-eur="10">€10</span></span>
-            </label>
-            <label class="pick">
-              <input type="checkbox" class="pick-cb" data-pick="website-migration" data-price="50" data-kind="once">
-              <span class="pick-box" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3.4 8.4l3 3 6.2-6.6"/></svg></span>
-              <span class="pick-name">Migrazione del sito web</span>
-              <span class="pick-price">da <span class="cur" data-eur="50">€50</span></span>
-            </label>
-            <label class="pick">
-              <input type="checkbox" class="pick-cb" data-pick="website-speed-optimization" data-price="50" data-kind="once">
-              <span class="pick-box" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3.4 8.4l3 3 6.2-6.6"/></svg></span>
-              <span class="pick-name">Ottimizzazione velocità del sito</span>
-              <span class="pick-price"><span class="cur" data-eur="50">€50</span></span>
-            </label>
-            <label class="pick">
-              <input type="checkbox" class="pick-cb" data-pick="image-compression" data-price="15" data-kind="once">
-              <span class="pick-box" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3.4 8.4l3 3 6.2-6.6"/></svg></span>
-              <span class="pick-name">Compressione immagini</span>
-              <span class="pick-price"><span class="cur" data-eur="15">€15</span></span>
-            </label>
-            <label class="pick">
-              <input type="checkbox" class="pick-cb" data-pick="accessibility-improvements" data-price="40" data-kind="once">
-              <span class="pick-box" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3.4 8.4l3 3 6.2-6.6"/></svg></span>
-              <span class="pick-name">Miglioramenti di accessibilità</span>
-              <span class="pick-price"><span class="cur" data-eur="40">€40</span></span>
-            </label>
-            <label class="pick">
-              <input type="checkbox" class="pick-cb" data-pick="cookie-consent-banner" data-price="20" data-kind="once">
-              <span class="pick-box" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3.4 8.4l3 3 6.2-6.6"/></svg></span>
-              <span class="pick-name">Banner di consenso cookie</span>
-              <span class="pick-price"><span class="cur" data-eur="20">€20</span></span>
-            </label>
-            <label class="pick">
-              <input type="checkbox" class="pick-cb" data-pick="privacy-policy-page" data-price="20" data-kind="once">
-              <span class="pick-box" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3.4 8.4l3 3 6.2-6.6"/></svg></span>
-              <span class="pick-name">Pagina informativa sulla privacy</span>
-              <span class="pick-price"><span class="cur" data-eur="20">€20</span></span>
-            </label>
-            <label class="pick">
-              <input type="checkbox" class="pick-cb" data-pick="terms-and-conditions-page" data-price="20" data-kind="once">
-              <span class="pick-box" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3.4 8.4l3 3 6.2-6.6"/></svg></span>
-              <span class="pick-name">Pagina termini e condizioni</span>
-              <span class="pick-price"><span class="cur" data-eur="20">€20</span></span>
-            </label>
-            <label class="pick">
-              <input type="checkbox" class="pick-cb" data-pick="custom-legal-pages" data-price="30" data-kind="once">
-              <span class="pick-box" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3.4 8.4l3 3 6.2-6.6"/></svg></span>
-              <span class="pick-name">Pagine legali personalizzate</span>
-              <span class="pick-price">da <span class="cur" data-eur="30">€30</span></span>
-            </label>
-            <label class="pick">
-              <input type="checkbox" class="pick-cb" data-pick="website-backup-system" data-price="30" data-kind="once">
-              <span class="pick-box" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3.4 8.4l3 3 6.2-6.6"/></svg></span>
-              <span class="pick-name">Sistema di backup del sito</span>
-              <span class="pick-price"><span class="cur" data-eur="30">€30</span></span>
-            </label>
-            <label class="pick">
-              <input type="checkbox" class="pick-cb" data-pick="security-configuration" data-price="40" data-kind="once">
-              <span class="pick-box" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3.4 8.4l3 3 6.2-6.6"/></svg></span>
-              <span class="pick-name">Configurazione sicurezza</span>
-              <span class="pick-price"><span class="cur" data-eur="40">€40</span></span>
-            </label>
-            <label class="pick">
-              <input type="checkbox" class="pick-cb" data-pick="spam-protection" data-price="20" data-kind="once">
-              <span class="pick-box" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3.4 8.4l3 3 6.2-6.6"/></svg></span>
-              <span class="pick-name">Protezione antispam</span>
-              <span class="pick-price"><span class="cur" data-eur="20">€20</span></span>
-            </label>
-            <label class="pick">
-              <input type="checkbox" class="pick-cb" data-pick="contact-form-spam-protection" data-price="15" data-kind="once">
-              <span class="pick-box" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3.4 8.4l3 3 6.2-6.6"/></svg></span>
-              <span class="pick-name">Protezione antispam del modulo contatti</span>
-              <span class="pick-price"><span class="cur" data-eur="15">€15</span></span>
-            </label>
-            <label class="pick">
-              <input type="checkbox" class="pick-cb" data-pick="broken-link-checking" data-price="15" data-kind="once">
-              <span class="pick-box" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3.4 8.4l3 3 6.2-6.6"/></svg></span>
-              <span class="pick-name">Verifica link rotti</span>
-              <span class="pick-price"><span class="cur" data-eur="15">€15</span></span>
-            </label>
+            <div class="xrow">
+              <p class="xrow-name">Configurazione SEO base</p>
+              <p class="xrow-what">Titoli, descrizioni e intestazioni scritti come li leggono i motori di ricerca.</p>
+              <p class="xrow-price"><span class="cur" data-eur="30">€30</span></p>
+            </div>
+            <div class="xrow">
+              <p class="xrow-name">Indicizzazione su Google Search</p>
+              <p class="xrow-what">Le tue pagine inviate a Google perché possano comparire nei risultati.</p>
+              <p class="xrow-price"><span class="cur" data-eur="15">€15</span></p>
+            </div>
+            <div class="xrow">
+              <p class="xrow-name">Configurazione Google Business Profile</p>
+              <p class="xrow-what">La tua scheda Google creata, verificata e compilata come si deve.</p>
+              <p class="xrow-price"><span class="cur" data-eur="40">€40</span></p>
+            </div>
+            <div class="xrow">
+              <p class="xrow-name">Ottimizzazione Google Business Profile</p>
+              <p class="xrow-what">Foto, categorie, orari e post messi a punto perché la scheda si posizioni.</p>
+              <p class="xrow-price"><span class="cur" data-eur="50">€50</span></p>
+            </div>
+            <div class="xrow">
+              <p class="xrow-name">Configurazione Google Analytics</p>
+              <p class="xrow-what">Numeri di visitatori davvero leggibili, installati e configurati.</p>
+              <p class="xrow-price"><span class="cur" data-eur="25">€25</span></p>
+            </div>
+            <div class="xrow">
+              <p class="xrow-name">Configurazione Google Search Console</p>
+              <p class="xrow-what">Lo strumento che mostra cosa cercavano le persone prima di trovarti.</p>
+              <p class="xrow-price"><span class="cur" data-eur="25">€25</span></p>
+            </div>
+            <div class="xrow">
+              <p class="xrow-name">Tracciamento conversioni</p>
+              <p class="xrow-what">Chiamate, moduli e prenotazioni contati, così sai cosa funziona.</p>
+              <p class="xrow-price"><span class="cur" data-eur="40">€40</span></p>
+            </div>
+            <div class="xrow">
+              <p class="xrow-name">Tracciamento dei visitatori del sito</p>
+              <p class="xrow-what">Quali pagine leggono le persone, e dove si arrendono.</p>
+              <p class="xrow-price"><span class="cur" data-eur="25">€25</span></p>
+            </div>
+            <div class="xrow">
+              <p class="xrow-name">Configurazione email aziendale professionale</p>
+              <p class="xrow-what">tu@tuaazienda.com, che funziona sul telefono e sul computer.</p>
+              <p class="xrow-price"><span class="cur" data-eur="25">€25</span></p>
+            </div>
+            <div class="xrow">
+              <p class="xrow-name">Configurazione firma email</p>
+              <p class="xrow-what">Il tuo logo e i tuoi dati in fondo a ogni email che mandi.</p>
+              <p class="xrow-price"><span class="cur" data-eur="15">€15</span></p>
+            </div>
+            <div class="xrow">
+              <p class="xrow-name">Registrazione dominio <span class="pick-note">+ il dominio</span></p>
+              <p class="xrow-what">Compriamo noi l'indirizzo, a tuo nome.</p>
+              <p class="xrow-price"><span class="cur" data-eur="10">€10</span></p>
+            </div>
+            <div class="xrow">
+              <p class="xrow-name">Collegamento dominio</p>
+              <p class="xrow-what">Un dominio che possiedi già, puntato sul nuovo sito.</p>
+              <p class="xrow-price"><span class="cur" data-eur="10">€10</span></p>
+            </div>
+            <div class="xrow">
+              <p class="xrow-name">Configurazione SSL / HTTPS</p>
+              <p class="xrow-what">Il lucchetto nella barra degli indirizzi, che si rinnova da solo.</p>
+              <p class="xrow-price"><span class="cur" data-eur="10">€10</span></p>
+            </div>
+            <div class="xrow">
+              <p class="xrow-name">Migrazione del sito web</p>
+              <p class="xrow-what">Un sito esistente spostato senza perdere quello che aveva.</p>
+              <p class="xrow-price">da <span class="cur" data-eur="50">€50</span></p>
+            </div>
+            <div class="xrow">
+              <p class="xrow-name">Ottimizzazione velocità del sito</p>
+              <p class="xrow-what">Il sito reso veloce da aprire su un telefono in rete mobile.</p>
+              <p class="xrow-price"><span class="cur" data-eur="50">€50</span></p>
+            </div>
+            <div class="xrow">
+              <p class="xrow-name">Compressione immagini</p>
+              <p class="xrow-what">Fotografie rese abbastanza leggere da caricarsi in fretta e restare belle.</p>
+              <p class="xrow-price"><span class="cur" data-eur="15">€15</span></p>
+            </div>
+            <div class="xrow">
+              <p class="xrow-name">Miglioramenti di accessibilità</p>
+              <p class="xrow-what">Contrasto, etichette e uso da tastiera, così non resta fuori nessuno.</p>
+              <p class="xrow-price"><span class="cur" data-eur="40">€40</span></p>
+            </div>
+            <div class="xrow">
+              <p class="xrow-name">Banner di consenso cookie</p>
+              <p class="xrow-what">L'informativa sul consenso richiesta dalla legge, che fa quello che dichiara.</p>
+              <p class="xrow-price"><span class="cur" data-eur="20">€20</span></p>
+            </div>
+            <div class="xrow">
+              <p class="xrow-name">Pagina informativa sulla privacy</p>
+              <p class="xrow-what">Un'informativa sulla privacy scritta per quello che il tuo sito fa davvero.</p>
+              <p class="xrow-price"><span class="cur" data-eur="20">€20</span></p>
+            </div>
+            <div class="xrow">
+              <p class="xrow-name">Pagina termini e condizioni</p>
+              <p class="xrow-what">Le tue condizioni, in parole semplici, su una pagina tutta loro.</p>
+              <p class="xrow-price"><span class="cur" data-eur="20">€20</span></p>
+            </div>
+            <div class="xrow">
+              <p class="xrow-name">Pagine legali personalizzate</p>
+              <p class="xrow-what">Qualsiasi altra informativa richiesta dal tuo settore, dall'assicurazione o dalla banca.</p>
+              <p class="xrow-price">da <span class="cur" data-eur="30">€30</span></p>
+            </div>
+            <div class="xrow">
+              <p class="xrow-name">Sistema di backup del sito</p>
+              <p class="xrow-what">Copie che si fanno da sole, così una brutta giornata costa un'ora.</p>
+              <p class="xrow-price"><span class="cur" data-eur="30">€30</span></p>
+            </div>
+            <div class="xrow">
+              <p class="xrow-name">Configurazione sicurezza</p>
+              <p class="xrow-what">Gli header e i permessi che tengono il sito tuo.</p>
+              <p class="xrow-price"><span class="cur" data-eur="40">€40</span></p>
+            </div>
+            <div class="xrow">
+              <p class="xrow-name">Protezione antispam</p>
+              <p class="xrow-what">La spazzatura si ferma prima di arrivare a te.</p>
+              <p class="xrow-price"><span class="cur" data-eur="20">€20</span></p>
+            </div>
+            <div class="xrow">
+              <p class="xrow-name">Protezione antispam del modulo contatti</p>
+              <p class="xrow-what">I bot restano fuori dal modulo, senza enigmi per le persone.</p>
+              <p class="xrow-price"><span class="cur" data-eur="15">€15</span></p>
+            </div>
+            <div class="xrow">
+              <p class="xrow-name">Verifica link rotti</p>
+              <p class="xrow-what">Ogni link testato, e quelli morti sistemati.</p>
+              <p class="xrow-price"><span class="cur" data-eur="15">€15</span></p>
+            </div>
         </div>
 
         <div id="automation" class="scroll-mt-32" data-ex-group="automation">
@@ -514,66 +466,56 @@
             <p class="eyebrow text-ink-soft">Automazione</p>
             <span class="ml-auto text-[0.75rem] text-ink-soft">una tantum</span>
           </div>
-            <label class="pick">
-              <input type="checkbox" class="pick-cb" data-pick="automatic-email-notifications" data-price="25" data-kind="once">
-              <span class="pick-box" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3.4 8.4l3 3 6.2-6.6"/></svg></span>
-              <span class="pick-name">Notifiche email automatiche</span>
-              <span class="pick-price"><span class="cur" data-eur="25">€25</span></span>
-            </label>
-            <label class="pick">
-              <input type="checkbox" class="pick-cb" data-pick="booking-confirmation-emails" data-price="35" data-kind="once">
-              <span class="pick-box" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3.4 8.4l3 3 6.2-6.6"/></svg></span>
-              <span class="pick-name">Email di conferma prenotazione</span>
-              <span class="pick-price"><span class="cur" data-eur="35">€35</span></span>
-            </label>
-            <label class="pick">
-              <input type="checkbox" class="pick-cb" data-pick="contact-form-email-notifications" data-price="15" data-kind="once">
-              <span class="pick-box" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3.4 8.4l3 3 6.2-6.6"/></svg></span>
-              <span class="pick-name">Notifiche email dal modulo contatti</span>
-              <span class="pick-price"><span class="cur" data-eur="15">€15</span></span>
-            </label>
-            <label class="pick">
-              <input type="checkbox" class="pick-cb" data-pick="quote-request-notifications" data-price="20" data-kind="once">
-              <span class="pick-box" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3.4 8.4l3 3 6.2-6.6"/></svg></span>
-              <span class="pick-name">Notifiche richieste di preventivo</span>
-              <span class="pick-price"><span class="cur" data-eur="20">€20</span></span>
-            </label>
-            <label class="pick">
-              <input type="checkbox" class="pick-cb" data-pick="automated-customer-responses" data-price="40" data-kind="once">
-              <span class="pick-box" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3.4 8.4l3 3 6.2-6.6"/></svg></span>
-              <span class="pick-name">Risposte automatiche ai clienti</span>
-              <span class="pick-price"><span class="cur" data-eur="40">€40</span></span>
-            </label>
-            <label class="pick">
-              <input type="checkbox" class="pick-cb" data-pick="appointment-reminder-emails" data-price="50" data-kind="once">
-              <span class="pick-box" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3.4 8.4l3 3 6.2-6.6"/></svg></span>
-              <span class="pick-name">Email promemoria appuntamenti</span>
-              <span class="pick-price"><span class="cur" data-eur="50">€50</span></span>
-            </label>
-            <label class="pick">
-              <input type="checkbox" class="pick-cb" data-pick="email-autoresponder-setup" data-price="35" data-kind="once">
-              <span class="pick-box" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3.4 8.4l3 3 6.2-6.6"/></svg></span>
-              <span class="pick-name">Configurazione autoresponder email</span>
-              <span class="pick-price"><span class="cur" data-eur="35">€35</span></span>
-            </label>
-            <label class="pick">
-              <input type="checkbox" class="pick-cb" data-pick="lead-notification-system" data-price="40" data-kind="once">
-              <span class="pick-box" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3.4 8.4l3 3 6.2-6.6"/></svg></span>
-              <span class="pick-name">Sistema notifica contatti</span>
-              <span class="pick-price"><span class="cur" data-eur="40">€40</span></span>
-            </label>
-            <label class="pick">
-              <input type="checkbox" class="pick-cb" data-pick="customer-inquiry-tracking" data-price="40" data-kind="once">
-              <span class="pick-box" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3.4 8.4l3 3 6.2-6.6"/></svg></span>
-              <span class="pick-name">Tracciamento richieste dei clienti</span>
-              <span class="pick-price"><span class="cur" data-eur="40">€40</span></span>
-            </label>
-            <label class="pick">
-              <input type="checkbox" class="pick-cb" data-pick="simple-crm-integration" data-price="75" data-kind="once">
-              <span class="pick-box" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3.4 8.4l3 3 6.2-6.6"/></svg></span>
-              <span class="pick-name">Integrazione CRM semplice</span>
-              <span class="pick-price">da <span class="cur" data-eur="75">€75</span></span>
-            </label>
+            <div class="xrow">
+              <p class="xrow-name">Notifiche email automatiche</p>
+              <p class="xrow-what">Il sito ti manda un'email nel momento in cui succede qualcosa.</p>
+              <p class="xrow-price"><span class="cur" data-eur="25">€25</span></p>
+            </div>
+            <div class="xrow">
+              <p class="xrow-name">Email di conferma prenotazione</p>
+              <p class="xrow-what">Il cliente riceve la conferma senza che tu la scriva.</p>
+              <p class="xrow-price"><span class="cur" data-eur="35">€35</span></p>
+            </div>
+            <div class="xrow">
+              <p class="xrow-name">Notifiche email dal modulo contatti</p>
+              <p class="xrow-what">Ogni messaggio inoltrato all'indirizzo che preferisci.</p>
+              <p class="xrow-price"><span class="cur" data-eur="15">€15</span></p>
+            </div>
+            <div class="xrow">
+              <p class="xrow-name">Notifiche richieste di preventivo</p>
+              <p class="xrow-what">Le richieste di preventivo arrivano segnate come tali, non sepolte nel resto.</p>
+              <p class="xrow-price"><span class="cur" data-eur="20">€20</span></p>
+            </div>
+            <div class="xrow">
+              <p class="xrow-name">Risposte automatiche ai clienti</p>
+              <p class="xrow-what">Una risposta immediata che dice che è arrivata e quando risponderai.</p>
+              <p class="xrow-price"><span class="cur" data-eur="40">€40</span></p>
+            </div>
+            <div class="xrow">
+              <p class="xrow-name">Email promemoria appuntamenti</p>
+              <p class="xrow-what">Un promemoria prima dell'appuntamento, così se ne dimenticano in meno.</p>
+              <p class="xrow-price"><span class="cur" data-eur="50">€50</span></p>
+            </div>
+            <div class="xrow">
+              <p class="xrow-name">Configurazione autoresponder email</p>
+              <p class="xrow-what">Fuori orario, via, o semplicemente occupato — risponde per te.</p>
+              <p class="xrow-price"><span class="cur" data-eur="35">€35</span></p>
+            </div>
+            <div class="xrow">
+              <p class="xrow-name">Sistema notifica contatti</p>
+              <p class="xrow-what">Le nuove richieste arrivano a te e a chiunque altro serva.</p>
+              <p class="xrow-price"><span class="cur" data-eur="40">€40</span></p>
+            </div>
+            <div class="xrow">
+              <p class="xrow-name">Tracciamento richieste dei clienti</p>
+              <p class="xrow-what">Un registro di chi ha chiesto cosa, e se qualcuno ha risposto.</p>
+              <p class="xrow-price"><span class="cur" data-eur="40">€40</span></p>
+            </div>
+            <div class="xrow">
+              <p class="xrow-name">Integrazione CRM semplice</p>
+              <p class="xrow-what">Le richieste finiscono dritte nel sistema che usi già.</p>
+              <p class="xrow-price">da <span class="cur" data-eur="75">€75</span></p>
+            </div>
         </div>
 
         <div id="brand" class="scroll-mt-32" data-ex-group="brand">
@@ -581,72 +523,61 @@
             <p class="eyebrow text-ink-soft">Brand e design</p>
             <span class="ml-auto text-[0.75rem] text-ink-soft">una tantum</span>
           </div>
-            <label class="pick">
-              <input type="checkbox" class="pick-cb" data-pick="logo-design" data-price="49.99" data-kind="once">
-              <span class="pick-box" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3.4 8.4l3 3 6.2-6.6"/></svg></span>
-              <span class="pick-name">Design Logo</span>
-              <span class="pick-price"><span class="cur" data-eur="49.99">€49.99</span></span>
-            </label>
-            <label class="pick">
-              <input type="checkbox" class="pick-cb" data-pick="brand-kit" data-price="79.99" data-kind="once">
-              <span class="pick-box" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3.4 8.4l3 3 6.2-6.6"/></svg></span>
-              <span class="pick-name">Kit Brand</span>
-              <span class="pick-price"><span class="cur" data-eur="79.99">€79.99</span></span>
-            </label>
-            <label class="pick">
-              <input type="checkbox" class="pick-cb" data-pick="business-card-design" data-price="29.99" data-kind="once">
-              <span class="pick-box" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3.4 8.4l3 3 6.2-6.6"/></svg></span>
-              <span class="pick-name">Design biglietti da visita</span>
-              <span class="pick-price"><span class="cur" data-eur="29.99">€29.99</span></span>
-            </label>
-            <label class="pick">
-              <input type="checkbox" class="pick-cb" data-pick="flyer-poster-design" data-price="39.99" data-kind="once">
-              <span class="pick-box" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3.4 8.4l3 3 6.2-6.6"/></svg></span>
-              <span class="pick-name">Design Volantino / Poster</span>
-              <span class="pick-price"><span class="cur" data-eur="39.99">€39.99</span></span>
-            </label>
-            <label class="pick">
-              <input type="checkbox" class="pick-cb" data-pick="menu-design" data-price="39.99" data-kind="once">
-              <span class="pick-box" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3.4 8.4l3 3 6.2-6.6"/></svg></span>
-              <span class="pick-name">Design Menu</span>
-              <span class="pick-price"><span class="cur" data-eur="39.99">€39.99</span></span>
-            </label>
-            <label class="pick">
-              <input type="checkbox" class="pick-cb" data-pick="social-media-starter-pack" data-price="59.99" data-kind="once">
-              <span class="pick-box" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3.4 8.4l3 3 6.2-6.6"/></svg></span>
-              <span class="pick-name">Kit di partenza per social media</span>
-              <span class="pick-price"><span class="cur" data-eur="59.99">€59.99</span></span>
-            </label>
-            <label class="pick">
-              <input type="checkbox" class="pick-cb" data-pick="promo-video-short-ad" data-price="49.99" data-kind="once">
-              <span class="pick-box" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3.4 8.4l3 3 6.2-6.6"/></svg></span>
-              <span class="pick-name">Video promozionale / breve spot</span>
-              <span class="pick-price">da <span class="cur" data-eur="49.99">€49.99</span></span>
-            </label>
-            <label class="pick">
-              <input type="checkbox" class="pick-cb" data-pick="ai-business-photos" data-price="30" data-kind="once">
-              <span class="pick-box" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3.4 8.4l3 3 6.2-6.6"/></svg></span>
-              <span class="pick-name">Foto aziendali con IA</span>
-              <span class="pick-price">da <span class="cur" data-eur="30">€30</span></span>
-            </label>
-            <label class="pick">
-              <input type="checkbox" class="pick-cb" data-pick="google-review-qr-card" data-price="19.99" data-kind="once">
-              <span class="pick-box" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3.4 8.4l3 3 6.2-6.6"/></svg></span>
-              <span class="pick-name">Tessera QR per Recensioni Google</span>
-              <span class="pick-price"><span class="cur" data-eur="19.99">€19.99</span></span>
-            </label>
-            <label class="pick">
-              <input type="checkbox" class="pick-cb" data-pick="whatsapp-business-setup" data-price="39.99" data-kind="once">
-              <span class="pick-box" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3.4 8.4l3 3 6.2-6.6"/></svg></span>
-              <span class="pick-name">Configurazione WhatsApp Business</span>
-              <span class="pick-price"><span class="cur" data-eur="39.99">€39.99</span></span>
-            </label>
-            <label class="pick">
-              <input type="checkbox" class="pick-cb" data-pick="business-document-templates" data-price="29.99" data-kind="once">
-              <span class="pick-box" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3.4 8.4l3 3 6.2-6.6"/></svg></span>
-              <span class="pick-name">Modelli di documenti aziendali</span>
-              <span class="pick-price"><span class="cur" data-eur="29.99">€29.99</span></span>
-            </label>
+            <div class="xrow">
+              <p class="xrow-name">Design Logo</p>
+              <p class="xrow-what">Un logo disegnato per la tua attività, in ogni formato di cui avrai bisogno.</p>
+              <p class="xrow-price"><span class="cur" data-eur="49.99">€49.99</span></p>
+            </div>
+            <div class="xrow">
+              <p class="xrow-name">Kit Brand</p>
+              <p class="xrow-what">Logo, colori, caratteri e le regole per usarli.</p>
+              <p class="xrow-price"><span class="cur" data-eur="79.99">€79.99</span></p>
+            </div>
+            <div class="xrow">
+              <p class="xrow-name">Design biglietti da visita</p>
+              <p class="xrow-what">Biglietti impaginati e pronti per la stampa.</p>
+              <p class="xrow-price"><span class="cur" data-eur="29.99">€29.99</span></p>
+            </div>
+            <div class="xrow">
+              <p class="xrow-name">Design Volantino / Poster</p>
+              <p class="xrow-what">Un volantino o un poster, pensati per la stampa e per il web.</p>
+              <p class="xrow-price"><span class="cur" data-eur="39.99">€39.99</span></p>
+            </div>
+            <div class="xrow">
+              <p class="xrow-name">Design Menu</p>
+              <p class="xrow-what">Il tuo menu impaginato come si deve, per il muro, il tavolo o il sito.</p>
+              <p class="xrow-price"><span class="cur" data-eur="39.99">€39.99</span></p>
+            </div>
+            <div class="xrow">
+              <p class="xrow-name">Kit di partenza per social media</p>
+              <p class="xrow-what">Immagini profilo, copertine e modelli di post in linea con il sito.</p>
+              <p class="xrow-price"><span class="cur" data-eur="59.99">€59.99</span></p>
+            </div>
+            <div class="xrow">
+              <p class="xrow-name">Video promozionale / breve spot</p>
+              <p class="xrow-what">Un video breve per i social o per l'inizio della pagina.</p>
+              <p class="xrow-price">da <span class="cur" data-eur="49.99">€49.99</span></p>
+            </div>
+            <div class="xrow">
+              <p class="xrow-name">Foto aziendali con IA</p>
+              <p class="xrow-what">Immagini create per la tua attività dove non hai fotografie.</p>
+              <p class="xrow-price">da <span class="cur" data-eur="30">€30</span></p>
+            </div>
+            <div class="xrow">
+              <p class="xrow-name">Tessera QR per Recensioni Google</p>
+              <p class="xrow-what">Una card che i clienti scansionano e finiscono sulla tua pagina delle recensioni.</p>
+              <p class="xrow-price"><span class="cur" data-eur="19.99">€19.99</span></p>
+            </div>
+            <div class="xrow">
+              <p class="xrow-name">Configurazione WhatsApp Business</p>
+              <p class="xrow-what">WhatsApp Business configurato, con il pulsante sul tuo sito.</p>
+              <p class="xrow-price"><span class="cur" data-eur="39.99">€39.99</span></p>
+            </div>
+            <div class="xrow">
+              <p class="xrow-name">Modelli di documenti aziendali</p>
+              <p class="xrow-what">Fatture, preventivi e lettere, con il tuo marchio.</p>
+              <p class="xrow-price"><span class="cur" data-eur="29.99">€29.99</span></p>
+            </div>
             <div class="pick pick--soon">
               <span class="pick-name text-ink-mid">Receptionist IA</span>
               <span class="pick-price"><span class="tag tag-soon">In arrivo</span></span>
@@ -660,101 +591,9 @@
 
             <!-- The running total. Nothing here navigates and nothing
                  reloads: ticking a box only adds a number. -->
-            <div class="pick-total" data-pick-total hidden>
-              <div class="pick-total-head">
-                <p class="text-sm font-semibold text-ink"><span data-pick-count>0</span> selezionati</p>
-                <button type="button" class="pick-clear" data-pick-clear>Azzera</button>
-              </div>
-              <dl class="mt-4 grid grid-cols-1 gap-2.5">
-                <div class="rate"><dt>Una tantum</dt><dd data-pick-once><span class="cur" data-eur="0">€0</span></dd></div>
-              </dl>
-              <p class="mt-3 text-[0.8125rem] leading-relaxed text-ink-soft" data-pick-from hidden>
-                Alcune voci partono "da" una cifra. Quelle vengono confermate per iscritto prima di qualsiasi addebito.
-              </p>
-              <p class="mt-4 text-[0.8125rem] leading-relaxed text-ink-soft">
-                Solo gli extra. Il prezzo del sito in sé si aggiunge a questo.
-              </p>
-              <a href="#request" class="pick-send">Invia insieme alla mia richiesta</a>
-            </div>
-
         </div>
 
       </div>
-
-      <!-- The request. Everything ticked above is written into the message
-           as you go, so what is sent is exactly what is on screen. -->
-      <section id="request" class="rq-page-wrap scroll-mt-28">
-        <div class="rq-page">
-          <div class="rq-page-head">
-            <p class="eyebrow text-accent">Invialo</p>
-            <h2 class="h-section sec-title mt-3">Trasforma tutto questo in una richiesta.</h2>
-            <p class="mt-4 max-w-prose text-[0.9375rem] leading-relaxed text-ink-mid">
-              Quello che hai spuntato finisce nel messaggio, con il totale. Aggiungi la tua email e due parole sull'attività e ci arriva tutto insieme. Non viene addebitato nulla e non si crea alcun account.
-            </p>
-          </div>
-
-          <form class="rq-form" id="exq" novalidate>
-            <div class="rq-form-grid">
-              <label class="rq-f">
-                <span class="rq-f-l">La tua email <em>obbligatorio</em></span>
-                <input class="rq-f-i" type="email" name="email" inputmode="email" autocomplete="email" maxlength="200" required>
-                <span class="rq-f-h">L'unica cosa di cui abbiamo davvero bisogno. Rispondiamo qui e da nessun'altra parte.</span>
-              </label>
-
-              <label class="rq-f">
-                <span class="rq-f-l">Il tuo nome <em>obbligatorio</em></span>
-                <input class="rq-f-i" type="text" name="name" autocomplete="name" maxlength="120" required>
-              </label>
-
-              <label class="rq-f">
-                <span class="rq-f-l">Nome dell'attività o del progetto</span>
-                <input class="rq-f-i" type="text" name="business" maxlength="160" placeholder="Come si chiama?">
-              </label>
-
-              <label class="rq-f">
-                <span class="rq-f-l">Che tipo di sito?</span>
-                <input class="rq-f-i" type="text" name="kind" maxlength="120" placeholder="Sito aziendale, negozio, portfolio…">
-              </label>
-
-              <label class="rq-f rq-f--wide">
-                <span class="rq-f-l">Link alle tue foto e al logo</span>
-                <input class="rq-f-i" type="url" name="photos" inputmode="url" maxlength="400" placeholder="Un link Drive, Dropbox o WeTransfer — oppure il tuo Instagram">
-                <span class="rq-f-h">Facoltativo. Se sono sul telefono, mandale via email dopo la nostra risposta.</span>
-              </label>
-
-              <label class="rq-f rq-f--wide">
-                <span class="rq-f-l">Dicci di cosa hai bisogno</span>
-                <textarea class="rq-f-i rq-f-t" name="brief" rows="5" maxlength="4000" placeholder="What the business does, who it is for, and anything the website has to achieve."></textarea>
-              </label>
-            </div>
-
-            <input class="rq-trap" type="text" name="company" tabindex="-1" autocomplete="off" aria-hidden="true">
-
-            <div class="rq-form-side">
-              <p class="rq-side-l">Cosa viene inviato</p>
-              <div class="rq-side-box" data-exq-preview aria-live="polite"></div>
-              <p class="rq-side-note">
-                Questo testo nasce dalle tue scelte e cambia mentre spunti. È esattamente ciò che ci arriva.
-              </p>
-            </div>
-
-            <p class="rq-form-error" data-exq-error role="alert"></p>
-
-            <div class="rq-form-foot">
-              <button type="submit" class="btn btn-primary rq-form-send">Invia la mia richiesta</button>
-              <p class="rq-form-note">
-                Le leggiamo tutte e rispondiamo, di solito nella stessa giornata lavorativa. Inviare non costa nulla.
-              </p>
-            </div>
-          </form>
-
-          <div class="rq-sent" data-exq-done hidden>
-            <p class="rq-sent-h">Richiesta inviata.</p>
-            <p class="rq-sent-p" data-exq-done-text>Grazie. Ti risponderemo via email.</p>
-            <a class="rq-sent-a" href="/it/prezzi">Intanto guarda i pacchetti</a>
-          </div>
-        </div>
-      </section>
 
       <div class="mt-14 grid grid-cols-1 gap-8 border-t border-line pt-8 lg:grid-cols-12 lg:gap-14">
         <div class="lg:col-span-7">
@@ -770,23 +609,11 @@
           </p>
         </div>
         <div class="lg:col-span-4 lg:col-start-9">
-          <a href="/it/servizi" class="inline-flex items-center justify-center rounded-md bg-accent px-6 py-3.5 text-sm font-semibold text-white hover:bg-accent-hi">Crea un account</a>
+          <a href="/it/servizi" class="inline-flex items-center justify-center rounded-md bg-accent px-6 py-3.5 text-sm font-semibold text-white hover:bg-accent-hi">Componi il tuo pacchetto</a>
         </div>
       </div>
     </div>
   </section>
-
-  <!-- The running total on a phone. The panel above is the same number;
-       this is the copy you can see while your thumb is still ticking. -->
-  <div class="ex-dock" data-ex-dock aria-live="polite">
-    <div class="ex-dock-in">
-      <p class="ex-dock-sum">
-        <b data-ex-dock-once><span class="cur" data-eur="0">€0</span></b>
-        <span><span data-ex-dock-count>0</span> selezionati</span>
-      </p>
-      <a href="#request" class="ex-dock-cta">Invia con la richiesta</a>
-    </div>
-  </div>
 </main>
 
 <div data-site-footer>
@@ -802,8 +629,6 @@
   </nav>
 </div>
 
-<script src="/assets/picker.js?v=5" defer></script>
-<script src="/assets/exq.js?v=2" defer></script>
 <script src="/assets/footer.js?v=7"></script>
 <script src="/assets/cookies.js?v=2"></script>
 <script src="/assets/mobile.js?v=5"></script>
