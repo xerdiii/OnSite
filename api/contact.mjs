@@ -29,9 +29,11 @@
    that nothing was delivered, rather than pretending it was.
    ─────────────────────────────────────────────────────────────── */
 
-// Where messages go when NOTIFY_EMAIL is not set. Overridable, so
-// production can point somewhere else without touching this file.
-const DEFAULT_TO = 'erdiiithaci@gmail.com';
+// Where messages go when NOTIFY_EMAIL is not set. The business mailbox,
+// which carries info@, support@ and the other aliases, so every request
+// lands in the same inbox the addresses on the site point at.
+// Overridable, so production can point elsewhere without touching this.
+const DEFAULT_TO = 'hello@xovahweb.com';
 
 const esc = (v) => String(v == null ? '' : v)
   .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
