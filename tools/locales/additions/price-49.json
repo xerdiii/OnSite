@@ -1,0 +1,15 @@
+{
+  "_comment": "The hero line carries the entry price in its text, so the price change made a new string of it.",
+
+  "From €49 once — hosting and domain included.": {
+    "sq": "Nga 49 € një herë — hostingu dhe domeni përfshihen.",
+    "de": "Ab 49 € einmalig — Hosting und Domain inklusive.",
+    "fr": "À partir de 49 € une seule fois — hébergement et domaine inclus.",
+    "it": "Da 49 € una tantum — hosting e dominio inclusi.",
+    "es": "Desde 49 € una sola vez — alojamiento y dominio incluidos.",
+    "pt": "Desde 49 € uma única vez — alojamento e domínio incluídos.",
+    "nl": "Vanaf € 49 eenmalig — hosting en domein inbegrepen.",
+    "sv": "Från 49 € en gång — webbhotell och domän ingår.",
+    "tr": "Tek seferlik 49 €'dan — hosting ve alan adı dahil."
+  }
+}

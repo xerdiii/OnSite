@@ -451,6 +451,7 @@
   'From the': 'Nga',
   'From the businesses, not from us.': 'Nga bizneset, jo nga ne.',
   'From the day your content arrives.': 'Nga dita kur mbërrin përmbajtja juaj.',
+  'From €49 once — hosting and domain included.': 'Nga 49 € një herë — hostingu dhe domeni përfshihen.',
   'From €50 once — hosting and domain included.': 'Nga 50 € një herë të vetme — hostingu dhe domeni përfshihen.',
   'Full Website': 'Faqe e Plotë',
   'Full Website (': 'Faqja e Plotë (',

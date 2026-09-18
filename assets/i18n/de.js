@@ -451,6 +451,7 @@
   'From the': 'Aus der',
   'From the businesses, not from us.': 'Von den Unternehmen, nicht von uns.',
   'From the day your content arrives.': 'Ab dem Tag, an dem Ihre Inhalte eintreffen.',
+  'From €49 once — hosting and domain included.': 'Ab 49 € einmalig — Hosting und Domain inklusive.',
   'From €50 once — hosting and domain included.': 'Ab 50 € einmalig — Hosting und Domain inklusive.',
   'Full Website': 'Komplette Website',
   'Full Website (': 'Komplette Website (',

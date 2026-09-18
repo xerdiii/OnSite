@@ -451,6 +451,7 @@
   'From the': 'Van de',
   'From the businesses, not from us.': 'Van de bedrijven, niet van ons.',
   'From the day your content arrives.': 'Vanaf de dag dat je content binnenkomt.',
+  'From €49 once — hosting and domain included.': 'Vanaf € 49 eenmalig — hosting en domein inbegrepen.',
   'From €50 once — hosting and domain included.': 'Vanaf € 50 eenmalig — hosting en domein inbegrepen.',
   'Full Website': 'Volledige website',
   'Full Website (': 'Volledige Website (',

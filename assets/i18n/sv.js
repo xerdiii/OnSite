@@ -451,6 +451,7 @@
   'From the': 'Från',
   'From the businesses, not from us.': 'Från företagen, inte från oss.',
   'From the day your content arrives.': 'Från den dag ditt innehåll kommer in.',
+  'From €49 once — hosting and domain included.': 'Från 49 € en gång — webbhotell och domän ingår.',
   'From €50 once — hosting and domain included.': 'Från 50 € en gång — webbhotell och domän ingår.',
   'Full Website': 'Komplett webbplats',
   'Full Website (': 'Hela webbplatsen (',

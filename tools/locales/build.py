@@ -45,9 +45,11 @@ UNTRANSLATABLE = set(
     if l.strip())
 
 PACKAGES = [
-    ('Custom Website', '50', 'A single-page site with up to 20 sections from our 34.'),
-    ('Full Website', '200', 'All 34 sections, plus search, analytics and the legal setup.'),
-    ('Complete Package', '500', 'Branding, local SEO, three years of hosting and maintenance.'),
+    ('Custom Website', '49', 'A single-page site with up to 20 sections from our 34.'),
+    ('Website Redesign', '100', 'An existing site rebuilt, keeping the text and photographs.'),
+    ('Full Website', '199', 'All 34 sections, plus search, analytics and the legal setup.'),
+    ('Complete Package', '499', 'Branding, local SEO, three years of hosting and maintenance.'),
+    ('Business Premium', '1049', 'The complete build with business email, automation and brand work.'),
 ]
 
 READ_JS = ('global.window={};eval(require("fs").readFileSync(process.argv[1],"utf8"));'

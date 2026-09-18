@@ -451,6 +451,7 @@
   'From the': 'Şundan:',
   'From the businesses, not from us.': 'Bizden değil, işletmelerden.',
   'From the day your content arrives.': 'İçerikleriniz ulaştığı günden itibaren.',
+  'From €49 once — hosting and domain included.': 'Tek seferlik 49 €\'dan — hosting ve alan adı dahil.',
   'From €50 once — hosting and domain included.': 'Tek seferlik 50 €\'dan başlıyor — hosting ve alan adı dahil.',
   'Full Website': 'Tam Site',
   'Full Website (': 'Tam Web Sitesi (',
