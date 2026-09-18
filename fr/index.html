@@ -286,7 +286,7 @@
 <link rel="stylesheet" href="/assets/tailwind.css?v=2">
 <link rel="stylesheet" href="/assets/theme.css?v=6">
 <link rel="stylesheet" href="/assets/hero.css?v=10">
-<link rel="stylesheet" href="/assets/pricing.css?v=10">
+<link rel="stylesheet" href="/assets/pricing.css?v=11">
 <link rel="stylesheet" href="/assets/devices.css?v=5">
 <link rel="stylesheet" href="/assets/gutters.css?v=2">
 <link rel="stylesheet" href="/assets/edge.css?v=4">
@@ -531,13 +531,29 @@
        fits. Two small cards carry both; the detail is one click away. -->
   <section id="pricing" class="scroll-mt-16 border-b border-line bg-surface">
     <div class="mx-auto max-w-shell px-6 py-16 md:px-10 md:py-24">
-      <p class="eyebrow text-ink-soft" data-rise>Sites web</p>
-      <h2 class="h-section sec-title mt-4 max-w-2xl" data-rise>Deux façons de commencer.</h2>
-      <p class="mt-5 max-w-prose text-[0.9375rem] leading-relaxed text-ink-mid">
-        Six formules affichent un prix, et tout le reste se convient avec vous. Dans les deux cas, c'est payé une seule fois, jamais au mois, et chaque site arrive avec le domaine, l'hébergement et le cadenas.
-      </p>
+      <div class="pr-band">
 
-      <div class="pr-two mt-9">
+        <div class="pr-band-say">
+          <p class="eyebrow text-ink-soft" data-rise>Sites web</p>
+          <h2 class="h-section sec-title mt-4" data-rise>Deux façons de commencer.</h2>
+          <p class="mt-5 max-w-prose text-[0.9375rem] leading-relaxed text-ink-mid">
+            Six formules affichent un prix, et tout le reste se convient avec vous. Dans les deux cas, c'est payé une seule fois, jamais au mois, et chaque site arrive avec le domaine, l'hébergement et le cadenas.
+          </p>
+
+          <!-- The six, by name and figure. A phone gets the two cards and
+               nothing else; a desktop has the room, and a range with no
+               names under it is a number nobody can check. -->
+          <ul class="pr-mini">
+            <li><a href="/fr/tarifs"><span class="pr-mini-n">Site sur mesure</span><span class="pr-mini-p"><span class="cur" data-eur="49">&euro;49</span></span></a></li>
+            <li><a href="/fr/tarifs"><span class="pr-mini-n">Refonte de site</span><span class="pr-mini-p"><span class="cur" data-eur="100">&euro;100</span></span></a></li>
+            <li><a href="/fr/tarifs"><span class="pr-mini-n">Site complet</span><span class="pr-mini-p"><span class="cur" data-eur="199">&euro;199</span></span></a></li>
+            <li><a href="/fr/tarifs"><span class="pr-mini-n">Formule intégrale</span><span class="pr-mini-p"><span class="cur" data-eur="499">&euro;499</span></span></a></li>
+            <li><a href="/fr/tarifs"><span class="pr-mini-n">Business Premium</span><span class="pr-mini-p"><span class="cur" data-eur="1049">&euro;1,049</span></span></a></li>
+            <li><a href="/fr/contact"><span class="pr-mini-n">Parler à une personne</span><span class="pr-mini-p pr-mini-p--word">Sur devis</span></a></li>
+          </ul>
+        </div>
+
+      <div class="pr-two">
         <a class="pr-two-card" href="/fr/tarifs">
           <p class="pr-two-l">Formules</p>
           <p class="pr-two-fig">
@@ -557,6 +573,8 @@
           </p>
           <span class="pr-two-go">Parler à une personne <span class="arrow">&rarr;</span></span>
         </a>
+      </div>
+
       </div>
     </div>
   </section>
@@ -957,7 +975,7 @@ window.addEventListener('load', function () {
   if ('requestIdleCallback' in window) requestIdleCallback(go, { timeout: 1500 }); else setTimeout(go, 200);
 });
 </script>
-<script src="/assets/demo.js?v=4"></script>
+<script src="/assets/demo.js?v=5"></script>
 <script src="/assets/ratings.js?v=2" defer></script>
 <script src="/assets/cinema.js?v=2" defer></script>
 <script src="/assets/picker.js?v=3" defer></script>

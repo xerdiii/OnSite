@@ -39,7 +39,7 @@
 <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400&family=Instrument+Serif&family=Inter:wght@400;500;600;700&family=Outfit:wght@200..800&display=swap"></noscript>
 <script>/* Theme before paint. Dark is the site, light is a choice you make — the attribute is always stamped so the system setting never decides for you. */(function(){var t='dark';try{t=localStorage.getItem('sitehouse.theme')==='light'?'light':'dark';}catch(e){}document.documentElement.setAttribute('data-theme',t);})();</script>
 <link rel="stylesheet" href="assets/xovah.css?v=3">
-<link rel="stylesheet" href="assets/build.css?v=3">
+<link rel="stylesheet" href="assets/build.css?v=5">
 <link rel="stylesheet" href="assets/project.css?v=3">
 <link rel="stylesheet" href="assets/mobile.css?v=7">
 <link rel="stylesheet" href="assets/tailwind.css?v=2">
@@ -86,16 +86,19 @@
         No account, no payment, nothing charged &mdash; this is a request, not a checkout.
       </div>
 
-      <!-- Where you are, in four marks. Filled in by project.js. -->
+      <!-- Where you are, in three marks. Filled in by project.js. -->
       <ol class="pj-rail" data-reveal>
-        <li data-pj-step>Choose</li>
-        <li data-pj-step>Customise</li>
-        <li data-pj-step>Describe</li>
-        <li data-pj-step>Send</li>
+        <li data-pj-step>Package</li>
+        <li data-pj-step>Extras</li>
+        <li data-pj-step>Message</li>
       </ol>
     </header>
 
-    <!-- ══ The builder ═══════════════════════════════════════════ -->
+    <!-- ══ The builder ═══════════════════════════════════════════
+         Three decisions on the left, and on the right the letter they
+         write. The letter is not a summary of the choices - it is the
+         message itself, the one that lands in our inbox, updating as
+         the choices change. Nothing is sent that is not shown here. -->
     <div data-pj-form>
       <div class="bd-grid">
 
@@ -105,11 +108,11 @@
           <section class="bd-step" data-pj-step-packages>
             <div class="bd-step-head">
               <span class="bd-step-n">1</span>
-              <h2>Choose your package</h2>
+              <h2>Pick your package</h2>
             </div>
             <p class="pj-hint" style="margin-bottom:1.25rem">
               Every one is paid once and includes the domain, the hosting and the padlock.
-              You can change your mind before anything is agreed.
+              Nothing is charged here and you can change it until we agree.
             </p>
 
             <div class="bd-tiers" data-pj-tiers data-reveal>
@@ -117,16 +120,26 @@
                    price only ever lives in one place. -->
             </div>
 
+            <!-- What the chosen package already contains. Shown the moment
+                 one is picked, because the commonest way to overpay here is
+                 to tick an extra the package already includes. -->
+            <div class="bd-inc" data-pj-included hidden>
+              <p class="bd-inc-h">Already in <b data-pj-inc-name></b> &mdash; you do not need to add these</p>
+              <ul class="bd-inc-list" data-pj-inc-list></ul>
+            </div>
           </section>
 
           <!-- ── Step 2 ────────────────────────────────────────── -->
           <section class="bd-step">
             <div class="bd-step-head">
               <span class="bd-step-n">2</span>
-              <h2>Choose your extras</h2>
+              <h2>Add anything else you want</h2>
             </div>
             <p class="pj-hint" style="margin-bottom:1.25rem">
-              Optional, every one of them, and each priced on its own. The total updates as you tick.
+              These are on top of the package, each priced on its own, and all of them optional.
+              What every one of them does is explained on the
+              <a href="extras.html" class="pj-link">extras page</a>. The total on the right follows
+              as you tick.
             </p>
 
             <div data-pj-extras data-reveal>
@@ -138,18 +151,18 @@
           <section class="bd-step">
             <div class="bd-step-head">
               <span class="bd-step-n">3</span>
-              <h2>Tell us what you need</h2>
+              <h2>Write the message</h2>
             </div>
+            <p class="pj-hint" style="margin-bottom:1.25rem">
+              This is the part of the email that is yours. Everything else in it &mdash; the package,
+              the extras, the total &mdash; is written for you from what you picked above.
+            </p>
 
             <div class="pj-field" style="margin-top:0">
-              <label for="pj-brief">Describe your project</label>
+              <label for="pj-brief">What do you need built?</label>
               <textarea id="pj-brief" class="pj-ta pj-ta--tall"
-                        placeholder="Describe your website, what you want it to look like, features you need, references you like, and anything else we should know..."></textarea>
+                        placeholder="What the business does, who it is for, and what the website has to achieve. Anything you already know: pages you want, a site you like the look of, a date you need it by."></textarea>
               <span class="pj-count" data-pj-brief-count></span>
-              <p class="pj-hint">
-                The more you write here, the closer the first version lands. What the business does,
-                who it is for, what the site has to achieve &mdash; all of it helps.
-              </p>
             </div>
 
             <div class="pj-field">
@@ -225,48 +238,42 @@
                 </div>
               </div>
             </details>
-          </section>
-
-          <!-- ── Step 4 ────────────────────────────────────────── -->
-          <section class="bd-step">
-            <div class="bd-step-head">
-              <span class="bd-step-n">4</span>
-              <h2>Review and send</h2>
-            </div>
-            <p class="pj-hint" style="margin-bottom:0">
-              This is written from your choices and updates as you change them. It is exactly what
-              reaches us &mdash; nothing else is sent.
-            </p>
-
-            <div class="pj-preview">
-              <div class="pj-preview-head">
-                <p>Your project request</p>
-                <button type="button" class="pj-copy" data-pj-copy>Copy</button>
-              </div>
-              <pre class="pj-preview-body" data-pj-preview></pre>
-            </div>
 
             <p class="pj-note" data-pj-note hidden></p>
 
-            <button type="button" class="bd-cta" style="margin-top:1.25rem" data-pj-send disabled>
-              Send Project Request
+            <button type="button" class="bd-cta" style="margin-top:1.5rem" data-pj-send disabled>
+              Send this email
             </button>
-
             <p class="pj-hint" style="margin-top:0.9rem">
               We read every one and reply to the address above, usually the same working day.
-              No payment is taken and nothing is committed by sending this.
+              No payment is taken and nothing is committed by sending it.
             </p>
           </section>
 
         </div>
 
-        <!-- ── Live summary ──────────────────────────────────────
-             Sticky rail from 1024px, and a bottom bar below that —
-             the total has to follow you on a phone and sit beside the
-             choices on a desktop. -->
+        <!-- ── The letter ────────────────────────────────────────
+             Sticky from 1024px, so the email is beside the choices the
+             whole way down rather than at the end of them. -->
         <aside>
           <div class="bd-sum" data-reveal>
-            <h2 class="bd-sum-total" style="margin:0">Your project</h2>
+            <h3>The email we will get</h3>
+
+            <div class="pj-mail">
+              <div class="pj-mail-row"><span>To</span><b>hello@xovahweb.com</b></div>
+              <div class="pj-mail-row"><span>From</span><b data-pj-mail-from>your email address</b></div>
+              <div class="pj-mail-row"><span>Subject</span><b data-pj-mail-subject>Project request</b></div>
+            </div>
+
+            <div class="pj-preview">
+              <div class="pj-preview-head">
+                <p>Message</p>
+                <button type="button" class="pj-copy" data-pj-copy>Copy</button>
+              </div>
+              <pre class="pj-preview-body" data-pj-preview></pre>
+            </div>
+
+            <div class="bd-sum-rule"></div>
 
             <p class="pj-sum-label">Package</p>
             <div class="pj-sum-pack" data-pj-sum-pack></div>
@@ -287,7 +294,7 @@
             </div>
 
             <button type="button" class="bd-cta" data-pj-send disabled>
-              Send Project Request
+              Send this email
             </button>
 
             <button type="button" class="bd-sum-clear" data-pj-clear hidden>
@@ -354,7 +361,7 @@
 <script src="assets/gutters.js?v=2" defer></script>
 <script src="assets/scramble.js?v=4" defer></script>
 <script src="assets/i18n.js?v=4"></script>
-<script src="assets/demo.js?v=4"></script>
-<script src="assets/project.js?v=3"></script>
+<script src="assets/demo.js?v=5"></script>
+<script src="assets/project.js?v=4"></script>
 </body>
 </html>

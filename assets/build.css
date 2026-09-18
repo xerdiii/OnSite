@@ -451,3 +451,73 @@
   .bd-group-body { transition: none; }
   .bd-bar { transition: none; }
 }
+
+/* ── What the chosen package already contains ────────────────────
+   Printed under the cards the moment one is picked. Without it the
+   extras below read as a second list of the same things, and the
+   commonest way to overpay here is to buy something twice. */
+.bd-inc {
+  margin-top: 1.25rem;
+  padding: 1.1rem 1.2rem 1.15rem;
+  border: 1px solid rgb(var(--c-line));
+  border-left: 2px solid rgb(var(--c-accent));
+  background: rgb(var(--c-surface));
+}
+.bd-inc-h {
+  font-size: 0.8125rem; line-height: 1.5;
+  color: rgb(var(--c-ink-mid));
+}
+.bd-inc-h b { color: rgb(var(--c-ink)); font-weight: 600; }
+
+.bd-inc-list {
+  margin-top: 0.75rem;
+  display: grid; gap: 0.4rem 1.5rem;
+}
+@media (min-width: 640px) { .bd-inc-list { grid-template-columns: 1fr 1fr; } }
+
+.bd-inc-list li {
+  display: flex; align-items: flex-start; gap: 0.5rem;
+  font-size: 0.8125rem; line-height: 1.45;
+  color: rgb(var(--c-ink-mid));
+}
+.bd-inc-list svg {
+  flex: none; width: 0.8rem; height: 0.8rem; margin-top: 0.22rem;
+  color: rgb(var(--c-accent));
+}
+
+/* ── The envelope over the message ───────────────────────────────
+   Three lines saying where this is going, who it is from and what it
+   will be called, so the panel on the right reads as an email rather
+   than as a receipt. */
+.pj-mail {
+  margin-top: 1.1rem;
+  display: grid; gap: 0.3rem;
+  padding-bottom: 0.9rem;
+  border-bottom: 1px solid rgb(var(--c-line));
+}
+.pj-mail-row {
+  display: flex; align-items: baseline; gap: 0.6rem;
+  font-size: 0.8125rem; line-height: 1.4;
+}
+.pj-mail-row > span {
+  flex: none; width: 3.6rem;
+  font-size: 0.6875rem; letter-spacing: 0.1em; text-transform: uppercase;
+  color: rgb(var(--c-ink-soft));
+}
+.pj-mail-row > b {
+  font-weight: 500; color: rgb(var(--c-ink));
+  overflow-wrap: anywhere;
+}
+.pj-mail-row > b.is-waiting { color: rgb(var(--c-ink-soft)); font-style: italic; }
+
+.pj-link { color: rgb(var(--c-accent)); text-decoration: underline; text-underline-offset: 2px; }
+
+/* The rail carries the whole email now, and an email with a long brief
+   in it is taller than the screen — a sticky panel taller than the
+   viewport can never show its own send button. The message scrolls
+   inside itself instead, and the list of extras with it. */
+@media (min-width: 1024px) {
+  .bd-sum { max-height: calc(100vh - 8rem); overflow-y: auto; }
+  .bd-sum .pj-preview-body { max-height: 30vh; }
+  .bd-sum .pj-sum-extras { max-height: 9rem; overflow-y: auto; }
+}

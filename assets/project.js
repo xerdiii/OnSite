@@ -185,6 +185,34 @@
     [].forEach.call(root.querySelectorAll('[data-pj-tier-card]'), function (card) {
       card.classList.toggle('is-on', card.getAttribute('data-pj-tier-card') === picks.tier);
     });
+    renderIncluded();
+  }
+
+  /* What the chosen package already contains, printed the moment it is
+     chosen. The commonest way to overpay on this page is to tick an
+     extra the package already includes, and the only cure is to put the
+     contents where the ticking happens rather than on another page. */
+  function renderIncluded() {
+    var box = root.querySelector('[data-pj-included]');
+    if (!box) return;
+
+    var tier = TIERS[picks.tier];
+    var list = tier && tier.includes;
+    if (!list || !list.length) { box.hidden = true; return; }
+
+    var nameEl = box.querySelector('[data-pj-inc-name]');
+    if (nameEl) nameEl.textContent = tier.name;
+
+    var host = box.querySelector('[data-pj-inc-list]');
+    if (host) {
+      host.innerHTML = list.map(function (line) {
+        return '<li>' +
+          '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.6" ' +
+          'stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' +
+          '<path d="M3.4 8.4l3 3 6.2-6.6"/></svg>' + O.esc(line) + '</li>';
+      }).join('');
+    }
+    box.hidden = false;
   }
 
   /* ══ Render: the extras ═══════════════════════════════════════
@@ -386,17 +414,26 @@
     /* Progress rail */
     var steps = [
       !!t.tier,
-      !!t.tier,                                   // customising is optional
-      !!brief.text.trim(),
-      EMAIL_RE.test(brief.email.trim())
+      !!t.tier,                                   // the extras are optional
+      !!brief.text.trim() && EMAIL_RE.test(brief.email.trim())
     ];
     [].forEach.call(root.querySelectorAll('[data-pj-step]'), function (li, i) {
       li.classList.toggle('is-done', !!steps[i]);
     });
 
-    /* The generated message */
+    /* The generated message, and the envelope it arrives in */
     var pre = root.querySelector('[data-pj-preview]');
     if (pre) pre.textContent = buildMessage();
+
+    var from = root.querySelector('[data-pj-mail-from]');
+    if (from) {
+      var typed = brief.email.trim();
+      from.textContent = typed || 'your email address';
+      from.classList.toggle('is-waiting', !typed);
+    }
+    set('[data-pj-mail-subject]',
+        'Project request' + (t.tier ? ' — ' + t.tier.name : '') +
+        (t.total ? ' — ' + money(t.total) : ''));
 
     /* The send button says what is still missing rather than sitting
        there greyed out with no explanation. */

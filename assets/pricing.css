@@ -631,3 +631,53 @@ body.pr-page .pr-stage {
 @media (max-width: 400px) {
   .pr-two-fig { font-size: 1.5rem; }
 }
+
+/* ── The band the two cards sit in ───────────────────────────────
+   On a phone the two small cards under the paragraph are the whole
+   section and they read well. On a desktop that left half of the page
+   empty, which made a pricing section look like an afterthought. The
+   same words move into a column of their own, the cards take the other,
+   and the six packages get named underneath — a range with no names
+   below it is a figure nobody can check. */
+.pr-band { display: grid; gap: 2.25rem; }
+
+@media (min-width: 1024px) {
+  .pr-band {
+    grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+    gap: 3.5rem;
+    align-items: start;
+  }
+  .pr-band .pr-two { max-width: none; align-content: start; }
+  .pr-band .pr-two-card { padding: 1.75rem 1.75rem 1.5rem; }
+  .pr-band .pr-two-fig { font-size: 2.15rem; margin-top: 0.7rem; }
+  .pr-band .pr-two-note { font-size: 0.875rem; margin-top: 0.75rem; }
+  .pr-band .pr-two-go { margin-top: 1.4rem; }
+}
+
+/* The named six. Desktop only: the phone has the cards and the packages
+   page one tap away, and six more rows there would bury them. */
+.pr-mini { display: none; }
+
+@media (min-width: 1024px) {
+  .pr-mini {
+    display: block;
+    margin-top: 2rem;
+    border-top: 1px solid rgb(var(--c-line-firm));
+  }
+  .pr-mini li { border-bottom: 1px solid rgb(var(--c-line)); }
+  .pr-mini a {
+    display: flex; align-items: baseline; gap: 1rem;
+    padding: 0.62rem 0.1rem;
+    text-decoration: none; color: inherit;
+    transition: color 160ms ease;
+  }
+  .pr-mini a:hover { color: rgb(var(--c-accent)); }
+  .pr-mini-n { font-size: 0.875rem; font-weight: 500; }
+  .pr-mini-p {
+    margin-left: auto;
+    font-size: 0.875rem; font-weight: 600; white-space: nowrap;
+    color: rgb(var(--c-ink));
+  }
+  .pr-mini a:hover .pr-mini-p { color: rgb(var(--c-accent)); }
+  .pr-mini-p--word { color: rgb(var(--c-ink-soft)); font-weight: 500; }
+}

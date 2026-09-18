@@ -286,7 +286,7 @@
 <link rel="stylesheet" href="/assets/tailwind.css?v=2">
 <link rel="stylesheet" href="/assets/theme.css?v=6">
 <link rel="stylesheet" href="/assets/hero.css?v=10">
-<link rel="stylesheet" href="/assets/pricing.css?v=10">
+<link rel="stylesheet" href="/assets/pricing.css?v=11">
 <link rel="stylesheet" href="/assets/devices.css?v=5">
 <link rel="stylesheet" href="/assets/gutters.css?v=2">
 <link rel="stylesheet" href="/assets/edge.css?v=4">
@@ -531,13 +531,29 @@
        fits. Two small cards carry both; the detail is one click away. -->
   <section id="pricing" class="scroll-mt-16 border-b border-line bg-surface">
     <div class="mx-auto max-w-shell px-6 py-16 md:px-10 md:py-24">
-      <p class="eyebrow text-ink-soft" data-rise>Web siteleri</p>
-      <h2 class="h-section sec-title mt-4 max-w-2xl" data-rise>Başlamanın iki yolu.</h2>
-      <p class="mt-5 max-w-prose text-[0.9375rem] leading-relaxed text-ink-mid">
-        Altı pakette rakam var, geri kalan her şeyi sizinle birlikte belirliyoruz. Her iki durumda da tek seferde ödenir, asla aylık değil; her yapım alan adı, hosting ve kilit simgesiyle gelir.
-      </p>
+      <div class="pr-band">
 
-      <div class="pr-two mt-9">
+        <div class="pr-band-say">
+          <p class="eyebrow text-ink-soft" data-rise>Web siteleri</p>
+          <h2 class="h-section sec-title mt-4" data-rise>Başlamanın iki yolu.</h2>
+          <p class="mt-5 max-w-prose text-[0.9375rem] leading-relaxed text-ink-mid">
+            Altı pakette rakam var, geri kalan her şeyi sizinle birlikte belirliyoruz. Her iki durumda da tek seferde ödenir, asla aylık değil; her yapım alan adı, hosting ve kilit simgesiyle gelir.
+          </p>
+
+          <!-- The six, by name and figure. A phone gets the two cards and
+               nothing else; a desktop has the room, and a range with no
+               names under it is a number nobody can check. -->
+          <ul class="pr-mini">
+            <li><a href="/tr/fiyatlar"><span class="pr-mini-n">Özel Site</span><span class="pr-mini-p"><span class="cur" data-eur="49">&euro;49</span></span></a></li>
+            <li><a href="/tr/fiyatlar"><span class="pr-mini-n">Web Sitesi Yenileme</span><span class="pr-mini-p"><span class="cur" data-eur="100">&euro;100</span></span></a></li>
+            <li><a href="/tr/fiyatlar"><span class="pr-mini-n">Tam Site</span><span class="pr-mini-p"><span class="cur" data-eur="199">&euro;199</span></span></a></li>
+            <li><a href="/tr/fiyatlar"><span class="pr-mini-n">Eksiksiz Paket</span><span class="pr-mini-p"><span class="cur" data-eur="499">&euro;499</span></span></a></li>
+            <li><a href="/tr/fiyatlar"><span class="pr-mini-n">Business Premium</span><span class="pr-mini-p"><span class="cur" data-eur="1049">&euro;1,049</span></span></a></li>
+            <li><a href="/tr/iletisim"><span class="pr-mini-n">Bir insanla konuşun</span><span class="pr-mini-p pr-mini-p--word">Anlaşmalı</span></a></li>
+          </ul>
+        </div>
+
+      <div class="pr-two">
         <a class="pr-two-card" href="/tr/fiyatlar">
           <p class="pr-two-l">Paketler</p>
           <p class="pr-two-fig">
@@ -557,6 +573,8 @@
           </p>
           <span class="pr-two-go">Bir insanla konuşun <span class="arrow">&rarr;</span></span>
         </a>
+      </div>
+
       </div>
     </div>
   </section>
@@ -957,7 +975,7 @@ window.addEventListener('load', function () {
   if ('requestIdleCallback' in window) requestIdleCallback(go, { timeout: 1500 }); else setTimeout(go, 200);
 });
 </script>
-<script src="/assets/demo.js?v=4"></script>
+<script src="/assets/demo.js?v=5"></script>
 <script src="/assets/ratings.js?v=2" defer></script>
 <script src="/assets/cinema.js?v=2" defer></script>
 <script src="/assets/picker.js?v=3" defer></script>
