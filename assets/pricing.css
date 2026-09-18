@@ -473,11 +473,10 @@ body.pr-page .pr-stage {
     display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
   }
 
-  /* four lines, then the button; the rest of the comparison is on the
-     pricing page, which is where someone weighing it up ends up */
+  /* the whole comparison, because the difference between the three is
+     the thing the section exists to show */
   #pricing .pr-list { margin-top: 0.8rem; }
-  #pricing .pr-list li { padding: 0.36rem 0; font-size: 0.8125rem; }
-  #pricing .pr-list li:nth-child(n+4) { display: none; }
+  #pricing .pr-list li { padding: 0.34rem 0; font-size: 0.8125rem; }
 
   #pricing .pr-foot { margin-top: auto; padding-top: 0.9rem; }
   #pricing .pr-cta { width: 100%; min-height: 44px; }
@@ -519,3 +518,53 @@ body.pr-page .pr-stage {
 @media (min-width: 1024px) {
   #pricing .pr-best-list li { font-size: 0.78125rem; }
 }
+
+/* ── What we do ──────────────────────────────────────────────────
+   Four things, said plainly, before any number appears. Numbered
+   rather than iconed: the page already has enough marks on it. */
+.wd-grid { display: grid; gap: 1px; background: rgb(var(--c-line)); border: 1px solid rgb(var(--c-line)); }
+@media (min-width: 700px) { .wd-grid { grid-template-columns: 1fr 1fr; } }
+@media (min-width: 1100px) { .wd-grid { grid-template-columns: repeat(4, 1fr); } }
+.wd-card { display: flex; flex-direction: column; padding: 1.5rem 1.4rem 1.4rem; background: rgb(var(--c-paper)); }
+.wd-n {
+  font-family: 'IBM Plex Mono', ui-monospace, monospace;
+  font-size: 0.6875rem; letter-spacing: 0.18em; color: rgb(var(--c-accent));
+}
+.wd-h { margin-top: 0.9rem; font-size: 1.0625rem; font-weight: 600; letter-spacing: -0.01em; color: rgb(var(--c-ink)); }
+.wd-p { margin-top: 0.6rem; font-size: 0.875rem; line-height: 1.6; color: rgb(var(--c-ink-mid)); }
+.wd-a {
+  margin-top: 1.1rem; padding-top: 0.9rem;
+  border-top: 1px solid rgb(var(--c-line));
+  display: inline-flex; align-items: center; gap: 0.4rem;
+  font-size: 0.8125rem; font-weight: 600; color: rgb(var(--c-accent-text));
+}
+.wd-a span { transition: transform 180ms ease; }
+.wd-a:hover span { transform: translateX(3px); }
+.wd-card:hover .wd-h { color: rgb(var(--c-accent-text)); }
+
+/* ── The price is agreed, not taken ──────────────────────────────
+   The line under the cards was a footnote for the one question every
+   visitor has at that moment, so it is a panel now. */
+.pr-agree {
+  margin-top: 2rem; padding: 1.75rem 1.6rem;
+  border: 1px solid rgb(var(--c-line-firm));
+  background: rgb(var(--c-accent-tint));
+}
+@media (min-width: 768px) { .pr-agree { padding: 2.25rem 2.25rem; } }
+.pr-agree-k {
+  font-family: 'IBM Plex Mono', ui-monospace, monospace;
+  font-size: 0.6875rem; letter-spacing: 0.16em; text-transform: uppercase; color: rgb(var(--c-ink-soft));
+}
+.pr-agree-h {
+  margin-top: 0.7rem;
+  font-family: 'Outfit', 'Inter', sans-serif; font-weight: 400; font-variation-settings: 'wght' 584;
+  letter-spacing: -0.04em; line-height: 1.05;
+  font-size: clamp(1.6rem, 3.4vw, 2.4rem); color: rgb(var(--c-ink));
+}
+.pr-agree-p { margin-top: 0.9rem; max-width: 46rem; font-size: 0.9375rem; line-height: 1.65; color: rgb(var(--c-ink-mid)); }
+.pr-agree-row { margin-top: 1.5rem; display: flex; flex-wrap: wrap; align-items: center; gap: 0.9rem 1.5rem; }
+.pr-agree-a { font-size: 0.875rem; font-weight: 600; color: rgb(var(--c-accent-text)); }
+.pr-agree-a span { display: inline-block; transition: transform 180ms ease; }
+.pr-agree-a:hover span { transform: translateX(3px); }
+
+@media (prefers-reduced-motion: reduce) { .wd-a span, .pr-agree-a span { transition: none; } }

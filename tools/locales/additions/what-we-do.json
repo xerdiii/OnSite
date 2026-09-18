@@ -1,0 +1,174 @@
+{
+  "_comment": "The 'what we do' section, the new comparison rows, and the panel that explains how the price is agreed.",
+
+  "We build the website, and the things around it.": {
+    "sq": "Ne ndërtojmë faqen, dhe gjërat rreth saj.",
+    "de": "Wir bauen die Website — und das, was um sie herum gehört.",
+    "fr": "Nous construisons le site, et ce qui va autour.",
+    "it": "Costruiamo il sito, e quello che ci sta attorno.",
+    "es": "Hacemos la web, y lo que va alrededor.",
+    "pt": "Construímos o site, e o que está à volta dele.",
+    "nl": "Wij bouwen de website, en alles eromheen.",
+    "sv": "Vi bygger webbplatsen — och det som hör till runt omkring.",
+    "tr": "Siteyi ve çevresindeki her şeyi biz yapıyoruz."
+  },
+  "One-off work for small businesses: the website itself, the pages it needs, and the pieces that make it earn its keep — booking, local SEO, a logo, an email on your own domain.": {
+    "sq": "Punë një herë të vetme për biznese të vogla: vetë faqja, faqet që i duhen, dhe pjesët që e bëjnë të vlejë — rezervimet, SEO lokale, një logo, një email në domenin tuaj.",
+    "de": "Einmalige Arbeit für kleine Unternehmen: die Website selbst, die Seiten, die sie braucht, und die Teile, die sie lohnend machen — Buchung, lokales SEO, ein Logo, eine E-Mail auf Ihrer eigenen Domain.",
+    "fr": "Du travail ponctuel pour les petites entreprises : le site lui-même, les pages qu'il lui faut, et ce qui le rend rentable — réservation, référencement local, un logo, une adresse e-mail à votre nom de domaine.",
+    "it": "Lavori una tantum per piccole imprese: il sito, le pagine che gli servono e i pezzi che lo rendono utile — prenotazioni, SEO locale, un logo, un'email sul tuo dominio.",
+    "es": "Trabajo puntual para pequeños negocios: la web, las páginas que necesita y las piezas que la hacen rentable — reservas, SEO local, un logo y un correo con tu propio dominio.",
+    "pt": "Trabalho pontual para pequenos negócios: o site, as páginas de que precisa e as peças que o fazem valer a pena — marcações, SEO local, um logótipo, um email no seu domínio.",
+    "nl": "Eenmalig werk voor kleine bedrijven: de website zelf, de pagina's die hij nodig heeft en de onderdelen die hem laten renderen — reserveren, lokale SEO, een logo, e-mail op je eigen domein.",
+    "sv": "Engångsjobb för små företag: själva webbplatsen, sidorna den behöver och delarna som gör att den lönar sig — bokning, lokal SEO, en logotyp, e-post på din egen domän.",
+    "tr": "Küçük işletmeler için tek seferlik işler: sitenin kendisi, ihtiyaç duyduğu sayfalar ve onu değerli kılan parçalar — randevu, yerel SEO, logo ve kendi alan adınızda e-posta."
+  },
+  "Business websites": {
+    "sq": "Faqe biznesi", "de": "Unternehmenswebsites", "fr": "Sites d'entreprise",
+    "it": "Siti aziendali", "es": "Webs de empresa", "pt": "Sites de empresa",
+    "nl": "Zakelijke websites", "sv": "Företagswebbplatser", "tr": "Kurumsal web siteleri"
+  },
+  "A full site built from the 34 sections: what you do, your work, your prices, your team, and a way to reach you that works on a phone.": {
+    "sq": "Një faqe e plotë e ndërtuar nga 34 seksionet: çfarë bëni, puna juaj, çmimet, ekipi, dhe një mënyrë kontakti që punon në telefon.",
+    "de": "Eine vollständige Website aus den 34 Abschnitten: was Sie tun, Ihre Arbeit, Ihre Preise, Ihr Team und ein Weg zu Ihnen, der am Handy funktioniert.",
+    "fr": "Un site complet construit à partir des 34 sections : ce que vous faites, vos réalisations, vos prix, votre équipe, et un moyen de vous joindre qui marche au téléphone.",
+    "it": "Un sito completo costruito con le 34 sezioni: cosa fai, i tuoi lavori, i prezzi, il team e un modo per contattarti che funziona da telefono.",
+    "es": "Una web completa hecha con las 34 secciones: qué haces, tus trabajos, tus precios, tu equipo y una forma de contacto que funciona en el móvil.",
+    "pt": "Um site completo construído com as 34 secções: o que faz, os seus trabalhos, os preços, a equipa e uma forma de o contactarem que funciona no telemóvel.",
+    "nl": "Een volledige site gebouwd uit de 34 secties: wat je doet, je werk, je prijzen, je team en een manier om je te bereiken die werkt op een telefoon.",
+    "sv": "En komplett webbplats byggd av de 34 avsnitten: vad du gör, ditt arbete, dina priser, ditt team och ett sätt att nå dig som fungerar i mobilen.",
+    "tr": "34 bölümden kurulan eksiksiz bir site: ne yaptığınız, işleriniz, fiyatlarınız, ekibiniz ve telefonda çalışan bir iletişim yolu."
+  },
+  "The 34 included": {
+    "sq": "34 të përfshirat", "de": "Die 34 enthaltenen", "fr": "Les 34 compris",
+    "it": "Le 34 incluse", "es": "Las 34 incluidas", "pt": "As 34 incluídas",
+    "nl": "De 34 inbegrepen", "sv": "De 34 som ingår", "tr": "Dahil olan 34 özellik"
+  },
+  "One-page sites and landing pages": {
+    "sq": "Faqe njëfaqëshe dhe faqe uljeje", "de": "Einseitige Websites und Landingpages",
+    "fr": "Sites d'une page et landing pages", "it": "Siti di una pagina e landing page",
+    "es": "Webs de una página y landing pages", "pt": "Sites de uma página e landing pages",
+    "nl": "Eenpaginasites en landingspagina's", "sv": "Ensidiga webbplatser och landningssidor",
+    "tr": "Tek sayfalık siteler ve açılış sayfaları"
+  },
+  "Everything on one screen, for a business that needs one good page or a campaign that needs somewhere to send people.": {
+    "sq": "Gjithçka në një ekran, për një biznes që i duhet një faqe e mirë ose një fushatë që i duhet një vend ku t'i dërgojë njerëzit.",
+    "de": "Alles auf einem Bildschirm — für ein Unternehmen, das eine gute Seite braucht, oder eine Kampagne, die ein Ziel braucht.",
+    "fr": "Tout sur un seul écran, pour une entreprise qui a besoin d'une bonne page ou une campagne qui a besoin d'une destination.",
+    "it": "Tutto in una schermata, per un'attività che ha bisogno di una buona pagina o per una campagna che ha bisogno di una destinazione.",
+    "es": "Todo en una pantalla, para un negocio que necesita una buena página o una campaña que necesita adónde llevar a la gente.",
+    "pt": "Tudo num só ecrã, para um negócio que precisa de uma boa página ou uma campanha que precisa de destino.",
+    "nl": "Alles op één scherm, voor een bedrijf dat één goede pagina nodig heeft of een campagne die ergens heen moet sturen.",
+    "sv": "Allt på en skärm, för ett företag som behöver en bra sida eller en kampanj som behöver någonstans att skicka folk.",
+    "tr": "Tek ekranda her şey: iyi bir sayfaya ihtiyacı olan işletme ya da insanları yönlendirecek bir yer arayan kampanya için."
+  },
+  "What that costs": {
+    "sq": "Sa kushton kjo", "de": "Was das kostet", "fr": "Ce que cela coûte",
+    "it": "Quanto costa", "es": "Cuánto cuesta", "pt": "Quanto custa",
+    "nl": "Wat dat kost", "sv": "Vad det kostar", "tr": "Bunun maliyeti"
+  },
+  "Logo, brand kit and menus": {
+    "sq": "Logo, paketë marke dhe meny", "de": "Logo, Markenpaket und Karten",
+    "fr": "Logo, kit de marque et cartes", "it": "Logo, kit di marca e menù",
+    "es": "Logo, kit de marca y cartas", "pt": "Logótipo, kit de marca e menus",
+    "nl": "Logo, huisstijl en menukaarten", "sv": "Logotyp, varumärkespaket och menyer",
+    "tr": "Logo, marka kiti ve menüler"
+  },
+  "A mark, a colour set and the type that goes with it — then the menus, cards and documents that have to match it.": {
+    "sq": "Një shenjë, një grup ngjyrash dhe shkronjat që shkojnë me to — pastaj menytë, kartat dhe dokumentet që duhet t'u përshtaten.",
+    "de": "Ein Zeichen, eine Farbwelt und die passende Schrift — dann die Karten, Visitenkarten und Dokumente, die dazu passen müssen.",
+    "fr": "Un signe, une palette et la typographie qui va avec — puis les cartes, les documents et tout ce qui doit s'y accorder.",
+    "it": "Un segno, una palette e il carattere che li accompagna — poi i menù, i biglietti e i documenti che devono intonarsi.",
+    "es": "Una marca, una paleta y la tipografía que las acompaña; luego las cartas, tarjetas y documentos que deben ir a juego.",
+    "pt": "Uma marca, uma paleta e a tipografia que a acompanha — depois os menus, cartões e documentos que têm de condizer.",
+    "nl": "Een merkteken, een kleurenset en de letter die erbij hoort — daarna de kaarten en documenten die erbij moeten passen.",
+    "sv": "Ett märke, en färgskala och typsnittet som hör till — sedan menyerna, korten och dokumenten som ska matcha.",
+    "tr": "Bir işaret, bir renk seti ve onlara uygun yazı karakteri — ardından bunlarla uyumlu olması gereken menüler, kartlar ve belgeler."
+  },
+  "Brand work and prices": {
+    "sq": "Punët e markës dhe çmimet", "de": "Markenarbeit und Preise",
+    "fr": "Travaux de marque et tarifs", "it": "Lavori di marca e prezzi",
+    "es": "Trabajos de marca y precios", "pt": "Trabalhos de marca e preços",
+    "nl": "Merkwerk en prijzen", "sv": "Varumärkesarbete och priser", "tr": "Marka işleri ve fiyatlar"
+  },
+  "Booking, local SEO and upkeep": {
+    "sq": "Rezervime, SEO lokale dhe mirëmbajtje", "de": "Buchung, lokales SEO und Pflege",
+    "fr": "Réservation, référencement local et entretien", "it": "Prenotazioni, SEO locale e manutenzione",
+    "es": "Reservas, SEO local y mantenimiento", "pt": "Marcações, SEO local e manutenção",
+    "nl": "Reserveren, lokale SEO en onderhoud", "sv": "Bokning, lokal SEO och underhåll",
+    "tr": "Randevu, yerel SEO ve bakım"
+  },
+  "Online booking, your Google profile and reviews, analytics that mean something, and somebody to fix it when something breaks.": {
+    "sq": "Rezervime online, profili juaj në Google dhe vlerësimet, analitikë që ka kuptim, dhe dikë që e rregullon kur prishet diçka.",
+    "de": "Online-Buchung, Ihr Google-Profil und die Bewertungen, Analytics, die etwas aussagen, und jemand, der es repariert, wenn etwas kaputtgeht.",
+    "fr": "Réservation en ligne, votre fiche Google et les avis, des statistiques qui veulent dire quelque chose, et quelqu'un pour réparer quand ça casse.",
+    "it": "Prenotazioni online, il tuo profilo Google e le recensioni, statistiche che dicono qualcosa e qualcuno che ripara quando si rompe.",
+    "es": "Reservas online, tu perfil de Google y las reseñas, analítica que dice algo y alguien que lo arregla cuando se rompe.",
+    "pt": "Marcações online, o seu perfil Google e as avaliações, estatísticas que dizem alguma coisa e alguém que arranja quando parte.",
+    "nl": "Online reserveren, je Google-profiel en reviews, statistieken die iets zeggen, en iemand die het repareert als er iets stukgaat.",
+    "sv": "Onlinebokning, din Google-profil och omdömena, statistik som betyder något, och någon som lagar när något går sönder.",
+    "tr": "Çevrimiçi randevu, Google profiliniz ve yorumlar, bir şey ifade eden analizler ve bir şey bozulduğunda onaran biri."
+  },
+  "The sixty-six extras": {
+    "sq": "Gjashtëdhjetë e gjashtë shtesat", "de": "Die sechsundsechzig Extras",
+    "fr": "Les soixante-six options", "it": "I sessantasei extra",
+    "es": "Los sesenta y seis extras", "pt": "Os sessenta e seis extras",
+    "nl": "De zesenzestig extra's", "sv": "De sextiosex tilläggen", "tr": "Altmış altı ekstra"
+  },
+
+  "Domain, hosting & SSL — 1 year": {
+    "sq": "Domeni, hostingu dhe SSL — 1 vit", "de": "Domain, Hosting & SSL — 1 Jahr",
+    "fr": "Domaine, hébergement et SSL — 1 an", "it": "Dominio, hosting e SSL — 1 anno",
+    "es": "Dominio, alojamiento y SSL — 1 año", "pt": "Domínio, alojamento e SSL — 1 ano",
+    "nl": "Domein, hosting en SSL — 1 jaar", "sv": "Domän, webbhotell och SSL — 1 år",
+    "tr": "Alan adı, hosting ve SSL — 1 yıl"
+  },
+  "Logo & brand kit": {
+    "sq": "Logo dhe paketë marke", "de": "Logo & Markenpaket", "fr": "Logo et kit de marque",
+    "it": "Logo e kit di marca", "es": "Logo y kit de marca", "pt": "Logótipo e kit de marca",
+    "nl": "Logo en huisstijl", "sv": "Logotyp och varumärkespaket", "tr": "Logo ve marka kiti"
+  },
+  "Custom menu design": {
+    "sq": "Dizajn menyje i personalizuar", "de": "Individuelles Karten-Design",
+    "fr": "Cartes et menus sur mesure", "it": "Menù disegnato su misura",
+    "es": "Diseño de carta a medida", "pt": "Design de menu à medida",
+    "nl": "Menukaart op maat ontworpen", "sv": "Specialdesignad meny", "tr": "Özel menü tasarımı"
+  },
+
+  "Before anything is charged": {
+    "sq": "Para se të faturohet çfarëdo", "de": "Bevor irgendetwas berechnet wird",
+    "fr": "Avant toute facturation", "it": "Prima che venga addebitato qualcosa",
+    "es": "Antes de cobrar nada", "pt": "Antes de ser cobrado seja o que for",
+    "nl": "Voordat er iets in rekening komt", "sv": "Innan något debiteras",
+    "tr": "Herhangi bir tahsilat öncesinde"
+  },
+  "We agree the price with you first.": {
+    "sq": "Së pari merremi vesh për çmimin me ju.",
+    "de": "Wir vereinbaren den Preis zuerst mit Ihnen.",
+    "fr": "Nous convenons d'abord du prix avec vous.",
+    "it": "Il prezzo lo concordiamo prima con te.",
+    "es": "Primero acordamos el precio contigo.",
+    "pt": "Combinamos primeiro o preço consigo.",
+    "nl": "We spreken de prijs eerst met je af.",
+    "sv": "Vi kommer överens om priset med dig först.",
+    "tr": "Fiyatı önce sizinle birlikte belirliyoruz."
+  },
+  "There is no checkout on this website and no account to make. You send a request, we reply with the real figure in writing, and that figure does not move afterwards. You pay it once, after the website is finished and you have seen it on your own phone.": {
+    "sq": "Në këtë faqe nuk ka arkë dhe nuk ka llogari për të hapur. Ju dërgoni një kërkesë, ne përgjigjemi me shifrën e vërtetë me shkrim, dhe ajo shifër nuk lëviz më pas. E paguani një herë, pasi faqja të jetë e përfunduar dhe ta keni parë në telefonin tuaj.",
+    "de": "Auf dieser Website gibt es keine Kasse und kein Konto anzulegen. Sie senden eine Anfrage, wir antworten schriftlich mit der echten Zahl, und diese Zahl ändert sich danach nicht mehr. Sie zahlen sie einmal, nachdem die Website fertig ist und Sie sie auf Ihrem eigenen Handy gesehen haben.",
+    "fr": "Il n'y a ni panier ni compte à créer sur ce site. Vous envoyez une demande, nous répondons par écrit avec le vrai montant, et ce montant ne bouge plus ensuite. Vous le payez une fois, après que le site est terminé et que vous l'avez vu sur votre propre téléphone.",
+    "it": "Su questo sito non c'è una cassa né un account da creare. Tu invii una richiesta, noi rispondiamo per iscritto con la cifra reale, e quella cifra poi non si muove. La paghi una volta sola, quando il sito è finito e lo hai visto sul tuo telefono.",
+    "es": "En esta web no hay carrito ni cuenta que crear. Envías una solicitud, respondemos por escrito con la cifra real y esa cifra ya no se mueve. La pagas una vez, cuando la web está terminada y la has visto en tu propio móvil.",
+    "pt": "Neste site não há carrinho nem conta para criar. Envia um pedido, respondemos por escrito com o valor real, e esse valor não muda depois. Paga-o uma vez, depois de o site estar pronto e de o ter visto no seu telemóvel.",
+    "nl": "Op deze site is geen kassa en geen account aan te maken. Je stuurt een aanvraag, wij antwoorden schriftelijk met het echte bedrag, en dat bedrag verandert daarna niet meer. Je betaalt het één keer, als de website af is en je hem op je eigen telefoon hebt gezien.",
+    "sv": "Det finns ingen kassa på den här webbplatsen och inget konto att skapa. Du skickar en förfrågan, vi svarar skriftligt med den riktiga siffran, och den siffran ändras inte sedan. Du betalar den en gång, när webbplatsen är klar och du sett den i din egen telefon.",
+    "tr": "Bu sitede ne sepet var ne de açılacak bir hesap. Siz talebinizi gönderiyorsunuz, biz gerçek rakamla yazılı olarak dönüyoruz ve o rakam sonradan değişmiyor. Site bitip kendi telefonunuzda gördükten sonra bir kez ödüyorsunuz."
+  },
+  "Build a total from the extras": {
+    "sq": "Ndërtoni një total nga shtesat", "de": "Summe aus den Extras bilden",
+    "fr": "Composer un total avec les options", "it": "Costruisci un totale con gli extra",
+    "es": "Arma un total con los extras", "pt": "Construa um total com os extras",
+    "nl": "Stel een totaal samen met de extra's", "sv": "Bygg en summa av tilläggen",
+    "tr": "Ekstralardan bir toplam oluşturun"
+  }
+}
