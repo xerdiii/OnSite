@@ -1,0 +1,33 @@
+{
+  "_comment": "The pricing headings, after the section grew from three packages to six.",
+
+  "Six ways to get one.": {
+    "sq": "Gjashtë mënyra për ta pasur.", "de": "Sechs Wege zu einer Website.",
+    "fr": "Six façons d'en avoir un.", "it": "Sei modi per averlo.",
+    "es": "Seis maneras de tenerla.", "pt": "Seis formas de o ter.",
+    "nl": "Zes manieren om er een te krijgen.", "sv": "Sex vägar till en.",
+    "tr": "Sahip olmanın altı yolu."
+  },
+  "Every one is paid once, never monthly, and the builds come with the domain, the hosting and the padlock. The last one has no figure on it because we agree that one with you.": {
+    "sq": "Secila paguhet një herë, kurrë muaj për muaj, dhe ndërtimet vijnë me domenin, hostingun dhe drynin. E fundit nuk ka shifër sepse për atë merremi vesh me ju.",
+    "de": "Jedes wird einmal bezahlt, nie monatlich, und die Builds kommen mit Domain, Hosting und Schloss. Beim letzten steht keine Zahl, weil wir die mit Ihnen vereinbaren.",
+    "fr": "Chacune se paie une fois, jamais au mois, et les sites arrivent avec le domaine, l'hébergement et le cadenas. La dernière n'affiche pas de prix : celui-là, nous le convenons avec vous.",
+    "it": "Ognuno si paga una volta sola, mai al mese, e i siti arrivano con dominio, hosting e lucchetto. L'ultimo non ha una cifra perché quella la concordiamo con te.",
+    "es": "Cada uno se paga una vez, nunca al mes, y las webs llegan con dominio, alojamiento y candado. El último no lleva cifra porque esa la acordamos contigo.",
+    "pt": "Cada um paga-se uma vez, nunca ao mês, e os sites chegam com domínio, alojamento e cadeado. O último não tem valor porque esse combinamo-lo consigo.",
+    "nl": "Elk pakket betaal je één keer, nooit maandelijks, en de sites komen met domein, hosting en slotje. Het laatste heeft geen bedrag, want dat spreken we met je af.",
+    "sv": "Var och en betalas en gång, aldrig per månad, och bygget kommer med domän, webbhotell och hänglås. Det sista saknar siffra för den kommer vi överens om med dig.",
+    "tr": "Her biri tek seferde ödenir, asla aylık değil; yapımlar alan adı, hosting ve kilit simgesiyle gelir. Sonuncusunda rakam yok, çünkü onu sizinle birlikte belirliyoruz."
+  },
+  "Every one is paid once, never monthly, and the builds come with the domain, the hosting and the padlock. Full Website is what most businesses end up choosing, and it is the one we would point you at first. The last one has no figure on it because we agree that one with you.": {
+    "sq": "Secila paguhet një herë, kurrë muaj për muaj, dhe ndërtimet vijnë me domenin, hostingun dhe drynin. Faqja e Plotë është ajo që zgjedhin shumica e bizneseve dhe ajo që do t'jua tregonim të parën. E fundit nuk ka shifër sepse për atë merremi vesh me ju.",
+    "de": "Jedes wird einmal bezahlt, nie monatlich, und die Builds kommen mit Domain, Hosting und Schloss. Die Komplette Website wählen die meisten Unternehmen, und sie ist die, auf die wir zuerst zeigen würden. Beim letzten steht keine Zahl, weil wir die mit Ihnen vereinbaren.",
+    "fr": "Chacune se paie une fois, jamais au mois, et les sites arrivent avec le domaine, l'hébergement et le cadenas. Le site complet est ce que choisissent la plupart des entreprises, et c'est celui vers lequel nous vous orienterions d'abord. La dernière n'affiche pas de prix : celui-là, nous le convenons avec vous.",
+    "it": "Ognuno si paga una volta sola, mai al mese, e i siti arrivano con dominio, hosting e lucchetto. Il Sito completo è quello che sceglie la maggior parte delle attività, ed è quello che ti indicheremmo per primo. L'ultimo non ha una cifra perché quella la concordiamo con te.",
+    "es": "Cada uno se paga una vez, nunca al mes, y las webs llegan con dominio, alojamiento y candado. La Web completa es la que eligen la mayoría de negocios y la que te señalaríamos primero. El último no lleva cifra porque esa la acordamos contigo.",
+    "pt": "Cada um paga-se uma vez, nunca ao mês, e os sites chegam com domínio, alojamento e cadeado. O Site completo é o que a maioria dos negócios escolhe e aquele para onde o encaminharíamos primeiro. O último não tem valor porque esse combinamo-lo consigo.",
+    "nl": "Elk pakket betaal je één keer, nooit maandelijks, en de sites komen met domein, hosting en slotje. De Volledige website kiezen de meeste bedrijven, en dat is degene die wij als eerste zouden aanwijzen. Het laatste heeft geen bedrag, want dat spreken we met je af.",
+    "sv": "Var och en betalas en gång, aldrig per månad, och bygget kommer med domän, webbhotell och hänglås. Komplett webbplats är det de flesta företag väljer, och det vi skulle peka på först. Det sista saknar siffra för den kommer vi överens om med dig.",
+    "tr": "Her biri tek seferde ödenir, asla aylık değil; yapımlar alan adı, hosting ve kilit simgesiyle gelir. İşletmelerin çoğu Tam Site'yi seçiyor ve ilk işaret edeceğimiz paket de o. Sonuncusunda rakam yok, çünkü onu sizinle birlikte belirliyoruz."
+  }
+}

@@ -568,3 +568,12 @@ body.pr-page .pr-stage {
 .pr-agree-a:hover span { transform: translateX(3px); }
 
 @media (prefers-reduced-motion: reduce) { .wd-a span, .pr-agree-a span { transition: none; } }
+
+/* ── The price that is agreed rather than printed ────────────────
+   The last card has no figure, so the word takes the figure's place
+   and steps down a size — it is a label, not a number. */
+.pr-amount--quote { font-size: 0.72em; letter-spacing: -0.03em; }
+
+/* Six packages wrap to two rows; the badge on the premium card sits
+   where "most popular" does on the middle one. */
+@media (min-width: 900px) { .pr-rail { grid-template-columns: repeat(3, minmax(0, 1fr)); } }

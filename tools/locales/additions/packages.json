@@ -1,0 +1,230 @@
+{
+  "_comment": "The three packages added beside the original three: a redesign, the premium build with the business email, and the one whose price is agreed rather than printed.",
+
+  "Website Redesign": {
+    "sq": "Ridizajn i Faqes", "de": "Website-Redesign", "fr": "Refonte de site",
+    "it": "Restyling del sito", "es": "Rediseño web", "pt": "Redesign do site",
+    "nl": "Website-herontwerp", "sv": "Omgjord webbplats", "tr": "Web Sitesi Yenileme"
+  },
+  "Your site rebuilt from the ground up, keeping the words and pictures that already work.": {
+    "sq": "Faqja juaj e rindërtuar nga e para, duke mbajtur fjalët dhe fotot që tashmë funksionojnë.",
+    "de": "Ihre Seite von Grund auf neu gebaut — mit den Worten und Bildern, die schon funktionieren.",
+    "fr": "Votre site reconstruit de zéro, en gardant les mots et les images qui fonctionnent déjà.",
+    "it": "Il tuo sito ricostruito da zero, tenendo le parole e le foto che già funzionano.",
+    "es": "Tu web reconstruida desde cero, conservando los textos y las fotos que ya funcionan.",
+    "pt": "O seu site reconstruído de raiz, mantendo os textos e as fotografias que já resultam.",
+    "nl": "Je site helemaal opnieuw gebouwd, met de woorden en foto's die al werken.",
+    "sv": "Din webbplats byggd från grunden, med orden och bilderna som redan fungerar.",
+    "tr": "Siteniz sıfırdan yeniden kurulur; işe yarayan metinler ve fotoğraflar korunur."
+  },
+  "Your current site, rebuilt": {
+    "sq": "Faqja juaj aktuale, e rindërtuar", "de": "Ihre jetzige Seite, neu gebaut",
+    "fr": "Votre site actuel, reconstruit", "it": "Il tuo sito attuale, ricostruito",
+    "es": "Tu web actual, reconstruida", "pt": "O seu site atual, reconstruído",
+    "nl": "Je huidige site, opnieuw gebouwd", "sv": "Din nuvarande sajt, ombyggd",
+    "tr": "Mevcut siteniz, yeniden kurulur"
+  },
+  "Your text and photos carried over": {
+    "sq": "Teksti dhe fotot tuaja të bartura", "de": "Ihre Texte und Fotos werden übernommen",
+    "fr": "Vos textes et photos repris", "it": "I tuoi testi e le tue foto riportati",
+    "es": "Tus textos y fotos trasladados", "pt": "Os seus textos e fotografias transpostos",
+    "nl": "Je teksten en foto's gaan mee", "sv": "Dina texter och bilder följer med",
+    "tr": "Metinleriniz ve fotoğraflarınız taşınır"
+  },
+  "Speed and image optimisation": {
+    "sq": "Optimizim i shpejtësisë dhe fotove", "de": "Tempo- und Bildoptimierung",
+    "fr": "Optimisation de la vitesse et des images", "it": "Ottimizzazione di velocità e immagini",
+    "es": "Optimización de velocidad e imágenes", "pt": "Otimização de velocidade e imagens",
+    "nl": "Snelheids- en beeldoptimalisatie", "sv": "Hastighets- och bildoptimering",
+    "tr": "Hız ve görsel optimizasyonu"
+  },
+  "The 34 sections, on the new build": {
+    "sq": "34 seksionet, në ndërtimin e ri", "de": "Die 34 Abschnitte, im neuen Bau",
+    "fr": "Les 34 sections, sur le nouveau site", "it": "Le 34 sezioni, nel nuovo sito",
+    "es": "Las 34 secciones, en la web nueva", "pt": "As 34 secções, no novo site",
+    "nl": "De 34 secties, in de nieuwe site", "sv": "De 34 avsnitten, i det nya bygget",
+    "tr": "Yeni yapımda 34 bölüm"
+  },
+  "Domain and hosting": {
+    "sq": "Domeni dhe hostingu", "de": "Domain und Hosting", "fr": "Domaine et hébergement",
+    "it": "Dominio e hosting", "es": "Dominio y alojamiento", "pt": "Domínio e alojamento",
+    "nl": "Domein en hosting", "sv": "Domän och webbhotell", "tr": "Alan adı ve hosting"
+  },
+  "Everything": {
+    "sq": "Gjithçka", "de": "Alles", "fr": "Tout", "it": "Tutto", "es": "Todo",
+    "pt": "Tudo", "nl": "Alles", "sv": "Allt", "tr": "Her şey"
+  },
+  "Business Premium": {
+    "sq": "Biznes Premium", "de": "Business Premium", "fr": "Business Premium",
+    "it": "Business Premium", "es": "Business Premium", "pt": "Business Premium",
+    "nl": "Business Premium", "sv": "Business Premium", "tr": "Business Premium"
+  },
+  "The Complete Package with the business email, the automation and the brand pieces around it.": {
+    "sq": "Paketa e Plotë me email-in e biznesit, automatizimin dhe pjesët e markës rreth saj.",
+    "de": "Das Rundum-Paket mit Firmen-E-Mail, Automatisierung und den Markenstücken drumherum.",
+    "fr": "La formule intégrale avec l'e-mail professionnel, l'automatisation et les pièces de marque autour.",
+    "it": "Il pacchetto completo con l'email aziendale, le automazioni e i pezzi di marca attorno.",
+    "es": "El paquete completo con el correo de empresa, la automatización y las piezas de marca.",
+    "pt": "O pacote completo com o email de empresa, a automatização e as peças de marca à volta.",
+    "nl": "Het complete pakket met zakelijke e-mail, automatisering en het merkwerk eromheen.",
+    "sv": "Helhetspaketet med företags-e-posten, automatiken och varumärkesdelarna runt omkring.",
+    "tr": "Eksiksiz Paket; kurumsal e-posta, otomasyon ve çevresindeki marka parçalarıyla birlikte."
+  },
+  "Everything in the Complete Package": {
+    "sq": "Gjithçka në Paketën e Plotë", "de": "Alles aus dem Rundum-Paket",
+    "fr": "Tout ce que contient la formule intégrale", "it": "Tutto quel che c'è nel pacchetto completo",
+    "es": "Todo lo del paquete completo", "pt": "Tudo o que o pacote completo tem",
+    "nl": "Alles uit het complete pakket", "sv": "Allt i helhetspaketet",
+    "tr": "Eksiksiz Paket'teki her şey"
+  },
+  "Business email on your domain": {
+    "sq": "Email biznesi në domenin tuaj", "de": "Firmen-E-Mail auf Ihrer Domain",
+    "fr": "E-mail professionnel à votre nom de domaine", "it": "Email aziendale sul tuo dominio",
+    "es": "Correo de empresa en tu dominio", "pt": "Email de empresa no seu domínio",
+    "nl": "Zakelijke e-mail op je eigen domein", "sv": "Företags-e-post på din domän",
+    "tr": "Kendi alan adınızda kurumsal e-posta"
+  },
+  "Five email aliases — info, hello, support…": {
+    "sq": "Pesë alias email — info, hello, support…",
+    "de": "Fünf E-Mail-Aliase — info, hello, support…",
+    "fr": "Cinq alias e-mail — info, hello, support…",
+    "it": "Cinque alias email — info, hello, support…",
+    "es": "Cinco alias de correo — info, hello, support…",
+    "pt": "Cinco aliases de email — info, hello, support…",
+    "nl": "Vijf e-mailaliassen — info, hello, support…",
+    "sv": "Fem e-postalias — info, hello, support…",
+    "tr": "Beş e-posta takma adı — info, hello, support…"
+  },
+  "Automatic replies and email signatures": {
+    "sq": "Përgjigje automatike dhe nënshkrime email",
+    "de": "Automatische Antworten und E-Mail-Signaturen",
+    "fr": "Réponses automatiques et signatures d'e-mail",
+    "it": "Risposte automatiche e firme email",
+    "es": "Respuestas automáticas y firmas de correo",
+    "pt": "Respostas automáticas e assinaturas de email",
+    "nl": "Automatische antwoorden en e-mailhandtekeningen",
+    "sv": "Automatsvar och e-postsignaturer",
+    "tr": "Otomatik yanıtlar ve e-posta imzaları"
+  },
+  "Booking, reminders and confirmation emails": {
+    "sq": "Rezervime, kujtesa dhe email konfirmimi",
+    "de": "Buchung, Erinnerungen und Bestätigungs-E-Mails",
+    "fr": "Réservation, rappels et e-mails de confirmation",
+    "it": "Prenotazioni, promemoria ed email di conferma",
+    "es": "Reservas, recordatorios y correos de confirmación",
+    "pt": "Marcações, lembretes e emails de confirmação",
+    "nl": "Reserveren, herinneringen en bevestigingsmails",
+    "sv": "Bokning, påminnelser och bekräftelsemejl",
+    "tr": "Randevu, hatırlatma ve onay e-postaları"
+  },
+  "Google Business Profile and review QR card": {
+    "sq": "Profili i Biznesit në Google dhe kartela QR për vlerësime",
+    "de": "Google-Unternehmensprofil und Bewertungs-QR-Karte",
+    "fr": "Fiche d'établissement Google et carte QR pour les avis",
+    "it": "Profilo dell'attività su Google e cartolina QR per le recensioni",
+    "es": "Perfil de empresa en Google y tarjeta QR de reseñas",
+    "pt": "Perfil de empresa Google e cartão QR de avaliações",
+    "nl": "Google-bedrijfsprofiel en review-QR-kaart",
+    "sv": "Google företagsprofil och QR-kort för omdömen",
+    "tr": "Google İşletme Profili ve yorum için QR kart"
+  },
+  "WhatsApp button and promo video": {
+    "sq": "Buton WhatsApp dhe video promocionale",
+    "de": "WhatsApp-Button und Werbevideo",
+    "fr": "Bouton WhatsApp et vidéo promotionnelle",
+    "it": "Pulsante WhatsApp e video promozionale",
+    "es": "Botón de WhatsApp y vídeo promocional",
+    "pt": "Botão de WhatsApp e vídeo promocional",
+    "nl": "WhatsApp-knop en promovideo",
+    "sv": "WhatsApp-knapp och reklamfilm",
+    "tr": "WhatsApp düğmesi ve tanıtım videosu"
+  },
+  "Talk to a person": {
+    "sq": "Flisni me një person", "de": "Mit einem Menschen sprechen",
+    "fr": "Parler à une personne", "it": "Parla con una persona",
+    "es": "Habla con una persona", "pt": "Fale com uma pessoa",
+    "nl": "Praat met een mens", "sv": "Prata med en människa", "tr": "Bir insanla konuşun"
+  },
+  "Agreed": {
+    "sq": "E dakorduar", "de": "Vereinbart", "fr": "Sur devis", "it": "Concordato",
+    "es": "Acordado", "pt": "Acordado", "nl": "In overleg", "sv": "Överenskommet", "tr": "Anlaşmalı"
+  },
+  "Agreed first": {
+    "sq": "E dakorduar së pari", "de": "Vorher vereinbart", "fr": "Convenu d'avance",
+    "it": "Concordato prima", "es": "Acordado antes", "pt": "Acordado primeiro",
+    "nl": "Vooraf afgesproken", "sv": "Överenskommet först", "tr": "Önce anlaşılır"
+  },
+  "Something the packages do not cover. Tell us what you need and we agree a price in writing.": {
+    "sq": "Diçka që paketat nuk e mbulojnë. Na thoni çfarë ju duhet dhe merremi vesh për çmimin me shkrim.",
+    "de": "Etwas, das die Pakete nicht abdecken. Sagen Sie uns, was Sie brauchen, und wir vereinbaren den Preis schriftlich.",
+    "fr": "Quelque chose que les formules ne couvrent pas. Dites-nous ce qu'il vous faut et nous convenons d'un prix par écrit.",
+    "it": "Qualcosa che i pacchetti non coprono. Dicci cosa ti serve e concordiamo il prezzo per iscritto.",
+    "es": "Algo que los paquetes no cubren. Cuéntanos qué necesitas y acordamos el precio por escrito.",
+    "pt": "Algo que os pacotes não cobrem. Diga-nos do que precisa e combinamos o preço por escrito.",
+    "nl": "Iets wat de pakketten niet dekken. Vertel wat je nodig hebt, dan spreken we de prijs schriftelijk af.",
+    "sv": "Något paketen inte täcker. Berätta vad du behöver så kommer vi överens om priset skriftligt.",
+    "tr": "Paketlerin kapsamadığı bir şey. Neye ihtiyacınız olduğunu söyleyin, fiyatı yazılı olarak belirleyelim."
+  },
+  "A price agreed in writing, before anything starts": {
+    "sq": "Një çmim i dakorduar me shkrim, para se të fillojë çdo gjë",
+    "de": "Ein schriftlich vereinbarter Preis, bevor irgendetwas beginnt",
+    "fr": "Un prix convenu par écrit, avant que quoi que ce soit commence",
+    "it": "Un prezzo concordato per iscritto, prima che inizi qualsiasi cosa",
+    "es": "Un precio acordado por escrito antes de empezar nada",
+    "pt": "Um preço combinado por escrito, antes de começar seja o que for",
+    "nl": "Een schriftelijk afgesproken prijs, vóór er iets begint",
+    "sv": "Ett pris överenskommet skriftligt, innan något börjar",
+    "tr": "Hiçbir şey başlamadan önce yazılı olarak belirlenmiş bir fiyat"
+  },
+  "Anything the packages do not cover": {
+    "sq": "Çdo gjë që paketat nuk e mbulojnë", "de": "Alles, was die Pakete nicht abdecken",
+    "fr": "Tout ce que les formules ne couvrent pas", "it": "Tutto ciò che i pacchetti non coprono",
+    "es": "Cualquier cosa que los paquetes no cubran", "pt": "Tudo o que os pacotes não cobrem",
+    "nl": "Alles wat de pakketten niet dekken", "sv": "Allt paketen inte täcker",
+    "tr": "Paketlerin kapsamadığı her şey"
+  },
+  "Shops, booking systems, multiple locations": {
+    "sq": "Dyqane, sisteme rezervimi, disa lokacione",
+    "de": "Shops, Buchungssysteme, mehrere Standorte",
+    "fr": "Boutiques, systèmes de réservation, plusieurs adresses",
+    "it": "Negozi, sistemi di prenotazione, più sedi",
+    "es": "Tiendas, sistemas de reservas, varias ubicaciones",
+    "pt": "Lojas, sistemas de marcação, várias moradas",
+    "nl": "Webshops, reserveringssystemen, meerdere vestigingen",
+    "sv": "Butiker, bokningssystem, flera platser",
+    "tr": "Mağazalar, randevu sistemleri, birden fazla şube"
+  },
+  "Work on a site somebody else built": {
+    "sq": "Punë në një faqe që e ka ndërtuar dikush tjetër",
+    "de": "Arbeit an einer Seite, die jemand anderes gebaut hat",
+    "fr": "Du travail sur un site construit par quelqu'un d'autre",
+    "it": "Lavori su un sito costruito da qualcun altro",
+    "es": "Trabajo sobre una web que hizo otra persona",
+    "pt": "Trabalho num site feito por outra pessoa",
+    "nl": "Werk aan een site die iemand anders bouwde",
+    "sv": "Arbete på en sajt som någon annan byggt",
+    "tr": "Başkasının yaptığı bir sitede çalışma"
+  },
+  "Paid once, on delivery, like everything else": {
+    "sq": "Paguhet një herë, në dorëzim, si gjithçka tjetër",
+    "de": "Einmal bezahlt, bei Lieferung, wie alles andere",
+    "fr": "Payé une fois, à la livraison, comme le reste",
+    "it": "Pagato una volta, alla consegna, come tutto il resto",
+    "es": "Se paga una vez, al entregar, como todo lo demás",
+    "pt": "Pago uma vez, na entrega, como tudo o resto",
+    "nl": "Eén keer betaald, bij oplevering, net als al het andere",
+    "sv": "Betalas en gång, vid leverans, som allt annat",
+    "tr": "Diğer her şey gibi teslimde bir kez ödenir"
+  },
+  "A person reads it and answers, not a form": {
+    "sq": "E lexon dhe përgjigjet një person, jo një formular",
+    "de": "Ein Mensch liest und antwortet, kein Formular",
+    "fr": "C'est une personne qui lit et répond, pas un formulaire",
+    "it": "Lo legge e risponde una persona, non un modulo",
+    "es": "Lo lee y responde una persona, no un formulario",
+    "pt": "É uma pessoa que lê e responde, não um formulário",
+    "nl": "Een mens leest en antwoordt, geen formulier",
+    "sv": "En människa läser och svarar, inte ett formulär",
+    "tr": "Bir form değil, bir insan okur ve yanıtlar"
+  }
+}

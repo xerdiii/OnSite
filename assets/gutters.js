@@ -32,6 +32,10 @@
     [].forEach.call(main.querySelectorAll('section'), function (section) {
       var label = section.querySelector('.eyebrow, .closer-eyebrow, .mono-label');
       if (!label) return;
+      /* A section that is not on the page is not a place you can be:
+         the ratings section, for one, stays hidden until there are
+         ratings to show, and indexing it pointed at nothing. */
+      if (section.hidden || !section.offsetHeight) return;
       var text = label.textContent.trim();
       if (!text || text.length > 26) return;
       if (!section.id) section.id = 'sec-' + (items.length + 1);
@@ -76,6 +80,7 @@
       var line = global.innerHeight * 0.34;
       var found = items[0];
       for (var i = 0; i < items.length; i++) {
+        if (!items[i].el.offsetHeight) continue;
         if (items[i].el.getBoundingClientRect().top <= line) found = items[i];
       }
       if (found && found.id !== current) {
