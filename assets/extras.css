@@ -216,3 +216,72 @@ body.has-ex-dock { padding-bottom: 5.25rem; }
 @media (prefers-reduced-motion: reduce) {
   .ex-dock, .ex-dock-sum b { transition: none; }
 }
+
+/* ── Turning the list into a request ─────────────────────────────
+   The form and a live copy of the message beside it: what is ticked
+   above is written into the panel as it is ticked, so nobody has to
+   trust that the right thing is being sent. */
+.rq-page-wrap { margin-top: 4rem; padding-top: 2.5rem; border-top: 1px solid rgb(var(--c-line-firm)); }
+.rq-page-head { max-width: 46rem; }
+
+.rq-form { margin-top: 2rem; display: grid; gap: 1.75rem; }
+@media (min-width: 1024px) {
+  .rq-form { grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr); gap: 2.5rem; align-items: start; }
+  .rq-form-error, .rq-form-foot { grid-column: 1 / -1; }
+}
+
+.rq-form-grid { display: grid; gap: 1.1rem; }
+@media (min-width: 640px) { .rq-form-grid { grid-template-columns: 1fr 1fr; } }
+.rq-f { display: block; }
+.rq-f--wide { grid-column: 1 / -1; }
+.rq-f-l {
+  display: block; font-size: 0.8125rem; font-weight: 600; color: rgb(var(--c-ink));
+}
+.rq-f-l em {
+  margin-left: 0.4rem; font-style: normal; font-weight: 500;
+  font-size: 0.6875rem; letter-spacing: 0.1em; text-transform: uppercase;
+  color: rgb(var(--c-ink-soft));
+}
+.rq-f-i {
+  display: block; width: 100%; margin-top: 0.45rem;
+  min-height: 46px; padding: 0.6rem 0.75rem;
+  background: rgb(var(--c-paper));
+  border: 1px solid rgb(var(--c-line-firm));
+  color: rgb(var(--c-ink)); font: inherit; font-size: 0.9375rem;
+  transition: border-color 160ms ease;
+}
+.rq-f-i:focus { outline: none; border-color: rgb(var(--c-accent)); }
+.rq-f-i.is-missing { border-color: rgb(var(--c-accent)); }
+.rq-f-i::placeholder { color: rgb(var(--c-ink-soft)); }
+.rq-f-t { min-height: 8.5rem; resize: vertical; line-height: 1.55; }
+.rq-f-h { display: block; margin-top: 0.4rem; font-size: 0.75rem; line-height: 1.5; color: rgb(var(--c-ink-soft)); }
+.rq-trap { position: absolute; left: -9999px; width: 1px; height: 1px; opacity: 0; }
+
+.rq-form-side { align-self: stretch; }
+.rq-side-l {
+  font-family: 'IBM Plex Mono', ui-monospace, monospace;
+  font-size: 0.625rem; letter-spacing: 0.16em; text-transform: uppercase; color: rgb(var(--c-ink-soft));
+}
+.rq-side-box {
+  margin-top: 0.6rem; padding: 1rem 1.1rem;
+  max-height: 22rem; overflow: auto;
+  background: rgb(var(--c-surface));
+  border: 1px solid rgb(var(--c-line));
+  font-family: 'IBM Plex Mono', ui-monospace, monospace;
+  font-size: 0.75rem; line-height: 1.7; color: rgb(var(--c-ink-mid));
+  white-space: pre-wrap; overflow-wrap: anywhere;
+}
+.rq-side-note { margin-top: 0.7rem; font-size: 0.75rem; line-height: 1.5; color: rgb(var(--c-ink-soft)); }
+
+.rq-form-error { font-size: 0.8125rem; color: rgb(var(--c-accent-text)); }
+.rq-form-error:empty { display: none; }
+.rq-form-foot { display: flex; flex-wrap: wrap; align-items: center; gap: 1rem 1.25rem; }
+.rq-form-send { min-height: 50px; padding: 0 1.6rem; }
+.rq-form-note { max-width: 26rem; font-size: 0.75rem; line-height: 1.55; color: rgb(var(--c-ink-soft)); }
+
+.rq-sent { margin-top: 2rem; padding: 1.5rem 1.6rem; border: 1px solid rgb(var(--c-line-firm)); background: rgb(var(--c-surface)); }
+.rq-sent-h { font-size: 1.0625rem; font-weight: 600; color: rgb(var(--c-ink)); }
+.rq-sent-p { margin-top: 0.4rem; font-size: 0.9375rem; line-height: 1.6; color: rgb(var(--c-ink-mid)); }
+.rq-sent-a { display: inline-block; margin-top: 1rem; font-size: 0.875rem; font-weight: 600; color: rgb(var(--c-accent-text)); text-decoration: underline; text-underline-offset: 4px; }
+
+@media (prefers-reduced-motion: reduce) { .rq-f-i { transition: none; } }

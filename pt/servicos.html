@@ -65,7 +65,7 @@
 <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400&family=Instrument+Serif&family=Inter:wght@400;500;600;700&family=Outfit:wght@200..800&display=swap"></noscript>
 <script>/* Theme before paint. Dark is the site, light is a choice you make — the attribute is always stamped so the system setting never decides for you. */(function(){var t='dark';try{t=localStorage.getItem('sitehouse.theme')==='light'?'light':'dark';}catch(e){}document.documentElement.setAttribute('data-theme',t);})();</script>
 <link rel="stylesheet" href="/assets/xovah.css?v=2">
-<link rel="stylesheet" href="/assets/extras.css?v=4">
+<link rel="stylesheet" href="/assets/extras.css?v=5">
 <link rel="stylesheet" href="/assets/mobile.css?v=6">
 <link rel="stylesheet" href="/assets/tailwind.css?v=2">
 <link rel="stylesheet" href="/assets/theme.css?v=6">
@@ -681,12 +681,87 @@
               <p class="mt-4 text-[0.8125rem] leading-relaxed text-ink-soft">
                 Apenas os extras. O preço do próprio site soma-se a isto.
               </p>
-              <a href="/pt#extras" class="pick-send">Enviar com o meu pedido de projeto</a>
+              <a href="#request" class="pick-send">Enviar com o meu pedido de projeto</a>
             </div>
 
         </div>
 
       </div>
+
+      <!-- The request. Everything ticked above is written into the message
+           as you go, so what is sent is exactly what is on screen. -->
+      <section id="request" class="rq-page-wrap scroll-mt-28">
+        <div class="rq-page">
+          <div class="rq-page-head">
+            <p class="eyebrow text-accent">Envie</p>
+            <h2 class="h-section sec-title mt-3">Transforme isto num pedido.</h2>
+            <p class="mt-4 max-w-prose text-[0.9375rem] leading-relaxed text-ink-mid">
+              O que assinalou vai na mensagem, com o total. Junte o seu email e umas palavras sobre o negócio e chega-nos tudo de uma vez. Não é cobrado nada nem se cria conta.
+            </p>
+          </div>
+
+          <form class="rq-form" id="exq" novalidate>
+            <div class="rq-form-grid">
+              <label class="rq-f">
+                <span class="rq-f-l">O seu email <em>obrigatório</em></span>
+                <input class="rq-f-i" type="email" name="email" inputmode="email" autocomplete="email" maxlength="200" required>
+                <span class="rq-f-h">A única coisa de que precisamos mesmo. Respondemos aqui e mais nada.</span>
+              </label>
+
+              <label class="rq-f">
+                <span class="rq-f-l">O seu nome <em>obrigatório</em></span>
+                <input class="rq-f-i" type="text" name="name" autocomplete="name" maxlength="120" required>
+              </label>
+
+              <label class="rq-f">
+                <span class="rq-f-l">Nome do negócio ou do projeto</span>
+                <input class="rq-f-i" type="text" name="business" maxlength="160" placeholder="Como se chama?">
+              </label>
+
+              <label class="rq-f">
+                <span class="rq-f-l">Que tipo de site?</span>
+                <input class="rq-f-i" type="text" name="kind" maxlength="120" placeholder="Site de empresa, loja, portefólio…">
+              </label>
+
+              <label class="rq-f rq-f--wide">
+                <span class="rq-f-l">Link para as suas fotografias e logótipo</span>
+                <input class="rq-f-i" type="url" name="photos" inputmode="url" maxlength="400" placeholder="Um link do Drive, Dropbox ou WeTransfer — ou o seu Instagram">
+                <span class="rq-f-h">Opcional. Se estiverem no telemóvel, envie-as por email depois de respondermos.</span>
+              </label>
+
+              <label class="rq-f rq-f--wide">
+                <span class="rq-f-l">Diga-nos do que precisa</span>
+                <textarea class="rq-f-i rq-f-t" name="brief" rows="5" maxlength="4000" placeholder="What the business does, who it is for, and anything the website has to achieve."></textarea>
+              </label>
+            </div>
+
+            <input class="rq-trap" type="text" name="company" tabindex="-1" autocomplete="off" aria-hidden="true">
+
+            <div class="rq-form-side">
+              <p class="rq-side-l">O que é enviado</p>
+              <div class="rq-side-box" data-exq-preview aria-live="polite"></div>
+              <p class="rq-side-note">
+                Isto é escrito a partir das suas escolhas e muda à medida que assinala. É exatamente o que nos chega.
+              </p>
+            </div>
+
+            <p class="rq-form-error" data-exq-error role="alert"></p>
+
+            <div class="rq-form-foot">
+              <button type="submit" class="btn btn-primary rq-form-send">Enviar o meu pedido</button>
+              <p class="rq-form-note">
+                Lemos todos e respondemos, normalmente no mesmo dia útil. Enviar não custa nada.
+              </p>
+            </div>
+          </form>
+
+          <div class="rq-sent" data-exq-done hidden>
+            <p class="rq-sent-h">Pedido enviado.</p>
+            <p class="rq-sent-p" data-exq-done-text>Obrigado. Responderemos por email.</p>
+            <a class="rq-sent-a" href="/pt/precos">Veja os pacotes entretanto</a>
+          </div>
+        </div>
+      </section>
 
       <div class="mt-14 grid grid-cols-1 gap-8 border-t border-line pt-8 lg:grid-cols-12 lg:gap-14">
         <div class="lg:col-span-7">
@@ -716,7 +791,7 @@
         <b data-ex-dock-once><span class="cur" data-eur="0">€0</span></b>
         <span><span data-ex-dock-count>0</span> selecionados</span>
       </p>
-      <a href="/pt#extras" class="ex-dock-cta">Enviar com o pedido</a>
+      <a href="#request" class="ex-dock-cta">Enviar com o pedido</a>
     </div>
   </div>
 </main>
@@ -734,7 +809,8 @@
   </nav>
 </div>
 
-<script src="/assets/picker.js?v=4" defer></script>
+<script src="/assets/picker.js?v=5" defer></script>
+<script src="/assets/exq.js?v=1" defer></script>
 <script src="/assets/footer.js?v=6"></script>
 <script src="/assets/cookies.js?v=2"></script>
 <script src="/assets/mobile.js?v=5"></script>

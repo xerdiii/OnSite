@@ -65,7 +65,7 @@
 <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400&family=Instrument+Serif&family=Inter:wght@400;500;600;700&family=Outfit:wght@200..800&display=swap"></noscript>
 <script>/* Theme before paint. Dark is the site, light is a choice you make — the attribute is always stamped so the system setting never decides for you. */(function(){var t='dark';try{t=localStorage.getItem('sitehouse.theme')==='light'?'light':'dark';}catch(e){}document.documentElement.setAttribute('data-theme',t);})();</script>
 <link rel="stylesheet" href="/assets/xovah.css?v=2">
-<link rel="stylesheet" href="/assets/extras.css?v=4">
+<link rel="stylesheet" href="/assets/extras.css?v=5">
 <link rel="stylesheet" href="/assets/mobile.css?v=6">
 <link rel="stylesheet" href="/assets/tailwind.css?v=2">
 <link rel="stylesheet" href="/assets/theme.css?v=6">
@@ -681,12 +681,87 @@
               <p class="mt-4 text-[0.8125rem] leading-relaxed text-ink-soft">
                 Les options seules. Le prix du site lui-même s'ajoute à cela.
               </p>
-              <a href="/fr#extras" class="pick-send">Envoyer avec ma demande de projet</a>
+              <a href="#request" class="pick-send">Envoyer avec ma demande de projet</a>
             </div>
 
         </div>
 
       </div>
+
+      <!-- The request. Everything ticked above is written into the message
+           as you go, so what is sent is exactly what is on screen. -->
+      <section id="request" class="rq-page-wrap scroll-mt-28">
+        <div class="rq-page">
+          <div class="rq-page-head">
+            <p class="eyebrow text-accent">Envoyer</p>
+            <h2 class="h-section sec-title mt-3">Transformez cela en demande.</h2>
+            <p class="mt-4 max-w-prose text-[0.9375rem] leading-relaxed text-ink-mid">
+              Ce que vous avez coché figure dans le message, avec le total. Ajoutez votre e-mail et quelques mots sur l'entreprise et tout nous arrive d'un seul tenant. Rien n'est facturé et aucun compte n'est créé.
+            </p>
+          </div>
+
+          <form class="rq-form" id="exq" novalidate>
+            <div class="rq-form-grid">
+              <label class="rq-f">
+                <span class="rq-f-l">Votre e-mail <em>obligatoire</em></span>
+                <input class="rq-f-i" type="email" name="email" inputmode="email" autocomplete="email" maxlength="200" required>
+                <span class="rq-f-h">La seule chose dont nous avons vraiment besoin. Nous répondons ici et nulle part ailleurs.</span>
+              </label>
+
+              <label class="rq-f">
+                <span class="rq-f-l">Votre nom <em>obligatoire</em></span>
+                <input class="rq-f-i" type="text" name="name" autocomplete="name" maxlength="120" required>
+              </label>
+
+              <label class="rq-f">
+                <span class="rq-f-l">Nom de l'entreprise ou du projet</span>
+                <input class="rq-f-i" type="text" name="business" maxlength="160" placeholder="Comment ça s'appelle ?">
+              </label>
+
+              <label class="rq-f">
+                <span class="rq-f-l">Quel type de site ?</span>
+                <input class="rq-f-i" type="text" name="kind" maxlength="120" placeholder="Site d'entreprise, boutique, portfolio…">
+              </label>
+
+              <label class="rq-f rq-f--wide">
+                <span class="rq-f-l">Lien vers vos photos et votre logo</span>
+                <input class="rq-f-i" type="url" name="photos" inputmode="url" maxlength="400" placeholder="Un lien Drive, Dropbox ou WeTransfer — ou votre Instagram">
+                <span class="rq-f-h">Facultatif. Si elles sont sur votre téléphone, envoyez-les par e-mail après notre réponse.</span>
+              </label>
+
+              <label class="rq-f rq-f--wide">
+                <span class="rq-f-l">Dites-nous ce qu'il vous faut</span>
+                <textarea class="rq-f-i rq-f-t" name="brief" rows="5" maxlength="4000" placeholder="What the business does, who it is for, and anything the website has to achieve."></textarea>
+              </label>
+            </div>
+
+            <input class="rq-trap" type="text" name="company" tabindex="-1" autocomplete="off" aria-hidden="true">
+
+            <div class="rq-form-side">
+              <p class="rq-side-l">Ce qui est envoyé</p>
+              <div class="rq-side-box" data-exq-preview aria-live="polite"></div>
+              <p class="rq-side-note">
+                Ce texte est écrit à partir de vos choix et change à mesure que vous cochez. C'est exactement ce qui nous parvient.
+              </p>
+            </div>
+
+            <p class="rq-form-error" data-exq-error role="alert"></p>
+
+            <div class="rq-form-foot">
+              <button type="submit" class="btn btn-primary rq-form-send">Envoyer ma demande</button>
+              <p class="rq-form-note">
+                Nous les lisons toutes et répondons, en général le jour ouvré même. L'envoi ne coûte rien.
+              </p>
+            </div>
+          </form>
+
+          <div class="rq-sent" data-exq-done hidden>
+            <p class="rq-sent-h">Demande envoyée.</p>
+            <p class="rq-sent-p" data-exq-done-text>Merci. Nous répondrons par e-mail.</p>
+            <a class="rq-sent-a" href="/fr/tarifs">Voir les formules en attendant</a>
+          </div>
+        </div>
+      </section>
 
       <div class="mt-14 grid grid-cols-1 gap-8 border-t border-line pt-8 lg:grid-cols-12 lg:gap-14">
         <div class="lg:col-span-7">
@@ -716,7 +791,7 @@
         <b data-ex-dock-once><span class="cur" data-eur="0">€0</span></b>
         <span><span data-ex-dock-count>0</span> sélectionnés</span>
       </p>
-      <a href="/fr#extras" class="ex-dock-cta">Envoyer avec ma demande</a>
+      <a href="#request" class="ex-dock-cta">Envoyer avec ma demande</a>
     </div>
   </div>
 </main>
@@ -734,7 +809,8 @@
   </nav>
 </div>
 
-<script src="/assets/picker.js?v=4" defer></script>
+<script src="/assets/picker.js?v=5" defer></script>
+<script src="/assets/exq.js?v=1" defer></script>
 <script src="/assets/footer.js?v=6"></script>
 <script src="/assets/cookies.js?v=2"></script>
 <script src="/assets/mobile.js?v=5"></script>

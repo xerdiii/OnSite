@@ -65,7 +65,7 @@
 <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400&family=Instrument+Serif&family=Inter:wght@400;500;600;700&family=Outfit:wght@200..800&display=swap"></noscript>
 <script>/* Theme before paint. Dark is the site, light is a choice you make — the attribute is always stamped so the system setting never decides for you. */(function(){var t='dark';try{t=localStorage.getItem('sitehouse.theme')==='light'?'light':'dark';}catch(e){}document.documentElement.setAttribute('data-theme',t);})();</script>
 <link rel="stylesheet" href="/assets/xovah.css?v=2">
-<link rel="stylesheet" href="/assets/extras.css?v=4">
+<link rel="stylesheet" href="/assets/extras.css?v=5">
 <link rel="stylesheet" href="/assets/mobile.css?v=6">
 <link rel="stylesheet" href="/assets/tailwind.css?v=2">
 <link rel="stylesheet" href="/assets/theme.css?v=6">
@@ -681,12 +681,87 @@
               <p class="mt-4 text-[0.8125rem] leading-relaxed text-ink-soft">
                 Vetëm shtesat. Çmimi i vetë faqes shkon mbi këtë.
               </p>
-              <a href="/sq#extras" class="pick-send">Dërgoji këto me kërkesën time</a>
+              <a href="#request" class="pick-send">Dërgoji këto me kërkesën time</a>
             </div>
 
         </div>
 
       </div>
+
+      <!-- The request. Everything ticked above is written into the message
+           as you go, so what is sent is exactly what is on screen. -->
+      <section id="request" class="rq-page-wrap scroll-mt-28">
+        <div class="rq-page">
+          <div class="rq-page-head">
+            <p class="eyebrow text-accent">Dërgojeni</p>
+            <h2 class="h-section sec-title mt-3">Kthejeni këtë në një kërkesë.</h2>
+            <p class="mt-4 max-w-prose text-[0.9375rem] leading-relaxed text-ink-mid">
+              Ato që shënuat shkojnë në mesazh, bashkë me totalin. Shtoni email-in dhe pak fjalë për biznesin dhe na vjen e gjitha bashkë. Nuk faturohet asgjë dhe nuk hapet asnjë llogari.
+            </p>
+          </div>
+
+          <form class="rq-form" id="exq" novalidate>
+            <div class="rq-form-grid">
+              <label class="rq-f">
+                <span class="rq-f-l">Email-i juaj <em>e detyrueshme</em></span>
+                <input class="rq-f-i" type="email" name="email" inputmode="email" autocomplete="email" maxlength="200" required>
+                <span class="rq-f-h">E vetmja gjë që na duhet vërtet. Përgjigjemi këtu dhe askund tjetër.</span>
+              </label>
+
+              <label class="rq-f">
+                <span class="rq-f-l">Emri juaj <em>e detyrueshme</em></span>
+                <input class="rq-f-i" type="text" name="name" autocomplete="name" maxlength="120" required>
+              </label>
+
+              <label class="rq-f">
+                <span class="rq-f-l">Emri i biznesit ose i projektit</span>
+                <input class="rq-f-i" type="text" name="business" maxlength="160" placeholder="Si quhet?">
+              </label>
+
+              <label class="rq-f">
+                <span class="rq-f-l">Çfarë lloj faqeje?</span>
+                <input class="rq-f-i" type="text" name="kind" maxlength="120" placeholder="Faqe biznesi, dyqan, portfolio…">
+              </label>
+
+              <label class="rq-f rq-f--wide">
+                <span class="rq-f-l">Lidhje për fotot dhe logon tuaj</span>
+                <input class="rq-f-i" type="url" name="photos" inputmode="url" maxlength="400" placeholder="Një lidhje Drive, Dropbox ose WeTransfer — ose Instagrami juaj">
+                <span class="rq-f-h">Opsionale. Nëse janë në telefon, na i dërgoni me email pasi t'ju përgjigjemi.</span>
+              </label>
+
+              <label class="rq-f rq-f--wide">
+                <span class="rq-f-l">Na tregoni çfarë ju duhet</span>
+                <textarea class="rq-f-i rq-f-t" name="brief" rows="5" maxlength="4000" placeholder="What the business does, who it is for, and anything the website has to achieve."></textarea>
+              </label>
+            </div>
+
+            <input class="rq-trap" type="text" name="company" tabindex="-1" autocomplete="off" aria-hidden="true">
+
+            <div class="rq-form-side">
+              <p class="rq-side-l">Çfarë dërgohet</p>
+              <div class="rq-side-box" data-exq-preview aria-live="polite"></div>
+              <p class="rq-side-note">
+                Ky tekst shkruhet nga zgjedhjet tuaja dhe ndryshon ndërsa shënoni. Është saktësisht ajo që na vjen.
+              </p>
+            </div>
+
+            <p class="rq-form-error" data-exq-error role="alert"></p>
+
+            <div class="rq-form-foot">
+              <button type="submit" class="btn btn-primary rq-form-send">Dërgo kërkesën time</button>
+              <p class="rq-form-note">
+                I lexojmë të gjitha dhe përgjigjemi, zakonisht brenda së njëjtës ditë pune. Dërgimi nuk kushton asgjë.
+              </p>
+            </div>
+          </form>
+
+          <div class="rq-sent" data-exq-done hidden>
+            <p class="rq-sent-h">Kërkesa u dërgua.</p>
+            <p class="rq-sent-p" data-exq-done-text>Faleminderit. Do t'ju përgjigjemi me email.</p>
+            <a class="rq-sent-a" href="/sq/cmimet">Shihni paketat ndërkohë</a>
+          </div>
+        </div>
+      </section>
 
       <div class="mt-14 grid grid-cols-1 gap-8 border-t border-line pt-8 lg:grid-cols-12 lg:gap-14">
         <div class="lg:col-span-7">
@@ -716,7 +791,7 @@
         <b data-ex-dock-once><span class="cur" data-eur="0">€0</span></b>
         <span><span data-ex-dock-count>0</span> të zgjedhura</span>
       </p>
-      <a href="/sq#extras" class="ex-dock-cta">Dërgo me kërkesën time</a>
+      <a href="#request" class="ex-dock-cta">Dërgo me kërkesën time</a>
     </div>
   </div>
 </main>
@@ -734,7 +809,8 @@
   </nav>
 </div>
 
-<script src="/assets/picker.js?v=4" defer></script>
+<script src="/assets/picker.js?v=5" defer></script>
+<script src="/assets/exq.js?v=1" defer></script>
 <script src="/assets/footer.js?v=6"></script>
 <script src="/assets/cookies.js?v=2"></script>
 <script src="/assets/mobile.js?v=5"></script>

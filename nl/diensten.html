@@ -65,7 +65,7 @@
 <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400&family=Instrument+Serif&family=Inter:wght@400;500;600;700&family=Outfit:wght@200..800&display=swap"></noscript>
 <script>/* Theme before paint. Dark is the site, light is a choice you make — the attribute is always stamped so the system setting never decides for you. */(function(){var t='dark';try{t=localStorage.getItem('sitehouse.theme')==='light'?'light':'dark';}catch(e){}document.documentElement.setAttribute('data-theme',t);})();</script>
 <link rel="stylesheet" href="/assets/xovah.css?v=2">
-<link rel="stylesheet" href="/assets/extras.css?v=4">
+<link rel="stylesheet" href="/assets/extras.css?v=5">
 <link rel="stylesheet" href="/assets/mobile.css?v=6">
 <link rel="stylesheet" href="/assets/tailwind.css?v=2">
 <link rel="stylesheet" href="/assets/theme.css?v=6">
@@ -681,12 +681,87 @@
               <p class="mt-4 text-[0.8125rem] leading-relaxed text-ink-soft">
                 Alleen de extra's. De prijs van de website zelf komt hierbij.
               </p>
-              <a href="/nl#extras" class="pick-send">Meesturen met mijn projectaanvraag</a>
+              <a href="#request" class="pick-send">Meesturen met mijn projectaanvraag</a>
             </div>
 
         </div>
 
       </div>
+
+      <!-- The request. Everything ticked above is written into the message
+           as you go, so what is sent is exactly what is on screen. -->
+      <section id="request" class="rq-page-wrap scroll-mt-28">
+        <div class="rq-page">
+          <div class="rq-page-head">
+            <p class="eyebrow text-accent">Versturen</p>
+            <h2 class="h-section sec-title mt-3">Maak hier een aanvraag van.</h2>
+            <p class="mt-4 max-w-prose text-[0.9375rem] leading-relaxed text-ink-mid">
+              Wat je hebt aangevinkt komt in het bericht, met het totaal. Voeg je e-mailadres toe en een paar woorden over het bedrijf, dan bereikt het ons in één geheel. Er wordt niets in rekening gebracht en er komt geen account.
+            </p>
+          </div>
+
+          <form class="rq-form" id="exq" novalidate>
+            <div class="rq-form-grid">
+              <label class="rq-f">
+                <span class="rq-f-l">Je e-mailadres <em>verplicht</em></span>
+                <input class="rq-f-i" type="email" name="email" inputmode="email" autocomplete="email" maxlength="200" required>
+                <span class="rq-f-h">Het enige wat we echt nodig hebben. We antwoorden hier en nergens anders.</span>
+              </label>
+
+              <label class="rq-f">
+                <span class="rq-f-l">Je naam <em>verplicht</em></span>
+                <input class="rq-f-i" type="text" name="name" autocomplete="name" maxlength="120" required>
+              </label>
+
+              <label class="rq-f">
+                <span class="rq-f-l">Naam van het bedrijf of project</span>
+                <input class="rq-f-i" type="text" name="business" maxlength="160" placeholder="Hoe heet het?">
+              </label>
+
+              <label class="rq-f">
+                <span class="rq-f-l">Wat voor website?</span>
+                <input class="rq-f-i" type="text" name="kind" maxlength="120" placeholder="Bedrijfssite, webshop, portfolio…">
+              </label>
+
+              <label class="rq-f rq-f--wide">
+                <span class="rq-f-l">Link naar je foto's en logo</span>
+                <input class="rq-f-i" type="url" name="photos" inputmode="url" maxlength="400" placeholder="Een Drive-, Dropbox- of WeTransfer-link — of je Instagram">
+                <span class="rq-f-h">Optioneel. Staan ze op je telefoon, stuur ze dan per e-mail nadat we reageren.</span>
+              </label>
+
+              <label class="rq-f rq-f--wide">
+                <span class="rq-f-l">Vertel ons wat je nodig hebt</span>
+                <textarea class="rq-f-i rq-f-t" name="brief" rows="5" maxlength="4000" placeholder="What the business does, who it is for, and anything the website has to achieve."></textarea>
+              </label>
+            </div>
+
+            <input class="rq-trap" type="text" name="company" tabindex="-1" autocomplete="off" aria-hidden="true">
+
+            <div class="rq-form-side">
+              <p class="rq-side-l">Wat er verstuurd wordt</p>
+              <div class="rq-side-box" data-exq-preview aria-live="polite"></div>
+              <p class="rq-side-note">
+                Dit wordt geschreven op basis van je keuzes en verandert terwijl je aanvinkt. Dit is precies wat ons bereikt.
+              </p>
+            </div>
+
+            <p class="rq-form-error" data-exq-error role="alert"></p>
+
+            <div class="rq-form-foot">
+              <button type="submit" class="btn btn-primary rq-form-send">Mijn aanvraag versturen</button>
+              <p class="rq-form-note">
+                We lezen ze allemaal en antwoorden, meestal dezelfde werkdag. Versturen kost niets.
+              </p>
+            </div>
+          </form>
+
+          <div class="rq-sent" data-exq-done hidden>
+            <p class="rq-sent-h">Aanvraag verstuurd.</p>
+            <p class="rq-sent-p" data-exq-done-text>Bedankt. We antwoorden per e-mail.</p>
+            <a class="rq-sent-a" href="/nl/prijzen">Bekijk ondertussen de pakketten</a>
+          </div>
+        </div>
+      </section>
 
       <div class="mt-14 grid grid-cols-1 gap-8 border-t border-line pt-8 lg:grid-cols-12 lg:gap-14">
         <div class="lg:col-span-7">
@@ -716,7 +791,7 @@
         <b data-ex-dock-once><span class="cur" data-eur="0">€0</span></b>
         <span><span data-ex-dock-count>0</span> geselecteerd</span>
       </p>
-      <a href="/nl#extras" class="ex-dock-cta">Meesturen met aanvraag</a>
+      <a href="#request" class="ex-dock-cta">Meesturen met aanvraag</a>
     </div>
   </div>
 </main>
@@ -734,7 +809,8 @@
   </nav>
 </div>
 
-<script src="/assets/picker.js?v=4" defer></script>
+<script src="/assets/picker.js?v=5" defer></script>
+<script src="/assets/exq.js?v=1" defer></script>
 <script src="/assets/footer.js?v=6"></script>
 <script src="/assets/cookies.js?v=2"></script>
 <script src="/assets/mobile.js?v=5"></script>

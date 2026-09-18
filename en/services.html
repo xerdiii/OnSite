@@ -65,7 +65,7 @@
 <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400&family=Instrument+Serif&family=Inter:wght@400;500;600;700&family=Outfit:wght@200..800&display=swap"></noscript>
 <script>/* Theme before paint. Dark is the site, light is a choice you make — the attribute is always stamped so the system setting never decides for you. */(function(){var t='dark';try{t=localStorage.getItem('sitehouse.theme')==='light'?'light':'dark';}catch(e){}document.documentElement.setAttribute('data-theme',t);})();</script>
 <link rel="stylesheet" href="/assets/xovah.css?v=2">
-<link rel="stylesheet" href="/assets/extras.css?v=4">
+<link rel="stylesheet" href="/assets/extras.css?v=5">
 <link rel="stylesheet" href="/assets/mobile.css?v=6">
 <link rel="stylesheet" href="/assets/tailwind.css?v=2">
 <link rel="stylesheet" href="/assets/theme.css?v=6">
@@ -681,12 +681,87 @@
               <p class="mt-4 text-[0.8125rem] leading-relaxed text-ink-soft">
                 Extras only. The price of the website itself is on top of this.
               </p>
-              <a href="/en#extras" class="pick-send">Send these with my project request</a>
+              <a href="#request" class="pick-send">Send these with my project request</a>
             </div>
 
         </div>
 
       </div>
+
+      <!-- The request. Everything ticked above is written into the message
+           as you go, so what is sent is exactly what is on screen. -->
+      <section id="request" class="rq-page-wrap scroll-mt-28">
+        <div class="rq-page">
+          <div class="rq-page-head">
+            <p class="eyebrow text-accent">Send it</p>
+            <h2 class="h-section sec-title mt-3">Turn this into a request.</h2>
+            <p class="mt-4 max-w-prose text-[0.9375rem] leading-relaxed text-ink-mid">
+              What you ticked goes in the message, with the total. Add your email and a few words about the business and it reaches us in one piece. Nothing is charged and no account is made.
+            </p>
+          </div>
+
+          <form class="rq-form" id="exq" novalidate>
+            <div class="rq-form-grid">
+              <label class="rq-f">
+                <span class="rq-f-l">Your email <em>required</em></span>
+                <input class="rq-f-i" type="email" name="email" inputmode="email" autocomplete="email" maxlength="200" required>
+                <span class="rq-f-h">The only thing we truly need. We reply here and nowhere else.</span>
+              </label>
+
+              <label class="rq-f">
+                <span class="rq-f-l">Your name <em>required</em></span>
+                <input class="rq-f-i" type="text" name="name" autocomplete="name" maxlength="120" required>
+              </label>
+
+              <label class="rq-f">
+                <span class="rq-f-l">Business or project name</span>
+                <input class="rq-f-i" type="text" name="business" maxlength="160" placeholder="What is it called?">
+              </label>
+
+              <label class="rq-f">
+                <span class="rq-f-l">What kind of website?</span>
+                <input class="rq-f-i" type="text" name="kind" maxlength="120" placeholder="Business site, shop, portfolio…">
+              </label>
+
+              <label class="rq-f rq-f--wide">
+                <span class="rq-f-l">Link to your photos and logo</span>
+                <input class="rq-f-i" type="url" name="photos" inputmode="url" maxlength="400" placeholder="A Drive, Dropbox or WeTransfer link — or your Instagram">
+                <span class="rq-f-h">Optional. If they are on your phone, send them by email after we reply.</span>
+              </label>
+
+              <label class="rq-f rq-f--wide">
+                <span class="rq-f-l">Tell us what you need</span>
+                <textarea class="rq-f-i rq-f-t" name="brief" rows="5" maxlength="4000" placeholder="What the business does, who it is for, and anything the website has to achieve."></textarea>
+              </label>
+            </div>
+
+            <input class="rq-trap" type="text" name="company" tabindex="-1" autocomplete="off" aria-hidden="true">
+
+            <div class="rq-form-side">
+              <p class="rq-side-l">What gets sent</p>
+              <div class="rq-side-box" data-exq-preview aria-live="polite"></div>
+              <p class="rq-side-note">
+                This is written from your choices and changes as you tick. It is exactly what reaches us.
+              </p>
+            </div>
+
+            <p class="rq-form-error" data-exq-error role="alert"></p>
+
+            <div class="rq-form-foot">
+              <button type="submit" class="btn btn-primary rq-form-send">Send my request</button>
+              <p class="rq-form-note">
+                We read every one and reply, usually the same working day. Nothing is charged by sending this.
+              </p>
+            </div>
+          </form>
+
+          <div class="rq-sent" data-exq-done hidden>
+            <p class="rq-sent-h">Request sent.</p>
+            <p class="rq-sent-p" data-exq-done-text>Thank you. We will reply by email.</p>
+            <a class="rq-sent-a" href="/en/pricing">See the packages while you wait</a>
+          </div>
+        </div>
+      </section>
 
       <div class="mt-14 grid grid-cols-1 gap-8 border-t border-line pt-8 lg:grid-cols-12 lg:gap-14">
         <div class="lg:col-span-7">
@@ -716,7 +791,7 @@
         <b data-ex-dock-once><span class="cur" data-eur="0">€0</span></b>
         <span><span data-ex-dock-count>0</span> selected</span>
       </p>
-      <a href="/en#extras" class="ex-dock-cta">Send with my request</a>
+      <a href="#request" class="ex-dock-cta">Send with my request</a>
     </div>
   </div>
 </main>
@@ -734,7 +809,8 @@
   </nav>
 </div>
 
-<script src="/assets/picker.js?v=4" defer></script>
+<script src="/assets/picker.js?v=5" defer></script>
+<script src="/assets/exq.js?v=1" defer></script>
 <script src="/assets/footer.js?v=6"></script>
 <script src="/assets/cookies.js?v=2"></script>
 <script src="/assets/mobile.js?v=5"></script>

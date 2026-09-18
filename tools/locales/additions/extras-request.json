@@ -1,0 +1,130 @@
+{
+  "_comment": "The request form at the foot of the extras page.",
+
+  "Send it": {
+    "sq": "Dërgojeni", "de": "Absenden", "fr": "Envoyer", "it": "Invialo",
+    "es": "Envíalo", "pt": "Envie", "nl": "Versturen", "sv": "Skicka in", "tr": "Gönderin"
+  },
+  "Turn this into a request.": {
+    "sq": "Kthejeni këtë në një kërkesë.", "de": "Machen Sie daraus eine Anfrage.",
+    "fr": "Transformez cela en demande.", "it": "Trasforma tutto questo in una richiesta.",
+    "es": "Conviértelo en una solicitud.", "pt": "Transforme isto num pedido.",
+    "nl": "Maak hier een aanvraag van.", "sv": "Gör det här till en förfrågan.",
+    "tr": "Bunu bir talebe dönüştürün."
+  },
+  "What you ticked goes in the message, with the total. Add your email and a few words about the business and it reaches us in one piece. Nothing is charged and no account is made.": {
+    "sq": "Ato që shënuat shkojnë në mesazh, bashkë me totalin. Shtoni email-in dhe pak fjalë për biznesin dhe na vjen e gjitha bashkë. Nuk faturohet asgjë dhe nuk hapet asnjë llogari.",
+    "de": "Was Sie angehakt haben, steht in der Nachricht, samt Summe. Ergänzen Sie Ihre E-Mail und ein paar Worte zum Unternehmen, dann erreicht uns alles in einem Stück. Es wird nichts berechnet und kein Konto angelegt.",
+    "fr": "Ce que vous avez coché figure dans le message, avec le total. Ajoutez votre e-mail et quelques mots sur l'entreprise et tout nous arrive d'un seul tenant. Rien n'est facturé et aucun compte n'est créé.",
+    "it": "Quello che hai spuntato finisce nel messaggio, con il totale. Aggiungi la tua email e due parole sull'attività e ci arriva tutto insieme. Non viene addebitato nulla e non si crea alcun account.",
+    "es": "Lo que has marcado va en el mensaje, con el total. Añade tu correo y unas palabras sobre el negocio y nos llega todo de una pieza. No se cobra nada ni se crea ninguna cuenta.",
+    "pt": "O que assinalou vai na mensagem, com o total. Junte o seu email e umas palavras sobre o negócio e chega-nos tudo de uma vez. Não é cobrado nada nem se cria conta.",
+    "nl": "Wat je hebt aangevinkt komt in het bericht, met het totaal. Voeg je e-mailadres toe en een paar woorden over het bedrijf, dan bereikt het ons in één geheel. Er wordt niets in rekening gebracht en er komt geen account.",
+    "sv": "Det du bockat för hamnar i meddelandet, med summan. Lägg till din e-post och några ord om verksamheten så når allt oss i ett stycke. Inget debiteras och inget konto skapas.",
+    "tr": "İşaretledikleriniz, toplamıyla birlikte mesaja girer. E-postanızı ve işletme hakkında birkaç cümleyi ekleyin; hepsi bize tek parça hâlinde ulaşsın. Hiçbir ücret alınmaz, hesap açılmaz."
+  },
+  "required": {
+    "sq": "e detyrueshme", "de": "erforderlich", "fr": "obligatoire", "it": "obbligatorio",
+    "es": "obligatorio", "pt": "obrigatório", "nl": "verplicht", "sv": "krävs", "tr": "zorunlu"
+  },
+  "The only thing we truly need. We reply here and nowhere else.": {
+    "sq": "E vetmja gjë që na duhet vërtet. Përgjigjemi këtu dhe askund tjetër.",
+    "de": "Das Einzige, was wir wirklich brauchen. Wir antworten hierauf und sonst nirgends.",
+    "fr": "La seule chose dont nous avons vraiment besoin. Nous répondons ici et nulle part ailleurs.",
+    "it": "L'unica cosa di cui abbiamo davvero bisogno. Rispondiamo qui e da nessun'altra parte.",
+    "es": "Lo único que necesitamos de verdad. Respondemos aquí y en ningún otro sitio.",
+    "pt": "A única coisa de que precisamos mesmo. Respondemos aqui e mais nada.",
+    "nl": "Het enige wat we echt nodig hebben. We antwoorden hier en nergens anders.",
+    "sv": "Det enda vi verkligen behöver. Vi svarar hit och ingen annanstans.",
+    "tr": "Gerçekten ihtiyaç duyduğumuz tek şey. Yanıtı buraya veririz, başka yere değil."
+  },
+  "What kind of website?": {
+    "sq": "Çfarë lloj faqeje?", "de": "Was für eine Website?", "fr": "Quel type de site ?",
+    "it": "Che tipo di sito?", "es": "¿Qué tipo de web?", "pt": "Que tipo de site?",
+    "nl": "Wat voor website?", "sv": "Vilken sorts webbplats?", "tr": "Ne tür bir site?"
+  },
+  "Link to your photos and logo": {
+    "sq": "Lidhje për fotot dhe logon tuaj", "de": "Link zu Ihren Fotos und zum Logo",
+    "fr": "Lien vers vos photos et votre logo", "it": "Link alle tue foto e al logo",
+    "es": "Enlace a tus fotos y tu logo", "pt": "Link para as suas fotografias e logótipo",
+    "nl": "Link naar je foto's en logo", "sv": "Länk till dina bilder och din logotyp",
+    "tr": "Fotoğraflarınızın ve logonuzun bağlantısı"
+  },
+  "A Drive, Dropbox or WeTransfer link — or your Instagram": {
+    "sq": "Një lidhje Drive, Dropbox ose WeTransfer — ose Instagrami juaj",
+    "de": "Ein Drive-, Dropbox- oder WeTransfer-Link — oder Ihr Instagram",
+    "fr": "Un lien Drive, Dropbox ou WeTransfer — ou votre Instagram",
+    "it": "Un link Drive, Dropbox o WeTransfer — oppure il tuo Instagram",
+    "es": "Un enlace de Drive, Dropbox o WeTransfer — o tu Instagram",
+    "pt": "Um link do Drive, Dropbox ou WeTransfer — ou o seu Instagram",
+    "nl": "Een Drive-, Dropbox- of WeTransfer-link — of je Instagram",
+    "sv": "En länk till Drive, Dropbox eller WeTransfer — eller ditt Instagram",
+    "tr": "Drive, Dropbox ya da WeTransfer bağlantısı — veya Instagram'ınız"
+  },
+  "Optional. If they are on your phone, send them by email after we reply.": {
+    "sq": "Opsionale. Nëse janë në telefon, na i dërgoni me email pasi t'ju përgjigjemi.",
+    "de": "Optional. Wenn sie auf dem Handy liegen, schicken Sie sie per E-Mail, sobald wir antworten.",
+    "fr": "Facultatif. Si elles sont sur votre téléphone, envoyez-les par e-mail après notre réponse.",
+    "it": "Facoltativo. Se sono sul telefono, mandale via email dopo la nostra risposta.",
+    "es": "Opcional. Si están en el móvil, envíalas por correo cuando te respondamos.",
+    "pt": "Opcional. Se estiverem no telemóvel, envie-as por email depois de respondermos.",
+    "nl": "Optioneel. Staan ze op je telefoon, stuur ze dan per e-mail nadat we reageren.",
+    "sv": "Frivilligt. Ligger de i mobilen, mejla dem när vi har svarat.",
+    "tr": "İsteğe bağlı. Telefonunuzdaysa, biz yanıtladıktan sonra e-postayla gönderin."
+  },
+  "What gets sent": {
+    "sq": "Çfarë dërgohet", "de": "Was gesendet wird", "fr": "Ce qui est envoyé",
+    "it": "Cosa viene inviato", "es": "Qué se envía", "pt": "O que é enviado",
+    "nl": "Wat er verstuurd wordt", "sv": "Vad som skickas", "tr": "Ne gönderiliyor"
+  },
+  "This is written from your choices and changes as you tick. It is exactly what reaches us.": {
+    "sq": "Ky tekst shkruhet nga zgjedhjet tuaja dhe ndryshon ndërsa shënoni. Është saktësisht ajo që na vjen.",
+    "de": "Das entsteht aus Ihren Angaben und ändert sich beim Anhaken. Genau das erreicht uns.",
+    "fr": "Ce texte est écrit à partir de vos choix et change à mesure que vous cochez. C'est exactement ce qui nous parvient.",
+    "it": "Questo testo nasce dalle tue scelte e cambia mentre spunti. È esattamente ciò che ci arriva.",
+    "es": "Esto se escribe con tus elecciones y cambia según marcas. Es exactamente lo que nos llega.",
+    "pt": "Isto é escrito a partir das suas escolhas e muda à medida que assinala. É exatamente o que nos chega.",
+    "nl": "Dit wordt geschreven op basis van je keuzes en verandert terwijl je aanvinkt. Dit is precies wat ons bereikt.",
+    "sv": "Det här skrivs utifrån dina val och ändras medan du bockar för. Det är precis vad som når oss.",
+    "tr": "Bu metin seçimlerinizden yazılır ve siz işaretledikçe değişir. Bize ulaşan tam olarak budur."
+  },
+  "Send my request": {
+    "sq": "Dërgo kërkesën time", "de": "Anfrage senden", "fr": "Envoyer ma demande",
+    "it": "Invia la mia richiesta", "es": "Enviar mi solicitud", "pt": "Enviar o meu pedido",
+    "nl": "Mijn aanvraag versturen", "sv": "Skicka min förfrågan", "tr": "Talebimi gönder"
+  },
+  "We read every one and reply, usually the same working day. Nothing is charged by sending this.": {
+    "sq": "I lexojmë të gjitha dhe përgjigjemi, zakonisht brenda së njëjtës ditë pune. Dërgimi nuk kushton asgjë.",
+    "de": "Wir lesen jede einzelne und antworten, meist am selben Werktag. Das Senden kostet nichts.",
+    "fr": "Nous les lisons toutes et répondons, en général le jour ouvré même. L'envoi ne coûte rien.",
+    "it": "Le leggiamo tutte e rispondiamo, di solito nella stessa giornata lavorativa. Inviare non costa nulla.",
+    "es": "Las leemos todas y respondemos, normalmente el mismo día laborable. Enviarla no cuesta nada.",
+    "pt": "Lemos todos e respondemos, normalmente no mesmo dia útil. Enviar não custa nada.",
+    "nl": "We lezen ze allemaal en antwoorden, meestal dezelfde werkdag. Versturen kost niets.",
+    "sv": "Vi läser varenda en och svarar, oftast samma arbetsdag. Att skicka kostar inget.",
+    "tr": "Hepsini okuyup yanıtlıyoruz, genellikle aynı iş günü içinde. Göndermenin bedeli yok."
+  },
+  "Request sent.": {
+    "sq": "Kërkesa u dërgua.", "de": "Anfrage gesendet.", "fr": "Demande envoyée.",
+    "it": "Richiesta inviata.", "es": "Solicitud enviada.", "pt": "Pedido enviado.",
+    "nl": "Aanvraag verstuurd.", "sv": "Förfrågan skickad.", "tr": "Talep gönderildi."
+  },
+  "Thank you. We will reply by email.": {
+    "sq": "Faleminderit. Do t'ju përgjigjemi me email.",
+    "de": "Danke. Wir antworten per E-Mail.",
+    "fr": "Merci. Nous répondrons par e-mail.",
+    "it": "Grazie. Ti risponderemo via email.",
+    "es": "Gracias. Te responderemos por correo.",
+    "pt": "Obrigado. Responderemos por email.",
+    "nl": "Bedankt. We antwoorden per e-mail.",
+    "sv": "Tack. Vi svarar via e-post.",
+    "tr": "Teşekkürler. E-posta ile yanıt vereceğiz."
+  },
+  "See the packages while you wait": {
+    "sq": "Shihni paketat ndërkohë", "de": "Sehen Sie sich derweil die Pakete an",
+    "fr": "Voir les formules en attendant", "it": "Intanto guarda i pacchetti",
+    "es": "Mira los paquetes mientras tanto", "pt": "Veja os pacotes entretanto",
+    "nl": "Bekijk ondertussen de pakketten", "sv": "Titta på paketen under tiden",
+    "tr": "Beklerken paketlere göz atın"
+  }
+}

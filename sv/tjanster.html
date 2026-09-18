@@ -65,7 +65,7 @@
 <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400&family=Instrument+Serif&family=Inter:wght@400;500;600;700&family=Outfit:wght@200..800&display=swap"></noscript>
 <script>/* Theme before paint. Dark is the site, light is a choice you make — the attribute is always stamped so the system setting never decides for you. */(function(){var t='dark';try{t=localStorage.getItem('sitehouse.theme')==='light'?'light':'dark';}catch(e){}document.documentElement.setAttribute('data-theme',t);})();</script>
 <link rel="stylesheet" href="/assets/xovah.css?v=2">
-<link rel="stylesheet" href="/assets/extras.css?v=4">
+<link rel="stylesheet" href="/assets/extras.css?v=5">
 <link rel="stylesheet" href="/assets/mobile.css?v=6">
 <link rel="stylesheet" href="/assets/tailwind.css?v=2">
 <link rel="stylesheet" href="/assets/theme.css?v=6">
@@ -681,12 +681,87 @@
               <p class="mt-4 text-[0.8125rem] leading-relaxed text-ink-soft">
                 Bara tilläggen. Priset för själva webbplatsen tillkommer.
               </p>
-              <a href="/sv#extras" class="pick-send">Skicka med min projektförfrågan</a>
+              <a href="#request" class="pick-send">Skicka med min projektförfrågan</a>
             </div>
 
         </div>
 
       </div>
+
+      <!-- The request. Everything ticked above is written into the message
+           as you go, so what is sent is exactly what is on screen. -->
+      <section id="request" class="rq-page-wrap scroll-mt-28">
+        <div class="rq-page">
+          <div class="rq-page-head">
+            <p class="eyebrow text-accent">Skicka in</p>
+            <h2 class="h-section sec-title mt-3">Gör det här till en förfrågan.</h2>
+            <p class="mt-4 max-w-prose text-[0.9375rem] leading-relaxed text-ink-mid">
+              Det du bockat för hamnar i meddelandet, med summan. Lägg till din e-post och några ord om verksamheten så når allt oss i ett stycke. Inget debiteras och inget konto skapas.
+            </p>
+          </div>
+
+          <form class="rq-form" id="exq" novalidate>
+            <div class="rq-form-grid">
+              <label class="rq-f">
+                <span class="rq-f-l">Din e-post <em>krävs</em></span>
+                <input class="rq-f-i" type="email" name="email" inputmode="email" autocomplete="email" maxlength="200" required>
+                <span class="rq-f-h">Det enda vi verkligen behöver. Vi svarar hit och ingen annanstans.</span>
+              </label>
+
+              <label class="rq-f">
+                <span class="rq-f-l">Ditt namn <em>krävs</em></span>
+                <input class="rq-f-i" type="text" name="name" autocomplete="name" maxlength="120" required>
+              </label>
+
+              <label class="rq-f">
+                <span class="rq-f-l">Företagets eller projektets namn</span>
+                <input class="rq-f-i" type="text" name="business" maxlength="160" placeholder="Vad heter det?">
+              </label>
+
+              <label class="rq-f">
+                <span class="rq-f-l">Vilken sorts webbplats?</span>
+                <input class="rq-f-i" type="text" name="kind" maxlength="120" placeholder="Företagssida, butik, portfolio…">
+              </label>
+
+              <label class="rq-f rq-f--wide">
+                <span class="rq-f-l">Länk till dina bilder och din logotyp</span>
+                <input class="rq-f-i" type="url" name="photos" inputmode="url" maxlength="400" placeholder="En länk till Drive, Dropbox eller WeTransfer — eller ditt Instagram">
+                <span class="rq-f-h">Frivilligt. Ligger de i mobilen, mejla dem när vi har svarat.</span>
+              </label>
+
+              <label class="rq-f rq-f--wide">
+                <span class="rq-f-l">Berätta vad du behöver</span>
+                <textarea class="rq-f-i rq-f-t" name="brief" rows="5" maxlength="4000" placeholder="What the business does, who it is for, and anything the website has to achieve."></textarea>
+              </label>
+            </div>
+
+            <input class="rq-trap" type="text" name="company" tabindex="-1" autocomplete="off" aria-hidden="true">
+
+            <div class="rq-form-side">
+              <p class="rq-side-l">Vad som skickas</p>
+              <div class="rq-side-box" data-exq-preview aria-live="polite"></div>
+              <p class="rq-side-note">
+                Det här skrivs utifrån dina val och ändras medan du bockar för. Det är precis vad som når oss.
+              </p>
+            </div>
+
+            <p class="rq-form-error" data-exq-error role="alert"></p>
+
+            <div class="rq-form-foot">
+              <button type="submit" class="btn btn-primary rq-form-send">Skicka min förfrågan</button>
+              <p class="rq-form-note">
+                Vi läser varenda en och svarar, oftast samma arbetsdag. Att skicka kostar inget.
+              </p>
+            </div>
+          </form>
+
+          <div class="rq-sent" data-exq-done hidden>
+            <p class="rq-sent-h">Förfrågan skickad.</p>
+            <p class="rq-sent-p" data-exq-done-text>Tack. Vi svarar via e-post.</p>
+            <a class="rq-sent-a" href="/sv/priser">Titta på paketen under tiden</a>
+          </div>
+        </div>
+      </section>
 
       <div class="mt-14 grid grid-cols-1 gap-8 border-t border-line pt-8 lg:grid-cols-12 lg:gap-14">
         <div class="lg:col-span-7">
@@ -716,7 +791,7 @@
         <b data-ex-dock-once><span class="cur" data-eur="0">€0</span></b>
         <span><span data-ex-dock-count>0</span> valda</span>
       </p>
-      <a href="/sv#extras" class="ex-dock-cta">Skicka med förfrågan</a>
+      <a href="#request" class="ex-dock-cta">Skicka med förfrågan</a>
     </div>
   </div>
 </main>
@@ -734,7 +809,8 @@
   </nav>
 </div>
 
-<script src="/assets/picker.js?v=4" defer></script>
+<script src="/assets/picker.js?v=5" defer></script>
+<script src="/assets/exq.js?v=1" defer></script>
 <script src="/assets/footer.js?v=6"></script>
 <script src="/assets/cookies.js?v=2"></script>
 <script src="/assets/mobile.js?v=5"></script>
