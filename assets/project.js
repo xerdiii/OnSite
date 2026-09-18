@@ -53,10 +53,9 @@
 
   var EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
 
-  /* The paid packages, in catalogue order. The free landing page has
-     its own page and its own questions (photos, opening hours), so it
-     is linked to rather than mixed in here — a €0 card sitting beside
-     three priced ones only ever gets asked about. */
+  /* The packages, in catalogue order. Anything with no figure on it is
+     agreed with the customer rather than picked from a list, so it is
+     not a card here — the contact page takes those. */
   var TIERS = {};
   var TIER_LIST = [];
   CAT.websites.forEach(function (w) {
@@ -475,6 +474,26 @@
     if (el) el.hidden = true;
   }
 
+  /* When sending fails there is a request on the screen that took
+     somebody ten minutes to build. The copy button saves it; this hands
+     it straight to their own mail app, addressed to the inbox this page
+     posts to, so the work reaches us either way. Long mailto: bodies are
+     truncated by Windows and by some mail apps, so it is capped. */
+  var INBOX = 'hello@xovahweb.com';
+
+  function mailHref() {
+    var t = totals();
+    var subject = 'Project request' + (t.tier ? ' - ' + t.tier.name : '');
+    return 'mailto:' + INBOX
+      + '?subject=' + encodeURIComponent(subject)
+      + '&body=' + encodeURIComponent(buildMessage().slice(0, 1400));
+  }
+
+  function mailLink() {
+    return ' <a href="' + mailHref() + '">Send it as an email instead</a> '
+      + '&mdash; it reaches us at ' + INBOX + '.';
+  }
+
   function focusProblem() {
     var t = totals();
     if (!t.tier) {
@@ -543,15 +562,14 @@
          than showing a tick this page has not earned. The copy button
          is the way out — their work is not lost. */
       note('bad', r.status === 503
-        ? '<strong>Sending is temporarily unavailable.</strong> Your request was not delivered. ' +
-          'Nothing you typed is lost — copy the request above and we will pick it up from there.'
+        ? '<strong>Sending is temporarily unavailable.</strong> Your request was not delivered.' +
+          mailLink()
         : r.status === 429
           ? '<strong>That is a few too many in a row.</strong> Give it a minute and press send again.'
-          : '<strong>That did not send.</strong> Your request was not delivered. ' +
-            'Nothing you typed is lost — try again in a moment.');
+          : '<strong>That did not send.</strong> Your request was not delivered.' + mailLink());
     })['catch'](function () {
       note('bad', '<strong>No connection.</strong> Your request was not delivered, and nothing ' +
-                  'you typed is lost. Check your internet and press send again.');
+                  'you typed is lost. Check your internet and press send again.' + mailLink());
     }).then(function () {
       sending = false;
       paint();

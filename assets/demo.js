@@ -198,18 +198,21 @@
     groups: {"website":"Website features","technical":"Business & technical","automation":"Automation","brand":"Brand & design"},
 
     websites: [
-      { key: 'free', name: 'Free Landing Page', cents: 0, cap: 0, years: 0,
-        blurb: 'One page, built and hosted by us, live inside 48 hours.',
-        note: 'On an address we provide. Your own domain is the upgrade.' },
       { key: 'custom', name: 'Custom Website', cents: 4900, cap: 20, years: 1,
         blurb: 'Any twenty of the 34, your pick, on your own domain.',
         note: 'Three is the minimum, twenty the cap. Anything between costs the same.' },
+      { key: 'redesign', name: 'Website Redesign', cents: 10000, cap: 34, years: 1,
+        blurb: 'The site you already have, rebuilt around the text and photographs you already own.',
+        note: 'Your address keeps working, and nothing goes live until you have seen it.' },
       { key: 'full', name: 'Full Website', cents: 19900, cap: 34, years: 1,
         blurb: 'All 34 with no cap, plus the setup work every site needs anyway.',
         note: 'Search indexing, analytics, legal pages and spam protection are done, not sold.' },
       { key: 'complete', name: 'Complete Package', cents: 49900, cap: 34, years: 3,
         blurb: 'The Full Website plus the work around it, and three years of hosting.',
-        note: 'Maintenance, Local SEO, logo and menu design, WhatsApp and business email included.' }
+        note: 'Maintenance, Local SEO, logo and menu design, WhatsApp and business email included.' },
+      { key: 'premium', name: 'Business Premium', cents: 104900, cap: 34, years: 3,
+        blurb: 'Everything in the Complete Package, with the business email and the automation on top.',
+        note: 'Five aliases, automatic replies, booking and reminder emails, and 150 euros of extras you pick.' }
     ],
 
     features: [
@@ -282,7 +285,6 @@
       { group: 'technical', name: 'Domain connection', cents: 1000 },
       { group: 'technical', name: 'SSL / HTTPS setup', cents: 1000 },
       { group: 'technical', name: 'Website migration', cents: 5000, from: true },
-      { group: 'technical', name: 'Website redesign', cents: 10000, from: true },
       { group: 'technical', name: 'Website speed optimization', cents: 5000 },
       { group: 'technical', name: 'Image compression', cents: 1500 },
       { group: 'technical', name: 'Accessibility improvements', cents: 4000 },
