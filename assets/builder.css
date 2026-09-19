@@ -29,7 +29,7 @@
 .bx-hero { padding: clamp(2.25rem, 6vw, 3.75rem) 0 clamp(1.75rem, 4vw, 2.5rem); }
 
 .bx-hero-eyebrow {
-  font-family: 'IBM Plex Mono', ui-monospace, monospace;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace;
   font-size: 0.6875rem;
   letter-spacing: 0.18em;
   text-transform: uppercase;
@@ -37,7 +37,7 @@
   margin: 0 0 0.85rem;
 }
 .bx-hero h1 {
-  font-family: 'Outfit', ui-sans-serif, system-ui, sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
   font-weight: 600;
   font-size: clamp(2rem, 6vw, 3.25rem);
   line-height: 1.05;
@@ -61,7 +61,7 @@
   padding: 0.5rem 0.9rem;
   border: 1px solid rgb(var(--bx-ok-line));
   background: rgb(var(--bx-ok-tint));
-  border-radius: 999px;
+  border-radius: 0.25rem;
   font-size: 0.8125rem;
   font-weight: 500;
   color: rgb(var(--bx-ok));
@@ -77,7 +77,7 @@
   padding: 0;
   list-style: none;
   border: 1px solid rgb(var(--c-line));
-  border-radius: 0.75rem;
+  border-radius: 0.375rem;
   background: rgb(var(--c-surface));
   overflow: hidden;
 }
@@ -100,9 +100,9 @@
   height: 1.4rem;
   display: grid;
   place-items: center;
-  border-radius: 50%;
+  border-radius: 0.25rem;
   border: 1px solid rgb(var(--c-line-firm));
-  font-family: 'IBM Plex Mono', ui-monospace, monospace;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace;
   font-size: 0.6875rem;
   line-height: 1;
 }
@@ -141,15 +141,15 @@
   height: 1.9rem;
   display: grid;
   place-items: center;
-  border-radius: 0.5rem;
+  border-radius: 0.25rem;
   background: rgb(var(--c-ink));
   color: rgb(var(--c-paper));
-  font-family: 'IBM Plex Mono', ui-monospace, monospace;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace;
   font-size: 0.8125rem;
   line-height: 1;
 }
 .bx-stage-t {
-  font-family: 'Outfit', ui-sans-serif, system-ui, sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
   font-weight: 600;
   font-size: clamp(1.25rem, 3.6vw, 1.6rem);
   letter-spacing: -0.03em;
@@ -175,7 +175,7 @@
   align-items: center;
   gap: 0.5rem;
   margin: 0 0 1.25rem 2.8rem;
-  font-family: 'IBM Plex Mono', ui-monospace, monospace;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace;
   font-size: 0.6875rem;
   letter-spacing: 0.1em;
   text-transform: uppercase;
@@ -206,22 +206,18 @@
   height: 100%;
   padding: 1.25rem 1.3rem 1.35rem;
   border: 1px solid rgb(var(--c-line));
-  border-radius: 1rem;
+  border-radius: 0.375rem;
   background: rgb(var(--c-surface));
   transition: border-color 150ms ease, box-shadow 150ms ease, transform 150ms ease;
 }
-.bx-pack:hover .bx-pack-box {
-  border-color: rgb(var(--c-line-firm));
-  box-shadow: 0 6px 20px -10px rgb(var(--c-shadow) / 0.18);
-}
+.bx-pack:hover .bx-pack-box { border-color: rgb(var(--c-line-firm)); }
 .bx-pack input:focus-visible + .bx-pack-box {
   outline: 2px solid rgb(var(--c-accent));
   outline-offset: 2px;
 }
 .bx-pack.is-on .bx-pack-box {
   border-color: rgb(var(--c-accent));
-  box-shadow: 0 0 0 1px rgb(var(--c-accent)),
-              0 10px 30px -16px rgb(var(--c-accent) / 0.45);
+  box-shadow: inset 0 0 0 1px rgb(var(--c-accent));
 }
 
 .bx-pack-top {
@@ -245,7 +241,7 @@
   display: grid;
   place-items: center;
   border: 1px solid rgb(var(--c-line-firm));
-  border-radius: 50%;
+  border-radius: 0.25rem;
   color: transparent;
   transition: background-color 150ms ease, border-color 150ms ease, color 150ms ease;
 }
@@ -263,14 +259,14 @@
   margin-bottom: 0.75rem;
 }
 .bx-pack-price b {
-  font-family: 'IBM Plex Mono', ui-monospace, monospace;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace;
   font-size: 1.375rem;
   font-weight: 600;
   letter-spacing: -0.02em;
   color: rgb(var(--c-ink));
 }
 .bx-pack-flag {
-  font-family: 'IBM Plex Mono', ui-monospace, monospace;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace;
   font-size: 0.625rem;
   letter-spacing: 0.12em;
   text-transform: uppercase;
@@ -297,7 +293,7 @@
    the package, which is the one thing people most often buy twice. */
 .bx-incl {
   border: 1px solid rgb(var(--bx-ok-line));
-  border-radius: 1rem;
+  border-radius: 0.375rem;
   background: rgb(var(--bx-ok-tint));
   padding: 1.35rem 1.4rem 1.5rem;
   margin-bottom: 1.5rem;
@@ -352,7 +348,7 @@
 .bx-incl-grid li s { color: rgb(var(--c-ink-soft)); text-decoration: none; }
 .bx-incl-grid li em {
   font-style: normal;
-  font-family: 'IBM Plex Mono', ui-monospace, monospace;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace;
   font-size: 0.6875rem;
   color: rgb(var(--bx-ok));
   white-space: nowrap;
@@ -365,7 +361,7 @@
 }
 .bx-incl-label {
   margin: 0 0 0.8rem;
-  font-family: 'IBM Plex Mono', ui-monospace, monospace;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace;
   font-size: 0.625rem;
   letter-spacing: 0.14em;
   text-transform: uppercase;
@@ -399,7 +395,7 @@
   gap: 0.45rem;
   padding: 0.5rem 0.9rem;
   border: 1px solid rgb(var(--c-line));
-  border-radius: 999px;
+  border-radius: 0.25rem;
   background: rgb(var(--c-surface));
   font-size: 0.8125rem;
   font-weight: 500;
@@ -409,14 +405,18 @@
   transition: border-color 140ms ease, background-color 140ms ease, color 140ms ease;
 }
 .bx-tab:hover { border-color: rgb(var(--c-line-firm)); color: rgb(var(--c-ink)); }
+/* White, not inked: the selected tab reads as a physical key that has
+   been pressed, and keeps the accent free for the one button that
+   actually sends something. */
 .bx-tab.is-on {
-  background: rgb(var(--c-ink));
-  border-color: rgb(var(--c-ink));
-  color: rgb(var(--c-paper));
+  background: #fff;
+  border-color: #fff;
+  color: #14161a;
+  font-weight: 600;
 }
 .bx-tab i {
   font-style: normal;
-  font-family: 'IBM Plex Mono', ui-monospace, monospace;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace;
   font-size: 0.6875rem;
   opacity: 0.6;
 }
@@ -426,10 +426,10 @@
   padding: 0 0.25rem;
   display: grid;
   place-items: center;
-  border-radius: 999px;
+  border-radius: 0.25rem;
   background: rgb(var(--c-accent));
   color: #fff;
-  font-family: 'IBM Plex Mono', ui-monospace, monospace;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace;
   font-size: 0.625rem;
   font-weight: 600;
 }
@@ -452,7 +452,7 @@
   height: 100%;
   padding: 0.85rem 0.95rem;
   border: 1px solid rgb(var(--c-line));
-  border-radius: 0.7rem;
+  border-radius: 0.375rem;
   background: rgb(var(--c-surface));
   transition: border-color 140ms ease, background-color 140ms ease, box-shadow 140ms ease;
 }
@@ -474,7 +474,7 @@
   display: grid;
   place-items: center;
   border: 1px solid rgb(var(--c-line-firm));
-  border-radius: 0.3rem;
+  border-radius: 0.25rem;
   background: rgb(var(--c-paper));
   color: transparent;
   transition: background-color 140ms ease, border-color 140ms ease, color 140ms ease;
@@ -497,7 +497,7 @@
 .bx-add-price {
   display: block;
   margin-top: 0.25rem;
-  font-family: 'IBM Plex Mono', ui-monospace, monospace;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace;
   font-size: 0.8125rem;
   font-weight: 600;
   color: rgb(var(--c-ink-mid));
@@ -510,7 +510,7 @@
   font-size: 0.875rem;
   color: rgb(var(--c-ink-soft));
   border: 1px dashed rgb(var(--c-line-firm));
-  border-radius: 0.7rem;
+  border-radius: 0.375rem;
 }
 
 /* ══ Send: letter left, form right ═══════════════════════════ */
@@ -526,7 +526,7 @@
 
 .bx-col-label {
   margin: 0 0 0.75rem;
-  font-family: 'IBM Plex Mono', ui-monospace, monospace;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace;
   font-size: 0.625rem;
   letter-spacing: 0.16em;
   text-transform: uppercase;
@@ -539,11 +539,9 @@
 /* ── The letter ─────────────────────────────────────────────── */
 .bx-mail {
   border: 1px solid rgb(var(--c-line));
-  border-radius: 1rem;
+  border-radius: 0.375rem;
   background: rgb(var(--c-surface));
   overflow: hidden;
-  box-shadow: 0 1px 2px rgb(var(--c-shadow) / 0.04),
-              0 18px 44px -30px rgb(var(--c-shadow) / 0.28);
 }
 
 .bx-mail-hd { padding: 1rem 1.15rem; border-bottom: 1px solid rgb(var(--c-line)); }
@@ -556,7 +554,7 @@
 .bx-mail-row span {
   flex: none;
   width: 3.5rem;
-  font-family: 'IBM Plex Mono', ui-monospace, monospace;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace;
   font-size: 0.6875rem;
   letter-spacing: 0.06em;
   text-transform: uppercase;
@@ -582,23 +580,23 @@
 }
 .bx-mail-body-hd p {
   margin: 0;
-  font-family: 'IBM Plex Mono', ui-monospace, monospace;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace;
   font-size: 0.625rem;
   letter-spacing: 0.14em;
   text-transform: uppercase;
   color: rgb(var(--c-ink-soft));
 }
 .bx-copy {
-  border: 1px solid rgb(var(--c-line));
-  border-radius: 0.35rem;
-  background: rgb(var(--c-paper));
-  padding: 0.25rem 0.6rem;
+  border: 1px solid rgba(20, 22, 26, 0.16);
+  border-radius: 0.25rem;
+  background: #fff;
+  padding: 0.3rem 0.7rem;
   font-size: 0.6875rem;
-  font-weight: 500;
-  color: rgb(var(--c-ink-mid));
+  font-weight: 600;
+  color: #14161a;
   cursor: pointer;
 }
-.bx-copy:hover { border-color: rgb(var(--c-line-firm)); color: rgb(var(--c-ink)); }
+.bx-copy:hover { background: #ece9e4; }
 
 .bx-pre {
   margin: 0;
@@ -606,9 +604,9 @@
   max-height: 20rem;
   overflow-y: auto;
   border: 1px solid rgb(var(--c-line));
-  border-radius: 0.55rem;
+  border-radius: 0.375rem;
   background: rgb(var(--c-paper));
-  font-family: 'IBM Plex Mono', ui-monospace, monospace;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace;
   font-size: 0.6875rem;
   line-height: 1.75;
   white-space: pre-wrap;
@@ -619,7 +617,7 @@
 .bx-tally { padding: 1.15rem; border-top: 1px solid rgb(var(--c-line)); }
 .bx-tally-label {
   margin: 0 0 0.5rem;
-  font-family: 'IBM Plex Mono', ui-monospace, monospace;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace;
   font-size: 0.625rem;
   letter-spacing: 0.14em;
   text-transform: uppercase;
@@ -633,7 +631,7 @@
   padding-bottom: 0.9rem;
 }
 .bx-tally-pack span { color: rgb(var(--c-ink)); font-weight: 500; }
-.bx-tally-pack b { font-family: 'IBM Plex Mono', ui-monospace, monospace; color: rgb(var(--c-ink)); }
+.bx-tally-pack b { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace; color: rgb(var(--c-ink)); }
 
 .bx-tally-list {
   margin: 0 0 0.9rem;
@@ -651,7 +649,7 @@
   color: rgb(var(--c-ink-mid));
 }
 .bx-tally-list li b {
-  font-family: 'IBM Plex Mono', ui-monospace, monospace;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace;
   font-weight: 500;
   flex: none;
 }
@@ -668,7 +666,7 @@
 .bx-total dt { font-size: 0.8125rem; font-weight: 600; color: rgb(var(--c-ink)); }
 .bx-total dd {
   margin: 0;
-  font-family: 'IBM Plex Mono', ui-monospace, monospace;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace;
   font-size: 1.5rem;
   font-weight: 600;
   letter-spacing: -0.02em;
@@ -686,7 +684,7 @@
   margin-top: 1rem;
   padding: 0.6rem;
   border: 1px solid rgb(var(--c-line));
-  border-radius: 0.5rem;
+  border-radius: 0.25rem;
   background: none;
   font-size: 0.75rem;
   color: rgb(var(--c-ink-soft));
@@ -697,7 +695,7 @@
 /* ── The form ───────────────────────────────────────────────── */
 .bx-form {
   border: 1px solid rgb(var(--c-line));
-  border-radius: 1rem;
+  border-radius: 0.375rem;
   background: rgb(var(--c-surface));
   padding: 1.35rem 1.4rem 1.5rem;
 }
@@ -717,7 +715,7 @@
   width: 100%;
   padding: 0.7rem 0.85rem;
   border: 1px solid rgb(var(--c-line-firm));
-  border-radius: 0.55rem;
+  border-radius: 0.375rem;
   background: rgb(var(--c-paper));
   font: inherit;
   font-size: 0.875rem;
@@ -746,7 +744,7 @@
 .bx-count {
   display: block;
   margin-top: 0.4rem;
-  font-family: 'IBM Plex Mono', ui-monospace, monospace;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace;
   font-size: 0.6875rem;
   color: rgb(var(--c-ink-soft));
 }
@@ -758,7 +756,7 @@
 .bx-more {
   margin-top: 1.5rem;
   border: 1px solid rgb(var(--c-line));
-  border-radius: 0.6rem;
+  border-radius: 0.375rem;
   background: rgb(var(--c-paper));
 }
 .bx-more > summary {
@@ -785,7 +783,7 @@
 .bx-more[open] > summary::after { transform: rotate(-135deg); }
 .bx-more[open] > summary { border-bottom: 1px solid rgb(var(--c-line)); }
 .bx-opt {
-  font-family: 'IBM Plex Mono', ui-monospace, monospace;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace;
   font-size: 0.5625rem;
   letter-spacing: 0.14em;
   text-transform: uppercase;
@@ -800,7 +798,7 @@
   margin-top: 1.1rem;
   padding: 0.8rem 0.95rem;
   border: 1px solid rgb(var(--c-line-firm));
-  border-radius: 0.55rem;
+  border-radius: 0.375rem;
   background: rgb(var(--c-paper));
   font-size: 0.8125rem;
   line-height: 1.6;
@@ -818,7 +816,7 @@
   margin-top: 1.35rem;
   padding: 0.95rem 1.25rem;
   border: 0;
-  border-radius: 0.6rem;
+  border-radius: 0.375rem;
   background: rgb(var(--c-accent));
   color: #fff;
   font: inherit;
@@ -847,7 +845,7 @@
 @media (min-width: 1024px) { .bx-bar { display: none; } }
 .bx-bar-figs { flex: 1; min-width: 0; }
 .bx-bar-total {
-  font-family: 'IBM Plex Mono', ui-monospace, monospace;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace;
   font-size: 1.125rem;
   font-weight: 600;
   color: rgb(var(--c-ink));
@@ -869,14 +867,14 @@
   margin: 0 auto 1.5rem;
   display: grid;
   place-items: center;
-  border-radius: 50%;
+  border-radius: 0.25rem;
   background: rgb(var(--bx-ok-tint));
   border: 1px solid rgb(var(--bx-ok-line));
   color: rgb(var(--bx-ok));
 }
 .bx-done-mark svg { width: 1.5rem; height: 1.5rem; }
 .bx-done h2 {
-  font-family: 'Outfit', ui-sans-serif, system-ui, sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
   font-weight: 600;
   font-size: clamp(1.5rem, 5vw, 2rem);
   letter-spacing: -0.03em;
@@ -888,7 +886,7 @@
 .bx-done-card {
   margin: 2rem 0;
   border: 1px solid rgb(var(--c-line));
-  border-radius: 0.85rem;
+  border-radius: 0.375rem;
   background: rgb(var(--c-surface));
   padding: 0.35rem 1.15rem;
   text-align: left;
@@ -904,7 +902,7 @@
 .bx-done-row:last-child { border-bottom: 0; }
 .bx-done-row span { color: rgb(var(--c-ink-soft)); }
 .bx-done-row b { color: rgb(var(--c-ink)); font-weight: 500; text-align: right; }
-.bx-done-row--total b { font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 1rem; }
+.bx-done-row--total b { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace; font-size: 1rem; }
 
 .bx-done-actions { display: flex; flex-wrap: wrap; gap: 0.75rem; justify-content: center; }
 
