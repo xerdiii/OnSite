@@ -811,6 +811,64 @@
 }
 .bx-note a { color: inherit; text-decoration: underline; }
 
+/* ── The confirm step ──────────────────────────────────────── */
+.bx-note.is-ask {
+  border-color: rgb(var(--c-line-firm));
+  background: rgb(var(--c-surface));
+  color: rgb(var(--c-ink));
+}
+.bx-note.is-ask b { display: block; font-size: 0.875rem; margin-bottom: 0.75rem; }
+
+.bx-confirm-lines { display: block; margin-bottom: 0.9rem; }
+.bx-confirm-lines span {
+  display: flex;
+  gap: 0.75rem;
+  padding: 0.28rem 0;
+  font-size: 0.8125rem;
+  color: rgb(var(--c-ink-mid));
+}
+.bx-confirm-lines i {
+  flex: none;
+  width: 5rem;
+  font-style: normal;
+  color: rgb(var(--c-ink-soft));
+}
+
+.bx-confirm-act { display: flex; gap: 0.5rem; }
+.bx-confirm-yes, .bx-confirm-no {
+  flex: 1;
+  padding: 0.6rem 0.9rem;
+  border-radius: 0.25rem;
+  font: inherit;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+.bx-confirm-yes {
+  border: 0;
+  background: rgb(var(--c-accent));
+  color: #fff;
+}
+.bx-confirm-yes:hover { background: rgb(var(--c-accent-hi)); }
+.bx-confirm-no {
+  border: 1px solid rgba(20, 22, 26, 0.16);
+  background: #fff;
+  color: #14161a;
+}
+.bx-confirm-no:hover { background: #ece9e4; }
+
+/* ── Reply promise, under the send button ──────────────────── */
+.bx-reply {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  margin: 0.9rem 0 0;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: rgb(var(--bx-ok));
+}
+.bx-reply svg { flex: none; width: 0.9rem; height: 0.9rem; }
+
 .bx-cta {
   width: 100%;
   margin-top: 1.35rem;

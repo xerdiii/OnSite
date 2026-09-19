@@ -512,13 +512,44 @@
   function note(kind, html) {
     var el = q('[data-b-note]');
     if (!el) return;
-    el.className = 'bx-note' + (kind === 'bad' ? ' is-bad' : '');
+    el.className = 'bx-note' + (kind === 'bad' ? ' is-bad' : kind === 'ask' ? ' is-ask' : '');
     el.innerHTML = html;
     el.hidden = false;
   }
   function clearNote() {
     var el = q('[data-b-note]');
     if (el) el.hidden = true;
+  }
+
+  /* ── The last check before it leaves ──────────────────────────
+     Not a browser confirm(): those are easy to dismiss without
+     reading, and they cannot show what is actually being sent. This
+     names the package, the count, the total and the address, and the
+     visitor has to press the button a second time. */
+  var confirmed = false;
+
+  function askToConfirm(t) {
+    var count = t.extras.length;
+    note('ask',
+      '<b>Send this to Xovah?</b>' +
+      '<span class="bx-confirm-lines">' +
+        '<span><i>Package</i>' + O.esc(t.tier.name) + '</span>' +
+        '<span><i>Extras</i>' + (count ? count + (count === 1 ? ' extra' : ' extras') : 'None') + '</span>' +
+        '<span><i>Total</i>' + money(t.total) + '</span>' +
+        '<span><i>Reply to</i>' + O.esc(brief.email.trim()) + '</span>' +
+      '</span>' +
+      '<span class="bx-confirm-act">' +
+        '<button type="button" class="bx-confirm-yes" data-b-confirm>Yes, send it</button>' +
+        '<button type="button" class="bx-confirm-no" data-b-cancel>Not yet</button>' +
+      '</span>');
+
+    var el = q('[data-b-note]');
+    if (!el) return;
+    var yes = el.querySelector('[data-b-confirm]');
+    var no  = el.querySelector('[data-b-cancel]');
+    if (yes) yes.addEventListener('click', function () { confirmed = true; send(); });
+    if (no)  no.addEventListener('click', function () { confirmed = false; clearNote(); });
+    if (yes) yes.focus();
   }
 
   /* When sending fails there is a request on screen that took somebody
@@ -564,6 +595,15 @@
       paint();
       return;
     }
+
+    /* One deliberate pause before it goes. The request took real effort
+       to build and cannot be unsent, so the last click is asked for
+       rather than assumed — and it names what is about to leave. */
+    if (!confirmed) {
+      askToConfirm(t);
+      return;
+    }
+    confirmed = false;
 
     sending = true;
     paint();
