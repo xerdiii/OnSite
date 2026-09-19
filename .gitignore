@@ -1,5 +1,11 @@
 node_modules/
 assets/media/original/
 
+# Secrets. The Resend key lives here locally and in Vercel's
+# environment variables in production — never in the repository.
+.env
+.env.*
+!.env.example
+
 _i18n_*.json
 _i18n_extract.json

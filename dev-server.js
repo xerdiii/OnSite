@@ -20,6 +20,25 @@ const path = require('path');
 const root = path.resolve(process.argv[2] || __dirname);
 const port = Number(process.argv[3] || 5174);
 
+/* Secrets for the API routes, the way Vercel supplies them in
+   production. Without this, /api/contact can only ever answer 503
+   locally and the mail path cannot be tested before deploying.
+   .env.local is gitignored; nothing read here is ever logged. */
+(function loadEnv() {
+  const file = path.join(root, '.env.local');
+  let text;
+  try { text = fs.readFileSync(file, 'utf8'); } catch (e) { return; }
+  let n = 0;
+  for (const line of text.split(/\r?\n/)) {
+    const m = /^\s*([A-Za-z_][A-Za-z0-9_]*)\s*=\s*(.*)$/.exec(line);
+    if (!m || line.trim().startsWith('#')) continue;
+    // An unquoted value keeps any inner '#'; a quoted one is taken whole.
+    let v = m[2].trim().replace(/^(['"])([\s\S]*)\1$/, '$2');
+    if (process.env[m[1]] === undefined) { process.env[m[1]] = v; n++; }
+  }
+  if (n) console.log('loaded ' + n + ' variable' + (n === 1 ? '' : 's') + ' from .env.local');
+})();
+
 const TYPES = {
   '.html': 'text/html; charset=utf-8',
   '.css': 'text/css; charset=utf-8',
