@@ -658,6 +658,36 @@
     return ' <a href="' + mailHref() + '">Send it as an email instead</a> — it reaches us at ' + INBOX + '.';
   }
 
+  /* ── reCAPTCHA v3 ─────────────────────────────────────────────
+     Invisible: no puzzle, no click, just a score fetched in the
+     background. Only the site key is used here — the secret never
+     leaves the server, which is the whole point of verifying there.
+
+     Resolves to '' whenever a token cannot be had: the key is unset,
+     the script was blocked, or Google is slow. Deciding what an absent
+     token means is the server's job, not this file's, and the timeout
+     is what stops a blocked script leaving the button on "Sending…"
+     forever. */
+  var RECAPTCHA_ACTION = 'project_request';
+
+  function recaptchaToken() {
+    var key = global.XOVAH_RECAPTCHA_SITE_KEY;
+    var g = global.grecaptcha;
+    if (!key || !g || !g.execute) return Promise.resolve('');
+
+    return new Promise(function (resolve) {
+      var done = false;
+      function finish(v) { if (!done) { done = true; resolve(v || ''); } }
+
+      global.setTimeout(function () { finish(''); }, 8000);
+      try {
+        g.ready(function () {
+          g.execute(key, { action: RECAPTCHA_ACTION }).then(finish, function () { finish(''); });
+        });
+      } catch (e) { finish(''); }
+    });
+  }
+
   function focusProblem() {
     if (!picks.tier) {
       var stage = root.querySelector('[data-b-stage-packs]');
@@ -704,6 +734,7 @@
     var payload = {
       email: brief.email.trim(),
       company: '',                            // the honeypot a real person leaves empty
+      recaptchaToken: '',                     // filled in just before the POST
       project: {
         package: { key: t.tier.key, name: t.tier.name, cents: t.tier.cents },
         extras:  t.extras.map(function (i) { return { name: i.name, cents: i.cents }; }),
@@ -724,21 +755,27 @@
       }
     };
 
-    global.fetch(ENDPOINT, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(payload)
+    recaptchaToken().then(function (token) {
+      payload.recaptchaToken = token;
+      return global.fetch(ENDPOINT, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      });
     }).then(function (r) {
       if (r.ok) { succeed(t); return; }
 
-      /* 503 means the mail service is not configured; anything else is a
-         real failure. Either way it did not arrive, so say so rather
-         than showing a tick this page has not earned. */
+      /* 503 means the mail service is not configured; 403 means the spam
+         check refused it. Anything else is a real failure. Either way it
+         did not arrive, so say so rather than showing a tick this page
+         has not earned. */
       note('bad', r.status === 503
         ? '<strong>Sending is temporarily unavailable.</strong> Your request was not delivered.' + mailLink()
         : r.status === 429
           ? '<strong>That is a few too many in a row.</strong> Give it a minute and press send again.'
-          : '<strong>That did not send.</strong> Your request was not delivered.' + mailLink());
+          : r.status === 403
+            ? '<strong>That did not get past our spam check.</strong> Your request was not delivered.' + mailLink()
+            : '<strong>That did not send.</strong> Your request was not delivered.' + mailLink());
     })['catch'](function () {
       note('bad', '<strong>No connection.</strong> Your request was not delivered, and nothing you ' +
                   'typed is lost. Check your internet and press send again.' + mailLink());

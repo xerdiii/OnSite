@@ -16,9 +16,11 @@
 
    Vercel → Settings → Environment Variables:
 
-     RESEND_API_KEY   re_xxx      from resend.com   ← the only one required
-     NOTIFY_EMAIL     where messages should arrive (defaults below)
-     FROM_EMAIL       xovah@your-verified-domain (defaults below)
+     RESEND_API_KEY        re_xxx  from resend.com   ← the only one required
+     NOTIFY_EMAIL          where messages should arrive (defaults below)
+     FROM_EMAIL            xovah@your-verified-domain (defaults below)
+     RECAPTCHA_SECRET_KEY  optional; when set, project requests must pass
+                           reCAPTCHA v3 or they are refused with a 403
 
    FROM_EMAIL must be on a domain verified with Resend. You cannot send
    "from" a Gmail address whose DNS you do not control — that rule is
@@ -105,6 +107,57 @@ const kb = (n) => n < 1024 * 1024
   ? Math.round(n / 1024) + ' KB'
   : (n / 1024 / 1024).toFixed(1) + ' MB';
 
+/* ── reCAPTCHA v3 ────────────────────────────────────────────
+   Verified here and nowhere else: a score the browser reports about
+   itself is worth nothing, so the token is exchanged with Google
+   server-side using the secret. RECAPTCHA_SECRET_KEY is read from the
+   environment and never reaches the client — the page carries only the
+   public site key.
+
+   Unset secret means the check is not configured, and the form keeps
+   working exactly as it did before. That is deliberate: switching this
+   on should be a decision, not something a missing variable makes for
+   you, and GET /api/contact reports which state you are in. Once the
+   secret IS set, a token that fails is refused. */
+const RECAPTCHA_ACTION = 'project_request';
+const RECAPTCHA_MIN_SCORE = 0.5;
+
+async function checkRecaptcha(token, ip) {
+  const secret = process.env.RECAPTCHA_SECRET_KEY;
+  if (!secret) return { ok: true, skipped: true };
+  if (!token) return { ok: false, why: 'no token' };
+
+  const form = new URLSearchParams({ secret, response: String(token).slice(0, 4000) });
+  if (ip && ip !== 'unknown') form.set('remoteip', ip);
+
+  let data;
+  try {
+    const r = await fetch('https://www.google.com/recaptcha/api/siteverify', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: form
+    });
+    data = await r.json();
+  } catch (e) {
+    // Google unreachable. Refuse rather than wave it through: the whole
+    // point of the check is that it cannot be skipped from outside.
+    console.error('recaptcha unreachable', e);
+    return { ok: false, why: 'verifier unreachable' };
+  }
+
+  if (!data.success) {
+    return { ok: false, why: (data['error-codes'] || []).join(', ') || 'rejected' };
+  }
+  // A token minted for another action is a token lifted from another page.
+  if (data.action && data.action !== RECAPTCHA_ACTION) {
+    return { ok: false, why: 'action was ' + data.action };
+  }
+  if (typeof data.score === 'number' && data.score < RECAPTCHA_MIN_SCORE) {
+    return { ok: false, why: 'score ' + data.score };
+  }
+  return { ok: true, score: data.score };
+}
+
 /* A best-effort throttle. Serverless instances are not shared, so this
    is a speed bump rather than a wall — it stops a script hammering one
    warm instance and burning the mail quota. A real limit needs shared
@@ -158,7 +211,8 @@ export default async function handler(req, res) {
       ok: true,
       RESEND_API_KEY: !!process.env.RESEND_API_KEY,
       NOTIFY_EMAIL: !!process.env.NOTIFY_EMAIL,
-      FROM_EMAIL: !!process.env.FROM_EMAIL
+      FROM_EMAIL: !!process.env.FROM_EMAIL,
+      RECAPTCHA_SECRET_KEY: !!process.env.RECAPTCHA_SECRET_KEY
     });
   }
 
@@ -288,6 +342,14 @@ async function projectRequest(req, res, body, { key, to, from }) {
 
   const brief = cap(p.brief, 5000);
   if (!brief) return res.status(400).json({ error: 'missing', fields: ['brief'] });
+
+  // After the cheap checks, before anything is sent or attached.
+  const ip = String(req.headers['x-forwarded-for'] || '').split(',')[0].trim() || 'unknown';
+  const spam = await checkRecaptcha(body.recaptchaToken, ip);
+  if (!spam.ok) {
+    console.warn('recaptcha refused a project request:', spam.why);
+    return res.status(403).json({ error: 'failed verification' });
+  }
 
   // Seventy in the catalogue today; the cap is a ceiling, not a limit.
   const extras = (Array.isArray(p.extras) ? p.extras : [])

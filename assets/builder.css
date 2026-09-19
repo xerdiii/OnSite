@@ -908,6 +908,23 @@
   color: rgb(var(--c-accent-text));
 }
 
+/* ── reCAPTCHA ─────────────────────────────────────────────
+   Both rules apply only once the site key is set, so with reCAPTCHA
+   switched off the page is byte-for-byte what it was. Google permits
+   hiding the badge on condition the notice is shown in its place —
+   visibility rather than display, because the widget measures itself. */
+.bx-legal { display: none; }
+[data-recaptcha="on"] .grecaptcha-badge { visibility: hidden; }
+[data-recaptcha="on"] .bx-legal {
+  display: block;
+  margin: 0.7rem 0 0;
+  font-size: 0.6875rem;
+  line-height: 1.55;
+  color: rgb(var(--c-ink-soft));
+}
+[data-recaptcha="on"] .bx-legal a { color: inherit; text-decoration: underline; }
+[data-recaptcha="on"] .bx-legal a:hover { color: rgb(var(--c-ink-mid)); }
+
 /* ── Reply promise, under the send button ──────────────────── */
 .bx-reply {
   display: flex;
