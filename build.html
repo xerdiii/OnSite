@@ -43,6 +43,12 @@
 <link rel="stylesheet" href="assets/theme.css?v=6">
 <link rel="stylesheet" href="assets/builder.css?v=2">
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebPage","@id":"https://www.xovahweb.com/build#webpage","url":"https://www.xovahweb.com/build","name":"Start your project — Xovah","description":"Choose a package, see what it already covers, add what it does not, and send the request.","isPartOf":{"@id":"https://www.xovahweb.com/#website"},"inLanguage":"en-GB"},{"@type":"BreadcrumbList","@id":"https://www.xovahweb.com/build#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://www.xovahweb.com/"},{"@type":"ListItem","position":2,"name":"Start your project","item":"https://www.xovahweb.com/build"}]}]}</script>
+<script>/* Which page each nav link means in each language. build.html is one
+   page for every language rather than ten, so `lang` is read at call time
+   from the visitor's stored preference instead of baked in: without it a
+   German visitor leaves the builder into the English site. */
+window.XovahRoutes={"routes":{"home":{"en":"/en","sq":"/sq","de":"/de","fr":"/fr","it":"/it","es":"/es","pt":"/pt","nl":"/nl","sv":"/sv","tr":"/tr"},"pricing":{"en":"/en/pricing","sq":"/sq/cmimet","de":"/de/preise","fr":"/fr/tarifs","it":"/it/prezzi","es":"/es/precios","pt":"/pt/precos","nl":"/nl/prijzen","sv":"/sv/priser","tr":"/tr/fiyatlar"},"services":{"en":"/en/services","sq":"/sq/sherbimet","de":"/de/leistungen","fr":"/fr/services","it":"/it/servizi","es":"/es/servicios","pt":"/pt/servicos","nl":"/nl/diensten","sv":"/sv/tjanster","tr":"/tr/hizmetler"},"features":{"en":"/en/features","sq":"/sq/vecorite","de":"/de/funktionen","fr":"/fr/fonctionnalites","it":"/it/funzionalita","es":"/es/funciones","pt":"/pt/funcionalidades","nl":"/nl/functies","sv":"/sv/funktioner","tr":"/tr/ozellikler"},"contact":{"en":"/en/contact","sq":"/sq/kontakt","de":"/de/kontakt","fr":"/fr/contact","it":"/it/contatti","es":"/es/contacto","pt":"/pt/contacto","nl":"/nl/contact","sv":"/sv/kontakt","tr":"/tr/iletisim"},"faq":{"en":"/en/faq","sq":"/sq/pyetje-te-shpeshta","de":"/de/haeufige-fragen","fr":"/fr/questions-frequentes","it":"/it/domande-frequenti","es":"/es/preguntas-frecuentes","pt":"/pt/perguntas-frequentes","nl":"/nl/veelgestelde-vragen","sv":"/sv/vanliga-fragor","tr":"/tr/sikca-sorulan-sorular"},"terms":{"en":"/en/terms"},"privacy":{"en":"/en/privacy"},"refunds":{"en":"/en/refunds"},"cookies":{"en":"/en/cookies"}},"app":["404","build"],"names":{"home":"index","pricing":"pricing","services":"extras","features":"features","contact":"contact","faq":"faq","terms":"terms","privacy":"privacy","refunds":"refunds","cookies":"cookies"}};
+Object.defineProperty(window.XovahRoutes,"lang",{get:function(){try{var l=localStorage.getItem("xovah.lang");return /^(en|sq|de|fr|it|es|pt|nl|sv|tr)$/.test(l||"")?l:"en";}catch(e){return "en";}}});</script>
 </head>
 
 <body class="bg-paper font-sans text-ink antialiased">
@@ -361,7 +367,7 @@
 <script src="assets/footer.js?v=7"></script>
 <script src="assets/cookies.js?v=2"></script>
 <script src="assets/theme.js?v=3"></script>
-<script src="assets/i18n.js?v=4"></script>
+<script src="assets/i18n.js?v=5"></script>
 <script src="assets/demo.js?v=5"></script>
 <script src="assets/builder.js?v=1"></script>
 </body>

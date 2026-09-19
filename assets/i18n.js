@@ -365,11 +365,27 @@
        they have had their turn. */
     global.setTimeout(function () { apply(); mount(); }, 0);
     global.setTimeout(function () { apply(); mount(); }, 400);
+    /* Pages that build themselves keep adding text after the sweeps above
+       have run — the builder renders its packages, tabs and confirm step
+       on interaction, long past 400ms. Translating only the links left
+       that text in English, so the words are swept again too.
+
+       apply() is deliberately not used here: it fires xovah:i18n, which
+       the builder answers by re-rendering, which would mutate the DOM
+       and call this back forever. Painting also edits the DOM, so our
+       own mutations are ignored until they have been delivered. */
     if (ROUTES && global.MutationObserver) {
-      var pending = 0;
+      var pending = 0, painting = false;
       new global.MutationObserver(function () {
-        if (pending) return;
-        pending = global.setTimeout(function () { pending = 0; localizeLinks(); }, 60);
+        if (pending || painting) return;
+        pending = global.setTimeout(function () {
+          pending = 0;
+          painting = true;
+          paintWords();
+          paintPrices();
+          localizeLinks();
+          global.setTimeout(function () { painting = false; }, 0);
+        }, 60);
       }).observe(doc.body, { childList: true, subtree: true });
     }
   }

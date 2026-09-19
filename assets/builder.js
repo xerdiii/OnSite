@@ -523,8 +523,11 @@
       var problems = [];
       picked = [];
 
+      /* Message and filename stay separate text nodes. i18n.js translates
+         a node whole, so a sentence built by concatenating a filename
+         into it would never match a dictionary key. */
       if (chosen.length > MAX_FILES) {
-        problems.push('Only the first ' + MAX_FILES + ' files were taken.');
+        problems.push({ msg: 'Only the first three files were taken.', detail: '' });
         chosen = chosen.slice(0, MAX_FILES);
       }
 
@@ -532,9 +535,12 @@
       var keep = [];
       chosen.forEach(function (f) {
         var isPdf = f.type === 'application/pdf' || /\.pdf$/i.test(f.name);
-        if (!isPdf) { problems.push(f.name + ' is not a PDF.'); return; }
+        if (!isPdf) { problems.push({ msg: 'That file is not a PDF.', detail: f.name }); return; }
         if (total + f.size > MAX_BYTES) {
-          problems.push(f.name + ' (' + kb(f.size) + ') goes over the 3 MB limit — send it as a link instead.');
+          problems.push({
+            msg: 'Over the 3 MB limit — send this one as a link instead.',
+            detail: f.name + ' (' + kb(f.size) + ')'
+          });
           return;
         }
         total += f.size;
@@ -551,7 +557,7 @@
         picked = out.filter(function (x) { return x.content; });
       })['catch'](function () {
         picked = [];
-        render([], ['Those files could not be read. Try again, or send a link.']);
+        render([], [{ msg: 'Those files could not be read. Try again, or send a link.', detail: '' }]);
       });
     });
 
@@ -559,7 +565,8 @@
       var rows = files.map(function (f) {
         return '<li><span>' + O.esc(f.name) + '</span><b>' + kb(f.size) + '</b></li>';
       }).concat(problems.map(function (p) {
-        return '<li class="is-bad">' + O.esc(p) + '</li>';
+        return '<li class="is-bad"><span>' + O.esc(p.msg) + '</span>' +
+               (p.detail ? '<b>' + O.esc(p.detail) + '</b>' : '') + '</li>';
       }));
       list.innerHTML = rows.join('');
       list.hidden = !rows.length;
