@@ -1,0 +1,402 @@
+/* ───────────────────────────────────────────────────────────────
+   Xovah — the extras catalogue (extras.html)
+
+   A reading page, not a shop. Every extra gets its name, a sentence
+   saying what it actually does, and its price. Nothing to tick,
+   nothing to add up. The builder does the choosing.
+   ─────────────────────────────────────────────────────────────── */
+
+:root {
+  --xc-ok:      22 135  90;
+  --xc-ok-tint: 233 248 241;
+  --xc-ok-line: 178 226 203;
+}
+:root[data-theme="dark"] {
+  --xc-ok:       52 199 140;
+  --xc-ok-tint:  17  40  32;
+  --xc-ok-line:  32  72  55;
+}
+
+.xc-shell { max-width: 72rem; margin: 0 auto; padding: 0 1.25rem; }
+@media (min-width: 768px) { .xc-shell { padding: 0 2.5rem; } }
+
+/* ══ Hero ════════════════════════════════════════════════════
+   Longhand only: the hero shares its element with .xc-shell, and a
+   padding shorthand here would wipe out the side gutters. */
+.xc-hero {
+  padding-top: clamp(2.5rem, 7vw, 4.5rem);
+  padding-bottom: clamp(2rem, 5vw, 3rem);
+}
+
+.xc-eyebrow {
+  margin: 0 0 0.9rem;
+  font-family: 'IBM Plex Mono', ui-monospace, monospace;
+  font-size: 0.6875rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgb(var(--c-accent-text));
+}
+.xc-hero h1 {
+  margin: 0;
+  max-width: 18ch;
+  font-family: 'Outfit', ui-sans-serif, system-ui, sans-serif;
+  font-weight: 600;
+  font-size: clamp(2.1rem, 6.5vw, 3.5rem);
+  line-height: 1.04;
+  letter-spacing: -0.038em;
+  color: rgb(var(--c-ink));
+}
+.xc-lede {
+  max-width: 52ch;
+  margin: 1.25rem 0 0;
+  font-size: 1.0625rem;
+  line-height: 1.7;
+  color: rgb(var(--c-ink-mid));
+}
+
+.xc-figs {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1px;
+  margin-top: 2.5rem;
+  border: 1px solid rgb(var(--c-line));
+  border-radius: 0.9rem;
+  background: rgb(var(--c-line));
+  overflow: hidden;
+}
+@media (min-width: 720px) { .xc-figs { grid-template-columns: repeat(4, 1fr); } }
+
+.xc-fig { padding: 1.1rem 1.15rem 1.25rem; background: rgb(var(--c-surface)); }
+.xc-fig b {
+  display: block;
+  font-family: 'IBM Plex Mono', ui-monospace, monospace;
+  font-size: 1.5rem;
+  font-weight: 600;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+  color: rgb(var(--c-ink));
+}
+/* The currency switcher ships its own type scale for .cur; these two
+   set their own size, so the figure must not shrink inside them. */
+.xc-fig b .cur,
+.xc-item-price .cur {
+  font: inherit;
+  color: inherit;
+  letter-spacing: inherit;
+}
+.xc-fig span {
+  display: block;
+  margin-top: 0.35rem;
+  font-size: 0.75rem;
+  line-height: 1.5;
+  color: rgb(var(--c-ink-soft));
+}
+
+.xc-cta-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1rem 1.25rem;
+  margin-top: 2rem;
+}
+.xc-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.8rem 1.4rem;
+  border-radius: 0.55rem;
+  background: rgb(var(--c-accent));
+  color: #fff;
+  font-size: 0.875rem;
+  font-weight: 600;
+  text-decoration: none;
+}
+.xc-cta:hover { background: rgb(var(--c-accent-hi)); }
+.xc-cta-note { font-size: 0.8125rem; color: rgb(var(--c-ink-soft)); }
+
+/* ══ Section nav ═════════════════════════════════════════════ */
+.xc-nav {
+  position: sticky;
+  top: 4.05rem;
+  z-index: 8;
+  border-top: 1px solid rgb(var(--c-line));
+  border-bottom: 1px solid rgb(var(--c-line));
+  background: rgb(var(--c-paper) / 0.92);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+.xc-nav-in {
+  display: flex;
+  gap: 0.35rem;
+  max-width: 72rem;
+  margin: 0 auto;
+  padding: 0.55rem 1.25rem;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.xc-nav-in::-webkit-scrollbar { display: none; }
+@media (min-width: 768px) { .xc-nav-in { padding: 0.55rem 2.5rem; } }
+
+.xc-nav a {
+  flex: none;
+  padding: 0.4rem 0.8rem;
+  border-radius: 999px;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: rgb(var(--c-ink-soft));
+  text-decoration: none;
+  white-space: nowrap;
+}
+.xc-nav a:hover { color: rgb(var(--c-ink)); background: rgb(var(--c-surface)); }
+
+/* ══ Included band ═══════════════════════════════════════════ */
+.xc-band { padding: clamp(2.75rem, 7vw, 4rem) 0; border-top: 1px solid rgb(var(--c-line)); }
+.xc-band:first-of-type { border-top: 0; }
+
+.xc-band-hd { margin-bottom: 2rem; }
+.xc-band-hd h2 {
+  margin: 0;
+  font-family: 'Outfit', ui-sans-serif, system-ui, sans-serif;
+  font-weight: 600;
+  font-size: clamp(1.5rem, 4.5vw, 2rem);
+  letter-spacing: -0.03em;
+  color: rgb(var(--c-ink));
+}
+.xc-band-hd p {
+  max-width: 56ch;
+  margin: 0.75rem 0 0;
+  font-size: 0.9375rem;
+  line-height: 1.7;
+  color: rgb(var(--c-ink-mid));
+}
+.xc-free-flag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  margin-bottom: 0.9rem;
+  padding: 0.3rem 0.7rem;
+  border: 1px solid rgb(var(--xc-ok-line));
+  border-radius: 999px;
+  background: rgb(var(--xc-ok-tint));
+  font-family: 'IBM Plex Mono', ui-monospace, monospace;
+  font-size: 0.625rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgb(var(--xc-ok));
+}
+.xc-free-flag svg { width: 0.7rem; height: 0.7rem; }
+
+.xc-inc-cols {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+}
+@media (min-width: 640px)  { .xc-inc-cols { grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 1024px) { .xc-inc-cols { grid-template-columns: repeat(4, 1fr); } }
+
+.xc-inc-h {
+  margin: 0 0 0.9rem;
+  padding-bottom: 0.65rem;
+  border-bottom: 1px solid rgb(var(--c-line-firm));
+  font-family: 'IBM Plex Mono', ui-monospace, monospace;
+  font-size: 0.625rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgb(var(--c-ink-soft));
+}
+.xc-inc-list { margin: 0; padding: 0; list-style: none; }
+.xc-inc-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  padding: 0.28rem 0;
+  font-size: 0.8125rem;
+  line-height: 1.5;
+  color: rgb(var(--c-ink-mid));
+}
+.xc-inc-list li svg {
+  flex: none;
+  width: 0.75rem; height: 0.75rem;
+  margin-top: 0.28rem;
+  color: rgb(var(--xc-ok));
+}
+
+/* ══ A category of extras ════════════════════════════════════ */
+.xc-cat { padding: clamp(2.75rem, 7vw, 4rem) 0; border-top: 1px solid rgb(var(--c-line)); }
+.xc-cat-hd {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  margin-bottom: 1.85rem;
+  scroll-margin-top: 8rem;
+}
+.xc-cat-icon {
+  flex: none;
+  width: 2.5rem; height: 2.5rem;
+  display: grid;
+  place-items: center;
+  border: 1px solid rgb(var(--c-line-firm));
+  border-radius: 0.65rem;
+  background: rgb(var(--c-surface));
+  color: rgb(var(--c-accent-text));
+}
+.xc-cat-icon svg { width: 1.15rem; height: 1.15rem; }
+.xc-cat-hd h2 {
+  margin: 0;
+  font-family: 'Outfit', ui-sans-serif, system-ui, sans-serif;
+  font-weight: 600;
+  font-size: clamp(1.35rem, 4vw, 1.75rem);
+  letter-spacing: -0.03em;
+  line-height: 1.2;
+  color: rgb(var(--c-ink));
+}
+.xc-cat-hd p {
+  max-width: 52ch;
+  margin: 0.5rem 0 0;
+  font-size: 0.875rem;
+  line-height: 1.65;
+  color: rgb(var(--c-ink-mid));
+}
+.xc-cat-n {
+  margin-left: auto;
+  flex: none;
+  font-family: 'IBM Plex Mono', ui-monospace, monospace;
+  font-size: 0.6875rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgb(var(--c-ink-soft));
+  white-space: nowrap;
+  padding-top: 0.6rem;
+}
+@media (max-width: 639px) { .xc-cat-n { display: none; } }
+
+/* ── The entries ────────────────────────────────────────────── */
+.xc-list {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1px;
+  border: 1px solid rgb(var(--c-line));
+  border-radius: 0.9rem;
+  background: rgb(var(--c-line));
+  overflow: hidden;
+}
+@media (min-width: 768px)  { .xc-list { grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 1200px) { .xc-list { grid-template-columns: repeat(3, 1fr); } }
+
+.xc-item {
+  display: flex;
+  flex-direction: column;
+  padding: 1.15rem 1.25rem 1.3rem;
+  background: rgb(var(--c-surface));
+  transition: background-color 150ms ease;
+}
+.xc-item:hover { background: rgb(var(--c-paper)); }
+
+.xc-item-hd {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.85rem;
+  margin-bottom: 0.5rem;
+}
+.xc-item-name {
+  margin: 0;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  line-height: 1.35;
+  letter-spacing: -0.01em;
+  color: rgb(var(--c-ink));
+}
+.xc-item-price {
+  flex: none;
+  margin: 0;
+  font-family: 'IBM Plex Mono', ui-monospace, monospace;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: rgb(var(--c-accent-text));
+  white-space: nowrap;
+}
+.xc-item-price small {
+  font-size: 0.625rem;
+  font-weight: 400;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgb(var(--c-ink-soft));
+  margin-right: 0.15rem;
+}
+.xc-item-what {
+  margin: 0;
+  font-size: 0.8125rem;
+  line-height: 1.65;
+  color: rgb(var(--c-ink-mid));
+}
+.xc-item-plus {
+  margin: 0.6rem 0 0;
+  font-size: 0.6875rem;
+  line-height: 1.5;
+  color: rgb(var(--c-ink-soft));
+}
+
+/* Not built yet. Named so nobody waits for it, greyed so nobody buys it. */
+.xc-item--soon { opacity: 0.6; }
+.xc-soon {
+  flex: none;
+  font-family: 'IBM Plex Mono', ui-monospace, monospace;
+  font-size: 0.5625rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgb(var(--c-ink-soft));
+  border: 1px solid rgb(var(--c-line-firm));
+  border-radius: 0.25rem;
+  padding: 0.2rem 0.45rem;
+  white-space: nowrap;
+}
+
+/* ══ Closing note ════════════════════════════════════════════ */
+.xc-foot {
+  padding: clamp(2.75rem, 7vw, 4rem) 0 clamp(3.5rem, 9vw, 5.5rem);
+  border-top: 1px solid rgb(var(--c-line));
+}
+.xc-foot-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+}
+@media (min-width: 900px) { .xc-foot-grid { grid-template-columns: 1.5fr 1fr; gap: 4rem; } }
+
+.xc-foot h2 {
+  margin: 0 0 1rem;
+  font-family: 'Outfit', ui-sans-serif, system-ui, sans-serif;
+  font-weight: 600;
+  font-size: clamp(1.25rem, 3.5vw, 1.6rem);
+  letter-spacing: -0.03em;
+  color: rgb(var(--c-ink));
+}
+.xc-foot p {
+  max-width: 62ch;
+  margin: 0 0 0.85rem;
+  font-size: 0.875rem;
+  line-height: 1.7;
+  color: rgb(var(--c-ink-mid));
+}
+.xc-foot p:last-child { margin-bottom: 0; }
+.xc-foot-arrow { color: rgb(var(--c-accent-text)); }
+
+.xc-foot-card {
+  align-self: start;
+  border: 1px solid rgb(var(--c-line));
+  border-radius: 0.9rem;
+  background: rgb(var(--c-surface));
+  padding: 1.5rem;
+}
+.xc-foot-card p {
+  margin: 0 0 1.15rem;
+  font-size: 0.875rem;
+  line-height: 1.65;
+  color: rgb(var(--c-ink-mid));
+}
+.xc-foot-card .xc-cta { width: 100%; justify-content: center; }
+
+@media (prefers-reduced-motion: reduce) {
+  .xc-item { transition: none; }
+}

@@ -352,7 +352,18 @@
                  'Privacy policy page', 'Terms & conditions page', 'Contact form spam protection',
                  'Google Business Profile setup', 'Google Business Profile optimization',
                  'Logo Design', 'Menu Design', 'WhatsApp Business Setup',
-                 'Professional business email setup']
+                 'Professional business email setup'],
+      // Everything the Complete Package covers, plus the business email
+      // and the booking automation its blurb promises on top.
+      premium: ['Basic SEO setup', 'Google Search indexing', 'Google Search Console setup',
+                'Google Analytics setup', 'Conversion tracking', 'Cookie consent banner',
+                'Privacy policy page', 'Terms & conditions page', 'Contact form spam protection',
+                'Google Business Profile setup', 'Google Business Profile optimization',
+                'Logo Design', 'Menu Design', 'WhatsApp Business Setup',
+                'Professional business email setup', 'Email signature setup',
+                'Online booking system', 'Appointment calendar', 'Booking confirmation emails',
+                'Appointment reminder emails', 'Email autoresponder setup',
+                'Automatic email notifications']
     }
   };
 
