@@ -98,8 +98,20 @@ async function send({ key, from, to, replyTo, subject, html }) {
 }
 
 export default async function handler(req, res) {
+  /* A health check, so "the form is broken" can be told apart from "the
+     key was never set" without sending a test message to find out.
+     Booleans only: whether each variable exists, never what is in it. */
+  if (req.method === 'GET') {
+    return res.status(200).json({
+      ok: true,
+      RESEND_API_KEY: !!process.env.RESEND_API_KEY,
+      NOTIFY_EMAIL: !!process.env.NOTIFY_EMAIL,
+      FROM_EMAIL: !!process.env.FROM_EMAIL
+    });
+  }
+
   if (req.method !== 'POST') {
-    res.setHeader('Allow', 'POST');
+    res.setHeader('Allow', 'GET, POST');
     return res.status(405).json({ error: 'POST only' });
   }
 
