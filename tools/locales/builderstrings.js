@@ -54,7 +54,11 @@ for (const m of html.matchAll(/(?:placeholder|aria-label|title|alt)="([^"]+)"/g)
 /* Literals from builder.js. The file concatenates markup across lines, so
    anything carrying code punctuation is a fragment rather than a sentence
    and is dropped — translating those would corrupt the page. */
-const js = fs.readFileSync(path.join(ROOT, 'assets', 'builder.js'), 'utf8');
+const js = fs.readFileSync(path.join(ROOT, 'assets', 'builder.js'), 'utf8')
+  // Prose in a comment is not copy, and an apostrophe in one reads as
+  // the start of a string literal.
+  .replace(/\/\*[\s\S]*?\*\//g, '')
+  .replace(/^[ \t]*\/\/.*$/gm, '');
 for (const m of js.matchAll(/'((?:[^'\\\n]|\\.)+)'/g)) {
   const t = m[1].replace(/\\'/g, "'").trim();
   if (!keep(t)) continue;
