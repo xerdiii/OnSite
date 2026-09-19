@@ -59,17 +59,14 @@
 <link rel="dns-prefetch" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400&family=Instrument+Serif&family=Inter:wght@400;500;600;700&family=Outfit:wght@200..800&display=swap">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400&family=Instrument+Serif&family=Inter:wght@400;500;600;700&family=Outfit:wght@200..800&display=swap" media="print" onload="this.media='all'">
-<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400&family=Instrument+Serif&family=Inter:wght@400;500;600;700&family=Outfit:wght@200..800&display=swap"></noscript>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500;600;700&family=Outfit:wght@200..800&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500;600;700&family=Outfit:wght@200..800&display=swap" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500;600;700&family=Outfit:wght@200..800&display=swap"></noscript>
 <script>/* Theme before paint. Dark is the site, light is a choice you make — the attribute is always stamped so the system setting never decides for you. */(function(){var t='dark';try{t=localStorage.getItem('sitehouse.theme')==='light'?'light':'dark';}catch(e){}document.documentElement.setAttribute('data-theme',t);})();</script>
 <link rel="stylesheet" href="/assets/xovah.css?v=3">
-<link rel="stylesheet" href="/assets/extras.css?v=6">
-<link rel="stylesheet" href="/assets/mobile.css?v=7">
 <link rel="stylesheet" href="/assets/tailwind.css?v=2">
 <link rel="stylesheet" href="/assets/theme.css?v=6">
-<link rel="stylesheet" href="/assets/gutters.css?v=2">
-<link rel="stylesheet" href="/assets/edge.css?v=4">
+<link rel="stylesheet" href="/assets/catalogue.css?v=1">
 <script>window.XovahRoutes={"lang":"en","routes":{"home":{"en":"/en","sq":"/sq","de":"/de","fr":"/fr","it":"/it","es":"/es","pt":"/pt","nl":"/nl","sv":"/sv","tr":"/tr"},"pricing":{"en":"/en/pricing","sq":"/sq/cmimet","de":"/de/preise","fr":"/fr/tarifs","it":"/it/prezzi","es":"/es/precios","pt":"/pt/precos","nl":"/nl/prijzen","sv":"/sv/priser","tr":"/tr/fiyatlar"},"services":{"en":"/en/services","sq":"/sq/sherbimet","de":"/de/leistungen","fr":"/fr/services","it":"/it/servizi","es":"/es/servicios","pt":"/pt/servicos","nl":"/nl/diensten","sv":"/sv/tjanster","tr":"/tr/hizmetler"},"features":{"en":"/en/features","sq":"/sq/vecorite","de":"/de/funktionen","fr":"/fr/fonctionnalites","it":"/it/funzionalita","es":"/es/funciones","pt":"/pt/funcionalidades","nl":"/nl/functies","sv":"/sv/funktioner","tr":"/tr/ozellikler"},"contact":{"en":"/en/contact","sq":"/sq/kontakt","de":"/de/kontakt","fr":"/fr/contact","it":"/it/contatti","es":"/es/contacto","pt":"/pt/contacto","nl":"/nl/contact","sv":"/sv/kontakt","tr":"/tr/iletisim"},"faq":{"en":"/en/faq","sq":"/sq/pyetje-te-shpeshta","de":"/de/haeufige-fragen","fr":"/fr/questions-frequentes","it":"/it/domande-frequenti","es":"/es/preguntas-frecuentes","pt":"/pt/perguntas-frequentes","nl":"/nl/veelgestelde-vragen","sv":"/sv/vanliga-fragor","tr":"/tr/sikca-sorulan-sorular"},"terms":{"en":"/en/terms"},"privacy":{"en":"/en/privacy"},"refunds":{"en":"/en/refunds"},"cookies":{"en":"/en/cookies"}},"app":["404","build"],"names":{"home":"index","pricing":"pricing","services":"extras","features":"features","contact":"contact","faq":"faq","terms":"terms","privacy":"privacy","refunds":"refunds","cookies":"cookies"}};</script>
 </head>
 
@@ -85,535 +82,573 @@
 
     <div class="flex items-center gap-5 md:gap-7">
       <a href="/en/pricing" class="text-sm font-medium text-ink-mid hover:text-ink">Pricing</a>
-      <a href="/en/services" class="hidden text-sm font-medium text-ink-mid hover:text-ink md:inline">Extras</a>
+      <a href="/en/services" class="hidden text-sm font-medium text-ink-mid hover:text-ink md:inline" aria-current="page">Extras</a>
       <a href="/en/faq" class="hidden text-sm font-medium text-ink-mid hover:text-ink md:inline">FAQ</a>
-      <a href="/en/services" class="rounded-md bg-accent px-4 py-2.5 text-sm font-semibold text-white hover:bg-accent-hi">Start a Project</a>
+      <a href="/build" class="rounded-md bg-accent px-4 py-2.5 text-sm font-semibold text-white hover:bg-accent-hi">Start a Project</a>
     </div>
-  
+
   </nav>
 </header>
 
 <main id="main">
 
-  <!-- 1 — HERO -->
-  <section class="border-b border-line">
-    <div class="mx-auto max-w-shell px-6 pb-12 pt-12 md:px-10 md:pb-14 md:pt-16">
-      <p class="eyebrow text-accent">Website services</p>
-      <h1 class="h-section sec-title mt-4 max-w-2xl">Everything around your website, priced one by one.</h1>
-      <p class="mt-5 max-w-prose text-[0.9375rem] leading-relaxed text-ink-mid">
-        Booking, SEO, analytics, automation, a logo, an email on your own domain. Sixty-five one-off jobs, each with its price and a line saying what it actually does. Pick them up on the builder when you are ready.
-      </p>
-      <ol class="ex-how mt-8" data-reveal-group>
-        <li>
-          <span class="ex-how-n">01</span>
-          <p class="ex-how-h">Already included</p>
-          <p class="ex-how-p">Thirty-four features are built into every website we make. They cost nothing extra.</p>
-        </li>
-        <li>
-          <span class="ex-how-n">02</span>
-          <p class="ex-how-h">Optional extras</p>
-          <p class="ex-how-p">Sixty-five further jobs, each with its own one-off price. Take only the ones you need.</p>
-        </li>
-        <li>
-          <span class="ex-how-n">03</span>
-          <p class="ex-how-h">Build it and send it</p>
-          <p class="ex-how-p">The builder puts your package and these together, adds the total up, and sends it to us.</p>
-        </li>
-      </ol>
+  <!-- ══ Hero ══════════════════════════════════════════════════ -->
+  <section class="xc-shell xc-hero">
+    <p class="xc-eyebrow">The extras, explained</p>
+    <h1>What each extra actually does.</h1>
+    <p class="xc-lede">
+      This page explains, it does not sell. Every extra we offer is below with a sentence saying
+      what it does for your business and what it costs. When you know which ones you want, the
+      builder is where you pick them.
+    </p>
 
-      <div class="mt-8 flex flex-wrap items-center gap-x-5 gap-y-3">
-        <a href="/en/services" class="btn btn-primary">Build your package</a>
-        <a href="#website" class="btn btn-ghost">Read the list</a>
-        <span class="text-sm text-ink-soft">From <span class="cur" data-eur="5">€5</span>, paid once. Nothing is charged on this page.</span>
-      </div>
+    <div class="xc-figs">
+      <div class="xc-fig"><b>34</b><span>features in every website, at no extra cost</span></div>
+      <div class="xc-fig"><b>65</b><span>optional extras, each priced on its own</span></div>
+      <div class="xc-fig"><b><span class="cur" data-eur="5">&euro;5</span></b><span>the cheapest one, paid once</span></div>
+      <div class="xc-fig"><b>0</b><span>subscriptions, anywhere on this site</span></div>
+    </div>
+
+    <div class="xc-cta-row">
+      <a href="/build" class="xc-cta">Go to the builder</a>
+      <span class="xc-cta-note">Nothing on this page can be bought, and nothing here is charged.</span>
     </div>
   </section>
 
-  <!-- 2 — THE STICKY BAR
-       Sits under the header, carries the jump links and the running
-       total. It is the only part of this page that follows you. -->
-  <div class="ex-bar" data-ex-bar>
-    <div class="mx-auto flex max-w-shell items-center gap-4 px-6 md:px-10">
-      <nav class="ex-bar-nav" aria-label="Sections">
-        <a href="#included">Included</a>
-        <a href="#website">Website</a>
-        <a href="#technical">Business</a>
-        <a href="#automation">Automation</a>
-        <a href="#brand">Brand</a>
-      </nav>    </div>
+  <!-- ══ Section nav ═══════════════════════════════════════════ -->
+  <nav class="xc-nav" aria-label="Sections">
+    <div class="xc-nav-in">
+      <a href="#included">Already included</a>
+      <a href="#website">Website features</a>
+      <a href="#technical">Business &amp; technical</a>
+      <a href="#automation">Automation</a>
+      <a href="#brand">Brand &amp; design</a>
+    </div>
+  </nav>
+
+  <div class="xc-shell">
+
+    <!-- ══ The 34 that cost nothing ════════════════════════════ -->
+    <section class="xc-band" id="included" style="scroll-margin-top:8rem">
+      <div class="xc-band-hd">
+        <span class="xc-free-flag">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>
+          No extra cost
+        </span>
+        <h2>Thirty-four things you never pay extra for</h2>
+        <p>
+          These are built into every website we make. A Custom Website picks any twenty of them;
+          the Full Website and everything above it gets all thirty-four. None of them appear in the
+          list of extras below, because none of them are extras.
+        </p>
+      </div>
+
+      <div class="xc-inc-cols">
+        <div>
+          <p class="xc-inc-h">Pages &amp; sections</p>
+          <ul class="xc-inc-list">
+            <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3.4 8.4l3 3 6.2-6.6"/></svg>About Us section</li>
+            <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3.4 8.4l3 3 6.2-6.6"/></svg>FAQ section</li>
+            <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3.4 8.4l3 3 6.2-6.6"/></svg>Price list</li>
+            <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3.4 8.4l3 3 6.2-6.6"/></svg>Special offers section</li>
+            <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3.4 8.4l3 3 6.2-6.6"/></svg>Promotions section</li>
+            <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3.4 8.4l3 3 6.2-6.6"/></svg>Portfolio section</li>
+            <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3.4 8.4l3 3 6.2-6.6"/></svg>Projects showcase</li>
+            <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3.4 8.4l3 3 6.2-6.6"/></svg>Team / staff section</li>
+            <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3.4 8.4l3 3 6.2-6.6"/></svg>Before &amp; after section</li>
+            <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3.4 8.4l3 3 6.2-6.6"/></svg>Service area section</li>
+            <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3.4 8.4l3 3 6.2-6.6"/></svg>Pricing comparison</li>
+            <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3.4 8.4l3 3 6.2-6.6"/></svg>Packages section</li>
+            <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3.4 8.4l3 3 6.2-6.6"/></svg>Events section</li>
+            <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3.4 8.4l3 3 6.2-6.6"/></svg>Announcements section</li>
+            <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3.4 8.4l3 3 6.2-6.6"/></svg>Custom landing page</li>
+            <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3.4 8.4l3 3 6.2-6.6"/></svg>Custom 404 page</li>
+          </ul>
+        </div>
+
+        <div>
+          <p class="xc-inc-h">Catalogues &amp; documents</p>
+          <ul class="xc-inc-list">
+            <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3.4 8.4l3 3 6.2-6.6"/></svg>Product catalog</li>
+            <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3.4 8.4l3 3 6.2-6.6"/></svg>Online menu</li>
+            <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3.4 8.4l3 3 6.2-6.6"/></svg>PDF menu integration</li>
+            <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3.4 8.4l3 3 6.2-6.6"/></svg>PDF catalog integration</li>
+            <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3.4 8.4l3 3 6.2-6.6"/></svg>Downloadable documents</li>
+            <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3.4 8.4l3 3 6.2-6.6"/></svg>Customer reviews integration</li>
+          </ul>
+        </div>
+
+        <div>
+          <p class="xc-inc-h">Navigation &amp; interaction</p>
+          <ul class="xc-inc-list">
+            <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3.4 8.4l3 3 6.2-6.6"/></svg>Sticky navigation</li>
+            <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3.4 8.4l3 3 6.2-6.6"/></svg>Sticky mobile buttons</li>
+            <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3.4 8.4l3 3 6.2-6.6"/></svg>Back-to-top button</li>
+            <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3.4 8.4l3 3 6.2-6.6"/></svg>Image lightbox</li>
+            <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3.4 8.4l3 3 6.2-6.6"/></svg>FAQ accordion</li>
+            <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3.4 8.4l3 3 6.2-6.6"/></svg>Interactive galleries</li>
+          </ul>
+        </div>
+
+        <div>
+          <p class="xc-inc-h">Media &amp; the basics</p>
+          <ul class="xc-inc-list">
+            <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3.4 8.4l3 3 6.2-6.6"/></svg>Video section</li>
+            <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3.4 8.4l3 3 6.2-6.6"/></svg>YouTube integration</li>
+            <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3.4 8.4l3 3 6.2-6.6"/></svg>Business inquiry form</li>
+            <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3.4 8.4l3 3 6.2-6.6"/></svg>Social sharing preview</li>
+            <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3.4 8.4l3 3 6.2-6.6"/></svg>Custom favicon</li>
+            <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3.4 8.4l3 3 6.2-6.6"/></svg>Mobile optimization</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══ Website features ════════════════════════════════════ -->
+    <section class="xc-cat">
+      <div class="xc-cat-hd" id="website">
+        <span class="xc-cat-icon" aria-hidden="true">
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="8" cy="8" r="6.5"/><path d="M8 1.5C8 1.5 5.5 4 5.5 8s2.5 6.5 2.5 6.5M8 1.5C8 1.5 10.5 4 10.5 8S8 14.5 8 14.5M1.5 8h13"/>
+          </svg>
+        </span>
+        <div>
+          <h2>Website features</h2>
+          <p>Things your visitors see and use. Each one gives the website something to do that it could not do before.</p>
+        </div>
+        <span class="xc-cat-n">18 extras</span>
+      </div>
+
+      <div class="xc-list">
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">Online booking system</h3><p class="xc-item-price"><span class="cur" data-eur="60">&euro;60</span></p></div>
+          <p class="xc-item-what">Customers choose a time on your website instead of ringing you. The request lands with you to confirm, so you keep control of the diary and stop losing the people who will not pick up a phone.</p>
+        </article>
+
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">Appointment calendar</h3><p class="xc-item-price"><span class="cur" data-eur="50">&euro;50</span></p></div>
+          <p class="xc-item-what">A calendar showing what is already booked, so the same hour is never sold twice. Pairs with the booking system, and useful on its own if you take bookings by phone.</p>
+        </article>
+
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">Google Reviews integration</h3><p class="xc-item-price"><span class="cur" data-eur="20">&euro;20</span></p></div>
+          <p class="xc-item-what">Your real Google reviews shown on the page, refreshing themselves as new ones arrive. Nobody has to copy them across, and nobody can accuse you of inventing them.</p>
+        </article>
+
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">Newsletter signup</h3><p class="xc-item-price"><span class="cur" data-eur="20">&euro;20</span></p></div>
+          <p class="xc-item-what">An email box on the page, with the list kept somewhere you can actually use later. The cheapest way to stop a visitor being a stranger the next time.</p>
+        </article>
+
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">Email button</h3><p class="xc-item-price"><span class="cur" data-eur="5">&euro;5</span></p></div>
+          <p class="xc-item-what">One tap opens their mail app with your address already filled in. Small, but it removes the step where somebody copies your address and then forgets why.</p>
+        </article>
+
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">Job application form</h3><p class="xc-item-price"><span class="cur" data-eur="25">&euro;25</span></p></div>
+          <p class="xc-item-what">People apply with their details and attach a CV, and it arrives as one tidy message rather than three emails with the attachment missing from all of them.</p>
+        </article>
+
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">Careers section</h3><p class="xc-item-price"><span class="cur" data-eur="15">&euro;15</span></p></div>
+          <p class="xc-item-what">A page for the roles you are hiring for, so you send one link instead of retyping the job description every time somebody asks.</p>
+        </article>
+
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">Multi-language website</h3><p class="xc-item-price"><small>from</small><span class="cur" data-eur="50">&euro;50</span></p></div>
+          <p class="xc-item-what">The whole site in a second language, switched from the corner of the page. Priced from, because it depends how much text there is to carry across.</p>
+        </article>
+
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">Multiple locations</h3><p class="xc-item-price"><span class="cur" data-eur="30">&euro;30</span></p></div>
+          <p class="xc-item-what">A page for each branch with its own address, opening hours and map, so somebody searching for the one near them finds the right details rather than the wrong ones.</p>
+        </article>
+
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">Location selector</h3><p class="xc-item-price"><span class="cur" data-eur="25">&euro;25</span></p></div>
+          <p class="xc-item-what">A switcher that puts visitors on the branch nearest them without making them work out which one that is.</p>
+        </article>
+
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">Store locator</h3><p class="xc-item-price"><span class="cur" data-eur="50">&euro;50</span></p></div>
+          <p class="xc-item-what">A map of every location and directions to each one. Worth it once you have more branches than a visitor can hold in their head.</p>
+        </article>
+
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">Membership section</h3><p class="xc-item-price"><span class="cur" data-eur="40">&euro;40</span></p></div>
+          <p class="xc-item-what">A part of the site only your members can open. For price lists, resources, or anything you would rather not show the whole internet.</p>
+        </article>
+
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">Gift card section</h3><p class="xc-item-price"><span class="cur" data-eur="30">&euro;30</span></p></div>
+          <p class="xc-item-what">Gift cards people can buy or request straight from the page. Quietly one of the best-earning things a small business can put online before Christmas.</p>
+        </article>
+
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">Loyalty program</h3><p class="xc-item-price"><small>from</small><span class="cur" data-eur="60">&euro;60</span></p></div>
+          <p class="xc-item-what">Points or stamps for customers who come back, run from the website instead of a paper card that lives in a wallet until it is lost.</p>
+        </article>
+
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">Event registration</h3><p class="xc-item-price"><span class="cur" data-eur="40">&euro;40</span></p></div>
+          <p class="xc-item-what">People sign up for an event and you get the list. Real numbers before the day, rather than a guess and too much food.</p>
+        </article>
+
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">Blog section</h3><p class="xc-item-price"><span class="cur" data-eur="30">&euro;30</span></p></div>
+          <p class="xc-item-what">Posts you can add yourself, with dates and pictures. Also the most reliable way to keep giving Google new pages to find without paying anyone.</p>
+        </article>
+
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">News section</h3><p class="xc-item-price"><span class="cur" data-eur="20">&euro;20</span></p></div>
+          <p class="xc-item-what">Short announcements in one place, newest first. Lighter than a blog when all you need to say is that the shop is shut on Monday.</p>
+        </article>
+
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">Website search</h3><p class="xc-item-price"><span class="cur" data-eur="30">&euro;30</span></p></div>
+          <p class="xc-item-what">A search box that looks inside your own pages. Worth adding once the site is big enough that scrolling stops being a plan.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- ══ Business & technical ════════════════════════════════ -->
+    <section class="xc-cat">
+      <div class="xc-cat-hd" id="technical">
+        <span class="xc-cat-icon" aria-hidden="true">
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="1.5" y="1.5" width="13" height="13" rx="2"/><path d="M5 8h6M8 5v6"/>
+          </svg>
+        </span>
+        <div>
+          <h2>Business &amp; technical</h2>
+          <p>The work behind the website: being found, being measured, being legal, and staying up.</p>
+        </div>
+        <span class="xc-cat-n">26 extras</span>
+      </div>
+
+      <div class="xc-list">
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">Basic SEO setup</h3><p class="xc-item-price"><span class="cur" data-eur="30">&euro;30</span></p></div>
+          <p class="xc-item-what">Titles, descriptions and headings written the way search engines read them. It does not buy you the top spot; it stops you being invisible for your own business name.</p>
+        </article>
+
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">Google Search indexing</h3><p class="xc-item-price"><span class="cur" data-eur="15">&euro;15</span></p></div>
+          <p class="xc-item-what">Your pages submitted to Google so they can appear in search at all. Without it you simply wait, sometimes for months.</p>
+        </article>
+
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">Google Business Profile setup</h3><p class="xc-item-price"><span class="cur" data-eur="40">&euro;40</span></p></div>
+          <p class="xc-item-what">The listing that appears beside the map when somebody searches your trade and your town — created, verified, and filled in properly.</p>
+        </article>
+
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">Google Business Profile optimization</h3><p class="xc-item-price"><span class="cur" data-eur="50">&euro;50</span></p></div>
+          <p class="xc-item-what">Photos, categories, hours and posts tuned so that listing actually ranks against the others nearby, instead of sitting there correct and ignored.</p>
+        </article>
+
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">Google Analytics setup</h3><p class="xc-item-price"><span class="cur" data-eur="25">&euro;25</span></p></div>
+          <p class="xc-item-what">Visitor numbers you can read without a course in it, installed and configured so the figures mean what you think they mean.</p>
+        </article>
+
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">Google Search Console setup</h3><p class="xc-item-price"><span class="cur" data-eur="25">&euro;25</span></p></div>
+          <p class="xc-item-what">The tool that shows what people typed before they found you, and warns you when Google cannot read one of your pages.</p>
+        </article>
+
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">Conversion tracking</h3><p class="xc-item-price"><span class="cur" data-eur="40">&euro;40</span></p></div>
+          <p class="xc-item-what">Calls, forms and bookings counted, so you know which part of the site brings work in and which part only looks nice.</p>
+        </article>
+
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">Website visitor tracking</h3><p class="xc-item-price"><span class="cur" data-eur="25">&euro;25</span></p></div>
+          <p class="xc-item-what">Which pages people read, and where they give up. Usually the fastest way to find the one sentence costing you customers.</p>
+        </article>
+
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">Professional business email setup</h3><p class="xc-item-price"><span class="cur" data-eur="25">&euro;25</span></p></div>
+          <p class="xc-item-what">you@yourbusiness.com instead of a Gmail address, working on your phone and your computer. Costs almost nothing and changes how people read your quotes.</p>
+        </article>
+
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">Email signature setup</h3><p class="xc-item-price"><span class="cur" data-eur="15">&euro;15</span></p></div>
+          <p class="xc-item-what">Your logo, phone number and website on the bottom of every email you send, without you pasting it in each time.</p>
+        </article>
+
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">Domain registration</h3><p class="xc-item-price"><span class="cur" data-eur="10">&euro;10</span></p></div>
+          <p class="xc-item-what">We buy the web address for you and register it in your name, not ours.</p>
+          <p class="xc-item-plus">Plus the price of the domain itself</p>
+        </article>
+
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">Domain connection</h3><p class="xc-item-price"><span class="cur" data-eur="10">&euro;10</span></p></div>
+          <p class="xc-item-what">A web address you already own, pointed at the new site. The fiddly half-hour of settings that nobody enjoys.</p>
+        </article>
+
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">SSL / HTTPS setup</h3><p class="xc-item-price"><span class="cur" data-eur="10">&euro;10</span></p></div>
+          <p class="xc-item-what">The padlock in the address bar, renewing itself. Without it browsers put the words &ldquo;Not secure&rdquo; next to your business name.</p>
+        </article>
+
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">Website migration</h3><p class="xc-item-price"><small>from</small><span class="cur" data-eur="50">&euro;50</span></p></div>
+          <p class="xc-item-what">An existing site moved across without losing the rankings, the links or the content it already had. Priced from, because no two old sites are the same mess.</p>
+        </article>
+
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">Website speed optimization</h3><p class="xc-item-price"><span class="cur" data-eur="50">&euro;50</span></p></div>
+          <p class="xc-item-what">The site made to open fast on a phone on mobile data, which is how most people will actually see it. Slow sites lose visitors before the first word is read.</p>
+        </article>
+
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">Image compression</h3><p class="xc-item-price"><span class="cur" data-eur="15">&euro;15</span></p></div>
+          <p class="xc-item-what">Photographs made small enough to load quickly and still look right. The single commonest reason a small business website feels slow.</p>
+        </article>
+
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">Accessibility improvements</h3><p class="xc-item-price"><span class="cur" data-eur="40">&euro;40</span></p></div>
+          <p class="xc-item-what">Contrast, labels and keyboard use sorted out, so people using a screen reader or a magnifier are not shut out of your business.</p>
+        </article>
+
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">Cookie consent banner</h3><p class="xc-item-price"><span class="cur" data-eur="20">&euro;20</span></p></div>
+          <p class="xc-item-what">The consent notice the law asks for, and one that genuinely does what it claims rather than setting the cookies anyway.</p>
+        </article>
+
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">Privacy policy page</h3><p class="xc-item-price"><span class="cur" data-eur="20">&euro;20</span></p></div>
+          <p class="xc-item-what">A privacy policy written for what your site actually does, instead of a template mentioning things you do not have.</p>
+        </article>
+
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">Terms &amp; conditions page</h3><p class="xc-item-price"><span class="cur" data-eur="20">&euro;20</span></p></div>
+          <p class="xc-item-what">Your terms, in plain language, on a page of their own. The thing you point at when a job goes sideways.</p>
+        </article>
+
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">Custom legal pages</h3><p class="xc-item-price"><small>from</small><span class="cur" data-eur="30">&euro;30</span></p></div>
+          <p class="xc-item-what">Any other policy your trade, your insurer or your bank asks you to publish. Priced from, because it depends what they are asking for.</p>
+        </article>
+
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">Website backup system</h3><p class="xc-item-price"><span class="cur" data-eur="30">&euro;30</span></p></div>
+          <p class="xc-item-what">Copies taken automatically, so a bad day costs you an hour instead of the whole website.</p>
+        </article>
+
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">Security configuration</h3><p class="xc-item-price"><span class="cur" data-eur="40">&euro;40</span></p></div>
+          <p class="xc-item-what">The headers and permissions that keep the site yours, set properly rather than left at whatever the host happened to default to.</p>
+        </article>
+
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">Spam protection</h3><p class="xc-item-price"><span class="cur" data-eur="20">&euro;20</span></p></div>
+          <p class="xc-item-what">The junk stopped before it reaches you, across the whole site. Once the bots find a form they do not get bored.</p>
+        </article>
+
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">Contact form spam protection</h3><p class="xc-item-price"><span class="cur" data-eur="15">&euro;15</span></p></div>
+          <p class="xc-item-what">Bots kept out of your contact form without making real people solve a puzzle about traffic lights.</p>
+        </article>
+
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">Broken-link checking</h3><p class="xc-item-price"><span class="cur" data-eur="15">&euro;15</span></p></div>
+          <p class="xc-item-what">Every link tested and the dead ones mended. Worth doing on any site that has been around a few years.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- ══ Automation ══════════════════════════════════════════ -->
+    <section class="xc-cat">
+      <div class="xc-cat-hd" id="automation">
+        <span class="xc-cat-icon" aria-hidden="true">
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M9 2L6 8.5h4L7 14M2 8h1.5M12.5 8H14M4.2 4.2l1.1 1.1M10.7 10.7l1.1 1.1M4.2 11.8l1.1-1.1M10.7 5.3l1.1-1.1"/>
+          </svg>
+        </span>
+        <div>
+          <h2>Automation</h2>
+          <p>Work the website does for you while you are on a job, asleep, or busy with a customer standing in front of you.</p>
+        </div>
+        <span class="xc-cat-n">10 extras</span>
+      </div>
+
+      <div class="xc-list">
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">Automatic email notifications</h3><p class="xc-item-price"><span class="cur" data-eur="25">&euro;25</span></p></div>
+          <p class="xc-item-what">The site emails you the moment something happens on it, so you are not refreshing a page to find out whether anybody got in touch.</p>
+        </article>
+
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">Booking confirmation emails</h3><p class="xc-item-price"><span class="cur" data-eur="35">&euro;35</span></p></div>
+          <p class="xc-item-what">The customer gets their confirmation without you writing it. Fewer people turning up on the wrong day, and fewer ringing to check.</p>
+        </article>
+
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">Contact form email notifications</h3><p class="xc-item-price"><span class="cur" data-eur="15">&euro;15</span></p></div>
+          <p class="xc-item-what">Every message forwarded to whichever address you want it at, including one that is not the address the website was built with.</p>
+        </article>
+
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">Quote request notifications</h3><p class="xc-item-price"><span class="cur" data-eur="20">&euro;20</span></p></div>
+          <p class="xc-item-what">Quote requests arrive marked as quote requests instead of buried among everything else, because those are the ones worth answering first.</p>
+        </article>
+
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">Automated customer responses</h3><p class="xc-item-price"><span class="cur" data-eur="40">&euro;40</span></p></div>
+          <p class="xc-item-what">An instant reply saying you have their message and when you will answer. Most people will wait, as long as they know they are waiting.</p>
+        </article>
+
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">Appointment reminder emails</h3><p class="xc-item-price"><span class="cur" data-eur="50">&euro;50</span></p></div>
+          <p class="xc-item-what">A reminder before the appointment. Measured against the money lost to people who simply forgot, this is the cheapest thing on the page.</p>
+        </article>
+
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">Email autoresponder setup</h3><p class="xc-item-price"><span class="cur" data-eur="35">&euro;35</span></p></div>
+          <p class="xc-item-what">Out of hours, on holiday, or simply on a job — it answers for you, in your words, at the times you set.</p>
+        </article>
+
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">Lead notification system</h3><p class="xc-item-price"><span class="cur" data-eur="40">&euro;40</span></p></div>
+          <p class="xc-item-what">New enquiries pushed to you and to whoever else needs to see them, so nothing sits in one person's inbox while they are off.</p>
+        </article>
+
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">Customer inquiry tracking</h3><p class="xc-item-price"><span class="cur" data-eur="40">&euro;40</span></p></div>
+          <p class="xc-item-what">A record of who asked what, and whether anybody answered. Useful the first time you cannot remember, which comes sooner than you think.</p>
+        </article>
+
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">Simple CRM integration</h3><p class="xc-item-price"><small>from</small><span class="cur" data-eur="75">&euro;75</span></p></div>
+          <p class="xc-item-what">Enquiries dropped straight into the system you already use, instead of being retyped. Priced from, because it depends which system that is.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- ══ Brand & design ══════════════════════════════════════ -->
+    <section class="xc-cat">
+      <div class="xc-cat-hd" id="brand">
+        <span class="xc-cat-icon" aria-hidden="true">
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M2 11l3-3 2 2 4-5 3 2"/><circle cx="12" cy="12" r="2.5"/><path d="M9.5 12H3a1 1 0 01-1-1V3a1 1 0 011-1h10a1 1 0 011 1v6.5"/>
+          </svg>
+        </span>
+        <div>
+          <h2>Brand &amp; design</h2>
+          <p>Work that is yours whether or not the website exists. Most of these are delivered on their own timeline rather than waiting for the build.</p>
+        </div>
+        <span class="xc-cat-n">11 extras</span>
+      </div>
+
+      <div class="xc-list">
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">Logo Design</h3><p class="xc-item-price"><span class="cur" data-eur="49.99">&euro;49.99</span></p></div>
+          <p class="xc-item-what">A logo drawn for your business, delivered in every file you will ever be asked for — the website, the van, the sign, and the printer.</p>
+        </article>
+
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">Brand Kit</h3><p class="xc-item-price"><span class="cur" data-eur="79.99">&euro;79.99</span></p></div>
+          <p class="xc-item-what">Logo, colours, fonts and the rules for using them, so everything you produce afterwards looks like it came from the same business.</p>
+        </article>
+
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">Business Card Design</h3><p class="xc-item-price"><span class="cur" data-eur="29.99">&euro;29.99</span></p></div>
+          <p class="xc-item-what">Cards laid out and ready for the printer, with the bleed and the margins already right so they do not come back rejected.</p>
+        </article>
+
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">Flyer / Poster Design</h3><p class="xc-item-price"><span class="cur" data-eur="39.99">&euro;39.99</span></p></div>
+          <p class="xc-item-what">A flyer or poster designed to work both printed and posted online, rather than one that looks right on paper and wrong on a phone.</p>
+        </article>
+
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">Menu Design</h3><p class="xc-item-price"><span class="cur" data-eur="39.99">&euro;39.99</span></p></div>
+          <p class="xc-item-what">Your menu set properly for the wall, the table or the website. Legible at arm's length and in bad lighting, which most menus are not.</p>
+        </article>
+
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">Social Media Starter Pack</h3><p class="xc-item-price"><span class="cur" data-eur="59.99">&euro;59.99</span></p></div>
+          <p class="xc-item-what">Profile pictures, cover images and post templates that match the website, so your accounts stop looking like a different company.</p>
+        </article>
+
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">Promo Video / Short Ad</h3><p class="xc-item-price"><small>from</small><span class="cur" data-eur="49.99">&euro;49.99</span></p></div>
+          <p class="xc-item-what">A short video for social media or the top of your page. Priced from, because thirty seconds and two minutes are not the same job.</p>
+        </article>
+
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">AI Business Photos</h3><p class="xc-item-price"><small>from</small><span class="cur" data-eur="30">&euro;30</span></p></div>
+          <p class="xc-item-what">Images made for your business where you have no photographs of your own. Better than stock, and available the same week.</p>
+        </article>
+
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">Google Review QR Card</h3><p class="xc-item-price"><span class="cur" data-eur="19.99">&euro;19.99</span></p></div>
+          <p class="xc-item-what">A card customers scan to land straight on your review page. The gap between asking for a review and getting one is usually just this.</p>
+        </article>
+
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">WhatsApp Business Setup</h3><p class="xc-item-price"><span class="cur" data-eur="39.99">&euro;39.99</span></p></div>
+          <p class="xc-item-what">WhatsApp Business set up properly, with the button on your website. For a lot of trades it is the only channel customers really use.</p>
+        </article>
+
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">Business Document Templates</h3><p class="xc-item-price"><span class="cur" data-eur="29.99">&euro;29.99</span></p></div>
+          <p class="xc-item-what">Invoices, quotes and letters in your own branding, so the paperwork looks like the rest of the business.</p>
+        </article>
+
+        <article class="xc-item xc-item--soon">
+          <div class="xc-item-hd"><h3 class="xc-item-name">AI Receptionist</h3><span class="xc-soon">Coming soon</span></div>
+          <p class="xc-item-what">An assistant on your site that answers common questions and takes details around the clock. Not built yet, and not for sale until it is.</p>
+        </article>
+
+        <article class="xc-item xc-item--soon">
+          <div class="xc-item-hd"><h3 class="xc-item-name">Social Media Content</h3><span class="xc-soon">Coming soon</span></div>
+          <p class="xc-item-what">Ready-made posts written and designed for your accounts each month. Not built yet, and not for sale until it is.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- ══ Closing ═════════════════════════════════════════════ -->
+    <section class="xc-foot">
+      <div class="xc-foot-grid">
+        <div>
+          <h2>How extras are paid for</h2>
+          <p>
+            Extras join your one-time total and are paid once, when your site is ready to go live.
+            There is no subscription on any of them and nothing renews by itself.
+          </p>
+          <p>
+            <span class="xc-foot-arrow">&rarr;</span> Where a price starts with &ldquo;from&rdquo;, the
+            job varies enough that a single figure would be a guess. We confirm the real number with you
+            in writing before anything is charged.
+          </p>
+          <p>
+            <span class="xc-foot-arrow">&rarr;</span> Extras that do not depend on the website &mdash;
+            the QR card, the email and WhatsApp setup, the document templates &mdash; are delivered on
+            their own timeline rather than waiting for the 5&ndash;7 day build, and are paid for when
+            that piece is delivered.
+          </p>
+          <p>
+            <span class="xc-foot-arrow">&rarr;</span> Some packages already cover a number of these.
+            The builder takes those off the list for you, so you never buy the same thing twice.
+          </p>
+        </div>
+
+        <div class="xc-foot-card">
+          <p>
+            Know which ones you want? The builder puts them together with a package, adds the total
+            up, and writes the request for you.
+          </p>
+          <a href="/build" class="xc-cta">Build your package</a>
+        </div>
+      </div>
+    </section>
+
   </div>
-
-  <!-- 3 — THE 34 -->
-  <section id="included" class="scroll-mt-28 border-b border-line">
-    <div class="mx-auto max-w-shell px-6 py-14 md:px-10 md:py-20">
-      <div class="flex flex-wrap items-baseline gap-x-4 gap-y-1">
-        <h2 class="h-section text-xl">Included in every website</h2>
-        <span class="ml-auto text-[0.8125rem] text-ink-soft">no extra cost</span>
-      </div>
-      <p class="mt-4 max-w-prose text-[0.9375rem] leading-relaxed text-ink-mid">
-        Custom builds any twenty of them. Full Website and the Complete Package build all thirty-four.
-      </p>
-      <div class="mt-8 grid grid-cols-1 gap-x-10 gap-y-9 sm:grid-cols-2 xl:grid-cols-4">
-
-        <div>
-          <p class="eyebrow border-b border-line-firm pb-3 text-ink-soft">Pages &amp; sections</p>
-          <ul class="mt-4 grid grid-cols-1 gap-y-2.5">
-            <li class="inc-row">About Us section</li>
-            <li class="inc-row">FAQ section</li>
-            <li class="inc-row">Price list</li>
-            <li class="inc-row">Special offers section</li>
-            <li class="inc-row">Promotions section</li>
-            <li class="inc-row">Portfolio section</li>
-            <li class="inc-row">Projects showcase</li>
-            <li class="inc-row">Team / staff section</li>
-            <li class="inc-row">Before &amp; after section</li>
-            <li class="inc-row">Service area section</li>
-            <li class="inc-row">Pricing comparison</li>
-            <li class="inc-row">Packages section</li>
-            <li class="inc-row">Events section</li>
-            <li class="inc-row">Announcements section</li>
-            <li class="inc-row">Custom landing page</li>
-            <li class="inc-row">Custom 404 page</li>
-          </ul>
-        </div>
-
-        <div>
-          <p class="eyebrow border-b border-line-firm pb-3 text-ink-soft">Catalogues &amp; documents</p>
-          <ul class="mt-4 grid grid-cols-1 gap-y-2.5">
-            <li class="inc-row">Product catalog</li>
-            <li class="inc-row">Online menu</li>
-            <li class="inc-row">PDF menu integration</li>
-            <li class="inc-row">PDF catalog integration</li>
-            <li class="inc-row">Downloadable documents</li>
-            <li class="inc-row">Customer reviews integration</li>
-          </ul>
-        </div>
-
-        <div>
-          <p class="eyebrow border-b border-line-firm pb-3 text-ink-soft">Navigation &amp; interaction</p>
-          <ul class="mt-4 grid grid-cols-1 gap-y-2.5">
-            <li class="inc-row">Sticky navigation</li>
-            <li class="inc-row">Sticky mobile buttons</li>
-            <li class="inc-row">Back-to-top button</li>
-            <li class="inc-row">Image lightbox</li>
-            <li class="inc-row">FAQ accordion</li>
-            <li class="inc-row">Interactive galleries</li>
-          </ul>
-        </div>
-
-        <div>
-          <p class="eyebrow border-b border-line-firm pb-3 text-ink-soft">Media &amp; the basics</p>
-          <ul class="mt-4 grid grid-cols-1 gap-y-2.5">
-            <li class="inc-row">Video section</li>
-            <li class="inc-row">YouTube integration</li>
-            <li class="inc-row">Business inquiry form</li>
-            <li class="inc-row">Social sharing preview</li>
-            <li class="inc-row">Custom favicon</li>
-            <li class="inc-row">Mobile optimization</li>
-          </ul>
-        </div>
-                </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- 4 — THE ADD-ONS -->
-  <section class="border-b border-line bg-surface">
-    <div class="mx-auto max-w-shell px-6 py-14 md:px-10 md:py-20">
-      <div class="flex flex-wrap items-baseline gap-x-4 gap-y-1">
-        <h2 class="h-section text-xl">Optional extras</h2>
-        <span class="ml-auto text-[0.8125rem] text-ink-soft">sixty-five one-off jobs</span>
-      </div>
-
-      <div class="mt-10 grid grid-cols-1 gap-y-11 lg:max-w-3xl" data-picker>
-
-        <div id="website" class="scroll-mt-32" data-ex-group="website">
-          <div class="flex flex-wrap items-baseline gap-x-4 border-b border-line-firm pb-3">
-            <p class="eyebrow text-ink-soft">Website features</p>
-            <span class="ml-auto text-[0.75rem] text-ink-soft">paid once</span>
-          </div>
-            <div class="xrow">
-              <p class="xrow-name">Online booking system</p>
-              <p class="xrow-what">Customers pick a time on your site and the slot comes to you to confirm.</p>
-              <p class="xrow-price"><span class="cur" data-eur="60">€60</span></p>
-            </div>
-            <div class="xrow">
-              <p class="xrow-name">Appointment calendar</p>
-              <p class="xrow-what">A calendar of what is booked, so the same hour is never sold twice.</p>
-              <p class="xrow-price"><span class="cur" data-eur="50">€50</span></p>
-            </div>
-            <div class="xrow">
-              <p class="xrow-name">Google Reviews integration</p>
-              <p class="xrow-what">Your Google reviews on the page, updating themselves.</p>
-              <p class="xrow-price"><span class="cur" data-eur="20">€20</span></p>
-            </div>
-            <div class="xrow">
-              <p class="xrow-name">Newsletter signup</p>
-              <p class="xrow-what">An email box on the page, with the list kept somewhere you can use it.</p>
-              <p class="xrow-price"><span class="cur" data-eur="20">€20</span></p>
-            </div>
-            <div class="xrow">
-              <p class="xrow-name">Email button</p>
-              <p class="xrow-what">One tap opens their mail app with your address already in it.</p>
-              <p class="xrow-price"><span class="cur" data-eur="5">€5</span></p>
-            </div>
-            <div class="xrow">
-              <p class="xrow-name">Job application form</p>
-              <p class="xrow-what">People apply with their details and their CV, and it reaches your inbox.</p>
-              <p class="xrow-price"><span class="cur" data-eur="25">€25</span></p>
-            </div>
-            <div class="xrow">
-              <p class="xrow-name">Careers section</p>
-              <p class="xrow-what">A page for the roles you are hiring for.</p>
-              <p class="xrow-price"><span class="cur" data-eur="15">€15</span></p>
-            </div>
-            <div class="xrow">
-              <p class="xrow-name">Multi-language website</p>
-              <p class="xrow-what">The whole site in a second language, switched from the corner.</p>
-              <p class="xrow-price">from <span class="cur" data-eur="50">€50</span></p>
-            </div>
-            <div class="xrow">
-              <p class="xrow-name">Multiple locations</p>
-              <p class="xrow-what">A page for each branch, with its own address, hours and map.</p>
-              <p class="xrow-price"><span class="cur" data-eur="30">€30</span></p>
-            </div>
-            <div class="xrow">
-              <p class="xrow-name">Location selector</p>
-              <p class="xrow-what">A switcher that puts visitors on the branch nearest them.</p>
-              <p class="xrow-price"><span class="cur" data-eur="25">€25</span></p>
-            </div>
-            <div class="xrow">
-              <p class="xrow-name">Store locator</p>
-              <p class="xrow-what">A map of every location and how to get to it.</p>
-              <p class="xrow-price"><span class="cur" data-eur="50">€50</span></p>
-            </div>
-            <div class="xrow">
-              <p class="xrow-name">Membership section</p>
-              <p class="xrow-what">A part of the site only your members can open.</p>
-              <p class="xrow-price"><span class="cur" data-eur="40">€40</span></p>
-            </div>
-            <div class="xrow">
-              <p class="xrow-name">Gift card section</p>
-              <p class="xrow-what">Gift cards people can buy or request from the page.</p>
-              <p class="xrow-price"><span class="cur" data-eur="30">€30</span></p>
-            </div>
-            <div class="xrow">
-              <p class="xrow-name">Loyalty program</p>
-              <p class="xrow-what">Points or stamps for customers who come back, run from the site.</p>
-              <p class="xrow-price">from <span class="cur" data-eur="60">€60</span></p>
-            </div>
-            <div class="xrow">
-              <p class="xrow-name">Event registration</p>
-              <p class="xrow-what">People sign up for an event and you get the list.</p>
-              <p class="xrow-price"><span class="cur" data-eur="40">€40</span></p>
-            </div>
-            <div class="xrow">
-              <p class="xrow-name">Blog section</p>
-              <p class="xrow-what">Posts you can add yourself, with dates and pictures.</p>
-              <p class="xrow-price"><span class="cur" data-eur="30">€30</span></p>
-            </div>
-            <div class="xrow">
-              <p class="xrow-name">News section</p>
-              <p class="xrow-what">Short announcements in one place, newest first.</p>
-              <p class="xrow-price"><span class="cur" data-eur="20">€20</span></p>
-            </div>
-            <div class="xrow">
-              <p class="xrow-name">Website search</p>
-              <p class="xrow-what">A search box that looks inside your own pages.</p>
-              <p class="xrow-price"><span class="cur" data-eur="30">€30</span></p>
-            </div>
-        </div>
-
-        <div id="technical" class="scroll-mt-32" data-ex-group="technical">
-          <div class="flex flex-wrap items-baseline gap-x-4 border-b border-line-firm pb-3">
-            <p class="eyebrow text-ink-soft">Business &amp; technical</p>
-            <span class="ml-auto text-[0.75rem] text-ink-soft">paid once</span>
-          </div>
-            <div class="xrow">
-              <p class="xrow-name">Basic SEO setup</p>
-              <p class="xrow-what">Titles, descriptions and headings written the way search engines read them.</p>
-              <p class="xrow-price"><span class="cur" data-eur="30">€30</span></p>
-            </div>
-            <div class="xrow">
-              <p class="xrow-name">Google Search indexing</p>
-              <p class="xrow-what">Your pages submitted to Google so they can appear in search.</p>
-              <p class="xrow-price"><span class="cur" data-eur="15">€15</span></p>
-            </div>
-            <div class="xrow">
-              <p class="xrow-name">Google Business Profile setup</p>
-              <p class="xrow-what">Your Google listing created, verified and filled in properly.</p>
-              <p class="xrow-price"><span class="cur" data-eur="40">€40</span></p>
-            </div>
-            <div class="xrow">
-              <p class="xrow-name">Google Business Profile optimization</p>
-              <p class="xrow-what">Photos, categories, hours and posts tuned so the listing ranks.</p>
-              <p class="xrow-price"><span class="cur" data-eur="50">€50</span></p>
-            </div>
-            <div class="xrow">
-              <p class="xrow-name">Google Analytics setup</p>
-              <p class="xrow-what">Visitor numbers you can actually read, installed and configured.</p>
-              <p class="xrow-price"><span class="cur" data-eur="25">€25</span></p>
-            </div>
-            <div class="xrow">
-              <p class="xrow-name">Google Search Console setup</p>
-              <p class="xrow-what">The tool that shows what people searched for before they found you.</p>
-              <p class="xrow-price"><span class="cur" data-eur="25">€25</span></p>
-            </div>
-            <div class="xrow">
-              <p class="xrow-name">Conversion tracking</p>
-              <p class="xrow-what">Calls, forms and bookings counted, so you know what is working.</p>
-              <p class="xrow-price"><span class="cur" data-eur="40">€40</span></p>
-            </div>
-            <div class="xrow">
-              <p class="xrow-name">Website visitor tracking</p>
-              <p class="xrow-what">Which pages people read, and where they give up.</p>
-              <p class="xrow-price"><span class="cur" data-eur="25">€25</span></p>
-            </div>
-            <div class="xrow">
-              <p class="xrow-name">Professional business email setup</p>
-              <p class="xrow-what">you@yourbusiness.com, working on your phone and your computer.</p>
-              <p class="xrow-price"><span class="cur" data-eur="25">€25</span></p>
-            </div>
-            <div class="xrow">
-              <p class="xrow-name">Email signature setup</p>
-              <p class="xrow-what">Your logo and details on the bottom of every email you send.</p>
-              <p class="xrow-price"><span class="cur" data-eur="15">€15</span></p>
-            </div>
-            <div class="xrow">
-              <p class="xrow-name">Domain registration <span class="pick-note">+ the domain</span></p>
-              <p class="xrow-what">We buy the address, in your name.</p>
-              <p class="xrow-price"><span class="cur" data-eur="10">€10</span></p>
-            </div>
-            <div class="xrow">
-              <p class="xrow-name">Domain connection</p>
-              <p class="xrow-what">A domain you already own, pointed at the new site.</p>
-              <p class="xrow-price"><span class="cur" data-eur="10">€10</span></p>
-            </div>
-            <div class="xrow">
-              <p class="xrow-name">SSL / HTTPS setup</p>
-              <p class="xrow-what">The padlock in the address bar, renewing on its own.</p>
-              <p class="xrow-price"><span class="cur" data-eur="10">€10</span></p>
-            </div>
-            <div class="xrow">
-              <p class="xrow-name">Website migration</p>
-              <p class="xrow-what">An existing site moved across without losing what it had.</p>
-              <p class="xrow-price">from <span class="cur" data-eur="50">€50</span></p>
-            </div>
-            <div class="xrow">
-              <p class="xrow-name">Website speed optimization</p>
-              <p class="xrow-what">The site made to open fast on a phone on mobile data.</p>
-              <p class="xrow-price"><span class="cur" data-eur="50">€50</span></p>
-            </div>
-            <div class="xrow">
-              <p class="xrow-name">Image compression</p>
-              <p class="xrow-what">Photographs made small enough to load quickly and still look right.</p>
-              <p class="xrow-price"><span class="cur" data-eur="15">€15</span></p>
-            </div>
-            <div class="xrow">
-              <p class="xrow-name">Accessibility improvements</p>
-              <p class="xrow-what">Contrast, labels and keyboard use, so nobody is shut out.</p>
-              <p class="xrow-price"><span class="cur" data-eur="40">€40</span></p>
-            </div>
-            <div class="xrow">
-              <p class="xrow-name">Cookie consent banner</p>
-              <p class="xrow-what">The consent notice the law asks for, doing what it claims.</p>
-              <p class="xrow-price"><span class="cur" data-eur="20">€20</span></p>
-            </div>
-            <div class="xrow">
-              <p class="xrow-name">Privacy policy page</p>
-              <p class="xrow-what">A privacy policy written for what your site actually does.</p>
-              <p class="xrow-price"><span class="cur" data-eur="20">€20</span></p>
-            </div>
-            <div class="xrow">
-              <p class="xrow-name">Terms &amp; conditions page</p>
-              <p class="xrow-what">Your terms, in plain language, on a page of their own.</p>
-              <p class="xrow-price"><span class="cur" data-eur="20">€20</span></p>
-            </div>
-            <div class="xrow">
-              <p class="xrow-name">Custom legal pages</p>
-              <p class="xrow-what">Any other policy your trade, your insurer or your bank asks for.</p>
-              <p class="xrow-price">from <span class="cur" data-eur="30">€30</span></p>
-            </div>
-            <div class="xrow">
-              <p class="xrow-name">Website backup system</p>
-              <p class="xrow-what">Copies taken on their own, so a bad day costs an hour.</p>
-              <p class="xrow-price"><span class="cur" data-eur="30">€30</span></p>
-            </div>
-            <div class="xrow">
-              <p class="xrow-name">Security configuration</p>
-              <p class="xrow-what">The headers and permissions that keep the site yours.</p>
-              <p class="xrow-price"><span class="cur" data-eur="40">€40</span></p>
-            </div>
-            <div class="xrow">
-              <p class="xrow-name">Spam protection</p>
-              <p class="xrow-what">The junk stopped before it reaches you.</p>
-              <p class="xrow-price"><span class="cur" data-eur="20">€20</span></p>
-            </div>
-            <div class="xrow">
-              <p class="xrow-name">Contact form spam protection</p>
-              <p class="xrow-what">Bots kept out of your contact form without a puzzle for humans.</p>
-              <p class="xrow-price"><span class="cur" data-eur="15">€15</span></p>
-            </div>
-            <div class="xrow">
-              <p class="xrow-name">Broken-link checking</p>
-              <p class="xrow-what">Every link tested, and the dead ones mended.</p>
-              <p class="xrow-price"><span class="cur" data-eur="15">€15</span></p>
-            </div>
-        </div>
-
-        <div id="automation" class="scroll-mt-32" data-ex-group="automation">
-          <div class="flex flex-wrap items-baseline gap-x-4 border-b border-line-firm pb-3">
-            <p class="eyebrow text-ink-soft">Automation</p>
-            <span class="ml-auto text-[0.75rem] text-ink-soft">paid once</span>
-          </div>
-            <div class="xrow">
-              <p class="xrow-name">Automatic email notifications</p>
-              <p class="xrow-what">The site emails you the moment something happens on it.</p>
-              <p class="xrow-price"><span class="cur" data-eur="25">€25</span></p>
-            </div>
-            <div class="xrow">
-              <p class="xrow-name">Booking confirmation emails</p>
-              <p class="xrow-what">The customer gets their confirmation without you writing it.</p>
-              <p class="xrow-price"><span class="cur" data-eur="35">€35</span></p>
-            </div>
-            <div class="xrow">
-              <p class="xrow-name">Contact form email notifications</p>
-              <p class="xrow-what">Every message forwarded to whichever address you want it at.</p>
-              <p class="xrow-price"><span class="cur" data-eur="15">€15</span></p>
-            </div>
-            <div class="xrow">
-              <p class="xrow-name">Quote request notifications</p>
-              <p class="xrow-what">Quote requests arrive marked as quote requests, not buried in the rest.</p>
-              <p class="xrow-price"><span class="cur" data-eur="20">€20</span></p>
-            </div>
-            <div class="xrow">
-              <p class="xrow-name">Automated customer responses</p>
-              <p class="xrow-what">An instant reply that says you have it and when you will answer.</p>
-              <p class="xrow-price"><span class="cur" data-eur="40">€40</span></p>
-            </div>
-            <div class="xrow">
-              <p class="xrow-name">Appointment reminder emails</p>
-              <p class="xrow-what">A reminder before the appointment, so fewer people forget it.</p>
-              <p class="xrow-price"><span class="cur" data-eur="50">€50</span></p>
-            </div>
-            <div class="xrow">
-              <p class="xrow-name">Email autoresponder setup</p>
-              <p class="xrow-what">Out of hours, away, or simply busy - it answers for you.</p>
-              <p class="xrow-price"><span class="cur" data-eur="35">€35</span></p>
-            </div>
-            <div class="xrow">
-              <p class="xrow-name">Lead notification system</p>
-              <p class="xrow-what">New enquiries pushed to you and to whoever else needs them.</p>
-              <p class="xrow-price"><span class="cur" data-eur="40">€40</span></p>
-            </div>
-            <div class="xrow">
-              <p class="xrow-name">Customer inquiry tracking</p>
-              <p class="xrow-what">A record of who asked what, and whether anyone answered.</p>
-              <p class="xrow-price"><span class="cur" data-eur="40">€40</span></p>
-            </div>
-            <div class="xrow">
-              <p class="xrow-name">Simple CRM integration</p>
-              <p class="xrow-what">Enquiries dropped straight into the system you already use.</p>
-              <p class="xrow-price">from <span class="cur" data-eur="75">€75</span></p>
-            </div>
-        </div>
-
-        <div id="brand" class="scroll-mt-32" data-ex-group="brand">
-          <div class="flex flex-wrap items-baseline gap-x-4 border-b border-line-firm pb-3">
-            <p class="eyebrow text-ink-soft">Brand &amp; design</p>
-            <span class="ml-auto text-[0.75rem] text-ink-soft">paid once</span>
-          </div>
-            <div class="xrow">
-              <p class="xrow-name">Logo Design</p>
-              <p class="xrow-what">A logo drawn for your business, in every file you will ever need.</p>
-              <p class="xrow-price"><span class="cur" data-eur="49.99">€49.99</span></p>
-            </div>
-            <div class="xrow">
-              <p class="xrow-name">Brand Kit</p>
-              <p class="xrow-what">Logo, colours, fonts, and the rules for using them.</p>
-              <p class="xrow-price"><span class="cur" data-eur="79.99">€79.99</span></p>
-            </div>
-            <div class="xrow">
-              <p class="xrow-name">Business Card Design</p>
-              <p class="xrow-what">Cards laid out and ready for the printer.</p>
-              <p class="xrow-price"><span class="cur" data-eur="29.99">€29.99</span></p>
-            </div>
-            <div class="xrow">
-              <p class="xrow-name">Flyer / Poster Design</p>
-              <p class="xrow-what">A flyer or a poster, designed to print and to post online.</p>
-              <p class="xrow-price"><span class="cur" data-eur="39.99">€39.99</span></p>
-            </div>
-            <div class="xrow">
-              <p class="xrow-name">Menu Design</p>
-              <p class="xrow-what">Your menu set properly, for the wall, the table or the site.</p>
-              <p class="xrow-price"><span class="cur" data-eur="39.99">€39.99</span></p>
-            </div>
-            <div class="xrow">
-              <p class="xrow-name">Social Media Starter Pack</p>
-              <p class="xrow-what">Profile pictures, covers and post templates that match the site.</p>
-              <p class="xrow-price"><span class="cur" data-eur="59.99">€59.99</span></p>
-            </div>
-            <div class="xrow">
-              <p class="xrow-name">Promo Video / Short Ad</p>
-              <p class="xrow-what">A short video for social media or the top of your page.</p>
-              <p class="xrow-price">from <span class="cur" data-eur="49.99">€49.99</span></p>
-            </div>
-            <div class="xrow">
-              <p class="xrow-name">AI Business Photos</p>
-              <p class="xrow-what">Images made for your business where you have no photographs.</p>
-              <p class="xrow-price">from <span class="cur" data-eur="30">€30</span></p>
-            </div>
-            <div class="xrow">
-              <p class="xrow-name">Google Review QR Card</p>
-              <p class="xrow-what">A card customers scan to land on your review page.</p>
-              <p class="xrow-price"><span class="cur" data-eur="19.99">€19.99</span></p>
-            </div>
-            <div class="xrow">
-              <p class="xrow-name">WhatsApp Business Setup</p>
-              <p class="xrow-what">WhatsApp Business set up, with the button on your site.</p>
-              <p class="xrow-price"><span class="cur" data-eur="39.99">€39.99</span></p>
-            </div>
-            <div class="xrow">
-              <p class="xrow-name">Business Document Templates</p>
-              <p class="xrow-what">Invoices, quotes and letters, in your own branding.</p>
-              <p class="xrow-price"><span class="cur" data-eur="29.99">€29.99</span></p>
-            </div>
-            <div class="pick pick--soon">
-              <span class="pick-name text-ink-mid">AI Receptionist</span>
-              <span class="pick-price"><span class="tag tag-soon">Coming soon</span></span>
-            </div>
-            <div class="pick pick--soon">
-              <span class="pick-name text-ink-mid">Social Media Content</span>
-              <span class="pick-price"><span class="tag tag-soon">Coming soon</span></span>
-            </div>
-        </div>
-
-
-            <!-- The running total. Nothing here navigates and nothing
-                 reloads: ticking a box only adds a number. -->
-        </div>
-
-      </div>
-
-      <div class="mt-14 grid grid-cols-1 gap-8 border-t border-line pt-8 lg:grid-cols-12 lg:gap-14">
-        <div class="lg:col-span-7">
-          <p class="text-sm font-semibold text-ink">How extras are paid for</p>
-          <p class="mt-3 max-w-prose text-[0.875rem] leading-relaxed text-ink-mid">
-            Extras join your one-time total, paid once when your site is ready to go live.
-          </p>
-          <p class="mt-2.5 max-w-prose text-[0.8125rem] leading-relaxed text-ink-soft">
-            <span class="arrow">&rarr;</span> Extras that do not depend on your website build — the QR card, email and WhatsApp setup, document templates — are delivered on their own timeline rather than waiting for the 5–7 day build, and are paid for when that piece is delivered.
-          </p>
-          <p class="mt-2 max-w-prose text-[0.8125rem] leading-relaxed text-ink-soft">
-            <span class="arrow">&rarr;</span> Where a price starts “from”, we confirm the final figure with you in writing before anything is charged.
-          </p>
-        </div>
-        <div class="lg:col-span-4 lg:col-start-9">
-          <a href="/en/services" class="inline-flex items-center justify-center rounded-md bg-accent px-6 py-3.5 text-sm font-semibold text-white hover:bg-accent-hi">Build your package</a>
-        </div>
-      </div>
-    </div>
-  </section>
 </main>
 
 <div data-site-footer>
@@ -631,10 +666,7 @@
 
 <script src="/assets/footer.js?v=7"></script>
 <script src="/assets/cookies.js?v=2"></script>
-<script src="/assets/mobile.js?v=5"></script>
 <script src="/assets/theme.js?v=3"></script>
-<script src="/assets/gutters.js?v=2" defer></script>
-<script src="/assets/scramble.js?v=4" defer></script>
 <script src="/assets/i18n.js?v=4"></script>
 <script src="/assets/demo.js?v=5"></script>
 </body>
