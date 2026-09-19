@@ -857,6 +857,57 @@
 }
 .bx-confirm-no:hover { background: #ece9e4; }
 
+/* ── PDF attachments ───────────────────────────────────────── */
+.bx-file {
+  width: 100%;
+  font: inherit;
+  font-size: 0.8125rem;
+  color: rgb(var(--c-ink-mid));
+}
+.bx-file::file-selector-button {
+  margin-right: 0.75rem;
+  padding: 0.5rem 0.85rem;
+  border: 1px solid rgba(20, 22, 26, 0.16);
+  border-radius: 0.25rem;
+  background: #fff;
+  font: inherit;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: #14161a;
+  cursor: pointer;
+}
+.bx-file::file-selector-button:hover { background: #ece9e4; }
+
+.bx-files {
+  margin: 0.7rem 0 0;
+  padding: 0;
+  list-style: none;
+  border: 1px solid rgb(var(--c-line));
+  border-radius: 0.25rem;
+  overflow: hidden;
+}
+.bx-files li {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.75rem;
+  padding: 0.5rem 0.75rem;
+  font-size: 0.75rem;
+  color: rgb(var(--c-ink-mid));
+  background: rgb(var(--c-paper));
+  border-bottom: 1px solid rgb(var(--c-line));
+}
+.bx-files li:last-child { border-bottom: 0; }
+.bx-files li b {
+  flex: none;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace;
+  font-weight: 500;
+  color: rgb(var(--c-ink-soft));
+}
+.bx-files li.is-bad {
+  background: rgb(var(--c-accent-tint));
+  color: rgb(var(--c-accent-text));
+}
+
 /* ── Reply promise, under the send button ──────────────────── */
 .bx-reply {
   display: flex;

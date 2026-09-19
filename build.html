@@ -224,6 +224,23 @@
                 <span class="bx-count" data-b-brief-count></span>
               </div>
 
+              <div class="bx-field">
+                <label for="b-files">Attach PDFs <span class="bx-opt">optional</span></label>
+                <input id="b-files" class="bx-file" type="file" accept="application/pdf,.pdf" multiple>
+                <p class="bx-hint">
+                  Up to 3 PDFs, 3&nbsp;MB in total &mdash; a menu, a price list, a brochure.
+                  Anything larger, put it behind a link instead.
+                </p>
+                <ul class="bx-files" data-b-files hidden></ul>
+              </div>
+
+              <div class="bx-field">
+                <label for="b-fileslink">Link to bigger files <span class="bx-opt">optional</span></label>
+                <input id="b-fileslink" class="bx-in" type="url" inputmode="url"
+                       autocapitalize="off" spellcheck="false"
+                       placeholder="Google Drive, WeTransfer, Dropbox&hellip;">
+              </div>
+
               <details class="bx-more">
                 <summary>Add more detail <span class="bx-opt">optional</span></summary>
                 <div class="bx-more-body">

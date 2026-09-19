@@ -58,6 +58,53 @@ const cents = (v) => {
 
 const eur = (c) => '€' + (c / 100).toFixed(2);
 
+/* ── Attachments ─────────────────────────────────────────────
+   PDFs only, and every limit is re-checked here. The browser enforces
+   the same three rules so a visitor is told early, but a POST does not
+   have to come from the form, so nothing it claims is taken on trust:
+   not the count, not the size, not the type, not the name. */
+const MAX_FILES = 3;
+const MAX_BYTES = 3 * 1024 * 1024;          // 3MB of actual PDF, before base64
+const B64 = /^[A-Za-z0-9+/]+={0,2}$/;
+
+// %PDF at the head of the decoded bytes. An extension proves nothing —
+// this is what stops an .exe arriving named invoice.pdf.
+const PDF_MAGIC = 'JVBERi0';                 // base64 of '%PDF-'
+
+function cleanName(v) {
+  const base = String(v == null ? '' : v).split(/[\\/]/).pop();
+  const safe = base.replace(/[^A-Za-z0-9._ -]/g, '').replace(/^\.+/, '').trim();
+  const named = safe.slice(0, 80) || 'attachment.pdf';
+  return /\.pdf$/i.test(named) ? named : named + '.pdf';
+}
+
+function attachments(raw) {
+  if (!Array.isArray(raw)) return { files: [], rejected: 0 };
+
+  const files = [];
+  let rejected = 0;
+  let total = 0;
+
+  for (const f of raw.slice(0, MAX_FILES)) {
+    const content = String((f && f.content) || '').replace(/\s/g, '');
+    if (!content || !B64.test(content) || !content.startsWith(PDF_MAGIC)) { rejected++; continue; }
+
+    // Length of base64 maps to decoded bytes without decoding it first.
+    const bytes = Math.floor(content.length * 3 / 4);
+    if (bytes === 0 || total + bytes > MAX_BYTES) { rejected++; continue; }
+
+    total += bytes;
+    files.push({ filename: cleanName(f && f.filename), content, bytes });
+  }
+
+  if (Array.isArray(raw) && raw.length > MAX_FILES) rejected += raw.length - MAX_FILES;
+  return { files, rejected };
+}
+
+const kb = (n) => n < 1024 * 1024
+  ? Math.round(n / 1024) + ' KB'
+  : (n / 1024 / 1024).toFixed(1) + ' MB';
+
 /* A best-effort throttle. Serverless instances are not shared, so this
    is a speed bump rather than a wall — it stops a script hammering one
    warm instance and burning the mail quota. A real limit needs shared
@@ -74,20 +121,25 @@ function tooMany(ip) {
   return hit.n > MAX;
 }
 
-async function send({ key, from, to, replyTo, subject, html }) {
+async function send({ key, from, to, replyTo, subject, html, files }) {
+  const payload = {
+    from,
+    to: [to],
+    // So hitting reply in Gmail goes to the sender, not to nobody.
+    reply_to: replyTo,
+    // A newline in a subject is a header injection in every mail
+    // system that builds headers by concatenation.
+    subject: subject.replace(/[\r\n]+/g, ' '),
+    html
+  };
+  if (files && files.length) {
+    payload.attachments = files.map((f) => ({ filename: f.filename, content: f.content }));
+  }
+
   const r = await fetch('https://api.resend.com/emails', {
     method: 'POST',
     headers: { Authorization: `Bearer ${key}`, 'Content-Type': 'application/json' },
-    body: JSON.stringify({
-      from,
-      to: [to],
-      // So hitting reply in Gmail goes to the sender, not to nobody.
-      reply_to: replyTo,
-      // A newline in a subject is a header injection in every mail
-      // system that builds headers by concatenation.
-      subject: subject.replace(/[\r\n]+/g, ' '),
-      html
-    })
+    body: JSON.stringify(payload)
   });
   if (!r.ok) {
     const detail = await r.text();
@@ -130,11 +182,13 @@ export default async function handler(req, res) {
 
   let body = req.body;
   if (typeof body === 'string') {
-    // A project request carries a brief and seven optional fields, so
-    // the ceiling is higher than a contact message — but still a
-    // ceiling. Parsing an unbounded string is how one request eats the
-    // whole memory budget.
-    if (body.length > 60_000) return res.status(413).json({ error: 'too large' });
+    // A project request can carry PDFs, base64'd, which inflates them by
+    // a third. Vercel refuses a request body over 4.5MB before this code
+    // ever runs, so the ceiling sits just under it: enough for the 3MB of
+    // attachments the builder allows, and still a ceiling, because
+    // parsing an unbounded string is how one request eats the whole
+    // memory budget.
+    if (body.length > 4_400_000) return res.status(413).json({ error: 'too large' });
     try { body = JSON.parse(body); } catch { return res.status(400).json({ error: 'bad json' }); }
   }
   body = body || {};
@@ -249,8 +303,11 @@ async function projectRequest(req, res, body, { key, to, from }) {
     ['Colour preferences',      cap(d.colours, 160)],
     ['Features needed',         cap(d.features, 1500)],
     ['Reference websites',      cap(d.references, 1500)],
-    ['Anything else',           cap(d.notes, 1500)]
+    ['Anything else',           cap(d.notes, 1500)],
+    ['Files to download',       cap(d.filesLink, 500)]
   ].filter(([, v]) => v);
+
+  const { files, rejected } = attachments(p.files);
 
   const computed = packCents + extras.reduce((n, x) => n + x.cents, 0);
   const claimed = cents(p.totalCents);
@@ -291,6 +348,18 @@ async function projectRequest(req, res, body, { key, to, from }) {
       The browser displayed ${eur(claimed)}. The figure above was recomputed from the line items — check before quoting.
     </p>` : ''}
 
+    ${files.length || rejected ? `
+      <h3 style="font:600 13px system-ui;text-transform:uppercase;letter-spacing:.06em;color:#666;margin:24px 0 6px">Attached (${files.length})</h3>
+      <table style="font:14px system-ui;border-collapse:collapse;max-width:520px">
+        ${files.map((f) =>
+          `<tr><td style="padding:3px 16px 3px 0">${esc(f.filename)}</td>` +
+          `<td style="padding:3px 0;color:#666;white-space:nowrap">${kb(f.bytes)}</td></tr>`
+        ).join('')}
+      </table>
+      ${rejected ? `<p style="font:13px system-ui;color:#b00;margin:6px 0 0">
+        ${rejected} file${rejected === 1 ? ' was' : 's were'} not attached — over the size limit, or not a PDF.
+      </p>` : ''}` : ''}
+
     <h3 style="font:600 13px system-ui;text-transform:uppercase;letter-spacing:.06em;color:#666;margin:24px 0 6px">What they need</h3>
     <p style="font:14px/1.6 system-ui;white-space:pre-wrap;margin:0">${esc(brief)}</p>
     ${detailRows
@@ -302,7 +371,7 @@ async function projectRequest(req, res, body, { key, to, from }) {
     const ok = await send({
       key, from, to, replyTo: email,
       subject: `Project request — ${who || packName} — ${eur(computed)}`,
-      html
+      html, files
     });
     return ok
       ? res.status(200).json({ ok: true })

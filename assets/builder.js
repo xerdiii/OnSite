@@ -59,7 +59,7 @@
   var brief = {
     text: '', email: '',
     businessName: '', siteType: '', style: '', colours: '',
-    features: '', references: '', notes: ''
+    features: '', references: '', notes: '', filesLink: ''
   };
   var tab = 'all';
   var sending = false;
@@ -473,6 +473,7 @@
     'b-business':   'businessName',
     'b-email':      'email',
     'b-brief':      'text',
+    'b-fileslink':  'filesLink',
     'b-type':       'siteType',
     'b-style':      'style',
     'b-colours':    'colours',
@@ -480,6 +481,90 @@
     'b-references': 'references',
     'b-notes':      'notes'
   };
+
+  /* ── Attachments ─────────────────────────────────────────────
+     Read here only to show the visitor what will go and to catch the
+     over-limit case before they fill in the rest of the form. The
+     server re-checks all of it; nothing below is a security control.
+     Files are deliberately NOT persisted to localStorage — a few
+     megabytes of base64 would blow the quota and take the basket with
+     it. Re-picking after a refresh is the cost. */
+  var MAX_FILES = 3;
+  var MAX_BYTES = 3 * 1024 * 1024;
+  var picked = [];                        // [{ name, size, content }]
+
+  function kb(n) {
+    return n < 1024 * 1024
+      ? Math.round(n / 1024) + ' KB'
+      : (n / 1024 / 1024).toFixed(1) + ' MB';
+  }
+
+  function readAsBase64(file) {
+    return new Promise(function (resolve, reject) {
+      var r = new FileReader();
+      r.onload = function () {
+        // dataURL is "data:application/pdf;base64,XXXX" — keep the tail.
+        var s = String(r.result);
+        var i = s.indexOf(',');
+        resolve(i < 0 ? '' : s.slice(i + 1));
+      };
+      r.onerror = function () { reject(r.error); };
+      r.readAsDataURL(file);
+    });
+  }
+
+  function wireFiles() {
+    var input = doc.getElementById('b-files');
+    var list = q('[data-b-files]');
+    if (!input || !list) return;
+
+    input.addEventListener('change', function () {
+      var chosen = [].slice.call(input.files || []);
+      var problems = [];
+      picked = [];
+
+      if (chosen.length > MAX_FILES) {
+        problems.push('Only the first ' + MAX_FILES + ' files were taken.');
+        chosen = chosen.slice(0, MAX_FILES);
+      }
+
+      var total = 0;
+      var keep = [];
+      chosen.forEach(function (f) {
+        var isPdf = f.type === 'application/pdf' || /\.pdf$/i.test(f.name);
+        if (!isPdf) { problems.push(f.name + ' is not a PDF.'); return; }
+        if (total + f.size > MAX_BYTES) {
+          problems.push(f.name + ' (' + kb(f.size) + ') goes over the 3 MB limit — send it as a link instead.');
+          return;
+        }
+        total += f.size;
+        keep.push(f);
+      });
+
+      render(keep, problems);
+
+      Promise.all(keep.map(function (f) {
+        return readAsBase64(f).then(function (content) {
+          return { name: f.name, size: f.size, content: content };
+        });
+      })).then(function (out) {
+        picked = out.filter(function (x) { return x.content; });
+      })['catch'](function () {
+        picked = [];
+        render([], ['Those files could not be read. Try again, or send a link.']);
+      });
+    });
+
+    function render(files, problems) {
+      var rows = files.map(function (f) {
+        return '<li><span>' + O.esc(f.name) + '</span><b>' + kb(f.size) + '</b></li>';
+      }).concat(problems.map(function (p) {
+        return '<li class="is-bad">' + O.esc(p) + '</li>';
+      }));
+      list.innerHTML = rows.join('');
+      list.hidden = !rows.length;
+    }
+  }
 
   function wireForm() {
     Object.keys(FIELDS).forEach(function (id) {
@@ -617,6 +702,7 @@
         extras:  t.extras.map(function (i) { return { name: i.name, cents: i.cents }; }),
         included: coveredItems().map(function (i) { return i.name; }),
         totalCents: t.total,
+        files: picked.map(function (f) { return { filename: f.name, content: f.content }; }),
         brief: brief.text.trim(),
         details: {
           businessName: brief.businessName.trim(),
@@ -625,7 +711,8 @@
           colours:      brief.colours.trim(),
           features:     brief.features.trim(),
           references:   brief.references.trim(),
-          notes:        brief.notes.trim()
+          notes:        brief.notes.trim(),
+          filesLink:    brief.filesLink.trim()
         }
       }
     };
@@ -810,6 +897,7 @@
     renderTabs();
     renderAdds();
     wireForm();
+    wireFiles();
     wire();
     markPacks();
     paint();
