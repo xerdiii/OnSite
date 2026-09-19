@@ -59,17 +59,14 @@
 <link rel="dns-prefetch" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400&family=Instrument+Serif&family=Inter:wght@400;500;600;700&family=Outfit:wght@200..800&display=swap">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400&family=Instrument+Serif&family=Inter:wght@400;500;600;700&family=Outfit:wght@200..800&display=swap" media="print" onload="this.media='all'">
-<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400&family=Instrument+Serif&family=Inter:wght@400;500;600;700&family=Outfit:wght@200..800&display=swap"></noscript>
-<script>/* Theme before paint. Dark is the site, light is a choice you make — the attribute is always stamped so the system setting never decides for you. */(function(){var t='dark';try{t=localStorage.getItem('sitehouse.theme')==='light'?'light':'dark';}catch(e){}document.documentElement.setAttribute('data-theme',t);})();</script>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"></noscript>
+<script>/* Theme before paint. */(function(){var t='dark';try{t=localStorage.getItem('sitehouse.theme')==='light'?'light':'dark';}catch(e){}document.documentElement.setAttribute('data-theme',t);})();</script>
 <link rel="stylesheet" href="/assets/xovah.css?v=3">
-<link rel="stylesheet" href="/assets/extras.css?v=6">
-<link rel="stylesheet" href="/assets/mobile.css?v=7">
 <link rel="stylesheet" href="/assets/tailwind.css?v=2">
 <link rel="stylesheet" href="/assets/theme.css?v=6">
-<link rel="stylesheet" href="/assets/gutters.css?v=2">
-<link rel="stylesheet" href="/assets/edge.css?v=4">
+<link rel="stylesheet" href="/assets/catalogue.css?v=2">
 <script>window.XovahRoutes={"lang":"sq","routes":{"home":{"en":"/en","sq":"/sq","de":"/de","fr":"/fr","it":"/it","es":"/es","pt":"/pt","nl":"/nl","sv":"/sv","tr":"/tr"},"pricing":{"en":"/en/pricing","sq":"/sq/cmimet","de":"/de/preise","fr":"/fr/tarifs","it":"/it/prezzi","es":"/es/precios","pt":"/pt/precos","nl":"/nl/prijzen","sv":"/sv/priser","tr":"/tr/fiyatlar"},"services":{"en":"/en/services","sq":"/sq/sherbimet","de":"/de/leistungen","fr":"/fr/services","it":"/it/servizi","es":"/es/servicios","pt":"/pt/servicos","nl":"/nl/diensten","sv":"/sv/tjanster","tr":"/tr/hizmetler"},"features":{"en":"/en/features","sq":"/sq/vecorite","de":"/de/funktionen","fr":"/fr/fonctionnalites","it":"/it/funzionalita","es":"/es/funciones","pt":"/pt/funcionalidades","nl":"/nl/functies","sv":"/sv/funktioner","tr":"/tr/ozellikler"},"contact":{"en":"/en/contact","sq":"/sq/kontakt","de":"/de/kontakt","fr":"/fr/contact","it":"/it/contatti","es":"/es/contacto","pt":"/pt/contacto","nl":"/nl/contact","sv":"/sv/kontakt","tr":"/tr/iletisim"},"faq":{"en":"/en/faq","sq":"/sq/pyetje-te-shpeshta","de":"/de/haeufige-fragen","fr":"/fr/questions-frequentes","it":"/it/domande-frequenti","es":"/es/preguntas-frecuentes","pt":"/pt/perguntas-frequentes","nl":"/nl/veelgestelde-vragen","sv":"/sv/vanliga-fragor","tr":"/tr/sikca-sorulan-sorular"},"terms":{"en":"/en/terms"},"privacy":{"en":"/en/privacy"},"refunds":{"en":"/en/refunds"},"cookies":{"en":"/en/cookies"}},"app":["404","build"],"names":{"home":"index","pricing":"pricing","services":"extras","features":"features","contact":"contact","faq":"faq","terms":"terms","privacy":"privacy","refunds":"refunds","cookies":"cookies"}};</script>
 </head>
 
@@ -82,544 +79,565 @@
       <span class="brand-mark" role="img" aria-label="Xovah"></span>
       <span class="h-section text-lg tracking-tight">Xovah</span>
     </a>
-
     <div class="flex items-center gap-5 md:gap-7">
       <a href="/sq/cmimet" class="text-sm font-medium text-ink-mid hover:text-ink">Çmimet</a>
-      <a href="/sq/sherbimet" class="hidden text-sm font-medium text-ink-mid hover:text-ink md:inline">Shtesa</a>
+      <a href="/sq/sherbimet" class="hidden text-sm font-medium text-ink-mid hover:text-ink md:inline" aria-current="page">Shtesa</a>
       <a href="/sq/pyetje-te-shpeshta" class="hidden text-sm font-medium text-ink-mid hover:text-ink md:inline">Pyetje</a>
       <a href="/build" class="rounded-md bg-accent px-4 py-2.5 text-sm font-semibold text-white hover:bg-accent-hi">Fillo një projekt</a>
     </div>
-  
   </nav>
 </header>
 
 <main id="main">
 
-  <!-- 1 — HERO -->
-  <section class="border-b border-line">
-    <div class="mx-auto max-w-shell px-6 pb-12 pt-12 md:px-10 md:pb-14 md:pt-16">
-      <p class="eyebrow text-accent">Shërbime për faqen</p>
-      <h1 class="h-section sec-title mt-4 max-w-2xl">Gjithçka rreth faqes suaj, me çmim një nga një.</h1>
-      <p class="mt-5 max-w-prose text-[0.9375rem] leading-relaxed text-ink-mid">
-        Rezervime, SEO, analitika, automatizim, një logo, një email në domenin tuaj. Gjashtëdhjetë e pesë punë njëherëshe, secila me çmimin e vet dhe një rresht që thotë çfarë bën vërtet. Merrini te ndërtuesi kur të jeni gati.
-      </p>
-      <ol class="ex-how mt-8" data-reveal-group>
-        <li>
-          <span class="ex-how-n">01</span>
-          <p class="ex-how-h">Tashmë të përfshira</p>
-          <p class="ex-how-p">Tridhjetë e katër veçori janë pjesë e çdo faqeje që ndërtojmë. Nuk kushtojnë asgjë më shumë.</p>
-        </li>
-        <li>
-          <span class="ex-how-n">02</span>
-          <p class="ex-how-h">Shtesa opsionale</p>
-          <p class="ex-how-p">Gjashtëdhjetë e pesë punë të tjera, secila me çmimin e vet njëherësh. Merrni vetëm ato që ju duhen.</p>
-        </li>
-        <li>
-          <span class="ex-how-n">03</span>
-          <p class="ex-how-h">Ndërtoje dhe dërgoje</p>
-          <p class="ex-how-p">Ndërtuesi i bashkon paketën tuaj dhe këto, mbledh totalin dhe na e dërgon.</p>
-        </li>
-      </ol>
+  <!-- ══ Hero ══════════════════════════════════════════════════ -->
+  <section class="xc-shell xc-hero">
+    <p class="xc-eyebrow">Shtesat, të shpjeguara</p>
+    <h1>Çfarë bën vërtet secila shtesë.</h1>
+    <p class="xc-lede">
+      Kjo faqe shpjegon, nuk shet. Çdo shtesë që ofrojmë është më poshtë me një fjali që thotë çfarë bën për biznesin tuaj dhe sa kushton. Kur ta dini se cilat i doni, në konfigurues zgjidhen.
+    </p>
 
-      <div class="mt-8 flex flex-wrap items-center gap-x-5 gap-y-3">
-        <a href="/build" class="btn btn-primary">Ndërtoni pakon tuaj</a>
-        <a href="#website" class="btn btn-ghost">Lexo listën</a>
-        <span class="text-sm text-ink-soft">Nga <span class="cur" data-eur="5">€5</span>, paguhet një herë. Në këtë faqe nuk faturohet asgjë.</span>
-      </div>
+    <div class="xc-figs">
+      <div class="xc-fig"><b>34</b><span>veçori në çdo faqe, pa kosto shtesë</span></div>
+      <div class="xc-fig"><b>65</b><span>shtesa opsionale, secila me çmimin e vet</span></div>
+      <div class="xc-fig"><b><span class="cur" data-eur="5">&euro;5</span></b><span>më e lira, e paguar një herë</span></div>
+      <div class="xc-fig"><b>0</b><span>abonime, askund në këtë faqe</span></div>
+    </div>
+
+    <div class="xc-cta-row">
+      <a href="/build" class="xc-cta">Shko te konfiguruesi</a>
+      <span class="xc-cta-note">Në këtë faqe nuk mund të blihet asgjë, dhe këtu nuk faturohet asgjë.</span>
     </div>
   </section>
 
-  <!-- 2 — THE STICKY BAR
-       Sits under the header, carries the jump links and the running
-       total. It is the only part of this page that follows you. -->
-  <div class="ex-bar" data-ex-bar>
-    <div class="mx-auto flex max-w-shell items-center gap-4 px-6 md:px-10">
-      <nav class="ex-bar-nav" aria-label="Seksionet">
-        <a href="#included">E përfshirë</a>
-        <a href="#website">Faqe Interneti</a>
-        <a href="#technical">Biznes</a>
-        <a href="#automation">Automatizim</a>
-        <a href="#brand">Brand</a>
-      </nav>    </div>
+  <!-- ══ Section nav ═══════════════════════════════════════════ -->
+  <nav class="xc-nav" aria-label="Seksionet">
+    <div class="xc-nav-in">
+      <a href="#included">Tashmë të përfshira</a>
+      <a href="#website">Veçori të faqes</a>
+      <a href="#technical">Biznes dhe teknike</a>
+      <a href="#automation">Automatizim</a>
+      <a href="#brand">Brend dhe dizajn</a>
+    </div>
+  </nav>
+
+  <div class="xc-shell">
+
+    <!-- ══ The 34 that cost nothing ════════════════════════════ -->
+    <section class="xc-band" id="included" style="scroll-margin-top:8rem">
+      <div class="xc-band-hd">
+        <span class="xc-free-flag">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>
+          Pa kosto shtesë
+        </span>
+        <h2>Tridhjetë e katër gjëra për të cilat nuk paguani kurrë shtesë</h2>
+        <p>
+          Këto janë të integruara në çdo faqe që bëjmë. Një Custom Website zgjedh njëzet prej tyre; Full Website dhe gjithçka mbi të i merr të tridhjetë e katërta. Asnjëra nuk shfaqet në listën e shtesave më poshtë, sepse asnjëra nuk është shtesë.
+        </p>
+      </div>
+
+      <div class="xc-inc-cols">
+        <div>
+          <p class="xc-inc-h">Faqe dhe seksione</p>
+          <ul class="xc-inc-list">
+            <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3.4 8.4l3 3 6.2-6.6"/></svg>Seksioni Rreth nesh</li>
+            <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3.4 8.4l3 3 6.2-6.6"/></svg>Seksioni FAQ</li>
+            <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3.4 8.4l3 3 6.2-6.6"/></svg>Listën e çmimeve</li>
+            <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3.4 8.4l3 3 6.2-6.6"/></svg>Seksioni i ofertave speciale</li>
+            <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3.4 8.4l3 3 6.2-6.6"/></svg>Seksioni i promocioneve</li>
+            <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3.4 8.4l3 3 6.2-6.6"/></svg>Seksioni i portofolit</li>
+            <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3.4 8.4l3 3 6.2-6.6"/></svg>Shfaqja e projekteve</li>
+            <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3.4 8.4l3 3 6.2-6.6"/></svg>Seksioni ekip / staf</li>
+            <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3.4 8.4l3 3 6.2-6.6"/></svg>Seksioni para &amp; pas</li>
+            <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3.4 8.4l3 3 6.2-6.6"/></svg>Seksioni i zonës së shërbimit</li>
+            <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3.4 8.4l3 3 6.2-6.6"/></svg>Krahasimi i çmimeve</li>
+            <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3.4 8.4l3 3 6.2-6.6"/></svg>Seksioni i paketave</li>
+            <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3.4 8.4l3 3 6.2-6.6"/></svg>Seksioni i eventeve</li>
+            <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3.4 8.4l3 3 6.2-6.6"/></svg>Seksioni i njoftimeve</li>
+            <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3.4 8.4l3 3 6.2-6.6"/></svg>Faqe uljeje e personalizuar</li>
+            <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3.4 8.4l3 3 6.2-6.6"/></svg>Faqe 404 e personalizuar</li>
+          </ul>
+        </div>
+
+        <div>
+          <p class="xc-inc-h">Katalogë dhe dokumente</p>
+          <ul class="xc-inc-list">
+            <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3.4 8.4l3 3 6.2-6.6"/></svg>Katalog produktesh</li>
+            <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3.4 8.4l3 3 6.2-6.6"/></svg>Menu online</li>
+            <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3.4 8.4l3 3 6.2-6.6"/></svg>Integrimi i menusë PDF</li>
+            <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3.4 8.4l3 3 6.2-6.6"/></svg>Integrimi i katalogut PDF</li>
+            <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3.4 8.4l3 3 6.2-6.6"/></svg>Dokumente të shkarkueshme</li>
+            <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3.4 8.4l3 3 6.2-6.6"/></svg>Integrimi i vlerësimeve të klientëve</li>
+          </ul>
+        </div>
+
+        <div>
+          <p class="xc-inc-h">Navigim dhe ndërveprim</p>
+          <ul class="xc-inc-list">
+            <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3.4 8.4l3 3 6.2-6.6"/></svg>Navigim ngjitës</li>
+            <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3.4 8.4l3 3 6.2-6.6"/></svg>Butona ngjitëse celulari</li>
+            <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3.4 8.4l3 3 6.2-6.6"/></svg>Butoni kthehu-lart</li>
+            <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3.4 8.4l3 3 6.2-6.6"/></svg>Lightbox imazhesh</li>
+            <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3.4 8.4l3 3 6.2-6.6"/></svg>Akordeon FAQ</li>
+            <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3.4 8.4l3 3 6.2-6.6"/></svg>Galeri interaktive</li>
+          </ul>
+        </div>
+
+        <div>
+          <p class="xc-inc-h">Media dhe bazat</p>
+          <ul class="xc-inc-list">
+            <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3.4 8.4l3 3 6.2-6.6"/></svg>Seksioni video</li>
+            <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3.4 8.4l3 3 6.2-6.6"/></svg>Integrim YouTube</li>
+            <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3.4 8.4l3 3 6.2-6.6"/></svg>Formular kërkesash biznesi</li>
+            <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3.4 8.4l3 3 6.2-6.6"/></svg>Paraparje e ndarjes sociale</li>
+            <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3.4 8.4l3 3 6.2-6.6"/></svg>Favicon i personalizuar</li>
+            <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3.4 8.4l3 3 6.2-6.6"/></svg>Optimizim mobil</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══ Website features ════════════════════════════════════ -->
+    <section class="xc-cat">
+      <div class="xc-cat-hd" id="website">
+        <span class="xc-cat-icon" aria-hidden="true">
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="8" cy="8" r="6.5"/><path d="M8 1.5C8 1.5 5.5 4 5.5 8s2.5 6.5 2.5 6.5M8 1.5C8 1.5 10.5 4 10.5 8S8 14.5 8 14.5M1.5 8h13"/>
+          </svg>
+        </span>
+        <div>
+          <h2>Veçori të faqes</h2>
+          <p>Gjëra që vizitorët tuaj i shohin dhe i përdorin. Secila i jep faqes diçka që më parë nuk dinte ta bënte.</p>
+        </div>
+        <span class="xc-cat-n">18 shtesa</span>
+      </div>
+
+      <div class="xc-list">
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">Sistem rezervimi online</h3><p class="xc-item-price"><span class="cur" data-eur="60">&euro;60</span></p></div>
+          <p class="xc-item-what">Klientët zgjedhin një orë në faqen tuaj në vend që t'ju marrin në telefon. Kërkesa vjen te ju për konfirmim, kështu e mbani kalendarin në dorë dhe nuk i humbni ata që nuk e ngrenë telefonin.</p>
+        </article>
+
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">Kalendar takimesh</h3><p class="xc-item-price"><span class="cur" data-eur="50">&euro;50</span></p></div>
+          <p class="xc-item-what">Një kalendar që tregon çfarë është rezervuar tashmë, që e njëjta orë të mos shitet kurrë dy herë. Shkon bashkë me sistemin e rezervimeve dhe vlen edhe vetëm, nëse terminet i merrni në telefon.</p>
+        </article>
+
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">Integrim i Vlerësimeve Google</h3><p class="xc-item-price"><span class="cur" data-eur="20">&euro;20</span></p></div>
+          <p class="xc-item-what">Vlerësimet tuaja të vërteta të Google në faqe, që përditësohen vetë sapo vijnë të reja. Askush nuk duhet t'i kopjojë, dhe askush nuk mund t'ju akuzojë se i keni shpikur.</p>
+        </article>
+
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">Regjistrim newsletter-i</h3><p class="xc-item-price"><span class="cur" data-eur="20">&euro;20</span></p></div>
+          <p class="xc-item-what">Një kuti e-maili në faqe, me listën e ruajtur aty ku mund ta përdorni vërtet më vonë. Mënyra më e lirë që një vizitor të mos jetë i huaj herën tjetër.</p>
+        </article>
+
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">Butoni email</h3><p class="xc-item-price"><span class="cur" data-eur="5">&euro;5</span></p></div>
+          <p class="xc-item-what">Një prekje ua hap aplikacionin e postës me adresën tuaj tashmë të plotësuar. E vogël, por heq hapin ku dikush e kopjon adresën tuaj dhe pastaj harron pse.</p>
+        </article>
+
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">Formular aplikimi pune</h3><p class="xc-item-price"><span class="cur" data-eur="25">&euro;25</span></p></div>
+          <p class="xc-item-what">Njerëzit aplikojnë me të dhënat e tyre dhe bashkëngjitin një CV, dhe vjen si një mesazh i rregullt e jo si tre e-maile ku bashkëngjitja mungon çdo herë.</p>
+        </article>
+
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">Seksioni i karrierës</h3><p class="xc-item-price"><span class="cur" data-eur="15">&euro;15</span></p></div>
+          <p class="xc-item-what">Një faqe për pozitat që po plotësoni, që të dërgoni një link në vend që ta rishkruani shpalljen sa herë që dikush pyet.</p>
+        </article>
+
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">Faqe shumëgjuhëshe</h3><p class="xc-item-price"><small>nga</small><span class="cur" data-eur="50">&euro;50</span></p></div>
+          <p class="xc-item-what">Gjithë faqja në një gjuhë të dytë, me ndërrimin në cep të faqes. Çmimi nga, sepse varet sa tekst ka për t'u bartur.</p>
+        </article>
+
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">Vendndodhje të shumta</h3><p class="xc-item-price"><span class="cur" data-eur="30">&euro;30</span></p></div>
+          <p class="xc-item-what">Një faqe për çdo degë me adresën, orarin dhe hartën e vet, që kush kërkon më të afërtën të gjejë të dhënat e sakta e jo ato të gabuarat.</p>
+        </article>
+
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">Zgjedhës vendndodhjeje</h3><p class="xc-item-price"><span class="cur" data-eur="25">&euro;25</span></p></div>
+          <p class="xc-item-what">Një ndërrues që i çon vizitorët te dega më e afërt, pa i detyruar ta gjejnë vetë se cila është.</p>
+        </article>
+
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">Gjejësi dyqanesh</h3><p class="xc-item-price"><span class="cur" data-eur="50">&euro;50</span></p></div>
+          <p class="xc-item-what">Një hartë e të gjitha lokacioneve dhe rruga për te secili. Ia vlen sapo të keni më shumë degë sesa mban mend një vizitor.</p>
+        </article>
+
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">Seksioni i anëtarësive</h3><p class="xc-item-price"><span class="cur" data-eur="40">&euro;40</span></p></div>
+          <p class="xc-item-what">Një pjesë e faqes që mund ta hapin vetëm anëtarët tuaj. Për lista çmimesh, materiale, ose çdo gjë që preferoni të mos ia tregoni gjithë internetit.</p>
+        </article>
+
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">Seksioni i kartave dhuratë</h3><p class="xc-item-price"><span class="cur" data-eur="30">&euro;30</span></p></div>
+          <p class="xc-item-what">Kartëdhurata që njerëzit mund t'i blejnë ose kërkojnë drejt e nga faqja. Në heshtje një nga gjërat më fitimprurëse që një biznes i vogël mund të nxjerrë online para Krishtlindjeve.</p>
+        </article>
+
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">Program besnikërie</h3><p class="xc-item-price"><small>nga</small><span class="cur" data-eur="60">&euro;60</span></p></div>
+          <p class="xc-item-what">Pikë ose vula për klientët që kthehen, të mbajtura nga faqja e jo me një kartë letre që rri në portofol derisa humbet.</p>
+        </article>
+
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">Regjistrim eventesh</h3><p class="xc-item-price"><span class="cur" data-eur="40">&euro;40</span></p></div>
+          <p class="xc-item-what">Njerëzit regjistrohen për një ngjarje dhe ju merrni listën. Numra të vërtetë para ditës, e jo një hamendje dhe shumë ushqim.</p>
+        </article>
+
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">Seksioni i blogut</h3><p class="xc-item-price"><span class="cur" data-eur="30">&euro;30</span></p></div>
+          <p class="xc-item-what">Postime që mund t'i shtoni vetë, me data dhe fotografi. Gjithashtu mënyra më e besueshme për t'i dhënë Google-it vazhdimisht faqe të reja pa i paguar askujt.</p>
+        </article>
+
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">Seksioni i lajmeve</h3><p class="xc-item-price"><span class="cur" data-eur="20">&euro;20</span></p></div>
+          <p class="xc-item-what">Njoftime të shkurtra në një vend, më i riu i pari. Më i lehtë se një blog kur duhet vetëm të thoni se dyqani është mbyllur të hënën.</p>
+        </article>
+
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">Kërkim në faqe</h3><p class="xc-item-price"><span class="cur" data-eur="30">&euro;30</span></p></div>
+          <p class="xc-item-what">Një kuti kërkimi që shikon brenda faqeve tuaja. Ia vlen sapo faqja të jetë aq e madhe sa lëvizja poshtë të mos jetë më plan.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- ══ Business & technical ════════════════════════════════ -->
+    <section class="xc-cat">
+      <div class="xc-cat-hd" id="technical">
+        <span class="xc-cat-icon" aria-hidden="true">
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="1.5" y="1.5" width="13" height="13" rx="2"/><path d="M5 8h6M8 5v6"/>
+          </svg>
+        </span>
+        <div>
+          <h2>Biznes dhe teknike</h2>
+          <p>Puna pas faqes: të gjendesh, të matesh, të jesh në rregull me ligjin dhe të rrish në këmbë.</p>
+        </div>
+        <span class="xc-cat-n">26 shtesa</span>
+      </div>
+
+      <div class="xc-list">
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">Konfigurim bazik SEO</h3><p class="xc-item-price"><span class="cur" data-eur="30">&euro;30</span></p></div>
+          <p class="xc-item-what">Tituj, përshkrime dhe kryetituj të shkruar ashtu si i lexojnë motorët e kërkimit. Nuk ju blen vendin e parë; ju heq nga padukshmëria për emrin e biznesit tuaj.</p>
+        </article>
+
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">Indeksimi në Kërkimin Google</h3><p class="xc-item-price"><span class="cur" data-eur="15">&euro;15</span></p></div>
+          <p class="xc-item-what">Faqet tuaja të dërguara te Google që të mund të shfaqen fare në kërkim. Pa këtë, thjesht prisni, ndonjëherë me muaj.</p>
+        </article>
+
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">Vendosje e Google Business Profile</h3><p class="xc-item-price"><span class="cur" data-eur="40">&euro;40</span></p></div>
+          <p class="xc-item-what">Lista që shfaqet pranë hartës kur dikush kërkon zanatin dhe qytetin tuaj — e krijuar, e verifikuar dhe e plotësuar si duhet.</p>
+        </article>
+
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">Optimizim i Google Business Profile</h3><p class="xc-item-price"><span class="cur" data-eur="50">&euro;50</span></p></div>
+          <p class="xc-item-what">Fotot, kategoritë, orari dhe postimet të rregulluara që ajo listë të konkurrojë vërtet me të tjerat aty pranë, në vend që të rrijë e saktë dhe e pavërejtur.</p>
+        </article>
+
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">Vendosje Google Analytics</h3><p class="xc-item-price"><span class="cur" data-eur="25">&euro;25</span></p></div>
+          <p class="xc-item-what">Numra vizitorësh që mund t'i lexoni pa kurs, të instaluar dhe të konfiguruar që shifrat të nënkuptojnë atë që mendoni.</p>
+        </article>
+
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">Vendosje e Google Search Console</h3><p class="xc-item-price"><span class="cur" data-eur="25">&euro;25</span></p></div>
+          <p class="xc-item-what">Mjeti që tregon çfarë shkruan njerëzit para se t'ju gjenin, dhe që paralajmëron kur Google nuk arrin të lexojë një nga faqet tuaja.</p>
+        </article>
+
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">Gjurmimi i konvertimeve</h3><p class="xc-item-price"><span class="cur" data-eur="40">&euro;40</span></p></div>
+          <p class="xc-item-what">Telefonatat, formularët dhe rezervimet numërohen, që ta dini cila pjesë e faqes sjell punë dhe cila vetëm duket bukur.</p>
+        </article>
+
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">Gjurmimi i vizitorëve të faqes</h3><p class="xc-item-price"><span class="cur" data-eur="25">&euro;25</span></p></div>
+          <p class="xc-item-what">Cilat faqe lexohen dhe ku dorëzohen njerëzit. Zakonisht rruga më e shpejtë për të gjetur fjalinë që po ju kushton klientë.</p>
+        </article>
+
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">Konfigurim profesional email-i biznesi</h3><p class="xc-item-price"><span class="cur" data-eur="25">&euro;25</span></p></div>
+          <p class="xc-item-what">ju@biznesijuaj.com në vend të një adrese Gmail, që punon në telefon dhe në kompjuter. Kushton gati asgjë dhe ndryshon mënyrën si lexohen ofertat tuaja.</p>
+        </article>
+
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">Vendosje nënshkrimi email-i</h3><p class="xc-item-price"><span class="cur" data-eur="15">&euro;15</span></p></div>
+          <p class="xc-item-what">Logoja, numri i telefonit dhe faqja juaj në fund të çdo e-maili që dërgoni, pa pasur nevojë ta ngjitni çdo herë.</p>
+        </article>
+
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">Regjistrimi i domenit</h3><p class="xc-item-price"><span class="cur" data-eur="10">&euro;10</span></p></div>
+          <p class="xc-item-what">Ne e blejmë adresën e internetit për ju dhe e regjistrojmë në emrin tuaj, jo në tonin.</p>
+          <p class="xc-item-plus">Plus çmimi i vetë domenit</p>
+        </article>
+
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">Lidhja e domenit</h3><p class="xc-item-price"><span class="cur" data-eur="10">&euro;10</span></p></div>
+          <p class="xc-item-what">Një adresë interneti që e keni tashmë, e drejtuar te faqja e re. Gjysmë ore e ndërlikuar me konfigurime që nuk i pëlqen askujt.</p>
+        </article>
+
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">Konfigurimi SSL / HTTPS</h3><p class="xc-item-price"><span class="cur" data-eur="10">&euro;10</span></p></div>
+          <p class="xc-item-what">Dryni në shiritin e adresës, që rinovohet vetë. Pa të, shfletuesit vendosin fjalët „Jo e sigurt“ pranë emrit të biznesit tuaj.</p>
+        </article>
+
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">Migrimi i faqes</h3><p class="xc-item-price"><small>nga</small><span class="cur" data-eur="50">&euro;50</span></p></div>
+          <p class="xc-item-what">Një faqe ekzistuese e zhvendosur pa humbur pozitat, linqet apo përmbajtjen që kishte. Çmimi nga, sepse nuk ka dy faqe të vjetra të çrregullta njësoj.</p>
+        </article>
+
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">Optimizimi i shpejtësisë së faqes</h3><p class="xc-item-price"><span class="cur" data-eur="50">&euro;50</span></p></div>
+          <p class="xc-item-what">Faqja e bërë të hapet shpejt në telefon me të dhëna mobile, sepse ashtu do ta shohin vërtet shumica. Faqet e ngadalta i humbin vizitorët para fjalës së parë.</p>
+        </article>
+
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">Kompresim imazhesh</h3><p class="xc-item-price"><span class="cur" data-eur="15">&euro;15</span></p></div>
+          <p class="xc-item-what">Fotografi të zvogëluara sa duhet për t'u ngarkuar shpejt dhe për të dukur prapë mirë. Me dallim arsyeja më e zakonshme pse faqja e një biznesi të vogël duket e ngadaltë.</p>
+        </article>
+
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">Përmirësime aksesueshmërie</h3><p class="xc-item-price"><span class="cur" data-eur="40">&euro;40</span></p></div>
+          <p class="xc-item-what">Kontrasti, etiketat dhe përdorimi me tastierë të rregulluara, që kush përdor lexues ekrani ose lupë të mos mbetet jashtë biznesit tuaj.</p>
+        </article>
+
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">Bandera e pëlqimit të cookies</h3><p class="xc-item-price"><span class="cur" data-eur="20">&euro;20</span></p></div>
+          <p class="xc-item-what">Njoftimi i pëlqimit që kërkon ligji, dhe një që bën vërtet atë që thotë, në vend që t'i vendosë cookie-t gjithsesi.</p>
+        </article>
+
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">Faqja e politikës së privatësisë</h3><p class="xc-item-price"><span class="cur" data-eur="20">&euro;20</span></p></div>
+          <p class="xc-item-what">Një politikë privatësie e shkruar për atë që faqja juaj bën vërtet, jo një model që përmend gjëra që ju nuk i keni.</p>
+        </article>
+
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">Faqja e kushteve &amp; dispozitave</h3><p class="xc-item-price"><span class="cur" data-eur="20">&euro;20</span></p></div>
+          <p class="xc-item-what">Kushtet tuaja, me gjuhë të thjeshtë, në një faqe të vetën. Ajo ku tregoni me gisht kur një punë shkon keq.</p>
+        </article>
+
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">Faqe ligjore të personalizuara</h3><p class="xc-item-price"><small>nga</small><span class="cur" data-eur="30">&euro;30</span></p></div>
+          <p class="xc-item-what">Çdo politikë tjetër që zanati juaj, siguruesi ose banka juaj ju kërkon ta publikoni. Çmimi nga, sepse varet se çfarë kërkojnë.</p>
+        </article>
+
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">Sistemi i kopjeve rezervë të faqes</h3><p class="xc-item-price"><span class="cur" data-eur="30">&euro;30</span></p></div>
+          <p class="xc-item-what">Kopje të marra automatikisht, që një ditë e keqe t'ju kushtojë një orë e jo gjithë faqen.</p>
+        </article>
+
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">Konfigurimi i sigurisë</h3><p class="xc-item-price"><span class="cur" data-eur="40">&euro;40</span></p></div>
+          <p class="xc-item-what">Headerët dhe lejet që e mbajnë faqen tuajën, të vendosura si duhet e jo të lëna ashtu si i sjell hostingu si parazgjedhje.</p>
+        </article>
+
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">Mbrojtje kundër spam-it</h3><p class="xc-item-price"><span class="cur" data-eur="20">&euro;20</span></p></div>
+          <p class="xc-item-what">Mbeturinat ndalen para se t'ju arrijnë, në gjithë faqen. Sapo botët gjejnë një formular, nuk mërziten.</p>
+        </article>
+
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">Mbrojtje nga spam-i në formularin e kontaktit</h3><p class="xc-item-price"><span class="cur" data-eur="15">&euro;15</span></p></div>
+          <p class="xc-item-what">Botët mbeten jashtë formularit tuaj të kontaktit, pa i detyruar njerëzit e vërtetë të zgjidhin gjëegjëza për semaforë.</p>
+        </article>
+
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">Kontroll i lidhjeve të thyera</h3><p class="xc-item-price"><span class="cur" data-eur="15">&euro;15</span></p></div>
+          <p class="xc-item-what">Çdo link i testuar dhe ata të vdekurit të riparuar. Ia vlen për çdo faqe që ekziston prej disa vitesh.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- ══ Automation ══════════════════════════════════════════ -->
+    <section class="xc-cat">
+      <div class="xc-cat-hd" id="automation">
+        <span class="xc-cat-icon" aria-hidden="true">
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M9 2L6 8.5h4L7 14M2 8h1.5M12.5 8H14M4.2 4.2l1.1 1.1M10.7 10.7l1.1 1.1M4.2 11.8l1.1-1.1M10.7 5.3l1.1-1.1"/>
+          </svg>
+        </span>
+        <div>
+          <h2>Automatizim</h2>
+          <p>Puna që faqja bën për ju ndërsa jeni në punë, në gjumë, ose të zënë me një klient para jush.</p>
+        </div>
+        <span class="xc-cat-n">10 shtesa</span>
+      </div>
+
+      <div class="xc-list">
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">Njoftime automatike me email</h3><p class="xc-item-price"><span class="cur" data-eur="25">&euro;25</span></p></div>
+          <p class="xc-item-what">Faqja ju dërgon e-mail sapo ndodh diçka në të, që të mos rifreskoni një faqe për të parë a ju ka shkruar dikush.</p>
+        </article>
+
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">Email-e konfirmimi rezervimesh</h3><p class="xc-item-price"><span class="cur" data-eur="35">&euro;35</span></p></div>
+          <p class="xc-item-what">Klienti e merr konfirmimin pa e shkruar ju. Më pak njerëz që vijnë ditën e gabuar dhe më pak që telefonojnë për të kontrolluar.</p>
+        </article>
+
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">Njoftime email nga formulari i kontaktit</h3><p class="xc-item-price"><span class="cur" data-eur="15">&euro;15</span></p></div>
+          <p class="xc-item-what">Çdo mesazh i përcjellë te adresa që doni, përfshirë një tjetër nga ajo me të cilën u ndërtua faqja.</p>
+        </article>
+
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">Njoftimet për kërkesa ofertash</h3><p class="xc-item-price"><span class="cur" data-eur="20">&euro;20</span></p></div>
+          <p class="xc-item-what">Kërkesat për ofertë vijnë të shënuara si kërkesa për ofertë, në vend që të varrosen mes gjithçkaje tjetër, sepse ato janë të parat që meritojnë përgjigje.</p>
+        </article>
+
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">Përgjigje automatike ndaj klientëve</h3><p class="xc-item-price"><span class="cur" data-eur="40">&euro;40</span></p></div>
+          <p class="xc-item-what">Një përgjigje e menjëhershme që thotë se mesazhi mbërriti dhe kur do të përgjigjeni. Shumica presin, mjafton ta dinë se po presin.</p>
+        </article>
+
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">Email-e kujtuese për takimet</h3><p class="xc-item-price"><span class="cur" data-eur="50">&euro;50</span></p></div>
+          <p class="xc-item-what">Një kujtesë para terminit. Matur me paratë që humbin thjesht sepse dikush harroi, kjo është gjëja më e lirë në këtë faqe.</p>
+        </article>
+
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">Vendosje auto-përgjigjësi email-i</h3><p class="xc-item-price"><span class="cur" data-eur="35">&euro;35</span></p></div>
+          <p class="xc-item-what">Jashtë orarit, me pushime, ose thjesht në punë — përgjigjet për ju, me fjalët tuaja, në orët që caktoni.</p>
+        </article>
+
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">Sistem njoftimi për kontaktet e reja</h3><p class="xc-item-price"><span class="cur" data-eur="40">&euro;40</span></p></div>
+          <p class="xc-item-what">Kërkesat e reja i dërgohen juve dhe kujtdo tjetër që duhet t'i shohë, që asgjë të mos mbetet në kutinë e një personi të vetëm ndërsa ai mungon.</p>
+        </article>
+
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">Gjurmimi i kërkesave të klientëve</h3><p class="xc-item-price"><span class="cur" data-eur="40">&euro;40</span></p></div>
+          <p class="xc-item-what">Një regjistër se kush pyeti çfarë dhe a u përgjigj dikush. I dobishëm herën e parë që nuk ju kujtohet, dhe ajo herë vjen më shpejt seç mendoni.</p>
+        </article>
+
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">Integrim i thjeshtë CRM</h3><p class="xc-item-price"><small>nga</small><span class="cur" data-eur="75">&euro;75</span></p></div>
+          <p class="xc-item-what">Kërkesat bien drejt e në sistemin që përdorni tashmë, në vend që të rishkruhen. Çmimi nga, sepse varet se cili është ai sistem.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- ══ Brand & design ══════════════════════════════════════ -->
+    <section class="xc-cat">
+      <div class="xc-cat-hd" id="brand">
+        <span class="xc-cat-icon" aria-hidden="true">
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M2 11l3-3 2 2 4-5 3 2"/><circle cx="12" cy="12" r="2.5"/><path d="M9.5 12H3a1 1 0 01-1-1V3a1 1 0 011-1h10a1 1 0 011 1v6.5"/>
+          </svg>
+        </span>
+        <div>
+          <h2>Brend dhe dizajn</h2>
+          <p>Punë që është e juaja, qoftë faqja aty apo jo. Shumica dorëzohet me ritmin e vet, në vend që të presë ndërtimin.</p>
+        </div>
+        <span class="xc-cat-n">11 shtesa</span>
+      </div>
+
+      <div class="xc-list">
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">Dizajn logoje</h3><p class="xc-item-price"><span class="cur" data-eur="49.99">&euro;49.99</span></p></div>
+          <p class="xc-item-what">Një logo e vizatuar për biznesin tuaj, e dorëzuar në çdo format që do t'ju kërkohet ndonjëherë — faqja, furgoni, tabela dhe shtypshkronja.</p>
+        </article>
+
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">Kit Brandi</h3><p class="xc-item-price"><span class="cur" data-eur="79.99">&euro;79.99</span></p></div>
+          <p class="xc-item-what">Logo, ngjyra, shkronja dhe rregullat për t'i përdorur, që çdo gjë që prodhoni më pas të duket sikur vjen nga i njëjti biznes.</p>
+        </article>
+
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">Dizajn kartash vizitare</h3><p class="xc-item-price"><span class="cur" data-eur="29.99">&euro;29.99</span></p></div>
+          <p class="xc-item-what">Karta të faqosura dhe gati për shtypshkronjë, me prerje dhe margjina tashmë të sakta, që të mos kthehen mbrapsht.</p>
+        </article>
+
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">Dizajn fletushkash / postimesh</h3><p class="xc-item-price"><span class="cur" data-eur="39.99">&euro;39.99</span></p></div>
+          <p class="xc-item-what">Një fletushkë ose poster i dizajnuar të funksionojë i shtypur dhe i postuar online njëkohësisht, jo një që duket mirë në letër dhe keq në telefon.</p>
+        </article>
+
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">Dizajn menuje</h3><p class="xc-item-price"><span class="cur" data-eur="39.99">&euro;39.99</span></p></div>
+          <p class="xc-item-what">Menyja juaj e faqosur si duhet për murin, tavolinën ose faqen. E lexueshme në distancë krahu dhe në dritë të dobët, gjë që shumica e menyve nuk janë.</p>
+        </article>
+
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">Paketa fillestare për Rrjetet Sociale</h3><p class="xc-item-price"><span class="cur" data-eur="59.99">&euro;59.99</span></p></div>
+          <p class="xc-item-what">Foto profili, kopertina dhe modele postimesh që shkojnë me faqen, që llogaritë tuaja të mos duken më si të një kompanie tjetër.</p>
+        </article>
+
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">Video Promocionale / Reklamë e Shkurtër</h3><p class="xc-item-price"><small>nga</small><span class="cur" data-eur="49.99">&euro;49.99</span></p></div>
+          <p class="xc-item-what">Një video e shkurtër për rrjetet sociale ose për krye të faqes suaj. Çmimi nga, sepse tridhjetë sekonda dhe dy minuta nuk janë e njëjta punë.</p>
+        </article>
+
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">Fotografi biznesi me AI</h3><p class="xc-item-price"><small>nga</small><span class="cur" data-eur="30">&euro;30</span></p></div>
+          <p class="xc-item-what">Imazhe të krijuara për biznesin tuaj kur nuk keni fotografi tuajat. Më mirë se materiali i gatshëm dhe të gatshme brenda javës.</p>
+        </article>
+
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">Karta QR e Vlerësimeve Google</h3><p class="xc-item-price"><span class="cur" data-eur="19.99">&euro;19.99</span></p></div>
+          <p class="xc-item-what">Një kartë që klientët e skanojnë për të shkuar drejt e te faqja juaj e vlerësimeve. Mes kërkesës për një vlerësim dhe marrjes së tij zakonisht qëndron pikërisht kjo.</p>
+        </article>
+
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">Konfigurimi i WhatsApp Business</h3><p class="xc-item-price"><span class="cur" data-eur="39.99">&euro;39.99</span></p></div>
+          <p class="xc-item-what">WhatsApp Business i konfiguruar si duhet, me butonin në faqen tuaj. Në shumë zanate është i vetmi kanal që klientët e përdorin vërtet.</p>
+        </article>
+
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">Shabllone dokumetash biznesi</h3><p class="xc-item-price"><span class="cur" data-eur="29.99">&euro;29.99</span></p></div>
+          <p class="xc-item-what">Fatura, oferta dhe letra me identitetin tuaj, që letrat të duken si pjesa tjetër e biznesit.</p>
+        </article>
+
+        <article class="xc-item xc-item--soon">
+          <div class="xc-item-hd"><h3 class="xc-item-name">Recepsioniste AI</h3><span class="xc-soon">Së shpejti</span></div>
+          <p class="xc-item-what">Një asistent në faqen tuaj që u përgjigjet pyetjeve të zakonshme dhe merr të dhënat gjatë gjithë kohës. Ende nuk është ndërtuar dhe nuk shitet derisa të jetë.</p>
+        </article>
+
+        <article class="xc-item xc-item--soon">
+          <div class="xc-item-hd"><h3 class="xc-item-name">Përmbajtje për Rrjetet Sociale</h3><span class="xc-soon">Së shpejti</span></div>
+          <p class="xc-item-what">Postime të gatshme, të shkruara dhe të dizajnuara çdo muaj për llogaritë tuaja. Ende nuk është ndërtuar dhe nuk shitet derisa të jetë.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- ══ Closing ═════════════════════════════════════════════ -->
+    <section class="xc-foot">
+      <div class="xc-foot-grid">
+        <div>
+          <h2>Si paguhen ekstrat</h2>
+          <p>
+            Shtesat i shtohen totalit tuaj një herë të vetme dhe paguhen një herë, kur faqja juaj është gati të dalë online. Asnjëra prej tyre nuk është abonim dhe asgjë nuk rinovohet vetë.
+          </p>
+          <p>
+            <span class="xc-foot-arrow">&rarr;</span> Aty ku çmimi fillon me „nga“, puna ndryshon aq sa një shifër e vetme do të ishte hamendje. Ne ju konfirmojmë shifrën e vërtetë me shkrim para se të faturohet çfarëdo gjëje.
+          </p>
+          <p>
+            <span class="xc-foot-arrow">&rarr;</span> Shtesat që nuk varen nga faqja — karta QR, konfigurimi i e-mailit dhe WhatsApp-it, modelet e dokumenteve — dorëzohen me ritmin e tyre në vend që të presin 5–7 ditët e ndërtimit, dhe paguhen kur dorëzohet ajo pjesë.
+          </p>
+          <p>
+            <span class="xc-foot-arrow">&rarr;</span> Disa pako i mbulojnë tashmë disa prej tyre. Konfiguruesi jua heq ato nga lista, që të mos blini kurrë dy herë të njëjtën gjë.
+          </p>
+        </div>
+
+        <div class="xc-foot-card">
+          <p>
+            E dini se cilat i doni? Konfiguruesi i bashkon me një pako, mbledh totalin dhe e shkruan kërkesën për ju.
+          </p>
+          <a href="/build" class="xc-cta xc-cta--light">Ndërtoni pakon tuaj</a>
+        </div>
+      </div>
+    </section>
+
   </div>
-
-  <!-- 3 — THE 34 -->
-  <section id="included" class="scroll-mt-28 border-b border-line">
-    <div class="mx-auto max-w-shell px-6 py-14 md:px-10 md:py-20">
-      <div class="flex flex-wrap items-baseline gap-x-4 gap-y-1">
-        <h2 class="h-section text-xl">Përfshihen në çdo faqe</h2>
-        <span class="ml-auto text-[0.8125rem] text-ink-soft">pa kosto shtesë</span>
-      </div>
-      <p class="mt-4 max-w-prose text-[0.9375rem] leading-relaxed text-ink-mid">
-        E Personalizuara ndërton cilindo njëzet prej tyre. Faqja e Plotë dhe Pakona e Plotë ndërtojnë të tridhjetë e katërtat.
-      </p>
-      <div class="mt-8 grid grid-cols-1 gap-x-10 gap-y-9 sm:grid-cols-2 xl:grid-cols-4">
-
-        <div>
-          <p class="eyebrow border-b border-line-firm pb-3 text-ink-soft">Faqe dhe seksione</p>
-          <ul class="mt-4 grid grid-cols-1 gap-y-2.5">
-            <li class="inc-row">Seksioni Rreth nesh</li>
-            <li class="inc-row">Seksioni FAQ</li>
-            <li class="inc-row">Listën e çmimeve</li>
-            <li class="inc-row">Seksioni i ofertave speciale</li>
-            <li class="inc-row">Seksioni i promocioneve</li>
-            <li class="inc-row">Seksioni i portofolit</li>
-            <li class="inc-row">Shfaqja e projekteve</li>
-            <li class="inc-row">Seksioni ekip / staf</li>
-            <li class="inc-row">Seksioni para &amp; pas</li>
-            <li class="inc-row">Seksioni i zonës së shërbimit</li>
-            <li class="inc-row">Krahasimi i çmimeve</li>
-            <li class="inc-row">Seksioni i paketave</li>
-            <li class="inc-row">Seksioni i eventeve</li>
-            <li class="inc-row">Seksioni i njoftimeve</li>
-            <li class="inc-row">Faqe uljeje e personalizuar</li>
-            <li class="inc-row">Faqe 404 e personalizuar</li>
-          </ul>
-        </div>
-
-        <div>
-          <p class="eyebrow border-b border-line-firm pb-3 text-ink-soft">Katalogë dhe dokumente</p>
-          <ul class="mt-4 grid grid-cols-1 gap-y-2.5">
-            <li class="inc-row">Katalog produktesh</li>
-            <li class="inc-row">Menu online</li>
-            <li class="inc-row">Integrimi i menusë PDF</li>
-            <li class="inc-row">Integrimi i katalogut PDF</li>
-            <li class="inc-row">Dokumente të shkarkueshme</li>
-            <li class="inc-row">Integrimi i vlerësimeve të klientëve</li>
-          </ul>
-        </div>
-
-        <div>
-          <p class="eyebrow border-b border-line-firm pb-3 text-ink-soft">Navigim dhe ndërveprim</p>
-          <ul class="mt-4 grid grid-cols-1 gap-y-2.5">
-            <li class="inc-row">Navigim ngjitës</li>
-            <li class="inc-row">Butona ngjitëse celulari</li>
-            <li class="inc-row">Butoni kthehu-lart</li>
-            <li class="inc-row">Lightbox imazhesh</li>
-            <li class="inc-row">Akordeon FAQ</li>
-            <li class="inc-row">Galeri interaktive</li>
-          </ul>
-        </div>
-
-        <div>
-          <p class="eyebrow border-b border-line-firm pb-3 text-ink-soft">Media dhe bazat</p>
-          <ul class="mt-4 grid grid-cols-1 gap-y-2.5">
-            <li class="inc-row">Seksioni video</li>
-            <li class="inc-row">Integrim YouTube</li>
-            <li class="inc-row">Formular kërkesash biznesi</li>
-            <li class="inc-row">Paraparje e ndarjes sociale</li>
-            <li class="inc-row">Favicon i personalizuar</li>
-            <li class="inc-row">Optimizim mobil</li>
-          </ul>
-        </div>
-                </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- 4 — THE ADD-ONS -->
-  <section class="border-b border-line bg-surface">
-    <div class="mx-auto max-w-shell px-6 py-14 md:px-10 md:py-20">
-      <div class="flex flex-wrap items-baseline gap-x-4 gap-y-1">
-        <h2 class="h-section text-xl">Shtesa opsionale</h2>
-        <span class="ml-auto text-[0.8125rem] text-ink-soft">gjashtëdhjetë e pesë punë njëherëshe</span>
-      </div>
-
-      <div class="mt-10 grid grid-cols-1 gap-y-11 lg:max-w-3xl" data-picker>
-
-        <div id="website" class="scroll-mt-32" data-ex-group="website">
-          <div class="flex flex-wrap items-baseline gap-x-4 border-b border-line-firm pb-3">
-            <p class="eyebrow text-ink-soft">Veçori të faqes</p>
-            <span class="ml-auto text-[0.75rem] text-ink-soft">paguhet një herë</span>
-          </div>
-            <div class="xrow">
-              <p class="xrow-name">Sistem rezervimi online</p>
-              <p class="xrow-what">Klientët zgjedhin një orar në faqen tuaj dhe termini vjen te ju për konfirmim.</p>
-              <p class="xrow-price"><span class="cur" data-eur="60">€60</span></p>
-            </div>
-            <div class="xrow">
-              <p class="xrow-name">Kalendar takimesh</p>
-              <p class="xrow-what">Një kalendar i asaj që është rezervuar, kështu e njëjta orë nuk shitet dy herë.</p>
-              <p class="xrow-price"><span class="cur" data-eur="50">€50</span></p>
-            </div>
-            <div class="xrow">
-              <p class="xrow-name">Integrim i Vlerësimeve Google</p>
-              <p class="xrow-what">Vlerësimet tuaja në Google në faqe, që përditësohen vetë.</p>
-              <p class="xrow-price"><span class="cur" data-eur="20">€20</span></p>
-            </div>
-            <div class="xrow">
-              <p class="xrow-name">Regjistrim newsletter-i</p>
-              <p class="xrow-what">Një kuti emaili në faqe, me listën e ruajtur aty ku mund ta përdorni.</p>
-              <p class="xrow-price"><span class="cur" data-eur="20">€20</span></p>
-            </div>
-            <div class="xrow">
-              <p class="xrow-name">Butoni email</p>
-              <p class="xrow-what">Një prekje hap aplikacionin e emailit me adresën tuaj brenda.</p>
-              <p class="xrow-price"><span class="cur" data-eur="5">€5</span></p>
-            </div>
-            <div class="xrow">
-              <p class="xrow-name">Formular aplikimi pune</p>
-              <p class="xrow-what">Njerëzit aplikojnë me të dhënat dhe CV-në e tyre, dhe kjo vjen në emailin tuaj.</p>
-              <p class="xrow-price"><span class="cur" data-eur="25">€25</span></p>
-            </div>
-            <div class="xrow">
-              <p class="xrow-name">Seksioni i karrierës</p>
-              <p class="xrow-what">Një faqe për pozitat që po kërkoni të plotësoni.</p>
-              <p class="xrow-price"><span class="cur" data-eur="15">€15</span></p>
-            </div>
-            <div class="xrow">
-              <p class="xrow-name">Faqe shumëgjuhëshe</p>
-              <p class="xrow-what">E gjithë faqja në një gjuhë të dytë, e ndërrueshme nga qoshja.</p>
-              <p class="xrow-price">nga <span class="cur" data-eur="50">€50</span></p>
-            </div>
-            <div class="xrow">
-              <p class="xrow-name">Vendndodhje të shumta</p>
-              <p class="xrow-what">Një faqe për secilën degë, me adresën, orarin dhe hartën e vet.</p>
-              <p class="xrow-price"><span class="cur" data-eur="30">€30</span></p>
-            </div>
-            <div class="xrow">
-              <p class="xrow-name">Zgjedhës vendndodhjeje</p>
-              <p class="xrow-what">Një ndërrues që i çon vizitorët te dega më e afërt.</p>
-              <p class="xrow-price"><span class="cur" data-eur="25">€25</span></p>
-            </div>
-            <div class="xrow">
-              <p class="xrow-name">Gjejësi dyqanesh</p>
-              <p class="xrow-what">Një hartë e çdo lokacioni dhe si të shkohet atje.</p>
-              <p class="xrow-price"><span class="cur" data-eur="50">€50</span></p>
-            </div>
-            <div class="xrow">
-              <p class="xrow-name">Seksioni i anëtarësive</p>
-              <p class="xrow-what">Një pjesë e faqes që mund ta hapin vetëm anëtarët tuaj.</p>
-              <p class="xrow-price"><span class="cur" data-eur="40">€40</span></p>
-            </div>
-            <div class="xrow">
-              <p class="xrow-name">Seksioni i kartave dhuratë</p>
-              <p class="xrow-what">Kupona dhuratë që njerëzit mund t'i blejnë ose kërkojnë nga faqja.</p>
-              <p class="xrow-price"><span class="cur" data-eur="30">€30</span></p>
-            </div>
-            <div class="xrow">
-              <p class="xrow-name">Program besnikërie</p>
-              <p class="xrow-what">Pikë ose vula për klientët që kthehen, të menaxhuara nga faqja.</p>
-              <p class="xrow-price">nga <span class="cur" data-eur="60">€60</span></p>
-            </div>
-            <div class="xrow">
-              <p class="xrow-name">Regjistrim eventesh</p>
-              <p class="xrow-what">Njerëzit regjistrohen për një event dhe ju merrni listën.</p>
-              <p class="xrow-price"><span class="cur" data-eur="40">€40</span></p>
-            </div>
-            <div class="xrow">
-              <p class="xrow-name">Seksioni i blogut</p>
-              <p class="xrow-what">Postime që mund t'i shtoni vetë, me data dhe fotografi.</p>
-              <p class="xrow-price"><span class="cur" data-eur="30">€30</span></p>
-            </div>
-            <div class="xrow">
-              <p class="xrow-name">Seksioni i lajmeve</p>
-              <p class="xrow-what">Njoftime të shkurtra në një vend, më të rejat të parat.</p>
-              <p class="xrow-price"><span class="cur" data-eur="20">€20</span></p>
-            </div>
-            <div class="xrow">
-              <p class="xrow-name">Kërkim në faqe</p>
-              <p class="xrow-what">Një kuti kërkimi që kërkon brenda faqeve tuaja.</p>
-              <p class="xrow-price"><span class="cur" data-eur="30">€30</span></p>
-            </div>
-        </div>
-
-        <div id="technical" class="scroll-mt-32" data-ex-group="technical">
-          <div class="flex flex-wrap items-baseline gap-x-4 border-b border-line-firm pb-3">
-            <p class="eyebrow text-ink-soft">Biznes dhe teknike</p>
-            <span class="ml-auto text-[0.75rem] text-ink-soft">paguhet një herë</span>
-          </div>
-            <div class="xrow">
-              <p class="xrow-name">Konfigurim bazik SEO</p>
-              <p class="xrow-what">Titujt, përshkrimet dhe kryetitujt të shkruar ashtu si i lexojnë motorët e kërkimit.</p>
-              <p class="xrow-price"><span class="cur" data-eur="30">€30</span></p>
-            </div>
-            <div class="xrow">
-              <p class="xrow-name">Indeksimi në Kërkimin Google</p>
-              <p class="xrow-what">Faqet tuaja dërgohen te Google që të shfaqen në kërkim.</p>
-              <p class="xrow-price"><span class="cur" data-eur="15">€15</span></p>
-            </div>
-            <div class="xrow">
-              <p class="xrow-name">Vendosje e Google Business Profile</p>
-              <p class="xrow-what">Lista juaj në Google e krijuar, e verifikuar dhe e plotësuar si duhet.</p>
-              <p class="xrow-price"><span class="cur" data-eur="40">€40</span></p>
-            </div>
-            <div class="xrow">
-              <p class="xrow-name">Optimizim i Google Business Profile</p>
-              <p class="xrow-what">Fotot, kategoritë, orari dhe postimet rregullohen që lista të renditet më lart.</p>
-              <p class="xrow-price"><span class="cur" data-eur="50">€50</span></p>
-            </div>
-            <div class="xrow">
-              <p class="xrow-name">Vendosje Google Analytics</p>
-              <p class="xrow-what">Numra vizitorësh që i lexoni vërtet, të instaluar dhe konfiguruar.</p>
-              <p class="xrow-price"><span class="cur" data-eur="25">€25</span></p>
-            </div>
-            <div class="xrow">
-              <p class="xrow-name">Vendosje e Google Search Console</p>
-              <p class="xrow-what">Mjeti që tregon çfarë kërkuan njerëzit para se t'ju gjenin.</p>
-              <p class="xrow-price"><span class="cur" data-eur="25">€25</span></p>
-            </div>
-            <div class="xrow">
-              <p class="xrow-name">Gjurmimi i konvertimeve</p>
-              <p class="xrow-what">Thirrjet, formularët dhe rezervimet numërohen, që ta dini çfarë po funksionon.</p>
-              <p class="xrow-price"><span class="cur" data-eur="40">€40</span></p>
-            </div>
-            <div class="xrow">
-              <p class="xrow-name">Gjurmimi i vizitorëve të faqes</p>
-              <p class="xrow-what">Cilat faqe i lexojnë njerëzit dhe ku heqin dorë.</p>
-              <p class="xrow-price"><span class="cur" data-eur="25">€25</span></p>
-            </div>
-            <div class="xrow">
-              <p class="xrow-name">Konfigurim profesional email-i biznesi</p>
-              <p class="xrow-what">ju@bizneseijuaj.com, që punon në telefonin dhe kompjuterin tuaj.</p>
-              <p class="xrow-price"><span class="cur" data-eur="25">€25</span></p>
-            </div>
-            <div class="xrow">
-              <p class="xrow-name">Vendosje nënshkrimi email-i</p>
-              <p class="xrow-what">Logoja dhe të dhënat tuaja në fund të çdo emaili që dërgoni.</p>
-              <p class="xrow-price"><span class="cur" data-eur="15">€15</span></p>
-            </div>
-            <div class="xrow">
-              <p class="xrow-name">Regjistrimi i domenit <span class="pick-note">+ domeni</span></p>
-              <p class="xrow-what">Ne e blejmë adresën, në emrin tuaj.</p>
-              <p class="xrow-price"><span class="cur" data-eur="10">€10</span></p>
-            </div>
-            <div class="xrow">
-              <p class="xrow-name">Lidhja e domenit</p>
-              <p class="xrow-what">Një domen që e keni tashmë, i drejtuar te faqja e re.</p>
-              <p class="xrow-price"><span class="cur" data-eur="10">€10</span></p>
-            </div>
-            <div class="xrow">
-              <p class="xrow-name">Konfigurimi SSL / HTTPS</p>
-              <p class="xrow-what">Dryni në shiritin e adresës, që rinovohet vetë.</p>
-              <p class="xrow-price"><span class="cur" data-eur="10">€10</span></p>
-            </div>
-            <div class="xrow">
-              <p class="xrow-name">Migrimi i faqes</p>
-              <p class="xrow-what">Një faqe ekzistuese e zhvendosur pa humbur atë që kishte.</p>
-              <p class="xrow-price">nga <span class="cur" data-eur="50">€50</span></p>
-            </div>
-            <div class="xrow">
-              <p class="xrow-name">Optimizimi i shpejtësisë së faqes</p>
-              <p class="xrow-what">Faqja bëhet të hapet shpejt në telefon me internet mobil.</p>
-              <p class="xrow-price"><span class="cur" data-eur="50">€50</span></p>
-            </div>
-            <div class="xrow">
-              <p class="xrow-name">Kompresim imazhesh</p>
-              <p class="xrow-what">Fotografitë bëhen aq të vogla sa ngarkohen shpejt dhe prapë duken mirë.</p>
-              <p class="xrow-price"><span class="cur" data-eur="15">€15</span></p>
-            </div>
-            <div class="xrow">
-              <p class="xrow-name">Përmirësime aksesueshmërie</p>
-              <p class="xrow-what">Kontrasti, etiketat dhe përdorimi me tastierë, që askush të mos mbetet jashtë.</p>
-              <p class="xrow-price"><span class="cur" data-eur="40">€40</span></p>
-            </div>
-            <div class="xrow">
-              <p class="xrow-name">Bandera e pëlqimit të cookies</p>
-              <p class="xrow-what">Njoftimi i pëlqimit që kërkon ligji, që bën vërtet atë që thotë.</p>
-              <p class="xrow-price"><span class="cur" data-eur="20">€20</span></p>
-            </div>
-            <div class="xrow">
-              <p class="xrow-name">Faqja e politikës së privatësisë</p>
-              <p class="xrow-what">Një politikë privatësie e shkruar për atë që faqja juaj bën vërtet.</p>
-              <p class="xrow-price"><span class="cur" data-eur="20">€20</span></p>
-            </div>
-            <div class="xrow">
-              <p class="xrow-name">Faqja e kushteve &amp; dispozitave</p>
-              <p class="xrow-what">Kushtet tuaja, në gjuhë të thjeshtë, në një faqe të vetën.</p>
-              <p class="xrow-price"><span class="cur" data-eur="20">€20</span></p>
-            </div>
-            <div class="xrow">
-              <p class="xrow-name">Faqe ligjore të personalizuara</p>
-              <p class="xrow-what">Çdo politikë tjetër që e kërkon profesioni, siguruesi ose banka juaj.</p>
-              <p class="xrow-price">nga <span class="cur" data-eur="30">€30</span></p>
-            </div>
-            <div class="xrow">
-              <p class="xrow-name">Sistemi i kopjeve rezervë të faqes</p>
-              <p class="xrow-what">Kopjet merren vetvetiu, kështu një ditë e keqe kushton një orë.</p>
-              <p class="xrow-price"><span class="cur" data-eur="30">€30</span></p>
-            </div>
-            <div class="xrow">
-              <p class="xrow-name">Konfigurimi i sigurisë</p>
-              <p class="xrow-what">Headerët dhe lejet që e mbajnë faqen tuajën.</p>
-              <p class="xrow-price"><span class="cur" data-eur="40">€40</span></p>
-            </div>
-            <div class="xrow">
-              <p class="xrow-name">Mbrojtje kundër spam-it</p>
-              <p class="xrow-what">Mbeturinat ndalen para se të vijnë te ju.</p>
-              <p class="xrow-price"><span class="cur" data-eur="20">€20</span></p>
-            </div>
-            <div class="xrow">
-              <p class="xrow-name">Mbrojtje nga spam-i në formularin e kontaktit</p>
-              <p class="xrow-what">Botët mbahen jashtë formularit tuaj, pa enigma për njerëzit.</p>
-              <p class="xrow-price"><span class="cur" data-eur="15">€15</span></p>
-            </div>
-            <div class="xrow">
-              <p class="xrow-name">Kontroll i lidhjeve të thyera</p>
-              <p class="xrow-what">Çdo lidhje testohet dhe ato të vdekurat riparohen.</p>
-              <p class="xrow-price"><span class="cur" data-eur="15">€15</span></p>
-            </div>
-        </div>
-
-        <div id="automation" class="scroll-mt-32" data-ex-group="automation">
-          <div class="flex flex-wrap items-baseline gap-x-4 border-b border-line-firm pb-3">
-            <p class="eyebrow text-ink-soft">Automatizim</p>
-            <span class="ml-auto text-[0.75rem] text-ink-soft">paguhet një herë</span>
-          </div>
-            <div class="xrow">
-              <p class="xrow-name">Njoftime automatike me email</p>
-              <p class="xrow-what">Faqja ju dërgon email në çastin kur ndodh diçka në të.</p>
-              <p class="xrow-price"><span class="cur" data-eur="25">€25</span></p>
-            </div>
-            <div class="xrow">
-              <p class="xrow-name">Email-e konfirmimi rezervimesh</p>
-              <p class="xrow-what">Klienti merr konfirmimin pa e shkruar ju atë.</p>
-              <p class="xrow-price"><span class="cur" data-eur="35">€35</span></p>
-            </div>
-            <div class="xrow">
-              <p class="xrow-name">Njoftime email nga formulari i kontaktit</p>
-              <p class="xrow-what">Çdo mesazh përcillet te adresa që ju doni.</p>
-              <p class="xrow-price"><span class="cur" data-eur="15">€15</span></p>
-            </div>
-            <div class="xrow">
-              <p class="xrow-name">Njoftimet për kërkesa ofertash</p>
-              <p class="xrow-what">Kërkesat për ofertë vijnë të shënuara si të tilla, jo të humbura mes të tjerave.</p>
-              <p class="xrow-price"><span class="cur" data-eur="20">€20</span></p>
-            </div>
-            <div class="xrow">
-              <p class="xrow-name">Përgjigje automatike ndaj klientëve</p>
-              <p class="xrow-what">Një përgjigje e menjëhershme që thotë se e keni marrë dhe kur do të përgjigjeni.</p>
-              <p class="xrow-price"><span class="cur" data-eur="40">€40</span></p>
-            </div>
-            <div class="xrow">
-              <p class="xrow-name">Email-e kujtuese për takimet</p>
-              <p class="xrow-what">Një kujtesë para takimit, që më pak njerëz ta harrojnë.</p>
-              <p class="xrow-price"><span class="cur" data-eur="50">€50</span></p>
-            </div>
-            <div class="xrow">
-              <p class="xrow-name">Vendosje auto-përgjigjësi email-i</p>
-              <p class="xrow-what">Jashtë orarit, në pushim, ose thjesht i zënë — ai përgjigjet për ju.</p>
-              <p class="xrow-price"><span class="cur" data-eur="35">€35</span></p>
-            </div>
-            <div class="xrow">
-              <p class="xrow-name">Sistem njoftimi për kontaktet e reja</p>
-              <p class="xrow-what">Kërkesat e reja shkojnë te ju dhe te kushdo tjetër që i duhen.</p>
-              <p class="xrow-price"><span class="cur" data-eur="40">€40</span></p>
-            </div>
-            <div class="xrow">
-              <p class="xrow-name">Gjurmimi i kërkesave të klientëve</p>
-              <p class="xrow-what">Një regjistër se kush pyeti çfarë dhe a u përgjigj dikush.</p>
-              <p class="xrow-price"><span class="cur" data-eur="40">€40</span></p>
-            </div>
-            <div class="xrow">
-              <p class="xrow-name">Integrim i thjeshtë CRM</p>
-              <p class="xrow-what">Kërkesat bien direkt në sistemin që përdorni tashmë.</p>
-              <p class="xrow-price">nga <span class="cur" data-eur="75">€75</span></p>
-            </div>
-        </div>
-
-        <div id="brand" class="scroll-mt-32" data-ex-group="brand">
-          <div class="flex flex-wrap items-baseline gap-x-4 border-b border-line-firm pb-3">
-            <p class="eyebrow text-ink-soft">Brend dhe dizajn</p>
-            <span class="ml-auto text-[0.75rem] text-ink-soft">paguhet një herë</span>
-          </div>
-            <div class="xrow">
-              <p class="xrow-name">Dizajn logoje</p>
-              <p class="xrow-what">Një logo e vizatuar për biznesin tuaj, në çdo format që do t'ju duhet.</p>
-              <p class="xrow-price"><span class="cur" data-eur="49.99">€49.99</span></p>
-            </div>
-            <div class="xrow">
-              <p class="xrow-name">Kit Brandi</p>
-              <p class="xrow-what">Logo, ngjyra, fonte dhe rregullat për përdorimin e tyre.</p>
-              <p class="xrow-price"><span class="cur" data-eur="79.99">€79.99</span></p>
-            </div>
-            <div class="xrow">
-              <p class="xrow-name">Dizajn kartash vizitare</p>
-              <p class="xrow-what">Kartat e dizajnuara dhe gati për shtypshkronjë.</p>
-              <p class="xrow-price"><span class="cur" data-eur="29.99">€29.99</span></p>
-            </div>
-            <div class="xrow">
-              <p class="xrow-name">Dizajn fletushkash / postimesh</p>
-              <p class="xrow-what">Një fletushkë ose poster, i punuar për shtyp dhe për rrjete sociale.</p>
-              <p class="xrow-price"><span class="cur" data-eur="39.99">€39.99</span></p>
-            </div>
-            <div class="xrow">
-              <p class="xrow-name">Dizajn menuje</p>
-              <p class="xrow-what">Menyja juaj e punuar si duhet, për murin, tavolinën ose faqen.</p>
-              <p class="xrow-price"><span class="cur" data-eur="39.99">€39.99</span></p>
-            </div>
-            <div class="xrow">
-              <p class="xrow-name">Paketa fillestare për Rrjetet Sociale</p>
-              <p class="xrow-what">Foto profili, kopertina dhe shabllone postimesh që përputhen me faqen.</p>
-              <p class="xrow-price"><span class="cur" data-eur="59.99">€59.99</span></p>
-            </div>
-            <div class="xrow">
-              <p class="xrow-name">Video Promocionale / Reklamë e Shkurtër</p>
-              <p class="xrow-what">Një video e shkurtër për rrjetet sociale ose për krye të faqes.</p>
-              <p class="xrow-price">nga <span class="cur" data-eur="49.99">€49.99</span></p>
-            </div>
-            <div class="xrow">
-              <p class="xrow-name">Fotografi biznesi me AI</p>
-              <p class="xrow-what">Imazhe të krijuara për biznesin tuaj aty ku nuk keni fotografi.</p>
-              <p class="xrow-price">nga <span class="cur" data-eur="30">€30</span></p>
-            </div>
-            <div class="xrow">
-              <p class="xrow-name">Karta QR e Vlerësimeve Google</p>
-              <p class="xrow-what">Një kartë që klientët e skanojnë dhe bien direkt te faqja juaj e vlerësimeve.</p>
-              <p class="xrow-price"><span class="cur" data-eur="19.99">€19.99</span></p>
-            </div>
-            <div class="xrow">
-              <p class="xrow-name">Konfigurimi i WhatsApp Business</p>
-              <p class="xrow-what">WhatsApp Business i konfiguruar, me butonin në faqen tuaj.</p>
-              <p class="xrow-price"><span class="cur" data-eur="39.99">€39.99</span></p>
-            </div>
-            <div class="xrow">
-              <p class="xrow-name">Shabllone dokumetash biznesi</p>
-              <p class="xrow-what">Fatura, oferta dhe letra, me brendin tuaj.</p>
-              <p class="xrow-price"><span class="cur" data-eur="29.99">€29.99</span></p>
-            </div>
-            <div class="pick pick--soon">
-              <span class="pick-name text-ink-mid">Recepsioniste AI</span>
-              <span class="pick-price"><span class="tag tag-soon">Së shpejti</span></span>
-            </div>
-            <div class="pick pick--soon">
-              <span class="pick-name text-ink-mid">Përmbajtje për Rrjetet Sociale</span>
-              <span class="pick-price"><span class="tag tag-soon">Së shpejti</span></span>
-            </div>
-        </div>
-
-
-            <!-- The running total. Nothing here navigates and nothing
-                 reloads: ticking a box only adds a number. -->
-        </div>
-
-      </div>
-
-      <div class="mt-14 grid grid-cols-1 gap-8 border-t border-line pt-8 lg:grid-cols-12 lg:gap-14">
-        <div class="lg:col-span-7">
-          <p class="text-sm font-semibold text-ink">Si paguhen ekstrat</p>
-          <p class="mt-3 max-w-prose text-[0.875rem] leading-relaxed text-ink-mid">
-            Shtesat i bashkohen totalit tuaj një herë të vetme dhe paguhen kur faqja juaj është gati për të shkuar online.
-          </p>
-          <p class="mt-2.5 max-w-prose text-[0.8125rem] leading-relaxed text-ink-soft">
-            <span class="arrow">&rarr;</span> Shtesat që nuk varen nga ndërtimi i faqes suaj — kartela QR, konfigurimi i email-it dhe WhatsApp-it, modelet e dokumenteve — dorëzohen sipas afatit të tyre në vend që të presin ndërtimin 5–7 ditor, dhe paguhen kur dorëzohet ajo pjesë.
-          </p>
-          <p class="mt-2 max-w-prose text-[0.8125rem] leading-relaxed text-ink-soft">
-            <span class="arrow">&rarr;</span> Kur një çmim nis “nga”, e konfirmojmë shifrën përfundimtare me ju me shkrim përpara se të faturohet ndonjë gjë.
-          </p>
-        </div>
-        <div class="lg:col-span-4 lg:col-start-9">
-          <a href="/build" class="inline-flex items-center justify-center rounded-md bg-accent px-6 py-3.5 text-sm font-semibold text-white hover:bg-accent-hi">Ndërtoni pakon tuaj</a>
-        </div>
-      </div>
-    </div>
-  </section>
 </main>
 
 <div data-site-footer>
-  <!-- Replaced by footer.js. Present in the served HTML so the legal
-       links survive without JavaScript, for crawlers and for payment
-       provider domain review. -->
   <nav class="mx-auto flex max-w-shell flex-wrap items-center gap-x-5 gap-y-2 px-6 py-8 text-[0.8125rem] text-ink-soft md:px-10" aria-label="Ligjore">
     <a class="hover:text-ink" href="/en/terms">Kushtet e Shërbimit</a>
     <a class="hover:text-ink" href="/en/privacy">Politika e Privatësisë</a>
@@ -631,10 +649,7 @@
 
 <script src="/assets/footer.js?v=7"></script>
 <script src="/assets/cookies.js?v=2"></script>
-<script src="/assets/mobile.js?v=5"></script>
 <script src="/assets/theme.js?v=3"></script>
-<script src="/assets/gutters.js?v=2" defer></script>
-<script src="/assets/scramble.js?v=4" defer></script>
 <script src="/assets/i18n.js?v=4"></script>
 <script src="/assets/demo.js?v=5"></script>
 </body>

@@ -9,3 +9,7 @@ assets/media/original/
 
 _i18n_*.json
 _i18n_extract.json
+
+# Working files from the locales translation pass; the dictionaries in
+# assets/i18n are the source of truth once they are merged.
+tools/locales/_*.json

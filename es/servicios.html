@@ -59,17 +59,14 @@
 <link rel="dns-prefetch" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400&family=Instrument+Serif&family=Inter:wght@400;500;600;700&family=Outfit:wght@200..800&display=swap">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400&family=Instrument+Serif&family=Inter:wght@400;500;600;700&family=Outfit:wght@200..800&display=swap" media="print" onload="this.media='all'">
-<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400&family=Instrument+Serif&family=Inter:wght@400;500;600;700&family=Outfit:wght@200..800&display=swap"></noscript>
-<script>/* Theme before paint. Dark is the site, light is a choice you make — the attribute is always stamped so the system setting never decides for you. */(function(){var t='dark';try{t=localStorage.getItem('sitehouse.theme')==='light'?'light':'dark';}catch(e){}document.documentElement.setAttribute('data-theme',t);})();</script>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"></noscript>
+<script>/* Theme before paint. */(function(){var t='dark';try{t=localStorage.getItem('sitehouse.theme')==='light'?'light':'dark';}catch(e){}document.documentElement.setAttribute('data-theme',t);})();</script>
 <link rel="stylesheet" href="/assets/xovah.css?v=3">
-<link rel="stylesheet" href="/assets/extras.css?v=6">
-<link rel="stylesheet" href="/assets/mobile.css?v=7">
 <link rel="stylesheet" href="/assets/tailwind.css?v=2">
 <link rel="stylesheet" href="/assets/theme.css?v=6">
-<link rel="stylesheet" href="/assets/gutters.css?v=2">
-<link rel="stylesheet" href="/assets/edge.css?v=4">
+<link rel="stylesheet" href="/assets/catalogue.css?v=2">
 <script>window.XovahRoutes={"lang":"es","routes":{"home":{"en":"/en","sq":"/sq","de":"/de","fr":"/fr","it":"/it","es":"/es","pt":"/pt","nl":"/nl","sv":"/sv","tr":"/tr"},"pricing":{"en":"/en/pricing","sq":"/sq/cmimet","de":"/de/preise","fr":"/fr/tarifs","it":"/it/prezzi","es":"/es/precios","pt":"/pt/precos","nl":"/nl/prijzen","sv":"/sv/priser","tr":"/tr/fiyatlar"},"services":{"en":"/en/services","sq":"/sq/sherbimet","de":"/de/leistungen","fr":"/fr/services","it":"/it/servizi","es":"/es/servicios","pt":"/pt/servicos","nl":"/nl/diensten","sv":"/sv/tjanster","tr":"/tr/hizmetler"},"features":{"en":"/en/features","sq":"/sq/vecorite","de":"/de/funktionen","fr":"/fr/fonctionnalites","it":"/it/funzionalita","es":"/es/funciones","pt":"/pt/funcionalidades","nl":"/nl/functies","sv":"/sv/funktioner","tr":"/tr/ozellikler"},"contact":{"en":"/en/contact","sq":"/sq/kontakt","de":"/de/kontakt","fr":"/fr/contact","it":"/it/contatti","es":"/es/contacto","pt":"/pt/contacto","nl":"/nl/contact","sv":"/sv/kontakt","tr":"/tr/iletisim"},"faq":{"en":"/en/faq","sq":"/sq/pyetje-te-shpeshta","de":"/de/haeufige-fragen","fr":"/fr/questions-frequentes","it":"/it/domande-frequenti","es":"/es/preguntas-frecuentes","pt":"/pt/perguntas-frequentes","nl":"/nl/veelgestelde-vragen","sv":"/sv/vanliga-fragor","tr":"/tr/sikca-sorulan-sorular"},"terms":{"en":"/en/terms"},"privacy":{"en":"/en/privacy"},"refunds":{"en":"/en/refunds"},"cookies":{"en":"/en/cookies"}},"app":["404","build"],"names":{"home":"index","pricing":"pricing","services":"extras","features":"features","contact":"contact","faq":"faq","terms":"terms","privacy":"privacy","refunds":"refunds","cookies":"cookies"}};</script>
 </head>
 
@@ -82,544 +79,565 @@
       <span class="brand-mark" role="img" aria-label="Xovah"></span>
       <span class="h-section text-lg tracking-tight">Xovah</span>
     </a>
-
     <div class="flex items-center gap-5 md:gap-7">
       <a href="/es/precios" class="text-sm font-medium text-ink-mid hover:text-ink">Precios</a>
-      <a href="/es/servicios" class="hidden text-sm font-medium text-ink-mid hover:text-ink md:inline">Extras</a>
+      <a href="/es/servicios" class="hidden text-sm font-medium text-ink-mid hover:text-ink md:inline" aria-current="page">Extras</a>
       <a href="/es/preguntas-frecuentes" class="hidden text-sm font-medium text-ink-mid hover:text-ink md:inline">Preguntas</a>
       <a href="/build" class="rounded-md bg-accent px-4 py-2.5 text-sm font-semibold text-white hover:bg-accent-hi">Empezar un proyecto</a>
     </div>
-  
   </nav>
 </header>
 
 <main id="main">
 
-  <!-- 1 — HERO -->
-  <section class="border-b border-line">
-    <div class="mx-auto max-w-shell px-6 pb-12 pt-12 md:px-10 md:pb-14 md:pt-16">
-      <p class="eyebrow text-accent">Servicios web</p>
-      <h1 class="h-section sec-title mt-4 max-w-2xl">Todo lo que rodea a tu web, con precio uno por uno.</h1>
-      <p class="mt-5 max-w-prose text-[0.9375rem] leading-relaxed text-ink-mid">
-        Reservas, SEO, analítica, automatización, un logo, un correo en tu propio dominio. Sesenta y cinco trabajos de una vez, cada uno con su precio y una línea que dice qué hace de verdad. Los añades en el configurador cuando quieras.
-      </p>
-      <ol class="ex-how mt-8" data-reveal-group>
-        <li>
-          <span class="ex-how-n">01</span>
-          <p class="ex-how-h">Ya incluido</p>
-          <p class="ex-how-p">Treinta y cuatro funciones vienen en cada web que hacemos. No cuestan nada más.</p>
-        </li>
-        <li>
-          <span class="ex-how-n">02</span>
-          <p class="ex-how-h">Extras opcionales</p>
-          <p class="ex-how-p">Otros sesenta y cinco trabajos, cada uno con su precio único. Coge solo los que necesites.</p>
-        </li>
-        <li>
-          <span class="ex-how-n">03</span>
-          <p class="ex-how-h">Constrúyelo y envíalo</p>
-          <p class="ex-how-p">El configurador junta tu paquete y estos, suma el total y nos lo envía.</p>
-        </li>
-      </ol>
+  <!-- ══ Hero ══════════════════════════════════════════════════ -->
+  <section class="xc-shell xc-hero">
+    <p class="xc-eyebrow">Los extras, explicados</p>
+    <h1>Qué hace realmente cada extra.</h1>
+    <p class="xc-lede">
+      Esta página explica, no vende. Cada extra que ofrecemos está abajo con una frase que dice qué hace por su negocio y cuánto cuesta. Cuando sepa cuáles quiere, el configurador es donde se eligen.
+    </p>
 
-      <div class="mt-8 flex flex-wrap items-center gap-x-5 gap-y-3">
-        <a href="/build" class="btn btn-primary">Crea tu paquete</a>
-        <a href="#website" class="btn btn-ghost">Leer la lista</a>
-        <span class="text-sm text-ink-soft">Desde <span class="cur" data-eur="5">€5</span>, pago único. En esta página no se cobra nada.</span>
-      </div>
+    <div class="xc-figs">
+      <div class="xc-fig"><b>34</b><span>funciones en cada web, sin coste adicional</span></div>
+      <div class="xc-fig"><b>65</b><span>extras opcionales, cada uno con su precio</span></div>
+      <div class="xc-fig"><b><span class="cur" data-eur="5">&euro;5</span></b><span>el más barato, pagado una vez</span></div>
+      <div class="xc-fig"><b>0</b><span>suscripciones, en ninguna parte de este sitio</span></div>
+    </div>
+
+    <div class="xc-cta-row">
+      <a href="/build" class="xc-cta">Ir al configurador</a>
+      <span class="xc-cta-note">En esta página no se puede comprar nada, y aquí no se cobra nada.</span>
     </div>
   </section>
 
-  <!-- 2 — THE STICKY BAR
-       Sits under the header, carries the jump links and the running
-       total. It is the only part of this page that follows you. -->
-  <div class="ex-bar" data-ex-bar>
-    <div class="mx-auto flex max-w-shell items-center gap-4 px-6 md:px-10">
-      <nav class="ex-bar-nav" aria-label="Secciones">
-        <a href="#included">Incluido</a>
-        <a href="#website">Sitio web</a>
-        <a href="#technical">Empresa</a>
-        <a href="#automation">Automatización</a>
-        <a href="#brand">Marca</a>
-      </nav>    </div>
+  <!-- ══ Section nav ═══════════════════════════════════════════ -->
+  <nav class="xc-nav" aria-label="Secciones">
+    <div class="xc-nav-in">
+      <a href="#included">Ya incluido</a>
+      <a href="#website">Funciones de la web</a>
+      <a href="#technical">Negocio y técnica</a>
+      <a href="#automation">Automatización</a>
+      <a href="#brand">Marca y diseño</a>
+    </div>
+  </nav>
+
+  <div class="xc-shell">
+
+    <!-- ══ The 34 that cost nothing ════════════════════════════ -->
+    <section class="xc-band" id="included" style="scroll-margin-top:8rem">
+      <div class="xc-band-hd">
+        <span class="xc-free-flag">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>
+          Sin coste adicional
+        </span>
+        <h2>Treinta y cuatro cosas por las que nunca paga de más</h2>
+        <p>
+          Esto va incorporado en todas las webs que hacemos. Una Custom Website elige veinte de ellas; la Full Website y todo lo superior se lleva las treinta y cuatro. Ninguna aparece en la lista de extras de abajo, porque ninguna es un extra.
+        </p>
+      </div>
+
+      <div class="xc-inc-cols">
+        <div>
+          <p class="xc-inc-h">Páginas y secciones</p>
+          <ul class="xc-inc-list">
+            <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3.4 8.4l3 3 6.2-6.6"/></svg>Sección Sobre nosotros</li>
+            <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3.4 8.4l3 3 6.2-6.6"/></svg>Sección de preguntas frecuentes</li>
+            <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3.4 8.4l3 3 6.2-6.6"/></svg>Lista de precios</li>
+            <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3.4 8.4l3 3 6.2-6.6"/></svg>Sección de ofertas especiales</li>
+            <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3.4 8.4l3 3 6.2-6.6"/></svg>Sección de promociones</li>
+            <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3.4 8.4l3 3 6.2-6.6"/></svg>Sección de portafolio</li>
+            <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3.4 8.4l3 3 6.2-6.6"/></svg>Vitrina de proyectos</li>
+            <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3.4 8.4l3 3 6.2-6.6"/></svg>Sección de equipo / personal</li>
+            <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3.4 8.4l3 3 6.2-6.6"/></svg>Sección de antes y después</li>
+            <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3.4 8.4l3 3 6.2-6.6"/></svg>Sección de zona de servicio</li>
+            <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3.4 8.4l3 3 6.2-6.6"/></svg>Comparativa de precios</li>
+            <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3.4 8.4l3 3 6.2-6.6"/></svg>Sección de paquetes</li>
+            <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3.4 8.4l3 3 6.2-6.6"/></svg>Sección de eventos</li>
+            <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3.4 8.4l3 3 6.2-6.6"/></svg>Sección de anuncios</li>
+            <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3.4 8.4l3 3 6.2-6.6"/></svg>Landing page personalizada</li>
+            <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3.4 8.4l3 3 6.2-6.6"/></svg>Página 404 personalizada</li>
+          </ul>
+        </div>
+
+        <div>
+          <p class="xc-inc-h">Catálogos y documentos</p>
+          <ul class="xc-inc-list">
+            <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3.4 8.4l3 3 6.2-6.6"/></svg>Catálogo de productos</li>
+            <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3.4 8.4l3 3 6.2-6.6"/></svg>Carta online</li>
+            <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3.4 8.4l3 3 6.2-6.6"/></svg>Integración de carta en PDF</li>
+            <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3.4 8.4l3 3 6.2-6.6"/></svg>Integración de catálogo PDF</li>
+            <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3.4 8.4l3 3 6.2-6.6"/></svg>Documentos descargables</li>
+            <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3.4 8.4l3 3 6.2-6.6"/></svg>Integración de reseñas de clientes</li>
+          </ul>
+        </div>
+
+        <div>
+          <p class="xc-inc-h">Navegación e interacción</p>
+          <ul class="xc-inc-list">
+            <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3.4 8.4l3 3 6.2-6.6"/></svg>Navegación fija</li>
+            <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3.4 8.4l3 3 6.2-6.6"/></svg>Botones fijos en móvil</li>
+            <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3.4 8.4l3 3 6.2-6.6"/></svg>Botón de volver arriba</li>
+            <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3.4 8.4l3 3 6.2-6.6"/></svg>Visor de imágenes (lightbox)</li>
+            <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3.4 8.4l3 3 6.2-6.6"/></svg>Acordeón de preguntas frecuentes</li>
+            <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3.4 8.4l3 3 6.2-6.6"/></svg>Galerías interactivas</li>
+          </ul>
+        </div>
+
+        <div>
+          <p class="xc-inc-h">Medios y lo esencial</p>
+          <ul class="xc-inc-list">
+            <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3.4 8.4l3 3 6.2-6.6"/></svg>Sección de vídeo</li>
+            <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3.4 8.4l3 3 6.2-6.6"/></svg>Integración de YouTube</li>
+            <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3.4 8.4l3 3 6.2-6.6"/></svg>Formulario de contacto comercial</li>
+            <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3.4 8.4l3 3 6.2-6.6"/></svg>Vista previa al compartir en redes</li>
+            <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3.4 8.4l3 3 6.2-6.6"/></svg>Favicon personalizado</li>
+            <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3.4 8.4l3 3 6.2-6.6"/></svg>Optimización móvil</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══ Website features ════════════════════════════════════ -->
+    <section class="xc-cat">
+      <div class="xc-cat-hd" id="website">
+        <span class="xc-cat-icon" aria-hidden="true">
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="8" cy="8" r="6.5"/><path d="M8 1.5C8 1.5 5.5 4 5.5 8s2.5 6.5 2.5 6.5M8 1.5C8 1.5 10.5 4 10.5 8S8 14.5 8 14.5M1.5 8h13"/>
+          </svg>
+        </span>
+        <div>
+          <h2>Funciones de la web</h2>
+          <p>Cosas que sus visitantes ven y usan. Cada una le da a la web algo que antes no podía hacer.</p>
+        </div>
+        <span class="xc-cat-n">18 extras</span>
+      </div>
+
+      <div class="xc-list">
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">Sistema de reserva online</h3><p class="xc-item-price"><span class="cur" data-eur="60">&euro;60</span></p></div>
+          <p class="xc-item-what">Los clientes eligen una hora en su web en vez de llamarle. La solicitud llega a usted para confirmarla, así conserva el control de la agenda y deja de perder a quien no coge el teléfono.</p>
+        </article>
+
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">Calendario de citas</h3><p class="xc-item-price"><span class="cur" data-eur="50">&euro;50</span></p></div>
+          <p class="xc-item-what">Un calendario que muestra lo que ya está reservado, para que la misma hora no se venda dos veces. Encaja con el sistema de reservas y sirve por sí solo si coge las citas por teléfono.</p>
+        </article>
+
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">Integración de Reseñas de Google</h3><p class="xc-item-price"><span class="cur" data-eur="20">&euro;20</span></p></div>
+          <p class="xc-item-what">Sus reseñas reales de Google en la página, actualizándose solas según llegan las nuevas. Nadie tiene que copiarlas, y nadie puede acusarle de inventarlas.</p>
+        </article>
+
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">Suscripción al boletín</h3><p class="xc-item-price"><span class="cur" data-eur="20">&euro;20</span></p></div>
+          <p class="xc-item-what">Una casilla de correo en la página, con la lista guardada donde pueda usarla después. La forma más barata de que un visitante no sea un desconocido la próxima vez.</p>
+        </article>
+
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">Botón de email</h3><p class="xc-item-price"><span class="cur" data-eur="5">&euro;5</span></p></div>
+          <p class="xc-item-what">Un toque abre su aplicación de correo con su dirección ya puesta. Pequeño, pero elimina el paso en el que alguien copia su dirección y luego olvida para qué.</p>
+        </article>
+
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">Formulario de solicitud de empleo</h3><p class="xc-item-price"><span class="cur" data-eur="25">&euro;25</span></p></div>
+          <p class="xc-item-what">La gente se presenta con sus datos y adjunta un CV, y llega como un único mensaje ordenado en vez de tres correos a los que siempre les falta el archivo.</p>
+        </article>
+
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">Sección de empleo</h3><p class="xc-item-price"><span class="cur" data-eur="15">&euro;15</span></p></div>
+          <p class="xc-item-what">Una página para los puestos que está cubriendo, para enviar un enlace en vez de reescribir la oferta cada vez que alguien pregunta.</p>
+        </article>
+
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">Sitio web multilingüe</h3><p class="xc-item-price"><small>desde</small><span class="cur" data-eur="50">&euro;50</span></p></div>
+          <p class="xc-item-what">Todo el sitio en un segundo idioma, con el cambio en la esquina de la página. Precio desde, porque depende de cuánto texto haya que trasladar.</p>
+        </article>
+
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">Varias ubicaciones</h3><p class="xc-item-price"><span class="cur" data-eur="30">&euro;30</span></p></div>
+          <p class="xc-item-what">Una página por sucursal con su propia dirección, horario y mapa, para que quien busque la más cercana encuentre los datos correctos y no los equivocados.</p>
+        </article>
+
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">Selector de ubicación</h3><p class="xc-item-price"><span class="cur" data-eur="25">&euro;25</span></p></div>
+          <p class="xc-item-what">Un selector que lleva a los visitantes a la sucursal más cercana sin obligarles a averiguar cuál es.</p>
+        </article>
+
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">Localizador de tiendas</h3><p class="xc-item-price"><span class="cur" data-eur="50">&euro;50</span></p></div>
+          <p class="xc-item-what">Un mapa de todas las ubicaciones y cómo llegar a cada una. Merece la pena cuando tiene más sucursales de las que un visitante puede recordar.</p>
+        </article>
+
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">Sección de membresía</h3><p class="xc-item-price"><span class="cur" data-eur="40">&euro;40</span></p></div>
+          <p class="xc-item-what">Una parte del sitio que solo pueden abrir sus miembros. Para listas de precios, recursos o cualquier cosa que prefiera no enseñar a todo internet.</p>
+        </article>
+
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">Sección de tarjetas regalo</h3><p class="xc-item-price"><span class="cur" data-eur="30">&euro;30</span></p></div>
+          <p class="xc-item-what">Tarjetas regalo que la gente puede comprar o solicitar desde la propia página. Discretamente, una de las cosas más rentables que un pequeño negocio puede poner online antes de Navidad.</p>
+        </article>
+
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">Programa de fidelización</h3><p class="xc-item-price"><small>desde</small><span class="cur" data-eur="60">&euro;60</span></p></div>
+          <p class="xc-item-what">Puntos o sellos para los clientes que vuelven, gestionados desde la web en lugar de una tarjeta de papel que vive en la cartera hasta que se pierde.</p>
+        </article>
+
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">Registro de eventos</h3><p class="xc-item-price"><span class="cur" data-eur="40">&euro;40</span></p></div>
+          <p class="xc-item-what">La gente se apunta a un evento y usted recibe la lista. Números reales antes del día, en vez de una estimación y demasiada comida.</p>
+        </article>
+
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">Sección de blog</h3><p class="xc-item-price"><span class="cur" data-eur="30">&euro;30</span></p></div>
+          <p class="xc-item-what">Entradas que puede añadir usted mismo, con fechas e imágenes. También la forma más fiable de seguir dándole a Google páginas nuevas sin pagar a nadie.</p>
+        </article>
+
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">Sección de noticias</h3><p class="xc-item-price"><span class="cur" data-eur="20">&euro;20</span></p></div>
+          <p class="xc-item-what">Avisos breves en un solo sitio, el más reciente primero. Más ligero que un blog cuando solo necesita decir que el lunes cierra.</p>
+        </article>
+
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">Búsqueda en la web</h3><p class="xc-item-price"><span class="cur" data-eur="30">&euro;30</span></p></div>
+          <p class="xc-item-what">Un buscador que mira dentro de sus propias páginas. Merece la pena cuando el sitio es tan grande que desplazarse deja de ser un plan.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- ══ Business & technical ════════════════════════════════ -->
+    <section class="xc-cat">
+      <div class="xc-cat-hd" id="technical">
+        <span class="xc-cat-icon" aria-hidden="true">
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="1.5" y="1.5" width="13" height="13" rx="2"/><path d="M5 8h6M8 5v6"/>
+          </svg>
+        </span>
+        <div>
+          <h2>Negocio y técnica</h2>
+          <p>El trabajo que hay detrás de la web: que le encuentren, medirlo, cumplir la ley y seguir en pie.</p>
+        </div>
+        <span class="xc-cat-n">26 extras</span>
+      </div>
+
+      <div class="xc-list">
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">Configuración SEO básica</h3><p class="xc-item-price"><span class="cur" data-eur="30">&euro;30</span></p></div>
+          <p class="xc-item-what">Títulos, descripciones y encabezados escritos como los leen los buscadores. No le compra el primer puesto; evita que sea invisible para el nombre de su propio negocio.</p>
+        </article>
+
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">Indexación en Google Search</h3><p class="xc-item-price"><span class="cur" data-eur="15">&euro;15</span></p></div>
+          <p class="xc-item-what">Sus páginas enviadas a Google para que puedan aparecer en las búsquedas. Sin eso, se limita a esperar, a veces durante meses.</p>
+        </article>
+
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">Creación de la Ficha de Google Business</h3><p class="xc-item-price"><span class="cur" data-eur="40">&euro;40</span></p></div>
+          <p class="xc-item-what">La ficha que aparece junto al mapa cuando alguien busca su oficio y su ciudad — creada, verificada y rellenada como es debido.</p>
+        </article>
+
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">Optimización de la Ficha de Google Business</h3><p class="xc-item-price"><span class="cur" data-eur="50">&euro;50</span></p></div>
+          <p class="xc-item-what">Fotos, categorías, horarios y publicaciones ajustados para que esa ficha compita de verdad con las de al lado, en vez de quedarse correcta e ignorada.</p>
+        </article>
+
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">Configuración de Google Analytics</h3><p class="xc-item-price"><span class="cur" data-eur="25">&euro;25</span></p></div>
+          <p class="xc-item-what">Números de visitas que puede leer sin hacer un curso, instalados y configurados para que las cifras signifiquen lo que usted cree.</p>
+        </article>
+
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">Configuración de Google Search Console</h3><p class="xc-item-price"><span class="cur" data-eur="25">&euro;25</span></p></div>
+          <p class="xc-item-what">La herramienta que muestra qué escribió la gente antes de encontrarle, y que avisa cuando Google no puede leer una de sus páginas.</p>
+        </article>
+
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">Seguimiento de conversiones</h3><p class="xc-item-price"><span class="cur" data-eur="40">&euro;40</span></p></div>
+          <p class="xc-item-what">Llamadas, formularios y reservas contabilizados, para que sepa qué parte del sitio trae trabajo y cuál solo queda bonita.</p>
+        </article>
+
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">Seguimiento de visitantes de la web</h3><p class="xc-item-price"><span class="cur" data-eur="25">&euro;25</span></p></div>
+          <p class="xc-item-what">Qué páginas lee la gente y dónde abandona. Suele ser la vía más rápida para encontrar la frase que le está costando clientes.</p>
+        </article>
+
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">Configuración de email profesional de empresa</h3><p class="xc-item-price"><span class="cur" data-eur="25">&euro;25</span></p></div>
+          <p class="xc-item-what">tu@tunegocio.com en vez de una dirección de Gmail, funcionando en su móvil y su ordenador. Cuesta casi nada y cambia cómo se leen sus presupuestos.</p>
+        </article>
+
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">Configuración de firma de email</h3><p class="xc-item-price"><span class="cur" data-eur="15">&euro;15</span></p></div>
+          <p class="xc-item-what">Su logotipo, teléfono y web al pie de cada correo que envía, sin que tenga que pegarlo cada vez.</p>
+        </article>
+
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">Registro de dominios</h3><p class="xc-item-price"><span class="cur" data-eur="10">&euro;10</span></p></div>
+          <p class="xc-item-what">Compramos la dirección web por usted y la registramos a su nombre, no al nuestro.</p>
+          <p class="xc-item-plus">Más el precio del propio dominio</p>
+        </article>
+
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">Conexión del dominio</h3><p class="xc-item-price"><span class="cur" data-eur="10">&euro;10</span></p></div>
+          <p class="xc-item-what">Una dirección web que ya posee, apuntada al sitio nuevo. La media hora enrevesada de ajustes que no le gusta a nadie.</p>
+        </article>
+
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">Configuración de SSL / HTTPS</h3><p class="xc-item-price"><span class="cur" data-eur="10">&euro;10</span></p></div>
+          <p class="xc-item-what">El candado en la barra de direcciones, renovándose solo. Sin él, los navegadores ponen las palabras «No es seguro» junto al nombre de su negocio.</p>
+        </article>
+
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">Migración de sitio web</h3><p class="xc-item-price"><small>desde</small><span class="cur" data-eur="50">&euro;50</span></p></div>
+          <p class="xc-item-what">Un sitio existente trasladado sin perder posiciones, enlaces ni el contenido que ya tenía. Precio desde, porque no hay dos sitios antiguos desordenados igual.</p>
+        </article>
+
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">Optimización de velocidad web</h3><p class="xc-item-price"><span class="cur" data-eur="50">&euro;50</span></p></div>
+          <p class="xc-item-what">El sitio preparado para abrirse rápido en un móvil con datos, que es como lo verá la mayoría. Las webs lentas pierden visitantes antes de la primera palabra.</p>
+        </article>
+
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">Compresión de imágenes</h3><p class="xc-item-price"><span class="cur" data-eur="15">&euro;15</span></p></div>
+          <p class="xc-item-what">Fotografías reducidas lo bastante para cargar rápido y seguir viéndose bien. El motivo más común, con diferencia, de que la web de un pequeño negocio se sienta lenta.</p>
+        </article>
+
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">Mejoras de accesibilidad</h3><p class="xc-item-price"><span class="cur" data-eur="40">&euro;40</span></p></div>
+          <p class="xc-item-what">Contraste, etiquetas y uso con teclado resueltos, para que quien use un lector de pantalla o una lupa no quede fuera de su negocio.</p>
+        </article>
+
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">Banner de consentimiento de cookies</h3><p class="xc-item-price"><span class="cur" data-eur="20">&euro;20</span></p></div>
+          <p class="xc-item-what">El aviso de consentimiento que pide la ley, y uno que hace de verdad lo que dice en vez de poner las cookies igualmente.</p>
+        </article>
+
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">Página de política de privacidad</h3><p class="xc-item-price"><span class="cur" data-eur="20">&euro;20</span></p></div>
+          <p class="xc-item-what">Una política de privacidad escrita para lo que su web hace de verdad, en vez de una plantilla que menciona cosas que usted no tiene.</p>
+        </article>
+
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">Página de términos y condiciones</h3><p class="xc-item-price"><span class="cur" data-eur="20">&euro;20</span></p></div>
+          <p class="xc-item-what">Sus condiciones, en lenguaje llano, en una página propia. Aquello a lo que señala cuando un trabajo se tuerce.</p>
+        </article>
+
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">Páginas legales personalizadas</h3><p class="xc-item-price"><small>desde</small><span class="cur" data-eur="30">&euro;30</span></p></div>
+          <p class="xc-item-what">Cualquier otra política que le pidan publicar su sector, su aseguradora o su banco. Precio desde, porque depende de lo que pidan.</p>
+        </article>
+
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">Sistema de copias de seguridad de la web</h3><p class="xc-item-price"><span class="cur" data-eur="30">&euro;30</span></p></div>
+          <p class="xc-item-what">Copias tomadas automáticamente, para que un mal día le cueste una hora en lugar de la web entera.</p>
+        </article>
+
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">Configuración de seguridad</h3><p class="xc-item-price"><span class="cur" data-eur="40">&euro;40</span></p></div>
+          <p class="xc-item-what">Las cabeceras y permisos que mantienen el sitio como suyo, configurados como es debido en vez de dejados como el alojamiento los traiga por defecto.</p>
+        </article>
+
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">Protección antispam</h3><p class="xc-item-price"><span class="cur" data-eur="20">&euro;20</span></p></div>
+          <p class="xc-item-what">La basura se detiene antes de llegarle, en todo el sitio. Una vez que los bots encuentran un formulario, no se aburren.</p>
+        </article>
+
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">Protección antispam del formulario de contacto</h3><p class="xc-item-price"><span class="cur" data-eur="15">&euro;15</span></p></div>
+          <p class="xc-item-what">Los bots se quedan fuera de su formulario de contacto sin obligar a las personas reales a resolver acertijos sobre semáforos.</p>
+        </article>
+
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">Comprobación de enlaces rotos</h3><p class="xc-item-price"><span class="cur" data-eur="15">&euro;15</span></p></div>
+          <p class="xc-item-what">Todos los enlaces comprobados y los rotos arreglados. Merece la pena en cualquier sitio que lleve unos años.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- ══ Automation ══════════════════════════════════════════ -->
+    <section class="xc-cat">
+      <div class="xc-cat-hd" id="automation">
+        <span class="xc-cat-icon" aria-hidden="true">
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M9 2L6 8.5h4L7 14M2 8h1.5M12.5 8H14M4.2 4.2l1.1 1.1M10.7 10.7l1.1 1.1M4.2 11.8l1.1-1.1M10.7 5.3l1.1-1.1"/>
+          </svg>
+        </span>
+        <div>
+          <h2>Automatización</h2>
+          <p>Trabajo que la web hace por usted mientras está en un encargo, durmiendo, u ocupado con un cliente delante.</p>
+        </div>
+        <span class="xc-cat-n">10 extras</span>
+      </div>
+
+      <div class="xc-list">
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">Notificaciones automáticas por email</h3><p class="xc-item-price"><span class="cur" data-eur="25">&euro;25</span></p></div>
+          <p class="xc-item-what">El sitio le envía un correo en cuanto ocurre algo en él, para que no esté recargando una página para ver si alguien ha escrito.</p>
+        </article>
+
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">Emails de confirmación de reserva</h3><p class="xc-item-price"><span class="cur" data-eur="35">&euro;35</span></p></div>
+          <p class="xc-item-what">El cliente recibe su confirmación sin que usted la escriba. Menos gente que aparece el día equivocado y menos que llama para comprobarlo.</p>
+        </article>
+
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">Notificaciones por email del formulario de contacto</h3><p class="xc-item-price"><span class="cur" data-eur="15">&euro;15</span></p></div>
+          <p class="xc-item-what">Cada mensaje reenviado a la dirección que usted quiera, incluida una que no sea con la que se construyó la web.</p>
+        </article>
+
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">Notificaciones de solicitudes de presupuesto</h3><p class="xc-item-price"><span class="cur" data-eur="20">&euro;20</span></p></div>
+          <p class="xc-item-what">Las solicitudes de presupuesto llegan marcadas como tales en vez de enterradas entre lo demás, porque son las que merecen respuesta primero.</p>
+        </article>
+
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">Respuestas automáticas a clientes</h3><p class="xc-item-price"><span class="cur" data-eur="40">&euro;40</span></p></div>
+          <p class="xc-item-what">Una respuesta inmediata que dice que tiene su mensaje y cuándo contestará. Casi todo el mundo espera, siempre que sepa que está esperando.</p>
+        </article>
+
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">Emails de recordatorio de citas</h3><p class="xc-item-price"><span class="cur" data-eur="50">&euro;50</span></p></div>
+          <p class="xc-item-what">Un recordatorio antes de la cita. Medido contra el dinero que se pierde por simple olvido, es lo más barato de esta página.</p>
+        </article>
+
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">Configuración de autorespuesta de email</h3><p class="xc-item-price"><span class="cur" data-eur="35">&euro;35</span></p></div>
+          <p class="xc-item-what">Fuera de horario, de vacaciones o simplemente en un trabajo — responde por usted, con sus palabras, a las horas que fije.</p>
+        </article>
+
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">Sistema de notificación de leads</h3><p class="xc-item-price"><span class="cur" data-eur="40">&euro;40</span></p></div>
+          <p class="xc-item-what">Las consultas nuevas llegan a usted y a quien más deba verlas, para que nada se quede en la bandeja de una sola persona mientras está fuera.</p>
+        </article>
+
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">Seguimiento de consultas de clientes</h3><p class="xc-item-price"><span class="cur" data-eur="40">&euro;40</span></p></div>
+          <p class="xc-item-what">Un registro de quién preguntó qué y si alguien respondió. Útil la primera vez que no se acuerde, que llega antes de lo que parece.</p>
+        </article>
+
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">Integración de CRM sencillo</h3><p class="xc-item-price"><small>desde</small><span class="cur" data-eur="75">&euro;75</span></p></div>
+          <p class="xc-item-what">Las consultas caen directamente en el sistema que ya usa, en vez de tener que reescribirlas. Precio desde, porque depende de qué sistema sea.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- ══ Brand & design ══════════════════════════════════════ -->
+    <section class="xc-cat">
+      <div class="xc-cat-hd" id="brand">
+        <span class="xc-cat-icon" aria-hidden="true">
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M2 11l3-3 2 2 4-5 3 2"/><circle cx="12" cy="12" r="2.5"/><path d="M9.5 12H3a1 1 0 01-1-1V3a1 1 0 011-1h10a1 1 0 011 1v6.5"/>
+          </svg>
+        </span>
+        <div>
+          <h2>Marca y diseño</h2>
+          <p>Trabajo que es suyo exista o no la web. La mayoría se entrega con su propio calendario en vez de esperar a la construcción.</p>
+        </div>
+        <span class="xc-cat-n">11 extras</span>
+      </div>
+
+      <div class="xc-list">
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">Diseño de Logo</h3><p class="xc-item-price"><span class="cur" data-eur="49.99">&euro;49.99</span></p></div>
+          <p class="xc-item-what">Un logotipo dibujado para su negocio, entregado en todos los formatos que le van a pedir — la web, la furgoneta, el rótulo y la imprenta.</p>
+        </article>
+
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">Kit de Marca</h3><p class="xc-item-price"><span class="cur" data-eur="79.99">&euro;79.99</span></p></div>
+          <p class="xc-item-what">Logotipo, colores, tipografías y las reglas para usarlos, para que todo lo que produzca después parezca del mismo negocio.</p>
+        </article>
+
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">Diseño de Tarjetas de Visita</h3><p class="xc-item-price"><span class="cur" data-eur="29.99">&euro;29.99</span></p></div>
+          <p class="xc-item-what">Tarjetas maquetadas y listas para imprenta, con sangrado y márgenes ya correctos para que no se las devuelvan.</p>
+        </article>
+
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">Diseño de Folleto / Cartel</h3><p class="xc-item-price"><span class="cur" data-eur="39.99">&euro;39.99</span></p></div>
+          <p class="xc-item-what">Un folleto o cartel diseñado para funcionar impreso y publicado en redes, en lugar de uno que queda bien en papel y mal en el móvil.</p>
+        </article>
+
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">Diseño de Carta / Menú</h3><p class="xc-item-price"><span class="cur" data-eur="39.99">&euro;39.99</span></p></div>
+          <p class="xc-item-what">Su carta bien maquetada para la pared, la mesa o la web. Legible a un brazo de distancia y con mala luz, que es lo que la mayoría no son.</p>
+        </article>
+
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">Pack Inicial de Redes Sociales</h3><p class="xc-item-price"><span class="cur" data-eur="59.99">&euro;59.99</span></p></div>
+          <p class="xc-item-what">Fotos de perfil, portadas y plantillas de publicación a juego con la web, para que sus cuentas dejen de parecer de otra empresa.</p>
+        </article>
+
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">Vídeo Promocional / Anuncio Corto</h3><p class="xc-item-price"><small>desde</small><span class="cur" data-eur="49.99">&euro;49.99</span></p></div>
+          <p class="xc-item-what">Un vídeo corto para redes sociales o para la cabecera de su página. Precio desde, porque treinta segundos y dos minutos no son el mismo trabajo.</p>
+        </article>
+
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">Fotos de Negocio con IA</h3><p class="xc-item-price"><small>desde</small><span class="cur" data-eur="30">&euro;30</span></p></div>
+          <p class="xc-item-what">Imágenes creadas para su negocio cuando no tiene fotografías propias. Mejor que el banco de imágenes y disponibles la misma semana.</p>
+        </article>
+
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">Tarjeta QR para Reseñas de Google</h3><p class="xc-item-price"><span class="cur" data-eur="19.99">&euro;19.99</span></p></div>
+          <p class="xc-item-what">Una tarjeta que los clientes escanean para llegar directamente a su página de reseñas. Entre pedir una reseña y conseguirla suele haber exactamente esto.</p>
+        </article>
+
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">Configuración de WhatsApp Business</h3><p class="xc-item-price"><span class="cur" data-eur="39.99">&euro;39.99</span></p></div>
+          <p class="xc-item-what">WhatsApp Business configurado como es debido, con el botón en su web. En muchos oficios es el único canal que los clientes usan de verdad.</p>
+        </article>
+
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">Plantillas de Documentos de Empresa</h3><p class="xc-item-price"><span class="cur" data-eur="29.99">&euro;29.99</span></p></div>
+          <p class="xc-item-what">Facturas, presupuestos y cartas con su propia identidad, para que el papeleo se parezca al resto del negocio.</p>
+        </article>
+
+        <article class="xc-item xc-item--soon">
+          <div class="xc-item-hd"><h3 class="xc-item-name">Recepcionista IA</h3><span class="xc-soon">Próximamente</span></div>
+          <p class="xc-item-what">Un asistente en su web que responde preguntas frecuentes y recoge datos a todas horas. Aún no está construido, y no se vende hasta que lo esté.</p>
+        </article>
+
+        <article class="xc-item xc-item--soon">
+          <div class="xc-item-hd"><h3 class="xc-item-name">Contenido para Redes Sociales</h3><span class="xc-soon">Próximamente</span></div>
+          <p class="xc-item-what">Publicaciones listas, escritas y diseñadas cada mes para sus cuentas. Aún no está construido, y no se vende hasta que lo esté.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- ══ Closing ═════════════════════════════════════════════ -->
+    <section class="xc-foot">
+      <div class="xc-foot-grid">
+        <div>
+          <h2>Cómo se pagan los extras</h2>
+          <p>
+            Los extras se suman a su total único y se pagan una vez, cuando su sitio está listo para salir. Ninguno lleva suscripción y nada se renueva solo.
+          </p>
+          <p>
+            <span class="xc-foot-arrow">&rarr;</span> Cuando un precio empieza por «desde», el trabajo varía lo bastante como para que una cifra única fuese una suposición. Le confirmamos el número real por escrito antes de cobrar nada.
+          </p>
+          <p>
+            <span class="xc-foot-arrow">&rarr;</span> Los extras que no dependen de la web — la tarjeta QR, la configuración de correo y WhatsApp, las plantillas de documentos — se entregan con su propio calendario en vez de esperar a los 5–7 días de construcción, y se pagan cuando esa parte se entrega.
+          </p>
+          <p>
+            <span class="xc-foot-arrow">&rarr;</span> Algunos paquetes ya cubren varias de estas. El configurador se las quita de la lista, para que no compre dos veces lo mismo.
+          </p>
+        </div>
+
+        <div class="xc-foot-card">
+          <p>
+            ¿Ya sabe cuáles quiere? El configurador los junta con un paquete, suma el total y escribe la solicitud por usted.
+          </p>
+          <a href="/build" class="xc-cta xc-cta--light">Crea tu paquete</a>
+        </div>
+      </div>
+    </section>
+
   </div>
-
-  <!-- 3 — THE 34 -->
-  <section id="included" class="scroll-mt-28 border-b border-line">
-    <div class="mx-auto max-w-shell px-6 py-14 md:px-10 md:py-20">
-      <div class="flex flex-wrap items-baseline gap-x-4 gap-y-1">
-        <h2 class="h-section text-xl">Incluido en cada web</h2>
-        <span class="ml-auto text-[0.8125rem] text-ink-soft">sin coste añadido</span>
-      </div>
-      <p class="mt-4 max-w-prose text-[0.9375rem] leading-relaxed text-ink-mid">
-        Personalizado construye veinte cualesquiera. La Web Completa y el Paquete Completo construyen las treinta y cuatro.
-      </p>
-      <div class="mt-8 grid grid-cols-1 gap-x-10 gap-y-9 sm:grid-cols-2 xl:grid-cols-4">
-
-        <div>
-          <p class="eyebrow border-b border-line-firm pb-3 text-ink-soft">Páginas y secciones</p>
-          <ul class="mt-4 grid grid-cols-1 gap-y-2.5">
-            <li class="inc-row">Sección Sobre nosotros</li>
-            <li class="inc-row">Sección de preguntas frecuentes</li>
-            <li class="inc-row">Lista de precios</li>
-            <li class="inc-row">Sección de ofertas especiales</li>
-            <li class="inc-row">Sección de promociones</li>
-            <li class="inc-row">Sección de portafolio</li>
-            <li class="inc-row">Vitrina de proyectos</li>
-            <li class="inc-row">Sección de equipo / personal</li>
-            <li class="inc-row">Sección de antes y después</li>
-            <li class="inc-row">Sección de zona de servicio</li>
-            <li class="inc-row">Comparativa de precios</li>
-            <li class="inc-row">Sección de paquetes</li>
-            <li class="inc-row">Sección de eventos</li>
-            <li class="inc-row">Sección de anuncios</li>
-            <li class="inc-row">Landing page personalizada</li>
-            <li class="inc-row">Página 404 personalizada</li>
-          </ul>
-        </div>
-
-        <div>
-          <p class="eyebrow border-b border-line-firm pb-3 text-ink-soft">Catálogos y documentos</p>
-          <ul class="mt-4 grid grid-cols-1 gap-y-2.5">
-            <li class="inc-row">Catálogo de productos</li>
-            <li class="inc-row">Carta online</li>
-            <li class="inc-row">Integración de carta en PDF</li>
-            <li class="inc-row">Integración de catálogo PDF</li>
-            <li class="inc-row">Documentos descargables</li>
-            <li class="inc-row">Integración de reseñas de clientes</li>
-          </ul>
-        </div>
-
-        <div>
-          <p class="eyebrow border-b border-line-firm pb-3 text-ink-soft">Navegación e interacción</p>
-          <ul class="mt-4 grid grid-cols-1 gap-y-2.5">
-            <li class="inc-row">Navegación fija</li>
-            <li class="inc-row">Botones fijos en móvil</li>
-            <li class="inc-row">Botón de volver arriba</li>
-            <li class="inc-row">Visor de imágenes (lightbox)</li>
-            <li class="inc-row">Acordeón de preguntas frecuentes</li>
-            <li class="inc-row">Galerías interactivas</li>
-          </ul>
-        </div>
-
-        <div>
-          <p class="eyebrow border-b border-line-firm pb-3 text-ink-soft">Medios y lo esencial</p>
-          <ul class="mt-4 grid grid-cols-1 gap-y-2.5">
-            <li class="inc-row">Sección de vídeo</li>
-            <li class="inc-row">Integración de YouTube</li>
-            <li class="inc-row">Formulario de contacto comercial</li>
-            <li class="inc-row">Vista previa al compartir en redes</li>
-            <li class="inc-row">Favicon personalizado</li>
-            <li class="inc-row">Optimización móvil</li>
-          </ul>
-        </div>
-                </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- 4 — THE ADD-ONS -->
-  <section class="border-b border-line bg-surface">
-    <div class="mx-auto max-w-shell px-6 py-14 md:px-10 md:py-20">
-      <div class="flex flex-wrap items-baseline gap-x-4 gap-y-1">
-        <h2 class="h-section text-xl">Extras opcionales</h2>
-        <span class="ml-auto text-[0.8125rem] text-ink-soft">sesenta y cinco trabajos de una vez</span>
-      </div>
-
-      <div class="mt-10 grid grid-cols-1 gap-y-11 lg:max-w-3xl" data-picker>
-
-        <div id="website" class="scroll-mt-32" data-ex-group="website">
-          <div class="flex flex-wrap items-baseline gap-x-4 border-b border-line-firm pb-3">
-            <p class="eyebrow text-ink-soft">Funciones de la web</p>
-            <span class="ml-auto text-[0.75rem] text-ink-soft">pago único</span>
-          </div>
-            <div class="xrow">
-              <p class="xrow-name">Sistema de reserva online</p>
-              <p class="xrow-what">Los clientes eligen una hora en tu web y la cita te llega para confirmar.</p>
-              <p class="xrow-price"><span class="cur" data-eur="60">€60</span></p>
-            </div>
-            <div class="xrow">
-              <p class="xrow-name">Calendario de citas</p>
-              <p class="xrow-what">Un calendario de lo reservado, para que la misma hora no se venda dos veces.</p>
-              <p class="xrow-price"><span class="cur" data-eur="50">€50</span></p>
-            </div>
-            <div class="xrow">
-              <p class="xrow-name">Integración de Reseñas de Google</p>
-              <p class="xrow-what">Tus reseñas de Google en la página, actualizándose solas.</p>
-              <p class="xrow-price"><span class="cur" data-eur="20">€20</span></p>
-            </div>
-            <div class="xrow">
-              <p class="xrow-name">Suscripción al boletín</p>
-              <p class="xrow-what">Un campo de correo en la página, con la lista guardada donde puedas usarla.</p>
-              <p class="xrow-price"><span class="cur" data-eur="20">€20</span></p>
-            </div>
-            <div class="xrow">
-              <p class="xrow-name">Botón de email</p>
-              <p class="xrow-what">Un toque abre su app de correo con tu dirección ya puesta.</p>
-              <p class="xrow-price"><span class="cur" data-eur="5">€5</span></p>
-            </div>
-            <div class="xrow">
-              <p class="xrow-name">Formulario de solicitud de empleo</p>
-              <p class="xrow-what">La gente se inscribe con sus datos y su CV, y te llega al correo.</p>
-              <p class="xrow-price"><span class="cur" data-eur="25">€25</span></p>
-            </div>
-            <div class="xrow">
-              <p class="xrow-name">Sección de empleo</p>
-              <p class="xrow-what">Una página para los puestos que estás buscando cubrir.</p>
-              <p class="xrow-price"><span class="cur" data-eur="15">€15</span></p>
-            </div>
-            <div class="xrow">
-              <p class="xrow-name">Sitio web multilingüe</p>
-              <p class="xrow-what">Toda la web en un segundo idioma, con el cambio en la esquina.</p>
-              <p class="xrow-price">desde <span class="cur" data-eur="50">€50</span></p>
-            </div>
-            <div class="xrow">
-              <p class="xrow-name">Varias ubicaciones</p>
-              <p class="xrow-what">Una página por cada local, con su dirección, su horario y su mapa.</p>
-              <p class="xrow-price"><span class="cur" data-eur="30">€30</span></p>
-            </div>
-            <div class="xrow">
-              <p class="xrow-name">Selector de ubicación</p>
-              <p class="xrow-what">Un selector que lleva a cada visitante al local más cercano.</p>
-              <p class="xrow-price"><span class="cur" data-eur="25">€25</span></p>
-            </div>
-            <div class="xrow">
-              <p class="xrow-name">Localizador de tiendas</p>
-              <p class="xrow-what">Un mapa de cada local y de cómo llegar.</p>
-              <p class="xrow-price"><span class="cur" data-eur="50">€50</span></p>
-            </div>
-            <div class="xrow">
-              <p class="xrow-name">Sección de membresía</p>
-              <p class="xrow-what">Una parte de la web que solo pueden abrir tus socios.</p>
-              <p class="xrow-price"><span class="cur" data-eur="40">€40</span></p>
-            </div>
-            <div class="xrow">
-              <p class="xrow-name">Sección de tarjetas regalo</p>
-              <p class="xrow-what">Tarjetas regalo que se pueden comprar o pedir desde la página.</p>
-              <p class="xrow-price"><span class="cur" data-eur="30">€30</span></p>
-            </div>
-            <div class="xrow">
-              <p class="xrow-name">Programa de fidelización</p>
-              <p class="xrow-what">Puntos o sellos para los clientes que vuelven, gestionados desde la web.</p>
-              <p class="xrow-price">desde <span class="cur" data-eur="60">€60</span></p>
-            </div>
-            <div class="xrow">
-              <p class="xrow-name">Registro de eventos</p>
-              <p class="xrow-what">La gente se apunta a un evento y tú recibes la lista.</p>
-              <p class="xrow-price"><span class="cur" data-eur="40">€40</span></p>
-            </div>
-            <div class="xrow">
-              <p class="xrow-name">Sección de blog</p>
-              <p class="xrow-what">Entradas que puedes añadir tú mismo, con fechas e imágenes.</p>
-              <p class="xrow-price"><span class="cur" data-eur="30">€30</span></p>
-            </div>
-            <div class="xrow">
-              <p class="xrow-name">Sección de noticias</p>
-              <p class="xrow-what">Avisos breves en un solo sitio, los más nuevos primero.</p>
-              <p class="xrow-price"><span class="cur" data-eur="20">€20</span></p>
-            </div>
-            <div class="xrow">
-              <p class="xrow-name">Búsqueda en la web</p>
-              <p class="xrow-what">Un buscador que mira dentro de tus propias páginas.</p>
-              <p class="xrow-price"><span class="cur" data-eur="30">€30</span></p>
-            </div>
-        </div>
-
-        <div id="technical" class="scroll-mt-32" data-ex-group="technical">
-          <div class="flex flex-wrap items-baseline gap-x-4 border-b border-line-firm pb-3">
-            <p class="eyebrow text-ink-soft">Negocio y técnica</p>
-            <span class="ml-auto text-[0.75rem] text-ink-soft">pago único</span>
-          </div>
-            <div class="xrow">
-              <p class="xrow-name">Configuración SEO básica</p>
-              <p class="xrow-what">Títulos, descripciones y encabezados escritos como los leen los buscadores.</p>
-              <p class="xrow-price"><span class="cur" data-eur="30">€30</span></p>
-            </div>
-            <div class="xrow">
-              <p class="xrow-name">Indexación en Google Search</p>
-              <p class="xrow-what">Tus páginas enviadas a Google para que puedan aparecer en las búsquedas.</p>
-              <p class="xrow-price"><span class="cur" data-eur="15">€15</span></p>
-            </div>
-            <div class="xrow">
-              <p class="xrow-name">Creación de la Ficha de Google Business</p>
-              <p class="xrow-what">Tu ficha de Google creada, verificada y rellenada como es debido.</p>
-              <p class="xrow-price"><span class="cur" data-eur="40">€40</span></p>
-            </div>
-            <div class="xrow">
-              <p class="xrow-name">Optimización de la Ficha de Google Business</p>
-              <p class="xrow-what">Fotos, categorías, horarios y publicaciones afinados para que la ficha posicione.</p>
-              <p class="xrow-price"><span class="cur" data-eur="50">€50</span></p>
-            </div>
-            <div class="xrow">
-              <p class="xrow-name">Configuración de Google Analytics</p>
-              <p class="xrow-what">Cifras de visitas que se entienden de verdad, instaladas y configuradas.</p>
-              <p class="xrow-price"><span class="cur" data-eur="25">€25</span></p>
-            </div>
-            <div class="xrow">
-              <p class="xrow-name">Configuración de Google Search Console</p>
-              <p class="xrow-what">La herramienta que muestra qué buscó la gente antes de encontrarte.</p>
-              <p class="xrow-price"><span class="cur" data-eur="25">€25</span></p>
-            </div>
-            <div class="xrow">
-              <p class="xrow-name">Seguimiento de conversiones</p>
-              <p class="xrow-what">Llamadas, formularios y reservas contados, para saber qué funciona.</p>
-              <p class="xrow-price"><span class="cur" data-eur="40">€40</span></p>
-            </div>
-            <div class="xrow">
-              <p class="xrow-name">Seguimiento de visitantes de la web</p>
-              <p class="xrow-what">Qué páginas lee la gente y dónde se rinde.</p>
-              <p class="xrow-price"><span class="cur" data-eur="25">€25</span></p>
-            </div>
-            <div class="xrow">
-              <p class="xrow-name">Configuración de email profesional de empresa</p>
-              <p class="xrow-what">tu@tunegocio.com, funcionando en tu móvil y en tu ordenador.</p>
-              <p class="xrow-price"><span class="cur" data-eur="25">€25</span></p>
-            </div>
-            <div class="xrow">
-              <p class="xrow-name">Configuración de firma de email</p>
-              <p class="xrow-what">Tu logo y tus datos al pie de cada correo que envías.</p>
-              <p class="xrow-price"><span class="cur" data-eur="15">€15</span></p>
-            </div>
-            <div class="xrow">
-              <p class="xrow-name">Registro de dominios <span class="pick-note">+ el dominio</span></p>
-              <p class="xrow-what">Compramos la dirección, a tu nombre.</p>
-              <p class="xrow-price"><span class="cur" data-eur="10">€10</span></p>
-            </div>
-            <div class="xrow">
-              <p class="xrow-name">Conexión del dominio</p>
-              <p class="xrow-what">Un dominio que ya tienes, apuntando a la nueva web.</p>
-              <p class="xrow-price"><span class="cur" data-eur="10">€10</span></p>
-            </div>
-            <div class="xrow">
-              <p class="xrow-name">Configuración de SSL / HTTPS</p>
-              <p class="xrow-what">El candado en la barra de direcciones, renovándose solo.</p>
-              <p class="xrow-price"><span class="cur" data-eur="10">€10</span></p>
-            </div>
-            <div class="xrow">
-              <p class="xrow-name">Migración de sitio web</p>
-              <p class="xrow-what">Una web existente trasladada sin perder lo que tenía.</p>
-              <p class="xrow-price">desde <span class="cur" data-eur="50">€50</span></p>
-            </div>
-            <div class="xrow">
-              <p class="xrow-name">Optimización de velocidad web</p>
-              <p class="xrow-what">La web preparada para abrirse rápido en un móvil con datos.</p>
-              <p class="xrow-price"><span class="cur" data-eur="50">€50</span></p>
-            </div>
-            <div class="xrow">
-              <p class="xrow-name">Compresión de imágenes</p>
-              <p class="xrow-what">Fotografías reducidas lo justo para cargar rápido y seguir viéndose bien.</p>
-              <p class="xrow-price"><span class="cur" data-eur="15">€15</span></p>
-            </div>
-            <div class="xrow">
-              <p class="xrow-name">Mejoras de accesibilidad</p>
-              <p class="xrow-what">Contraste, etiquetas y uso con teclado, para que nadie quede fuera.</p>
-              <p class="xrow-price"><span class="cur" data-eur="40">€40</span></p>
-            </div>
-            <div class="xrow">
-              <p class="xrow-name">Banner de consentimiento de cookies</p>
-              <p class="xrow-what">El aviso de consentimiento que pide la ley, haciendo lo que dice hacer.</p>
-              <p class="xrow-price"><span class="cur" data-eur="20">€20</span></p>
-            </div>
-            <div class="xrow">
-              <p class="xrow-name">Página de política de privacidad</p>
-              <p class="xrow-what">Una política de privacidad escrita para lo que tu web hace de verdad.</p>
-              <p class="xrow-price"><span class="cur" data-eur="20">€20</span></p>
-            </div>
-            <div class="xrow">
-              <p class="xrow-name">Página de términos y condiciones</p>
-              <p class="xrow-what">Tus condiciones, en lenguaje claro, en una página propia.</p>
-              <p class="xrow-price"><span class="cur" data-eur="20">€20</span></p>
-            </div>
-            <div class="xrow">
-              <p class="xrow-name">Páginas legales personalizadas</p>
-              <p class="xrow-what">Cualquier otra política que te pida tu sector, tu aseguradora o tu banco.</p>
-              <p class="xrow-price">desde <span class="cur" data-eur="30">€30</span></p>
-            </div>
-            <div class="xrow">
-              <p class="xrow-name">Sistema de copias de seguridad de la web</p>
-              <p class="xrow-what">Copias que se hacen solas, para que un mal día cueste una hora.</p>
-              <p class="xrow-price"><span class="cur" data-eur="30">€30</span></p>
-            </div>
-            <div class="xrow">
-              <p class="xrow-name">Configuración de seguridad</p>
-              <p class="xrow-what">Las cabeceras y los permisos que mantienen la web como tuya.</p>
-              <p class="xrow-price"><span class="cur" data-eur="40">€40</span></p>
-            </div>
-            <div class="xrow">
-              <p class="xrow-name">Protección antispam</p>
-              <p class="xrow-what">La basura se detiene antes de llegarte.</p>
-              <p class="xrow-price"><span class="cur" data-eur="20">€20</span></p>
-            </div>
-            <div class="xrow">
-              <p class="xrow-name">Protección antispam del formulario de contacto</p>
-              <p class="xrow-what">Los bots se quedan fuera del formulario, sin acertijos para las personas.</p>
-              <p class="xrow-price"><span class="cur" data-eur="15">€15</span></p>
-            </div>
-            <div class="xrow">
-              <p class="xrow-name">Comprobación de enlaces rotos</p>
-              <p class="xrow-what">Cada enlace probado, y los rotos arreglados.</p>
-              <p class="xrow-price"><span class="cur" data-eur="15">€15</span></p>
-            </div>
-        </div>
-
-        <div id="automation" class="scroll-mt-32" data-ex-group="automation">
-          <div class="flex flex-wrap items-baseline gap-x-4 border-b border-line-firm pb-3">
-            <p class="eyebrow text-ink-soft">Automatización</p>
-            <span class="ml-auto text-[0.75rem] text-ink-soft">pago único</span>
-          </div>
-            <div class="xrow">
-              <p class="xrow-name">Notificaciones automáticas por email</p>
-              <p class="xrow-what">La web te escribe en el momento en que pasa algo.</p>
-              <p class="xrow-price"><span class="cur" data-eur="25">€25</span></p>
-            </div>
-            <div class="xrow">
-              <p class="xrow-name">Emails de confirmación de reserva</p>
-              <p class="xrow-what">El cliente recibe su confirmación sin que la escribas tú.</p>
-              <p class="xrow-price"><span class="cur" data-eur="35">€35</span></p>
-            </div>
-            <div class="xrow">
-              <p class="xrow-name">Notificaciones por email del formulario de contacto</p>
-              <p class="xrow-what">Cada mensaje reenviado a la dirección que quieras.</p>
-              <p class="xrow-price"><span class="cur" data-eur="15">€15</span></p>
-            </div>
-            <div class="xrow">
-              <p class="xrow-name">Notificaciones de solicitudes de presupuesto</p>
-              <p class="xrow-what">Las solicitudes de presupuesto llegan marcadas como tales, no enterradas entre el resto.</p>
-              <p class="xrow-price"><span class="cur" data-eur="20">€20</span></p>
-            </div>
-            <div class="xrow">
-              <p class="xrow-name">Respuestas automáticas a clientes</p>
-              <p class="xrow-what">Una respuesta inmediata que dice que lo tienes y cuándo contestarás.</p>
-              <p class="xrow-price"><span class="cur" data-eur="40">€40</span></p>
-            </div>
-            <div class="xrow">
-              <p class="xrow-name">Emails de recordatorio de citas</p>
-              <p class="xrow-what">Un recordatorio antes de la cita, para que menos gente se olvide.</p>
-              <p class="xrow-price"><span class="cur" data-eur="50">€50</span></p>
-            </div>
-            <div class="xrow">
-              <p class="xrow-name">Configuración de autorespuesta de email</p>
-              <p class="xrow-what">Fuera de horario, de viaje o simplemente ocupado: responde por ti.</p>
-              <p class="xrow-price"><span class="cur" data-eur="35">€35</span></p>
-            </div>
-            <div class="xrow">
-              <p class="xrow-name">Sistema de notificación de leads</p>
-              <p class="xrow-what">Las nuevas consultas llegan a ti y a quien más las necesite.</p>
-              <p class="xrow-price"><span class="cur" data-eur="40">€40</span></p>
-            </div>
-            <div class="xrow">
-              <p class="xrow-name">Seguimiento de consultas de clientes</p>
-              <p class="xrow-what">Un registro de quién preguntó qué y si alguien respondió.</p>
-              <p class="xrow-price"><span class="cur" data-eur="40">€40</span></p>
-            </div>
-            <div class="xrow">
-              <p class="xrow-name">Integración de CRM sencillo</p>
-              <p class="xrow-what">Las consultas caen directamente en el sistema que ya usas.</p>
-              <p class="xrow-price">desde <span class="cur" data-eur="75">€75</span></p>
-            </div>
-        </div>
-
-        <div id="brand" class="scroll-mt-32" data-ex-group="brand">
-          <div class="flex flex-wrap items-baseline gap-x-4 border-b border-line-firm pb-3">
-            <p class="eyebrow text-ink-soft">Marca y diseño</p>
-            <span class="ml-auto text-[0.75rem] text-ink-soft">pago único</span>
-          </div>
-            <div class="xrow">
-              <p class="xrow-name">Diseño de Logo</p>
-              <p class="xrow-what">Un logo dibujado para tu negocio, en todos los formatos que vayas a necesitar.</p>
-              <p class="xrow-price"><span class="cur" data-eur="49.99">€49.99</span></p>
-            </div>
-            <div class="xrow">
-              <p class="xrow-name">Kit de Marca</p>
-              <p class="xrow-what">Logo, colores, tipografías y las reglas para usarlos.</p>
-              <p class="xrow-price"><span class="cur" data-eur="79.99">€79.99</span></p>
-            </div>
-            <div class="xrow">
-              <p class="xrow-name">Diseño de Tarjetas de Visita</p>
-              <p class="xrow-what">Tarjetas maquetadas y listas para la imprenta.</p>
-              <p class="xrow-price"><span class="cur" data-eur="29.99">€29.99</span></p>
-            </div>
-            <div class="xrow">
-              <p class="xrow-name">Diseño de Folleto / Cartel</p>
-              <p class="xrow-what">Un folleto o un cartel, diseñados para imprimir y para publicar en línea.</p>
-              <p class="xrow-price"><span class="cur" data-eur="39.99">€39.99</span></p>
-            </div>
-            <div class="xrow">
-              <p class="xrow-name">Diseño de Carta / Menú</p>
-              <p class="xrow-what">Tu carta maquetada como toca, para la pared, la mesa o la web.</p>
-              <p class="xrow-price"><span class="cur" data-eur="39.99">€39.99</span></p>
-            </div>
-            <div class="xrow">
-              <p class="xrow-name">Pack Inicial de Redes Sociales</p>
-              <p class="xrow-what">Fotos de perfil, portadas y plantillas de publicación a juego con la web.</p>
-              <p class="xrow-price"><span class="cur" data-eur="59.99">€59.99</span></p>
-            </div>
-            <div class="xrow">
-              <p class="xrow-name">Vídeo Promocional / Anuncio Corto</p>
-              <p class="xrow-what">Un vídeo corto para redes sociales o para la cabecera de tu página.</p>
-              <p class="xrow-price">desde <span class="cur" data-eur="49.99">€49.99</span></p>
-            </div>
-            <div class="xrow">
-              <p class="xrow-name">Fotos de Negocio con IA</p>
-              <p class="xrow-what">Imágenes creadas para tu negocio donde no tienes fotografías.</p>
-              <p class="xrow-price">desde <span class="cur" data-eur="30">€30</span></p>
-            </div>
-            <div class="xrow">
-              <p class="xrow-name">Tarjeta QR para Reseñas de Google</p>
-              <p class="xrow-what">Una tarjeta que los clientes escanean y les lleva a tu página de reseñas.</p>
-              <p class="xrow-price"><span class="cur" data-eur="19.99">€19.99</span></p>
-            </div>
-            <div class="xrow">
-              <p class="xrow-name">Configuración de WhatsApp Business</p>
-              <p class="xrow-what">WhatsApp Business configurado, con el botón en tu web.</p>
-              <p class="xrow-price"><span class="cur" data-eur="39.99">€39.99</span></p>
-            </div>
-            <div class="xrow">
-              <p class="xrow-name">Plantillas de Documentos de Empresa</p>
-              <p class="xrow-what">Facturas, presupuestos y cartas, con tu propia marca.</p>
-              <p class="xrow-price"><span class="cur" data-eur="29.99">€29.99</span></p>
-            </div>
-            <div class="pick pick--soon">
-              <span class="pick-name text-ink-mid">Recepcionista IA</span>
-              <span class="pick-price"><span class="tag tag-soon">Próximamente</span></span>
-            </div>
-            <div class="pick pick--soon">
-              <span class="pick-name text-ink-mid">Contenido para Redes Sociales</span>
-              <span class="pick-price"><span class="tag tag-soon">Próximamente</span></span>
-            </div>
-        </div>
-
-
-            <!-- The running total. Nothing here navigates and nothing
-                 reloads: ticking a box only adds a number. -->
-        </div>
-
-      </div>
-
-      <div class="mt-14 grid grid-cols-1 gap-8 border-t border-line pt-8 lg:grid-cols-12 lg:gap-14">
-        <div class="lg:col-span-7">
-          <p class="text-sm font-semibold text-ink">Cómo se pagan los extras</p>
-          <p class="mt-3 max-w-prose text-[0.875rem] leading-relaxed text-ink-mid">
-            Los extras se suman a tu total único y se pagan una vez, cuando tu web está lista para publicarse.
-          </p>
-          <p class="mt-2.5 max-w-prose text-[0.8125rem] leading-relaxed text-ink-soft">
-            <span class="arrow">&rarr;</span> Los extras que no dependen de la construcción de tu web —la tarjeta QR, la configuración del correo y de WhatsApp, las plantillas de documentos— se entregan en sus propios plazos en lugar de esperar a los 5–7 días de construcción, y se pagan cuando se entrega esa pieza.
-          </p>
-          <p class="mt-2 max-w-prose text-[0.8125rem] leading-relaxed text-ink-soft">
-            <span class="arrow">&rarr;</span> Cuando un precio empieza «desde», confirmamos contigo la cifra final por escrito antes de cobrar nada.
-          </p>
-        </div>
-        <div class="lg:col-span-4 lg:col-start-9">
-          <a href="/build" class="inline-flex items-center justify-center rounded-md bg-accent px-6 py-3.5 text-sm font-semibold text-white hover:bg-accent-hi">Crea tu paquete</a>
-        </div>
-      </div>
-    </div>
-  </section>
 </main>
 
 <div data-site-footer>
-  <!-- Replaced by footer.js. Present in the served HTML so the legal
-       links survive without JavaScript, for crawlers and for payment
-       provider domain review. -->
   <nav class="mx-auto flex max-w-shell flex-wrap items-center gap-x-5 gap-y-2 px-6 py-8 text-[0.8125rem] text-ink-soft md:px-10" aria-label="Legal">
     <a class="hover:text-ink" href="/en/terms">Términos del Servicio</a>
     <a class="hover:text-ink" href="/en/privacy">Política de Privacidad</a>
@@ -631,10 +649,7 @@
 
 <script src="/assets/footer.js?v=7"></script>
 <script src="/assets/cookies.js?v=2"></script>
-<script src="/assets/mobile.js?v=5"></script>
 <script src="/assets/theme.js?v=3"></script>
-<script src="/assets/gutters.js?v=2" defer></script>
-<script src="/assets/scramble.js?v=4" defer></script>
 <script src="/assets/i18n.js?v=4"></script>
 <script src="/assets/demo.js?v=5"></script>
 </body>

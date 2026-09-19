@@ -59,17 +59,14 @@
 <link rel="dns-prefetch" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400&family=Instrument+Serif&family=Inter:wght@400;500;600;700&family=Outfit:wght@200..800&display=swap">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400&family=Instrument+Serif&family=Inter:wght@400;500;600;700&family=Outfit:wght@200..800&display=swap" media="print" onload="this.media='all'">
-<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400&family=Instrument+Serif&family=Inter:wght@400;500;600;700&family=Outfit:wght@200..800&display=swap"></noscript>
-<script>/* Theme before paint. Dark is the site, light is a choice you make — the attribute is always stamped so the system setting never decides for you. */(function(){var t='dark';try{t=localStorage.getItem('sitehouse.theme')==='light'?'light':'dark';}catch(e){}document.documentElement.setAttribute('data-theme',t);})();</script>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"></noscript>
+<script>/* Theme before paint. */(function(){var t='dark';try{t=localStorage.getItem('sitehouse.theme')==='light'?'light':'dark';}catch(e){}document.documentElement.setAttribute('data-theme',t);})();</script>
 <link rel="stylesheet" href="/assets/xovah.css?v=3">
-<link rel="stylesheet" href="/assets/extras.css?v=6">
-<link rel="stylesheet" href="/assets/mobile.css?v=7">
 <link rel="stylesheet" href="/assets/tailwind.css?v=2">
 <link rel="stylesheet" href="/assets/theme.css?v=6">
-<link rel="stylesheet" href="/assets/gutters.css?v=2">
-<link rel="stylesheet" href="/assets/edge.css?v=4">
+<link rel="stylesheet" href="/assets/catalogue.css?v=2">
 <script>window.XovahRoutes={"lang":"sv","routes":{"home":{"en":"/en","sq":"/sq","de":"/de","fr":"/fr","it":"/it","es":"/es","pt":"/pt","nl":"/nl","sv":"/sv","tr":"/tr"},"pricing":{"en":"/en/pricing","sq":"/sq/cmimet","de":"/de/preise","fr":"/fr/tarifs","it":"/it/prezzi","es":"/es/precios","pt":"/pt/precos","nl":"/nl/prijzen","sv":"/sv/priser","tr":"/tr/fiyatlar"},"services":{"en":"/en/services","sq":"/sq/sherbimet","de":"/de/leistungen","fr":"/fr/services","it":"/it/servizi","es":"/es/servicios","pt":"/pt/servicos","nl":"/nl/diensten","sv":"/sv/tjanster","tr":"/tr/hizmetler"},"features":{"en":"/en/features","sq":"/sq/vecorite","de":"/de/funktionen","fr":"/fr/fonctionnalites","it":"/it/funzionalita","es":"/es/funciones","pt":"/pt/funcionalidades","nl":"/nl/functies","sv":"/sv/funktioner","tr":"/tr/ozellikler"},"contact":{"en":"/en/contact","sq":"/sq/kontakt","de":"/de/kontakt","fr":"/fr/contact","it":"/it/contatti","es":"/es/contacto","pt":"/pt/contacto","nl":"/nl/contact","sv":"/sv/kontakt","tr":"/tr/iletisim"},"faq":{"en":"/en/faq","sq":"/sq/pyetje-te-shpeshta","de":"/de/haeufige-fragen","fr":"/fr/questions-frequentes","it":"/it/domande-frequenti","es":"/es/preguntas-frecuentes","pt":"/pt/perguntas-frequentes","nl":"/nl/veelgestelde-vragen","sv":"/sv/vanliga-fragor","tr":"/tr/sikca-sorulan-sorular"},"terms":{"en":"/en/terms"},"privacy":{"en":"/en/privacy"},"refunds":{"en":"/en/refunds"},"cookies":{"en":"/en/cookies"}},"app":["404","build"],"names":{"home":"index","pricing":"pricing","services":"extras","features":"features","contact":"contact","faq":"faq","terms":"terms","privacy":"privacy","refunds":"refunds","cookies":"cookies"}};</script>
 </head>
 
@@ -82,544 +79,565 @@
       <span class="brand-mark" role="img" aria-label="Xovah"></span>
       <span class="h-section text-lg tracking-tight">Xovah</span>
     </a>
-
     <div class="flex items-center gap-5 md:gap-7">
       <a href="/sv/priser" class="text-sm font-medium text-ink-mid hover:text-ink">Priser</a>
-      <a href="/sv/tjanster" class="hidden text-sm font-medium text-ink-mid hover:text-ink md:inline">Tillägg</a>
+      <a href="/sv/tjanster" class="hidden text-sm font-medium text-ink-mid hover:text-ink md:inline" aria-current="page">Tillägg</a>
       <a href="/sv/vanliga-fragor" class="hidden text-sm font-medium text-ink-mid hover:text-ink md:inline">FAQ</a>
       <a href="/build" class="rounded-md bg-accent px-4 py-2.5 text-sm font-semibold text-white hover:bg-accent-hi">Starta ett projekt</a>
     </div>
-  
   </nav>
 </header>
 
 <main id="main">
 
-  <!-- 1 — HERO -->
-  <section class="border-b border-line">
-    <div class="mx-auto max-w-shell px-6 pb-12 pt-12 md:px-10 md:pb-14 md:pt-16">
-      <p class="eyebrow text-accent">Webbtjänster</p>
-      <h1 class="h-section sec-title mt-4 max-w-2xl">Allt runt din webbplats, prissatt en sak i taget.</h1>
-      <p class="mt-5 max-w-prose text-[0.9375rem] leading-relaxed text-ink-mid">
-        Bokning, SEO, statistik, automatisering, en logotyp, en e-post på din egen domän. Sextiofem engångsjobb, vart och ett med sitt pris och en rad som säger vad det faktiskt gör. Du plockar upp dem i byggaren när du är redo.
-      </p>
-      <ol class="ex-how mt-8" data-reveal-group>
-        <li>
-          <span class="ex-how-n">01</span>
-          <p class="ex-how-h">Ingår redan</p>
-          <p class="ex-how-p">Trettiofyra funktioner finns i varje webbplats vi bygger. De kostar inget extra.</p>
-        </li>
-        <li>
-          <span class="ex-how-n">02</span>
-          <p class="ex-how-h">Valfria tillägg</p>
-          <p class="ex-how-p">Ytterligare sextiofem jobb, vart och ett med sitt engångspris. Ta bara dem du behöver.</p>
-        </li>
-        <li>
-          <span class="ex-how-n">03</span>
-          <p class="ex-how-h">Bygg det och skicka</p>
-          <p class="ex-how-p">Byggaren lägger ihop ditt paket och dessa, summerar totalen och skickar den till oss.</p>
-        </li>
-      </ol>
+  <!-- ══ Hero ══════════════════════════════════════════════════ -->
+  <section class="xc-shell xc-hero">
+    <p class="xc-eyebrow">Tilläggen, förklarade</p>
+    <h1>Vad varje tillägg faktiskt gör.</h1>
+    <p class="xc-lede">
+      Den här sidan förklarar, den säljer inte. Varje tillägg vi erbjuder står nedan med en mening om vad det gör för ditt företag och vad det kostar. När du vet vilka du vill ha är det i paketbyggaren de väljs.
+    </p>
 
-      <div class="mt-8 flex flex-wrap items-center gap-x-5 gap-y-3">
-        <a href="/build" class="btn btn-primary">Bygg ditt paket</a>
-        <a href="#website" class="btn btn-ghost">Läs listan</a>
-        <span class="text-sm text-ink-soft">Från <span class="cur" data-eur="5">€5</span>, betalas en gång. Inget debiteras på den här sidan.</span>
-      </div>
+    <div class="xc-figs">
+      <div class="xc-fig"><b>34</b><span>funktioner i varje webbplats, utan extra kostnad</span></div>
+      <div class="xc-fig"><b>65</b><span>valfria tillägg, vart och ett med eget pris</span></div>
+      <div class="xc-fig"><b><span class="cur" data-eur="5">&euro;5</span></b><span>det billigaste, betalt en gång</span></div>
+      <div class="xc-fig"><b>0</b><span>prenumerationer, ingenstans på den här webbplatsen</span></div>
+    </div>
+
+    <div class="xc-cta-row">
+      <a href="/build" class="xc-cta">Till paketbyggaren</a>
+      <span class="xc-cta-note">På den här sidan går ingenting att köpa, och här debiteras ingenting.</span>
     </div>
   </section>
 
-  <!-- 2 — THE STICKY BAR
-       Sits under the header, carries the jump links and the running
-       total. It is the only part of this page that follows you. -->
-  <div class="ex-bar" data-ex-bar>
-    <div class="mx-auto flex max-w-shell items-center gap-4 px-6 md:px-10">
-      <nav class="ex-bar-nav" aria-label="Sektioner">
-        <a href="#included">Ingår</a>
-        <a href="#website">Webbplats</a>
-        <a href="#technical">Företag</a>
-        <a href="#automation">Automatisering</a>
-        <a href="#brand">Varumärke</a>
-      </nav>    </div>
+  <!-- ══ Section nav ═══════════════════════════════════════════ -->
+  <nav class="xc-nav" aria-label="Sektioner">
+    <div class="xc-nav-in">
+      <a href="#included">Ingår redan</a>
+      <a href="#website">Webbplatsfunktioner</a>
+      <a href="#technical">Företag och teknik</a>
+      <a href="#automation">Automatisering</a>
+      <a href="#brand">Varumärke och design</a>
+    </div>
+  </nav>
+
+  <div class="xc-shell">
+
+    <!-- ══ The 34 that cost nothing ════════════════════════════ -->
+    <section class="xc-band" id="included" style="scroll-margin-top:8rem">
+      <div class="xc-band-hd">
+        <span class="xc-free-flag">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>
+          Ingen extra kostnad
+        </span>
+        <h2>Trettiofyra saker du aldrig betalar extra för</h2>
+        <p>
+          De här är inbyggda i varje webbplats vi gör. En Custom Website väljer tjugo av dem; Full Website och allt däröver får alla trettiofyra. Ingen av dem står i listan med tillägg nedan, eftersom ingen av dem är ett tillägg.
+        </p>
+      </div>
+
+      <div class="xc-inc-cols">
+        <div>
+          <p class="xc-inc-h">Sidor och avsnitt</p>
+          <ul class="xc-inc-list">
+            <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3.4 8.4l3 3 6.2-6.6"/></svg>Om oss-sektion</li>
+            <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3.4 8.4l3 3 6.2-6.6"/></svg>FAQ-sektion</li>
+            <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3.4 8.4l3 3 6.2-6.6"/></svg>Prislista</li>
+            <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3.4 8.4l3 3 6.2-6.6"/></svg>Erbjudande-sektion</li>
+            <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3.4 8.4l3 3 6.2-6.6"/></svg>Kampanjsektion</li>
+            <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3.4 8.4l3 3 6.2-6.6"/></svg>Portfoliossektion</li>
+            <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3.4 8.4l3 3 6.2-6.6"/></svg>Projektvisning</li>
+            <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3.4 8.4l3 3 6.2-6.6"/></svg>Team/personalsektion</li>
+            <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3.4 8.4l3 3 6.2-6.6"/></svg>Före &amp; efter-sektion</li>
+            <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3.4 8.4l3 3 6.2-6.6"/></svg>Tjänsteområde-sektion</li>
+            <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3.4 8.4l3 3 6.2-6.6"/></svg>Prisjämförelse</li>
+            <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3.4 8.4l3 3 6.2-6.6"/></svg>Paketsektion</li>
+            <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3.4 8.4l3 3 6.2-6.6"/></svg>Evenemangssektion</li>
+            <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3.4 8.4l3 3 6.2-6.6"/></svg>Meddelandesektion</li>
+            <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3.4 8.4l3 3 6.2-6.6"/></svg>Egen landningssida</li>
+            <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3.4 8.4l3 3 6.2-6.6"/></svg>Egen 404-sida</li>
+          </ul>
+        </div>
+
+        <div>
+          <p class="xc-inc-h">Kataloger och dokument</p>
+          <ul class="xc-inc-list">
+            <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3.4 8.4l3 3 6.2-6.6"/></svg>Produktkatalog</li>
+            <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3.4 8.4l3 3 6.2-6.6"/></svg>Online-meny</li>
+            <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3.4 8.4l3 3 6.2-6.6"/></svg>PDF-menysintegration</li>
+            <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3.4 8.4l3 3 6.2-6.6"/></svg>PDF-katalogintegration</li>
+            <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3.4 8.4l3 3 6.2-6.6"/></svg>Nedladdningsbara dokument</li>
+            <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3.4 8.4l3 3 6.2-6.6"/></svg>Integration av kundomdömen</li>
+          </ul>
+        </div>
+
+        <div>
+          <p class="xc-inc-h">Navigering och interaktion</p>
+          <ul class="xc-inc-list">
+            <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3.4 8.4l3 3 6.2-6.6"/></svg>Fast navigering</li>
+            <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3.4 8.4l3 3 6.2-6.6"/></svg>Fasta mobilknappar</li>
+            <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3.4 8.4l3 3 6.2-6.6"/></svg>Till-toppen-knapp</li>
+            <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3.4 8.4l3 3 6.2-6.6"/></svg>Bild-lightbox</li>
+            <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3.4 8.4l3 3 6.2-6.6"/></svg>FAQ-dragspel</li>
+            <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3.4 8.4l3 3 6.2-6.6"/></svg>Interaktiva gallerier</li>
+          </ul>
+        </div>
+
+        <div>
+          <p class="xc-inc-h">Media och grunderna</p>
+          <ul class="xc-inc-list">
+            <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3.4 8.4l3 3 6.2-6.6"/></svg>Videosektion</li>
+            <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3.4 8.4l3 3 6.2-6.6"/></svg>YouTube-integration</li>
+            <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3.4 8.4l3 3 6.2-6.6"/></svg>Affärsformulär / förfrågningsformulär</li>
+            <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3.4 8.4l3 3 6.2-6.6"/></svg>Förhandsvisning vid delning</li>
+            <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3.4 8.4l3 3 6.2-6.6"/></svg>Eget favicon</li>
+            <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3.4 8.4l3 3 6.2-6.6"/></svg>Mobiloptimering</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══ Website features ════════════════════════════════════ -->
+    <section class="xc-cat">
+      <div class="xc-cat-hd" id="website">
+        <span class="xc-cat-icon" aria-hidden="true">
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="8" cy="8" r="6.5"/><path d="M8 1.5C8 1.5 5.5 4 5.5 8s2.5 6.5 2.5 6.5M8 1.5C8 1.5 10.5 4 10.5 8S8 14.5 8 14.5M1.5 8h13"/>
+          </svg>
+        </span>
+        <div>
+          <h2>Webbplatsfunktioner</h2>
+          <p>Saker dina besökare ser och använder. Var och en ger webbplatsen något den inte kunde göra förut.</p>
+        </div>
+        <span class="xc-cat-n">18 tillägg</span>
+      </div>
+
+      <div class="xc-list">
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">Onlinebokningssystem</h3><p class="xc-item-price"><span class="cur" data-eur="60">&euro;60</span></p></div>
+          <p class="xc-item-what">Kunderna väljer en tid på din webbplats i stället för att ringa dig. Förfrågan landar hos dig för bekräftelse, så du behåller kalendern och slutar tappa dem som inte lyfter luren.</p>
+        </article>
+
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">Bokningskalender</h3><p class="xc-item-price"><span class="cur" data-eur="50">&euro;50</span></p></div>
+          <p class="xc-item-what">En kalender som visar vad som redan är bokat, så att samma timme aldrig säljs två gånger. Passar ihop med bokningssystemet och fungerar även ensamt om du tar bokningar per telefon.</p>
+        </article>
+
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">Integration av Google-omdömen</h3><p class="xc-item-price"><span class="cur" data-eur="20">&euro;20</span></p></div>
+          <p class="xc-item-what">Dina riktiga Google-omdömen på sidan, som uppdaterar sig själva när nya kommer in. Ingen behöver skriva av dem, och ingen kan anklaga dig för att ha hittat på dem.</p>
+        </article>
+
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">Nyhetsbrevsanmälan</h3><p class="xc-item-price"><span class="cur" data-eur="20">&euro;20</span></p></div>
+          <p class="xc-item-what">En e-postruta på sidan, med listan sparad där du faktiskt kan använda den sedan. Det billigaste sättet att se till att en besökare inte är en främling nästa gång.</p>
+        </article>
+
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">Mejlknapp</h3><p class="xc-item-price"><span class="cur" data-eur="5">&euro;5</span></p></div>
+          <p class="xc-item-what">En tryckning öppnar deras e-postapp med din adress redan ifylld. Litet, men det tar bort steget där någon kopierar din adress och sedan glömmer varför.</p>
+        </article>
+
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">Jobbansökningsformulär</h3><p class="xc-item-price"><span class="cur" data-eur="25">&euro;25</span></p></div>
+          <p class="xc-item-what">Folk söker med sina uppgifter och bifogar ett CV, och det kommer in som ett enda prydligt meddelande i stället för tre mejl där bilagan alltid saknas.</p>
+        </article>
+
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">Karriärsektion</h3><p class="xc-item-price"><span class="cur" data-eur="15">&euro;15</span></p></div>
+          <p class="xc-item-what">En sida för de tjänster du rekryterar till, så att du skickar en länk i stället för att skriva om annonsen varje gång någon frågar.</p>
+        </article>
+
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">Webbplats med flera språk</h3><p class="xc-item-price"><small>från</small><span class="cur" data-eur="50">&euro;50</span></p></div>
+          <p class="xc-item-what">Hela webbplatsen på ett andra språk, med bytet i hörnet av sidan. Pris från, eftersom det beror på hur mycket text som ska föras över.</p>
+        </article>
+
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">Flera platser</h3><p class="xc-item-price"><span class="cur" data-eur="30">&euro;30</span></p></div>
+          <p class="xc-item-what">En sida per filial med egen adress, egna öppettider och egen karta, så att den som söker den närmaste hittar rätt uppgifter och inte fel.</p>
+        </article>
+
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">Platsväljare</h3><p class="xc-item-price"><span class="cur" data-eur="25">&euro;25</span></p></div>
+          <p class="xc-item-what">En växlare som skickar besökare till närmaste filial utan att de själva måste räkna ut vilken det är.</p>
+        </article>
+
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">Butikssökare</h3><p class="xc-item-price"><span class="cur" data-eur="50">&euro;50</span></p></div>
+          <p class="xc-item-what">En karta över alla platser och vägen till var och en. Värt det så snart du har fler filialer än en besökare håller i huvudet.</p>
+        </article>
+
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">Medlemssektion</h3><p class="xc-item-price"><span class="cur" data-eur="40">&euro;40</span></p></div>
+          <p class="xc-item-what">En del av webbplatsen som bara dina medlemmar kan öppna. För prislistor, material eller allt du hellre inte visar för hela internet.</p>
+        </article>
+
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">Presentkortssektion</h3><p class="xc-item-price"><span class="cur" data-eur="30">&euro;30</span></p></div>
+          <p class="xc-item-what">Presentkort som folk kan köpa eller beställa direkt från sidan. I tysthet en av de mest inbringande sakerna ett litet företag kan lägga ut före julen.</p>
+        </article>
+
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">Lojalitetsprogram</h3><p class="xc-item-price"><small>från</small><span class="cur" data-eur="60">&euro;60</span></p></div>
+          <p class="xc-item-what">Poäng eller stämplar för kunder som kommer tillbaka, skötta från webbplatsen i stället för ett papperskort som ligger i plånboken tills det tappas bort.</p>
+        </article>
+
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">Evenemangsregistrering</h3><p class="xc-item-price"><span class="cur" data-eur="40">&euro;40</span></p></div>
+          <p class="xc-item-what">Folk anmäler sig till ett evenemang och du får listan. Riktiga siffror före dagen, i stället för en gissning och för mycket mat.</p>
+        </article>
+
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">Bloggsektion</h3><p class="xc-item-price"><span class="cur" data-eur="30">&euro;30</span></p></div>
+          <p class="xc-item-what">Inlägg du kan lägga till själv, med datum och bilder. Också det mest pålitliga sättet att fortsätta ge Google nya sidor utan att betala någon.</p>
+        </article>
+
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">Nyhetssektion</h3><p class="xc-item-price"><span class="cur" data-eur="20">&euro;20</span></p></div>
+          <p class="xc-item-what">Korta meddelanden på ett ställe, det senaste först. Lättare än en blogg när du bara behöver säga att butiken är stängd på måndag.</p>
+        </article>
+
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">Webbplatssökning</h3><p class="xc-item-price"><span class="cur" data-eur="30">&euro;30</span></p></div>
+          <p class="xc-item-what">En sökruta som letar inne i dina egna sidor. Värt att lägga till så snart webbplatsen är så stor att scrolla inte längre är en plan.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- ══ Business & technical ════════════════════════════════ -->
+    <section class="xc-cat">
+      <div class="xc-cat-hd" id="technical">
+        <span class="xc-cat-icon" aria-hidden="true">
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="1.5" y="1.5" width="13" height="13" rx="2"/><path d="M5 8h6M8 5v6"/>
+          </svg>
+        </span>
+        <div>
+          <h2>Företag och teknik</h2>
+          <p>Arbetet bakom webbplatsen: att bli hittad, att bli mätt, att vara i lag och att hålla sig uppe.</p>
+        </div>
+        <span class="xc-cat-n">26 tillägg</span>
+      </div>
+
+      <div class="xc-list">
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">Grundläggande SEO-installation</h3><p class="xc-item-price"><span class="cur" data-eur="30">&euro;30</span></p></div>
+          <p class="xc-item-what">Titlar, beskrivningar och rubriker skrivna så som sökmotorer läser dem. Det köper dig inte förstaplatsen; det hindrar dig från att vara osynlig på ditt eget företagsnamn.</p>
+        </article>
+
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">Indexering i Google Sök</h3><p class="xc-item-price"><span class="cur" data-eur="15">&euro;15</span></p></div>
+          <p class="xc-item-what">Dina sidor anmälda till Google så att de överhuvudtaget kan dyka upp i sökningen. Utan det väntar du bara, ibland i månader.</p>
+        </article>
+
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">Installation av Google Företagsprofil</h3><p class="xc-item-price"><span class="cur" data-eur="40">&euro;40</span></p></div>
+          <p class="xc-item-what">Listningen som dyker upp bredvid kartan när någon söker på ditt yrke och din ort — skapad, verifierad och ordentligt ifylld.</p>
+        </article>
+
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">Optimering av Google Företagsprofil</h3><p class="xc-item-price"><span class="cur" data-eur="50">&euro;50</span></p></div>
+          <p class="xc-item-what">Bilder, kategorier, öppettider och inlägg finjusterade så att listningen faktiskt tävlar med de andra i närheten, i stället för att stå där korrekt och förbisedd.</p>
+        </article>
+
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">Google Analytics-installation</h3><p class="xc-item-price"><span class="cur" data-eur="25">&euro;25</span></p></div>
+          <p class="xc-item-what">Besökssiffror du kan läsa utan en kurs, installerade och inställda så att siffrorna betyder det du tror.</p>
+        </article>
+
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">Google Search Console-installation</h3><p class="xc-item-price"><span class="cur" data-eur="25">&euro;25</span></p></div>
+          <p class="xc-item-what">Verktyget som visar vad folk skrev innan de hittade dig, och som varnar när Google inte kan läsa en av dina sidor.</p>
+        </article>
+
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">Konverteringsmätning</h3><p class="xc-item-price"><span class="cur" data-eur="40">&euro;40</span></p></div>
+          <p class="xc-item-what">Samtal, formulär och bokningar räknas, så att du vet vilken del av webbplatsen som drar in jobb och vilken som bara ser fin ut.</p>
+        </article>
+
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">Besökarspårning på webbplatsen</h3><p class="xc-item-price"><span class="cur" data-eur="25">&euro;25</span></p></div>
+          <p class="xc-item-what">Vilka sidor folk läser, och var de ger upp. Oftast den snabbaste vägen till den mening som kostar dig kunder.</p>
+        </article>
+
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">Professionell företagsmejl-uppsättning</h3><p class="xc-item-price"><span class="cur" data-eur="25">&euro;25</span></p></div>
+          <p class="xc-item-what">du@dittforetag.se i stället för en Gmail-adress, som fungerar i telefonen och på datorn. Kostar nästan ingenting och förändrar hur dina offerter läses.</p>
+        </article>
+
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">Installation av mejlsignatur</h3><p class="xc-item-price"><span class="cur" data-eur="15">&euro;15</span></p></div>
+          <p class="xc-item-what">Din logotyp, ditt telefonnummer och din webbplats längst ner i varje mejl du skickar, utan att du klistrar in det varje gång.</p>
+        </article>
+
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">Domänregistrering</h3><p class="xc-item-price"><span class="cur" data-eur="10">&euro;10</span></p></div>
+          <p class="xc-item-what">Vi köper webbadressen åt dig och registrerar den i ditt namn, inte i vårt.</p>
+          <p class="xc-item-plus">Plus priset för själva domänen</p>
+        </article>
+
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">Domänkoppling</h3><p class="xc-item-price"><span class="cur" data-eur="10">&euro;10</span></p></div>
+          <p class="xc-item-what">En webbadress du redan äger, riktad mot den nya webbplatsen. Den kluriga halvtimmen med inställningar som ingen tycker om.</p>
+        </article>
+
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">SSL/HTTPS-uppsättning</h3><p class="xc-item-price"><span class="cur" data-eur="10">&euro;10</span></p></div>
+          <p class="xc-item-what">Hänglåset i adressfältet, som förnyar sig själv. Utan det sätter webbläsare orden ”Inte säker” bredvid ditt företagsnamn.</p>
+        </article>
+
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">Flytt av webbplats</h3><p class="xc-item-price"><small>från</small><span class="cur" data-eur="50">&euro;50</span></p></div>
+          <p class="xc-item-what">En befintlig webbplats flyttad utan att tappa placeringar, länkar eller innehållet den redan hade. Pris från, för inga två gamla webbplatser är stökiga på samma sätt.</p>
+        </article>
+
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">Hastighetsoptimering av webbplatsen</h3><p class="xc-item-price"><span class="cur" data-eur="50">&euro;50</span></p></div>
+          <p class="xc-item-what">Webbplatsen byggd för att öppnas snabbt i en telefon på mobildata, vilket är så de flesta faktiskt kommer att se den. Långsamma sidor tappar besökare före första ordet.</p>
+        </article>
+
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">Bildkomprimering</h3><p class="xc-item-price"><span class="cur" data-eur="15">&euro;15</span></p></div>
+          <p class="xc-item-what">Fotografier gjorda små nog att ladda snabbt och ändå se bra ut. Med marginal den vanligaste orsaken till att ett litet företags webbplats känns långsam.</p>
+        </article>
+
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">Tillgänglighetsförbättringar</h3><p class="xc-item-price"><span class="cur" data-eur="40">&euro;40</span></p></div>
+          <p class="xc-item-what">Kontrast, etiketter och tangentbordsnavigering i ordning, så att den som använder skärmläsare eller förstoring inte stängs ute från din verksamhet.</p>
+        </article>
+
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">Cookie-samtyckesbanner</h3><p class="xc-item-price"><span class="cur" data-eur="20">&euro;20</span></p></div>
+          <p class="xc-item-what">Samtyckesrutan som lagen kräver, och en som faktiskt gör det den påstår i stället för att sätta kakorna ändå.</p>
+        </article>
+
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">Sida med integritetspolicy</h3><p class="xc-item-price"><span class="cur" data-eur="20">&euro;20</span></p></div>
+          <p class="xc-item-what">En integritetspolicy skriven för vad din webbplats faktiskt gör, i stället för en mall som nämner saker du inte har.</p>
+        </article>
+
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">Sida med villkor</h3><p class="xc-item-price"><span class="cur" data-eur="20">&euro;20</span></p></div>
+          <p class="xc-item-what">Dina villkor, på vanligt språk, på en egen sida. Det du pekar på när ett jobb går snett.</p>
+        </article>
+
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">Egna juridiska sidor</h3><p class="xc-item-price"><small>från</small><span class="cur" data-eur="30">&euro;30</span></p></div>
+          <p class="xc-item-what">Varje annan policy som din bransch, ditt försäkringsbolag eller din bank ber dig publicera. Pris från, för det beror på vad de ber om.</p>
+        </article>
+
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">Säkerhetskopieringssystem för webbplatsen</h3><p class="xc-item-price"><span class="cur" data-eur="30">&euro;30</span></p></div>
+          <p class="xc-item-what">Kopior som tas automatiskt, så att en dålig dag kostar dig en timme i stället för hela webbplatsen.</p>
+        </article>
+
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">Säkerhetskonfiguration</h3><p class="xc-item-price"><span class="cur" data-eur="40">&euro;40</span></p></div>
+          <p class="xc-item-what">De headers och behörigheter som håller webbplatsen din, satta som de ska i stället för lämnade på vad webbhotellet råkar ha som standard.</p>
+        </article>
+
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">Spamskydd</h3><p class="xc-item-price"><span class="cur" data-eur="20">&euro;20</span></p></div>
+          <p class="xc-item-what">Skräpet stoppas innan det når dig, på hela webbplatsen. När bottarna väl hittat ett formulär tröttnar de inte.</p>
+        </article>
+
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">Spamskydd för kontaktformulär</h3><p class="xc-item-price"><span class="cur" data-eur="15">&euro;15</span></p></div>
+          <p class="xc-item-what">Bottar hålls ute från ditt kontaktformulär utan att riktiga människor tvingas lösa gåtor om trafikljus.</p>
+        </article>
+
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">Kontroll av trasiga länkar</h3><p class="xc-item-price"><span class="cur" data-eur="15">&euro;15</span></p></div>
+          <p class="xc-item-what">Varje länk testad och de döda lagade. Värt att göra på varje webbplats som funnits i några år.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- ══ Automation ══════════════════════════════════════════ -->
+    <section class="xc-cat">
+      <div class="xc-cat-hd" id="automation">
+        <span class="xc-cat-icon" aria-hidden="true">
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M9 2L6 8.5h4L7 14M2 8h1.5M12.5 8H14M4.2 4.2l1.1 1.1M10.7 10.7l1.1 1.1M4.2 11.8l1.1-1.1M10.7 5.3l1.1-1.1"/>
+          </svg>
+        </span>
+        <div>
+          <h2>Automatisering</h2>
+          <p>Arbetet webbplatsen gör åt dig medan du är på ett jobb, sover, eller är upptagen med en kund framför dig.</p>
+        </div>
+        <span class="xc-cat-n">10 tillägg</span>
+      </div>
+
+      <div class="xc-list">
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">Automatiska mejlnotiser</h3><p class="xc-item-price"><span class="cur" data-eur="25">&euro;25</span></p></div>
+          <p class="xc-item-what">Webbplatsen mejlar dig i samma stund något händer på den, så att du slipper ladda om en sida för att se om någon hört av sig.</p>
+        </article>
+
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">Bekräftelsemejl för bokningar</h3><p class="xc-item-price"><span class="cur" data-eur="35">&euro;35</span></p></div>
+          <p class="xc-item-what">Kunden får sin bekräftelse utan att du skriver den. Färre som dyker upp fel dag och färre som ringer för att kolla.</p>
+        </article>
+
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">Mejlnotiser från kontaktformulär</h3><p class="xc-item-price"><span class="cur" data-eur="15">&euro;15</span></p></div>
+          <p class="xc-item-what">Varje meddelande vidarebefordrat till den adress du vill, även en annan än den webbplatsen byggdes med.</p>
+        </article>
+
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">Notiser om offertförfrågningar</h3><p class="xc-item-price"><span class="cur" data-eur="20">&euro;20</span></p></div>
+          <p class="xc-item-what">Offertförfrågningar kommer in märkta som offertförfrågningar i stället för begravda bland allt annat, eftersom det är de som förtjänar svar först.</p>
+        </article>
+
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">Automatiserade kundsvar</h3><p class="xc-item-price"><span class="cur" data-eur="40">&euro;40</span></p></div>
+          <p class="xc-item-what">Ett omedelbart svar som säger att meddelandet kommit fram och när du svarar. De flesta väntar gärna, så länge de vet att de väntar.</p>
+        </article>
+
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">Påminnelsemejl för bokningar</h3><p class="xc-item-price"><span class="cur" data-eur="50">&euro;50</span></p></div>
+          <p class="xc-item-what">En påminnelse före besöket. Mätt mot pengarna som går förlorade av ren glömska är det här det billigaste på sidan.</p>
+        </article>
+
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">Installation av mejl-autosvar</h3><p class="xc-item-price"><span class="cur" data-eur="35">&euro;35</span></p></div>
+          <p class="xc-item-what">Utanför öppettiderna, på semestern, eller helt enkelt mitt i ett jobb — det svarar åt dig, med dina ord, på de tider du bestämmer.</p>
+        </article>
+
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">Notifikationssystem för leads</h3><p class="xc-item-price"><span class="cur" data-eur="40">&euro;40</span></p></div>
+          <p class="xc-item-what">Nya förfrågningar skickas till dig och till alla andra som behöver se dem, så att inget blir liggande i en enda persons inkorg medan den är ledig.</p>
+        </article>
+
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">Uppföljning av kundförfrågningar</h3><p class="xc-item-price"><span class="cur" data-eur="40">&euro;40</span></p></div>
+          <p class="xc-item-what">En anteckning över vem som frågade vad, och om någon svarade. Användbar första gången du inte minns, och den gången kommer tidigare än man tror.</p>
+        </article>
+
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">Enkel CRM-integration</h3><p class="xc-item-price"><small>från</small><span class="cur" data-eur="75">&euro;75</span></p></div>
+          <p class="xc-item-what">Förfrågningar hamnar direkt i systemet du redan använder, i stället för att skrivas av. Pris från, eftersom det beror på vilket system det är.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- ══ Brand & design ══════════════════════════════════════ -->
+    <section class="xc-cat">
+      <div class="xc-cat-hd" id="brand">
+        <span class="xc-cat-icon" aria-hidden="true">
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M2 11l3-3 2 2 4-5 3 2"/><circle cx="12" cy="12" r="2.5"/><path d="M9.5 12H3a1 1 0 01-1-1V3a1 1 0 011-1h10a1 1 0 011 1v6.5"/>
+          </svg>
+        </span>
+        <div>
+          <h2>Varumärke och design</h2>
+          <p>Arbete som är ditt oavsett om webbplatsen finns eller inte. Det mesta levereras i sin egen takt i stället för att vänta på bygget.</p>
+        </div>
+        <span class="xc-cat-n">11 tillägg</span>
+      </div>
+
+      <div class="xc-list">
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">Logotypdesign</h3><p class="xc-item-price"><span class="cur" data-eur="49.99">&euro;49.99</span></p></div>
+          <p class="xc-item-what">En logotyp ritad för ditt företag, levererad i varje filformat du någonsin kommer att bli ombedd om — webbplatsen, bilen, skylten och tryckeriet.</p>
+        </article>
+
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">Varumärkeskit</h3><p class="xc-item-price"><span class="cur" data-eur="79.99">&euro;79.99</span></p></div>
+          <p class="xc-item-what">Logotyp, färger, typsnitt och reglerna för att använda dem, så att allt du gör därefter ser ut att komma från samma företag.</p>
+        </article>
+
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">Design av visitkort</h3><p class="xc-item-price"><span class="cur" data-eur="29.99">&euro;29.99</span></p></div>
+          <p class="xc-item-what">Kort satta och färdiga för tryckeriet, med utfall och marginaler redan rätt så att de inte kommer tillbaka.</p>
+        </article>
+
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">Design av flygblad /affischer</h3><p class="xc-item-price"><span class="cur" data-eur="39.99">&euro;39.99</span></p></div>
+          <p class="xc-item-what">En flygblad eller affisch formgiven för att fungera både i tryck och publicerad online, i stället för en som ser rätt ut på papper och fel i en telefon.</p>
+        </article>
+
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">Menydesign</h3><p class="xc-item-price"><span class="cur" data-eur="39.99">&euro;39.99</span></p></div>
+          <p class="xc-item-what">Din meny ordentligt satt för väggen, bordet eller webbplatsen. Läsbar på en armlängds avstånd och i dålig belysning, vilket de flesta menyer inte är.</p>
+        </article>
+
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">Startpaket för sociala medier</h3><p class="xc-item-price"><span class="cur" data-eur="59.99">&euro;59.99</span></p></div>
+          <p class="xc-item-what">Profilbilder, omslag och inläggsmallar som matchar webbplatsen, så att dina konton slutar se ut som ett annat företag.</p>
+        </article>
+
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">Reklamfilm / Kort annons</h3><p class="xc-item-price"><small>från</small><span class="cur" data-eur="49.99">&euro;49.99</span></p></div>
+          <p class="xc-item-what">En kort video för sociala medier eller toppen av din sida. Pris från, eftersom trettio sekunder och två minuter inte är samma jobb.</p>
+        </article>
+
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">AI-företagsbilder</h3><p class="xc-item-price"><small>från</small><span class="cur" data-eur="30">&euro;30</span></p></div>
+          <p class="xc-item-what">Bilder skapade för ditt företag när du inte har egna fotografier. Bättre än bildbanker och tillgängliga samma vecka.</p>
+        </article>
+
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">QR-kort för Google-omdöme</h3><p class="xc-item-price"><span class="cur" data-eur="19.99">&euro;19.99</span></p></div>
+          <p class="xc-item-what">Ett kort som kunderna skannar för att hamna direkt på din recensionssida. Mellan att be om ett omdöme och att få ett ligger oftast precis det här.</p>
+        </article>
+
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">WhatsApp Business-uppsättning</h3><p class="xc-item-price"><span class="cur" data-eur="39.99">&euro;39.99</span></p></div>
+          <p class="xc-item-what">WhatsApp Business ordentligt uppsatt, med knappen på din webbplats. I många yrken är det den enda kanal kunderna verkligen använder.</p>
+        </article>
+
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">Mallar för affärsdokument</h3><p class="xc-item-price"><span class="cur" data-eur="29.99">&euro;29.99</span></p></div>
+          <p class="xc-item-what">Fakturor, offerter och brev i din egen profil, så att pappersarbetet ser ut som resten av verksamheten.</p>
+        </article>
+
+        <article class="xc-item xc-item--soon">
+          <div class="xc-item-hd"><h3 class="xc-item-name">AI-receptionist</h3><span class="xc-soon">Kommer snart</span></div>
+          <p class="xc-item-what">En assistent på din webbplats som svarar på vanliga frågor och tar upp uppgifter dygnet runt. Inte byggd än, och inte till salu förrän den är det.</p>
+        </article>
+
+        <article class="xc-item xc-item--soon">
+          <div class="xc-item-hd"><h3 class="xc-item-name">Innehåll för sociala medier</h3><span class="xc-soon">Kommer snart</span></div>
+          <p class="xc-item-what">Färdiga inlägg, skrivna och formgivna varje månad för dina konton. Inte byggt än, och inte till salu förrän det är det.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- ══ Closing ═════════════════════════════════════════════ -->
+    <section class="xc-foot">
+      <div class="xc-foot-grid">
+        <div>
+          <h2>Hur tillägg betalas</h2>
+          <p>
+            Tillägg läggs till din engångssumma och betalas en gång, när din webbplats är redo att gå live. Inget av dem är en prenumeration och ingenting förnyas av sig självt.
+          </p>
+          <p>
+            <span class="xc-foot-arrow">&rarr;</span> Där ett pris börjar med ”från” varierar jobbet så mycket att en enda siffra vore en gissning. Vi bekräftar det verkliga beloppet skriftligt innan något debiteras.
+          </p>
+          <p>
+            <span class="xc-foot-arrow">&rarr;</span> Tillägg som inte hänger på webbplatsen — QR-kortet, e-post- och WhatsApp-uppsättningen, dokumentmallarna — levereras i sin egen takt i stället för att vänta på de 5–7 dagarnas bygge, och betalas när den delen levereras.
+          </p>
+          <p>
+            <span class="xc-foot-arrow">&rarr;</span> Vissa paket täcker redan flera av dem. Paketbyggaren plockar bort dem från listan åt dig, så att du aldrig köper samma sak två gånger.
+          </p>
+        </div>
+
+        <div class="xc-foot-card">
+          <p>
+            Vet du redan vilka du vill ha? Paketbyggaren sätter ihop dem med ett paket, summerar och skriver förfrågan åt dig.
+          </p>
+          <a href="/build" class="xc-cta xc-cta--light">Bygg ditt paket</a>
+        </div>
+      </div>
+    </section>
+
   </div>
-
-  <!-- 3 — THE 34 -->
-  <section id="included" class="scroll-mt-28 border-b border-line">
-    <div class="mx-auto max-w-shell px-6 py-14 md:px-10 md:py-20">
-      <div class="flex flex-wrap items-baseline gap-x-4 gap-y-1">
-        <h2 class="h-section text-xl">Ingår i varje webbplats</h2>
-        <span class="ml-auto text-[0.8125rem] text-ink-soft">utan extra kostnad</span>
-      </div>
-      <p class="mt-4 max-w-prose text-[0.9375rem] leading-relaxed text-ink-mid">
-        Anpassad bygger valfria tjugo av dem. Hela webbplatsen och Komplettpaketet bygger alla trettiofyra.
-      </p>
-      <div class="mt-8 grid grid-cols-1 gap-x-10 gap-y-9 sm:grid-cols-2 xl:grid-cols-4">
-
-        <div>
-          <p class="eyebrow border-b border-line-firm pb-3 text-ink-soft">Sidor och avsnitt</p>
-          <ul class="mt-4 grid grid-cols-1 gap-y-2.5">
-            <li class="inc-row">Om oss-sektion</li>
-            <li class="inc-row">FAQ-sektion</li>
-            <li class="inc-row">Prislista</li>
-            <li class="inc-row">Erbjudande-sektion</li>
-            <li class="inc-row">Kampanjsektion</li>
-            <li class="inc-row">Portfoliossektion</li>
-            <li class="inc-row">Projektvisning</li>
-            <li class="inc-row">Team/personalsektion</li>
-            <li class="inc-row">Före &amp; efter-sektion</li>
-            <li class="inc-row">Tjänsteområde-sektion</li>
-            <li class="inc-row">Prisjämförelse</li>
-            <li class="inc-row">Paketsektion</li>
-            <li class="inc-row">Evenemangssektion</li>
-            <li class="inc-row">Meddelandesektion</li>
-            <li class="inc-row">Egen landningssida</li>
-            <li class="inc-row">Egen 404-sida</li>
-          </ul>
-        </div>
-
-        <div>
-          <p class="eyebrow border-b border-line-firm pb-3 text-ink-soft">Kataloger och dokument</p>
-          <ul class="mt-4 grid grid-cols-1 gap-y-2.5">
-            <li class="inc-row">Produktkatalog</li>
-            <li class="inc-row">Online-meny</li>
-            <li class="inc-row">PDF-menysintegration</li>
-            <li class="inc-row">PDF-katalogintegration</li>
-            <li class="inc-row">Nedladdningsbara dokument</li>
-            <li class="inc-row">Integration av kundomdömen</li>
-          </ul>
-        </div>
-
-        <div>
-          <p class="eyebrow border-b border-line-firm pb-3 text-ink-soft">Navigering och interaktion</p>
-          <ul class="mt-4 grid grid-cols-1 gap-y-2.5">
-            <li class="inc-row">Fast navigering</li>
-            <li class="inc-row">Fasta mobilknappar</li>
-            <li class="inc-row">Till-toppen-knapp</li>
-            <li class="inc-row">Bild-lightbox</li>
-            <li class="inc-row">FAQ-dragspel</li>
-            <li class="inc-row">Interaktiva gallerier</li>
-          </ul>
-        </div>
-
-        <div>
-          <p class="eyebrow border-b border-line-firm pb-3 text-ink-soft">Media och grunderna</p>
-          <ul class="mt-4 grid grid-cols-1 gap-y-2.5">
-            <li class="inc-row">Videosektion</li>
-            <li class="inc-row">YouTube-integration</li>
-            <li class="inc-row">Affärsformulär / förfrågningsformulär</li>
-            <li class="inc-row">Förhandsvisning vid delning</li>
-            <li class="inc-row">Eget favicon</li>
-            <li class="inc-row">Mobiloptimering</li>
-          </ul>
-        </div>
-                </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- 4 — THE ADD-ONS -->
-  <section class="border-b border-line bg-surface">
-    <div class="mx-auto max-w-shell px-6 py-14 md:px-10 md:py-20">
-      <div class="flex flex-wrap items-baseline gap-x-4 gap-y-1">
-        <h2 class="h-section text-xl">Valfria tillägg</h2>
-        <span class="ml-auto text-[0.8125rem] text-ink-soft">sextiofem engångsjobb</span>
-      </div>
-
-      <div class="mt-10 grid grid-cols-1 gap-y-11 lg:max-w-3xl" data-picker>
-
-        <div id="website" class="scroll-mt-32" data-ex-group="website">
-          <div class="flex flex-wrap items-baseline gap-x-4 border-b border-line-firm pb-3">
-            <p class="eyebrow text-ink-soft">Webbplatsfunktioner</p>
-            <span class="ml-auto text-[0.75rem] text-ink-soft">betalas en gång</span>
-          </div>
-            <div class="xrow">
-              <p class="xrow-name">Onlinebokningssystem</p>
-              <p class="xrow-what">Kunder väljer en tid på din webbplats och bokningen kommer till dig för bekräftelse.</p>
-              <p class="xrow-price"><span class="cur" data-eur="60">€60</span></p>
-            </div>
-            <div class="xrow">
-              <p class="xrow-name">Bokningskalender</p>
-              <p class="xrow-what">En kalender över det som är bokat, så att samma timme aldrig säljs två gånger.</p>
-              <p class="xrow-price"><span class="cur" data-eur="50">€50</span></p>
-            </div>
-            <div class="xrow">
-              <p class="xrow-name">Integration av Google-omdömen</p>
-              <p class="xrow-what">Dina Google-omdömen på sidan, som uppdaterar sig själva.</p>
-              <p class="xrow-price"><span class="cur" data-eur="20">€20</span></p>
-            </div>
-            <div class="xrow">
-              <p class="xrow-name">Nyhetsbrevsanmälan</p>
-              <p class="xrow-what">En e-postruta på sidan, med listan sparad där du kan använda den.</p>
-              <p class="xrow-price"><span class="cur" data-eur="20">€20</span></p>
-            </div>
-            <div class="xrow">
-              <p class="xrow-name">Mejlknapp</p>
-              <p class="xrow-what">En tryckning öppnar deras e-postapp med din adress redan ifylld.</p>
-              <p class="xrow-price"><span class="cur" data-eur="5">€5</span></p>
-            </div>
-            <div class="xrow">
-              <p class="xrow-name">Jobbansökningsformulär</p>
-              <p class="xrow-what">Folk söker med sina uppgifter och sitt cv, och det landar i din inkorg.</p>
-              <p class="xrow-price"><span class="cur" data-eur="25">€25</span></p>
-            </div>
-            <div class="xrow">
-              <p class="xrow-name">Karriärsektion</p>
-              <p class="xrow-what">En sida för de tjänster ni söker folk till.</p>
-              <p class="xrow-price"><span class="cur" data-eur="15">€15</span></p>
-            </div>
-            <div class="xrow">
-              <p class="xrow-name">Webbplats med flera språk</p>
-              <p class="xrow-what">Hela webbplatsen på ett andra språk, som byts i hörnet.</p>
-              <p class="xrow-price">från <span class="cur" data-eur="50">€50</span></p>
-            </div>
-            <div class="xrow">
-              <p class="xrow-name">Flera platser</p>
-              <p class="xrow-what">En sida för varje ställe, med egen adress, öppettider och karta.</p>
-              <p class="xrow-price"><span class="cur" data-eur="30">€30</span></p>
-            </div>
-            <div class="xrow">
-              <p class="xrow-name">Platsväljare</p>
-              <p class="xrow-what">En växlare som skickar besökare till närmaste ställe.</p>
-              <p class="xrow-price"><span class="cur" data-eur="25">€25</span></p>
-            </div>
-            <div class="xrow">
-              <p class="xrow-name">Butikssökare</p>
-              <p class="xrow-what">En karta över varje plats och hur man tar sig dit.</p>
-              <p class="xrow-price"><span class="cur" data-eur="50">€50</span></p>
-            </div>
-            <div class="xrow">
-              <p class="xrow-name">Medlemssektion</p>
-              <p class="xrow-what">En del av webbplatsen som bara era medlemmar kan öppna.</p>
-              <p class="xrow-price"><span class="cur" data-eur="40">€40</span></p>
-            </div>
-            <div class="xrow">
-              <p class="xrow-name">Presentkortssektion</p>
-              <p class="xrow-what">Presentkort som folk kan köpa eller be om från sidan.</p>
-              <p class="xrow-price"><span class="cur" data-eur="30">€30</span></p>
-            </div>
-            <div class="xrow">
-              <p class="xrow-name">Lojalitetsprogram</p>
-              <p class="xrow-what">Poäng eller stämplar för kunder som kommer tillbaka, skött från webbplatsen.</p>
-              <p class="xrow-price">från <span class="cur" data-eur="60">€60</span></p>
-            </div>
-            <div class="xrow">
-              <p class="xrow-name">Evenemangsregistrering</p>
-              <p class="xrow-what">Folk anmäler sig till ett evenemang och du får listan.</p>
-              <p class="xrow-price"><span class="cur" data-eur="40">€40</span></p>
-            </div>
-            <div class="xrow">
-              <p class="xrow-name">Bloggsektion</p>
-              <p class="xrow-what">Inlägg du lägger till själv, med datum och bilder.</p>
-              <p class="xrow-price"><span class="cur" data-eur="30">€30</span></p>
-            </div>
-            <div class="xrow">
-              <p class="xrow-name">Nyhetssektion</p>
-              <p class="xrow-what">Korta meddelanden på ett ställe, de senaste först.</p>
-              <p class="xrow-price"><span class="cur" data-eur="20">€20</span></p>
-            </div>
-            <div class="xrow">
-              <p class="xrow-name">Webbplatssökning</p>
-              <p class="xrow-what">En sökruta som letar inne på dina egna sidor.</p>
-              <p class="xrow-price"><span class="cur" data-eur="30">€30</span></p>
-            </div>
-        </div>
-
-        <div id="technical" class="scroll-mt-32" data-ex-group="technical">
-          <div class="flex flex-wrap items-baseline gap-x-4 border-b border-line-firm pb-3">
-            <p class="eyebrow text-ink-soft">Företag och teknik</p>
-            <span class="ml-auto text-[0.75rem] text-ink-soft">betalas en gång</span>
-          </div>
-            <div class="xrow">
-              <p class="xrow-name">Grundläggande SEO-installation</p>
-              <p class="xrow-what">Titlar, beskrivningar och rubriker skrivna så som sökmotorer läser dem.</p>
-              <p class="xrow-price"><span class="cur" data-eur="30">€30</span></p>
-            </div>
-            <div class="xrow">
-              <p class="xrow-name">Indexering i Google Sök</p>
-              <p class="xrow-what">Dina sidor inskickade till Google så att de kan dyka upp i sökningen.</p>
-              <p class="xrow-price"><span class="cur" data-eur="15">€15</span></p>
-            </div>
-            <div class="xrow">
-              <p class="xrow-name">Installation av Google Företagsprofil</p>
-              <p class="xrow-what">Din Google-post skapad, verifierad och ordentligt ifylld.</p>
-              <p class="xrow-price"><span class="cur" data-eur="40">€40</span></p>
-            </div>
-            <div class="xrow">
-              <p class="xrow-name">Optimering av Google Företagsprofil</p>
-              <p class="xrow-what">Foton, kategorier, tider och inlägg justerade så att posten rankar.</p>
-              <p class="xrow-price"><span class="cur" data-eur="50">€50</span></p>
-            </div>
-            <div class="xrow">
-              <p class="xrow-name">Google Analytics-installation</p>
-              <p class="xrow-what">Besökssiffror du faktiskt kan läsa, installerade och inställda.</p>
-              <p class="xrow-price"><span class="cur" data-eur="25">€25</span></p>
-            </div>
-            <div class="xrow">
-              <p class="xrow-name">Google Search Console-installation</p>
-              <p class="xrow-what">Verktyget som visar vad folk sökte på innan de hittade dig.</p>
-              <p class="xrow-price"><span class="cur" data-eur="25">€25</span></p>
-            </div>
-            <div class="xrow">
-              <p class="xrow-name">Konverteringsmätning</p>
-              <p class="xrow-what">Samtal, formulär och bokningar räknade, så du vet vad som fungerar.</p>
-              <p class="xrow-price"><span class="cur" data-eur="40">€40</span></p>
-            </div>
-            <div class="xrow">
-              <p class="xrow-name">Besökarspårning på webbplatsen</p>
-              <p class="xrow-what">Vilka sidor folk läser, och var de ger upp.</p>
-              <p class="xrow-price"><span class="cur" data-eur="25">€25</span></p>
-            </div>
-            <div class="xrow">
-              <p class="xrow-name">Professionell företagsmejl-uppsättning</p>
-              <p class="xrow-what">du@dittforetag.se, som fungerar i telefonen och på datorn.</p>
-              <p class="xrow-price"><span class="cur" data-eur="25">€25</span></p>
-            </div>
-            <div class="xrow">
-              <p class="xrow-name">Installation av mejlsignatur</p>
-              <p class="xrow-what">Din logotyp och dina uppgifter längst ned i varje mejl du skickar.</p>
-              <p class="xrow-price"><span class="cur" data-eur="15">€15</span></p>
-            </div>
-            <div class="xrow">
-              <p class="xrow-name">Domänregistrering <span class="pick-note">+ domänen</span></p>
-              <p class="xrow-what">Vi köper adressen, i ditt namn.</p>
-              <p class="xrow-price"><span class="cur" data-eur="10">€10</span></p>
-            </div>
-            <div class="xrow">
-              <p class="xrow-name">Domänkoppling</p>
-              <p class="xrow-what">En domän du redan äger, riktad mot den nya webbplatsen.</p>
-              <p class="xrow-price"><span class="cur" data-eur="10">€10</span></p>
-            </div>
-            <div class="xrow">
-              <p class="xrow-name">SSL/HTTPS-uppsättning</p>
-              <p class="xrow-what">Hänglåset i adressfältet, som förnyar sig självt.</p>
-              <p class="xrow-price"><span class="cur" data-eur="10">€10</span></p>
-            </div>
-            <div class="xrow">
-              <p class="xrow-name">Flytt av webbplats</p>
-              <p class="xrow-what">En befintlig webbplats flyttad utan att tappa det den hade.</p>
-              <p class="xrow-price">från <span class="cur" data-eur="50">€50</span></p>
-            </div>
-            <div class="xrow">
-              <p class="xrow-name">Hastighetsoptimering av webbplatsen</p>
-              <p class="xrow-what">Webbplatsen gjord för att öppnas snabbt i mobilen på mobildata.</p>
-              <p class="xrow-price"><span class="cur" data-eur="50">€50</span></p>
-            </div>
-            <div class="xrow">
-              <p class="xrow-name">Bildkomprimering</p>
-              <p class="xrow-what">Foton nedbantade nog för att ladda snabbt och ändå se bra ut.</p>
-              <p class="xrow-price"><span class="cur" data-eur="15">€15</span></p>
-            </div>
-            <div class="xrow">
-              <p class="xrow-name">Tillgänglighetsförbättringar</p>
-              <p class="xrow-what">Kontrast, etiketter och tangentbord, så att ingen stängs ute.</p>
-              <p class="xrow-price"><span class="cur" data-eur="40">€40</span></p>
-            </div>
-            <div class="xrow">
-              <p class="xrow-name">Cookie-samtyckesbanner</p>
-              <p class="xrow-what">Samtyckesrutan som lagen kräver, och som gör det den påstår.</p>
-              <p class="xrow-price"><span class="cur" data-eur="20">€20</span></p>
-            </div>
-            <div class="xrow">
-              <p class="xrow-name">Sida med integritetspolicy</p>
-              <p class="xrow-what">En integritetspolicy skriven för vad din webbplats faktiskt gör.</p>
-              <p class="xrow-price"><span class="cur" data-eur="20">€20</span></p>
-            </div>
-            <div class="xrow">
-              <p class="xrow-name">Sida med villkor</p>
-              <p class="xrow-what">Era villkor, på begripligt språk, på en egen sida.</p>
-              <p class="xrow-price"><span class="cur" data-eur="20">€20</span></p>
-            </div>
-            <div class="xrow">
-              <p class="xrow-name">Egna juridiska sidor</p>
-              <p class="xrow-what">Varje annan policy som din bransch, ditt försäkringsbolag eller din bank kräver.</p>
-              <p class="xrow-price">från <span class="cur" data-eur="30">€30</span></p>
-            </div>
-            <div class="xrow">
-              <p class="xrow-name">Säkerhetskopieringssystem för webbplatsen</p>
-              <p class="xrow-what">Kopior som tas av sig själva, så att en dålig dag kostar en timme.</p>
-              <p class="xrow-price"><span class="cur" data-eur="30">€30</span></p>
-            </div>
-            <div class="xrow">
-              <p class="xrow-name">Säkerhetskonfiguration</p>
-              <p class="xrow-what">Headers och behörigheter som håller webbplatsen er.</p>
-              <p class="xrow-price"><span class="cur" data-eur="40">€40</span></p>
-            </div>
-            <div class="xrow">
-              <p class="xrow-name">Spamskydd</p>
-              <p class="xrow-what">Skräpet stoppas innan det når dig.</p>
-              <p class="xrow-price"><span class="cur" data-eur="20">€20</span></p>
-            </div>
-            <div class="xrow">
-              <p class="xrow-name">Spamskydd för kontaktformulär</p>
-              <p class="xrow-what">Bottar hålls borta från formuläret, utan pussel för människor.</p>
-              <p class="xrow-price"><span class="cur" data-eur="15">€15</span></p>
-            </div>
-            <div class="xrow">
-              <p class="xrow-name">Kontroll av trasiga länkar</p>
-              <p class="xrow-what">Varje länk testad, och de döda lagade.</p>
-              <p class="xrow-price"><span class="cur" data-eur="15">€15</span></p>
-            </div>
-        </div>
-
-        <div id="automation" class="scroll-mt-32" data-ex-group="automation">
-          <div class="flex flex-wrap items-baseline gap-x-4 border-b border-line-firm pb-3">
-            <p class="eyebrow text-ink-soft">Automatisering</p>
-            <span class="ml-auto text-[0.75rem] text-ink-soft">betalas en gång</span>
-          </div>
-            <div class="xrow">
-              <p class="xrow-name">Automatiska mejlnotiser</p>
-              <p class="xrow-what">Webbplatsen mejlar dig i samma stund som något händer.</p>
-              <p class="xrow-price"><span class="cur" data-eur="25">€25</span></p>
-            </div>
-            <div class="xrow">
-              <p class="xrow-name">Bekräftelsemejl för bokningar</p>
-              <p class="xrow-what">Kunden får sin bekräftelse utan att du skriver den.</p>
-              <p class="xrow-price"><span class="cur" data-eur="35">€35</span></p>
-            </div>
-            <div class="xrow">
-              <p class="xrow-name">Mejlnotiser från kontaktformulär</p>
-              <p class="xrow-what">Varje meddelande vidarebefordrat till adressen du vill ha det på.</p>
-              <p class="xrow-price"><span class="cur" data-eur="15">€15</span></p>
-            </div>
-            <div class="xrow">
-              <p class="xrow-name">Notiser om offertförfrågningar</p>
-              <p class="xrow-what">Offertförfrågningar kommer märkta som just det, inte begravda bland resten.</p>
-              <p class="xrow-price"><span class="cur" data-eur="20">€20</span></p>
-            </div>
-            <div class="xrow">
-              <p class="xrow-name">Automatiserade kundsvar</p>
-              <p class="xrow-what">Ett direktsvar som säger att det kommit fram och när du svarar.</p>
-              <p class="xrow-price"><span class="cur" data-eur="40">€40</span></p>
-            </div>
-            <div class="xrow">
-              <p class="xrow-name">Påminnelsemejl för bokningar</p>
-              <p class="xrow-what">En påminnelse före tiden, så att färre glömmer bort den.</p>
-              <p class="xrow-price"><span class="cur" data-eur="50">€50</span></p>
-            </div>
-            <div class="xrow">
-              <p class="xrow-name">Installation av mejl-autosvar</p>
-              <p class="xrow-what">Utanför öppettiderna, bortrest eller bara upptagen — det svarar åt dig.</p>
-              <p class="xrow-price"><span class="cur" data-eur="35">€35</span></p>
-            </div>
-            <div class="xrow">
-              <p class="xrow-name">Notifikationssystem för leads</p>
-              <p class="xrow-what">Nya förfrågningar går till dig och till alla andra som behöver dem.</p>
-              <p class="xrow-price"><span class="cur" data-eur="40">€40</span></p>
-            </div>
-            <div class="xrow">
-              <p class="xrow-name">Uppföljning av kundförfrågningar</p>
-              <p class="xrow-what">En förteckning över vem som frågade vad, och om någon svarade.</p>
-              <p class="xrow-price"><span class="cur" data-eur="40">€40</span></p>
-            </div>
-            <div class="xrow">
-              <p class="xrow-name">Enkel CRM-integration</p>
-              <p class="xrow-what">Förfrågningar hamnar direkt i systemet du redan använder.</p>
-              <p class="xrow-price">från <span class="cur" data-eur="75">€75</span></p>
-            </div>
-        </div>
-
-        <div id="brand" class="scroll-mt-32" data-ex-group="brand">
-          <div class="flex flex-wrap items-baseline gap-x-4 border-b border-line-firm pb-3">
-            <p class="eyebrow text-ink-soft">Varumärke och design</p>
-            <span class="ml-auto text-[0.75rem] text-ink-soft">betalas en gång</span>
-          </div>
-            <div class="xrow">
-              <p class="xrow-name">Logotypdesign</p>
-              <p class="xrow-what">En logotyp ritad för ditt företag, i varje filformat du kommer att behöva.</p>
-              <p class="xrow-price"><span class="cur" data-eur="49.99">€49.99</span></p>
-            </div>
-            <div class="xrow">
-              <p class="xrow-name">Varumärkeskit</p>
-              <p class="xrow-what">Logotyp, färger, typsnitt och reglerna för att använda dem.</p>
-              <p class="xrow-price"><span class="cur" data-eur="79.99">€79.99</span></p>
-            </div>
-            <div class="xrow">
-              <p class="xrow-name">Design av visitkort</p>
-              <p class="xrow-what">Kort formgivna och klara för tryckeriet.</p>
-              <p class="xrow-price"><span class="cur" data-eur="29.99">€29.99</span></p>
-            </div>
-            <div class="xrow">
-              <p class="xrow-name">Design av flygblad /affischer</p>
-              <p class="xrow-what">En flyer eller affisch, formgiven för tryck och för nätet.</p>
-              <p class="xrow-price"><span class="cur" data-eur="39.99">€39.99</span></p>
-            </div>
-            <div class="xrow">
-              <p class="xrow-name">Menydesign</p>
-              <p class="xrow-what">Din meny satt ordentligt, för väggen, bordet eller webbplatsen.</p>
-              <p class="xrow-price"><span class="cur" data-eur="39.99">€39.99</span></p>
-            </div>
-            <div class="xrow">
-              <p class="xrow-name">Startpaket för sociala medier</p>
-              <p class="xrow-what">Profilbilder, omslag och inläggsmallar som matchar webbplatsen.</p>
-              <p class="xrow-price"><span class="cur" data-eur="59.99">€59.99</span></p>
-            </div>
-            <div class="xrow">
-              <p class="xrow-name">Reklamfilm / Kort annons</p>
-              <p class="xrow-what">En kort film för sociala medier eller toppen av din sida.</p>
-              <p class="xrow-price">från <span class="cur" data-eur="49.99">€49.99</span></p>
-            </div>
-            <div class="xrow">
-              <p class="xrow-name">AI-företagsbilder</p>
-              <p class="xrow-what">Bilder gjorda för ditt företag där du saknar fotografier.</p>
-              <p class="xrow-price">från <span class="cur" data-eur="30">€30</span></p>
-            </div>
-            <div class="xrow">
-              <p class="xrow-name">QR-kort för Google-omdöme</p>
-              <p class="xrow-what">Ett kort som kunder skannar och hamnar direkt på din omdömessida.</p>
-              <p class="xrow-price"><span class="cur" data-eur="19.99">€19.99</span></p>
-            </div>
-            <div class="xrow">
-              <p class="xrow-name">WhatsApp Business-uppsättning</p>
-              <p class="xrow-what">WhatsApp Business uppsatt, med knappen på din webbplats.</p>
-              <p class="xrow-price"><span class="cur" data-eur="39.99">€39.99</span></p>
-            </div>
-            <div class="xrow">
-              <p class="xrow-name">Mallar för affärsdokument</p>
-              <p class="xrow-what">Fakturor, offerter och brev, i ert eget uttryck.</p>
-              <p class="xrow-price"><span class="cur" data-eur="29.99">€29.99</span></p>
-            </div>
-            <div class="pick pick--soon">
-              <span class="pick-name text-ink-mid">AI-receptionist</span>
-              <span class="pick-price"><span class="tag tag-soon">Kommer snart</span></span>
-            </div>
-            <div class="pick pick--soon">
-              <span class="pick-name text-ink-mid">Innehåll för sociala medier</span>
-              <span class="pick-price"><span class="tag tag-soon">Kommer snart</span></span>
-            </div>
-        </div>
-
-
-            <!-- The running total. Nothing here navigates and nothing
-                 reloads: ticking a box only adds a number. -->
-        </div>
-
-      </div>
-
-      <div class="mt-14 grid grid-cols-1 gap-8 border-t border-line pt-8 lg:grid-cols-12 lg:gap-14">
-        <div class="lg:col-span-7">
-          <p class="text-sm font-semibold text-ink">Hur tillägg betalas</p>
-          <p class="mt-3 max-w-prose text-[0.875rem] leading-relaxed text-ink-mid">
-            Tilläggen läggs till din engångssumma och betalas en gång, när din webbplats är redo att gå live.
-          </p>
-          <p class="mt-2.5 max-w-prose text-[0.8125rem] leading-relaxed text-ink-soft">
-            <span class="arrow">&rarr;</span> Tillägg som inte hänger på bygget av din webbplats — QR-kortet, uppsättning av e-post och WhatsApp, dokumentmallar — levereras i sin egen takt i stället för att vänta på bygget på 5–7 dagar, och betalas när just den delen levereras.
-          </p>
-          <p class="mt-2 max-w-prose text-[0.8125rem] leading-relaxed text-ink-soft">
-            <span class="arrow">&rarr;</span> Där ett pris börjar "från" bekräftar vi slutbeloppet skriftligen med dig innan något debiteras.
-          </p>
-        </div>
-        <div class="lg:col-span-4 lg:col-start-9">
-          <a href="/build" class="inline-flex items-center justify-center rounded-md bg-accent px-6 py-3.5 text-sm font-semibold text-white hover:bg-accent-hi">Bygg ditt paket</a>
-        </div>
-      </div>
-    </div>
-  </section>
 </main>
 
 <div data-site-footer>
-  <!-- Replaced by footer.js. Present in the served HTML so the legal
-       links survive without JavaScript, for crawlers and for payment
-       provider domain review. -->
   <nav class="mx-auto flex max-w-shell flex-wrap items-center gap-x-5 gap-y-2 px-6 py-8 text-[0.8125rem] text-ink-soft md:px-10" aria-label="Juridik">
     <a class="hover:text-ink" href="/en/terms">Användarvillkor</a>
     <a class="hover:text-ink" href="/en/privacy">Integritetspolicy</a>
@@ -631,10 +649,7 @@
 
 <script src="/assets/footer.js?v=7"></script>
 <script src="/assets/cookies.js?v=2"></script>
-<script src="/assets/mobile.js?v=5"></script>
 <script src="/assets/theme.js?v=3"></script>
-<script src="/assets/gutters.js?v=2" defer></script>
-<script src="/assets/scramble.js?v=4" defer></script>
 <script src="/assets/i18n.js?v=4"></script>
 <script src="/assets/demo.js?v=5"></script>
 </body>

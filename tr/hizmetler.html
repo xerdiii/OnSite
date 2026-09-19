@@ -59,17 +59,14 @@
 <link rel="dns-prefetch" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400&family=Instrument+Serif&family=Inter:wght@400;500;600;700&family=Outfit:wght@200..800&display=swap">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400&family=Instrument+Serif&family=Inter:wght@400;500;600;700&family=Outfit:wght@200..800&display=swap" media="print" onload="this.media='all'">
-<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400&family=Instrument+Serif&family=Inter:wght@400;500;600;700&family=Outfit:wght@200..800&display=swap"></noscript>
-<script>/* Theme before paint. Dark is the site, light is a choice you make — the attribute is always stamped so the system setting never decides for you. */(function(){var t='dark';try{t=localStorage.getItem('sitehouse.theme')==='light'?'light':'dark';}catch(e){}document.documentElement.setAttribute('data-theme',t);})();</script>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"></noscript>
+<script>/* Theme before paint. */(function(){var t='dark';try{t=localStorage.getItem('sitehouse.theme')==='light'?'light':'dark';}catch(e){}document.documentElement.setAttribute('data-theme',t);})();</script>
 <link rel="stylesheet" href="/assets/xovah.css?v=3">
-<link rel="stylesheet" href="/assets/extras.css?v=6">
-<link rel="stylesheet" href="/assets/mobile.css?v=7">
 <link rel="stylesheet" href="/assets/tailwind.css?v=2">
 <link rel="stylesheet" href="/assets/theme.css?v=6">
-<link rel="stylesheet" href="/assets/gutters.css?v=2">
-<link rel="stylesheet" href="/assets/edge.css?v=4">
+<link rel="stylesheet" href="/assets/catalogue.css?v=2">
 <script>window.XovahRoutes={"lang":"tr","routes":{"home":{"en":"/en","sq":"/sq","de":"/de","fr":"/fr","it":"/it","es":"/es","pt":"/pt","nl":"/nl","sv":"/sv","tr":"/tr"},"pricing":{"en":"/en/pricing","sq":"/sq/cmimet","de":"/de/preise","fr":"/fr/tarifs","it":"/it/prezzi","es":"/es/precios","pt":"/pt/precos","nl":"/nl/prijzen","sv":"/sv/priser","tr":"/tr/fiyatlar"},"services":{"en":"/en/services","sq":"/sq/sherbimet","de":"/de/leistungen","fr":"/fr/services","it":"/it/servizi","es":"/es/servicios","pt":"/pt/servicos","nl":"/nl/diensten","sv":"/sv/tjanster","tr":"/tr/hizmetler"},"features":{"en":"/en/features","sq":"/sq/vecorite","de":"/de/funktionen","fr":"/fr/fonctionnalites","it":"/it/funzionalita","es":"/es/funciones","pt":"/pt/funcionalidades","nl":"/nl/functies","sv":"/sv/funktioner","tr":"/tr/ozellikler"},"contact":{"en":"/en/contact","sq":"/sq/kontakt","de":"/de/kontakt","fr":"/fr/contact","it":"/it/contatti","es":"/es/contacto","pt":"/pt/contacto","nl":"/nl/contact","sv":"/sv/kontakt","tr":"/tr/iletisim"},"faq":{"en":"/en/faq","sq":"/sq/pyetje-te-shpeshta","de":"/de/haeufige-fragen","fr":"/fr/questions-frequentes","it":"/it/domande-frequenti","es":"/es/preguntas-frecuentes","pt":"/pt/perguntas-frequentes","nl":"/nl/veelgestelde-vragen","sv":"/sv/vanliga-fragor","tr":"/tr/sikca-sorulan-sorular"},"terms":{"en":"/en/terms"},"privacy":{"en":"/en/privacy"},"refunds":{"en":"/en/refunds"},"cookies":{"en":"/en/cookies"}},"app":["404","build"],"names":{"home":"index","pricing":"pricing","services":"extras","features":"features","contact":"contact","faq":"faq","terms":"terms","privacy":"privacy","refunds":"refunds","cookies":"cookies"}};</script>
 </head>
 
@@ -82,544 +79,565 @@
       <span class="brand-mark" role="img" aria-label="Xovah"></span>
       <span class="h-section text-lg tracking-tight">Xovah</span>
     </a>
-
     <div class="flex items-center gap-5 md:gap-7">
       <a href="/tr/fiyatlar" class="text-sm font-medium text-ink-mid hover:text-ink">Fiyatlar</a>
-      <a href="/tr/hizmetler" class="hidden text-sm font-medium text-ink-mid hover:text-ink md:inline">Ekstralar</a>
+      <a href="/tr/hizmetler" class="hidden text-sm font-medium text-ink-mid hover:text-ink md:inline" aria-current="page">Ekstralar</a>
       <a href="/tr/sikca-sorulan-sorular" class="hidden text-sm font-medium text-ink-mid hover:text-ink md:inline">SSS</a>
       <a href="/build" class="rounded-md bg-accent px-4 py-2.5 text-sm font-semibold text-white hover:bg-accent-hi">Proje başlat</a>
     </div>
-  
   </nav>
 </header>
 
 <main id="main">
 
-  <!-- 1 — HERO -->
-  <section class="border-b border-line">
-    <div class="mx-auto max-w-shell px-6 pb-12 pt-12 md:px-10 md:pb-14 md:pt-16">
-      <p class="eyebrow text-accent">Web sitesi hizmetleri</p>
-      <h1 class="h-section sec-title mt-4 max-w-2xl">Sitenizin çevresindeki her şey, tek tek fiyatlandırıldı.</h1>
-      <p class="mt-5 max-w-prose text-[0.9375rem] leading-relaxed text-ink-mid">
-        Rezervasyon, SEO, analitik, otomasyon, bir logo, kendi alan adınızda e-posta. Altmış beş tek seferlik iş; her birinin fiyatı ve ne yaptığını anlatan bir satırı var. Hazır olduğunuzda kurucuda seçersiniz.
-      </p>
-      <ol class="ex-how mt-8" data-reveal-group>
-        <li>
-          <span class="ex-how-n">01</span>
-          <p class="ex-how-h">Zaten dahil</p>
-          <p class="ex-how-p">Yaptığımız her sitede otuz dört özellik hazır gelir. Hiçbiri ek ücrete tabi değildir.</p>
-        </li>
-        <li>
-          <span class="ex-how-n">02</span>
-          <p class="ex-how-h">İsteğe bağlı ekstralar</p>
-          <p class="ex-how-p">Altmış beş iş daha; her birinin kendi tek seferlik fiyatı var. Yalnızca gerekenleri alın.</p>
-        </li>
-        <li>
-          <span class="ex-how-n">03</span>
-          <p class="ex-how-h">Kurun ve gönderin</p>
-          <p class="ex-how-p">Kurucu, paketinizle bunları bir araya getirir, toplamı hesaplar ve bize gönderir.</p>
-        </li>
-      </ol>
+  <!-- ══ Hero ══════════════════════════════════════════════════ -->
+  <section class="xc-shell xc-hero">
+    <p class="xc-eyebrow">Ekstralar, açıklandı</p>
+    <h1>Her ekstranın gerçekte ne yaptığı.</h1>
+    <p class="xc-lede">
+      Bu sayfa açıklar, satmaz. Sunduğumuz her ekstra aşağıda, işletmeniz için ne yaptığını ve ne kadara mal olduğunu söyleyen bir cümleyle birlikte. Hangilerini istediğinizi bildiğinizde, seçim yapılandırıcıda yapılır.
+    </p>
 
-      <div class="mt-8 flex flex-wrap items-center gap-x-5 gap-y-3">
-        <a href="/build" class="btn btn-primary">Paketinizi oluşturun</a>
-        <a href="#website" class="btn btn-ghost">Listeyi okuyun</a>
-        <span class="text-sm text-ink-soft">Başlangıç <span class="cur" data-eur="5">€5</span>, tek seferlik ödenir. Bu sayfada hiçbir tahsilat yapılmaz.</span>
-      </div>
+    <div class="xc-figs">
+      <div class="xc-fig"><b>34</b><span>her sitede bulunan özellik, ek ücret olmadan</span></div>
+      <div class="xc-fig"><b>65</b><span>isteğe bağlı ekstra, her biri kendi fiyatıyla</span></div>
+      <div class="xc-fig"><b><span class="cur" data-eur="5">&euro;5</span></b><span>en ucuzu, bir kez ödenir</span></div>
+      <div class="xc-fig"><b>0</b><span>abonelik, bu sitenin hiçbir yerinde</span></div>
+    </div>
+
+    <div class="xc-cta-row">
+      <a href="/build" class="xc-cta">Yapılandırıcıya git</a>
+      <span class="xc-cta-note">Bu sayfada hiçbir şey satın alınamaz ve burada hiçbir ücret alınmaz.</span>
     </div>
   </section>
 
-  <!-- 2 — THE STICKY BAR
-       Sits under the header, carries the jump links and the running
-       total. It is the only part of this page that follows you. -->
-  <div class="ex-bar" data-ex-bar>
-    <div class="mx-auto flex max-w-shell items-center gap-4 px-6 md:px-10">
-      <nav class="ex-bar-nav" aria-label="Bölümler">
-        <a href="#included">Dahil</a>
-        <a href="#website">Web sitesi</a>
-        <a href="#technical">Kurumsal</a>
-        <a href="#automation">Otomasyon</a>
-        <a href="#brand">Marka</a>
-      </nav>    </div>
+  <!-- ══ Section nav ═══════════════════════════════════════════ -->
+  <nav class="xc-nav" aria-label="Bölümler">
+    <div class="xc-nav-in">
+      <a href="#included">Zaten dahil</a>
+      <a href="#website">Site özellikleri</a>
+      <a href="#technical">İşletme ve teknik</a>
+      <a href="#automation">Otomasyon</a>
+      <a href="#brand">Marka ve tasarım</a>
+    </div>
+  </nav>
+
+  <div class="xc-shell">
+
+    <!-- ══ The 34 that cost nothing ════════════════════════════ -->
+    <section class="xc-band" id="included" style="scroll-margin-top:8rem">
+      <div class="xc-band-hd">
+        <span class="xc-free-flag">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>
+          Ek ücret yok
+        </span>
+        <h2>Asla fazladan ödemediğiniz otuz dört şey</h2>
+        <p>
+          Bunlar yaptığımız her sitede yerleşiktir. Custom Website bunlardan yirmisini seçer; Full Website ve üstündeki her şey otuz dördünün tamamını alır. Hiçbiri aşağıdaki ekstralar listesinde yer almaz, çünkü hiçbiri ekstra değildir.
+        </p>
+      </div>
+
+      <div class="xc-inc-cols">
+        <div>
+          <p class="xc-inc-h">Sayfalar ve bölümler</p>
+          <ul class="xc-inc-list">
+            <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3.4 8.4l3 3 6.2-6.6"/></svg>Hakkımızda bölümü</li>
+            <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3.4 8.4l3 3 6.2-6.6"/></svg>SSS bölümü</li>
+            <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3.4 8.4l3 3 6.2-6.6"/></svg>Fiyat listesi</li>
+            <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3.4 8.4l3 3 6.2-6.6"/></svg>Özel fırsatlar bölümü</li>
+            <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3.4 8.4l3 3 6.2-6.6"/></svg>Kampanyalar bölümü</li>
+            <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3.4 8.4l3 3 6.2-6.6"/></svg>Portfolyo bölümü</li>
+            <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3.4 8.4l3 3 6.2-6.6"/></svg>Projeler vitrini</li>
+            <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3.4 8.4l3 3 6.2-6.6"/></svg>Ekip / personel bölümü</li>
+            <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3.4 8.4l3 3 6.2-6.6"/></svg>Öncesi ve sonrası bölümü</li>
+            <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3.4 8.4l3 3 6.2-6.6"/></svg>Hizmet bölgesi bölümü</li>
+            <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3.4 8.4l3 3 6.2-6.6"/></svg>Fiyat karşılaştırması</li>
+            <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3.4 8.4l3 3 6.2-6.6"/></svg>Paketler bölümü</li>
+            <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3.4 8.4l3 3 6.2-6.6"/></svg>Etkinlikler bölümü</li>
+            <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3.4 8.4l3 3 6.2-6.6"/></svg>Duyurular bölümü</li>
+            <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3.4 8.4l3 3 6.2-6.6"/></svg>Özel landing page</li>
+            <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3.4 8.4l3 3 6.2-6.6"/></svg>Özel 404 sayfası</li>
+          </ul>
+        </div>
+
+        <div>
+          <p class="xc-inc-h">Kataloglar ve belgeler</p>
+          <ul class="xc-inc-list">
+            <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3.4 8.4l3 3 6.2-6.6"/></svg>Ürün katalogu</li>
+            <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3.4 8.4l3 3 6.2-6.6"/></svg>Çevrimiçi menü</li>
+            <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3.4 8.4l3 3 6.2-6.6"/></svg>PDF menü entegrasyonu</li>
+            <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3.4 8.4l3 3 6.2-6.6"/></svg>PDF katalog entegrasyonu</li>
+            <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3.4 8.4l3 3 6.2-6.6"/></svg>İndirilebilir belgeler</li>
+            <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3.4 8.4l3 3 6.2-6.6"/></svg>Müşteri yorumları entegrasyonu</li>
+          </ul>
+        </div>
+
+        <div>
+          <p class="xc-inc-h">Gezinme ve etkileşim</p>
+          <ul class="xc-inc-list">
+            <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3.4 8.4l3 3 6.2-6.6"/></svg>Yapışkan navigasyon</li>
+            <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3.4 8.4l3 3 6.2-6.6"/></svg>Yapışkan mobil butonlar</li>
+            <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3.4 8.4l3 3 6.2-6.6"/></svg>Başa dön düğmesi</li>
+            <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3.4 8.4l3 3 6.2-6.6"/></svg>Görsel lightbox</li>
+            <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3.4 8.4l3 3 6.2-6.6"/></svg>SSS akordeonu</li>
+            <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3.4 8.4l3 3 6.2-6.6"/></svg>Etkileşimli galeriler</li>
+          </ul>
+        </div>
+
+        <div>
+          <p class="xc-inc-h">Medya ve temeller</p>
+          <ul class="xc-inc-list">
+            <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3.4 8.4l3 3 6.2-6.6"/></svg>Video bölümü</li>
+            <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3.4 8.4l3 3 6.2-6.6"/></svg>YouTube entegrasyonu</li>
+            <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3.4 8.4l3 3 6.2-6.6"/></svg>İşletme talep formu</li>
+            <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3.4 8.4l3 3 6.2-6.6"/></svg>Sosyal paylaşım önizlemesi</li>
+            <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3.4 8.4l3 3 6.2-6.6"/></svg>Özel favicon</li>
+            <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3.4 8.4l3 3 6.2-6.6"/></svg>Mobil optimizasyon</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══ Website features ════════════════════════════════════ -->
+    <section class="xc-cat">
+      <div class="xc-cat-hd" id="website">
+        <span class="xc-cat-icon" aria-hidden="true">
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="8" cy="8" r="6.5"/><path d="M8 1.5C8 1.5 5.5 4 5.5 8s2.5 6.5 2.5 6.5M8 1.5C8 1.5 10.5 4 10.5 8S8 14.5 8 14.5M1.5 8h13"/>
+          </svg>
+        </span>
+        <div>
+          <h2>Site özellikleri</h2>
+          <p>Ziyaretçilerinizin gördüğü ve kullandığı şeyler. Her biri siteye, daha önce yapamadığı bir şeyi kazandırır.</p>
+        </div>
+        <span class="xc-cat-n">18 ekstra</span>
+      </div>
+
+      <div class="xc-list">
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">Çevrimiçi rezervasyon sistemi</h3><p class="xc-item-price"><span class="cur" data-eur="60">&euro;60</span></p></div>
+          <p class="xc-item-what">Müşteriler sizi aramak yerine sitenizden bir saat seçer. Talep onayınız için size gelir; böylece takvim sizde kalır ve telefonu açmayanları kaybetmezsiniz.</p>
+        </article>
+
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">Randevu takvimi</h3><p class="xc-item-price"><span class="cur" data-eur="50">&euro;50</span></p></div>
+          <p class="xc-item-what">Nelerin dolu olduğunu gösteren bir takvim; böylece aynı saat asla iki kez satılmaz. Rezervasyon sistemiyle birlikte çalışır, randevuları telefonla alıyorsanız tek başına da işe yarar.</p>
+        </article>
+
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">Google Değerlendirmeleri entegrasyonu</h3><p class="xc-item-price"><span class="cur" data-eur="20">&euro;20</span></p></div>
+          <p class="xc-item-what">Gerçek Google yorumlarınız sayfada, yenileri geldikçe kendiliğinden güncellenir. Kimsenin kopyalaması gerekmez ve kimse sizi uydurmakla suçlayamaz.</p>
+        </article>
+
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">Bülten kaydı</h3><p class="xc-item-price"><span class="cur" data-eur="20">&euro;20</span></p></div>
+          <p class="xc-item-what">Sayfada bir e-posta kutusu ve listenin sonradan gerçekten kullanabileceğiniz bir yerde tutulması. Bir ziyaretçinin bir dahaki sefere yabancı olmamasının en ucuz yolu.</p>
+        </article>
+
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">E-posta düğmesi</h3><p class="xc-item-price"><span class="cur" data-eur="5">&euro;5</span></p></div>
+          <p class="xc-item-what">Tek dokunuş, adresiniz girilmiş halde posta uygulamasını açar. Küçük, ama birinin adresinizi kopyalayıp sonra nedenini unuttuğu adımı ortadan kaldırır.</p>
+        </article>
+
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">İş başvurusu formu</h3><p class="xc-item-price"><span class="cur" data-eur="25">&euro;25</span></p></div>
+          <p class="xc-item-what">Adaylar bilgilerini ve özgeçmişlerini gönderir; eki her seferinde eksik kalan üç e-posta yerine tek ve derli toplu bir mesaj olarak gelir.</p>
+        </article>
+
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">İş başvurusu bölümü</h3><p class="xc-item-price"><span class="cur" data-eur="15">&euro;15</span></p></div>
+          <p class="xc-item-what">Açık pozisyonlarınız için bir sayfa; her soranda ilanı yeniden yazmak yerine tek bir bağlantı gönderirsiniz.</p>
+        </article>
+
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">Çok dilli web sitesi</h3><p class="xc-item-price"><small>başlangıç fiyatından itibaren</small><span class="cur" data-eur="50">&euro;50</span></p></div>
+          <p class="xc-item-what">Sitenin tamamı ikinci bir dilde, değişim sayfanın köşesinde. Fiyat başlangıçtır, çünkü aktarılacak metnin miktarına bağlıdır.</p>
+        </article>
+
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">Birden fazla konum</h3><p class="xc-item-price"><span class="cur" data-eur="30">&euro;30</span></p></div>
+          <p class="xc-item-what">Her şube için kendi adresi, kendi çalışma saatleri ve kendi haritasıyla ayrı bir sayfa; böylece en yakınını arayan kişi yanlış bilgiyi değil doğrusunu bulur.</p>
+        </article>
+
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">Konum seçici</h3><p class="xc-item-price"><span class="cur" data-eur="25">&euro;25</span></p></div>
+          <p class="xc-item-what">Ziyaretçileri, hangisi olduğunu kendileri bulmak zorunda kalmadan en yakın şubeye götüren bir seçici.</p>
+        </article>
+
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">Mağaza konum bulucu</h3><p class="xc-item-price"><span class="cur" data-eur="50">&euro;50</span></p></div>
+          <p class="xc-item-what">Tüm şubelerin haritası ve her birine gidiş yolu. Bir ziyaretçinin aklında tutabileceğinden fazla şubeniz olduğunda değer kazanır.</p>
+        </article>
+
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">Üyelik bölümü</h3><p class="xc-item-price"><span class="cur" data-eur="40">&euro;40</span></p></div>
+          <p class="xc-item-what">Sitenin yalnızca üyelerinizin açabildiği bir bölümü. Fiyat listeleri, belgeler ya da tüm internete göstermek istemediğiniz her şey için.</p>
+        </article>
+
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">Hediye kartı bölümü</h3><p class="xc-item-price"><span class="cur" data-eur="30">&euro;30</span></p></div>
+          <p class="xc-item-what">İnsanların doğrudan sayfadan satın alabileceği ya da isteyebileceği hediye kartları. Küçük bir işletmenin Noel öncesi internete koyabileceği en kazançlı şeylerden biri, sessiz sedasız.</p>
+        </article>
+
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">Sadakat programı</h3><p class="xc-item-price"><small>başlangıç fiyatından itibaren</small><span class="cur" data-eur="60">&euro;60</span></p></div>
+          <p class="xc-item-what">Geri gelen müşteriler için puan ya da damga; cüzdanda kaybolana kadar duran kâğıt kart yerine site üzerinden yürütülür.</p>
+        </article>
+
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">Etkinliğe kayıt</h3><p class="xc-item-price"><span class="cur" data-eur="40">&euro;40</span></p></div>
+          <p class="xc-item-what">İnsanlar bir etkinliğe kaydolur ve listeyi siz alırsınız. Tahmin ve fazladan yemek yerine, günden önce gerçek sayılar.</p>
+        </article>
+
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">Blog bölümü</h3><p class="xc-item-price"><span class="cur" data-eur="30">&euro;30</span></p></div>
+          <p class="xc-item-what">Tarih ve görsellerle, kendiniz ekleyebileceğiniz yazılar. Ayrıca kimseye ödeme yapmadan Google'a sürekli yeni sayfa vermenin en güvenilir yolu.</p>
+        </article>
+
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">Haberler bölümü</h3><p class="xc-item-price"><span class="cur" data-eur="20">&euro;20</span></p></div>
+          <p class="xc-item-what">Tek bir yerde kısa duyurular, en yenisi üstte. Sadece dükkânın pazartesi kapalı olduğunu söyleyeceksiniz, blogdan hafiftir.</p>
+        </article>
+
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">Web sitesi içi arama</h3><p class="xc-item-price"><span class="cur" data-eur="30">&euro;30</span></p></div>
+          <p class="xc-item-what">Kendi sayfalarınızın içine bakan bir arama kutusu. Site, kaydırmanın artık bir yöntem olmaktan çıktığı büyüklüğe ulaştığında değer kazanır.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- ══ Business & technical ════════════════════════════════ -->
+    <section class="xc-cat">
+      <div class="xc-cat-hd" id="technical">
+        <span class="xc-cat-icon" aria-hidden="true">
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="1.5" y="1.5" width="13" height="13" rx="2"/><path d="M5 8h6M8 5v6"/>
+          </svg>
+        </span>
+        <div>
+          <h2>İşletme ve teknik</h2>
+          <p>Sitenin arkasındaki iş: bulunmak, ölçülmek, yasaya uygun olmak ve ayakta kalmak.</p>
+        </div>
+        <span class="xc-cat-n">26 ekstra</span>
+      </div>
+
+      <div class="xc-list">
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">Temel SEO kurulumu</h3><p class="xc-item-price"><span class="cur" data-eur="30">&euro;30</span></p></div>
+          <p class="xc-item-what">Başlıklar, açıklamalar ve ara başlıklar arama motorlarının okuduğu biçimde yazılır. Size birinciliği satın almaz; kendi işletme adınızda görünmez olmanızı engeller.</p>
+        </article>
+
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">Google Arama dizine eklenmesi</h3><p class="xc-item-price"><span class="cur" data-eur="15">&euro;15</span></p></div>
+          <p class="xc-item-what">Sayfalarınızın aramada görünebilmesi için Google'a gönderilmesi. Bu olmadan sadece beklersiniz, bazen aylarca.</p>
+        </article>
+
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">Google Business Profile kurulumu</h3><p class="xc-item-price"><span class="cur" data-eur="40">&euro;40</span></p></div>
+          <p class="xc-item-what">Birisi mesleğinizi ve şehrinizi arattığında haritanın yanında çıkan kayıt — oluşturulmuş, doğrulanmış ve gerektiği gibi doldurulmuş.</p>
+        </article>
+
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">Google Business Profile optimizasyonu</h3><p class="xc-item-price"><span class="cur" data-eur="50">&euro;50</span></p></div>
+          <p class="xc-item-what">Fotoğraflar, kategoriler, saatler ve gönderiler öyle ayarlanır ki kayıt, doğru ama fark edilmeden durmak yerine yakındakilerle gerçekten yarışır.</p>
+        </article>
+
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">Google Analytics kurulumu</h3><p class="xc-item-price"><span class="cur" data-eur="25">&euro;25</span></p></div>
+          <p class="xc-item-what">Kurs görmeden okuyabileceğiniz ziyaretçi sayıları; rakamlar sandığınız anlama gelsin diye kurulur ve ayarlanır.</p>
+        </article>
+
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">Google Search Console kurulumu</h3><p class="xc-item-price"><span class="cur" data-eur="25">&euro;25</span></p></div>
+          <p class="xc-item-what">İnsanların sizi bulmadan önce ne yazdığını gösteren ve Google sayfalarınızdan birini okuyamadığında uyaran araç.</p>
+        </article>
+
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">Dönüşüm takibi</h3><p class="xc-item-price"><span class="cur" data-eur="40">&euro;40</span></p></div>
+          <p class="xc-item-what">Aramalar, formlar ve rezervasyonlar sayılır; böylece sitenin hangi bölümünün iş getirdiğini, hangisinin sadece güzel durduğunu bilirsiniz.</p>
+        </article>
+
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">Web sitesi ziyaretçi takibi</h3><p class="xc-item-price"><span class="cur" data-eur="25">&euro;25</span></p></div>
+          <p class="xc-item-what">İnsanların hangi sayfaları okuduğu ve nerede vazgeçtiği. Size müşteri kaybettiren o tek cümleyi bulmanın genelde en hızlı yolu.</p>
+        </article>
+
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">Profesyonel kurumsal e-posta kurulumu</h3><p class="xc-item-price"><span class="cur" data-eur="25">&euro;25</span></p></div>
+          <p class="xc-item-what">Gmail adresi yerine sen@isletmeniz.com, telefonunuzda ve bilgisayarınızda çalışır. Neredeyse hiçbir maliyeti yok ve tekliflerinizin nasıl okunduğunu değiştirir.</p>
+        </article>
+
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">E-posta imzası kurulumu</h3><p class="xc-item-price"><span class="cur" data-eur="15">&euro;15</span></p></div>
+          <p class="xc-item-what">Gönderdiğiniz her e-postanın altında logonuz, telefonunuz ve siteniz; her seferinde yapıştırmanıza gerek kalmadan.</p>
+        </article>
+
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">Alan adı kaydı</h3><p class="xc-item-price"><span class="cur" data-eur="10">&euro;10</span></p></div>
+          <p class="xc-item-what">Web adresini sizin için biz satın alır ve bizim değil, sizin adınıza kaydederiz.</p>
+          <p class="xc-item-plus">Artı alan adının kendi ücreti</p>
+        </article>
+
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">Alan adı bağlantısı</h3><p class="xc-item-price"><span class="cur" data-eur="10">&euro;10</span></p></div>
+          <p class="xc-item-what">Halihazırda sahip olduğunuz bir web adresinin yeni siteye yönlendirilmesi. Kimsenin hoşlanmadığı, ayarlarla geçen zahmetli yarım saat.</p>
+        </article>
+
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">SSL / HTTPS kurulumu</h3><p class="xc-item-price"><span class="cur" data-eur="10">&euro;10</span></p></div>
+          <p class="xc-item-what">Adres çubuğundaki kilit, kendini yenileyerek. O olmadan tarayıcılar işletme adınızın yanına „Güvenli değil“ yazar.</p>
+        </article>
+
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">Web sitesi taşınması</h3><p class="xc-item-price"><small>başlangıç fiyatından itibaren</small><span class="cur" data-eur="50">&euro;50</span></p></div>
+          <p class="xc-item-what">Mevcut bir sitenin sıralamalarını, bağlantılarını ve içeriğini kaybetmeden taşınması. Fiyat başlangıçtır, çünkü iki eski site aynı şekilde dağınık olmaz.</p>
+        </article>
+
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">Web sitesi hız optimizasyonu</h3><p class="xc-item-price"><span class="cur" data-eur="50">&euro;50</span></p></div>
+          <p class="xc-item-what">Sitenin mobil veriyle telefonda hızlı açılacak şekilde yapılması — çoğu kişi onu gerçekten böyle görecek. Yavaş siteler ziyaretçiyi ilk kelimeden önce kaybeder.</p>
+        </article>
+
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">Görsel sıkıştırma</h3><p class="xc-item-price"><span class="cur" data-eur="15">&euro;15</span></p></div>
+          <p class="xc-item-what">Hızlı yüklenecek kadar küçültülmüş ama hâlâ iyi görünen fotoğraflar. Küçük bir işletmenin sitesinin yavaş hissettirmesinin açık ara en yaygın sebebi.</p>
+        </article>
+
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">Erişilebilirlik iyileştirmeleri</h3><p class="xc-item-price"><span class="cur" data-eur="40">&euro;40</span></p></div>
+          <p class="xc-item-what">Kontrast, etiketler ve klavyeyle kullanım düzeltilir; ekran okuyucu ya da büyüteç kullananlar işletmenizin dışında kalmaz.</p>
+        </article>
+
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">Çerez onay bannerı</h3><p class="xc-item-price"><span class="cur" data-eur="20">&euro;20</span></p></div>
+          <p class="xc-item-what">Yasanın istediği onay bildirimi; üstelik çerezleri yine de yerleştiren değil, söylediğini gerçekten yapan türden.</p>
+        </article>
+
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">Gizlilik politikası sayfası</h3><p class="xc-item-price"><span class="cur" data-eur="20">&euro;20</span></p></div>
+          <p class="xc-item-what">Sitenizin gerçekte ne yaptığına göre yazılmış bir gizlilik politikası; sahip olmadığınız şeylerden bahseden bir şablon değil.</p>
+        </article>
+
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">Şartlar ve koşullar sayfası</h3><p class="xc-item-price"><span class="cur" data-eur="20">&euro;20</span></p></div>
+          <p class="xc-item-what">Şartlarınız, sade bir dille, kendi sayfasında. Bir iş ters gittiğinde gösterdiğiniz şey.</p>
+        </article>
+
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">Özel yasal sayfalar</h3><p class="xc-item-price"><small>başlangıç fiyatından itibaren</small><span class="cur" data-eur="30">&euro;30</span></p></div>
+          <p class="xc-item-what">Mesleğinizin, sigortacınızın ya da bankanızın yayımlamanızı istediği diğer her metin. Fiyat başlangıçtır, çünkü ne istendiğine bağlıdır.</p>
+        </article>
+
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">Web sitesi yedekleme sistemi</h3><p class="xc-item-price"><span class="cur" data-eur="30">&euro;30</span></p></div>
+          <p class="xc-item-what">Otomatik alınan yedekler; kötü bir gün size tüm siteye değil bir saate mal olur.</p>
+        </article>
+
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">Güvenlik yapılandırması</h3><p class="xc-item-price"><span class="cur" data-eur="40">&euro;40</span></p></div>
+          <p class="xc-item-what">Siteyi sizin tutan başlıklar ve izinler; barındırmanın varsayılanına bırakılmak yerine gerektiği gibi ayarlanır.</p>
+        </article>
+
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">Spam koruması</h3><p class="xc-item-price"><span class="cur" data-eur="20">&euro;20</span></p></div>
+          <p class="xc-item-what">Çöp size ulaşmadan durdurulur, sitenin tamamında. Botlar bir kez form bulduktan sonra sıkılmaz.</p>
+        </article>
+
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">İletişim formu spam koruması</h3><p class="xc-item-price"><span class="cur" data-eur="15">&euro;15</span></p></div>
+          <p class="xc-item-what">Botlar iletişim formunuzun dışında kalır, gerçek insanlara trafik ışığı bulmacaları çözdürmeden.</p>
+        </article>
+
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">Kırık bağlantı kontrolü</h3><p class="xc-item-price"><span class="cur" data-eur="15">&euro;15</span></p></div>
+          <p class="xc-item-what">Her bağlantı test edilir, ölü olanlar onarılır. Birkaç yıldır ayakta olan her sitede değerlidir.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- ══ Automation ══════════════════════════════════════════ -->
+    <section class="xc-cat">
+      <div class="xc-cat-hd" id="automation">
+        <span class="xc-cat-icon" aria-hidden="true">
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M9 2L6 8.5h4L7 14M2 8h1.5M12.5 8H14M4.2 4.2l1.1 1.1M10.7 10.7l1.1 1.1M4.2 11.8l1.1-1.1M10.7 5.3l1.1-1.1"/>
+          </svg>
+        </span>
+        <div>
+          <h2>Otomasyon</h2>
+          <p>Siz bir işteyken, uyurken ya da karşınızdaki müşteriyle meşgulken sitenin sizin için yaptığı iş.</p>
+        </div>
+        <span class="xc-cat-n">10 ekstra</span>
+      </div>
+
+      <div class="xc-list">
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">Otomatik e-posta bildirimleri</h3><p class="xc-item-price"><span class="cur" data-eur="25">&euro;25</span></p></div>
+          <p class="xc-item-what">Sitede bir şey olduğu anda size e-posta gelir; birisi yazmış mı diye sayfayı yenileyip durmazsınız.</p>
+        </article>
+
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">Rezervasyon onay e-postaları</h3><p class="xc-item-price"><span class="cur" data-eur="35">&euro;35</span></p></div>
+          <p class="xc-item-what">Müşteri, siz yazmadan onayını alır. Yanlış gün gelen daha az kişi, kontrol için arayan daha az kişi.</p>
+        </article>
+
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">İletişim formu e-posta bildirimleri</h3><p class="xc-item-price"><span class="cur" data-eur="15">&euro;15</span></p></div>
+          <p class="xc-item-what">Her mesaj istediğiniz adrese iletilir; sitenin kurulduğu adresten farklı bir adres bile olabilir.</p>
+        </article>
+
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">Teklif talebi bildirimleri</h3><p class="xc-item-price"><span class="cur" data-eur="20">&euro;20</span></p></div>
+          <p class="xc-item-what">Teklif talepleri diğer her şeyin arasına gömülmek yerine teklif talebi olarak işaretlenmiş gelir, çünkü ilk yanıtlanmayı hak edenler onlardır.</p>
+        </article>
+
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">Otomatik müşteri yanıtları</h3><p class="xc-item-price"><span class="cur" data-eur="40">&euro;40</span></p></div>
+          <p class="xc-item-what">Mesajın ulaştığını ve ne zaman yanıt vereceğinizi söyleyen anında bir cevap. Çoğu kişi beklediğini bildiği sürece bekler.</p>
+        </article>
+
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">Randevu hatırlatma e-postaları</h3><p class="xc-item-price"><span class="cur" data-eur="50">&euro;50</span></p></div>
+          <p class="xc-item-what">Randevudan önce bir hatırlatma. Sırf unutuldu diye kaybedilen paraya kıyasla, bu sayfadaki en ucuz kalem budur.</p>
+        </article>
+
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">E-posta otomatik yanıtlayıcı kurulumu</h3><p class="xc-item-price"><span class="cur" data-eur="35">&euro;35</span></p></div>
+          <p class="xc-item-what">Mesai dışında, tatilde ya da sadece bir işin ortasındayken — sizin yerinize, sizin sözlerinizle, belirlediğiniz saatlerde yanıtlar.</p>
+        </article>
+
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">Lead bildirim sistemi</h3><p class="xc-item-price"><span class="cur" data-eur="40">&euro;40</span></p></div>
+          <p class="xc-item-what">Yeni talepler size ve görmesi gereken herkese iletilir; böylece hiçbir şey biri izindeyken tek bir kişinin kutusunda beklemez.</p>
+        </article>
+
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">Müşteri sorgu takibi</h3><p class="xc-item-price"><span class="cur" data-eur="40">&euro;40</span></p></div>
+          <p class="xc-item-what">Kimin ne sorduğunun ve yanıtlanıp yanıtlanmadığının kaydı. Hatırlayamadığınız ilk seferde işe yarar, ki o sefer sandığınızdan erken gelir.</p>
+        </article>
+
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">Basit CRM entegrasyonu</h3><p class="xc-item-price"><small>başlangıç fiyatından itibaren</small><span class="cur" data-eur="75">&euro;75</span></p></div>
+          <p class="xc-item-what">Talepler yeniden yazılmak yerine hâlihazırda kullandığınız sisteme doğrudan düşer. Fiyat başlangıçtır, çünkü hangi sistem olduğuna bağlıdır.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- ══ Brand & design ══════════════════════════════════════ -->
+    <section class="xc-cat">
+      <div class="xc-cat-hd" id="brand">
+        <span class="xc-cat-icon" aria-hidden="true">
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M2 11l3-3 2 2 4-5 3 2"/><circle cx="12" cy="12" r="2.5"/><path d="M9.5 12H3a1 1 0 01-1-1V3a1 1 0 011-1h10a1 1 0 011 1v6.5"/>
+          </svg>
+        </span>
+        <div>
+          <h2>Marka ve tasarım</h2>
+          <p>Site olsun olmasın size ait olan iş. Çoğu, yapımı beklemek yerine kendi takvimiyle teslim edilir.</p>
+        </div>
+        <span class="xc-cat-n">11 ekstra</span>
+      </div>
+
+      <div class="xc-list">
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">Logo Tasarımı</h3><p class="xc-item-price"><span class="cur" data-eur="49.99">&euro;49.99</span></p></div>
+          <p class="xc-item-what">İşletmeniz için çizilmiş bir logo, size bir gün istenecek her dosya biçiminde teslim edilir — site, araç, tabela ve matbaa.</p>
+        </article>
+
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">Marka Kiti</h3><p class="xc-item-price"><span class="cur" data-eur="79.99">&euro;79.99</span></p></div>
+          <p class="xc-item-what">Logo, renkler, yazı tipleri ve bunların kullanım kuralları; böylece sonrasında ürettiğiniz her şey aynı işletmeden çıkmış gibi görünür.</p>
+        </article>
+
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">Kartvizit Tasarımı</h3><p class="xc-item-price"><span class="cur" data-eur="29.99">&euro;29.99</span></p></div>
+          <p class="xc-item-what">Dizilmiş ve matbaaya hazır kartlar; taşma payı ve kenar boşlukları baştan doğru, geri dönmesin diye.</p>
+        </article>
+
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">Afiş / Poster Tasarımı</h3><p class="xc-item-price"><span class="cur" data-eur="39.99">&euro;39.99</span></p></div>
+          <p class="xc-item-what">Hem baskıda hem sosyal medyada çalışacak şekilde tasarlanmış bir broşür ya da afiş; kâğıtta doğru, telefonda yanlış duran türden değil.</p>
+        </article>
+
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">Menü Tasarımı</h3><p class="xc-item-price"><span class="cur" data-eur="39.99">&euro;39.99</span></p></div>
+          <p class="xc-item-what">Menünüz duvar, masa ya da site için gerektiği gibi dizilir. Bir kol boyu mesafeden ve kötü ışıkta okunur — çoğu menü değildir.</p>
+        </article>
+
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">Sosyal Medya Başlangıç Paketi</h3><p class="xc-item-price"><span class="cur" data-eur="59.99">&euro;59.99</span></p></div>
+          <p class="xc-item-what">Siteyle uyumlu profil fotoğrafları, kapak görselleri ve gönderi şablonları; böylece hesaplarınız başka bir şirketinmiş gibi durmaz.</p>
+        </article>
+
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">Tanıtım Videosu / Kısa Reklam</h3><p class="xc-item-price"><small>başlangıç fiyatından itibaren</small><span class="cur" data-eur="49.99">&euro;49.99</span></p></div>
+          <p class="xc-item-what">Sosyal medya ya da sayfanızın üstü için kısa bir video. Fiyat başlangıçtır, çünkü otuz saniye ile iki dakika aynı iş değildir.</p>
+        </article>
+
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">Yapay Zekâ İşletme Fotoğrafları</h3><p class="xc-item-price"><small>başlangıç fiyatından itibaren</small><span class="cur" data-eur="30">&euro;30</span></p></div>
+          <p class="xc-item-what">Kendi fotoğraflarınız olmadığında işletmeniz için üretilmiş görseller. Hazır bankadan iyi ve aynı hafta elinizde.</p>
+        </article>
+
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">Google Değerlendirme QR Kartı</h3><p class="xc-item-price"><span class="cur" data-eur="19.99">&euro;19.99</span></p></div>
+          <p class="xc-item-what">Müşterilerin okutup doğrudan değerlendirme sayfanıza ulaştığı bir kart. Yorum istemekle yorumu almak arasındaki fark genelde tam olarak budur.</p>
+        </article>
+
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">WhatsApp Business kurulumu</h3><p class="xc-item-price"><span class="cur" data-eur="39.99">&euro;39.99</span></p></div>
+          <p class="xc-item-what">WhatsApp Business gerektiği gibi kurulur, düğmesi sitenizde. Pek çok meslekte müşterilerin gerçekten kullandığı tek kanal odur.</p>
+        </article>
+
+        <article class="xc-item">
+          <div class="xc-item-hd"><h3 class="xc-item-name">Kurumsal Belge Şablonları</h3><p class="xc-item-price"><span class="cur" data-eur="29.99">&euro;29.99</span></p></div>
+          <p class="xc-item-what">Kendi kimliğinizle faturalar, teklifler ve yazılar; böylece evraklar işletmenin geri kalanına benzer.</p>
+        </article>
+
+        <article class="xc-item xc-item--soon">
+          <div class="xc-item-hd"><h3 class="xc-item-name">AI Karşılama Asistanı</h3><span class="xc-soon">Yakında</span></div>
+          <p class="xc-item-what">Sitenizde sık sorulan soruları yanıtlayan ve bilgileri günün her saati toplayan bir asistan. Henüz yapılmadı ve yapılana kadar satışta değil.</p>
+        </article>
+
+        <article class="xc-item xc-item--soon">
+          <div class="xc-item-hd"><h3 class="xc-item-name">Sosyal Medya İçeriği</h3><span class="xc-soon">Yakında</span></div>
+          <p class="xc-item-what">Her ay hesaplarınız için yazılıp tasarlanmış hazır gönderiler. Henüz yapılmadı ve yapılana kadar satışta değil.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- ══ Closing ═════════════════════════════════════════════ -->
+    <section class="xc-foot">
+      <div class="xc-foot-grid">
+        <div>
+          <h2>Ekstralar nasıl ödenir</h2>
+          <p>
+            Ekstralar tek seferlik toplamınıza eklenir ve siteniz yayına hazır olduğunda bir kez ödenir. Hiçbiri abonelik değildir ve hiçbir şey kendiliğinden yenilenmez.
+          </p>
+          <p>
+            <span class="xc-foot-arrow">&rarr;</span> Bir fiyat „başlangıç“ ile başlıyorsa, iş tek bir rakamın tahmin olacağı kadar değişkendir. Herhangi bir ücret alınmadan önce gerçek rakamı size yazılı olarak teyit ederiz.
+          </p>
+          <p>
+            <span class="xc-foot-arrow">&rarr;</span> Siteye bağlı olmayan ekstralar — QR kart, e-posta ve WhatsApp kurulumu, belge şablonları — 5–7 günlük yapım süresini beklemek yerine kendi takvimiyle teslim edilir ve o parça teslim edildiğinde ödenir.
+          </p>
+          <p>
+            <span class="xc-foot-arrow">&rarr;</span> Bazı paketler bunların birkaçını zaten kapsıyor. Yapılandırıcı onları sizin için listeden çıkarır, böylece aynı şeyi asla iki kez satın almazsınız.
+          </p>
+        </div>
+
+        <div class="xc-foot-card">
+          <p>
+            Hangilerini istediğinizi biliyor musunuz? Yapılandırıcı bunları bir paketle birleştirir, toplamı çıkarır ve talebi sizin yerinize yazar.
+          </p>
+          <a href="/build" class="xc-cta xc-cta--light">Paketinizi oluşturun</a>
+        </div>
+      </div>
+    </section>
+
   </div>
-
-  <!-- 3 — THE 34 -->
-  <section id="included" class="scroll-mt-28 border-b border-line">
-    <div class="mx-auto max-w-shell px-6 py-14 md:px-10 md:py-20">
-      <div class="flex flex-wrap items-baseline gap-x-4 gap-y-1">
-        <h2 class="h-section text-xl">Her web sitesinde dahil</h2>
-        <span class="ml-auto text-[0.8125rem] text-ink-soft">ek ücret yok</span>
-      </div>
-      <p class="mt-4 max-w-prose text-[0.9375rem] leading-relaxed text-ink-mid">
-        Özel, içlerinden herhangi yirmisini inşa eder. Tam Web Sitesi ve Tam Paket otuz dördünü de inşa eder.
-      </p>
-      <div class="mt-8 grid grid-cols-1 gap-x-10 gap-y-9 sm:grid-cols-2 xl:grid-cols-4">
-
-        <div>
-          <p class="eyebrow border-b border-line-firm pb-3 text-ink-soft">Sayfalar ve bölümler</p>
-          <ul class="mt-4 grid grid-cols-1 gap-y-2.5">
-            <li class="inc-row">Hakkımızda bölümü</li>
-            <li class="inc-row">SSS bölümü</li>
-            <li class="inc-row">Fiyat listesi</li>
-            <li class="inc-row">Özel fırsatlar bölümü</li>
-            <li class="inc-row">Kampanyalar bölümü</li>
-            <li class="inc-row">Portfolyo bölümü</li>
-            <li class="inc-row">Projeler vitrini</li>
-            <li class="inc-row">Ekip / personel bölümü</li>
-            <li class="inc-row">Öncesi ve sonrası bölümü</li>
-            <li class="inc-row">Hizmet bölgesi bölümü</li>
-            <li class="inc-row">Fiyat karşılaştırması</li>
-            <li class="inc-row">Paketler bölümü</li>
-            <li class="inc-row">Etkinlikler bölümü</li>
-            <li class="inc-row">Duyurular bölümü</li>
-            <li class="inc-row">Özel landing page</li>
-            <li class="inc-row">Özel 404 sayfası</li>
-          </ul>
-        </div>
-
-        <div>
-          <p class="eyebrow border-b border-line-firm pb-3 text-ink-soft">Kataloglar ve belgeler</p>
-          <ul class="mt-4 grid grid-cols-1 gap-y-2.5">
-            <li class="inc-row">Ürün katalogu</li>
-            <li class="inc-row">Çevrimiçi menü</li>
-            <li class="inc-row">PDF menü entegrasyonu</li>
-            <li class="inc-row">PDF katalog entegrasyonu</li>
-            <li class="inc-row">İndirilebilir belgeler</li>
-            <li class="inc-row">Müşteri yorumları entegrasyonu</li>
-          </ul>
-        </div>
-
-        <div>
-          <p class="eyebrow border-b border-line-firm pb-3 text-ink-soft">Gezinme ve etkileşim</p>
-          <ul class="mt-4 grid grid-cols-1 gap-y-2.5">
-            <li class="inc-row">Yapışkan navigasyon</li>
-            <li class="inc-row">Yapışkan mobil butonlar</li>
-            <li class="inc-row">Başa dön düğmesi</li>
-            <li class="inc-row">Görsel lightbox</li>
-            <li class="inc-row">SSS akordeonu</li>
-            <li class="inc-row">Etkileşimli galeriler</li>
-          </ul>
-        </div>
-
-        <div>
-          <p class="eyebrow border-b border-line-firm pb-3 text-ink-soft">Medya ve temeller</p>
-          <ul class="mt-4 grid grid-cols-1 gap-y-2.5">
-            <li class="inc-row">Video bölümü</li>
-            <li class="inc-row">YouTube entegrasyonu</li>
-            <li class="inc-row">İşletme talep formu</li>
-            <li class="inc-row">Sosyal paylaşım önizlemesi</li>
-            <li class="inc-row">Özel favicon</li>
-            <li class="inc-row">Mobil optimizasyon</li>
-          </ul>
-        </div>
-                </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- 4 — THE ADD-ONS -->
-  <section class="border-b border-line bg-surface">
-    <div class="mx-auto max-w-shell px-6 py-14 md:px-10 md:py-20">
-      <div class="flex flex-wrap items-baseline gap-x-4 gap-y-1">
-        <h2 class="h-section text-xl">İsteğe bağlı ekstralar</h2>
-        <span class="ml-auto text-[0.8125rem] text-ink-soft">altmış beş tek seferlik iş</span>
-      </div>
-
-      <div class="mt-10 grid grid-cols-1 gap-y-11 lg:max-w-3xl" data-picker>
-
-        <div id="website" class="scroll-mt-32" data-ex-group="website">
-          <div class="flex flex-wrap items-baseline gap-x-4 border-b border-line-firm pb-3">
-            <p class="eyebrow text-ink-soft">Site özellikleri</p>
-            <span class="ml-auto text-[0.75rem] text-ink-soft">tek seferlik</span>
-          </div>
-            <div class="xrow">
-              <p class="xrow-name">Çevrimiçi rezervasyon sistemi</p>
-              <p class="xrow-what">Müşteriler sitenizden saat seçer, randevu onayınız için size gelir.</p>
-              <p class="xrow-price"><span class="cur" data-eur="60">€60</span></p>
-            </div>
-            <div class="xrow">
-              <p class="xrow-name">Randevu takvimi</p>
-              <p class="xrow-what">Nelerin dolu olduğunu gösteren bir takvim; aynı saat iki kez satılmaz.</p>
-              <p class="xrow-price"><span class="cur" data-eur="50">€50</span></p>
-            </div>
-            <div class="xrow">
-              <p class="xrow-name">Google Değerlendirmeleri entegrasyonu</p>
-              <p class="xrow-what">Google değerlendirmeleriniz sayfada, kendi kendine güncellenir.</p>
-              <p class="xrow-price"><span class="cur" data-eur="20">€20</span></p>
-            </div>
-            <div class="xrow">
-              <p class="xrow-name">Bülten kaydı</p>
-              <p class="xrow-what">Sayfada bir e-posta kutusu; liste, kullanabileceğiniz bir yerde tutulur.</p>
-              <p class="xrow-price"><span class="cur" data-eur="20">€20</span></p>
-            </div>
-            <div class="xrow">
-              <p class="xrow-name">E-posta düğmesi</p>
-              <p class="xrow-what">Tek dokunuşla posta uygulaması adresiniz yazılı olarak açılır.</p>
-              <p class="xrow-price"><span class="cur" data-eur="5">€5</span></p>
-            </div>
-            <div class="xrow">
-              <p class="xrow-name">İş başvurusu formu</p>
-              <p class="xrow-what">İnsanlar bilgileri ve özgeçmişleriyle başvurur, başvuru e-postanıza düşer.</p>
-              <p class="xrow-price"><span class="cur" data-eur="25">€25</span></p>
-            </div>
-            <div class="xrow">
-              <p class="xrow-name">İş başvurusu bölümü</p>
-              <p class="xrow-what">Aradığınız pozisyonlar için bir sayfa.</p>
-              <p class="xrow-price"><span class="cur" data-eur="15">€15</span></p>
-            </div>
-            <div class="xrow">
-              <p class="xrow-name">Çok dilli web sitesi</p>
-              <p class="xrow-what">Tüm site ikinci bir dilde; köşeden değiştirilir.</p>
-              <p class="xrow-price">başlangıç fiyatından itibaren <span class="cur" data-eur="50">€50</span></p>
-            </div>
-            <div class="xrow">
-              <p class="xrow-name">Birden fazla konum</p>
-              <p class="xrow-what">Her şube için kendi adresi, çalışma saatleri ve haritasıyla bir sayfa.</p>
-              <p class="xrow-price"><span class="cur" data-eur="30">€30</span></p>
-            </div>
-            <div class="xrow">
-              <p class="xrow-name">Konum seçici</p>
-              <p class="xrow-what">Ziyaretçileri en yakın şubeye götüren bir seçici.</p>
-              <p class="xrow-price"><span class="cur" data-eur="25">€25</span></p>
-            </div>
-            <div class="xrow">
-              <p class="xrow-name">Mağaza konum bulucu</p>
-              <p class="xrow-what">Her şubenin haritası ve oraya nasıl gidileceği.</p>
-              <p class="xrow-price"><span class="cur" data-eur="50">€50</span></p>
-            </div>
-            <div class="xrow">
-              <p class="xrow-name">Üyelik bölümü</p>
-              <p class="xrow-what">Sitenin yalnızca üyelerinizin açabildiği bir bölümü.</p>
-              <p class="xrow-price"><span class="cur" data-eur="40">€40</span></p>
-            </div>
-            <div class="xrow">
-              <p class="xrow-name">Hediye kartı bölümü</p>
-              <p class="xrow-what">İnsanların sayfadan satın alabileceği ya da isteyebileceği hediye kartları.</p>
-              <p class="xrow-price"><span class="cur" data-eur="30">€30</span></p>
-            </div>
-            <div class="xrow">
-              <p class="xrow-name">Sadakat programı</p>
-              <p class="xrow-what">Geri gelen müşteriler için siteden yürütülen puan ya da damga sistemi.</p>
-              <p class="xrow-price">başlangıç fiyatından itibaren <span class="cur" data-eur="60">€60</span></p>
-            </div>
-            <div class="xrow">
-              <p class="xrow-name">Etkinliğe kayıt</p>
-              <p class="xrow-what">İnsanlar etkinliğe kaydolur, liste size gelir.</p>
-              <p class="xrow-price"><span class="cur" data-eur="40">€40</span></p>
-            </div>
-            <div class="xrow">
-              <p class="xrow-name">Blog bölümü</p>
-              <p class="xrow-what">Kendiniz ekleyebileceğiniz, tarihli ve görselli yazılar.</p>
-              <p class="xrow-price"><span class="cur" data-eur="30">€30</span></p>
-            </div>
-            <div class="xrow">
-              <p class="xrow-name">Haberler bölümü</p>
-              <p class="xrow-what">Tek yerde kısa duyurular, en yenisi en üstte.</p>
-              <p class="xrow-price"><span class="cur" data-eur="20">€20</span></p>
-            </div>
-            <div class="xrow">
-              <p class="xrow-name">Web sitesi içi arama</p>
-              <p class="xrow-what">Kendi sayfalarınızın içinde arama yapan bir kutu.</p>
-              <p class="xrow-price"><span class="cur" data-eur="30">€30</span></p>
-            </div>
-        </div>
-
-        <div id="technical" class="scroll-mt-32" data-ex-group="technical">
-          <div class="flex flex-wrap items-baseline gap-x-4 border-b border-line-firm pb-3">
-            <p class="eyebrow text-ink-soft">İşletme ve teknik</p>
-            <span class="ml-auto text-[0.75rem] text-ink-soft">tek seferlik</span>
-          </div>
-            <div class="xrow">
-              <p class="xrow-name">Temel SEO kurulumu</p>
-              <p class="xrow-what">Arama motorlarının okuduğu biçimde yazılmış başlıklar, açıklamalar ve ara başlıklar.</p>
-              <p class="xrow-price"><span class="cur" data-eur="30">€30</span></p>
-            </div>
-            <div class="xrow">
-              <p class="xrow-name">Google Arama dizine eklenmesi</p>
-              <p class="xrow-what">Sayfalarınız, aramada görünebilmeleri için Google'a gönderilir.</p>
-              <p class="xrow-price"><span class="cur" data-eur="15">€15</span></p>
-            </div>
-            <div class="xrow">
-              <p class="xrow-name">Google Business Profile kurulumu</p>
-              <p class="xrow-what">Google kaydınız oluşturulur, doğrulanır ve düzgünce doldurulur.</p>
-              <p class="xrow-price"><span class="cur" data-eur="40">€40</span></p>
-            </div>
-            <div class="xrow">
-              <p class="xrow-name">Google Business Profile optimizasyonu</p>
-              <p class="xrow-what">Kaydın üst sıralara çıkması için fotoğraflar, kategoriler, saatler ve gönderiler düzenlenir.</p>
-              <p class="xrow-price"><span class="cur" data-eur="50">€50</span></p>
-            </div>
-            <div class="xrow">
-              <p class="xrow-name">Google Analytics kurulumu</p>
-              <p class="xrow-what">Gerçekten okunabilen ziyaretçi sayıları; kurulmuş ve ayarlanmış.</p>
-              <p class="xrow-price"><span class="cur" data-eur="25">€25</span></p>
-            </div>
-            <div class="xrow">
-              <p class="xrow-name">Google Search Console kurulumu</p>
-              <p class="xrow-what">İnsanların sizi bulmadan önce ne aradığını gösteren araç.</p>
-              <p class="xrow-price"><span class="cur" data-eur="25">€25</span></p>
-            </div>
-            <div class="xrow">
-              <p class="xrow-name">Dönüşüm takibi</p>
-              <p class="xrow-what">Aramalar, formlar ve rezervasyonlar sayılır; neyin işe yaradığını bilirsiniz.</p>
-              <p class="xrow-price"><span class="cur" data-eur="40">€40</span></p>
-            </div>
-            <div class="xrow">
-              <p class="xrow-name">Web sitesi ziyaretçi takibi</p>
-              <p class="xrow-what">İnsanların hangi sayfaları okuduğu ve nerede vazgeçtiği.</p>
-              <p class="xrow-price"><span class="cur" data-eur="25">€25</span></p>
-            </div>
-            <div class="xrow">
-              <p class="xrow-name">Profesyonel kurumsal e-posta kurulumu</p>
-              <p class="xrow-what">siz@isletmeniz.com; telefonunuzda ve bilgisayarınızda çalışır.</p>
-              <p class="xrow-price"><span class="cur" data-eur="25">€25</span></p>
-            </div>
-            <div class="xrow">
-              <p class="xrow-name">E-posta imzası kurulumu</p>
-              <p class="xrow-what">Gönderdiğiniz her e-postanın altında logonuz ve bilgileriniz.</p>
-              <p class="xrow-price"><span class="cur" data-eur="15">€15</span></p>
-            </div>
-            <div class="xrow">
-              <p class="xrow-name">Alan adı kaydı <span class="pick-note">+ alan adı</span></p>
-              <p class="xrow-what">Adresi sizin adınıza biz alırız.</p>
-              <p class="xrow-price"><span class="cur" data-eur="10">€10</span></p>
-            </div>
-            <div class="xrow">
-              <p class="xrow-name">Alan adı bağlantısı</p>
-              <p class="xrow-what">Zaten sahip olduğunuz alan adı, yeni siteye yönlendirilir.</p>
-              <p class="xrow-price"><span class="cur" data-eur="10">€10</span></p>
-            </div>
-            <div class="xrow">
-              <p class="xrow-name">SSL / HTTPS kurulumu</p>
-              <p class="xrow-what">Adres çubuğundaki kilit; kendi kendini yeniler.</p>
-              <p class="xrow-price"><span class="cur" data-eur="10">€10</span></p>
-            </div>
-            <div class="xrow">
-              <p class="xrow-name">Web sitesi taşınması</p>
-              <p class="xrow-what">Var olan bir site, içeriğini kaybetmeden taşınır.</p>
-              <p class="xrow-price">başlangıç fiyatından itibaren <span class="cur" data-eur="50">€50</span></p>
-            </div>
-            <div class="xrow">
-              <p class="xrow-name">Web sitesi hız optimizasyonu</p>
-              <p class="xrow-what">Mobil veriyle telefonda hızlı açılacak biçimde hazırlanmış site.</p>
-              <p class="xrow-price"><span class="cur" data-eur="50">€50</span></p>
-            </div>
-            <div class="xrow">
-              <p class="xrow-name">Görsel sıkıştırma</p>
-              <p class="xrow-what">Hızlı yüklenecek kadar küçültülmüş, yine de iyi görünen fotoğraflar.</p>
-              <p class="xrow-price"><span class="cur" data-eur="15">€15</span></p>
-            </div>
-            <div class="xrow">
-              <p class="xrow-name">Erişilebilirlik iyileştirmeleri</p>
-              <p class="xrow-what">Kontrast, etiketler ve klavyeyle kullanım; kimse dışarıda kalmaz.</p>
-              <p class="xrow-price"><span class="cur" data-eur="40">€40</span></p>
-            </div>
-            <div class="xrow">
-              <p class="xrow-name">Çerez onay bannerı</p>
-              <p class="xrow-what">Yasanın istediği onay bildirimi; söylediği şeyi gerçekten yapan türden.</p>
-              <p class="xrow-price"><span class="cur" data-eur="20">€20</span></p>
-            </div>
-            <div class="xrow">
-              <p class="xrow-name">Gizlilik politikası sayfası</p>
-              <p class="xrow-what">Sitenizin gerçekte ne yaptığına göre yazılmış bir gizlilik politikası.</p>
-              <p class="xrow-price"><span class="cur" data-eur="20">€20</span></p>
-            </div>
-            <div class="xrow">
-              <p class="xrow-name">Şartlar ve koşullar sayfası</p>
-              <p class="xrow-what">Koşullarınız, sade bir dille, kendi sayfasında.</p>
-              <p class="xrow-price"><span class="cur" data-eur="20">€20</span></p>
-            </div>
-            <div class="xrow">
-              <p class="xrow-name">Özel yasal sayfalar</p>
-              <p class="xrow-what">Mesleğinizin, sigortacınızın ya da bankanızın istediği diğer metinler.</p>
-              <p class="xrow-price">başlangıç fiyatından itibaren <span class="cur" data-eur="30">€30</span></p>
-            </div>
-            <div class="xrow">
-              <p class="xrow-name">Web sitesi yedekleme sistemi</p>
-              <p class="xrow-what">Kendiliğinden alınan yedekler; kötü bir gün bir saate mal olur.</p>
-              <p class="xrow-price"><span class="cur" data-eur="30">€30</span></p>
-            </div>
-            <div class="xrow">
-              <p class="xrow-name">Güvenlik yapılandırması</p>
-              <p class="xrow-what">Siteyi sizin tutan başlıklar ve izinler.</p>
-              <p class="xrow-price"><span class="cur" data-eur="40">€40</span></p>
-            </div>
-            <div class="xrow">
-              <p class="xrow-name">Spam koruması</p>
-              <p class="xrow-what">Çöp, size ulaşmadan durdurulur.</p>
-              <p class="xrow-price"><span class="cur" data-eur="20">€20</span></p>
-            </div>
-            <div class="xrow">
-              <p class="xrow-name">İletişim formu spam koruması</p>
-              <p class="xrow-what">Botlar formunuzdan uzak tutulur, insanlara bulmaca çözdürmeden.</p>
-              <p class="xrow-price"><span class="cur" data-eur="15">€15</span></p>
-            </div>
-            <div class="xrow">
-              <p class="xrow-name">Kırık bağlantı kontrolü</p>
-              <p class="xrow-what">Her bağlantı test edilir, ölü olanlar onarılır.</p>
-              <p class="xrow-price"><span class="cur" data-eur="15">€15</span></p>
-            </div>
-        </div>
-
-        <div id="automation" class="scroll-mt-32" data-ex-group="automation">
-          <div class="flex flex-wrap items-baseline gap-x-4 border-b border-line-firm pb-3">
-            <p class="eyebrow text-ink-soft">Otomasyon</p>
-            <span class="ml-auto text-[0.75rem] text-ink-soft">tek seferlik</span>
-          </div>
-            <div class="xrow">
-              <p class="xrow-name">Otomatik e-posta bildirimleri</p>
-              <p class="xrow-what">Sitede bir şey olduğu anda size e-posta gelir.</p>
-              <p class="xrow-price"><span class="cur" data-eur="25">€25</span></p>
-            </div>
-            <div class="xrow">
-              <p class="xrow-name">Rezervasyon onay e-postaları</p>
-              <p class="xrow-what">Müşteri, siz yazmadan onay e-postasını alır.</p>
-              <p class="xrow-price"><span class="cur" data-eur="35">€35</span></p>
-            </div>
-            <div class="xrow">
-              <p class="xrow-name">İletişim formu e-posta bildirimleri</p>
-              <p class="xrow-what">Her mesaj, istediğiniz adrese iletilir.</p>
-              <p class="xrow-price"><span class="cur" data-eur="15">€15</span></p>
-            </div>
-            <div class="xrow">
-              <p class="xrow-name">Teklif talebi bildirimleri</p>
-              <p class="xrow-what">Teklif talepleri, diğerlerinin arasında kaybolmadan teklif talebi olarak gelir.</p>
-              <p class="xrow-price"><span class="cur" data-eur="20">€20</span></p>
-            </div>
-            <div class="xrow">
-              <p class="xrow-name">Otomatik müşteri yanıtları</p>
-              <p class="xrow-what">Aldığınızı ve ne zaman yanıtlayacağınızı söyleyen anında bir yanıt.</p>
-              <p class="xrow-price"><span class="cur" data-eur="40">€40</span></p>
-            </div>
-            <div class="xrow">
-              <p class="xrow-name">Randevu hatırlatma e-postaları</p>
-              <p class="xrow-what">Randevudan önce bir hatırlatma; böylece daha az kişi unutur.</p>
-              <p class="xrow-price"><span class="cur" data-eur="50">€50</span></p>
-            </div>
-            <div class="xrow">
-              <p class="xrow-name">E-posta otomatik yanıtlayıcı kurulumu</p>
-              <p class="xrow-what">Mesai dışında, uzaktayken ya da yoğunken sizin yerinize yanıtlar.</p>
-              <p class="xrow-price"><span class="cur" data-eur="35">€35</span></p>
-            </div>
-            <div class="xrow">
-              <p class="xrow-name">Lead bildirim sistemi</p>
-              <p class="xrow-what">Yeni talepler size ve ihtiyacı olan herkese iletilir.</p>
-              <p class="xrow-price"><span class="cur" data-eur="40">€40</span></p>
-            </div>
-            <div class="xrow">
-              <p class="xrow-name">Müşteri sorgu takibi</p>
-              <p class="xrow-what">Kimin ne sorduğunun ve yanıt verilip verilmediğinin kaydı.</p>
-              <p class="xrow-price"><span class="cur" data-eur="40">€40</span></p>
-            </div>
-            <div class="xrow">
-              <p class="xrow-name">Basit CRM entegrasyonu</p>
-              <p class="xrow-what">Talepler doğrudan zaten kullandığınız sisteme düşer.</p>
-              <p class="xrow-price">başlangıç fiyatından itibaren <span class="cur" data-eur="75">€75</span></p>
-            </div>
-        </div>
-
-        <div id="brand" class="scroll-mt-32" data-ex-group="brand">
-          <div class="flex flex-wrap items-baseline gap-x-4 border-b border-line-firm pb-3">
-            <p class="eyebrow text-ink-soft">Marka ve tasarım</p>
-            <span class="ml-auto text-[0.75rem] text-ink-soft">tek seferlik</span>
-          </div>
-            <div class="xrow">
-              <p class="xrow-name">Logo Tasarımı</p>
-              <p class="xrow-what">İşletmeniz için çizilmiş bir logo, ihtiyacınız olacak her dosya biçiminde.</p>
-              <p class="xrow-price"><span class="cur" data-eur="49.99">€49.99</span></p>
-            </div>
-            <div class="xrow">
-              <p class="xrow-name">Marka Kiti</p>
-              <p class="xrow-what">Logo, renkler, yazı tipleri ve bunların kullanım kuralları.</p>
-              <p class="xrow-price"><span class="cur" data-eur="79.99">€79.99</span></p>
-            </div>
-            <div class="xrow">
-              <p class="xrow-name">Kartvizit Tasarımı</p>
-              <p class="xrow-what">Dizilmiş ve matbaaya hazır kartlar.</p>
-              <p class="xrow-price"><span class="cur" data-eur="29.99">€29.99</span></p>
-            </div>
-            <div class="xrow">
-              <p class="xrow-name">Afiş / Poster Tasarımı</p>
-              <p class="xrow-what">Basmak ve internette paylaşmak için tasarlanmış broşür ya da afiş.</p>
-              <p class="xrow-price"><span class="cur" data-eur="39.99">€39.99</span></p>
-            </div>
-            <div class="xrow">
-              <p class="xrow-name">Menü Tasarımı</p>
-              <p class="xrow-what">Menünüz düzgünce dizilir; duvar, masa ya da site için.</p>
-              <p class="xrow-price"><span class="cur" data-eur="39.99">€39.99</span></p>
-            </div>
-            <div class="xrow">
-              <p class="xrow-name">Sosyal Medya Başlangıç Paketi</p>
-              <p class="xrow-what">Siteyle uyumlu profil fotoğrafları, kapaklar ve gönderi şablonları.</p>
-              <p class="xrow-price"><span class="cur" data-eur="59.99">€59.99</span></p>
-            </div>
-            <div class="xrow">
-              <p class="xrow-name">Tanıtım Videosu / Kısa Reklam</p>
-              <p class="xrow-what">Sosyal medya ya da sayfanızın başı için kısa bir video.</p>
-              <p class="xrow-price">başlangıç fiyatından itibaren <span class="cur" data-eur="49.99">€49.99</span></p>
-            </div>
-            <div class="xrow">
-              <p class="xrow-name">Yapay Zekâ İşletme Fotoğrafları</p>
-              <p class="xrow-what">Fotoğrafınızın olmadığı yerler için işletmenize özel görseller.</p>
-              <p class="xrow-price">başlangıç fiyatından itibaren <span class="cur" data-eur="30">€30</span></p>
-            </div>
-            <div class="xrow">
-              <p class="xrow-name">Google Değerlendirme QR Kartı</p>
-              <p class="xrow-what">Müşterilerin okutunca doğrudan değerlendirme sayfanıza düştüğü bir kart.</p>
-              <p class="xrow-price"><span class="cur" data-eur="19.99">€19.99</span></p>
-            </div>
-            <div class="xrow">
-              <p class="xrow-name">WhatsApp Business kurulumu</p>
-              <p class="xrow-what">WhatsApp Business kurulur, düğmesi sitenize eklenir.</p>
-              <p class="xrow-price"><span class="cur" data-eur="39.99">€39.99</span></p>
-            </div>
-            <div class="xrow">
-              <p class="xrow-name">Kurumsal Belge Şablonları</p>
-              <p class="xrow-what">Faturalar, teklifler ve yazılar, kendi markanızla.</p>
-              <p class="xrow-price"><span class="cur" data-eur="29.99">€29.99</span></p>
-            </div>
-            <div class="pick pick--soon">
-              <span class="pick-name text-ink-mid">AI Karşılama Asistanı</span>
-              <span class="pick-price"><span class="tag tag-soon">Yakında</span></span>
-            </div>
-            <div class="pick pick--soon">
-              <span class="pick-name text-ink-mid">Sosyal Medya İçeriği</span>
-              <span class="pick-price"><span class="tag tag-soon">Yakında</span></span>
-            </div>
-        </div>
-
-
-            <!-- The running total. Nothing here navigates and nothing
-                 reloads: ticking a box only adds a number. -->
-        </div>
-
-      </div>
-
-      <div class="mt-14 grid grid-cols-1 gap-8 border-t border-line pt-8 lg:grid-cols-12 lg:gap-14">
-        <div class="lg:col-span-7">
-          <p class="text-sm font-semibold text-ink">Ekstralar nasıl ödenir</p>
-          <p class="mt-3 max-w-prose text-[0.875rem] leading-relaxed text-ink-mid">
-            Ekstralar tek seferlik toplamınıza eklenir ve siteniz yayına hazır olduğunda bir kez ödenir.
-          </p>
-          <p class="mt-2.5 max-w-prose text-[0.8125rem] leading-relaxed text-ink-soft">
-            <span class="arrow">&rarr;</span> Sitenizin yapımına bağlı olmayan ekstralar — QR kart, e-posta ve WhatsApp kurulumu, belge şablonları — 5–7 günlük yapımı beklemek yerine kendi takviminde teslim edilir ve o parça teslim edildiğinde ödenir.
-          </p>
-          <p class="mt-2 max-w-prose text-[0.8125rem] leading-relaxed text-ink-soft">
-            <span class="arrow">&rarr;</span> Bir fiyat "başlangıç fiyatından" itibaren ise nihai tutarı herhangi bir ücret çekilmeden önce sizinle yazılı olarak teyit ederiz.
-          </p>
-        </div>
-        <div class="lg:col-span-4 lg:col-start-9">
-          <a href="/build" class="inline-flex items-center justify-center rounded-md bg-accent px-6 py-3.5 text-sm font-semibold text-white hover:bg-accent-hi">Paketinizi oluşturun</a>
-        </div>
-      </div>
-    </div>
-  </section>
 </main>
 
 <div data-site-footer>
-  <!-- Replaced by footer.js. Present in the served HTML so the legal
-       links survive without JavaScript, for crawlers and for payment
-       provider domain review. -->
   <nav class="mx-auto flex max-w-shell flex-wrap items-center gap-x-5 gap-y-2 px-6 py-8 text-[0.8125rem] text-ink-soft md:px-10" aria-label="Yasal">
     <a class="hover:text-ink" href="/en/terms">Hizmet Şartları</a>
     <a class="hover:text-ink" href="/en/privacy">Gizlilik Politikası</a>
@@ -631,10 +649,7 @@
 
 <script src="/assets/footer.js?v=7"></script>
 <script src="/assets/cookies.js?v=2"></script>
-<script src="/assets/mobile.js?v=5"></script>
 <script src="/assets/theme.js?v=3"></script>
-<script src="/assets/gutters.js?v=2" defer></script>
-<script src="/assets/scramble.js?v=4" defer></script>
 <script src="/assets/i18n.js?v=4"></script>
 <script src="/assets/demo.js?v=5"></script>
 </body>

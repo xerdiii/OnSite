@@ -240,10 +240,15 @@ def head_block(key, code, lang_meta, title, description, kept_faq):
 # What each English source filename becomes in a language's URLs. Names
 # that no longer have a page of their own point at the page that replaced
 # them, so an old link in hand-written markup still lands somewhere real.
+# 'build' is deliberately absent: it is an app page, so it falls through
+# to the APP_PAGES branch below and stays /build. Mapping it to 'services'
+# aimed every "Start a Project" button in every language at the extras
+# list instead of the builder, which left the builder reachable only by
+# typing its address.
 LINK_KEYS = {'index': 'home', 'pricing': 'pricing', 'extras': 'services',
              'features': 'features', 'contact': 'contact', 'faq': 'faq',
              'terms': 'terms', 'privacy': 'privacy', 'refunds': 'refunds',
-             'cookies': 'cookies', 'start': 'services', 'build': 'services',
+             'cookies': 'cookies', 'start': 'services',
              'free': 'home'}
 
 HREF = re.compile(r'(\s(?:href|action)=")([^"]+)(")')
