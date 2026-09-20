@@ -454,7 +454,10 @@
         'Project request' + (t.tier ? ' — ' + t.tier.name : '') +
         (t.total ? ' — ' + money(t.total) : ''));
 
-    var ready = !!t.tier && !!brief.text.trim() && EMAIL_RE.test(brief.email.trim());
+    /* The gate is part of being ready: with reCAPTCHA on, no tick means
+       no token, and the button stays disabled until there is one. */
+    var passed = !recaptchaOn() || !!recaptchaToken();
+    var ready = !!t.tier && !!brief.text.trim() && EMAIL_RE.test(brief.email.trim()) && passed;
     [].forEach.call(qa('[data-b-send]'), function (b) { b.disabled = !ready || sending; });
 
     var clear = q('[data-b-clear]');
@@ -489,9 +492,21 @@
      Files are deliberately NOT persisted to localStorage — a few
      megabytes of base64 would blow the quota and take the basket with
      it. Re-picking after a refresh is the cost. */
-  var MAX_FILES = 3;
+  var MAX_FILES = 3;                      // PDFs
+  var MAX_PHOTOS = 8;
+  /* One budget for everything attached. Vercel refuses a request body
+     over 4.5MB, and base64 adds about a third, so the raw total has to
+     stay near 3MB however it is split between photos and PDFs. */
   var MAX_BYTES = 3 * 1024 * 1024;
-  var picked = [];                        // [{ name, size, content }]
+  var picked = [];                        // PDFs:   [{ name, size, content }]
+  var photos = [];                        // images: [{ name, size, content, type }]
+
+  function attachedBytes(except) {
+    var n = 0;
+    if (except !== 'pdf')   picked.forEach(function (f) { n += f.size; });
+    if (except !== 'photo') photos.forEach(function (f) { n += f.size; });
+    return n;
+  }
 
   function kb(n) {
     return n < 1024 * 1024
@@ -513,6 +528,119 @@
     });
   }
 
+  /* ── Photos ───────────────────────────────────────────────────
+     Shrunk here rather than sent as they are. A phone photo is three
+     to eight megabytes and eight of them would not survive a
+     serverless request body, but the same picture at 1600px and JPEG
+     quality 0.82 is nearer 250KB and still perfectly readable for
+     what these are: screenshots and pictures of a shop. */
+  var PHOTO_MAX_EDGE = 1600;
+  var PHOTO_QUALITY = 0.82;
+
+  function shrinkPhoto(file) {
+    return new Promise(function (resolve, reject) {
+      var url = global.URL.createObjectURL(file);
+      var img = new global.Image();
+
+      img.onload = function () {
+        global.URL.revokeObjectURL(url);
+        var w = img.naturalWidth, h = img.naturalHeight;
+        if (!w || !h) { reject(new Error('no dimensions')); return; }
+
+        var scale = Math.min(1, PHOTO_MAX_EDGE / Math.max(w, h));
+        var cw = Math.max(1, Math.round(w * scale));
+        var ch = Math.max(1, Math.round(h * scale));
+
+        var canvas = doc.createElement('canvas');
+        canvas.width = cw; canvas.height = ch;
+        var ctx = canvas.getContext('2d');
+        if (!ctx) { reject(new Error('no canvas')); return; }
+        ctx.drawImage(img, 0, 0, cw, ch);
+
+        // Always JPEG out: a screenshot saved as PNG can be larger than
+        // the photo it shows, and nothing here needs transparency.
+        var dataUrl;
+        try { dataUrl = canvas.toDataURL('image/jpeg', PHOTO_QUALITY); }
+        catch (e) { reject(e); return; }
+
+        var comma = dataUrl.indexOf(',');
+        var content = comma < 0 ? '' : dataUrl.slice(comma + 1);
+        if (!content) { reject(new Error('empty')); return; }
+
+        resolve({
+          name: file.name.replace(/\.[^.]+$/, '') + '.jpg',
+          size: Math.floor(content.length * 3 / 4),
+          content: content,
+          type: 'image/jpeg'
+        });
+      };
+
+      img.onerror = function () { global.URL.revokeObjectURL(url); reject(new Error('decode')); };
+      img.src = url;
+    });
+  }
+
+  function wirePhotos() {
+    var input = doc.getElementById('b-photos');
+    var list = q('[data-b-photos]');
+    if (!input || !list) return;
+
+    input.addEventListener('change', function () {
+      var chosen = [].slice.call(input.files || []);
+      var problems = [];
+      photos = [];
+      render([], [{ msg: 'Preparing your photos…', detail: '' }]);
+
+      if (chosen.length > MAX_PHOTOS) {
+        problems.push({ msg: 'Only the first eight photos were taken.', detail: '' });
+        chosen = chosen.slice(0, MAX_PHOTOS);
+      }
+
+      var images = chosen.filter(function (f) {
+        if (/^image\//.test(f.type)) return true;
+        problems.push({ msg: 'That file is not a photo.', detail: f.name });
+        return false;
+      });
+
+      Promise.all(images.map(function (f) {
+        return shrinkPhoto(f).then(
+          function (out) { return out; },
+          function () {
+            // HEIC from an iPhone is the usual reason a browser cannot
+            // decode a picture it will happily list.
+            problems.push({ msg: 'That photo could not be read. A JPG or PNG works.', detail: f.name });
+            return null;
+          }
+        );
+      })).then(function (out) {
+        var kept = [];
+        var room = MAX_BYTES - attachedBytes('photo');
+        out.filter(Boolean).forEach(function (p) {
+          if (p.size > room) {
+            problems.push({ msg: 'No room left for this one — send it as a link instead.', detail: p.name });
+            return;
+          }
+          room -= p.size;
+          kept.push(p);
+        });
+        photos = kept;
+        render(kept, problems);
+        paint();
+      });
+    });
+
+    function render(files, problems) {
+      var rows = files.map(function (f) {
+        return '<li><span>' + O.esc(f.name) + '</span><b>' + kb(f.size) + '</b></li>';
+      }).concat(problems.map(function (p) {
+        return '<li class="is-bad"><span>' + O.esc(p.msg) + '</span>' +
+               (p.detail ? '<b>' + O.esc(p.detail) + '</b>' : '') + '</li>';
+      }));
+      list.innerHTML = rows.join('');
+      list.hidden = !rows.length;
+    }
+  }
+
   function wireFiles() {
     var input = doc.getElementById('b-files');
     var list = q('[data-b-files]');
@@ -531,19 +659,21 @@
         chosen = chosen.slice(0, MAX_FILES);
       }
 
-      var total = 0;
+      // Photos and PDFs share one budget, so what is left depends on
+      // how many pictures are already attached.
+      var room = MAX_BYTES - attachedBytes('pdf');
       var keep = [];
       chosen.forEach(function (f) {
         var isPdf = f.type === 'application/pdf' || /\.pdf$/i.test(f.name);
         if (!isPdf) { problems.push({ msg: 'That file is not a PDF.', detail: f.name }); return; }
-        if (total + f.size > MAX_BYTES) {
+        if (f.size > room) {
           problems.push({
-            msg: 'Over the 3 MB limit — send this one as a link instead.',
+            msg: 'No room left for this one — send it as a link instead.',
             detail: f.name + ' (' + kb(f.size) + ')'
           });
           return;
         }
-        total += f.size;
+        room -= f.size;
         keep.push(f);
       });
 
@@ -658,35 +788,73 @@
     return ' <a href="' + mailHref() + '">Send it as an email instead</a> — it reaches us at ' + INBOX + '.';
   }
 
-  /* ── reCAPTCHA v3 ─────────────────────────────────────────────
-     Invisible: no puzzle, no click, just a score fetched in the
-     background. Only the site key is used here — the secret never
-     leaves the server, which is the whole point of verifying there.
+  /* ── reCAPTCHA v2 checkbox ────────────────────────────────────
+     A gate the visitor can see. Until the box is ticked there is no
+     token, and with no token the send button stays disabled — so the
+     form genuinely cannot be sent without passing it.
 
-     Resolves to '' whenever a token cannot be had: the key is unset,
-     the script was blocked, or Google is slow. Deciding what an absent
-     token means is the server's job, not this file's, and the timeout
-     is what stops a blocked script leaving the button on "Sending…"
-     forever. */
-  var RECAPTCHA_ACTION = 'project_request';
+     Only the site key is used here. The token proves nothing on its
+     own; the server exchanges it with Google using the secret, which
+     is why that half never leaves the server.
+
+     The widget is rendered rather than auto-discovered so it sits
+     exactly where the markup puts it, above the button it guards. */
+  var widgetId = null;
+
+  function recaptchaOn() { return !!global.XOVAH_RECAPTCHA_SITE_KEY; }
 
   function recaptchaToken() {
-    var key = global.XOVAH_RECAPTCHA_SITE_KEY;
+    if (!recaptchaOn()) return '';
     var g = global.grecaptcha;
-    if (!key || !g || !g.execute) return Promise.resolve('');
-
-    return new Promise(function (resolve) {
-      var done = false;
-      function finish(v) { if (!done) { done = true; resolve(v || ''); } }
-
-      global.setTimeout(function () { finish(''); }, 8000);
-      try {
-        g.ready(function () {
-          g.execute(key, { action: RECAPTCHA_ACTION }).then(finish, function () { finish(''); });
-        });
-      } catch (e) { finish(''); }
-    });
+    if (!g || widgetId === null) return '';
+    try { return g.getResponse(widgetId) || ''; } catch (e) { return ''; }
   }
+
+  function renderRecaptcha() {
+    var host = q('[data-b-recaptcha]');
+    var g = global.grecaptcha;
+    if (!host || !g || !g.render || widgetId !== null) return;
+
+    var dark = doc.documentElement.getAttribute('data-theme') !== 'light';
+    try {
+      widgetId = g.render(host, {
+        sitekey: global.XOVAH_RECAPTCHA_SITE_KEY,
+        theme: dark ? 'dark' : 'light',
+        callback: function () { gateHint(''); paint(); },
+        // A v2 token dies after about two minutes. Someone who ticks the
+        // box and then keeps typing would otherwise press send holding
+        // something Google has already forgotten.
+        'expired-callback': function () {
+          // Reset rather than trusting getResponse() to report the
+          // expiry: clearing the widget is what actually makes the
+          // token empty, and the button disabled with it.
+          resetRecaptcha();
+          gateHint('That expired. Tick the box again.');
+          paint();
+        },
+        'error-callback': function () {
+          gateHint('The spam check could not load. Try again, or send it as an email.');
+          paint();
+        }
+      });
+    } catch (e) { widgetId = null; }
+  }
+
+  function gateHint(text) {
+    var el = q('[data-b-gate-hint]');
+    if (!el) return;
+    el.textContent = text || 'Tick the box before sending.';
+    el.classList.toggle('is-bad', !!text);
+  }
+
+  function resetRecaptcha() {
+    if (widgetId === null || !global.grecaptcha) return;
+    try { global.grecaptcha.reset(widgetId); } catch (e) {}
+  }
+
+  // Google calls this when its script has loaded; the name is in the
+  // script URL in build.html.
+  global.xovahRecaptchaReady = function () { renderRecaptcha(); paint(); };
 
   function focusProblem() {
     if (!picks.tier) {
@@ -741,6 +909,7 @@
         included: coveredItems().map(function (i) { return i.name; }),
         totalCents: t.total,
         files: picked.map(function (f) { return { filename: f.name, content: f.content }; }),
+        photos: photos.map(function (f) { return { filename: f.name, content: f.content }; }),
         brief: brief.text.trim(),
         details: {
           businessName: brief.businessName.trim(),
@@ -755,8 +924,9 @@
       }
     };
 
-    recaptchaToken().then(function (token) {
-      payload.recaptchaToken = token;
+    payload.recaptchaToken = recaptchaToken();
+
+    Promise.resolve().then(function () {
       return global.fetch(ENDPOINT, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -773,14 +943,17 @@
         ? '<strong>Sending is temporarily unavailable.</strong> Your request was not delivered.' + mailLink()
         : r.status === 429
           ? '<strong>That is a few too many in a row.</strong> Give it a minute and press send again.'
-          : r.status === 403
-            ? '<strong>That did not get past our spam check.</strong> Your request was not delivered.' + mailLink()
-            : '<strong>That did not send.</strong> Your request was not delivered.' + mailLink());
+          : r.status === 409
+            ? '<strong>That tick expired.</strong> Tick the box once more and press send again &mdash; nothing you typed is lost.'
+            : r.status === 403
+              ? '<strong>That did not get past our spam check.</strong> Your request was not delivered.' + mailLink()
+              : '<strong>That did not send.</strong> Your request was not delivered.' + mailLink());
     })['catch'](function () {
       note('bad', '<strong>No connection.</strong> Your request was not delivered, and nothing you ' +
                   'typed is lost. Check your internet and press send again.' + mailLink());
     }).then(function () {
       sending = false;
+      resetRecaptcha();
       paint();
     });
   }
@@ -942,6 +1115,7 @@
     renderAdds();
     wireForm();
     wireFiles();
+    wirePhotos();
     wire();
     markPacks();
     paint();

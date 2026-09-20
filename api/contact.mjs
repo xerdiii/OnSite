@@ -73,34 +73,66 @@ const B64 = /^[A-Za-z0-9+/]+={0,2}$/;
 // this is what stops an .exe arriving named invoice.pdf.
 const PDF_MAGIC = 'JVBERi0';                 // base64 of '%PDF-'
 
-function cleanName(v) {
+/* The extension comes from the bytes, not from what the browser called
+   the file — that is what stops an executable arriving as invoice.pdf.
+   The basename is kept only after being stripped of anything that could
+   make it a path. */
+function cleanName(v, ext) {
   const base = String(v == null ? '' : v).split(/[\\/]/).pop();
   const safe = base.replace(/[^A-Za-z0-9._ -]/g, '').replace(/^\.+/, '').trim();
-  const named = safe.slice(0, 80) || 'attachment.pdf';
-  return /\.pdf$/i.test(named) ? named : named + '.pdf';
+  const stem = safe.replace(/\.[^.]*$/, '').slice(0, 70) || 'attachment';
+  return stem + ext;
 }
 
-function attachments(raw) {
-  if (!Array.isArray(raw)) return { files: [], rejected: 0 };
+/* Photos. The browser shrinks them to JPEG before sending, but that is
+   a courtesy to the request size, not a guarantee — so the type is
+   settled here from the decoded bytes, exactly as it is for PDFs. */
+const MAX_PHOTOS = 8;
+/* Kept short on purpose: each prefix must cover only the bytes the
+   format actually fixes. 'iVBORw0KGgo' reaches into the ninth byte,
+   which is part of the IHDR length rather than the signature, so it
+   matches most PNGs and quietly rejects the rest. */
+const IMAGE_MAGIC = {
+  '/9j/': '.jpg',        // FF D8 FF
+  'iVBORw0K': '.png',    // 89 50 4E 47 0D 0A
+  'R0lGOD': '.gif',      // 47 49 46 38
+  'UklGR': '.webp'       // 52 49 46 46  (RIFF)
+};
+
+function imageKind(content) {
+  for (const [magic, ext] of Object.entries(IMAGE_MAGIC)) {
+    if (content.startsWith(magic)) return ext;
+  }
+  return null;
+}
+
+/* One pass for both kinds. `check` returns the extension a blob's own
+   bytes say it is, or null; `room` is what is left of the shared budget,
+   because photos and PDFs compete for the same 4.5MB request ceiling. */
+function collect(raw, { max, check, room }) {
+  if (!Array.isArray(raw)) return { files: [], rejected: 0, used: 0 };
 
   const files = [];
   let rejected = 0;
-  let total = 0;
+  let used = 0;
 
-  for (const f of raw.slice(0, MAX_FILES)) {
+  for (const f of raw.slice(0, max)) {
     const content = String((f && f.content) || '').replace(/\s/g, '');
-    if (!content || !B64.test(content) || !content.startsWith(PDF_MAGIC)) { rejected++; continue; }
+    if (!content || !B64.test(content)) { rejected++; continue; }
+
+    const ext = check(content);
+    if (!ext) { rejected++; continue; }
 
     // Length of base64 maps to decoded bytes without decoding it first.
     const bytes = Math.floor(content.length * 3 / 4);
-    if (bytes === 0 || total + bytes > MAX_BYTES) { rejected++; continue; }
+    if (bytes === 0 || used + bytes > room) { rejected++; continue; }
 
-    total += bytes;
-    files.push({ filename: cleanName(f && f.filename), content, bytes });
+    used += bytes;
+    files.push({ filename: cleanName(f && f.filename, ext), content, bytes });
   }
 
-  if (Array.isArray(raw) && raw.length > MAX_FILES) rejected += raw.length - MAX_FILES;
-  return { files, rejected };
+  if (raw.length > max) rejected += raw.length - max;
+  return { files, rejected, used };
 }
 
 const kb = (n) => n < 1024 * 1024
@@ -132,9 +164,6 @@ const kb = (n) => n < 1024 * 1024
    The spam that matters is scripted POSTs straight at this endpoint,
    and those carry no valid token at all — which is exactly the case
    still refused. */
-const RECAPTCHA_ACTION = 'project_request';
-const RECAPTCHA_LOW_SCORE = 0.3;
-
 async function checkRecaptcha(token, ip) {
   const secret = process.env.RECAPTCHA_SECRET_KEY;
   if (!secret) return { verdict: 'off' };
@@ -164,14 +193,14 @@ async function checkRecaptcha(token, ip) {
     console.error('RECAPTCHA_SECRET_KEY is wrong or missing — check Vercel');
     return { verdict: 'suspect', why: 'server key misconfigured' };
   }
+  /* A token that has already been spent, or has aged out of its two
+     minutes. The visitor is real; their tick is just stale, and the
+     form asks them to do it again rather than losing the request. */
+  if (codes.includes('timeout-or-duplicate')) {
+    return { verdict: 'stale', why: 'the tick expired' };
+  }
   if (!data.success) return { verdict: 'forged', why: codes || 'rejected' };
-  if (data.action && data.action !== RECAPTCHA_ACTION) {
-    return { verdict: 'forged', why: 'action was ' + data.action };
-  }
-  if (typeof data.score === 'number' && data.score < RECAPTCHA_LOW_SCORE) {
-    return { verdict: 'suspect', why: 'low score', score: data.score };
-  }
-  return { verdict: 'ok', score: data.score };
+  return { verdict: 'ok' };
 }
 
 /* A best-effort throttle. Serverless instances are not shared, so this
@@ -366,6 +395,11 @@ async function projectRequest(req, res, body, { key, to, from }) {
     console.warn('recaptcha refused a project request:', spam.why);
     return res.status(403).json({ error: 'failed verification' });
   }
+  // Worth telling apart from a refusal: the form can ask for a fresh
+  // tick, which is a second of work, instead of an email that is lost.
+  if (spam.verdict === 'stale') {
+    return res.status(409).json({ error: 'expired verification' });
+  }
   if (spam.verdict === 'suspect') {
     console.warn('recaptcha flagged a project request (delivered anyway):', spam.why,
                  spam.score === undefined ? '' : spam.score);
@@ -389,7 +423,20 @@ async function projectRequest(req, res, body, { key, to, from }) {
     ['Files to download',       cap(d.filesLink, 500)]
   ].filter(([, v]) => v);
 
-  const { files, rejected } = attachments(p.files);
+  /* Photos first, then PDFs into whatever budget is left. */
+  const shots = collect(p.photos, {
+    max: MAX_PHOTOS,
+    check: imageKind,
+    room: MAX_BYTES
+  });
+  const pdfs = collect(p.files, {
+    max: MAX_FILES,
+    check: (c) => (c.startsWith(PDF_MAGIC) ? '.pdf' : null),
+    room: MAX_BYTES - shots.used
+  });
+
+  const files = shots.files.concat(pdfs.files);
+  const rejected = shots.rejected + pdfs.rejected;
 
   const computed = packCents + extras.reduce((n, x) => n + x.cents, 0);
   const claimed = cents(p.totalCents);

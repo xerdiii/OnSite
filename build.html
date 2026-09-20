@@ -41,7 +41,7 @@
 <link rel="stylesheet" href="assets/xovah.css?v=3">
 <link rel="stylesheet" href="assets/tailwind.css?v=2">
 <link rel="stylesheet" href="assets/theme.css?v=6">
-<link rel="stylesheet" href="assets/builder.css?v=3">
+<link rel="stylesheet" href="assets/builder.css?v=4">
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebPage","@id":"https://www.xovahweb.com/build#webpage","url":"https://www.xovahweb.com/build","name":"Start your project — Xovah","description":"Choose a package, see what it already covers, add what it does not, and send the request.","isPartOf":{"@id":"https://www.xovahweb.com/#website"},"inLanguage":"en-GB"},{"@type":"BreadcrumbList","@id":"https://www.xovahweb.com/build#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://www.xovahweb.com/"},{"@type":"ListItem","position":2,"name":"Start your project","item":"https://www.xovahweb.com/build"}]}]}</script>
 <script>/* Which page each nav link means in each language. build.html is one
    page for every language rather than ten, so `lang` is read at call time
@@ -49,25 +49,29 @@
    German visitor leaves the builder into the English site. */
 window.XovahRoutes={"routes":{"home":{"en":"/en","sq":"/sq","de":"/de","fr":"/fr","it":"/it","es":"/es","pt":"/pt","nl":"/nl","sv":"/sv","tr":"/tr"},"pricing":{"en":"/en/pricing","sq":"/sq/cmimet","de":"/de/preise","fr":"/fr/tarifs","it":"/it/prezzi","es":"/es/precios","pt":"/pt/precos","nl":"/nl/prijzen","sv":"/sv/priser","tr":"/tr/fiyatlar"},"services":{"en":"/en/services","sq":"/sq/sherbimet","de":"/de/leistungen","fr":"/fr/services","it":"/it/servizi","es":"/es/servicios","pt":"/pt/servicos","nl":"/nl/diensten","sv":"/sv/tjanster","tr":"/tr/hizmetler"},"features":{"en":"/en/features","sq":"/sq/vecorite","de":"/de/funktionen","fr":"/fr/fonctionnalites","it":"/it/funzionalita","es":"/es/funciones","pt":"/pt/funcionalidades","nl":"/nl/functies","sv":"/sv/funktioner","tr":"/tr/ozellikler"},"contact":{"en":"/en/contact","sq":"/sq/kontakt","de":"/de/kontakt","fr":"/fr/contact","it":"/it/contatti","es":"/es/contacto","pt":"/pt/contacto","nl":"/nl/contact","sv":"/sv/kontakt","tr":"/tr/iletisim"},"faq":{"en":"/en/faq","sq":"/sq/pyetje-te-shpeshta","de":"/de/haeufige-fragen","fr":"/fr/questions-frequentes","it":"/it/domande-frequenti","es":"/es/preguntas-frecuentes","pt":"/pt/perguntas-frequentes","nl":"/nl/veelgestelde-vragen","sv":"/sv/vanliga-fragor","tr":"/tr/sikca-sorulan-sorular"},"terms":{"en":"/en/terms"},"privacy":{"en":"/en/privacy"},"refunds":{"en":"/en/refunds"},"cookies":{"en":"/en/cookies"}},"app":["404","build"],"names":{"home":"index","pricing":"pricing","services":"extras","features":"features","contact":"contact","faq":"faq","terms":"terms","privacy":"privacy","refunds":"refunds","cookies":"cookies"}};
 Object.defineProperty(window.XovahRoutes,"lang",{get:function(){try{var l=localStorage.getItem("xovah.lang");return /^(en|sq|de|fr|it|es|pt|nl|sv|tr)$/.test(l||"")?l:"en";}catch(e){return "en";}}});</script>
-<script>/* reCAPTCHA v3, invisible: it scores the visitor in the background and
-   never shows a puzzle.
+<script>/* reCAPTCHA v2 checkbox: a gate you can see. The send button stays
+   disabled until the box is ticked, and Google lays an image puzzle on
+   top of it whenever it doubts the visitor.
 
-   The SITE key below is public by design — it is in the page source of
-   every site that uses reCAPTCHA, and Google expects it there. The
-   SECRET key is what must never appear in client code: it lives only in
-   Vercel's environment as RECAPTCHA_SECRET_KEY and is read server-side
-   in api/contact.mjs.
+   v2 and v3 keys are NOT interchangeable. The old v3 key rendered
+   nothing here, which is why this starts empty again: it needs a key
+   from a site registered as "reCAPTCHA v2 → I'm not a robot".
 
-   Leave this empty and the form behaves exactly as it does today. */
-window.XOVAH_RECAPTCHA_SITE_KEY = '6LcEycQtAAAAALMkItfHMXvWnPUMIfSHm1SaLbVB';
+   The SITE key is public by design and belongs in the page source. The
+   SECRET key must never appear in client code: it lives only in
+   Vercel's environment as RECAPTCHA_SECRET_KEY, read server-side in
+   api/contact.mjs.
+
+   Left empty, the form behaves as it did before reCAPTCHA existed. */
+window.XOVAH_RECAPTCHA_SITE_KEY = '';
 (function () {
-  var key = window.XOVAH_RECAPTCHA_SITE_KEY;
-  if (!key) return;
-  // Marks the page as protected: builder.css uses it to hide Google's
-  // floating badge and show the attribution notice that replaces it.
+  if (!window.XOVAH_RECAPTCHA_SITE_KEY) return;
+  // builder.css keys the checkbox row and the notice off this.
   document.documentElement.setAttribute('data-recaptcha', 'on');
   var s = document.createElement('script');
-  s.src = 'https://www.google.com/recaptcha/api.js?render=' + encodeURIComponent(key);
+  // Explicit render, so builder.js decides where the widget goes and
+  // when, rather than Google hunting the page for a .g-recaptcha div.
+  s.src = 'https://www.google.com/recaptcha/api.js?onload=xovahRecaptchaReady&render=explicit';
   s.async = true;
   s.defer = true;
   document.head.appendChild(s);
@@ -254,10 +258,20 @@ window.XOVAH_RECAPTCHA_SITE_KEY = '6LcEycQtAAAAALMkItfHMXvWnPUMIfSHm1SaLbVB';
               </div>
 
               <div class="bx-field">
+                <label for="b-photos">Attach photos <span class="bx-opt">optional</span></label>
+                <input id="b-photos" class="bx-file" type="file" accept="image/*" multiple>
+                <p class="bx-hint">
+                  Up to 8 screenshots or photos. Big ones are shrunk here in your browser
+                  before they are sent, so a phone photo is fine.
+                </p>
+                <ul class="bx-files" data-b-photos hidden></ul>
+              </div>
+
+              <div class="bx-field">
                 <label for="b-files">Attach PDFs <span class="bx-opt">optional</span></label>
                 <input id="b-files" class="bx-file" type="file" accept="application/pdf,.pdf" multiple>
                 <p class="bx-hint">
-                  Up to 3 PDFs, 3&nbsp;MB in total &mdash; a menu, a price list, a brochure.
+                  Up to 3 PDFs &mdash; a menu, a price list, a brochure.
                   Anything larger, put it behind a link instead.
                 </p>
                 <ul class="bx-files" data-b-files hidden></ul>
@@ -324,6 +338,14 @@ window.XOVAH_RECAPTCHA_SITE_KEY = '6LcEycQtAAAAALMkItfHMXvWnPUMIfSHm1SaLbVB';
               </details>
 
               <p class="bx-note" data-b-note hidden></p>
+
+              <!-- The gate. Google renders the checkbox into this; until it is
+                   ticked the send button below stays disabled. Hidden entirely
+                   while no site key is set. -->
+              <div class="bx-gate">
+                <div data-b-recaptcha></div>
+                <p class="bx-gate-hint" data-b-gate-hint>Tick the box before sending.</p>
+              </div>
 
               <button type="button" class="bx-cta" data-b-send disabled>Send this email</button>
               <p class="bx-reply">
@@ -400,6 +422,6 @@ window.XOVAH_RECAPTCHA_SITE_KEY = '6LcEycQtAAAAALMkItfHMXvWnPUMIfSHm1SaLbVB';
 <script src="assets/theme.js?v=3"></script>
 <script src="assets/i18n.js?v=5"></script>
 <script src="assets/demo.js?v=5"></script>
-<script src="assets/builder.js?v=2"></script>
+<script src="assets/builder.js?v=3"></script>
 </body>
 </html>

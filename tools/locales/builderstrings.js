@@ -58,7 +58,9 @@ const js = fs.readFileSync(path.join(ROOT, 'assets', 'builder.js'), 'utf8')
   // Prose in a comment is not copy, and an apostrophe in one reads as
   // the start of a string literal.
   .replace(/\/\*[\s\S]*?\*\//g, '')
-  .replace(/^[ \t]*\/\/.*$/gm, '');
+  .replace(/^[ \t]*\/\/.*$/gm, '')
+  // An Error's message is for the log, never for the page.
+  .replace(/new Error\([^)]*\)/g, 'new Error()');
 for (const m of js.matchAll(/'((?:[^'\\\n]|\\.)+)'/g)) {
   const t = m[1].replace(/\\'/g, "'").trim();
   if (!keep(t)) continue;

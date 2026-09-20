@@ -909,12 +909,32 @@
 }
 
 /* ── reCAPTCHA ─────────────────────────────────────────────
-   Both rules apply only once the site key is set, so with reCAPTCHA
-   switched off the page is byte-for-byte what it was. Google permits
-   hiding the badge on condition the notice is shown in its place —
-   visibility rather than display, because the widget measures itself. */
+   Everything here waits on the site key, so with reCAPTCHA switched
+   off the page is what it was before it existed. The v2 checkbox is a
+   Google iframe at a fixed 304px: it can be scaled or given room, not
+   restyled, so it gets room. */
+.bx-gate { display: none; }
+[data-recaptcha="on"] .bx-gate { display: block; margin-top: 1.35rem; }
+
+.bx-gate > div { min-height: 78px; }
+[data-recaptcha="on"] .bx-gate-hint {
+  margin: 0.5rem 0 0;
+  font-size: 0.75rem;
+  color: rgb(var(--c-ink-soft));
+}
+[data-recaptcha="on"] .bx-gate-hint.is-bad { color: rgb(var(--c-accent-text)); }
+
+/* The widget is 304px wide and will not shrink; below that it is
+   scaled from its left edge so it cannot push the layout sideways. */
+@media (max-width: 360px) {
+  [data-recaptcha="on"] .bx-gate > div {
+    transform: scale(0.88);
+    transform-origin: 0 0;
+    min-height: 70px;
+  }
+}
+
 .bx-legal { display: none; }
-[data-recaptcha="on"] .grecaptcha-badge { visibility: hidden; }
 [data-recaptcha="on"] .bx-legal {
   display: block;
   margin: 0.7rem 0 0;
