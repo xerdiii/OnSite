@@ -114,18 +114,31 @@ const kb = (n) => n < 1024 * 1024
    environment and never reaches the client — the page carries only the
    public site key.
 
-   Unset secret means the check is not configured, and the form keeps
-   working exactly as it did before. That is deliberate: switching this
-   on should be a decision, not something a missing variable makes for
-   you, and GET /api/contact reports which state you are in. Once the
-   secret IS set, a token that fails is refused. */
+   Unset secret means the check is not configured and the form behaves
+   as it did before; GET /api/contact reports which state you are in.
+
+   What gets refused is narrow on purpose. For a lead form, turning away
+   one real customer costs more than a hundred spam emails, and v3 is
+   quietly good at producing false positives: a new key with no traffic
+   history scores nearly everyone low until Google has learned the site,
+   and privacy extensions block the script outright. So:
+
+     forged   a token Google rejects, or one minted for another action
+              — no real browser on this page produces either. Refused.
+     suspect  a low score, a missing token, or Google not answering.
+              Delivered, and the email says so, because every one of
+              those happens to real people.
+
+   The spam that matters is scripted POSTs straight at this endpoint,
+   and those carry no valid token at all — which is exactly the case
+   still refused. */
 const RECAPTCHA_ACTION = 'project_request';
-const RECAPTCHA_MIN_SCORE = 0.5;
+const RECAPTCHA_LOW_SCORE = 0.3;
 
 async function checkRecaptcha(token, ip) {
   const secret = process.env.RECAPTCHA_SECRET_KEY;
-  if (!secret) return { ok: true, skipped: true };
-  if (!token) return { ok: false, why: 'no token' };
+  if (!secret) return { verdict: 'off' };
+  if (!token) return { verdict: 'suspect', why: 'no token from the browser' };
 
   const form = new URLSearchParams({ secret, response: String(token).slice(0, 4000) });
   if (ip && ip !== 'unknown') form.set('remoteip', ip);
@@ -139,23 +152,26 @@ async function checkRecaptcha(token, ip) {
     });
     data = await r.json();
   } catch (e) {
-    // Google unreachable. Refuse rather than wave it through: the whole
-    // point of the check is that it cannot be skipped from outside.
     console.error('recaptcha unreachable', e);
-    return { ok: false, why: 'verifier unreachable' };
+    return { verdict: 'suspect', why: 'could not reach Google' };
   }
 
-  if (!data.success) {
-    return { ok: false, why: (data['error-codes'] || []).join(', ') || 'rejected' };
+  const codes = (data['error-codes'] || []).join(', ');
+
+  /* A secret this end got wrong is our fault, not the visitor's, so it
+     must never cost them their enquiry. It is loud in the log instead. */
+  if (codes.includes('invalid-input-secret') || codes.includes('missing-input-secret')) {
+    console.error('RECAPTCHA_SECRET_KEY is wrong or missing — check Vercel');
+    return { verdict: 'suspect', why: 'server key misconfigured' };
   }
-  // A token minted for another action is a token lifted from another page.
+  if (!data.success) return { verdict: 'forged', why: codes || 'rejected' };
   if (data.action && data.action !== RECAPTCHA_ACTION) {
-    return { ok: false, why: 'action was ' + data.action };
+    return { verdict: 'forged', why: 'action was ' + data.action };
   }
-  if (typeof data.score === 'number' && data.score < RECAPTCHA_MIN_SCORE) {
-    return { ok: false, why: 'score ' + data.score };
+  if (typeof data.score === 'number' && data.score < RECAPTCHA_LOW_SCORE) {
+    return { verdict: 'suspect', why: 'low score', score: data.score };
   }
-  return { ok: true, score: data.score };
+  return { verdict: 'ok', score: data.score };
 }
 
 /* A best-effort throttle. Serverless instances are not shared, so this
@@ -346,9 +362,13 @@ async function projectRequest(req, res, body, { key, to, from }) {
   // After the cheap checks, before anything is sent or attached.
   const ip = String(req.headers['x-forwarded-for'] || '').split(',')[0].trim() || 'unknown';
   const spam = await checkRecaptcha(body.recaptchaToken, ip);
-  if (!spam.ok) {
+  if (spam.verdict === 'forged') {
     console.warn('recaptcha refused a project request:', spam.why);
     return res.status(403).json({ error: 'failed verification' });
+  }
+  if (spam.verdict === 'suspect') {
+    console.warn('recaptcha flagged a project request (delivered anyway):', spam.why,
+                 spam.score === undefined ? '' : spam.score);
   }
 
   // Seventy in the catalogue today; the cap is a ceiling, not a limit.
@@ -392,6 +412,10 @@ async function projectRequest(req, res, body, { key, to, from }) {
   const html = `
     <h2 style="font:600 18px system-ui;margin:0 0 4px">Project request${who ? ' — ' + esc(who) : ''}</h2>
     <p style="font:13px system-ui;color:#666;margin:0 0 20px">Reply to ${esc(email)}</p>
+    ${spam.verdict === 'suspect' ? `<p style="font:13px system-ui;background:#fff5e5;border:1px solid #f0d9a8;padding:8px 10px;border-radius:4px;margin:0 0 18px">
+      <b>reCAPTCHA flagged this one:</b> ${esc(spam.why)}${spam.score === undefined ? '' : ' (' + esc(spam.score) + ')'}.
+      It was delivered anyway — a real person is the likeliest explanation, but read it with that in mind.
+    </p>` : ''}
 
     <h3 style="font:600 13px system-ui;text-transform:uppercase;letter-spacing:.06em;color:#666;margin:0 0 6px">Package</h3>
     <table style="font:14px system-ui;border-collapse:collapse;width:100%;max-width:520px">
